@@ -1,0 +1,92 @@
+.home__top__bot__invite {
+    padding: 14px 18px 14px 18px;
+    color: #fff;
+    background-color: #164bce;
+    border-radius: 4px;
+    text-decoration: none;
+    position: relative;
+    font-size: 18px;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    z-index: 3;
+    line-height: normal;
+}
+
+.home__top__bot__title__desc {
+    color: hsla(0,0%,100%,.7);
+    font-size: 20px;
+    text-align: center;
+    margin: 20px 0 0;
+}
+
+.home__top__bot__title {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    margin: 16px 0 25px;
+    z-index: 3;
+}
+
+.home__top__bot {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    margin: 0 auto;
+    padding: 60px 0 0;
+    z-index: 1;
+    height: 700px;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    -webkit-animation: run 1s ease-out 0s 1;
+    animation: run 1s ease-out 0s 1;
+}
+
+.home__top__bot__title__activities {
+    position: relative;
+    text-align: center;
+    height: 40px;
+    max-width: 500px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    z-index: 3;
+}
+
+.home__top__bot__title__activities span {
+    color: #164bce;
+    font-size: 30px;
+    left: 0;
+    opacity: 0;
+    margin-top: 10px;
+    position: absolute;
+    white-space: nowrap;
+}
+
+
+.home__top__bot__title__activities span.visible {
+    opacity: 1;
+    position: relative;
+    -webkit-animation: push-in 1s;
+    animation: push-in 1s;
+}
+
+.hidden {
+    visibility: none;
+}
