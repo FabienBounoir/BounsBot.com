@@ -1,7 +1,7 @@
 .home__top__bot__invite {
     padding: 14px 18px 14px 18px;
     color: #fff;
-    background-color: #164bce;
+    background-color: #0cab34;
     border-radius: 4px;
     text-decoration: none;
     position: relative;
@@ -13,6 +13,11 @@
     user-select: none;
     z-index: 3;
     line-height: normal;
+}
+
+
+.home__top__bot__invite span {
+    color: #fff;
 }
 
 .home__top__bot__title__desc {
@@ -70,7 +75,7 @@
 }
 
 .home__top__bot__title__activities span {
-    color: #164bce;
+    color: #0cab34;
     font-size: 30px;
     left: 0;
     opacity: 0;
@@ -87,6 +92,31 @@
     animation: push-in 1s;
 }
 
-.hidden {
-    visibility: none;
+.home__top {
+    background-color: #202225;
+    position: relative;
+    z-index: 5;
+    /* padding-top: 100px; */
+}
+
+.home__top .wave {
+    position: absolute;
+    background: url(wave1.png) repeat-x;
+    bottom: -50px;
+    left: 0;
+    right: 0;
+    width: 100%;
+    height: 190px;
+    -webkit-animation: wave 12s linear infinite;
+    animation: wave 12s linear infinite;
+    z-index: 3;
+}
+
+@keyframes wave{
+    0% {
+        background-position: 6192px 0;
+    }
+    100% {
+        background-position: 0 0;
+    }
 }

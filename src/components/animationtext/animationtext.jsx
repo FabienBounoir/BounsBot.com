@@ -1,9 +1,9 @@
 import React from 'react';
-
+import "./_animationtext.css";
 class AnimationText extends React.Component {
     state = {
         increment: 0,
-        word: ["La Modération","Les Levels","Les Réactions","La Radio","La Musique","Les Playlists"]
+        word: ["La Modération","Les Levels","Les Réactions","La Radio","La Musique","Les Playlists","Les Renames"]
     }
   
     tick() {

@@ -1,22 +1,32 @@
 // import logo from '../components/picture/logo.svg';
-import { BrowserRouter, Route } from "react-router-dom";
+import { BrowserRouter, Route, Switch } from "react-router-dom";
 import './App.css';
 import { Navigation } from "../components/navbar/navbar";
 import { HomePage } from "../components/homepage/homepage";
+import { Features } from "../components/features/features";
+import { Commandes } from "../components/commandes/commandes";
 
 export const App = () => {
   return (
     <div className="App">
       <BrowserRouter>
         <Navigation />
-        <Route path="/">
-          <HomePage />
-        </Route>
+        <Switch>
+          <Route exact path="/">
+            <HomePage />
+            <Features /> 
+          </Route>
+
+          <Route exact path="/commandes">
+            <Commandes />
+          </Route>
+
+          <Route exact path="/level">
+
+          </Route>
+        </Switch>
       </BrowserRouter>
-
-    
     </div>
-
   );
 }
 

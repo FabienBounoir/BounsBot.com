@@ -1,0 +1,53 @@
+.commands-list .top {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    height: 56px;
+    margin-bottom: 46px;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+}
+
+.commands-list .top h1 {
+    margin: -2px 0 -12px;
+    font-size: 55px;
+    color: #0cab34;
+    font-family: "Uni Sans","Arial",sans-serif;
+    font-weight: bold;
+}
+
+.commands-list {
+    min-height: calc(100vh - 470px);
+    background-color: #383c41;
+    padding: 50px;
+}
+
+.titleCommand {
+    text-align: left;
+    font-size: 25px;
+    color: #0cab34;
+
+}
+
+tr td:first-child {
+    font-weight: bold;
+}
+
+td{
+    text-align: left;
+}
+
+@media only screen and (max-width: 720px)
+{
+    .commands-list .top h1 {
+        font-size: 40px;
+    }
+
+    .commands-list .top {
+        margin-bottom: 25px;
+    }
+}
