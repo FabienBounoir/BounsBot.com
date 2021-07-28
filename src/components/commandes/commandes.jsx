@@ -1,6 +1,5 @@
 // import React from "react";
 import "./_commandes.css";
-import logo from '../picture/logo5.svg';
 import { Table } from 'react-bootstrap/'
 
 export const Commandes = () => {

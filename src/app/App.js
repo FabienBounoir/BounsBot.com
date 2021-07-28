@@ -5,6 +5,7 @@ import { Navigation } from "../components/navbar/navbar";
 import { HomePage } from "../components/homepage/homepage";
 import { Features } from "../components/features/features";
 import { Commandes } from "../components/commandes/commandes";
+import { Level } from "../components/level/level";
 
 export const App = () => {
   return (
@@ -22,7 +23,7 @@ export const App = () => {
           </Route>
 
           <Route exact path="/level">
-
+            <Level/>
           </Route>
         </Switch>
       </BrowserRouter>
