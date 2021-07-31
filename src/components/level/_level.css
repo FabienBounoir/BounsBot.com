@@ -1,48 +1,345 @@
-header, nav, footer, section, article, aside {
-	position: relative;
-	background-color: #343a40;
-	box-sizing: border-box;
+.leaderboardglobal{
+    background-color: #202225;
 }
 
-/* nav{
-	display: grid;
-	grid-template-areas: 
-	"text bouton";
-	grid-template-columns: 3fr 0.3fr;
-} */
-
-header {
-    text-align: left;
-	border: 3px solid #343a40;
-	height: 2%;
-	color: white;
-	border-bottom-right-radius: 0.5em ;
-	border-bottom-left-radius: 0.5em ;
-	padding: 0.3em 0.2em;
-}
-
-ul#menu li {
-	display: inline;
-	grid-area: text;
-	margin: 3vmax;
+.top {
+    display: flex;
+    justify-content: space-between;
+    height: 56px;
+    margin-bottom: 46px;
     align-items: center;
+}
+
+.leaderboardglobal{
+    min-height: calc(100vh - 470px);
+    background-color: #383c41;
+    padding: 50px;
+}
+
+.top h1 {
+    margin: -2px 0 -12px;
+    font-size: 55px;
+    color: #0cab34;
+    font-family: "Uni Sans","Arial",sans-serif;
+    font-weight: bold;
+}
+
+.leaderboardPlayerStatBlock .leaderboardPlayerStatValue {
+    font-size: 18px;
+    font-weight: 600;
+    line-height: 1;
+    margin-top: 5px;
+    color: #fff;
+}
+
+.leaderboardPlayerStatBlock .leaderboardPlayerStatName {
+    font-size: 12px;
+    font-weight: 300;
+    line-height: 1;
+    margin-bottom: 1px;
+    color: #85878a;
+    white-space: nowrap;
+}
+
+.leaderboardPlayer {
+    display: -webkit-box;
+    display: -moz-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: box;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -moz-box-orient: horizontal;
+    -o-box-orient: horizontal;
+    -webkit-flex-direction: row;
+    -ms-flex-direction: row;
+    flex-direction: row;
+    height: 55px;
+    padding: 35px 0px;
+    -webkit-box-align: center;
+    -moz-box-align: center;
+    -o-box-align: center;
+    -ms-flex-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+.leaderboardPlayersListContainer {
+    margin: auto;
+    max-width: 100%;
+    -webkit-flex-shrink: 2;
+    flex-shrink: 2;
+    -webkit-box-flex: 2;
+    -moz-box-flex: 2;
+    -o-box-flex: 2;
+    -ms-box-flex: 2;
+    box-flex: 1;
+    -webkit-flex-grow: 2;
+    flex-grow: 2;
+    background-color: #3e4246;
+    border-radius: 3px;
+    -webkit-box-shadow: 0 0 10px rgb(0 0 0 / 20%);
+    box-shadow: 0 0 10px rgb(0 0 0 / 20%);
+}
+
+
+.leaderboardPlayer .leaderboardPlayerLeft {
+    display: -webkit-box;
+    display: -moz-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: box;
+    display: flex;
+    max-width: 65%;
+    -webkit-box-flex: 1;
+    -moz-box-flex: 1;
+    -o-box-flex: 1;
+    box-flex: 1;
+    -webkit-flex: 0 1 65%;
+    -ms-flex: 0 1 65%;
+    flex: 0 1 65%;
+    -webkit-box-orient: horizontal;
+    -moz-box-orient: horizontal;
+    -o-box-orient: horizontal;
+    -webkit-flex-direction: row;
+    -ms-flex-direction: row;
+    flex-direction: row;
+    -webkit-box-align: center;
+    -moz-box-align: center;
+    -o-box-align: center;
+    -ms-flex-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+}
+
+.leaderboardRank {
+    -webkit-box-flex: 1;
+    -moz-box-flex: 1;
+    -o-box-flex: 1;
+    box-flex: 1;
+    -webkit-flex: 0 0 35px;
+    -ms-flex: 0 0 35px;
+    flex: 0 0 35px;
+    background-color: #50555a;
+    height: 35px;
+    border-radius: 50%;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: box;
+    display: flex;
+    -webkit-box-align: center;
+    -moz-box-align: center;
+    -o-box-align: center;
+    -ms-flex-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    -moz-box-pack: center;
+    -o-box-pack: center;
+    -ms-flex-pack: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+    font-weight: 600;
+    color: #fff;
+}
+
+.leaderboardPlayerStats {
+    display: -webkit-box;
+    display: -moz-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: box;
+    display: flex;
+    -webkit-box-flex: 1;
+    -moz-box-flex: 1;
+    -o-box-flex: 1;
+    box-flex: 1;
+    -webkit-flex: 0 0 20%;
+    -ms-flex: 0 0 20%;
+    flex: 0 0 20%;
+    -webkit-box-orient: horizontal;
+    -moz-box-orient: horizontal;
+    -o-box-orient: horizontal;
+    -webkit-flex-direction: row;
+    -ms-flex-direction: row;
+    flex-direction: row;
+    -webkit-align-self: center;
+    align-self: center;
+    -ms-flex-item-align: center;
+    margin-inline-start: auto;
+    -webkit-box-align: center;
+    -moz-box-align: center;
+    -o-box-align: center;
+    -ms-flex-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+}
+
+.leaderboardPlayerStatBlock {
+    display: -webkit-box;
+    display: -moz-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: box;
+    display: flex;
     height: 50px;
-    align-items:initial;
-    /* line-height: 50px; */
+    -webkit-box-orient: vertical;
+    -moz-box-orient: vertical;
+    -o-box-orient: vertical;
+    -webkit-flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    -webkit-box-align: center;
+    -moz-box-align: center;
+    -o-box-align: center;
+    -ms-flex-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    -moz-box-pack: center;
+    -o-box-pack: center;
+    -ms-flex-pack: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+    margin-inline-start: 30px;
 }
 
-ul#menu li a{
-    text-decoration: none;
-    color: white;
+.leaderboardPlayerStatBlock {
+    display: -webkit-box;
+    display: -moz-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: box;
+    display: flex;
+    height: 50px;
+    -webkit-box-orient: vertical;
+    -moz-box-orient: vertical;
+    -o-box-orient: vertical;
+    -webkit-flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    -webkit-box-align: center;
+    -moz-box-align: center;
+    -o-box-align: center;
+    -ms-flex-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    -moz-box-pack: center;
+    -o-box-pack: center;
+    -ms-flex-pack: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+    margin-inline-start: 30px;
 }
 
-ul {
-	display: inline;
-	/* grid-area: text; */
-	margin: 0px;
+.leaderboardPlayerStat {
+    display: -webkit-box;
+    display: -moz-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: box;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -moz-box-orient: vertical;
+    -o-box-orient: vertical;
+    -webkit-flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    -webkit-box-pack: center;
+    -moz-box-pack: center;
+    -o-box-pack: center;
+    -ms-flex-pack: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -moz-box-align: center;
+    -o-box-align: center;
+    -ms-flex-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+    border-radius: 50%;
+    padding: 1px;
+    width: 60px;
+    height: 60px;
+    background-color: #50555a;
+    position: relative;
+    z-index: 1;
+    margin-inline-start: 30px;
 }
 
-.App-logo {
-    height: 7vmin;
-    pointer-events: none;
+.leaderboardPlayerIcon {
+    -webkit-box-flex: 1;
+    -moz-box-flex: 1;
+    -o-box-flex: 1;
+    box-flex: 1;
+    -webkit-flex: 0 0 50px;
+    -ms-flex: 0 0 50px;
+    flex: 0 0 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin-inline-start: 15px;
+}
+
+.leaderboardPlayerUsername {
+    color: #fff;
+    font-weight: 600;
+    font-size: 15px;
+    margin-inline-start: 15px;
+    overflow: hidden;
+    -o-text-overflow: ellipsis;
+    text-overflow: ellipsis;
+}
+
+.leaderboardPlayerIcon img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+}
+
+.premier {
+    background-color: #da9e3b;
+}
+
+.second {
+    background-color: #888888;
+}
+
+.troisieme {
+    background-color: #e67474;
+}
+
+@media screen and (max-width: 650px) {
+    .leaderboardPlayerStats .leaderboardPlayerStatBlock:first-child {
+        display: none;
+    }
+
+    .leaderboardglobal{
+        padding: 20px;
+    }
+}
+
+@media screen and (max-width: 515px) {
+    .leaderboardPlayerStats {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 440px) {
+    .leaderboardPlayerIcon{
+        /* display: none; */
+        grid: 0%;
+    }
+    .leaderboardPlayer .leaderboardPlayerLeft{
+        flex: 0 1 100%;
+        max-width: 95%;
+    }
+
+    .leaderboardPlayer{
+        padding-right: 0;
+    }
 }

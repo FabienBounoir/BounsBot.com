@@ -39,7 +39,7 @@ export const Features = () => {
                                 <path fill-rule="evenodd" clip-rule="evenodd" d="M7.02431 0.524414H0V7.52441H7.02431V0.524414ZM35.9998 0.524414H10.5366V7.52441H35.9998V0.524414ZM0 11.0244H7.02431V18.0244H0V11.0244ZM35.9998 11.0244H10.5366V18.0244H35.9998V11.0244ZM0 21.5244H7.02431V28.5244H0V21.5244ZM35.9998 21.5244H10.5366V28.5244H35.9998V21.5244Z" fill="#0cab34"></path>
                             </svg>
                         </div> 
-                        <p>Un bot musique acceptant les Liens Youtube / Fichier Externe (.mp3/.mp4/.flac/.ogg/.aac/.webm/.wav)<br/>Plus de 40 radio disponibles !!<br/>Crée / Modifier / Jouer une playlist</p>
+                        <p>Un bot musique acceptant les Liens Youtube / Fichier Externe (.mp3 / .mp4 / .flac / .ogg / .aac / .webm / .wav)<br/>Plus de 40 radio disponibles !!<br/>Crée / Modifier / Jouer une playlist</p>
                     </div>
                 </div>
                 <div class="feature active">

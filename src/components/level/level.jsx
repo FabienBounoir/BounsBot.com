@@ -1,39 +1,81 @@
 // import React from "react";
 import "./_level.css";
-import { useState, useEffect } from 'react';
+import React, { Component } from 'react'
+class Level extends Component {
+  state = {
+    level: []
+  }
 
-export const Level = () => {
-    const [trendInfos, setTrendInfos] = useState({
-        json: ""
-    });
-
-    update()
-
-    async function update()
-    { 
-
-        const requestOptions = {
-            method: 'GET',
-            redirect: 'follow',
-        };
-        
-        fetch("http://localhost:3000/discord/", requestOptions)
-        .then(response => response.text())
-        .then(result => extraireInfoTendance(result))
-        .catch(error => console.log('error', error));
-
-    }
-
-    function extraireInfoTendance(leveluser)
-    {
-        console.log("coucou")
-        console.log(leveluser)
-        setTrendInfos({
-            json: leveluser.body,
+    componentDidMount() {
+        fetch('https://backendbounsbot.herokuapp.com/discord')
+        .then(response => response.json())
+        .then((result) => {
+            this.setState({level: result.DiscordLevel});
         })
+        .catch(console.log)
     }
 
-    return (
-        <p>{ trendInfos.json }</p>
-    )
+    render() {
+      return (
+        <div class="leaderboardglobal">
+          <div class="top"><h1>LEVEL</h1><div class="search search-bar" data-v-7085cbe2=""></div></div>
+          {(() => {
+            const rank = [];
+  
+            for (let i = 0; i < this.state.level.length; i++) {
+                rank.push(
+                        <div class="leaderboardPlayersListContainer">
+                      <div class="leaderboardPlayer">
+                        <div class="leaderboardPlayerLeft">
+                          <div class={i == 0 ? ("leaderboardRank premier") : (i == 1 ? ("leaderboardRank second") : (i == 2 ? ("leaderboardRank troisieme") : ("leaderboardRank")))}>
+                            {i+1}
+                          </div>
+                          <div class="leaderboardPlayerIcon">
+                            <img src={this.state.level[i].picture} />
+                          </div>
+                          <div class="leaderboardPlayerUsername">
+                            {this.state.level[i].username}
+                          </div>
+                        </div>
+                      <div class="leaderboardPlayerStats">
+                        <div class="leaderboardPlayerStatBlock">
+                          <div class="leaderboardPlayerStatName">
+                            MESSAGES
+                          </div>
+                          <div class="leaderboardPlayerStatValue">
+                            {this.state.level[i].nbMessage}
+                          </div>
+                        </div>
+                      <div class="leaderboardPlayerStatBlock">
+                      <div class="leaderboardPlayerStatName">
+                        EXPERIENCE
+                      </div>
+                      <div class="leaderboardPlayerStatValue">
+                        {this.state.level[i].xp}
+                      </div>
+                    </div>
+                    <div class="leaderboardPlayerStat p37">
+                      <div class="leaderboardPlayerStatText">
+                        <div class="leaderboardPlayerStatName">
+                        NIVEAU
+                        </div>
+                      <div class="leaderboardPlayerStatValue">
+                        1
+                      </div>
+                    </div>
+                    </div>
+                    </div>
+                  </div>
+                  </div>
+                );
+            }
+  
+            return rank;
+          })()}
+        </div>
+      )
+    }
 }
+
+export default Level;
+

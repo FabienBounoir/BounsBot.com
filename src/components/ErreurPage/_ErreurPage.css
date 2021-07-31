@@ -1,0 +1,19 @@
+.error-page {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    width: 100%;
+    background-color: #212529;
+}
+
+.error-page img {
+    max-width: 1200px;
+    width: 100%;
+    margin: 40px 0 60px;
+}

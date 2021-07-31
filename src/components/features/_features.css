@@ -205,11 +205,15 @@ features .feature .image {
 
 @media screen and (max-width: 480px) {
     .features {
-        padding:40px 20px
+        padding:40px 0px
     }
 
     .features .feature .content .title h3 {
         font-size:36px;
         line-height: 46px
+    }
+
+    .features .feature .content{
+        margin: 0 20px;
     }
 }
