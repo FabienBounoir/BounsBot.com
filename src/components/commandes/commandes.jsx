@@ -115,11 +115,26 @@ export const Commandes = () => {
                 <tr>
                     <td>-set rename (true/false)</td>
                     <td>Config l'auto rename lorsqu'un pseudo n'est pas valide</td>
+                </tr>          
+            </tbody>
+        </Table>
+        <Table striped bordered hover variant="dark">
+            <thead>
+                <tr><th class="titleCommand" colSpan="2">ㆍLevel</th></tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>-rank</td>
+                    <td>Voir la carte de son rank par rapport au bot</td>
                 </tr>
                 <tr>
-                    <td>-setbanniere</td>
+                    <td>-levels</td>
+                    <td>Leaderboard des levels du serveur</td>
+                </tr>
+                <tr>
+                    <td>-setbanniere + drag and drop image</td>
                     <td>Changer la bannière du rank (Best dimension = 934x282)</td>
-                </tr>              
+                </tr>    
             </tbody>
         </Table>
         <Table striped bordered hover variant="dark">
