@@ -1,6 +1,8 @@
 import "./_features.css";
 import hehreaction from '../picture/heyreaction.png';
-
+import moderation from '../picture/moderation.png';
+import musique from '../picture/musique.png';
+import level from '../picture/level.png';
 
 export const Features = () => {
     return (
@@ -28,10 +30,10 @@ export const Features = () => {
                         </div> 
                         <p>Un clic, un émoji et DraftBot réagit.<br/>Utilisez l'ensemble des commandes ci-dessous grâce aux réactions, jusque dans les moindres détails.<br/>Tout est facilité, accessible, intuitif. Alors réagissez !</p>
                     </div>
-                    <img class="image" alt="logo" src= { hehreaction }/>
+                    <img class="image" alt="logo" src= { level }/>
                 </div>
                 <div class="feature active">
-                    <img class="image" alt="logo" src= { hehreaction }/>
+                    <img class="image" alt="logo" src= { musique }/>
                     <div class="content">
                         <div class="title">
                             <h3>Musique, Playlist, Radio</h3> 
@@ -52,7 +54,7 @@ export const Features = () => {
                         </div> 
                         <p>Logs de Message Supprimer / Modifier <br/>Auto Rename lorsqu'un pseudo contient des caractères spéciaux<br/>Nettoyer le tchat avec efficacité avec la commande "clear"</p>
                     </div>
-                    <img class="image" alt="logo" src= { hehreaction }/>
+                    <img class="image" alt="logo" src= { moderation }/>
                 </div>
             </div>
         </div>
