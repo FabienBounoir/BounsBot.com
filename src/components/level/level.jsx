@@ -1,13 +1,15 @@
 // import React from "react";
 import "./_level.css";
 import React, { Component } from 'react'
+import { useParams } from 'react-router-dom'
 class Level extends Component {
   state = {
     level: []
   }
 
     componentDidMount() {
-        fetch('https://backendbounsbot.herokuapp.com/discord')
+        let coucou = new URLSearchParams(window.location.search).get('id') || ""
+        fetch('https://backendbounsbot.herokuapp.com/discord/'+ coucou)
         .then(response => response.json())
         .then((result) => {
             this.setState({level: result.DiscordLevel});
