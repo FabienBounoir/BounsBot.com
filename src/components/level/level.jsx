@@ -1,7 +1,6 @@
 // import React from "react";
 import "./_level.css";
 import React, { Component } from 'react'
-import { useParams } from 'react-router-dom'
 class Level extends Component {
   state = {
     level: []
@@ -29,11 +28,11 @@ class Level extends Component {
                         <div class="leaderboardPlayersListContainer">
                       <div class="leaderboardPlayer">
                         <div class="leaderboardPlayerLeft">
-                          <div class={i == 0 ? ("leaderboardRank premier") : (i == 1 ? ("leaderboardRank second") : (i == 2 ? ("leaderboardRank troisieme") : ("leaderboardRank")))}>
+                          <div class={i === 0 ? ("leaderboardRank premier") : (i === 1 ? ("leaderboardRank second") : (i === 2 ? ("leaderboardRank troisieme") : ("leaderboardRank")))}>
                             {i+1}
                           </div>
                           <div class="leaderboardPlayerIcon">
-                            <img src={this.state.level[i].picture} />
+                            <img src={this.state.level[i].picture} alt="User"/>
                           </div>
                           <div class="leaderboardPlayerUsername">
                             {this.state.level[i].username}
@@ -56,7 +55,7 @@ class Level extends Component {
                         {this.state.level[i].xp}
                       </div>
                     </div>
-                    <div class="leaderboardPlayerStat p37">
+                    <div class="leaderboardPlayerStat">
                       <div class="leaderboardPlayerStatText">
                         <div class="leaderboardPlayerStatName">
                         NIVEAU

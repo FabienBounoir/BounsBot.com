@@ -42,11 +42,11 @@
 }
 
 .leaderboardPlayer {
-    display: -webkit-box;
+    /* display: -webkit-box;
     display: -moz-box;
     display: -webkit-flex;
     display: -ms-flexbox;
-    display: box;
+    display: box; */
     display: flex;
     -webkit-box-orient: horizontal;
     -moz-box-orient: horizontal;
@@ -86,11 +86,11 @@
 
 
 .leaderboardPlayer .leaderboardPlayerLeft {
-    display: -webkit-box;
+    /* display: -webkit-box;
     display: -moz-box;
     display: -webkit-flex;
     display: -ms-flexbox;
-    display: box;
+    display: box; */
     display: flex;
     max-width: 65%;
     -webkit-box-flex: 1;
@@ -125,11 +125,11 @@
     background-color: #50555a;
     height: 35px;
     border-radius: 50%;
-    display: -webkit-box;
+    /* display: -webkit-box;
     display: -moz-box;
     display: -webkit-flex;
     display: -ms-flexbox;
-    display: box;
+    display: box; */
     display: flex;
     -webkit-box-align: center;
     -moz-box-align: center;
@@ -148,11 +148,11 @@
 }
 
 .leaderboardPlayerStats {
-    display: -webkit-box;
+    /* display: -webkit-box;
     display: -moz-box;
     display: -webkit-flex;
     display: -ms-flexbox;
-    display: box;
+    display: box; */
     display: flex;
     -webkit-box-flex: 1;
     -moz-box-flex: 1;
@@ -180,11 +180,11 @@
 }
 
 .leaderboardPlayerStatBlock {
-    display: -webkit-box;
+    /* display: -webkit-box;
     display: -moz-box;
     display: -webkit-flex;
     display: -ms-flexbox;
-    display: box;
+    display: box; */
     display: flex;
     height: 50px;
     -webkit-box-orient: vertical;
@@ -209,11 +209,11 @@
 }
 
 .leaderboardPlayerStatBlock {
-    display: -webkit-box;
+    /* display: -webkit-box;
     display: -moz-box;
     display: -webkit-flex;
     display: -ms-flexbox;
-    display: box;
+    display: box; */
     display: flex;
     height: 50px;
     -webkit-box-orient: vertical;
@@ -238,11 +238,11 @@
 }
 
 .leaderboardPlayerStat {
-    display: -webkit-box;
+    /* display: -webkit-box;
     display: -moz-box;
     display: -webkit-flex;
     display: -ms-flexbox;
-    display: box;
+    display: box; */
     display: flex;
     -webkit-box-orient: vertical;
     -moz-box-orient: vertical;
@@ -311,6 +311,10 @@
 
 .troisieme {
     background-color: #e67474;
+}
+
+.leaderboardPlayerStat{
+    display: none;
 }
 
 @media screen and (max-width: 650px) {
