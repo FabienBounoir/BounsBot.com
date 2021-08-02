@@ -1,4 +1,3 @@
-// import React from "react";
 import "./_ErreurPage.css";
 import logo404 from '../picture/404page.png';
 

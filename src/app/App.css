@@ -2,18 +2,6 @@
   text-align: center;
 }
 
-/* .App-logo {
-  height: 40vmin;
-  pointer-events: none;
-} */
-
-@media (prefers-reduced-motion: no-preference) {
-  /* .App-logo {
-    animation: App-logo-spin infinite 2s linear;
-    
-  } */
-}
-
 .App-header {
   background-color: #282c34;
   min-height: 100vh;
@@ -40,7 +28,6 @@
 
 * {
   box-sizing: border-box;
-  /* font-family: "Open Sans","Arial Narrow",Arial,sans-serif; */
 }
 
 html {
