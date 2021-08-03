@@ -10,7 +10,7 @@ class Level extends Component {
         let id = new URLSearchParams(window.location.search).get('id') || ""
         let twitch = new URLSearchParams(window.location.search).get('twitch') != null
         console.log(twitch)
-        let url = twitch ? ("http://localhost:3001/twitch/") : ("http://localhost:3001/Discord/")
+        let url = twitch ? ("https://backendbounsbot.herokuapp.com/twitch/") : ("https://backendbounsbot.herokuapp.com/Discord/")
 
         fetch(url + id)
         .then(response => response.json())
