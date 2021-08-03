@@ -3,8 +3,8 @@ import logo404 from '../picture/404page.png';
 
 export const ErreurPage = () => {
     return (
-        <div class="error-page">
-            <img src={logo404} class="error-page" alt="Erreur 404" title="Erreur 404"/>
+        <div className="error-page">
+            <img src={logo404} className="error-page" alt="Erreur 404" title="Erreur 404"/>
         </div>
     )
 }

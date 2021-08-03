@@ -22,7 +22,7 @@ class AnimationText extends React.Component {
   
     render() {
       return (
-        <span class="visible">
+        <span className="visible">
           {this.state.word[this.state.increment]}
         </span>
       );

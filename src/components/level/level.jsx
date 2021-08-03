@@ -18,49 +18,49 @@ class Level extends Component {
 
     render() {
       return (
-        <div class="leaderboardglobal">
-          <div class="top"><h1>LEVEL</h1><div class="search search-bar" data-v-7085cbe2=""></div></div>
+        <div className="leaderboardglobal">
+          <div className="top"><h1>LEVEL</h1><div className="search search-bar" data-v-7085cbe2=""></div></div>
           {(() => {
             const rank = [];
   
             for (let i = 0; i < this.state.level.length; i++) {
                 rank.push(
-                        <div class="leaderboardPlayersListContainer">
-                      <div class="leaderboardPlayer">
-                        <div class="leaderboardPlayerLeft">
-                          <div class={i === 0 ? ("leaderboardRank premier") : (i === 1 ? ("leaderboardRank second") : (i === 2 ? ("leaderboardRank troisieme") : ("leaderboardRank")))}>
+                        <div key={this.state.level[i].identifiant} className="leaderboardPlayersListContainer">
+                      <div className="leaderboardPlayer">
+                        <div className="leaderboardPlayerLeft">
+                          <div className={i === 0 ? ("leaderboardRank premier") : (i === 1 ? ("leaderboardRank second") : (i === 2 ? ("leaderboardRank troisieme") : ("leaderboardRank")))}>
                             {i+1}
                           </div>
-                          <div class="leaderboardPlayerIcon">
-                            <img src={this.state.level[i].picture} alt="User"/>
+                          <div className="leaderboardPlayerIcon">
+                            <img src={this.state.level[i].picture} alt=""/>
                           </div>
-                          <div class="leaderboardPlayerUsername">
+                          <div className="leaderboardPlayerUsername">
                             {this.state.level[i].username}
                           </div>
                         </div>
-                      <div class="leaderboardPlayerStats">
-                        <div class="leaderboardPlayerStatBlock">
-                          <div class="leaderboardPlayerStatName">
+                      <div className="leaderboardPlayerStats">
+                        <div className="leaderboardPlayerStatBlock">
+                          <div className="leaderboardPlayerStatName">
                             MESSAGES
                           </div>
-                          <div class="leaderboardPlayerStatValue">
+                          <div className="leaderboardPlayerStatValue">
                             {this.state.level[i].nbMessage}
                           </div>
                         </div>
-                      <div class="leaderboardPlayerStatBlock">
-                      <div class="leaderboardPlayerStatName">
+                      <div className="leaderboardPlayerStatBlock">
+                      <div className="leaderboardPlayerStatName">
                         EXPERIENCE
                       </div>
-                      <div class="leaderboardPlayerStatValue">
+                      <div className="leaderboardPlayerStatValue">
                         {this.state.level[i].xp}
                       </div>
                     </div>
-                    <div class="leaderboardPlayerStat">
-                      <div class="leaderboardPlayerStatText">
-                        <div class="leaderboardPlayerStatName">
+                    <div className="leaderboardPlayerStat">
+                      <div className="leaderboardPlayerStatText">
+                        <div className="leaderboardPlayerStatName">
                         NIVEAU
                         </div>
-                      <div class="leaderboardPlayerStatValue">
+                      <div className="leaderboardPlayerStatValue">
                         1
                       </div>
                     </div>

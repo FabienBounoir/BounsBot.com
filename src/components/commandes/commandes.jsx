@@ -4,15 +4,15 @@ import { Table } from 'react-bootstrap/'
 
 export const Commandes = () => {
     return (
-        <div transition="page" class="commands-list">
-        <div class="top">
+        <div transition="page" className="commands-list">
+        <div className="top">
             <h1>COMMANDES</h1> 
-            <div class="search search-bar" data-v-7085cbe2=""></div>
+            <div className="search search-bar" data-v-7085cbe2=""></div>
         </div>
         <>
         <Table striped bordered hover variant="dark">
             <thead>
-                <tr><th class="titleCommand" colSpan="2">ㆍMusique</th></tr>
+                <tr><th className="titleCommand" colSpan="2">ㆍMusique</th></tr>
             </thead>
             <tbody>
                 <tr>
@@ -55,7 +55,7 @@ export const Commandes = () => {
         </Table>
         <Table striped bordered hover variant="dark">
             <thead>
-                <tr><th class="titleCommand" colSpan="2">ㆍRadio</th></tr>
+                <tr><th className="titleCommand" colSpan="2">ㆍRadio</th></tr>
             </thead>
             <tbody>
                 <tr>
@@ -70,7 +70,7 @@ export const Commandes = () => {
         </Table>
         <Table striped bordered hover variant="dark">
             <thead>
-                <tr><th class="titleCommand" colSpan="2">ㆍPlaylist</th></tr>
+                <tr><th className="titleCommand" colSpan="2">ㆍPlaylist</th></tr>
             </thead>
             <tbody>
                 <tr>
@@ -97,7 +97,7 @@ export const Commandes = () => {
         </Table>
         <Table striped bordered hover variant="dark">
             <thead>
-                <tr><th class="titleCommand" colSpan="2">ㆍConfiguration</th></tr>
+                <tr><th className="titleCommand" colSpan="2">ㆍConfiguration</th></tr>
             </thead>
             <tbody>
                 <tr>
@@ -120,7 +120,7 @@ export const Commandes = () => {
         </Table>
         <Table striped bordered hover variant="dark">
             <thead>
-                <tr><th class="titleCommand" colSpan="2">ㆍLevel</th></tr>
+                <tr><th className="titleCommand" colSpan="2">ㆍLevel</th></tr>
             </thead>
             <tbody>
                 <tr>
@@ -139,7 +139,7 @@ export const Commandes = () => {
         </Table>
         <Table striped bordered hover variant="dark">
             <thead>
-                <tr><th class="titleCommand" colSpan="2">ㆍAdministration</th></tr>
+                <tr><th className="titleCommand" colSpan="2">ㆍAdministration</th></tr>
             </thead>
             <tbody>
                 <tr>
@@ -158,7 +158,7 @@ export const Commandes = () => {
         </Table>
         <Table striped bordered hover variant="dark">
             <thead>
-                <tr><th class="titleCommand" colSpan="2">ㆍOthers</th></tr>
+                <tr><th className="titleCommand" colSpan="2">ㆍOthers</th></tr>
             </thead>
             <tbody>
                 <tr>
