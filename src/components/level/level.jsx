@@ -7,11 +7,15 @@ class Level extends Component {
   }
 
     componentDidMount() {
-        let coucou = new URLSearchParams(window.location.search).get('id') || ""
-        fetch('https://backendbounsbot.herokuapp.com/discord/'+ coucou)
+        let id = new URLSearchParams(window.location.search).get('id') || ""
+        let twitch = new URLSearchParams(window.location.search).get('twitch') != null
+        console.log(twitch)
+        let url = twitch ? ("http://localhost:3001/twitch/") : ("http://localhost:3001/Discord/")
+
+        fetch(url + id)
         .then(response => response.json())
         .then((result) => {
-            this.setState({level: result.DiscordLevel});
+            this.setState({level: result.rank});
         })
         .catch(console.log)
     }
@@ -32,7 +36,7 @@ class Level extends Component {
                             {i+1}
                           </div>
                           <div className="leaderboardPlayerIcon">
-                            <img src={this.state.level[i].picture} alt=""/>
+                          <img src={this.state.level[i].picture} onError={(e)=>{console.log(e.target.style); e.target.outerHTML="<img src=''/>"}}/>
                           </div>
                           <div className="leaderboardPlayerUsername">
                             {this.state.level[i].username}
