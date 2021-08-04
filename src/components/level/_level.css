@@ -320,6 +320,27 @@
     display: none;
 }
 
+/* .spinneur{
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    margin-top: 72px;
+    z-index: 1000;
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    justify-content: center;
+} */
+
+.text-success {
+    color: #198754!important;
+    margin-top: 150px;
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-bottom: 650px;
+}
+
 @media screen and (max-width: 650px) {
     .leaderboardPlayerStats .leaderboardPlayerStatBlock:first-child {
         display: none;

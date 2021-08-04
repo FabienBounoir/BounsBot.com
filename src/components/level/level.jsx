@@ -1,6 +1,8 @@
 // import React from "react";
 import "./_level.css";
 import React, { Component } from 'react'
+import { Spinner } from 'react-bootstrap/'
+
 class Level extends Component {
   state = {
     level: []
@@ -25,8 +27,10 @@ class Level extends Component {
         <div className="leaderboardglobal">
           <div className="top"><h1>LEVEL</h1><div className="search search-bar" data-v-7085cbe2=""></div></div>
           {(() => {
-            const rank = [];
-  
+            var rank = [];
+            
+            rank = this.state.level.length == 0 ? (<div class="spinneur"><Spinner animation="grow" variant="success" /><Spinner animation="grow" variant="success" /><Spinner animation="grow" variant="success" /></div>) : ([])
+
             for (let i = 0; i < this.state.level.length; i++) {
                 rank.push(
                         <div key={this.state.level[i].identifiant} className="leaderboardPlayersListContainer">

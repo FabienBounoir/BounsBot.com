@@ -28,7 +28,7 @@ export const Features = () => {
                                 <path fillRule="evenodd" clipRule="evenodd" d="M7.02431 0.524414H0V7.52441H7.02431V0.524414ZM35.9998 0.524414H10.5366V7.52441H35.9998V0.524414ZM0 11.0244H7.02431V18.0244H0V11.0244ZM35.9998 11.0244H10.5366V18.0244H35.9998V11.0244ZM0 21.5244H7.02431V28.5244H0V21.5244ZM35.9998 21.5244H10.5366V28.5244H35.9998V21.5244Z" fill="#0cab34"></path>
                             </svg>
                         </div> 
-                        <p>Un clic, un émoji et DraftBot réagit.<br/>Utilisez l'ensemble des commandes ci-dessous grâce aux réactions, jusque dans les moindres détails.<br/>Tout est facilité, accessible, intuitif. Alors réagissez !</p>
+                        <p>Un clic, un émoji et BounsBot réagit.<br/>Utilisez l'ensemble des commandes ci-dessous grâce aux réactions, jusque dans les moindres détails.<br/>Tout est facilité, accessible, intuitif. Alors réagissez !</p>
                     </div>
                     <img className="image" alt="logo" src= { level }/>
                 </div>
