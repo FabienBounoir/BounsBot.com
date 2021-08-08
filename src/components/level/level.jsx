@@ -1,39 +1,61 @@
 // import React from "react";
 import "./_level.css";
 import React, { Component } from 'react'
+import InfiniteScroll from 'react-infinite-scroll-component';
 import { Spinner } from 'react-bootstrap/'
 
 class Level extends Component {
   state = {
-    level: []
+    level: [],
+    page: 0,
+    hasMoreData: true
   }
 
     componentDidMount() {
-        let id = new URLSearchParams(window.location.search).get('id') || ""
-        let twitch = new URLSearchParams(window.location.search).get('twitch') != null
-        console.log(twitch)
-        let url = twitch ? ("https://backendbounsbot.herokuapp.com/twitch/") : ("https://backendbounsbot.herokuapp.com/Discord/")
+      this.getData();
+    }
 
-        fetch(url + id)
+    getData = () => {
+      let id = new URLSearchParams(window.location.search).get('id') || ""
+        let twitch = new URLSearchParams(window.location.search).get('twitch') != null
+
+        //production
+        // let url = twitch ? ("https://backendbounsbot.herokuapp.com/twitch/") : (`https://backendbounsbot.herokuapp.com/Discord?page=${this.state.page}`)
+
+        //dev
+        let url = twitch ? ("http://localhost:3001/twitch/") : (`http://localhost:3001/Discord/`)
+
+        fetch(url + id + `?page=${this.state.page}`)
         .then(response => response.json())
         .then((result) => {
-            this.setState({level: result.rank});
+            this.setState({
+              level: this.state.level.concat(result.rank), 
+              page: this.state.page + 1, 
+              hasMoreData: result.rank.length !== 0
+            });
         })
         .catch(console.log)
-    }
+
+
+    };
 
     render() {
       return (
         <div className="leaderboardglobal">
           <div className="top"><h1>LEVEL</h1><div className="search search-bar" data-v-7085cbe2=""></div></div>
+          <InfiniteScroll
+          dataLength={this.state.level.length}
+          next={this.getData}
+          hasMore={this.state.hasMoreData}
+          loader={<div><Spinner animation="grow" variant="success" /><Spinner animation="grow" variant="success" /><Spinner animation="grow" variant="success" /></div>}
+        >
+
           {(() => {
             var rank = [];
-            
-            rank = this.state.level.length == 0 ? (<div class="spinneur"><Spinner animation="grow" variant="success" /><Spinner animation="grow" variant="success" /><Spinner animation="grow" variant="success" /></div>) : ([])
 
             for (let i = 0; i < this.state.level.length; i++) {
                 rank.push(
-                        <div key={this.state.level[i].identifiant} className="leaderboardPlayersListContainer">
+                    <div key={this.state.level[i].identifiant} className="leaderboardPlayersListContainer">
                       <div className="leaderboardPlayer">
                         <div className="leaderboardPlayerLeft">
                           <div className={i === 0 ? ("leaderboardRank premier") : (i === 1 ? ("leaderboardRank second") : (i === 2 ? ("leaderboardRank troisieme") : ("leaderboardRank")))}>
@@ -78,9 +100,10 @@ class Level extends Component {
                   </div>
                 );
             }
-  
+
             return rank;
           })()}
+          </InfiniteScroll>
         </div>
       )
     }

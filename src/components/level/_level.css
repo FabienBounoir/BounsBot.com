@@ -335,10 +335,10 @@
 
 .text-success {
     color: #198754!important;
-    margin-top: 150px;
+    margin-top: 10px;
     margin-left: 10px;
     margin-right: 10px;
-    margin-bottom: 650px;
+    margin-bottom: 100px;
 }
 
 @media screen and (max-width: 650px) {
