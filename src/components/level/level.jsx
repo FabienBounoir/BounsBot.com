@@ -20,7 +20,7 @@ class Level extends Component {
         let twitch = new URLSearchParams(window.location.search).get('twitch') != null
 
         //production
-        let url = twitch ? ("https://backendbounsbot.herokuapp.com/twitch/") : (`https://backendbounsbot.herokuapp.com/Discord?page=${this.state.page}`)
+        let url = twitch ? ("https://backendbounsbot.herokuapp.com/twitch/") : (`https://backendbounsbot.herokuapp.com/Discord/`)
 
         //dev
         // let url = twitch ? ("http://localhost:3001/twitch/") : (`http://localhost:3001/Discord/`)
