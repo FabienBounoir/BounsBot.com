@@ -8,7 +8,8 @@ class Radio extends Component {
         super(props);
         this.radio = new Audio('https://streams.iloveradio.de/iloveradio5.mp3');
         this.radio.volume = 0.5;
-        this.play = false;
+        this.inVocal = false;
+        this.pause = true;
     }
 
     state = {
@@ -26,7 +27,8 @@ class Radio extends Component {
         voicePanel.classList.remove("hidden");
 
         this.radio.play();
-        this.play = true;
+        this.inVocal = true;
+        this.pause = false;
     };
 
     leaveVocal = () => {
@@ -39,7 +41,8 @@ class Radio extends Component {
         var voicePanel = document.getElementById("discord-voice-panel");
         voicePanel.classList.add("hidden");
         this.radio.pause()
-        this.play = false;
+        this.inVocal = false;
+        this.pause = false;
     };
 
     _handleKeyDown = (e) => {
@@ -58,80 +61,123 @@ class Radio extends Component {
     {
         if(commande.toLowerCase().indexOf(`-radio `) == 0)
         {
-            if(!(isNaN(commande.split(' ')[1])))
-            {
-                let number = parseInt(commande.split(' ')[1])
-                if(number >= 1 && number <= 41)
-                {
-                    this.radio.pause()
-                    this.radio = new Audio(this.selectRadio(number))
-                    
-                    this.setState({
-                        data: this.state.data.concat({name:"Bouns'Bot",picture:"user-1",text:`Radio N°${number} en cours de streaming`})
-                    });
-
-                    if(this.play)
-                    {
-                        this.radio.play()
-                    }
-                    console.log(this.radio);
-                }
-                else
-                {
-                    // sendTempsMessage(5000,"La radio n'existe pas !!",undefined)
-                    this.setState({
-                        data: this.state.data.concat({name:"Bouns'Bot",picture:"user-1",text:"La radio n'existe pas !!"})
-                    });
-                }
-            }
-            else
-            {
-                this.setState({
-                    data: this.state.data.concat({name:"Bouns'Bot",picture:"user-1",text:"Ce n'est pas un chiffre"})
-                });
-            }
+            this.radioCommandes(commande.split(' ')[1])
         }
         else if(commande.toLowerCase().indexOf(`-volume `) == 0)
         {
-            if(!(isNaN(commande.split(' ')[1])))
+            this.volumeCommandes(commande.split(' ')[1])
+        }
+        else if(commande == "-resume")
+        {   
+            this.playCommandes()
+        }
+        else if(commande == "-pause")
+        {
+            this.pauseCommandes();
+        }
+    };
+
+    playCommandes()
+    {
+            if(this.inVocal || this.pause)
             {
-                let number = parseInt(commande.split(' ')[1])
-                if(number >= 0 && number <= 1)
-                {
-                    this.radio.volume = commande.split(' ')[1];
-                    this.setState({
-                        data: this.state.data.concat({name:"Bouns'Bot",picture:"user-1",text:`Volume réglé sur ${commande.split(' ')[1]}`})
-                    });
-                }
-                else
-                {
-                    this.setState({
-                        data: this.state.data.concat({name:"Bouns'Bot",picture:"user-1",text:"Volume non compris entre 0 et 1"})
-                    });
-                }
+                this.radio.play()
+                this.setState({
+                    data: this.state.data.concat({name:"Bouns'Bot",picture:"user-1",text:"▶️"})
+                });
+                this.pause = false
             }
             else
             {
                 this.setState({
-                    data: this.state.data.concat({name:"Bouns'Bot",picture:"user-1",text:"Ce n'est pas un chiffre"})
+                    data: this.state.data.concat({name:"Bouns'Bot",picture:"user-1",text:"Vous n'êtes pas dans le vocal"})
+                });
+            }
+    }
+
+    radioCommandes(commande)
+    {
+        if(!(isNaN(commande)))
+        {
+            let number = parseInt(commande)
+            if(number >= 1 && number <= 41)
+            {
+                this.radio.pause()
+                this.radio = new Audio(this.selectRadio(number))
+                
+                this.setState({
+                    data: this.state.data.concat({name:"Bouns'Bot",picture:"user-1",text:`Radio N°${number} en cours de streaming`})
+                });
+
+                if(this.inVocal)
+                {
+                    this.radio.play()
+                    this.pause = false;
+                }
+                console.log(this.radio);
+            }
+            else
+            {
+                // sendTempsMessage(5000,"La radio n'existe pas !!",undefined)
+                this.setState({
+                    data: this.state.data.concat({name:"Bouns'Bot",picture:"user-1",text:"La radio n'existe pas !!"})
                 });
             }
         }
-        else if(commande == "-resume")
-        {   
-            this.radio.play()
+        else
+        {
             this.setState({
-                data: this.state.data.concat({name:"Bouns'Bot",picture:"user-1",text:"▶️"})
+                data: this.state.data.concat({name:"Bouns'Bot",picture:"user-1",text:"Ce n'est pas un chiffre"})
             });
         }
-        else if(commande == "-pause")
+    }
+
+    volumeCommandes(volume)
+    {
+        if(!(isNaN(volume)))
+        {
+            let number = parseInt(volume)
+            if(number >= 0 && number <= 1)
+            {
+                this.radio.volume = volume;
+                this.setState({
+                    data: this.state.data.concat({name:"Bouns'Bot",picture:"user-1",text:`Volume réglé sur ${volume}`})
+                });
+            }
+            else
+            {
+                this.setState({
+                    data: this.state.data.concat({name:"Bouns'Bot",picture:"user-1",text:"Volume non compris entre 0 et 1"})
+                });
+            }
+        }
+        else
+        {
+            this.setState({
+                data: this.state.data.concat({name:"Bouns'Bot",picture:"user-1",text:"Ce n'est pas un chiffre"})
+            });
+        }
+    }
+
+    pauseCommandes()
+    {
+        console.log(this.inVocal)
+        console.log(this.pause)
+        if(this.inVocal || !this.pause)
         {
             this.radio.pause()
             this.setState({
                 data: this.state.data.concat({name:"Bouns'Bot",picture:"user-1",text:"⏸"})
             });
+            this.pause = true
         }
-    };
+        else
+        {
+            this.setState({
+                data: this.state.data.concat({name:"Bouns'Bot",picture:"user-1",text:"Vous n'êtes pas dans le vocal"})
+            });
+        }
+    }
 
     scrollToBottom = () => {
         var objDiv = document.getElementById("discord-inner-messages");
