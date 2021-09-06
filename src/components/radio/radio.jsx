@@ -8,18 +8,14 @@ class Radio extends Component {
         super(props);
         this.radio = new Audio('https://streams.iloveradio.de/iloveradio5.mp3');
         this.radio.volume = 0.5;
+        this.play = false;
     }
 
     state = {
         data: []
     }
 
-    // componentDidMount() {
-    //   this.getData();
-    // }
-
     joinVocal = () => {
-        console.log("join");
         var voiceuser = document.getElementById("discord-user-voiceuser");
         voiceuser.classList.remove("hidden");
 
@@ -30,11 +26,10 @@ class Radio extends Component {
         voicePanel.classList.remove("hidden");
 
         this.radio.play();
+        this.play = true;
     };
 
     leaveVocal = () => {
-        console.log("leave");
-
         var voiceuser = document.getElementById("discord-user-voiceuser");
         voiceuser.classList.add("hidden");
 
@@ -44,20 +39,101 @@ class Radio extends Component {
         var voicePanel = document.getElementById("discord-voice-panel");
         voicePanel.classList.add("hidden");
         this.radio.pause()
+        this.play = false;
     };
 
     _handleKeyDown = (e) => {
-        if (e.key === 'Enter') {
-            console.log('do validate');
+        if (e.key === 'Enter' && document.getElementById('discord-inner-text-box-input').value != "") {
             this.setState({
                 data: this.state.data.concat({name:"Discord User",picture:"user-0",text:document.getElementById('discord-inner-text-box-input').value})
             });
-            document.getElementById('discord-inner-text-box-input').value = "";
+            setTimeout(() => {
+                this.checkCommande(document.getElementById('discord-inner-text-box-input').value)
+                document.getElementById('discord-inner-text-box-input').value = "";
+            }, 30);
+        }
+    };
+
+    checkCommande = (commande) =>
+    {
+        if(commande.toLowerCase().indexOf(`-radio `) == 0)
+        {
+            if(!(isNaN(commande.split(' ')[1])))
+            {
+                let number = parseInt(commande.split(' ')[1])
+                if(number >= 1 && number <= 41)
+                {
+                    this.radio.pause()
+                    this.radio = new Audio(this.selectRadio(number))
+                    
+                    this.setState({
+                        data: this.state.data.concat({name:"Bouns'Bot",picture:"user-1",text:`Radio N°${number} en cours de streaming`})
+                    });
+
+                    if(this.play)
+                    {
+                        this.radio.play()
+                    }
+                    console.log(this.radio);
+                }
+                else
+                {
+                    // sendTempsMessage(5000,"La radio n'existe pas !!",undefined)
+                    this.setState({
+                        data: this.state.data.concat({name:"Bouns'Bot",picture:"user-1",text:"La radio n'existe pas !!"})
+                    });
+                }
+            }
+            else
+            {
+                this.setState({
+                    data: this.state.data.concat({name:"Bouns'Bot",picture:"user-1",text:"Ce n'est pas un chiffre"})
+                });
+            }
+        }
+        else if(commande.toLowerCase().indexOf(`-volume `) == 0)
+        {
+            if(!(isNaN(commande.split(' ')[1])))
+            {
+                let number = parseInt(commande.split(' ')[1])
+                if(number >= 0 && number <= 1)
+                {
+                    this.radio.volume = commande.split(' ')[1];
+                    this.setState({
+                        data: this.state.data.concat({name:"Bouns'Bot",picture:"user-1",text:`Volume réglé sur ${commande.split(' ')[1]}`})
+                    });
+                }
+                else
+                {
+                    this.setState({
+                        data: this.state.data.concat({name:"Bouns'Bot",picture:"user-1",text:"Volume non compris entre 0 et 1"})
+                    });
+                }
+            }
+            else
+            {
+                this.setState({
+                    data: this.state.data.concat({name:"Bouns'Bot",picture:"user-1",text:"Ce n'est pas un chiffre"})
+                });
+            }
+        }
+        else if(commande == "-resume")
+        {   
+            this.radio.play()
+            this.setState({
+                data: this.state.data.concat({name:"Bouns'Bot",picture:"user-1",text:"▶️"})
+            });
+        }
+        else if(commande == "-pause")
+        {
+            this.radio.pause()
+            this.setState({
+                data: this.state.data.concat({name:"Bouns'Bot",picture:"user-1",text:"⏸"})
+            });
         }
     };
 
     scrollToBottom = () => {
-        console.log("scrool")
         var objDiv = document.getElementById("discord-inner-messages");
         objDiv.scrollTop = objDiv.scrollHeight;
     }
@@ -66,9 +142,70 @@ class Radio extends Component {
         this.scrollToBottom();
     }
 
+    selectRadio(radio)
+    {
+        const Radiostations = {
+            1: "https://streams.ilovemusic.de/iloveradio14.mp3",
+            2: "https://baseradiode.stream.laut.fm/baseradiode",
+            3: "https://streams.ilovemusic.de/iloveradio17.mp3",
+            4: "https://streams.ilovemusic.de/iloveradio2.mp3",
+            5: "https://streams.ilovemusic.de/iloveradio6.mp3",
+            6: "https://streams.ilovemusic.de/iloveradio16.mp3",
+            7: "https://streams.ilovemusic.de/iloveradio3.mp3",
+            8: "https://streams.ilovemusic.de/iloveradio14.mp3",
+            9: "https://streams.ilovemusic.de/iloveradio13.mp3",
+            10: "https://streams.ilovemusic.de/iloveradio8.mp3",
+
+            11: "https://streams.ilovemusic.de/iloveradio21.mp3",
+            12: "https://streams.ilovemusic.de/iloveradio109.mp3",
+            13: "https://streams.ilovemusic.de/iloveradio24.mp3",
+            14: "https://streams.ilovemusic.de/iloveradio18.mp3",
+            15: "https://streams.ilovemusic.de/iloveradio4.mp3",
+
+            16: "https://stream-mz.planetradio.co.uk/net2national.mp3", 
+            17: "http://icy-e-bab-02-gos.sharp-stream.com/absoluteradio.mp3",
+            18: "http://ais.absoluteradio.co.uk/absolute70s.mp3",
+            19: "http://ais.absoluteradio.co.uk/absolute80s.mp3",
+            20: "http://ais.absoluteradio.co.uk/absolute90s.mp3",
+            21: "http://ais.absoluteradio.co.uk/absolute00s.mp3",
+            22: "http://icy-e-bab-04-cr.sharp-stream.com/absoluteclassicrock.mp3",
+        
+            23: "http://loadbalancing.topradio.be/topradio.mp3", 
+        
+            24: "http://radio886.fluidstream.eu/886_live.mp3",
+            25: "http://onair.krone.at/kronehit.mp3",
+        
+            26: "http://cdn.nrjaudio.fm/audio1/fr/30401/mp3_128.mp3?origine=fluxradios",
+            27: "http://www.skyrock.fm/stream.php/tunein16_128mp3.mp3",
+            28: "http://funradiobe.ice.infomaniak.ch/funradiobe-high.mp3",
+            29: "http://cdn.nrjaudio.fm/audio1/fr/30001/mp3_128.mp3",
+        
+            30: "http://icestreaming.rai.it:80/1.mp3",
+            31: "http://icestreaming.rai.it:80/2.mp3",
+        
+            32: "http://icecast.err.ee:80/vikerraadio.mp3",
+            33: "http://icecast.err.ee:80/raadiotallinn.mp3",
+        
+            34: "http://icecast8.play.cz/color128.mp3",
+            35: "http://ice.abradio.cz:8000/helax128.mp3",
+        
+            36: "http://icecast6.play.cz/cro2-128.mp3",
+            37:"http://icecast4.play.cz/spin128.mp3",
+        
+            38: "http://icecast.omroep.nl/radio1-bb-mp3",
+            39: "http://21223.live.streamtheworld.com/RADIO538.mp3",
+        
+            40: "http://streams2.radio90.pl:8000/radio90_128kbps_stereo.mp3",
+            41: "http://stream2.nadaje.com:8076/,stream.mp3"
+        }
+
+        return Radiostations[radio];
+
+}
+
     render() {
       return (
-          <div className="BackgroundGreen" style={{backgroundColor: "#0cab34;"}}>
+          <div className="BackgroundGreen" style={{ backgroundColor: "#0cab34;" }}>
               <div className="mainscreen" id="discord-main">
                   <div className="demo-env" id="discord-title">Discord bot</div>
                   <div className="demo-env" id="discord-server-avatar"></div>
@@ -102,7 +239,7 @@ class Radio extends Component {
                               <div className="content">
                                   <div className="avatarContainer avatar avatarSmall user-0-avatar" style={{ backgroundImage: "url('https://cdn.discordapp.com/embed/avatars/2.png')" }}>
                                   </div>
-                                  <div className="usernameFont username">You</div>
+                                  <div className="usernameFont username">Discord User</div>
                               </div>
                           </div>
                       </div>
@@ -134,15 +271,31 @@ class Radio extends Component {
                       <div className="demo-env" id="discord-inner-messages"><div className="discord-inner-message" >
                           <div className="avatar user-1"></div>
                           <div className="message-content">
-                              <p className="name"><b>bouns'Bot</b></p>
-                              Bienvenue sur cette démo de la fonctionnalité radio du Bouns'Bot <br />Il n'y a qu'une seule radio disponible dans cette démo. <br />rejoignez/quitter un channel vocal fonctionnent comme sur Discord, <br />le bot fait une pause lorsque vous quittez le vocal et reprend lorsque vous y êtes.
+                              <p className="name"><b>Bouns'Bot</b></p>
+                              Bienvenue sur cette démo de la fonctionnalité radio du Bouns'Bot <br />Toutes les radios sont disponibles sur cette démo <br />Rejoignez / Quitter un channel vocal fonctionnent comme sur Discord, <br />le bot fait une pause lorsque vous quittez le vocal et reprend lorsque vous y êtes.
                           </div>
                       </div>
+
+                          <div class="discord-inner-message">
+                              <div class="avatar user-1"></div>
+                              <div class="message-content">
+                                  <p class="name"><b>Bouns'Bot</b></p>
+
+                                  <p>Cette démo dispose d'un nombre limité de commandes :<br />
+                                  </p><ul>
+                                      <li>-radio [number entre 1 et 41] --> Choisir la radio</li>
+                                      <li>-pause --> Mettre en pause la radio</li>
+                                      <li>-resume --> Remettre la radio</li>
+                                      <li>-volume [Number entre 0 et 1] --> Choisir le volume</li>
+                                  </ul>
+                                  <span>Pour la liste complète des commandes, consultez <a target="_Blank" href="/commandes">notre page de commandes</a>.</span>
+                              </div>
+                          </div>
                           <div className="discord-inner-message">
                               <div className="avatar user-1"></div>
                               <div className="message-content">
-                                  <p className="name"><b>bouns'Bot</b></p>
-                                  Je joue déjà dans le canal vocal ici, cliquez dessus à droite pour commencer à écouter.
+                                  <p className="name"><b>Bouns'Bot</b></p>
+                                  Je joue déjà dans le canal vocal #Salon vocal, cliquez dessus à droite pour commencer à écouter.
                                   <i>Avertissement : cette démo ne représente pas entièrement la fonctionnalité radio du Bouns'Bot.</i>
                               </div>
                           </div>
