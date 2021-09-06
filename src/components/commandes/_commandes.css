@@ -12,6 +12,25 @@
     align-items: center;
 }
 
+.testRadio{
+    padding: 4px 7px 5px 7px;
+    color: #fff;
+    background-color: #0cab34;
+    border-radius: 4px;
+    text-decoration: none;
+    cursor: pointer;
+    user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    margin-left: 10px;
+}
+
+.testRadio:hover {
+    color: #fff;
+    background-color: red;
+}
+
 .commands-list .top h1 {
     margin: -2px 0 -12px;
     font-size: 55px;

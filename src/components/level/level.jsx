@@ -62,7 +62,7 @@ class Level extends Component {
                             {i+1}
                           </div>
                           <div className="leaderboardPlayerIcon">
-                          <img src={this.state.level[i].picture} onError={(e)=>{e.target.outerHTML=`<img src='https://cdn.discordapp.com/embed/avatars/${Math.floor(Math.random() * 6)}.png'/>`}}/>
+                          <img src={this.state.level[i].picture} onError={(e)=>{e.target.outerHTML=`<img src='https://cdn.discordapp.com/embed/avatars/${Math.floor(Math.random() * 6)}.png'/>`}} alt=""/>
                           </div>
                           <div className="leaderboardPlayerUsername">
                             {this.state.level[i].username}
