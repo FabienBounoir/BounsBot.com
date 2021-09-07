@@ -210,16 +210,51 @@ b {
 }
 
 .discord-inner-message .avatar.user-0 {
-    background: url("https://cdn.discordapp.com/embed/avatars/2.png");
+    background: url("https://cdn.discordapp.com/embed/avatars/0.png");
     background-size: contain;
     background-repeat: no-repeat;
     border-radius: 50%
 }
 
 .discord-inner-message .avatar.user-1 {
-    background: url('https://bounsbot.herokuapp.com/static/media/logo5.a661761a.svg');
+    background: url('https://cdn.discordapp.com/embed/avatars/1.png');
     background-size: contain;
-    background-repeat: no-repeat
+    background-repeat: no-repeat;
+    border-radius: 50%;
+}
+
+.discord-inner-message .avatar.user-2 {
+    background: url("https://cdn.discordapp.com/embed/avatars/2.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    border-radius: 50%
+}
+
+.discord-inner-message .avatar.user-3 {
+    background: url("https://cdn.discordapp.com/embed/avatars/3.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    border-radius: 50%
+}
+
+.discord-inner-message .avatar.user-4 {
+    background: url("https://cdn.discordapp.com/embed/avatars/4.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    border-radius: 50%
+}
+
+.discord-inner-message .avatar.user-5 {
+    background: url("https://cdn.discordapp.com/embed/avatars/5.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    border-radius: 50%
+}
+
+.discord-inner-message .avatar.user-6 {
+    background: url("https://bounsbot.herokuapp.com/static/media/logo5.a661761a.svg");
+    background-size: contain;
+    background-repeat: no-repeat;
 }
 
 .discord-inner-message {
