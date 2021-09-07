@@ -1,9 +1,7 @@
 // import React from "react";
 import "./_radio.css";
 import React, { Component } from 'react'
-import io, { Socket } from 'socket.io-client';
-
-
+import io from 'socket.io-client';
 class Radio extends Component {
     constructor(props) {
         super(props);
@@ -23,7 +21,7 @@ class Radio extends Component {
         this.picture = `${Math.floor(Math.random() * 5)}`
         // this.socket = io("http://localhost:3002/");
 
-        this.socket = io("https://backendbounsbot.herokuapp.com:3002/");
+        this.socket = io("https://backendbounsbot.herokuapp.com:8080/");
     }
 
     joinVocal = () => {
