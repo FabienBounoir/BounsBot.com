@@ -366,7 +366,7 @@ class Radio extends Component {
                           <div className="avatar user-6"></div>
                           <div className="message-content">
                               <p className="name"><b>Bouns'Bot</b></p>
-                              Bienvenue sur cette démo de la fonctionnalité radio du Bouns'Bot <br />Toutes les radios sont disponibles sur cette démo <br />Rejoignez / Quitter un channel vocal fonctionnent comme sur Discord, <br />le bot fait une pause lorsque vous quittez le vocal et reprend lorsque vous y êtes.
+                              Bienvenue sur cette démo de la fonctionnalité radio du Bouns'Bot <br />Toutes les radios sont disponibles sur cette démo <br />Rejoindre / Quitter un channel vocal fonctionne comme sur Discord, <br />le bot fait une pause lorsque vous quittez le vocal et reprend lorsque vous y êtes.
                           </div>
                       </div>
 
@@ -377,13 +377,13 @@ class Radio extends Component {
 
                                   <p>Cette démo dispose d'un nombre limité de commandes :<br />
                                   </p><ul>
-                                      <li>-radio [number entre 1 et 41] --> Choisir la radio</li>
-                                      <li>-pause --> Mettre en pause la radio</li>
-                                      <li>-resume --> Remettre la radio</li>
-                                      <li>-volume [Number entre 0 et 1] --> Choisir le volume</li>
+                                      <li>-radio [number entre 1 et 41] --&gt; Choisir la radio</li>
+                                      <li>-pause --&gt; Mettre en pause la radio</li>
+                                      <li>-resume --&gt; Remettre la radio</li>
+                                      <li>-volume [Number entre 0 et 1] --&gt; Choisir le volume</li>
                                   </ul>
                                   <ul>
-                                      <li>/nick [username] --> Changer de Pseudo</li>
+                                      <li>/nick [username] --&gt; Changer de Pseudo</li>
                                   </ul>
                                   <span>Pour la liste complète des commandes, consultez <a target="_Blank" href="/commandes">notre page de commandes</a>.</span>
                               </div>
