@@ -382,6 +382,9 @@ class Radio extends Component {
                                       <li>-resume --> Remettre la radio</li>
                                       <li>-volume [Number entre 0 et 1] --> Choisir le volume</li>
                                   </ul>
+                                  <ul>
+                                      <li>/nick [username] --> Changer de Pseudo</li>
+                                  </ul>
                                   <span>Pour la liste complète des commandes, consultez <a target="_Blank" href="/commandes">notre page de commandes</a>.</span>
                               </div>
                           </div>
