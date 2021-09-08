@@ -2,28 +2,45 @@
 import "./_radio.css";
 import React, { Component } from 'react'
 import io from 'socket.io-client';
+
 class Radio extends Component {
     constructor(props) {
         super(props);
+
+        //lien de la radio en cour de lecture (cookie ou celle par defaut)
         this.radio = new Audio(this.getCookie("radio") || 'https://streams.iloveradio.de/iloveradio5.mp3');
+
+        //definie le son de join et leave du channel vocal
         this.joinSound = new Audio("https://cdn.discordapp.com/attachments/825523344468082743/884722966523428874/discord-join-sound-effect-download.mp3");
         this.leaveSound = new Audio("https://cdn.discordapp.com/attachments/825523344468082743/884722968155013130/discord-leave-sound-effect-hd.mp3");
+        
+        //regler volume son
         this.radio.volume = this.getCookie("volume") ||  0.4;
         this.joinSound.volume = 0.5;
         this.leaveSound.volume = 0.5;
+        
+        //si l'utilisateur et dans le voc
         this.inVocal = false;
+
+        //si le bot est en pause ou non
         this.pause = true;
 
+        //state
         this.state = {
             messageData: [],
             vocalData: [],
             user: this.getCookie("username") === null ? (this.setCookie("username",`Discord User ${Math.floor(Math.random() * 4000)}`), this.getCookie("username")) : (this.getCookie("username"))
         }
+
+        //genere la PP du client
         this.picture = `${Math.floor(Math.random() * 5)}`
+
+        //socket server link
         this.socket = io("https://socketbounsbot.herokuapp.com/");
-        // this.socket = io("http://192.168.1.164:3001/");
+        // this.socket = io("http://192.168.1.164:3001/"); //en local test
     }
 
+    //appeler lorsque l'utilisateur clique sur le bouton join (salon vocal)
     joinVocal = () => {
         var voiceuser = document.getElementById("discord-user-voiceuser");
         voiceuser.classList.remove("hidden");
@@ -40,10 +57,12 @@ class Radio extends Component {
         setTimeout(() => {
             this.radio.play();
         }, 1000);
+
         this.inVocal = true;
         this.pause = false;
     };
 
+    //appeler lorsque l'utilisateur clique sur le bouton deco
     leaveVocal = () => {
         var voiceuser = document.getElementById("discord-user-voiceuser");
         voiceuser.classList.add("hidden");
@@ -55,12 +74,15 @@ class Radio extends Component {
 
         var voicePanel = document.getElementById("discord-voice-panel");
         voicePanel.classList.add("hidden");
+
         this.radio.pause()
         this.leaveSound.play();
+
         this.inVocal = false;
         this.pause = false;
     };
 
+    //check les touches entre sur le clavier dans l'input
     _handleKeyDown = (e) => {
         let message = document.getElementById('discord-inner-text-box-input').value;
         if (e.key === 'Enter' && message !== "") {
@@ -80,6 +102,7 @@ class Radio extends Component {
         }
     };
 
+    //check si message entré est une commande
     checkCommande = (commande) =>
     {
         if(commande.toLowerCase().indexOf(`-radio `) === 0)
@@ -107,6 +130,7 @@ class Radio extends Component {
         }
     };
 
+    //commande play (remet le son du bot)
     playCommandes()
     {
             if(this.inVocal || this.pause)
@@ -125,6 +149,7 @@ class Radio extends Component {
             }
     }
 
+    //commande radio (met a jour la radio en cour de diffusion)
     radioCommandes(commande)
     {
         if(!(isNaN(commande)))
@@ -145,11 +170,9 @@ class Radio extends Component {
                     this.pause = false;
                 }
                 this.setCookie("radio",this.selectRadio(number))
-                console.log(this.radio);
             }
             else
             {
-                // sendTempsMessage(5000,"La radio n'existe pas !!",undefined)
                 this.setState({
                     messageData: this.state.messageData.concat({name:"Bouns'Bot",picture:"user-6",text:"La radio n'existe pas !!"})
                 });
@@ -163,6 +186,7 @@ class Radio extends Component {
         }
     }
 
+    //commande volume (met a jour le volume du bot)
     volumeCommandes(volume)
     {
         if(!(isNaN(volume)))
@@ -191,10 +215,9 @@ class Radio extends Component {
         }
     }
 
+    //commande pause (met en pause le son du bot)
     pauseCommandes()
     {
-        console.log(this.inVocal)
-        console.log(this.pause)
         if(this.inVocal || !this.pause)
         {
             this.radio.pause()
@@ -211,23 +234,28 @@ class Radio extends Component {
         }
     }
 
+    //scroll en bas de la div Message
     scrollToBottom = () => {
         var objDiv = document.getElementById("discord-inner-messages");
         objDiv.scrollTop = objDiv.scrollHeight;
     }
     
+    //appeler des qu'il y a une update de la page
     componentDidUpdate() {
+        //scroll to the bottom lors d'un nouveau message
         this.scrollToBottom();
     }
 
+    //appeler lorsque la page est chargé
     componentDidMount = () => {
-
+        //reception lorsque qu'un nouveau message est ecrit dans le tchat
         this.socket.on("receive", message => {
             this.setState({
                 messageData: this.state.messageData.concat(message)
             });
         });
 
+        //reception lorsque quelqu'un join un vocal
         this.socket.on("joinUpdate", data => {
             this.setState({
                 vocalData: data
@@ -238,6 +266,7 @@ class Radio extends Component {
             }
         });
 
+        //reception lorsqu'une personne leave le vocal
         this.socket.on("leaveUpdate", data => {
             this.setState({
                 vocalData: data
@@ -248,6 +277,7 @@ class Radio extends Component {
             }
         });
 
+        //Recuperation de la voix en cour de diffusion dans le channel Vocal
         this.socket.on("getVoice", (data) => {
             if(this.inVocal)
             {
@@ -256,10 +286,14 @@ class Radio extends Component {
             }
         });
 
+        //recuperer les données
         this.socket.emit('init')
+
+        //Enregistrement de la voix
         this.voix()
     }
 
+    //Gestion du micro
     voix()
     {
         navigator.mediaDevices.getUserMedia({ audio: true }).then((stream) => {
@@ -303,7 +337,7 @@ class Radio extends Component {
         });
     }
 
-    
+    //modifier / crée cookies de navigation
     setCookie(name,value,days) {
         var expires = "";
         if (days) {
@@ -314,17 +348,21 @@ class Radio extends Component {
         document.cookie = name + "=" + (value || "")  + expires + "; path=/";
     }
 
+    //Recuperer les cookies de navigation
     getCookie(name) {
         var nameEQ = name + "=";
         var ca = document.cookie.split(';');
+
         for(var i=0;i < ca.length;i++) {
             var c = ca[i];
             while (c.charAt(0)===' ') c = c.substring(1,c.length);
             if (c.indexOf(nameEQ) === 0) return c.substring(nameEQ.length,c.length);
         }
+
         return null;
     }
 
+    //Radio disponible pour le bot
     selectRadio(radio)
     {
         const Radiostations = {
@@ -372,7 +410,6 @@ class Radio extends Component {
         }
 
         return Radiostations[radio];
-
 }
 
     render() {
@@ -421,7 +458,6 @@ class Radio extends Component {
 
                                 if(vocal.socketId !== this.socket.id)
                                 {
-                                    console.log("rentrer")
                                     vocalRender.push(
                                         <div className="voiceUser clickable userSmall" id="discord-user-voiceuser" tabIndex="-1" role="button">
                                             <div className="content">
