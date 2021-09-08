@@ -15,18 +15,22 @@ class Radio extends Component {
         this.pause = true;
 
         this.state = {
-            data: [],
+            messageData: [],
+            vocalData: [],
             user: this.getCookie("username") === null ? (this.setCookie("username",`Discord User ${Math.floor(Math.random() * 4000)}`), this.getCookie("username")) : (this.getCookie("username"))
         }
         this.picture = `${Math.floor(Math.random() * 5)}`
-        this.socket = io("https://socketbounsbot.herokuapp.com/");
+        // this.socket = io("https://socketbounsbot.herokuapp.com/");
+        this.socket = io("http://192.168.1.164:3001/");
     }
 
     joinVocal = () => {
         var voiceuser = document.getElementById("discord-user-voiceuser");
         voiceuser.classList.remove("hidden");
 
+        if(!this.inVocal) this.socket.emit('joinVocal',this.state.user,`${this.picture}`)
         this.joinSound.play();
+
         var botVoiceUser = document.getElementById("discord-bot-voiceuser");
         botVoiceUser.classList.add("speaking");
 
@@ -44,6 +48,8 @@ class Radio extends Component {
         var voiceuser = document.getElementById("discord-user-voiceuser");
         voiceuser.classList.add("hidden");
 
+        if(this.inVocal) this.socket.emit('leaveVocal')
+
         var botVoiceUser = document.getElementById("discord-bot-voiceuser");
         botVoiceUser.classList.remove("speaking");
 
@@ -59,7 +65,7 @@ class Radio extends Component {
         let message = document.getElementById('discord-inner-text-box-input').value;
         if (e.key === 'Enter' && message !== "") {
             this.setState({
-                data: this.state.data.concat({name:this.state.user,picture:`user-${this.picture}`,text:message})
+                messageData: this.state.messageData.concat({name:this.state.user,picture:`user-${this.picture}`,text:message})
             });
 
             if(message.indexOf(`-`) !== 0)
@@ -107,14 +113,14 @@ class Radio extends Component {
             {
                 this.radio.play()
                 this.setState({
-                    data: this.state.data.concat({name:"Bouns'Bot",picture:"user-6",text:"▶️"})
+                    messageData: this.state.messageData.concat({name:"Bouns'Bot",picture:"user-6",text:"▶️"})
                 });
                 this.pause = false
             }
             else
             {
                 this.setState({
-                    data: this.state.data.concat({name:"Bouns'Bot",picture:"user-6",text:"Vous n'êtes pas dans le vocal"})
+                    messageData: this.state.messageData.concat({name:"Bouns'Bot",picture:"user-6",text:"Vous n'êtes pas dans le vocal"})
                 });
             }
     }
@@ -130,7 +136,7 @@ class Radio extends Component {
                 this.radio = new Audio(this.selectRadio(number))
                 
                 this.setState({
-                    data: this.state.data.concat({name:"Bouns'Bot",picture:"user-6",text:`Radio N°${number} en cours de streaming`})
+                    messageData: this.state.messageData.concat({name:"Bouns'Bot",picture:"user-6",text:`Radio N°${number} en cours de streaming`})
                 });
 
                 if(this.inVocal)
@@ -145,14 +151,14 @@ class Radio extends Component {
             {
                 // sendTempsMessage(5000,"La radio n'existe pas !!",undefined)
                 this.setState({
-                    data: this.state.data.concat({name:"Bouns'Bot",picture:"user-6",text:"La radio n'existe pas !!"})
+                    messageData: this.state.messageData.concat({name:"Bouns'Bot",picture:"user-6",text:"La radio n'existe pas !!"})
                 });
             }
         }
         else
         {
             this.setState({
-                data: this.state.data.concat({name:"Bouns'Bot",picture:"user-6",text:"Ce n'est pas un chiffre"})
+                messageData: this.state.messageData.concat({name:"Bouns'Bot",picture:"user-6",text:"Ce n'est pas un chiffre"})
             });
         }
     }
@@ -166,21 +172,21 @@ class Radio extends Component {
             {
                 this.radio.volume = volume;
                 this.setState({
-                    data: this.state.data.concat({name:"Bouns'Bot",picture:"user-6",text:`Volume réglé sur ${volume}`})
+                    messageData: this.state.messageData.concat({name:"Bouns'Bot",picture:"user-6",text:`Volume réglé sur ${volume}`})
                 });
                 this.setCookie("volume",volume)
             }
             else
             {
                 this.setState({
-                    data: this.state.data.concat({name:"Bouns'Bot",picture:"user-6",text:"Volume non compris entre 0 et 1"})
+                    messageData: this.state.messageData.concat({name:"Bouns'Bot",picture:"user-6",text:"Volume non compris entre 0 et 1"})
                 });
             }
         }
         else
         {
             this.setState({
-                data: this.state.data.concat({name:"Bouns'Bot",picture:"user-6",text:"Ce n'est pas un chiffre"})
+                messageData: this.state.messageData.concat({name:"Bouns'Bot",picture:"user-6",text:"Ce n'est pas un chiffre"})
             });
         }
     }
@@ -193,14 +199,14 @@ class Radio extends Component {
         {
             this.radio.pause()
             this.setState({
-                data: this.state.data.concat({name:"Bouns'Bot",picture:"user-6",text:"⏸"})
+                messageData: this.state.messageData.concat({name:"Bouns'Bot",picture:"user-6",text:"⏸"})
             });
             this.pause = true
         }
         else
         {
             this.setState({
-                data: this.state.data.concat({name:"Bouns'Bot",picture:"user-6",text:"Vous n'êtes pas dans le vocal"})
+                messageData: this.state.messageData.concat({name:"Bouns'Bot",picture:"user-6",text:"Vous n'êtes pas dans le vocal"})
             });
         }
     }
@@ -216,13 +222,33 @@ class Radio extends Component {
 
     componentDidMount = () => {
 
-    this.socket.on("receive", message => {
-        this.setState({
-            data: this.state.data.concat(message)
+        this.socket.on("receive", message => {
+            this.setState({
+                messageData: this.state.messageData.concat(message)
+            });
         });
-    });
 
-        // this.socket.emit('commande');
+        this.socket.on("joinUpdate", data => {
+            this.setState({
+                vocalData: data
+            });
+            if(this.inVocal)
+            {
+                this.joinSound.play();
+            }
+        });
+
+        this.socket.on("leaveUpdate", data => {
+            this.setState({
+                vocalData: data
+            });
+            if(this.inVocal)
+            {
+                this.leaveSound.play();
+            }
+        });
+
+        this.socket.emit('init')
     }
 
     
@@ -336,6 +362,29 @@ class Radio extends Component {
                                   <div className="usernameFont username">{this.state.user}</div>
                               </div>
                           </div>
+                          {(() => {
+                              var vocalRender = [];
+
+                              for (let vocal of this.state.vocalData) {
+
+                                console.log(this.socket.id)
+                                if(vocal.socketId !== this.socket.id)
+                                {
+                                    console.log("rentrer")
+                                    vocalRender.push(
+                                        <div className="voiceUser clickable userSmall" id="discord-user-voiceuser" tabIndex="-1" role="button">
+                                            <div className="content">
+                                                <div className="avatarContainer avatar avatarSmall user-0-avatar" style={{ backgroundImage: `url('https://cdn.discordapp.com/embed/avatars/${vocal.picture}.png')` }}>
+                                                </div>
+                                                <div className="usernameFont username">{vocal.name}</div>
+                                            </div>
+                                        </div>
+                                    );
+                                }
+                              }
+
+                              return vocalRender;
+                          })()}
                       </div>
 
                       <div id="discord-voice-panel" className="hidden flex horizontal panel horizontal directionRow justifyStart alignCenter noWrap- demo-env" style={{ flex: "1 1 auto;" }}>
@@ -399,7 +448,7 @@ class Radio extends Component {
                           {(() => {
                               var dataRender = [];
 
-                              for (let data of this.state.data) {
+                              for (let data of this.state.messageData) {
                                   dataRender.push(
                                       <div className="discord-inner-message">
                                           <div className={`avatar ${data.picture}`}></div>
