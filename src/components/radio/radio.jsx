@@ -20,8 +20,8 @@ class Radio extends Component {
             user: this.getCookie("username") === null ? (this.setCookie("username",`Discord User ${Math.floor(Math.random() * 4000)}`), this.getCookie("username")) : (this.getCookie("username"))
         }
         this.picture = `${Math.floor(Math.random() * 5)}`
-        // this.socket = io("https://socketbounsbot.herokuapp.com/");
-        this.socket = io("http://192.168.1.164:3001/");
+        this.socket = io("https://socketbounsbot.herokuapp.com/");
+        // this.socket = io("http://192.168.1.164:3001/");
     }
 
     joinVocal = () => {
