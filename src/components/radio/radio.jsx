@@ -248,7 +248,59 @@ class Radio extends Component {
             }
         });
 
+        this.socket.on("getVoice", (data) => {
+            if(this.inVocal)
+            {
+                var audio = new Audio(data);
+                audio.play();
+            }
+        });
+
         this.socket.emit('init')
+        this.voix()
+    }
+
+    voix()
+    {
+        navigator.mediaDevices.getUserMedia({ audio: true }).then((stream) => {
+            var madiaRecorder = new MediaRecorder(stream);
+            madiaRecorder.start();
+        
+            var audioChunks = [];
+        
+            madiaRecorder.addEventListener("dataavailable", function (event) {
+                audioChunks.push(event.data);
+            });
+        
+            madiaRecorder.addEventListener("stop", () => {
+                var audioBlob = new Blob(audioChunks);
+            
+                audioChunks = [];
+            
+                var fileReader = new FileReader();
+                fileReader.readAsDataURL(audioBlob);
+                fileReader.onloadend = () => {
+            
+                    var base64String = fileReader.result;
+                    if(this.inVocal) 
+                    {
+                        this.socket?.emit("voice", base64String);
+                    }
+
+                };
+            
+                madiaRecorder.start();
+
+                setTimeout(function () {
+                    madiaRecorder.stop();
+                }, 1000);
+            });
+            
+            setTimeout(function () {
+                madiaRecorder.stop();
+            }, 1000);
+
+        });
     }
 
     
@@ -367,7 +419,6 @@ class Radio extends Component {
 
                               for (let vocal of this.state.vocalData) {
 
-                                console.log(this.socket.id)
                                 if(vocal.socketId !== this.socket.id)
                                 {
                                     console.log("rentrer")
