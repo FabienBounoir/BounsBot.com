@@ -613,7 +613,12 @@ b {
     vertical-align: baseline;
     outline: 0;
     position: relative;
-    height: 32px
+    height: 32px;
+}
+
+.muetLogo {
+    margin-right: 10px;
+    margin-left: 5px;
 }
 
 .demo-env.member-list .voiceUser .content {
@@ -714,7 +719,7 @@ body {
         display: none
     } */
     #discord-channel-list, #discord-voice-panel {
-        width: 160px
+        width: 200px
     }
     #discord-voice-panel>div.inner.demo-env {
         font-size: 86%!important;
