@@ -61,6 +61,73 @@ b {
     color: #0cab34;
 }
 
+#role-0 {
+    /* background: url("https://cdn.discordapp.com/embed/avatars/0.png"); */
+    color: #5865f2
+}
+
+#role-1 {
+    /* background: url('https://cdn.discordapp.com/embed/avatars/1.png'); */
+    color: #757e8a
+}
+
+#role-2 {
+    /* backgund: url(ro"https://cdn.discordapp.com/embed/avatars/2.png"); */
+    color: #3ba55c
+}
+
+#role-3 {
+    /* background: url("https://cdn.discordapp.com/embed/avatars/3.png"); */
+    color: #faa61a
+}
+
+#role-4 {
+    /* background: url("https://cdn.discordapp.com/embed/avatars/4.png"); */
+    color: #ed4245
+}
+
+#role-5 {
+    /* background: url("https://cdn.discordapp.com/embed/avatars/5.png"); */
+    color: #eb459f;
+}
+
+#role-6 {
+    /* background: url("https://bounsbot.herokuapp.com/static/media/logo5.a661761a.svg"); */
+    color: #0cab34;
+}
+
+#badbounstv {
+    color: #FF0000;
+    animation: RGBWhiteMode 5s infinite linear;
+}
+
+@keyframes RGBWhiteMode {
+  12.5% {
+    color: #FF0000;
+  }
+  25% {
+    color: #FFA500;
+  }
+  37.5% {
+    color: #FFFF00;
+  }
+  50% {
+    color: #7FFF00;
+  }
+  62.5% {
+    color: #00FFFF;
+  }
+  75% {
+    color: #0000FF;
+  }
+  87.5% {
+    color: #9932CC;
+  }
+  100% {
+    color: #FF1493;
+  }
+}
+
 .BackgroundGreen {
     background-color: #0cab34;
 }
@@ -253,6 +320,12 @@ b {
 
 .discord-inner-message .avatar.user-6 {
     background: url("https://bounsbot.herokuapp.com/static/media/logo5.a661761a.svg");
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+.discord-inner-message .avatar.user-7 {
+    background: url("https://cdn.discordapp.com/attachments/806282416364585062/886279506564907048/logo-cyan-rouge.png");
     background-size: contain;
     background-repeat: no-repeat;
 }
