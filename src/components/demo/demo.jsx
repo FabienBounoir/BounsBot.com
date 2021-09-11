@@ -1,9 +1,9 @@
 // import React from "react";
-import "./_radio.css";
+import "./_demo.css";
 import React, { Component } from 'react'
 import io from 'socket.io-client';
 
-class Radio extends Component {
+class Demo extends Component {
     constructor(props) {
         super(props);
 
@@ -560,4 +560,4 @@ class Radio extends Component {
     }
 }
 
-export default Radio;
+export default Demo;

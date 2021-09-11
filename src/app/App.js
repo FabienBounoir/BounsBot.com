@@ -7,7 +7,7 @@ import { Features } from "../components/features/features";
 import { Commandes } from "../components/commandes/commandes";
 import Level from "../components/level/level";
 import { ErreurPage } from "../components/ErreurPage/ErreurPage";
-import Radio from "../components/radio/radio";
+import Demo from "../components/demo/demo";
 
 export const App = () => {
   return (
@@ -27,8 +27,8 @@ export const App = () => {
           <Route exact path="/level">
             <Level/>
           </Route>
-          <Route exact path="/radio">
-            <Radio />
+          <Route exact path="/demo">
+            <Demo />
           </Route>
           <Route>
             <ErreurPage />

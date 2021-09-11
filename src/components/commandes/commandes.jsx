@@ -55,7 +55,7 @@ export const Commandes = () => {
         </Table>
         <Table striped bordered hover variant="dark">
             <thead>
-                <tr><th className="titleCommand" colSpan="2">ㆍRadio <a className="testRadio" href="./radio">test</a></th></tr>
+                <tr><th className="titleCommand" colSpan="2">ㆍRadio <a className="testRadio" href="./demo">test</a></th></tr>
             </thead>
             <tbody>
                 <tr>
