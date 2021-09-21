@@ -16,6 +16,10 @@
     background-color: #40454a;
 }
 
+.feature .image {
+    border-radius: 10px;
+}
+
 .features__content {
     width: 100%;
     max-width: 1200px;

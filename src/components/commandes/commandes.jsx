@@ -17,7 +17,7 @@ export const Commandes = () => {
             <tbody>
                 <tr>
                     <td>-play (URL/NOM/FICHIER)</td>
-                    <td>Jouer la musique sans l'ajouté à la playlist ou jouer de la musique avec un fichier envoyé</td>
+                    <td>Jouer la musique avec un lien / un nom ou directement depuis un fichier envoyé</td>
                 </tr>
                 <tr>
                     <td>-stop</td>
@@ -51,6 +51,10 @@ export const Commandes = () => {
                     <td>-clearqueue</td>
                     <td>Vider la playlist</td>
                 </tr>
+                <tr>
+                    <td>-search (Recherche)</td>
+                    <td>Rechercher une musique</td>
+                </tr>
             </tbody>
         </Table>
         <Table striped bordered hover variant="dark">
@@ -75,11 +79,11 @@ export const Commandes = () => {
             <tbody>
                 <tr>
                     <td>-setPlaylist (Name) (Url Youtube)</td>
-                    <td>Crée/ajouter musique dans une playlist</td>
+                    <td>Crée/Ajouter musique dans une playlist</td>
                 </tr>
                 <tr>
                     <td>-playlist (Name)</td>
-                    <td>jouer la playlist</td>
+                    <td>Jouer la playlist</td>
                 </tr>
                 <tr>
                     <td>-infoPlaylist (Name)</td>
@@ -92,7 +96,11 @@ export const Commandes = () => {
                 <tr>
                     <td>-removeMusiquePlaylist (Name) (Numero)</td>
                     <td>Supprimer une musique dans la playlist</td>
-                </tr>                
+                </tr>  
+                <tr>
+                    <td>-searchPlaylist (Name)</td>
+                    <td>Rechercher des playlists</td>
+                </tr>               
             </tbody>
         </Table>
         <Table striped bordered hover variant="dark">
@@ -115,7 +123,23 @@ export const Commandes = () => {
                 <tr>
                     <td>-set rename (true/false)</td>
                     <td>Config l'auto rename lorsqu'un pseudo n'est pas valide</td>
-                </tr>          
+                </tr>   
+                <tr>
+                    <td>-set musique (true/false)</td>
+                    <td>Config les commandes musique</td>
+                </tr>  
+                <tr>
+                    <td>-set radio (true/false)</td>
+                    <td>Config les commandes radio</td>
+                </tr>  
+                <tr>
+                    <td>-set playlist (true/false)</td>
+                    <td>Config les commandes playlist</td>
+                </tr>   
+                <tr>
+                    <td>-set fun (true/false)</td>
+                    <td>Config les commandes fun</td>
+                </tr>         
             </tbody>
         </Table>
         <Table striped bordered hover variant="dark">
@@ -153,7 +177,49 @@ export const Commandes = () => {
                 <tr>
                     <td>-webhook</td>
                     <td>Crée webhook Personnaliser</td>
+                </tr>  
+                <tr>
+                    <td>-slowmode (Nb secondes)</td>
+                    <td>Mettre un couldown dans le channel en question</td>
                 </tr>             
+            </tbody>
+        </Table>
+        <Table striped bordered hover variant="dark">
+            <thead>
+                <tr><th className="titleCommand" colSpan="2">ㆍModération</th></tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>-clear (NB message)</td>
+                    <td>Supprimer message dans le tchat</td>
+                </tr>
+                <tr>
+                    <td>-rename (@user/id) (optionnal: Name) </td>
+                    <td>Rename une personne</td>
+                </tr>
+                <tr>
+                    <td>-ban (@user/id) (raison)</td>
+                    <td>Ban une personne</td>
+                </tr> 
+                <tr>
+                    <td>-unban (@user/id)</td>
+                    <td>Unban une personne</td>
+                </tr>             
+            </tbody>
+        </Table>
+        <Table striped bordered hover variant="dark">
+            <thead>
+                <tr><th className="titleCommand" colSpan="2">ㆍTest</th></tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>-stats</td>
+                    <td>Quelque stats croustillante sur le bot</td>
+                </tr>
+                <tr>
+                    <td>-ping</td>
+                    <td>Resevoir un magnifique pong du Bouns'bot</td>
+                </tr>
             </tbody>
         </Table>
         <Table striped bordered hover variant="dark">
