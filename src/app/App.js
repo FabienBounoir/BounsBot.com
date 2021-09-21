@@ -6,6 +6,7 @@ import { HomePage } from "../components/homepage/homepage";
 import { Features } from "../components/features/features";
 import { Commandes } from "../components/commandes/commandes";
 import Level from "../components/level/level";
+import Playlist from "../components/playlist/playlist";
 import { ErreurPage } from "../components/ErreurPage/ErreurPage";
 import Demo from "../components/demo/demo";
 
@@ -29,6 +30,9 @@ export const App = () => {
           </Route>
           <Route exact path="/demo">
             <Demo />
+          </Route>
+          <Route exact path="/playlist">
+            <Playlist />
           </Route>
           <Route>
             <ErreurPage />

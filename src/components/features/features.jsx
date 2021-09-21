@@ -32,7 +32,7 @@ export const Features = () => {
                     </div>
                     <img className="image" alt="logo" src= { level }/>
                 </div>
-                <div className="feature active">
+                {/* <div className="feature active">
                     <img className="image" alt="logo" src= { musique }/>
                     <div className="content">
                         <div className="title">
@@ -43,7 +43,7 @@ export const Features = () => {
                         </div> 
                         <p>Un bot musique acceptant les Liens Youtube / Fichier Externe (.mp3 / .mp4 / .flac / .ogg / .aac / .webm / .wav)<br/>Plus de 40 radio disponibles !!<br/>Crée / Modifier / Jouer une playlist</p>
                     </div>
-                </div>
+                </div> */}
                 <div className="feature active">
                     <div className="content">
                         <div className="title">

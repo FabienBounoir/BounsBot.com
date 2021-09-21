@@ -10,7 +10,7 @@ export const Commandes = () => {
             <div className="search search-bar" data-v-7085cbe2=""></div>
         </div>
         <>
-        <Table striped bordered hover variant="dark">
+        {/* <Table striped bordered hover variant="dark">
             <thead>
                 <tr><th className="titleCommand" colSpan="2">ㆍMusique</th></tr>
             </thead>
@@ -56,7 +56,7 @@ export const Commandes = () => {
                     <td>Rechercher une musique</td>
                 </tr>
             </tbody>
-        </Table>
+        </Table> */}
         <Table striped bordered hover variant="dark">
             <thead>
                 <tr><th className="titleCommand" colSpan="2">ㆍRadio <a className="testRadio" href="./demo">test</a></th></tr>
@@ -72,7 +72,7 @@ export const Commandes = () => {
                 </tr>
             </tbody>
         </Table>
-        <Table striped bordered hover variant="dark">
+        {/* <Table striped bordered hover variant="dark">
             <thead>
                 <tr><th className="titleCommand" colSpan="2">ㆍPlaylist</th></tr>
             </thead>
@@ -102,7 +102,7 @@ export const Commandes = () => {
                     <td>Rechercher des playlists</td>
                 </tr>               
             </tbody>
-        </Table>
+        </Table> */}
         <Table striped bordered hover variant="dark">
             <thead>
                 <tr><th className="titleCommand" colSpan="2">ㆍConfiguration</th></tr>
