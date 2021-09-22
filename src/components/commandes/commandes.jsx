@@ -74,7 +74,7 @@ export const Commandes = () => {
         </Table>
         {/* <Table striped bordered hover variant="dark">
             <thead>
-                <tr><th className="titleCommand" colSpan="2">ㆍPlaylist</th></tr>
+                <tr><th className="titleCommand" colSpan="2">ㆍPlaylist <a className="testRadio" href="./playlist">Playlist Disponible</a></th></tr>
             </thead>
             <tbody>
                 <tr>
