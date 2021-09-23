@@ -87,6 +87,12 @@ class Demo extends Component {
         this.setState({
             muet: !this.state.muet
         });
+
+        if(this.state.muet)
+        {
+            this.voix();
+        }
+
         setTimeout(() => {
             this.socket.emit("muet", this.state.muet)
         }, 20);
@@ -248,9 +254,9 @@ class Demo extends Component {
     componentDidMount = () => {
 
         //besoin du connexion securisé pour transmettre l'audio
-        if (window.location.protocol !== "https:") {
-            window.location.protocol = "https:";
-        }
+        // if (window.location.protocol !== "https:") {
+        //     window.location.protocol = "https:";
+        // }
 
         //reception lorsque qu'un nouveau message est ecrit dans le tchat
         this.socket.on("receive", message => {
@@ -297,8 +303,8 @@ class Demo extends Component {
         //demander les données du vocal et du tchat
         this.socket.emit('init')
 
-        //Enregistrement de la voix
-        this.voix()
+        // //Enregistrement de la voix
+        // this.voix()
     }
 
     //Gestion du micro
@@ -324,7 +330,6 @@ class Demo extends Component {
 
                     var base64String = fileReader.result;
                     if (this.inVocal && !this.state.muet) {
-                        console.log("transmit")
                         this.socket?.emit("voice", base64String);
                     }
 

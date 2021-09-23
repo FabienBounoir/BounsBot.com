@@ -124,18 +124,18 @@ export const Commandes = () => {
                     <td>-set rename (true/false)</td>
                     <td>Config l'auto rename lorsqu'un pseudo n'est pas valide</td>
                 </tr>   
-                <tr>
+                {/* <tr>
                     <td>-set musique (true/false)</td>
                     <td>Config les commandes musique</td>
-                </tr>  
+                </tr>   */}
                 <tr>
                     <td>-set radio (true/false)</td>
                     <td>Config les commandes radio</td>
                 </tr>  
-                <tr>
+                {/* <tr>
                     <td>-set playlist (true/false)</td>
                     <td>Config les commandes playlist</td>
-                </tr>   
+                </tr>    */}
                 <tr>
                     <td>-set fun (true/false)</td>
                     <td>Config les commandes fun</td>
@@ -245,7 +245,7 @@ export const Commandes = () => {
                 </tr>
                 <tr>
                     <td>-pika</td>
-                    <td>Affiche un meme aleatoire</td>
+                    <td>Affiche un gif de Pikachu</td>
                 </tr>
                 <tr>
                     <td>-anniv</td>
