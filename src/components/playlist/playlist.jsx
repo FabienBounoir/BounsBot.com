@@ -100,7 +100,7 @@ class Playlist extends Component {
                 playlistElement.push(
                       <Card key={ i } className="cardTemplate" style={{ width: '18rem', backgroundColor: "#181818", color:'white', margin: "10px" }}>
                         <a href={"./playlist?id=" + this.state.playlistList[i].nom} style={{"textDecoration": "none" }}>
-                        <Card.Img variant="top" src="https://media.discordapp.net/attachments/886573195715575858/889935572653731860/logo-printemps.png" />
+                        <Card.Img variant="top" src={this.state.playlistList[i].picture} />
                         <Card.Body>
                           <Card.Title style={{ color: '#0cab34', fontSize: '150%' }}>{ this.state.playlistList[i].nom[0].toUpperCase() }{ this.state.playlistList[i].nom.slice(1) }</Card.Title>
                           {/* <Card.Text>
