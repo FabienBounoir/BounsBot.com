@@ -71,13 +71,13 @@ class Playlist extends Component {
           {(() => {
             var playlistElement = [];
             
-            if(this.state.playlistList.length == 1)
+            if(this.state.playlistList.length === 1)
             {
               document.getElementById('titre').textContent = this.state.playlistList[0].nom[0].toUpperCase()+this.state.playlistList[0].nom.slice(1)
               for (let i = 0; i < this.state.playlistList[0].musique.length; i++) {
                 playlistElement.push(
                     <Card key={ i } className="cardTemplate" style={{ width: '18rem', backgroundColor: "#181818", color:'white', margin: "10px" }}>
-                      <a href={this.state.playlistList[0].musique[i].link} target="_blank" style={{"textDecoration": "none" }}>
+                      <a href={this.state.playlistList[0].musique[i].link} target="_blank" rel="noreferrer" style={{"textDecoration": "none" }}>
                         <Card.Img variant="top" src={ this.state.playlistList[0].musique[i].image } />
                         <Card.Body>
                           <Card.Title style={{ color: '#0cab34', fontSize: '150%' }}>{ this.state.playlistList[0].musique[i].name }</Card.Title>
@@ -89,7 +89,7 @@ class Playlist extends Component {
 
                   return <div className="renderPLaylist">{playlistElement}</div>;
             }
-            else if(this.state.playlistList.length == 0 && this.state.recherche)
+            else if(this.state.playlistList.length === 0 && this.state.recherche)
             {
                 return <h1>Aucune playlist sous ce nom</h1>
             }

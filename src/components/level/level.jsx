@@ -35,8 +35,6 @@ class Level extends Component {
             });
         })
         .catch(console.log)
-
-
     };
 
     render() {

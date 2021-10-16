@@ -4177,6 +4177,11 @@
   dependencies:
     "path-type" "^4.0.0"
 
+"discord-oauth2@^2.8.0":
+  "integrity" "sha512-m0Tq2k1rqoIv63Ywb3gid3L5/hz9vlGzoOv/salC1/1BzesQQol8BS4hXKDOjdK6mF6VKUYGfkRmXc2pRhOJqg=="
+  "resolved" "https://registry.npmjs.org/discord-oauth2/-/discord-oauth2-2.8.0.tgz"
+  "version" "2.8.0"
+
 "dns-equal@^1.0.0":
   "integrity" "sha1-s55/HabrCnW6nBcySzR1PEfgZU0="
   "resolved" "https://registry.npmjs.org/dns-equal/-/dns-equal-1.0.0.tgz"

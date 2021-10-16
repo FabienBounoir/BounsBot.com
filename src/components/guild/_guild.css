@@ -1,0 +1,56 @@
+.componentGuild {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr; 
+    gap: 24px;
+    padding-top: 100px;
+    width: 90%;
+}
+
+.guildModule {
+    background-color: rgb(49, 52, 66);
+    border-radius: 4px;
+    box-shadow: rgb(0 0 0 / 8%) 0px 4px 4px;
+    padding: 24px;
+    cursor: default;
+    user-select: none;
+    color: white;
+    text-align: left;
+}
+
+.top {
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+    -webkit-box-pack: justify;
+    justify-content: space-between;
+    margin-bottom: 8px;
+    flex-direction: row;
+}
+
+.picto{
+    width: "48";
+    height: "48";
+}
+
+.hSePco:not(:disabled) {
+    background-color: rgb(99, 245, 140);
+    border-color: rgb(99, 245, 140);
+}
+
+.hSePco {
+    position: relative;
+    width: 52px;
+    min-width: 52px;
+    height: 28px;
+    background-color: rgb(85, 87, 98);
+    cursor: pointer;
+    box-sizing: border-box;
+    box-shadow: rgba(0, 0, 0, 0.08) 0px 59px 62px;
+    border-radius: 100px;
+    transition: background-color 0.15s ease-out 0s, border-color;
+    outline: none;
+    border-width: 1px;
+    border-style: solid;
+    border-color: rgb(155, 157, 159);
+    border-image: initial;
+}

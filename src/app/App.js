@@ -8,6 +8,9 @@ import { Commandes } from "../components/commandes/commandes";
 import Level from "../components/level/level";
 import Playlist from "../components/playlist/playlist";
 import { ErreurPage } from "../components/ErreurPage/ErreurPage";
+import { Login } from "../components/login/login";
+import Dashboard from "../components/dashboard/dashboard";
+import Guild from "../components/guild/guild";
 import Demo from "../components/demo/demo";
 
 export const App = () => {
@@ -33,6 +36,15 @@ export const App = () => {
           </Route>
           <Route exact path="/playlist">
             <Playlist />
+          </Route>
+          <Route exact path="/dashboard">
+            <Dashboard />
+          </Route>
+          <Route exact path="/dashboard/:id" component={Guild}>
+            {/* <Guild /> */}
+          </Route>
+          <Route exact path="/login" >
+            <Login />
           </Route>
           <Route>
             <ErreurPage />

@@ -1,0 +1,79 @@
+.guBWHp {
+    width: 100%;
+    height: 100%;
+    margin: auto;
+    padding: 0px;
+    display: flex;
+    flex-direction: column;
+    -webkit-box-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    justify-content: center;
+    background-color: rgb(35, 39, 42);
+    position: absolute;
+    top: 0px;
+    left: 0px;
+}
+
+.awsUQ {
+    width: 350px;
+}
+
+.guBWHp p {
+    margin-top: 20px;
+    font-weight: 400;
+    font-size: 16px;
+    color: rgb(255, 255, 255);
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.sc-1x57bl6-0 {
+    font-family: "Open Sans", Helvetica, arial, sans-serif;
+}
+
+.jgpdLy {
+    white-space: nowrap;
+    user-select: none;
+    line-height: 1;
+    font-weight: 400;
+    display: flex;
+    border-radius: 3px;
+    -webkit-box-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    align-items: center;
+    transition: border 180ms ease-out 0s, background 180ms ease-out 0s;
+    font-size: 21px;
+    padding: 27px 51px;
+    color: rgb(255, 255, 255);
+    background: #0cab34;
+    border: none;
+    cursor: pointer;
+    min-height: 32px;
+    min-width: 60px;
+    width: unset;
+}
+
+.boutonConnection {
+    padding: 14px 18px 14px 18px;
+    color: #fff;
+    background-color: #0cab34;
+    border-radius: 4px;
+    text-decoration: none;
+    position: relative;
+    font-size: 18px;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    z-index: 3;
+    line-height: normal;
+}
+
+
+.boutonConnection span {
+    color: #fff;
+}
+
