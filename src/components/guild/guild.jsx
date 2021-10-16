@@ -41,7 +41,7 @@ class Guild extends Component {
 
                 {(() => {
                 var rank = [];
-                if(this.state.guildInfo)
+                if(this.state.guildInfo && this.state.guildInfo.length !== 0)
                 {
                     rank.push(<div className='componentGuild'>
                     <div className="guildModule">
