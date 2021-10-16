@@ -66,7 +66,7 @@ class Dashboard extends Component {
         {
             window.localStorage.removeItem('dataDiscord');
             // document.location.href="http://localhost:3000/login"; 
-            document.location.href="https://backendbounsbot.herokuapp.com/login"; 
+            document.location.href="https://bounsbot.herokuapp.com/login"; 
         }
     }
 
@@ -118,7 +118,7 @@ class Dashboard extends Component {
         {
             window.localStorage.removeItem('dataDiscord');
             // document.location.href="http://localhost:3000/login"; 
-            document.location.href="https://backendbounsbot.herokuapp.com/login"; 
+            document.location.href="https://bounsbot.herokuapp.com/login"; 
         }
     }
 
@@ -129,7 +129,7 @@ class Dashboard extends Component {
             'client_secret': "_8eU3zihkLxqEQb0EJmCDLeFVOoZEYe2",
             'grant_type': 'authorization_code',
             'code': code,
-            'redirect_uri': "https://backendbounsbot.herokuapp.com/dashboard"
+            'redirect_uri': "https://bounsbot.herokuapp.com/dashboard"
         } //'redirect_uri': "http://localhost:3000/dashboard"
         
         var formBody = [];
@@ -167,7 +167,7 @@ class Dashboard extends Component {
         {
             window.localStorage.removeItem('dataDiscord');
             // document.location.href="http://localhost:3000/login"; 
-            document.location.href="https://backendbounsbot.herokuapp.com/login"; 
+            document.location.href="https://bounsbot.herokuapp.com/login"; 
         }
     }
 
@@ -191,7 +191,7 @@ class Dashboard extends Component {
         {
             console.log("non connecté")
             // document.location.href="http://localhost:3000/login"; 
-            document.location.href="https://backendbounsbot.herokuapp.com/login"; 
+            document.location.href="https://bounsbot.herokuapp.com/login"; 
         }
     }
 
