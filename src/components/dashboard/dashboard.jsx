@@ -132,7 +132,7 @@ class Dashboard extends Component {
             'client_secret': "_8eU3zihkLxqEQb0EJmCDLeFVOoZEYe2",
             'grant_type': 'authorization_code',
             'code': code,
-            // 'redirect_uri': "https://bounsbot.herokuapp.com/dashboard"
+            'redirect_uri': "https://bounsbot.herokuapp.com/dashboard"
         } //'redirect_uri': "http://localhost:3000/dashboard" | 'redirect_uri': "https://bounsbot.herokuapp.com/dashboard"
         
         var formBody = [];
