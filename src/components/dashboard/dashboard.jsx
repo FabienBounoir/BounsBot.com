@@ -64,9 +64,10 @@ class Dashboard extends Component {
         }
         else
         {
-            window.localStorage.removeItem('dataDiscord');
+            console.log("erreur recuperation guild")
+            // window.localStorage.removeItem('dataDiscord');
             // document.location.href="http://localhost:3000/login"; 
-            document.location.href="https://bounsbot.herokuapp.com/login"; 
+            // document.location.href="https://bounsbot.herokuapp.com/login"; 
         }
     }
 
@@ -98,6 +99,9 @@ class Dashboard extends Component {
             method: "POST",
             body: formBody
         });
+
+        console.log(body.status)
+        return
 
         if(body.status === 200)
         {
@@ -149,12 +153,13 @@ class Dashboard extends Component {
             body: formBody
         });
 
+        console.log(body.status)
+        return
+
         if(body.status === 200)
         {
 
             const result = await body.json();
-
-            console.log(body.status)
 
             // console.log(result)
             window.localStorage.setItem('dataDiscord', JSON.stringify(result));
