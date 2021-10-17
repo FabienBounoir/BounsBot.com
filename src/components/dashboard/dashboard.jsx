@@ -65,9 +65,9 @@ class Dashboard extends Component {
         else
         {
             console.log("erreur recuperation guild")
-            // window.localStorage.removeItem('dataDiscord');
+            window.localStorage.removeItem('dataDiscord');
             // document.location.href="http://localhost:3000/login"; 
-            // document.location.href="https://bounsbot.herokuapp.com/login"; 
+            document.location.href="https://bounsbot.herokuapp.com/login"; 
         }
     }
 
@@ -76,12 +76,11 @@ class Dashboard extends Component {
         let info = JSON.parse(window.localStorage.getItem('dataDiscord'));
 
         let details = {
-            'Content-Type': 'application/x-www-form-urlencoded',
             'client_id': "898480744899412019",
             'client_secret': "_8eU3zihkLxqEQb0EJmCDLeFVOoZEYe2",
             'grant_type': 'refresh_token',
             'refresh_token': info.refresh_token
-        }
+        }//'Content-Type': 'application/x-www-form-urlencoded',
         
         var formBody = [];
         for (var property in details) {
@@ -91,13 +90,14 @@ class Dashboard extends Component {
         }
         formBody = formBody.join("&");
 
-        // let headers = {
-        //     'Content-Type': 'application/x-www-form-urlencoded'
-        // }
+        let headers = {
+            'Content-Type': 'application/x-www-form-urlencoded'
+        }
 
         const body = await fetch('https://discord.com/api/oauth2/token', {
             method: "POST",
-            body: formBody
+            body: formBody,
+            headers:headers
         });
 
         // console.log(body.status)
@@ -127,7 +127,6 @@ class Dashboard extends Component {
 
     async exchange_code(code){
         let details = {
-            'Content-Type': 'application/x-www-form-urlencoded',
             'client_id': "898480744899412019",
             'client_secret': "_8eU3zihkLxqEQb0EJmCDLeFVOoZEYe2",
             'grant_type': 'authorization_code',
@@ -143,11 +142,12 @@ class Dashboard extends Component {
         }
         formBody = formBody.join("&");
 
-        // let headers = {
-        //     'Content-Type': 'application/x-www-form-urlencoded'
-        // }
+        let headers = {
+            'Content-Type': 'application/x-www-form-urlencoded'
+        }
 
         const body = await fetch('https://discord.com/api/oauth2/token', {
+            headers: headers,
             method: "POST",
             body: formBody
         }); //headers: headers,
@@ -194,7 +194,7 @@ class Dashboard extends Component {
         {
             console.log("non connecté")
             // document.location.href="http://localhost:3000/login"; 
-            document.location.href="https://bounsbot.herokuapp.com/login"; 
+            document.location.href="https://bounsbot.herokuapp.com/login";
         }
     }
 
