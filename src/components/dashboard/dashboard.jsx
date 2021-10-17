@@ -148,10 +148,9 @@ class Dashboard extends Component {
         // }
 
         const body = await fetch('https://discord.com/api/oauth2/token', {
-            headers: headers,
             method: "POST",
             body: formBody
-        });
+        }); //headers: headers,
 
         // console.log(body.status)
         // return
