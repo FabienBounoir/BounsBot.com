@@ -90,12 +90,11 @@ class Dashboard extends Component {
         }
         formBody = formBody.join("&");
 
-        let headers = {
-            'Content-Type': 'application/x-www-form-urlencoded'
-        }
+        // let headers = {
+        //     'Content-Type': 'application/x-www-form-urlencoded'
+        // }
 
         const body = await fetch('https://discord.com/api/oauth2/token', {
-            headers: headers,
             method: "POST",
             body: formBody
         });
@@ -129,8 +128,8 @@ class Dashboard extends Component {
             'client_secret': "_8eU3zihkLxqEQb0EJmCDLeFVOoZEYe2",
             'grant_type': 'authorization_code',
             'code': code,
-            'redirect_uri': "https://bounsbot.herokuapp.com/dashboard"
-        } //'redirect_uri': "http://localhost:3000/dashboard"
+            // 'redirect_uri': "https://bounsbot.herokuapp.com/dashboard"
+        } //'redirect_uri': "http://localhost:3000/dashboard" | 'redirect_uri': "https://bounsbot.herokuapp.com/dashboard"
         
         var formBody = [];
         for (var property in details) {
@@ -217,7 +216,7 @@ class Dashboard extends Component {
                                     <h3 className="nameGuild">{guild.name}</h3>
                                     <div className="typeAccess">{guild.owner ? ("Proprietaire") : ("Bot Master") }</div>
                                 </div>
-                                <a href={`${document.location.href}${guild.id}`}><button className="goGuild">GO</button></a>
+                                <a href={`https://bounsbot.herokuapp.com/dashboard/${guild.id}`}><button className="goGuild">GO</button></a>
                             </div>
                         </div>)
                 }
