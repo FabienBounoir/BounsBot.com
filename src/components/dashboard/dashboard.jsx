@@ -100,8 +100,8 @@ class Dashboard extends Component {
             body: formBody
         });
 
-        console.log(body.status)
-        return
+        // console.log(body.status)
+        // return
 
         if(body.status === 200)
         {
@@ -143,9 +143,9 @@ class Dashboard extends Component {
         }
         formBody = formBody.join("&");
 
-        let headers = {
-            'Content-Type': 'application/x-www-form-urlencoded'
-        }
+        // let headers = {
+        //     'Content-Type': 'application/x-www-form-urlencoded'
+        // }
 
         const body = await fetch('https://discord.com/api/oauth2/token', {
             headers: headers,
@@ -153,8 +153,8 @@ class Dashboard extends Component {
             body: formBody
         });
 
-        console.log(body.status)
-        return
+        // console.log(body.status)
+        // return
 
         if(body.status === 200)
         {
