@@ -54,3 +54,24 @@
     border-color: rgb(155, 157, 159);
     border-image: initial;
 }
+
+@media (max-width: 800px) {
+    .componentGuild {
+        display: grid;
+        grid-template-columns: 1fr 1fr; 
+        gap: 24px;
+        padding-top: 100px;
+        width: 90%;
+    }
+}
+
+
+@media (max-width: 580px) {
+    .componentGuild {
+        display: grid;
+        grid-template-columns: 1fr; 
+        gap: 14px;
+        padding-top: 100px;
+        width: 95%;
+    }
+}

@@ -399,7 +399,7 @@ class Demo extends Component {
             20: "http://ais.absoluteradio.co.uk/absolute90s.mp3",
             21: "http://ais.absoluteradio.co.uk/absolute00s.mp3",
             22: "http://icy-e-bab-04-cr.sharp-stream.com/absoluteclassicrock.mp3",
-            23: "http://loadbalancing.topradio.be/topradio.mp3",
+            23: "https://n05a-eu.rcs.revma.com/cpkhx08pq18uv?_=1449027306?retry=0&rj-tok=AAABfIXTSQ8A3gx2ubZXeVS17A&rj-ttl=5",
             24: "http://radio886.fluidstream.eu/886_live.mp3",
             25: "http://onair.krone.at/kronehit.mp3",
             26: "http://cdn.nrjaudio.fm/audio1/fr/30401/mp3_128.mp3?origine=fluxradios",
