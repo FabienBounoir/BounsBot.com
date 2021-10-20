@@ -3,8 +3,8 @@ import logo from "../picture/logo5.svg";
 
 export const Login = () => {
     return (
-        <div class="sc-10wydb9-0 guBWHp">
-            <img alt="logo" src= { logo } class="sc-10wydb9-1 awsUQ"/>
+        <div className="sc-10wydb9-0 guBWHp">
+            <img alt="logo" src= { logo } className="sc-10wydb9-1 awsUQ"/>
                 <p><strong>Bienvenue sur le site de Bouns'Bot !</strong><br/>Connecte-toi pour continuer...</p>
                 <a className ="boutonConnection" href="https://discord.com/api/oauth2/authorize?client_id=898480744899412019&redirect_uri=https%3A%2F%2Fbounsbot.herokuapp.com%2Fdashboard&response_type=code&scope=email%20identify%20connections%20guilds%20guilds.join" >
                 {/* <a className ="boutonConnection" href="https://discord.com/api/oauth2/authorize?client_id=898480744899412019&redirect_uri=http%3A%2F%2Flocalhost%3A3000%2Fdashboard&response_type=code&scope=email%20identify%20connections%20guilds%20guilds.join" >  */}

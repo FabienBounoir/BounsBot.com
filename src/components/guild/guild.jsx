@@ -56,10 +56,10 @@ class Guild extends Component {
         // console.log(this.state)
         var myHeaders = new Headers();
         myHeaders.append("Content-Type", "application/json");
-        myHeaders.append('Accept', 'application/json');
+        // myHeaders.append('Accept', 'application/json');
         myHeaders.append('Access-Control-Allow-Origin', '*');
         myHeaders.append('Access-Control-Allow-Credentials', true);
-        myHeaders.append('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, PATCH, OPTIONS');
+        myHeaders.append('Access-Control-Allow-Methods', 'PUT');
         myHeaders.append('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content, Accept, Content-Type, Authorization');
 
         var raw = JSON.stringify({
@@ -75,11 +75,10 @@ class Guild extends Component {
             "fun": this.state.fun
         });
 
-        const body = await fetch('http://backendbounsbot.herokuapp.com/guild/'+this.props.match.params.id, {
+        const body = await fetch('https://backendbounsbot.herokuapp.com/guild/'+this.props.match.params.id, {
             method: 'PUT',
             headers: myHeaders,
             body: raw,
-            mode: 'cors',
             redirect: 'follow'
         }).catch(console.log)
 
@@ -174,14 +173,14 @@ class Guild extends Component {
                         </div>);
 
                         if (this.state.notif) {
-                            rank.push(<div class="c84jt0-1 eOdFAi animation-enter-done">
-                                        <div class="c84jt0-0 hpnmyI">
-                                            <div class="c84jt0-3 hxsgSF">
+                            rank.push(<div className="c84jt0-1 eOdFAi animation-enter-done">
+                                        <div className="c84jt0-0 hpnmyI">
+                                            <div className="c84jt0-3 hxsgSF">
                                                 <h2>Success</h2>
                                             </div>
-                                            <div class="c84jt0-4 jRhDtF">Mise à jour effectué<br/><br/></div>
-                                                <div class ="c84jt0-5 eHeEHB">
-                                                    <div class ="sc-6rly6x-1 sc-6rly6x-3 dNbMwg cyEnAs">
+                                            <div className="c84jt0-4 jRhDtF">Mise à jour effectué<br/><br/></div>
+                                                <div className="c84jt0-5 eHeEHB">
+                                                    <div className ="sc-6rly6x-1 sc-6rly6x-3 dNbMwg cyEnAs">
                                                         <button className="sc-1x57bl6-0 hfhcDB" onClick={()=> {this.setState({ notif: false })}} color="#ffffff">Fermer</button>
                                                     </div>
                                                 </div>
