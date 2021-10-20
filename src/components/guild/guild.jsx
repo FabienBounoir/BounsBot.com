@@ -78,15 +78,15 @@ class Guild extends Component {
             "fun": this.state.fun
         });
 
-        const body = await fetch('https://backendbounsbot.herokuapp.com/'+this.props.match.params.id, {
+        const body = await fetch('https://backendbounsbot.herokuapp.com/guild/'+this.props.match.params.id, {
             method: 'PUT',
             headers: myHeaders,
             body: raw,
             mode: 'cors'
         }).catch(console.log)
 
-        console.log(body)
-        if(body)
+        console.log(body.status)
+        if(body.status == 200)
         {
             this.setState({ success: true })
         }
