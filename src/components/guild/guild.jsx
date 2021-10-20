@@ -6,7 +6,8 @@ import { Spinner, Toast } from 'react-bootstrap/'
 
 class Guild extends Component {
     state = {
-        notif: false,
+        success: false,
+        error: false,
         heyreaction: false,
         musique: true,
         playlist: true,
@@ -57,12 +58,14 @@ class Guild extends Component {
         var myHeaders = new Headers();
         myHeaders.append("Content-Type", "application/json");
         // myHeaders.append('Accept', 'application/json');
-        myHeaders.append('Access-Control-Allow-Origin', '*');
-        myHeaders.append('Access-Control-Allow-Credentials', true);
-        myHeaders.append('Access-Control-Allow-Methods', 'PUT');
-        myHeaders.append('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content, Accept, Content-Type, Authorization');
+        // myHeaders.append('Access-Control-Allow-Origin', 'https://backendbounsbot.herokuapp.com/');
+        // myHeaders.append('Access-Control-Allow-Credentials', true);
+        // myHeaders.append('Access-Control-Allow-Methods', 'PUT');
+        // myHeaders.append('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content, Accept, Content-Type, Authorization');
 
-        var raw = JSON.stringify({
+        console.log(JSON.parse(window.localStorage.getItem('dataDiscord'))?.access_token)
+
+        var raw = await JSON.stringify({
             "accesstoken": JSON.parse(window.localStorage.getItem('dataDiscord'))?.access_token,
             "guildId": this.state.guildInfo[0]?.guild,
             "logChannel": this.state.logChannel,
@@ -75,15 +78,22 @@ class Guild extends Component {
             "fun": this.state.fun
         });
 
-        const body = await fetch('https://backendbounsbot.herokuapp.com/guild/'+this.props.match.params.id, {
+        const body = await fetch('https://backendbounsbot.herokuapp.com/'+this.props.match.params.id, {
             method: 'PUT',
             headers: myHeaders,
             body: raw,
-            redirect: 'follow'
+            mode: 'cors'
         }).catch(console.log)
 
         console.log(body)
-        this.setState({ notif: true })
+        if(body)
+        {
+            this.setState({ success: true })
+        }
+        else
+        {
+            this.setState({ error: true })
+        }
     }
 
     changeEtat(test) {
@@ -172,27 +182,43 @@ class Guild extends Component {
                             </div>
                         </div>);
 
-                        if (this.state.notif) {
-                            rank.push(<div className="c84jt0-1 eOdFAi animation-enter-done">
-                                        <div className="c84jt0-0 hpnmyI">
-                                            <div className="c84jt0-3 hxsgSF">
+                        if (this.state.success) {
+                            rank.push(<div className="cardSuccess">
+                                        <div className="cardInsideSuccess">
+                                            <div>
                                                 <h2>Success</h2>
                                             </div>
-                                            <div className="c84jt0-4 jRhDtF">Mise à jour effectué<br/><br/></div>
-                                                <div className="c84jt0-5 eHeEHB">
-                                                    <div className ="sc-6rly6x-1 sc-6rly6x-3 dNbMwg cyEnAs">
-                                                        <button className="sc-1x57bl6-0 hfhcDB" onClick={()=> {this.setState({ notif: false })}} color="#ffffff">Fermer</button>
+                                            <div className="content">Mise à jour effectué<br/><br/></div>
+                                                <div className="zoneInterationSucess">
+                                                    <div>
+                                                        <button className="BoutonClose" onClick={()=> {this.setState({ success: false })}} color="#ffffff">Fermer</button>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>);
-                    }
+                        }
+                        else if(this.state.error)
+                        {
+                            rank.push(<div className="cardSuccess">
+                                        <div className="cardInsideError">
+                                            <div>
+                                                <h2>Erreur</h2>
+                                            </div>
+                                            <div className="content">La mise à jour des informations a échoué<br/><br/></div>
+                                                <div className="zoneInterationError">
+                                                    <div>
+                                                        <button className="BoutonClose" onClick={()=> {this.setState({ error: false })}} color="#ffffff">Fermer</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>);
+                        }
                 }
-                                else
-                                {
-                                    rank.push(<div><Spinner animation="grow" variant="success" /><Spinner animation="grow" variant="success" /><Spinner animation="grow" variant="success" /></div>)
-                                }
-                                return rank;
+                else
+                {
+                    rank.push(<div><Spinner animation="grow" variant="success" /><Spinner animation="grow" variant="success" /><Spinner animation="grow" variant="success" /></div>)
+                }
+                return rank;
           })()}
                             </div>
                             )

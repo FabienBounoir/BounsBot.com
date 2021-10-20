@@ -3,6 +3,7 @@
     grid-template-columns: 1fr 1fr 1fr; 
     gap: 24px;
     padding-top: 24px;
+    padding-bottom: 24px;
     width: 90%;
 }
 
@@ -72,7 +73,7 @@
     border: 0px;
 }
 
-.eOdFAi {
+.cardSuccess {
     z-index: 4000;
     position: fixed;
     left: 0px;
@@ -87,11 +88,8 @@
     background-color: rgba(0, 0, 0, 0.8);
 }
 
-.eOdFAi.animation-enter-done .c84jt0-0 {
-    animation: 250ms cubic-bezier(0.165, 0.84, 0.44, 1) 0s 1 normal forwards running bRXbmO;
-}
-
-.hpnmyI {
+.cardInsideSuccess {
+    padding-top: 10px;
     border-radius: 4px;
     width: 580px;
     max-height: calc(100% - 100px);
@@ -100,13 +98,23 @@
     background-color: rgb(89, 206, 89);
 }
 
-.jRhDtF {
+.cardInsideError {
+    padding-top: 10px;
+    border-radius: 4px;
+    width: 580px;
+    max-height: calc(100% - 100px);
+    display: flex;
+    flex-direction: column;
+    background-color: rgb(206, 89, 89);
+}
+
+.content {
     width: 100%;
     padding: 0px 15px;
     overflow-y: auto;
 }
 
-.hfhcDB {
+.BoutonClose {
     white-space: nowrap;
     user-select: none;
     line-height: 1;
@@ -139,12 +147,20 @@
     }
 }
 
-.eHeEHB {
+.zoneInterationSucess {
     width: 100%;
     padding: 15px;
     border-radius: 0px 0px 3px 3px;
     margin-top: 0px;
     background-color: rgb(40, 134, 43);
+}
+
+.zoneInterationError {
+    width: 100%;
+    padding: 15px;
+    border-radius: 0px 0px 3px 3px;
+    margin-top: 0px;
+    background-color: rgb(134, 40, 40);
 }
 
 @media (max-width: 580px) {
