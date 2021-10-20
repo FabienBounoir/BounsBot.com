@@ -1,6 +1,5 @@
 import "./_guild.css";
 import React, { Component } from 'react'
-import logo from "../picture/logo5.svg";
 import funPicto from "../picture/funPicto.png";
 import musiquePicto from "../picture/musiquePicto.png";
 import radioPicto from "../picture/radioPicto.png";
@@ -102,121 +101,120 @@ class Guild extends Component {
     render() {
         return (
             <div className="Dashboard">
-                <h1 className="titleDashboard">Information de la guild</h1>
+                {/* <h1 className="titleDashboard">Information de la guild</h1> */}
+                <div className="top">
+                    <h1>Information de la guild</h1> 
+                    <div className="search search-bar" data-v-7085cbe2=""></div>
+                </div>
                 {/* <button style={{width: "100px", height: "100px"}} onClick={this.clickMe}></button> */}
                 <button className="save" onClick={this.updateGuildConfig}>Enregistrer</button>
                 {(() => {
                     var rank = [];
-                    if (true) {
-                        rank.push(<div className='componentGuild'>
-                            <div className="guildModule">
-                                <div className="top">
-                                    <img className="picto" alt='logo' width="48" height="48" src={reactionPicto} ></img>
-                                    {/* <button value="true" role="checkbox" type="button" aria-checked="true" aria-label="checked" className="xb4a75-0 hSePco buttonCheck"></button> */}
-                                    {/* <input type='checkbox' className='custom-control-input' id='customSwitchesChecked' defaultChecked/> */}
-                                    <Form.Check className="picto" type="switch" id="custom-switch success" onChange={() => { this.setState({ heyreaction: !this.state.heyreaction }) }} checked={this.state.heyreaction} />
-                                </div>
-                                <h5 className="hrnh5k-0 eeKdki sc-1wkjbe7-8 GoZzi">Réactions</h5>
-                                <div>Laissez le bot reagir avec 👋 / 💤 suivant le message</div>
+                    rank.push(<div className='componentGuild'>
+                        <div className="guildModule">
+                            <div className="top">
+                                <img className="picto" alt='logo' width="48" height="48" src={reactionPicto} ></img>
+                                {/* <button value="true" role="checkbox" type="button" aria-checked="true" aria-label="checked" className="xb4a75-0 hSePco buttonCheck"></button> */}
+                                {/* <input type='checkbox' className='custom-control-input' id='customSwitchesChecked' defaultChecked/> */}
+                                <Form.Check className="picto" type="switch" id="custom-switch success" onChange={() => { this.setState({ heyreaction: !this.state.heyreaction }) }} checked={this.state.heyreaction} />
                             </div>
-                            <div className="guildModule">
-                                <div className="top">
-                                    <img className="picto" alt='logo' width="48" height="48" src={musiquePicto} ></img>
-                                    {/* <button value="true" role="checkbox" type="button" aria-checked="true" aria-label="checked" className="xb4a75-0 hSePco buttonCheck"></button> */}
-                                    {/* <input type='checkbox' className='custom-control-input' id='customSwitchesChecked' defaultChecked/> */}
-                                    <Form.Check type="switch" id="custom-switch success" onChange={() => { this.setState({ musique: !this.state.musique }) }} checked={this.state.musique} />
-                                </div>
-                                <h5 className="hrnh5k-0 eeKdki sc-1wkjbe7-8 GoZzi">Musique</h5>
-                                <div>Laissez vos membres écouter leurs meilleurs musiques</div>
+                            <h5 className="hrnh5k-0 eeKdki sc-1wkjbe7-8 GoZzi">Réactions</h5>
+                            <div>Laissez le bot reagir avec 👋 / 💤 suivant le message</div>
+                        </div>
+                        <div className="guildModule">
+                            <div className="top">
+                                <img className="picto" alt='logo' width="48" height="48" src={musiquePicto} ></img>
+                                {/* <button value="true" role="checkbox" type="button" aria-checked="true" aria-label="checked" className="xb4a75-0 hSePco buttonCheck"></button> */}
+                                {/* <input type='checkbox' className='custom-control-input' id='customSwitchesChecked' defaultChecked/> */}
+                                <Form.Check type="switch" id="custom-switch success" onChange={() => { this.setState({ musique: !this.state.musique }) }} checked={this.state.musique} />
                             </div>
-                            <div className="guildModule">
-                                <div className="top">
-                                    <img className="picto" alt='logo' width="48" height="48" src={playlistPicto} ></img>
-                                    {/* <button value="true" role="checkbox" type="button" aria-checked="true" aria-label="checked" className="xb4a75-0 hSePco buttonCheck"></button> */}
-                                    {/* <input type='checkbox' className='custom-control-input' id='customSwitchesChecked' defaultChecked/> */}
-                                    <Form.Check type="switch" id="custom-switch success" onChange={() => { this.setState({ playlist: !this.state.playlist }) }} checked={this.state.playlist} />
-                                </div>
-                                <h5 className="hrnh5k-0 eeKdki sc-1wkjbe7-8 GoZzi">Playlist</h5>
-                                <div>Laissez vos membres réalisés / modifier / écouté leurs playlists</div>
+                            <h5 className="hrnh5k-0 eeKdki sc-1wkjbe7-8 GoZzi">Musique</h5>
+                            <div>Laissez vos membres écouter leurs meilleurs musiques</div>
+                        </div>
+                        <div className="guildModule">
+                            <div className="top">
+                                <img className="picto" alt='logo' width="48" height="48" src={playlistPicto} ></img>
+                                {/* <button value="true" role="checkbox" type="button" aria-checked="true" aria-label="checked" className="xb4a75-0 hSePco buttonCheck"></button> */}
+                                {/* <input type='checkbox' className='custom-control-input' id='customSwitchesChecked' defaultChecked/> */}
+                                <Form.Check type="switch" id="custom-switch success" onChange={() => { this.setState({ playlist: !this.state.playlist }) }} checked={this.state.playlist} />
                             </div>
-                            <div className="guildModule">
-                                <div className="top">
-                                    <img className="picto" alt='logo' width="48" height="48" src={radioPicto} ></img>
-                                    {/* <button value="true" role="checkbox" type="button" aria-checked="true" aria-label="checked" className="xb4a75-0 hSePco buttonCheck"></button> */}
-                                    {/* <input type='checkbox' className='custom-control-input' id='customSwitchesChecked' defaultChecked/> */}
-                                    <Form.Check type="switch" id="custom-switch success" onChange={() => { this.setState({ radio: !this.state.radio }) }} checked={this.state.radio} />
-                                </div>
-                                <h5 className="hrnh5k-0 eeKdki sc-1wkjbe7-8 GoZzi">Radio</h5>
-                                <div>Laissez vos membres écouter une des 41 radios disponibles sur le Bot</div>
+                            <h5 className="hrnh5k-0 eeKdki sc-1wkjbe7-8 GoZzi">Playlist</h5>
+                            <div>Laissez vos membres réalisés / modifier / écouté leurs playlists</div>
+                        </div>
+                        <div className="guildModule">
+                            <div className="top">
+                                <img className="picto" alt='logo' width="48" height="48" src={radioPicto} ></img>
+                                {/* <button value="true" role="checkbox" type="button" aria-checked="true" aria-label="checked" className="xb4a75-0 hSePco buttonCheck"></button> */}
+                                {/* <input type='checkbox' className='custom-control-input' id='customSwitchesChecked' defaultChecked/> */}
+                                <Form.Check type="switch" id="custom-switch success" onChange={() => { this.setState({ radio: !this.state.radio }) }} checked={this.state.radio} />
                             </div>
-                            <div className="guildModule">
-                                <div className="top">
-                                    <img className="picto" alt='logo' width="48" height="48" src={renamePicto} ></img>
-                                    {/* <button value="true" role="checkbox" type="button" aria-checked="true" aria-label="checked" className="xb4a75-0 hSePco buttonCheck"></button> */}
-                                    {/* <input type='checkbox' className='custom-control-input' id='customSwitchesChecked' defaultChecked/> */}
-                                    <Form.Check type="switch" id="custom-switch success" onChange={() => { this.setState({ rename: !this.state.rename }) }} checked={this.state.rename} />
-                                </div>
-                                <h5 className="hrnh5k-0 eeKdki sc-1wkjbe7-8 GoZzi">Rename</h5>
-                                <div>Laissez le bot rename les membres lorsque leur pseudo n'est pas identifiable par la moderation</div>
+                            <h5 className="hrnh5k-0 eeKdki sc-1wkjbe7-8 GoZzi">Radio</h5>
+                            <div>Laissez vos membres écouter une des 41 radios disponibles sur le Bot</div>
+                        </div>
+                        <div className="guildModule">
+                            <div className="top">
+                                <img className="picto" alt='logo' width="48" height="48" src={renamePicto} ></img>
+                                {/* <button value="true" role="checkbox" type="button" aria-checked="true" aria-label="checked" className="xb4a75-0 hSePco buttonCheck"></button> */}
+                                {/* <input type='checkbox' className='custom-control-input' id='customSwitchesChecked' defaultChecked/> */}
+                                <Form.Check type="switch" id="custom-switch success" onChange={() => { this.setState({ rename: !this.state.rename }) }} checked={this.state.rename} />
                             </div>
-                            <div className="guildModule">
-                                <div className="top">
-                                    <img className="picto" alt='logo' width="48" height="48" src={sheeshPicto} ></img>
-                                    {/* <button value="true" role="checkbox" type="button" aria-checked="true" aria-label="checked" className="xb4a75-0 hSePco buttonCheck"></button> */}
-                                    {/* <input type='checkbox' className='custom-control-input' id='customSwitchesChecked' defaultChecked/> */}
-                                    <Form.Check type="switch" id="custom-switch success" onChange={() => { this.setState({ sheesh: !this.state.sheesh }) }} checked={this.state.sheesh} />
-                                </div>
-                                <h5 className="hrnh5k-0 eeKdki sc-1wkjbe7-8 GoZzi">Sheesh</h5>
-                                <div>Laissez le bot reagir avec son meilleur SHEEEESHHHH si un membre dit sheesh</div>
+                            <h5 className="hrnh5k-0 eeKdki sc-1wkjbe7-8 GoZzi">Rename</h5>
+                            <div>Laissez le bot rename les membres lorsque leur pseudo n'est pas identifiable par la moderation</div>
+                        </div>
+                        <div className="guildModule">
+                            <div className="top">
+                                <img className="picto" alt='logo' width="80" height="80" src={sheeshPicto} ></img>
+                                {/* <button value="true" role="checkbox" type="button" aria-checked="true" aria-label="checked" className="xb4a75-0 hSePco buttonCheck"></button> */}
+                                {/* <input type='checkbox' className='custom-control-input' id='customSwitchesChecked' defaultChecked/> */}
+                                <Form.Check type="switch" id="custom-switch success" onChange={() => { this.setState({ sheesh: !this.state.sheesh }) }} checked={this.state.sheesh} />
                             </div>
-                            <div className="guildModule">
-                                <div className="top">
-                                    <img className="picto" alt='logo' width="48" height="48" src={funPicto} ></img>
-                                    {/* <button value="true" role="checkbox" type="button" aria-checked="true" aria-label="checked" className="xb4a75-0 hSePco buttonCheck"></button> */}
-                                    {/* <input type='checkbox' className='custom-control-input' id='customSwitchesChecked' defaultChecked/> */}
-                                    <Form.Check type="switch" id="custom-switch success" onChange={() => { this.setState({ fun: !this.state.fun }) }} checked={this.state.fun} />
-                                </div>
-                                <h5 className="hrnh5k-0 eeKdki sc-1wkjbe7-8 GoZzi">Fun</h5>
-                                <div>Laissez vos membres s'amuser avec des commandes funs et ludiques</div>
+                            <h5 className="hrnh5k-0 eeKdki sc-1wkjbe7-8 GoZzi">Sheesh</h5>
+                            <div>Laissez le bot reagir avec son meilleur SHEEEESHHHH si un membre dit sheesh</div>
+                        </div>
+                        <div className="guildModule">
+                            <div className="top">
+                                <img className="picto" alt='logo' width="48" height="48" src={funPicto} ></img>
+                                {/* <button value="true" role="checkbox" type="button" aria-checked="true" aria-label="checked" className="xb4a75-0 hSePco buttonCheck"></button> */}
+                                {/* <input type='checkbox' className='custom-control-input' id='customSwitchesChecked' defaultChecked/> */}
+                                <Form.Check type="switch" id="custom-switch success" onChange={() => { this.setState({ fun: !this.state.fun }) }} checked={this.state.fun} />
                             </div>
-                        </div>);
+                            <h5 className="hrnh5k-0 eeKdki sc-1wkjbe7-8 GoZzi">Fun</h5>
+                            <div>Laissez vos membres s'amuser avec des commandes funs et ludiques</div>
+                        </div>
+                    </div>);
 
-                        if (this.state.success) {
-                            rank.push(<div className="cardSuccess">
-                                        <div className="cardInsideSuccess">
-                                            <div>
-                                                <h2>Success</h2>
-                                            </div>
-                                            <div className="content">Mise à jour effectué<br/><br/></div>
-                                                <div className="zoneInterationSucess">
-                                                    <div>
-                                                        <button className="BoutonClose" onClick={()=> {this.setState({ success: false })}} color="#ffffff">Fermer</button>
-                                                    </div>
+                    if (this.state.success) {
+                        rank.push(<div className="cardSuccess">
+                                    <div className="cardInsideSuccess">
+                                        <div>
+                                            <h2>Success</h2>
+                                        </div>
+                                        <div className="content">Mise à jour effectué<br/><br/></div>
+                                            <div className="zoneInterationSucess">
+                                                <div>
+                                                    <button className="BoutonClose" onClick={()=> {this.setState({ success: false })}} color="#ffffff">Fermer</button>
                                                 </div>
                                             </div>
-                                        </div>);
-                        }
-                        else if(this.state.error)
-                        {
-                            rank.push(<div className="cardSuccess">
-                                        <div className="cardInsideError">
-                                            <div>
-                                                <h2>Erreur</h2>
-                                            </div>
-                                            <div className="content">La mise à jour des informations a échoué<br/><br/></div>
-                                                <div className="zoneInterationError">
-                                                    <div>
-                                                        <button className="BoutonClose" onClick={()=> {this.setState({ error: false })}} color="#ffffff">Fermer</button>
-                                                    </div>
+                                        </div>
+                                    </div>);
+                    }
+                    else if(this.state.error)
+                    {
+                        rank.push(<div className="cardSuccess">
+                                    <div className="cardInsideError">
+                                        <div>
+                                            <h2>Erreur</h2>
+                                        </div>
+                                        <div className="content">La mise à jour des informations a échoué<br/><br/></div>
+                                            <div className="zoneInterationError">
+                                                <div>
+                                                    <button className="BoutonClose" onClick={()=> {this.setState({ error: false })}} color="#ffffff">Fermer</button>
                                                 </div>
                                             </div>
-                                        </div>);
-                        }
-                }
-                else
-                {
-                    rank.push(<div><Spinner animation="grow" variant="success" /><Spinner animation="grow" variant="success" /><Spinner animation="grow" variant="success" /></div>)
-                }
+                                        </div>
+                                    </div>);
+                    }
+    
                 return rank;
           })()}
                             </div>

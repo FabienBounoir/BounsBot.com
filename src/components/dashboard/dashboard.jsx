@@ -25,7 +25,8 @@ class Dashboard extends Component {
         });
         const result = await body.json();
 
-        // console.log(result)
+        console.log(result)
+        window.localStorage.setItem('dataUser',JSON.stringify(result))
         // console.log(`https://cdn.discordapp.com/avatars/${result.id}/${result.avatar}.png?size=512`)
         // console.log(`https://cdn.discordapp.com/banners/${result.id}/${result.banner}.png?size=1280`)
         //https://cdn.discordapp.com/banners/266636247017979904/9faf7228f56379b4006a44f9457a9355.png?size=1280
@@ -164,9 +165,13 @@ class Dashboard extends Component {
 
             // console.log(result)
             window.localStorage.setItem('dataDiscord', JSON.stringify(result));
-
+            
             this.getUser()
-            this.getGuilds()
+            document.location.href="/dashboard"; 
+            console.log('saltt')
+            setTimeout(() => {
+                document.location.reload();
+            }, 1000);
         }
         else
         {
@@ -182,14 +187,17 @@ class Dashboard extends Component {
 
         if(window.localStorage.getItem("dataDiscord"))
         {
+            console.log('dataaaa')
             this.refresh_token()
         }
         else if(new URLSearchParams(window.location.search).get('code'))
         {
+            console.log('newww')
             this.exchange_code(new URLSearchParams(window.location.search).get('code'));
         }
         else
         {
+            console.log('test')
             // document.location.href="http://localhost:3000/login"; 
             document.location.href="https://bounsbot.herokuapp.com/login";
         }
@@ -199,7 +207,11 @@ class Dashboard extends Component {
     render() {
         return (
             <div className="Dashboard">
-                <h1 className="titleDashboard">Choisi un serveur</h1>
+                {/* <h1 className="titleDashboard">Choisi un serveur</h1> */}
+                <div className="top">
+                    <h1>Choisi un serveur</h1> 
+                    <div className="search search-bar" data-v-7085cbe2=""></div>
+                </div>
                 <div className='listGuild'>
                 {(() => {
                 var guildList = [];
@@ -217,16 +229,29 @@ class Dashboard extends Component {
                                     <h3 className="nameGuild">{guild.name}</h3>
                                     <div className="typeAccess">{guild.owner ? ("Proprietaire") : ("Bot Master") }</div>
                                 </div>
-                                <a href={`https://bounsbot.herokuapp.com/dashboard/${guild.id}`}><button className="goGuild">GO</button></a>
+                                <a href={`/dashboard/${guild.id}`}><button className="goGuild">GO</button></a>
                             </div>
                         </div>)
                 }
 
                 if(this.state.guilds.length === 0)
                 {
-                    guildList.push(<div className='center'><Spinner animation="grow" variant="success" /></div>)
-                    guildList.push(<div className='center'><Spinner animation="grow" variant="success" /></div>)
-                    guildList.push(<div className='center'><Spinner animation="grow" variant="success" /></div>)
+                    for(let i = 0; i < 6; i++)
+                    {
+                        guildList.push(<div className="Guild">
+                        <div className="profilGuildTemplate">
+                            <div className="banniereTemplate"></div>
+                        </div>
+                        <div className="info">
+                            <div className="infoGuildTemplate">
+                                <h3 className="nameGuildTemplate"></h3>
+                                <div className="typeAccessTemplate"></div>
+                            </div>
+                            {/* <a href={`https://bounsbot.herokuapp.com/dashboard/${guild.id}`}><button className="goGuild">GO</button></a> */}
+                            <div className="goGuildTemplate"></div>
+                        </div>
+                    </div>)
+                    }
                 }
 
                 return guildList;

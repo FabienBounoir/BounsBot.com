@@ -46,3 +46,52 @@ ul {
     height: 7vmin;
     pointer-events: none;
 }
+
+.boutonLogin{
+	border: 0px;
+	padding: 4px 8px 4px 8px;
+    color: #fff;
+    background-color: #0cab34;
+    border-radius: 4px;
+    text-decoration: none;
+    position: relative;
+    font-size: 10px;
+    cursor: pointer;
+    -webkit-user-select: none;
+    user-select: none;
+    z-index: 3;
+    line-height: normal;
+}
+
+.iYBTfC {
+    margin-inline-start: 10px;
+    font-weight: 600;
+    font-size: 13px;
+    color: rgb(255, 255, 255);
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow-x: hidden;
+}
+
+.LogoNav{
+	border-radius: 50%;
+    background-size: 30px;
+    width: 30px;
+    height: 30px;
+    min-height: 30px;
+    min-width: 30px;
+}
+
+.jGScIj {
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+
+@media (max-width: 520px) {
+    .loginTemplate {
+        display: none;
+    }
+}

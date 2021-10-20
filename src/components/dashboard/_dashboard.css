@@ -42,9 +42,10 @@
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     gap: 40px;
-    width: 100%;
+    /* width: 70%; */
     margin-top: 57px;
     margin-bottom: 60px;
+
 }
 
 .Guild {
@@ -84,6 +85,15 @@
     align-items: flex-start;
 }
 
+.infoGuildTemplate {
+    display: flex;
+    flex-direction: column;
+    -webkit-box-pack: justify;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-right: 70px;
+}
+
 .nameGuild {
     margin-right: 12px;
     font-weight: bold;
@@ -97,10 +107,6 @@
     display: -webkit-box;
     -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
-}
-
-.typeAccess {
-
 }
 
 .goGuild {
@@ -135,6 +141,76 @@
     opacity: 0.3;
 }
 
+.banniereTemplate {
+    position: absolute;
+    inset: 0px;
+    z-index: 1;
+    transform: scale(1.4);
+    filter: blur(10px);
+    opacity: 0.3;
+}
+
+.profilGuildTemplate {
+    position: relative;
+    display: flex;
+    -webkit-box-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    align-items: center;
+    border-radius: 8px;
+    height: 152px;
+    width: 100%;
+    overflow: hidden;
+    background: linear-gradient(90deg, rgb(31, 33, 41) 0%, rgb(31, 33, 41) 40%, rgb(34, 37, 45) 50%, rgb(31, 33, 41) 60%, rgb(31, 33, 41) 100%) 0% 0% / 400%;
+    /* animation: 0.9s linear 300ms infinite normal none running profilGuildTemplate; */
+}
+
+.nameGuildTemplate{
+    margin-right: 12px;
+    line-height: 24px;
+    background: rgb(31, 33, 41);
+    margin: 0px 0px 3px;
+    padding: 0px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    width: 120px;
+    height: 20px;
+    border-radius: 3px;
+}
+
+.typeAccessTemplate{
+    width: 100px;
+    height: 15px;
+    background: rgb(31, 33, 41);
+    margin-top: 5px;
+    border-radius: 3px;
+}
+
+.goGuildTemplate{
+    font-family: proxima-nova, sans-serif;
+    box-sizing: border-box;
+    cursor: pointer;
+    position: relative;
+    user-select: none;
+    padding-inline-end: 50px;
+    padding-inline-start: 50px;
+    min-height: 56px;
+    font-size: 16px;
+    line-height: 24px;
+    border-radius: 8px;
+    transition: background-color 0.15s ease-out 0s, color, opacity, border;
+    outline: none;
+    text-decoration: none;
+    background: rgb(31, 33, 41);
+    border-width: initial;
+    border-style: none;
+    border-color: initial;
+    border-image: initial;
+}
+
 .imageGuild {
     position: relative;
     z-index: 2;
@@ -150,3 +226,28 @@
     padding-top: 100px;
     text-align: center;
 }
+
+@media (max-width: 1000px) {
+    .listGuild {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 30px;
+        width: 100%;
+        margin-top: 57px;
+        margin-bottom: 60px;
+        width: 80%;
+    }
+}
+
+@media (max-width: 750px) {
+    .listGuild {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 20px;
+        width: 100%;
+        margin-top: 57px;
+        margin-bottom: 60px;
+        width: 80%;
+    }
+}
+

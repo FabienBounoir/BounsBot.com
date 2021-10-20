@@ -452,7 +452,7 @@ class Demo extends Component {
                                 <div className="content">
                                     <div className="avatarContainer avatar avatarSmall avatarSpeaking" style={{ backgroundImage: "url('/static/media/logo5.a661761a.svg')" }}>
                                     </div>
-                                    <div className="usernameFont username usernameSpeaking" style={{ textAlign: "left;" }}>bouns'Bot</div>
+                                    <div className="usernameFont username usernameSpeaking" style={{ textAlign: "left;" }}>Bouns'Bot</div>
                                 </div>
                             </div>
                             <div className="voiceUser hidden clickable userSmall" id="discord-user-voiceuser" tabIndex="-1" role="button">

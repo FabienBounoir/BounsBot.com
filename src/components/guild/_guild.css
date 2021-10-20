@@ -1,11 +1,23 @@
 .componentGuild {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr; 
-    gap: 24px;
-    padding-top: 24px;
-    padding-bottom: 24px;
+    gap: 40px;
+    /* padding-top: 24px;
+    padding-bottom: 24px; */
     width: 90%;
+    gap: 40px;
+    /* width: 70%; */
+    margin-top: 57px;
+    margin-bottom: 60px;
+    
 }
+
+.Dashboard {
+    min-height: calc(100vh - 470px);
+    /* background-color: #383c41; */
+    padding: 30px;
+}
+
 
 .guildModule {
     background-color: rgb(49, 52, 66);
@@ -16,6 +28,7 @@
     user-select: none;
     color: white;
     text-align: left;
+    border-radius: 8px;
 }
 
 .top {
@@ -170,5 +183,31 @@
         gap: 14px;
         /* padding-top: 100px; */
         width: 95%;
+    }
+}
+
+.top h1 {
+    margin: -2px 0 -12px;
+    font-size: 40px;
+    color: #0cab34;
+    font-family: "Uni Sans","Arial",sans-serif;
+    font-weight: bold;
+}
+
+@media only screen and (max-width: 720px)
+{
+    .top h1 {
+        font-size: 35px;
+    }
+
+    .top {
+        margin-bottom: 25px;
+    }
+}
+
+@media only screen and (max-width: 720px)
+{
+    .Dashboard {
+        padding: 10px;
     }
 }
