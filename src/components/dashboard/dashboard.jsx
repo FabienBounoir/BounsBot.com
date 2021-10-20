@@ -25,9 +25,9 @@ class Dashboard extends Component {
         });
         const result = await body.json();
 
-        console.log(result)
-        console.log(`https://cdn.discordapp.com/avatars/${result.id}/${result.avatar}.png?size=512`)
-        console.log(`https://cdn.discordapp.com/banners/${result.id}/${result.banner}.png?size=1280`)
+        // console.log(result)
+        // console.log(`https://cdn.discordapp.com/avatars/${result.id}/${result.avatar}.png?size=512`)
+        // console.log(`https://cdn.discordapp.com/banners/${result.id}/${result.banner}.png?size=1280`)
         //https://cdn.discordapp.com/banners/266636247017979904/9faf7228f56379b4006a44f9457a9355.png?size=1280
         //https://cdn.discordapp.com/banners/266636247017979904/a_05403f6196307ceb2b639b1522e63e12.png
     }
@@ -53,7 +53,7 @@ class Dashboard extends Component {
 
             let guildAdmin = result.filter(guilds => guilds.permissions === 2147483647)
 
-            console.log(guildAdmin)
+            // console.log(guildAdmin)
 
             this.setState({
                 guilds: guildAdmin, 
@@ -66,7 +66,7 @@ class Dashboard extends Component {
         }
         else
         {
-            console.log("erreur recuperation guild")
+            // console.log("erreur recuperation guild")
             window.localStorage.removeItem('dataDiscord');
             // document.location.href="http://localhost:3000/login"; 
             document.location.href="https://bounsbot.herokuapp.com/login"; 
@@ -110,11 +110,11 @@ class Dashboard extends Component {
             const result = await body.json();
 
             // console.log(result)
-            console.log(window.localStorage.getItem('dataDiscord'))
+            // console.log(window.localStorage.getItem('dataDiscord'))
 
             window.localStorage.setItem('dataDiscord', JSON.stringify(result));
 
-            console.log(window.localStorage.getItem('dataDiscord'))
+            // console.log(window.loctalStorage.getItem('dataDiscord'))
 
             this.getUser()
             this.getGuilds()
@@ -180,10 +180,6 @@ class Dashboard extends Component {
         // console.log(new URLSearchParams(window.location.search).get('code'))
         // this.exchange_code(new URLSearchParams(window.location.search).get('code'));
 
-        console.log(window.localStorage.getItem("dataDiscord"))
-        console.log(new URLSearchParams(window.location.search).get('code'))
-
-
         if(window.localStorage.getItem("dataDiscord"))
         {
             this.refresh_token()
@@ -194,7 +190,6 @@ class Dashboard extends Component {
         }
         else
         {
-            console.log("non connecté")
             // document.location.href="http://localhost:3000/login"; 
             document.location.href="https://bounsbot.herokuapp.com/login";
         }

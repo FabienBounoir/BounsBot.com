@@ -1,8 +1,16 @@
 import "./_guild.css";
 import React, { Component } from 'react'
 import logo from "../picture/logo5.svg";
+import funPicto from "../picture/funPicto.png";
+import musiquePicto from "../picture/musiquePicto.png";
+import radioPicto from "../picture/radioPicto.png";
+import sheeshPicto from "../picture/sheeshPicto.png";
+import playlistPicto from "../picture/playlistPicto.png";
+import renamePicto from "../picture/renamePicto.png";
+import reactionPicto from "../picture/reactionPicto.png";
+
 import { Form } from 'react-bootstrap/'
-import { Spinner, Toast } from 'react-bootstrap/'
+import { Spinner } from 'react-bootstrap/'
 
 class Guild extends Component {
     state = {
@@ -54,16 +62,8 @@ class Guild extends Component {
     }
 
     updateGuildConfig = async () => {
-        // console.log(this.state)
         var myHeaders = new Headers();
         myHeaders.append("Content-Type", "application/json");
-        // myHeaders.append('Accept', 'application/json');
-        // myHeaders.append('Access-Control-Allow-Origin', 'https://backendbounsbot.herokuapp.com/');
-        // myHeaders.append('Access-Control-Allow-Credentials', true);
-        // myHeaders.append('Access-Control-Allow-Methods', 'PUT');
-        // myHeaders.append('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content, Accept, Content-Type, Authorization');
-
-        console.log(JSON.parse(window.localStorage.getItem('dataDiscord'))?.access_token)
 
         var raw = await JSON.stringify({
             "accesstoken": JSON.parse(window.localStorage.getItem('dataDiscord'))?.access_token,
@@ -85,7 +85,6 @@ class Guild extends Component {
             mode: 'cors'
         }).catch(console.log)
 
-        console.log(body.status)
         if(body.status == 200)
         {
             this.setState({ success: true })
@@ -112,7 +111,7 @@ class Guild extends Component {
                         rank.push(<div className='componentGuild'>
                             <div className="guildModule">
                                 <div className="top">
-                                    <img className="picto" alt='logo' width="48" height="48" src={logo} ></img>
+                                    <img className="picto" alt='logo' width="48" height="48" src={reactionPicto} ></img>
                                     {/* <button value="true" role="checkbox" type="button" aria-checked="true" aria-label="checked" className="xb4a75-0 hSePco buttonCheck"></button> */}
                                     {/* <input type='checkbox' className='custom-control-input' id='customSwitchesChecked' defaultChecked/> */}
                                     <Form.Check className="picto" type="switch" id="custom-switch success" onChange={() => { this.setState({ heyreaction: !this.state.heyreaction }) }} checked={this.state.heyreaction} />
@@ -122,7 +121,7 @@ class Guild extends Component {
                             </div>
                             <div className="guildModule">
                                 <div className="top">
-                                    <img className="picto" alt='logo' width="48" height="48" src={logo} ></img>
+                                    <img className="picto" alt='logo' width="48" height="48" src={musiquePicto} ></img>
                                     {/* <button value="true" role="checkbox" type="button" aria-checked="true" aria-label="checked" className="xb4a75-0 hSePco buttonCheck"></button> */}
                                     {/* <input type='checkbox' className='custom-control-input' id='customSwitchesChecked' defaultChecked/> */}
                                     <Form.Check type="switch" id="custom-switch success" onChange={() => { this.setState({ musique: !this.state.musique }) }} checked={this.state.musique} />
@@ -132,7 +131,7 @@ class Guild extends Component {
                             </div>
                             <div className="guildModule">
                                 <div className="top">
-                                    <img className="picto" alt='logo' width="48" height="48" src={logo} ></img>
+                                    <img className="picto" alt='logo' width="48" height="48" src={playlistPicto} ></img>
                                     {/* <button value="true" role="checkbox" type="button" aria-checked="true" aria-label="checked" className="xb4a75-0 hSePco buttonCheck"></button> */}
                                     {/* <input type='checkbox' className='custom-control-input' id='customSwitchesChecked' defaultChecked/> */}
                                     <Form.Check type="switch" id="custom-switch success" onChange={() => { this.setState({ playlist: !this.state.playlist }) }} checked={this.state.playlist} />
@@ -142,7 +141,7 @@ class Guild extends Component {
                             </div>
                             <div className="guildModule">
                                 <div className="top">
-                                    <img className="picto" alt='logo' width="48" height="48" src={logo} ></img>
+                                    <img className="picto" alt='logo' width="48" height="48" src={radioPicto} ></img>
                                     {/* <button value="true" role="checkbox" type="button" aria-checked="true" aria-label="checked" className="xb4a75-0 hSePco buttonCheck"></button> */}
                                     {/* <input type='checkbox' className='custom-control-input' id='customSwitchesChecked' defaultChecked/> */}
                                     <Form.Check type="switch" id="custom-switch success" onChange={() => { this.setState({ radio: !this.state.radio }) }} checked={this.state.radio} />
@@ -152,7 +151,7 @@ class Guild extends Component {
                             </div>
                             <div className="guildModule">
                                 <div className="top">
-                                    <img className="picto" alt='logo' width="48" height="48" src={logo} ></img>
+                                    <img className="picto" alt='logo' width="48" height="48" src={renamePicto} ></img>
                                     {/* <button value="true" role="checkbox" type="button" aria-checked="true" aria-label="checked" className="xb4a75-0 hSePco buttonCheck"></button> */}
                                     {/* <input type='checkbox' className='custom-control-input' id='customSwitchesChecked' defaultChecked/> */}
                                     <Form.Check type="switch" id="custom-switch success" onChange={() => { this.setState({ rename: !this.state.rename }) }} checked={this.state.rename} />
@@ -162,7 +161,7 @@ class Guild extends Component {
                             </div>
                             <div className="guildModule">
                                 <div className="top">
-                                    <img className="picto" alt='logo' width="48" height="48" src={logo} ></img>
+                                    <img className="picto" alt='logo' width="48" height="48" src={sheeshPicto} ></img>
                                     {/* <button value="true" role="checkbox" type="button" aria-checked="true" aria-label="checked" className="xb4a75-0 hSePco buttonCheck"></button> */}
                                     {/* <input type='checkbox' className='custom-control-input' id='customSwitchesChecked' defaultChecked/> */}
                                     <Form.Check type="switch" id="custom-switch success" onChange={() => { this.setState({ sheesh: !this.state.sheesh }) }} checked={this.state.sheesh} />
@@ -172,7 +171,7 @@ class Guild extends Component {
                             </div>
                             <div className="guildModule">
                                 <div className="top">
-                                    <img className="picto" alt='logo' width="48" height="48" src={logo} ></img>
+                                    <img className="picto" alt='logo' width="48" height="48" src={funPicto} ></img>
                                     {/* <button value="true" role="checkbox" type="button" aria-checked="true" aria-label="checked" className="xb4a75-0 hSePco buttonCheck"></button> */}
                                     {/* <input type='checkbox' className='custom-control-input' id='customSwitchesChecked' defaultChecked/> */}
                                     <Form.Check type="switch" id="custom-switch success" onChange={() => { this.setState({ fun: !this.state.fun }) }} checked={this.state.fun} />
