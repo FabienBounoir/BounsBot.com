@@ -4,7 +4,6 @@ import React, { Component } from 'react'
 import logo from '../picture/logo5.svg';
 import disconnect from '../picture/disconnect.png';
 import { Navbar,Container , Nav } from 'react-bootstrap/'
-let login = false
 
 class Navigation extends Component {
     state = {
@@ -24,7 +23,7 @@ class Navigation extends Component {
 
     updateLogin = () => {
         setTimeout(() => {
-            if(window.localStorage.getItem('dataUser') && window.localStorage.getItem('dataUser').length != 0)
+            if(window.localStorage.getItem('dataUser') && window.localStorage.getItem('dataUser').length !== 0)
             {
                 this.setState({ login: true });
             }

@@ -1,6 +1,5 @@
 import "./_dashboard.css";
 import React, { Component } from 'react'
-import { Spinner } from 'react-bootstrap/'
 
 class Dashboard extends Component {
     state = {
