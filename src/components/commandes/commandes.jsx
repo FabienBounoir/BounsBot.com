@@ -209,7 +209,7 @@ export const Commandes = () => {
         </Table>
         <Table striped bordered hover variant="dark">
             <thead>
-                <tr><th className="titleCommand" colSpan="2">ㆍTest</th></tr>
+                <tr><th className="titleCommand" colSpan="2">ㆍBot</th></tr>
             </thead>
             <tbody>
                 <tr>
@@ -219,6 +219,14 @@ export const Commandes = () => {
                 <tr>
                     <td>-ping</td>
                     <td>Resevoir un magnifique pong du Bouns'bot</td>
+                </tr>
+                <tr>
+                    <td>-report (texte)</td>
+                    <td>Report un bug sur le Bot ou demander une amélioration</td>
+                </tr>
+                <tr>
+                    <td>-invite</td>
+                    <td>Invité le bot sur votre serveur</td>
                 </tr>
             </tbody>
         </Table>
@@ -248,12 +256,24 @@ export const Commandes = () => {
                     <td>Affiche un gif de Pikachu</td>
                 </tr>
                 <tr>
+                    <td>-cat</td>
+                    <td>Affiche un gif de chat</td>
+                </tr>   
+                <tr>
+                    <td>-dog</td>
+                    <td>Affiche un chien dans le channel</td>
+                </tr>   
+                <tr>
                     <td>-anniv</td>
                     <td>Souhaiter un joyeux anniversaire a un membre du serveur</td>
                 </tr>   
                 <tr>
                     <td>-comment (Nom) (Text)</td>
                     <td>Genere un fake commentaire youtube</td>
+                </tr>  
+                <tr>
+                    <td>-fortnite (Pseudo)</td>
+                    <td>Information compte fortnite</td>
                 </tr>  
             </tbody>
         </Table>
