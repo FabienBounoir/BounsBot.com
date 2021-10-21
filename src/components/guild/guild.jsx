@@ -7,9 +7,7 @@ import sheeshPicto from "../picture/sheeshPicto.png";
 import playlistPicto from "../picture/playlistPicto.png";
 import renamePicto from "../picture/renamePicto.png";
 import reactionPicto from "../picture/reactionPicto.png";
-
 import { Form } from 'react-bootstrap/'
-import { Spinner } from 'react-bootstrap/'
 
 class Guild extends Component {
     state = {

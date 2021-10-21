@@ -7,6 +7,7 @@ import { Features } from "../components/features/features";
 import { Commandes } from "../components/commandes/commandes";
 import Level from "../components/level/level";
 import Playlist from "../components/playlist/playlist";
+import infoPlaylist from "../components/infoPlaylist/infoPlaylist";
 import { ErreurPage } from "../components/ErreurPage/ErreurPage";
 import { Login } from "../components/login/login";
 import Dashboard from "../components/dashboard/dashboard";
@@ -36,6 +37,8 @@ export const App = () => {
           </Route>
           <Route exact path="/playlist">
             <Playlist />
+          </Route>
+          <Route exact path="/playlist/:id" component={infoPlaylist}>
           </Route>
           <Route exact path="/dashboard">
             <Dashboard />

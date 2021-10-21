@@ -1,0 +1,44 @@
+.renderPLaylist{
+    /* grid-auto-rows: auto; */
+    grid-template-rows: 1fr;
+    overflow-y: hidden;
+    justify-content: center;
+    display: grid;
+    grid-template-columns: repeat(auto-fill,minmax(300px,1fr));
+}
+
+.color{
+    background-color: red;
+}
+
+.cardTemplate{
+    -webkit-box-flex: 1;
+    background-color: #181818;
+    border-radius: 4px;
+    -ms-flex: 1;
+    flex: 1;
+    isolation: isolate;
+    padding: 16px;
+    position: relative;
+    -webkit-transition: background-color .3s ease;
+    transition: background-color .3s ease;
+    width: 100%;
+    border-radius: 15px;
+}
+
+.card:hover{
+    background-color: red;
+}
+
+.conteneur{
+    height: 100%;
+}
+
+.image{
+    margin-bottom: 16px;
+    position: relative;
+}
+
+.info{
+    min-height: 62px;
+}
