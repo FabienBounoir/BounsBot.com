@@ -12,6 +12,7 @@ class Navigation extends Component {
 
     componentDidMount() {
         this.updateLogin();
+        fetch("https://backendbounsbot.herokuapp.com")
     }
 
     
