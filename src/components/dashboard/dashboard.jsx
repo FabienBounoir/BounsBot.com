@@ -25,7 +25,6 @@ class Dashboard extends Component {
         });
         const result = await body.json();
 
-        console.log(result)
         window.localStorage.setItem('dataUser',JSON.stringify(result))
         // console.log(`https://cdn.discordapp.com/avatars/${result.id}/${result.avatar}.png?size=512`)
         // console.log(`https://cdn.discordapp.com/banners/${result.id}/${result.banner}.png?size=1280`)
@@ -54,23 +53,14 @@ class Dashboard extends Component {
 
             let guildAdmin = result.filter(guilds => guilds.permissions === 2147483647)
 
-            // console.log(guildAdmin)
-
             this.setState({
                 guilds: guildAdmin, 
             });
-    
-            // for(let i = 0; i < guildAdmin.length; i++)
-            // {
-            //     console.log(`https://cdn.discordapp.com/icons/${guildAdmin[i].id}/${guildAdmin[i].icon}.jpg`)
-            // }
         }
         else
         {
-            // console.log("erreur recuperation guild")
             window.localStorage.removeItem('dataDiscord');
-            // document.location.href="http://localhost:3000/login"; 
-            document.location.href="https://bounsbot.herokuapp.com/login"; 
+            document.location.href="/login"; 
         }
     }
 
@@ -103,9 +93,6 @@ class Dashboard extends Component {
             headers:headers
         });
 
-        // console.log(body.status)
-        // return
-
         if(body.status === 200)
         {
             const result = await body.json();
@@ -115,16 +102,13 @@ class Dashboard extends Component {
 
             window.localStorage.setItem('dataDiscord', JSON.stringify(result));
 
-            // console.log(window.loctalStorage.getItem('dataDiscord'))
-
             this.getUser()
             this.getGuilds()
         }
         else
         {
             window.localStorage.removeItem('dataDiscord');
-            // document.location.href="http://localhost:3000/login"; 
-            document.location.href="https://bounsbot.herokuapp.com/login"; 
+            document.location.href="/login"; 
         }
     }
 
@@ -153,53 +137,37 @@ class Dashboard extends Component {
             headers: headers,
             method: "POST",
             body: formBody
-        }); //headers: headers,
-
-        // console.log(body.status)
-        // return
+        });
 
         if(body.status === 200)
         {
 
             const result = await body.json();
 
-            // console.log(result)
             window.localStorage.setItem('dataDiscord', JSON.stringify(result));
             
             this.getUser()
             document.location.href="/dashboard"; 
-            console.log('saltt')
-            setTimeout(() => {
-                document.location.reload();
-            }, 1000);
         }
         else
         {
             window.localStorage.removeItem('dataDiscord');
-            // document.location.href="http://localhost:3000/login"; 
-            document.location.href="https://bounsbot.herokuapp.com/login"; 
+            document.location.href="/login"; 
         }
     }
 
     componentDidMount() {
-        // console.log(new URLSearchParams(window.location.search).get('code'))
-        // this.exchange_code(new URLSearchParams(window.location.search).get('code'));
-
         if(window.localStorage.getItem("dataDiscord"))
         {
-            console.log('dataaaa')
             this.refresh_token()
         }
         else if(new URLSearchParams(window.location.search).get('code'))
         {
-            console.log('newww')
             this.exchange_code(new URLSearchParams(window.location.search).get('code'));
         }
         else
         {
-            console.log('test')
-            // document.location.href="http://localhost:3000/login"; 
-            document.location.href="https://bounsbot.herokuapp.com/login";
+            document.location.href="/login"; 
         }
     }
 
@@ -207,7 +175,6 @@ class Dashboard extends Component {
     render() {
         return (
             <div className="Dashboard">
-                {/* <h1 className="titleDashboard">Choisi un serveur</h1> */}
                 <div className="top">
                     <h1>Choisi un serveur</h1> 
                     <div className="search search-bar" data-v-7085cbe2=""></div>
@@ -218,7 +185,6 @@ class Dashboard extends Component {
 
                 for (let guild of this.state.guilds) {
                     guildList.push(
-                    // <div className='listGuild'>
                         <div className="Guild">
                             <div className="profilGuild">
                                 <div className="banniere" style={{background: "url(\"https://cdn.discordapp.com/icons/"+guild.id+"/"+guild.icon+".jpg\")"}}></div>
@@ -263,5 +229,3 @@ class Dashboard extends Component {
 }
 
 export default Dashboard;
-
-// https://discord.com/api/oauth2/authorize?client_id=898480744899412019&redire

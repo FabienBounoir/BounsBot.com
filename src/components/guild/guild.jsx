@@ -104,7 +104,7 @@ class Guild extends Component {
                 {/* <h1 className="titleDashboard">Information de la guild</h1> */}
                 <div className="top">
                     <h1>Information de la guild</h1> 
-                    <div className="search search-bar" data-v-7085cbe2=""></div>
+                    {/* <div className="search search-bar" data-v-7085cbe2=""></div> */}
                 </div>
                 {/* <button style={{width: "100px", height: "100px"}} onClick={this.clickMe}></button> */}
                 <button className="save" onClick={this.updateGuildConfig}>Enregistrer</button>

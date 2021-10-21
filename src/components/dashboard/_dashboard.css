@@ -107,6 +107,7 @@
     display: -webkit-box;
     -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
+    text-align: left;
 }
 
 .goGuild {
@@ -130,6 +131,7 @@
     border-style: none;
     border-color: initial;
     border-image: initial;
+    margin-left: 20px;
 }
 
 .banniere {
@@ -187,6 +189,10 @@
     background: rgb(31, 33, 41);
     margin-top: 5px;
     border-radius: 3px;
+}
+
+.typeAccess{
+    color: #9b9d9f
 }
 
 .goGuildTemplate{
