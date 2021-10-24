@@ -10,7 +10,7 @@ export const Commandes = () => {
             <div className="search search-bar" data-v-7085cbe2=""></div>
         </div>
         <>
-        {/* <Table striped bordered hover variant="dark">
+        <Table striped bordered hover variant="dark">
             <thead>
                 <tr><th className="titleCommand" colSpan="2">ㆍMusique</th></tr>
             </thead>
@@ -56,7 +56,7 @@ export const Commandes = () => {
                     <td>Rechercher une musique</td>
                 </tr>
             </tbody>
-        </Table> */}
+        </Table>
         <Table striped bordered hover variant="dark">
             <thead>
                 <tr><th className="titleCommand" colSpan="2">ㆍRadio <a className="testRadio" href="./demo">test</a></th></tr>
@@ -72,7 +72,7 @@ export const Commandes = () => {
                 </tr>
             </tbody>
         </Table>
-        {/* <Table striped bordered hover variant="dark">
+        <Table striped bordered hover variant="dark">
             <thead>
                 <tr><th className="titleCommand" colSpan="2">ㆍPlaylist <a className="testRadio" href="./playlist">Playlist Disponible</a></th></tr>
             </thead>
@@ -102,7 +102,7 @@ export const Commandes = () => {
                     <td>Rechercher des playlists</td>
                 </tr>               
             </tbody>
-        </Table> */}
+        </Table>
         <Table striped bordered hover variant="dark">
             <thead>
                 <tr><th className="titleCommand" colSpan="2">ㆍConfiguration</th></tr>
@@ -124,18 +124,18 @@ export const Commandes = () => {
                     <td>-set rename (true/false)</td>
                     <td>Config l'auto rename lorsqu'un pseudo n'est pas valide</td>
                 </tr>   
-                {/* <tr>
+                <tr>
                     <td>-set musique (true/false)</td>
                     <td>Config les commandes musique</td>
-                </tr>   */}
+                </tr>  
                 <tr>
                     <td>-set radio (true/false)</td>
                     <td>Config les commandes radio</td>
                 </tr>  
-                {/* <tr>
+                <tr>
                     <td>-set playlist (true/false)</td>
                     <td>Config les commandes playlist</td>
-                </tr>    */}
+                </tr>   
                 <tr>
                     <td>-set fun (true/false)</td>
                     <td>Config les commandes fun</td>
