@@ -12,6 +12,65 @@
     
 }
 
+.musiqueRender{
+    margin-top: 50px;
+    background-color: rgb(49, 52, 66);
+    border-radius: 4px;
+    box-shadow: rgb(0 0 0 / 8%) 0px 4px 4px;
+    padding: 24px;
+    user-select: none;
+    color: white;
+    border-radius: 8px;
+    width: calc(100vh - 100px);
+}
+
+.listFile {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    min-height: 330px;
+    height: 330px;
+    border: 1px solid rgba(255, 255, 255, 0.153);
+    overflow-y: scroll;
+    border-radius: 10px;
+    background-color: rgb(31, 33, 41);
+}
+
+.listFile p {
+    color: white;
+    text-align: left;
+    padding: 10px 10px 10px 10px;
+    margin-bottom: 0px;
+}
+
+.previewMusic {
+    width: 150px;
+    height: 150px;
+    background-color: rgba(255, 255, 255, 0.125);
+    background-size: cover;
+    background-position: center center;
+    border-radius: 10px;
+    margin: 0 auto;
+}
+
+.playerMusic {
+    flex: 1 1 0%;
+    display: flex;
+    flex-direction: row;
+    -webkit-box-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    justify-content: center;
+    flex-direction: row;
+    color: #0cab34;
+}
+
+.playerMusic svg {
+    margin: 15px;
+    width: 40px;
+    height: 40px;
+}
+
 .Dashboard {
     min-height: calc(100vh - 470px);
     /* background-color: #383c41; */
