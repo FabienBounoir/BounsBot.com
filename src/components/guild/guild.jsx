@@ -367,10 +367,13 @@ class Guild extends Component {
                     {(() => {
                         var renderFile = []
 
-                        for (let i = 1; i < this.state.file?.name.length; i++) {
-                            renderFile.push(
-                                <p>{ this.state.file.name[i] }</p>
-                            )
+                        if(this.state.file.name)
+                        {
+                            for (let i = 1; i < this.state.file?.name.length; i++) {
+                                renderFile.push(
+                                    <p>{ this.state.file.name[i] }</p>
+                                )
+                            }
                         }
 
                         return renderFile
