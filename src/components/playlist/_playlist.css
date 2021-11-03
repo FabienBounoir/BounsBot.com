@@ -5,6 +5,7 @@
     justify-content: center;
     display: grid;
     grid-template-columns: repeat(auto-fill,minmax(300px,1fr));
+    gap: 1em;
 }
 
 .color{
@@ -26,6 +27,10 @@
     border-radius: 15px;
 }
 
+.cardCenter{
+    margin: 0 auto;
+}
+
 .card:hover{
     background-color: red;
 }
@@ -41,4 +46,10 @@
 
 .info{
     min-height: 62px;
+}
+
+@media (max-width: 435px) {
+    .search {
+        display: none;
+    }
 }

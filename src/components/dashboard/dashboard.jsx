@@ -24,6 +24,11 @@ class Dashboard extends Component {
         });
         const result = await body.json();
 
+        if(body.status !== 200)
+        {
+            this.refresh_token()
+        }
+
         window.localStorage.setItem('dataUser',JSON.stringify(result))
         // console.log(`https://cdn.discordapp.com/avatars/${result.id}/${result.avatar}.png?size=512`)
         // console.log(`https://cdn.discordapp.com/banners/${result.id}/${result.banner}.png?size=1280`)
@@ -158,7 +163,9 @@ class Dashboard extends Component {
     componentDidMount() {
         if(window.localStorage.getItem("dataDiscord"))
         {
-            this.refresh_token()
+            // this.refresh_token()
+            this.getUser()
+            this.getGuilds()
         }
         else if(new URLSearchParams(window.location.search).get('code'))
         {
@@ -209,7 +216,7 @@ class Dashboard extends Component {
                         </div>
                         <div className="info">
                             <div className="infoGuildTemplate">
-                                <h3 className="nameGuildTemplate"></h3>
+                                <h3 className="nameGuildTemplate"> </h3>
                                 <div className="typeAccessTemplate"></div>
                             </div>
                             {/* <a href={`https://bounsbot.herokuapp.com/dashboard/${guild.id}`}><button className="goGuild">GO</button></a> */}

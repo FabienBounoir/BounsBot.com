@@ -93,18 +93,20 @@ class Playlist extends Component {
                         for (let i = 0; i < this.state.playlistList.length; i++) {
 
                             playlistElement.push(
-                                <Card key={ i } className="cardTemplate" style={{ width: '18rem', backgroundColor: "#181818", color:'white', margin: "10px" }}>
-                                <a href={"/playlist/" + this.state.playlistList[i].nom} style={{"textDecoration": "none" }}>
-                                <Card.Img variant="top" src={this.state.playlistList[i].picture} />
-                                <Card.Body>
-                                    <Card.Title style={{ color: '#0cab34', fontSize: '150%' }}>{ this.state.playlistList[i].nom[0].toUpperCase() }{ this.state.playlistList[i].nom.slice(1) }</Card.Title>
-                                </Card.Body>
-                                <ListGroup style={{"borderRadius": "5px" }}>
-                                <ListGroupItem style={{backgroundColor: "#0cab34" }} >{ this.state.playlistList[i].ownerName }</ListGroupItem>
-                                <ListGroupItem style={{backgroundColor: "#0cab34" }} >{ this.state.playlistList[i].musique.length } musiques</ListGroupItem>
-                                </ListGroup>
-                                </a>
-                                </Card>
+                                <div className="cardCenter">
+                                    <Card key={ i } className="cardTemplate" style={{ width: '18rem', backgroundColor: "#181818", color:'white', margin: "10px" }}>
+                                    <a href={"/playlist/" + this.state.playlistList[i].nom} style={{"textDecoration": "none" }}>
+                                    <Card.Img width="254px" height="254px" variant="top" src={this.state.playlistList[i].picture} />
+                                    <Card.Body>
+                                        <Card.Title style={{ color: '#0cab34', fontSize: '150%' }}>{ this.state.playlistList[i].nom[0].toUpperCase() }{ this.state.playlistList[i].nom.slice(1) }</Card.Title>
+                                    </Card.Body>
+                                    <ListGroup style={{"borderRadius": "5px" }}>
+                                    <ListGroupItem style={{backgroundColor: "#0cab34" }} >{ this.state.playlistList[i].ownerName }</ListGroupItem>
+                                    <ListGroupItem style={{backgroundColor: "#0cab34" }} >{ this.state.playlistList[i].musique.length } musiques</ListGroupItem>
+                                    </ListGroup>
+                                    </a>
+                                    </Card>
+                                </div>
                             );
                         }
                         return <InfiniteScroll dataLength={this.state.playlistList.length} next={this.getData} hasMore={this.state.hasMoreData} loader={<div><Spinner animation="grow" variant="success" /><Spinner animation="grow" variant="success" /><Spinner animation="grow" variant="success" /></div>}><div className="renderPLaylist">{playlistElement}</div></InfiniteScroll>;
