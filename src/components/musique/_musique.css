@@ -1,0 +1,89 @@
+.previewMusic {
+    width: 150px;
+    height: 150px;
+    background-color: rgba(255, 255, 255, 0.125);
+    background-size: cover;
+    background-position: center center;
+    border-radius: 10px;
+    margin: 0 auto;
+}
+
+.playerMusic {
+    flex: 1 1 0%;
+    display: flex;
+    flex-direction: row;
+    -webkit-box-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    justify-content: center;
+    flex-direction: row;
+    color: #0cab34;
+}
+
+.playerMusic svg {
+    margin: 15px;
+    width: 40px;
+    height: 40px;
+}
+
+.musiqueRender{
+    margin-top: 50px;
+    background-color: rgb(49, 52, 66);
+    border-radius: 4px;
+    box-shadow: rgb(0 0 0 / 8%) 0px 4px 4px;
+    padding: 24px;
+    user-select: none;
+    color: white;
+    border-radius: 8px;
+    width: calc(100vh - 100px);
+}
+
+.playerMusic svg{
+    transition: transform 330ms ease-in-out;
+}
+
+.playerMusic svg:hover {
+    transform: scale(1.10);
+}
+
+@media (max-width: 900px) {
+    .musiqueRender{
+        margin-top: 50px;
+        background-color: rgb(49, 52, 66);
+        border-radius: 4px;
+        box-shadow: rgb(0 0 0 / 8%) 0px 4px 4px;
+        padding: 24px;
+        user-select: none;
+        color: white;
+        border-radius: 8px;
+        width: calc(100vh - 200px);
+    }
+}
+
+@media (max-width: 765px) {
+    .musiqueRender{
+        margin-top: 50px;
+        background-color: rgb(49, 52, 66);
+        border-radius: 4px;
+        box-shadow: rgb(0 0 0 / 8%) 0px 4px 4px;
+        padding: 24px;
+        user-select: none;
+        color: white;
+        border-radius: 8px;
+        width: calc(100vh - 400px);
+    }
+}
+
+@media (max-width: 550px) {
+    .musiqueRender{
+        margin-top: 50px;
+        background-color: rgb(49, 52, 66);
+        border-radius: 4px;
+        box-shadow: rgb(0 0 0 / 8%) 0px 4px 4px;
+        padding: 24px;
+        user-select: none;
+        color: white;
+        border-radius: 8px;
+        width: calc(100vh - 500px);
+    }
+}

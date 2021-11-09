@@ -55,11 +55,23 @@ export const Commandes = () => {
                     <td>-search (Recherche)</td>
                     <td>Rechercher une musique</td>
                 </tr>
+                <tr>
+                    <td>-loop</td>
+                    <td>Mettre la musique en boucle</td>
+                </tr>
+                <tr>
+                    <td>-lyrics (Name)</td>
+                    <td>Avoir les lyrics de la musique en cours ou celle-ci passé en paramètre</td>
+                </tr>
+                <tr>
+                    <td>-volume (chiffre)</td>
+                    <td>Changer le volume de la musique actuelle</td>
+                </tr>
             </tbody>
         </Table>
         <Table striped bordered hover variant="dark">
             <thead>
-                <tr><th className="titleCommand" colSpan="2">ㆍRadio <a className="testRadio" href="./demo">test</a></th></tr>
+                <tr><th className="titleCommand" colSpan="2">ㆍRadio <a className="testRadio" href="./demo">Demo</a></th></tr>
             </thead>
             <tbody>
                 <tr>
@@ -74,7 +86,7 @@ export const Commandes = () => {
         </Table>
         <Table striped bordered hover variant="dark">
             <thead>
-                <tr><th className="titleCommand" colSpan="2">ㆍPlaylist <a className="testRadio" href="./playlist">Playlist Disponible</a></th></tr>
+                <tr><th className="titleCommand" colSpan="2">ㆍPlaylist <a className="testRadio" href="./playlist">Liste</a></th></tr>
             </thead>
             <tbody>
                 <tr>
@@ -275,6 +287,17 @@ export const Commandes = () => {
                     <td>-fortnite (Pseudo)</td>
                     <td>Information compte fortnite</td>
                 </tr>  
+            </tbody>
+        </Table>
+        <Table striped bordered hover variant="dark">
+            <thead>
+                <tr><th className="titleCommand" colSpan="2">ㆍ Advance</th></tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>-gettemplate</td>
+                    <td>Recupérer sous forme de JSON les differents channel avec leur nom, le nom du serveur et le nom du bot, l'icone et la banniere du serveur</td>
+                </tr>
             </tbody>
         </Table>
         </>

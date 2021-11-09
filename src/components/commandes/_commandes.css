@@ -24,11 +24,12 @@
     -moz-user-select: none;
     -ms-user-select: none;
     margin-left: 10px;
+    transition: background-color 330ms ease-in-out;
 }
 
 .testRadio:hover {
     color: #fff;
-    background-color: red;
+    background-color: #085e1d;
 }
 
 .commands-list .top h1 {

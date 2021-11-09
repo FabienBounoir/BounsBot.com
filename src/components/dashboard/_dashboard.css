@@ -126,13 +126,19 @@
     transition: background-color 0.15s ease-out 0s, color, opacity, border;
     outline: none;
     text-decoration: none;
-    background: rgb(57, 148, 255);
+    background: #0cab34;
     border-width: initial;
     border-style: none;
     border-color: initial;
     border-image: initial;
     margin-left: 20px;
+    transition: transform 330ms ease-in-out;
 }
+
+.goGuild:hover {
+    transform: scale(1.10);
+}
+
 
 .banniere {
     position: absolute;

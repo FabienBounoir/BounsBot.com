@@ -43,9 +43,9 @@ class infoPlaylist extends Component {
                     {
                         for (let i = 0; i < this.state.playlistList[0].musique.length; i++) {
                             playlistElement.push(
-                            <Card key={ i } className="cardTemplate" style={{ width: '18rem', backgroundColor: "#181818", color:'white', margin: "10px" }}>
+                            <Card key={ i } className="cardTemplate" style={{ width: '18rem', backgroundColor: "#181818", color:'white', margin: "10px auto", borderRadius: "10px" }}>
                             <a href={this.state.playlistList[0].musique[i].link} target="_blank" rel="noreferrer" style={{"textDecoration": "none" }}>
-                                <Card.Img variant="top" src={ this.state.playlistList[0].musique[i].image } />
+                                <Card.Img variant="top" src={ this.state.playlistList[0].musique[i].image } style={{ borderRadius: "10px" }} />
                                 <Card.Body>
                                 <Card.Title style={{ color: '#0cab34', fontSize: '150%' }}>{ this.state.playlistList[0].musique[i].name }</Card.Title>
                                 </Card.Body>

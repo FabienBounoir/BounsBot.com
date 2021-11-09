@@ -17,6 +17,7 @@ class Navigation extends Component {
 
     
     clickMe = () => {
+        this.revokeToken()
         window.localStorage.removeItem('dataDiscord');
         window.localStorage.removeItem('dataUser');
         document.location.href="/"
@@ -34,6 +35,35 @@ class Navigation extends Component {
             }
             this.updateLogin()
         }, 1000);
+    }
+
+    async revokeToken()
+    {
+        let info = JSON.parse(window.localStorage.getItem('dataDiscord'));
+
+        let details = {
+            'client_id': "898480744899412019",
+            'client_secret': "_8eU3zihkLxqEQb0EJmCDLeFVOoZEYe2",
+            'token': info.access_token
+        }
+        
+        var formBody = [];
+        for (var property in details) {
+            var encodedKey = encodeURIComponent(property);
+            var encodedValue = encodeURIComponent(details[property]);
+            formBody.push(encodedKey + "=" + encodedValue);
+        }
+        formBody = formBody.join("&");
+
+        let headers = {
+            'Content-Type': 'application/x-www-form-urlencoded'
+        }
+
+        await fetch('https://discord.com/api/oauth2/token/revoke', {
+            method: "POST",
+            body: formBody,
+            headers:headers
+        });
     }
 
     render() {
@@ -56,7 +86,7 @@ class Navigation extends Component {
                         <Nav className="me-auto">
                             <Nav.Link href="/commandes">Commandes</Nav.Link>
                             {/* <Nav.Link href="/playlist">Playlist</Nav.Link> */}
-                            <Nav.Link href="/level">Level</Nav.Link>
+                            <Nav.Link href="/level">Levels</Nav.Link>
                         </Nav>
                         </Navbar.Collapse>
                         {(() => {
@@ -65,10 +95,10 @@ class Navigation extends Component {
                             {
                                 EtatConnexion.push(
                                     <div className="loginTemplate"><Navbar.Text>
-                                        <div class="hamgn6-4 jGScIj">
+                                        <div className="hamgn6-4 jGScIj">
                                             <div className="LogoNav" style={{backgroundImage: `url("https://cdn.discordapp.com/avatars/${JSON.parse(window.localStorage.getItem('dataUser')).id}/${JSON.parse(window.localStorage.getItem('dataUser')).avatar}.png?size=512`}}>
                                             </div>
-                                            <a href="/dashboard" style={{textDecoration: "none"}}><span class="hamgn6-5 iYBTfC">{JSON.parse(window.localStorage.getItem('dataUser')).username}</span></a>
+                                            <a href="/dashboard" style={{textDecoration: "none"}}><span className="hamgn6-5 iYBTfC">{JSON.parse(window.localStorage.getItem('dataUser')).username}</span></a>
                                             <div><img onClick={this.clickMe} style={{marginLeft:"10px",width: "27px", height: "27px", minHeight: "27px", minMidth: "27px"}} src={disconnect} alt="f"/></div>
                                         </div>
                                     </Navbar.Text></div>)
@@ -77,8 +107,8 @@ class Navigation extends Component {
                             {
                                 EtatConnexion.push(
                                     <div className="loginTemplate"><Navbar.Text className="loginTemplate">
-                                        <a href="/login" style={{textDecoration: "none"}}><div class="hamgn6-4 jGScIj">
-                                            <span class="hamgn6-5 iYBTfC">Se connecter</span>
+                                        <a href="/login" style={{textDecoration: "none"}}><div className="hamgn6-4 jGScIj">
+                                            <span className="hamgn6-5 iYBTfC">Se connecter</span>
                                         </div></a>
                                     </Navbar.Text></div>)
                             }

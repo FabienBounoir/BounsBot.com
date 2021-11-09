@@ -13,8 +13,12 @@
     user-select: none;
     z-index: 3;
     line-height: normal;
+    transition: transform 330ms ease-in-out;
 }
 
+.home__top__bot__invite:hover{
+    transform: scale(1.10);
+}
 
 .home__top__bot__invite span {
     color: #fff;
@@ -58,6 +62,26 @@
     box-sizing: border-box;
     -webkit-animation: run 1s ease-out 0s 1;
     animation: run 1s ease-out 0s 1;
+}
+
+.home__top__bot img{
+    /* transition: transform 530ms ease-in-out; */
+    animation: resparaiton 2s infinite linear;
+}
+
+.home__top__bot img:hover{
+    transform: rotate(100px);
+    /* rotate: 1200px; */
+    /* scale(1.10) */
+}
+
+@keyframes resparaiton {
+    50% {
+        transform: scale(1.05);
+    }
+    100% {
+        transform: scale(1);
+    }
 }
 
 .home__top__bot__title__activities {

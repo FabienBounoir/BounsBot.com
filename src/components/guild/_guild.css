@@ -12,18 +12,6 @@
     
 }
 
-.musiqueRender{
-    margin-top: 50px;
-    background-color: rgb(49, 52, 66);
-    border-radius: 4px;
-    box-shadow: rgb(0 0 0 / 8%) 0px 4px 4px;
-    padding: 24px;
-    user-select: none;
-    color: white;
-    border-radius: 8px;
-    width: calc(100vh - 100px);
-}
-
 .listFile {
     display: flex;
     flex-direction: column;
@@ -43,33 +31,7 @@
     margin-bottom: 0px;
 }
 
-.previewMusic {
-    width: 150px;
-    height: 150px;
-    background-color: rgba(255, 255, 255, 0.125);
-    background-size: cover;
-    background-position: center center;
-    border-radius: 10px;
-    margin: 0 auto;
-}
 
-.playerMusic {
-    flex: 1 1 0%;
-    display: flex;
-    flex-direction: row;
-    -webkit-box-align: center;
-    align-items: center;
-    -webkit-box-pack: center;
-    justify-content: center;
-    flex-direction: row;
-    color: #0cab34;
-}
-
-.playerMusic svg {
-    margin: 15px;
-    width: 40px;
-    height: 40px;
-}
 
 .Dashboard {
     min-height: calc(100vh - 470px);
@@ -143,6 +105,11 @@
     z-index: 3;
     line-height: normal;
     border: 0px;
+    transition: transform 330ms ease-in-out;
+}
+
+.save:hover{
+    transform: scale(1.10);
 }
 
 .cardSuccess {
@@ -157,27 +124,40 @@
     align-items: center;
     -webkit-box-pack: center;
     justify-content: center;
-    background-color: rgba(0, 0, 0, 0.8);
+    /* background-color: rgba(0, 0, 0, 0.8); */
+    animation: blur 2s ease 0s;
+    backdrop-filter: blur(10px);
 }
 
 .cardInsideSuccess {
     padding-top: 10px;
-    border-radius: 4px;
-    width: 580px;
+    border-radius: 10px;
+    width: 400px;
     max-height: calc(100% - 100px);
     display: flex;
     flex-direction: column;
-    background-color: rgb(89, 206, 89);
+    background-color: #0cab34;
 }
 
 .cardInsideError {
     padding-top: 10px;
-    border-radius: 4px;
+    border-radius: 10px;
     width: 580px;
     max-height: calc(100% - 100px);
     display: flex;
     flex-direction: column;
     background-color: rgb(206, 89, 89);
+    animation: blur 2s ease 0s;
+    backdrop-filter: blur(10px);
+}
+
+@keyframes blur {
+    0% {
+        backdrop-filter: blur(0px);
+    }
+    100% {
+        backdrop-filter: blur(10px);
+    }
 }
 
 .content {
@@ -191,8 +171,8 @@
     user-select: none;
     line-height: 1;
     font-weight: 400;
-    display: flex;
-    border-radius: 3px;
+    /* display: flex; */
+    border-radius: 8px;
     font-size: 13px;
     -webkit-box-pack: center;
     justify-content: center;
@@ -207,6 +187,11 @@
     min-height: 32px;
     min-width: 60px;
     width: unset;
+    transition: transform 330ms ease-in-out;
+}
+
+.BoutonClose:hover{
+    transform: scale(1.10);
 }
 
 @media (max-width: 800px) {
@@ -222,15 +207,15 @@
 .zoneInterationSucess {
     width: 100%;
     padding: 15px;
-    border-radius: 0px 0px 3px 3px;
+    border-radius: 0px 0px 8px 8px;
     margin-top: 0px;
-    background-color: rgb(40, 134, 43);
+    background-color: #22252a;
 }
 
 .zoneInterationError {
     width: 100%;
     padding: 15px;
-    border-radius: 0px 0px 3px 3px;
+    border-radius: 0px 0px 8px 8px;
     margin-top: 0px;
     background-color: rgb(134, 40, 40);
 }

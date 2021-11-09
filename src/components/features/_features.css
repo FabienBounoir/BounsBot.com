@@ -18,7 +18,13 @@
 
 .feature .image {
     border-radius: 10px;
+    transition: transform 330ms ease-in-out;
 }
+
+.feature .image:hover {
+    transform: scale(1.05);
+}
+
 
 .features__content {
     width: 100%;

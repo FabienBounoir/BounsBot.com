@@ -5,6 +5,8 @@ import InfiniteScroll from 'react-infinite-scroll-component';
 import { Spinner } from 'react-bootstrap/'
 import { Form, Card, ListGroup, ListGroupItem } from 'react-bootstrap/'
 
+let searchValide
+
 class Playlist extends Component {
     state = {
         playlistList: [],
@@ -44,39 +46,37 @@ class Playlist extends Component {
         console.log(e.key)
         console.log(document.getElementById('PLaylistSearch').value.length)
 
-        if(document.getElementById('PLaylistSearch').value.length !== 0 || e.key === "Enter")
-        {
-            let url = "https://backendbounsbot.herokuapp.com/playlist/search/"
-            
-            // let url = `http://localhost:3001/playlist/search/`
+        clearTimeout(searchValide)
 
-            let message = document.getElementById('PLaylistSearch').value;
+        // if(document.getElementById('PLaylistSearch').value.length !== 0 || e.key === "Enter")
+        // {
+
+        searchValide = setTimeout(() => {
+
+            let url = ""
+            let message = document.getElementById('PLaylistSearch').value.replace('Backspace','');
+
+            if(message !== "")
+            {
+                url = "https://backendbounsbot.herokuapp.com/playlist/search/"
+                // url = `http://localhost:3001/playlist/search/`
+            }
+            else
+            {
+                url = "https://backendbounsbot.herokuapp.com/playlist/"
+                // url = `http://localhost:3001/playlist/`
+            }
 
             fetch(url + message)
                 .then(response => response.json())
                 .then((result) => {
-                this.setState({
-                    playlistList: result.playlist,
-                    recherche: true
-                });
+                    this.setState({
+                        playlistList: result.playlist,
+                        recherche: true
+                    });
                 })
                 .catch(console.log)
-        }
-        else if(e.key === "Backspace" && document.getElementById('PLaylistSearch').value.length === 0)
-        {
-            let url = "https://backendbounsbot.herokuapp.com/playlist/"
-            
-            // let url = `http://localhost:3001/playlist/`
-
-            fetch(url).then(response => response.json())
-            .then((result) => {
-                this.setState({
-                    playlistList: result.playlist,
-                    recherche: true
-                });
-            })
-            .catch(console.log)
-        }
+        }, 100);
     }
 
     render() {
@@ -94,13 +94,13 @@ class Playlist extends Component {
 
                             playlistElement.push(
                                 <div className="cardCenter">
-                                    <Card key={ i } className="cardTemplate" style={{ width: '18rem', backgroundColor: "#181818", color:'white', margin: "10px" }}>
+                                    <Card key={ i } className="cardTemplate" style={{ width: '18rem', backgroundColor: "#181818", color:'white', margin: "10px", borderRadius: "10px" }}>
                                     <a href={"/playlist/" + this.state.playlistList[i].nom} style={{"textDecoration": "none" }}>
-                                    <Card.Img width="254px" height="254px" variant="top" src={this.state.playlistList[i].picture} />
+                                    <Card.Img width="254px" height="254px" variant="top" src={this.state.playlistList[i].picture} style={{ borderRadius: "10px" }} />
                                     <Card.Body>
                                         <Card.Title style={{ color: '#0cab34', fontSize: '150%' }}>{ this.state.playlistList[i].nom[0].toUpperCase() }{ this.state.playlistList[i].nom.slice(1) }</Card.Title>
                                     </Card.Body>
-                                    <ListGroup style={{"borderRadius": "5px" }}>
+                                    <ListGroup style={{"borderRadius": "10px" }}>
                                     <ListGroupItem style={{backgroundColor: "#0cab34" }} >{ this.state.playlistList[i].ownerName }</ListGroupItem>
                                     <ListGroupItem style={{backgroundColor: "#0cab34" }} >{ this.state.playlistList[i].musique.length } musiques</ListGroupItem>
                                     </ListGroup>

@@ -182,7 +182,7 @@ class Dashboard extends Component {
         return (
             <div className="Dashboard">
                 <div className="top">
-                    <h1>Choisi un serveur</h1> 
+                    <h1>Sélectionner un serveur</h1> 
                     <div className="search search-bar" data-v-7085cbe2=""></div>
                 </div>
                 <div className='listGuild'>
