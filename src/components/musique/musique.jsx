@@ -1,8 +1,6 @@
 import "./_musique.css";
 import React, { Component } from 'react'
 
-var url = "http://localhost:5342"
-// var url = "https://bouns-bot.herokuapp.com"
 var timeout = ""
 
 class Musique extends Component {
@@ -36,7 +34,7 @@ class Musique extends Component {
             redirect: 'follow'
         };
 
-        fetch(url + "/bot/getfile/" + this.props.guild,requestOptions)
+        fetch("https://bouns-bot.herokuapp.com/bot/getfile/" + this.props.guild,requestOptions)
         .then(response => response.text())
         .then(result => {
 

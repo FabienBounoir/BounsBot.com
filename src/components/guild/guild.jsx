@@ -75,8 +75,8 @@ class Guild extends Component {
         redirect: 'follow'
         };
 
-        let url = "http://localhost:5342"
-        // let url = "https://bouns-bot.herokuapp.com"
+        // let url = "http://localhost:5342"
+        let url = "https://bouns-bot.herokuapp.com"
 
         fetch(url + "/bot/getchannels/" + this.props.match.params.id,requestOptions)
             .then(response => response.json())
@@ -113,8 +113,6 @@ class Guild extends Component {
             body: raw,
             mode: 'cors'
         }).catch(console.log)
-
-        console.log(body)
 
         if(body && body.status === 200)
         {
