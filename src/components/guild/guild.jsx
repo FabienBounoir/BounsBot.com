@@ -93,9 +93,9 @@ class Guild extends Component {
 
         var myHeaders = new Headers();
         myHeaders.append("Content-Type", "application/json");
+        myHeaders.append("Authorization", `Bearer ${JSON.parse(window.localStorage.getItem('dataDiscord'))?.access_token}`);
 
         var raw = await JSON.stringify({
-            "accesstoken": JSON.parse(window.localStorage.getItem('dataDiscord'))?.access_token,
             "guildId": this.state.guildInfo[0]?.guild,
             "logChannel": this.state.logChannel,
             "sheesh": this.state.sheesh,
@@ -107,7 +107,10 @@ class Guild extends Component {
             "fun": this.state.fun
         });
 
-        const body = await fetch('https://backendbounsbot.herokuapp.com/guild/'+this.props.match.params.id, {
+        // let url = "http://localhost:5342"
+        let url = "https://backendbounsbot.herokuapp.com"
+
+        const body = await fetch(url + '/guild/'+this.props.match.params.id, {
             method: 'PUT',
             headers: myHeaders,
             body: raw,
@@ -210,6 +213,8 @@ class Guild extends Component {
                                             }
                                         }
                                         
+                                        option.push(<option value="0">Désactivé</option>)
+
                                         return option;
                                     })()}
                                 </Form.Select>
