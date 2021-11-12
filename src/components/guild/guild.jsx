@@ -7,6 +7,7 @@ import sheeshPicto from "../picture/sheeshPicto.png";
 import playlistPicto from "../picture/playlistPicto.png";
 import renamePicto from "../picture/renamePicto.png";
 import reactionPicto from "../picture/reactionPicto.png";
+import logs from "../picture/logs.png";
 import { Form } from 'react-bootstrap/'
 // import Slider from '@mui/material/Slider';
 import Musique from "../musique/musique.jsx";
@@ -28,10 +29,12 @@ class Guild extends Component {
         loadMusique: false,
         preview: "",
         actualMusique: "",
+        channelTextuelGuild: []
     }
 
     componentDidMount() {
         this.getData();
+        this.getChannelGuild();
     }
 
     getData = () => {
@@ -61,7 +64,33 @@ class Guild extends Component {
             .catch(console.log)
     };
 
+    getChannelGuild = () => {
+        var myHeaders = new Headers();
+        myHeaders.append("Content-Type", "application/json");
+        myHeaders.append("Authorization", `Bearer ${JSON.parse(window.localStorage.getItem('dataDiscord'))?.access_token}`);
+
+        var requestOptions = {
+        method: 'GET',
+        headers: myHeaders,
+        redirect: 'follow'
+        };
+
+        let url = "http://localhost:5342"
+        // let url = "https://bouns-bot.herokuapp.com"
+
+        fetch(url + "/bot/getchannels/" + this.props.match.params.id,requestOptions)
+            .then(response => response.json())
+            .then((result) => {
+                console.log(result.channels.filter(channel => channel.type === "text"))
+                this.setState({
+                    channelTextuelGuild: result.channels.filter(channel => channel.type === "text")
+                });
+            })
+            .catch(console.log)
+    };
+
     updateGuildConfig = async () => {
+
         var myHeaders = new Headers();
         myHeaders.append("Content-Type", "application/json");
 
@@ -162,6 +191,33 @@ class Guild extends Component {
                             </div>
                             <h5 className="hrnh5k-0 eeKdki sc-1wkjbe7-8 GoZzi">Fun</h5>
                             <div>Laissez vos membres s'amuser avec des commandes funs et ludiques</div>
+                        </div>
+                        <div className="guildModule">
+                            <div className="top">
+                                <img className="picto" alt='logo' width="48" height="48" src={logs} ></img>
+                                {/* <Form.Check type="switch" id="custom-switch success" onChange={() => { this.setState({ logChannel: !this.state.logChannel }) }} checked={this.state.fun} /> */}
+                                <Form.Select value={this.state.logChannel} onChange={(event) => { this.setState({ logChannel: event.target.value }) }}>
+                                    {(() => {
+                                        var option = [];
+
+                                        for(let value of this.state.channelTextuelGuild)
+                                        {
+                                            if(value.id === this.state.logChannel)
+                                            {
+                                                option.push(<option value={value.id} selected>{ value.name }</option>)
+                                            }
+                                            else
+                                            {
+                                                option.push(<option value={value.id}>{ value.name }</option>)
+                                            }
+                                        }
+                                        
+                                        return option;
+                                    })()}
+                                </Form.Select>
+                            </div>
+                            <h5 className="hrnh5k-0 eeKdki sc-1wkjbe7-8 GoZzi">Logs</h5>
+                            <div>Choisir le channel pour afficher les logs du serveur</div>
                         </div>
                     </div>);
 

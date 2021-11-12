@@ -124,9 +124,15 @@
     align-items: center;
     -webkit-box-pack: center;
     justify-content: center;
-    /* background-color: rgba(0, 0, 0, 0.8); */
-    animation: blur 2s ease 0s;
+    background-color: rgba(0, 0, 0, 0.2);
+    animation: blur 1s ease 0s;
     backdrop-filter: blur(10px);
+}
+
+@-moz-document url-prefix(){
+    .cardSuccess {
+        background-color: rgba(0, 0, 0, 0.8);
+    }
 }
 
 .cardInsideSuccess {

@@ -1,6 +1,8 @@
 import "./_musique.css";
 import React, { Component } from 'react'
 
+var url = "http://localhost:5342"
+// var url = "https://bouns-bot.herokuapp.com"
 var timeout = ""
 
 class Musique extends Component {
@@ -14,29 +16,30 @@ class Musique extends Component {
     }
 
     componentDidMount() {
-        this.getDataMusique();
+        this.getDataMusique()
+        setInterval(() => {
+            this.getDataMusique()
+        }, 5000);
     }
 
     getDataMusique = () => {
 
+        const token = "Bearer " + JSON.parse(window.localStorage.getItem('dataDiscord'))?.access_token;
+
         var myHeaders = new Headers();
         myHeaders.append("Content-Type", "application/json");
-
-        var raw = JSON.stringify({
-            "accesstoken": JSON.parse(window.localStorage.getItem('dataDiscord'))?.access_token,
-            "guildId": this.props.guild
-        });
+        myHeaders.append("Authorization", token);
 
         var requestOptions = {
-        method: 'POST',
-        headers: myHeaders,
-        body: raw,
-        redirect: 'follow'
+            method: 'GET',
+            headers: myHeaders,
+            redirect: 'follow'
         };
 
-        fetch("https://bouns-bot.herokuapp.com/bot/getfile",requestOptions)
+        fetch(url + "/bot/getfile/" + this.props.guild,requestOptions)
         .then(response => response.text())
         .then(result => {
+
             if(JSON.parse(result).playlist.length === 0)
             {
                 this.setState({
@@ -59,19 +62,14 @@ class Musique extends Component {
             }
         })
         .catch(error => console.log('error', error));
-
-
-        setTimeout(() => {
-            this.getDataMusique()
-        }, 5000);
     };
 
     togglePlay = async () => {
         var myHeaders = new Headers();
         myHeaders.append("Content-Type", "application/json");
+        myHeaders.append("Authorization", "Bearer " + JSON.parse(window.localStorage.getItem('dataDiscord'))?.access_token);
 
         var raw = JSON.stringify({
-            "accesstoken": JSON.parse(window.localStorage.getItem('dataDiscord'))?.access_token,
             "guildId": this.props.guild
         });
 
@@ -94,9 +92,9 @@ class Musique extends Component {
     togglePause = async () => {
         var myHeaders = new Headers();
         myHeaders.append("Content-Type", "application/json");
+        myHeaders.append("Authorization", "Bearer " + JSON.parse(window.localStorage.getItem('dataDiscord'))?.access_token);
 
         var raw = JSON.stringify({
-            "accesstoken": JSON.parse(window.localStorage.getItem('dataDiscord'))?.access_token,
             "guildId": this.props.guild
         });
 
@@ -120,9 +118,9 @@ class Musique extends Component {
         timeout = setTimeout(() => {
             var myHeaders = new Headers();
             myHeaders.append("Content-Type", "application/json");
+            myHeaders.append("Authorization", "Bearer " + JSON.parse(window.localStorage.getItem('dataDiscord'))?.access_token);
     
             var raw = JSON.stringify({
-                "accesstoken": JSON.parse(window.localStorage.getItem('dataDiscord'))?.access_token,
                 "guildId": this.props.guild,
                 "volume": soundVolume
             });
