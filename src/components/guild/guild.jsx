@@ -107,7 +107,7 @@ class Guild extends Component {
             "fun": this.state.fun
         });
 
-        // let url = "http://localhost:5342"
+        // let url = "http://localhost:3001"
         let url = "https://backendbounsbot.herokuapp.com"
 
         const body = await fetch(url + '/guild/'+this.props.match.params.id, {

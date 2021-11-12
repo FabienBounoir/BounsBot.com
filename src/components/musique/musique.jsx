@@ -149,8 +149,6 @@ class Musique extends Component {
 
             if(this.state.loadMusique)
             {
-                // musiqueGestion.push(<p style={{color: "white"}}>musique OK</p>);
-
                 musiqueGestion.push(<div>
                     <div style={{marginLeft: "auto",marginRight: "auto"}}>
                         <div className="previewMusic" style={{backgroundImage: "url(\""+ this.state.preview +"\")"}}></div>
