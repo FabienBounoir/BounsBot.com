@@ -17,6 +17,21 @@
   color: #61dafb;
 }
 
+.newModule {
+  background-color: rgba(99, 245, 140, 0.16);
+  color: rgb(99, 245, 140);
+  padding: 0px 8px;
+  border-radius: 30px;
+  height: 24px;
+  line-height: 24px;
+  font-size: 12px;
+  letter-spacing: 0.5px;
+  margin-bottom: 0;
+  margin-left: 20px;
+  margin-top: 15px;
+  cursor: pointer;
+}
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);

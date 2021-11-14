@@ -11,6 +11,7 @@ import logs from "../picture/logs.png";
 import { Form } from 'react-bootstrap/'
 // import Slider from '@mui/material/Slider';
 import Musique from "../musique/musique.jsx";
+import SendMessage from "../sendmessage/sendmessage"
 
 class Guild extends Component {
     state = {
@@ -48,7 +49,6 @@ class Guild extends Component {
         fetch(url + id)
             .then(response => response.json())
             .then((result) => {
-                // console.log(result)
                 this.setState({
                     guildInfo: result.guild,
                     heyreaction: result.guild[0].heyreaction,
@@ -81,7 +81,6 @@ class Guild extends Component {
         fetch(url + "/bot/getchannels/" + this.props.match.params.id,requestOptions)
             .then(response => response.json())
             .then((result) => {
-                console.log(result.channels.filter(channel => channel.type === "text"))
                 this.setState({
                     channelTextuelGuild: result.channels.filter(channel => channel.type === "text")
                 });
@@ -258,6 +257,8 @@ class Guild extends Component {
     
                 return rank;
         })()}
+
+        <SendMessage guild={this.props.match.params.id}/>
 
         <Musique guild={this.props.match.params.id}/>
                             </div>

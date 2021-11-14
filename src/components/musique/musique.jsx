@@ -214,6 +214,7 @@ class Musique extends Component {
 
             return musiqueGestion;
         })()}
+        <p className="ClearQueue">Clear la queue</p>
         </div>
         </div>
         )
