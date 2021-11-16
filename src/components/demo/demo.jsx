@@ -19,7 +19,7 @@ class Demo extends Component {
         this.joinSound.volume = 0.5;
         this.leaveSound.volume = 0.5;
 
-        //si l'utilisateur et dans le voc
+        //si l'utilisateur est dans le voc
         this.inVocal = false;
 
         //si le bot est en pause ou non

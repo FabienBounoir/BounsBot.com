@@ -4,13 +4,15 @@ import React, { Component } from 'react'
 var timeout = ""
 
 class Musique extends Component {
+
     state = {
         file: {},
         volume: 0.5,
         loadMusique: false,
         preview: "",
         actualMusique: "",
-        pause: true
+        pause: true,
+        clear: false
     }
 
     componentDidMount() {
@@ -45,7 +47,6 @@ class Musique extends Component {
                     loadMusique: true,
                     preview: "",
                     actualMusique: "",
-                    volume: 0
                 });
             }
             else if(this.state.preview !== JSON.parse(result).playlist.image[0])
@@ -54,8 +55,7 @@ class Musique extends Component {
                     file: JSON.parse(result).playlist,
                     loadMusique: true,
                     preview: JSON.parse(result).playlist.image[0],
-                    actualMusique: JSON.parse(result).playlist.name[0],
-                    volume: 0.5
+                    actualMusique: JSON.parse(result).playlist.name[0]
                 });
             }
         })
@@ -132,9 +132,35 @@ class Musique extends Component {
     
             fetch("https://bouns-bot.herokuapp.com/bot/volume", requestOptions)
             .then(response => response.text())
-            .then(result => console.log(result))
+            .then(result => {this.setState({volume:JSON.parse(result).volume}); console.log(JSON.parse(result).volume)})
             .catch(error => console.log('error', error));
         }, 500);
+    }
+
+    clearQueue = () => {
+        var myHeaders = new Headers();
+        myHeaders.append("Content-Type", "application/json");
+        myHeaders.append("Authorization", "Bearer " + JSON.parse(window.localStorage.getItem('dataDiscord'))?.access_token);
+
+        var raw = JSON.stringify({
+            "guildId": this.props.guild
+        });
+
+        var requestOptions = {
+            method: 'PUT',
+            headers: myHeaders,
+            body: raw,
+            redirect: 'follow'
+        };
+
+        fetch("https://bouns-bot.herokuapp.com/bot/clearqueue", requestOptions)
+        .then(response => response.text())
+        .then((result) => {
+            console.log(result)
+            this.getDataMusique()
+            this.setState({clear: false})
+        })
+        .catch(error => console.log('error', error));
     }
 
     render() {
@@ -214,7 +240,20 @@ class Musique extends Component {
 
             return musiqueGestion;
         })()}
-        <p className="ClearQueue">Clear la queue</p>
+        <p onClick={()=> {this.setState({ clear: true })}} className="ClearQueue">Clear la queue</p>
+        {this.state.clear ? (
+            <div className="cardSuccess">
+            <div className="cardInsideSuccess">
+                <div>
+                    <h2>Clear la queue ?</h2>
+                </div>
+                    <div className="zoneInterationPlaylist">
+                        <button className="BoutonConfirm" onClick={this.clearQueue} >Valide</button>
+                        <button className="BoutonDecline" onClick={()=> {this.setState({ clear: false })}}>Decline</button>
+                    </div>
+                </div>
+            </div>
+        ) : ("")}
         </div>
         </div>
         )

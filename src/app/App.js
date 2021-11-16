@@ -13,6 +13,7 @@ import { Login } from "../components/login/login";
 import Dashboard from "../components/dashboard/dashboard";
 import Guild from "../components/guild/guild";
 import Demo from "../components/demo/demo";
+// import Test from "../components/sendEmbed/sendembed";
 
 export const App = () => {
   return (
@@ -43,8 +44,10 @@ export const App = () => {
           <Route exact path="/dashboard">
             <Dashboard />
           </Route>
+          {/* <Route exact path="/test">
+            <Test />
+          </Route> */}
           <Route exact path="/dashboard/:id" component={Guild}>
-            {/* <Guild /> */}
           </Route>
           <Route exact path="/login" >
             <Login />

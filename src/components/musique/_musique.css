@@ -31,6 +31,12 @@
     color:  #0fab35;
     margin-bottom: 0;
     padding-right: 0.7em;
+    cursor: pointer;
+    transition: transform 330ms ease-in-out;
+}
+
+.ClearQueue:hover {
+    color:  #0c8b2c;
 }
 
 .musiqueRender{
@@ -47,11 +53,79 @@
 
 .playerMusic svg{
     transition: transform 330ms ease-in-out;
+    
 }
 
 .playerMusic svg:hover {
     transform: scale(1.10);
 }
+
+.zoneInterationPlaylist{
+    width: 100%;
+    padding: 15px;
+    border-radius: 0px 0px 8px 8px;
+    margin-top: 0px;
+    gap: 10px;
+    background-color: #22252a;
+}
+
+.BoutonConfirm {
+    white-space: nowrap;
+    user-select: none;
+    line-height: 1;
+    font-weight: 400;
+    /* display: flex; */
+    border-radius: 8px;
+    font-size: 13px;
+    -webkit-box-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    align-items: center;
+    padding: 10px 25px;
+    transition: border 180ms ease-out 0s, background 180ms ease-out 0s;
+    color: rgb(255, 255, 255);
+    background: rgb(40, 134, 40);
+    border: none;
+    cursor: pointer;
+    min-height: 32px;
+    min-width: 60px;
+    width: unset;
+    transition: transform 330ms ease-in-out;
+}
+
+.BoutonConfirm:hover{
+    transform: scale(1.10);
+}
+
+.BoutonDecline {
+    white-space: nowrap;
+    user-select: none;
+    line-height: 1;
+    font-weight: 400;
+    /* display: flex; */
+    margin-left: 10px;
+    border-radius: 8px;
+    font-size: 13px;
+    -webkit-box-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    align-items: center;
+    padding: 10px 25px;
+    transition: border 180ms ease-out 0s, background 180ms ease-out 0s;
+    color: rgb(255, 255, 255);
+    background: rgb(134, 40, 40);
+    border: none;
+    cursor: pointer;
+    min-height: 32px;
+    min-width: 60px;
+    width: unset;
+    transition: transform 330ms ease-in-out;
+}
+
+.BoutonDecline:hover{
+    transform: scale(1.10);
+}
+
 
 @media (max-width: 900px) {
     .musiqueRender{
