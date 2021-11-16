@@ -34,8 +34,8 @@ class Guild extends Component {
     }
 
     componentDidMount() {
-        this.getData();
         this.getChannelGuild();
+        this.getData();
     }
 
     getData = () => {
@@ -129,7 +129,7 @@ class Guild extends Component {
     render() {
         return (
             <div className="Dashboard">
-                <div className="top" style={{justifyContent: "center;"}}>
+                <div className="top" style={{justifyContent: "center"}}>
                     <h1>Information de la guilde</h1> 
                 </div>
                 <button className="save" onClick={this.updateGuildConfig}>Enregistrer</button>
@@ -194,9 +194,9 @@ class Guild extends Component {
                         </div>
                         <div className="guildModule">
                             <div className="top">
-                                <img className="picto" alt='logo' width="48" height="48" src={logs} ></img>
+                                <img className="pictoLog" alt='logo' width="48" height="48" src={logs} ></img>
                                 {/* <Form.Check type="switch" id="custom-switch success" onChange={() => { this.setState({ logChannel: !this.state.logChannel }) }} checked={this.state.fun} /> */}
-                                <Form.Select value={this.state.logChannel} onChange={(event) => { this.setState({ logChannel: event.target.value }) }}>
+                                <Form.Select defaultValue={this.state.logChannel} onChange={(event) => { this.setState({ logChannel: event.target.value }) }}>
                                     {(() => {
                                         var option = [];
 
@@ -241,29 +241,29 @@ class Guild extends Component {
                     else if(this.state.error)
                     {
                         rank.push(<div className="cardSuccess">
-                                    <div className="cardInsideError">
+                            <div className="cardInsideError">
+                                <div>
+                                    <h2>Erreur</h2>
+                                </div>
+                                <div className="content">La mise à jour des informations a échoué<br/><br/></div>
+                                    <div className="zoneInterationError">
                                         <div>
-                                            <h2>Erreur</h2>
+                                            <button className="BoutonClose" onClick={()=> {this.setState({ error: false })}} color="#ffffff">Fermer</button>
                                         </div>
-                                        <div className="content">La mise à jour des informations a échoué<br/><br/></div>
-                                            <div className="zoneInterationError">
-                                                <div>
-                                                    <button className="BoutonClose" onClick={()=> {this.setState({ error: false })}} color="#ffffff">Fermer</button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>);
+                                    </div>
+                                </div>
+                            </div>);
                     }
     
                 return rank;
         })()}
 
-        <SendMessage guild={this.props.match.params.id}/>
+        {this.state.channelTextuelGuild.length !== 0 ? (<SendMessage guild={this.props.match.params.id} channel={this.state.channelTextuelGuild}/>):("")}
 
         <Musique guild={this.props.match.params.id}/>
-                            </div>
-                            )
-                        }
-                    }
+        </div>
+        )
+    }
+}
 
-                    export default Guild;
+export default Guild;

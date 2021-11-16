@@ -4,12 +4,8 @@ import { Form } from 'react-bootstrap/'
 
 class SendMessage extends Component {
     state = {
-        channelTextuelGuild: [],
+        channelTextuelGuild: this.props.channel,
         channelSelect: "0"
-    }
-
-    componentDidMount() {
-        this.getChannelGuild()
     }
 
     getChannelGuild = () => {
@@ -28,9 +24,8 @@ class SendMessage extends Component {
         fetch(url + "/bot/getchannels/" + this.props.guild,requestOptions)
             .then(response => response.json())
             .then((result) => {
-                console.log(result.channels.filter(channel => channel.type === "text"))
                 this.setState({
-                    channelTextuelGuild: result.channels.filter(channel => channel.type === "text")
+                    channelTextuelGuild: result.channels?.filter(channel => channel.type === "text")
                 });
             })
             .catch(console.log)
@@ -92,7 +87,7 @@ class SendMessage extends Component {
                         return option;
                     })()}
                 </Form.Select>
-                <button class="sendButton" onClick={this.sendMessage}>Envoyer</button>
+                <button className="sendButton" onClick={this.sendMessage}>Envoyer</button>
             </div>
         </div>
         )

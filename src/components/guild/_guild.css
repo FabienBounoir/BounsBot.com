@@ -67,6 +67,15 @@
     height: "48";
 }
 
+.pictoLog{
+    width: "48";
+    height: "48";
+}
+
+.top .pictoLog {
+    margin-right: 1em;
+}
+
 .hSePco:not(:disabled) {
     background-color: rgb(99, 245, 140);
     border-color: rgb(99, 245, 140);
