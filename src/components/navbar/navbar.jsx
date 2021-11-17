@@ -11,7 +11,8 @@ class Navigation extends Component {
     }
 
     componentDidMount() {
-        this.updateLogin();
+        this.updateLogin()
+        // setInterval(() => {this.updateLogin()}, 1000);
         fetch("https://backendbounsbot.herokuapp.com/discord")
     }
 
@@ -24,17 +25,15 @@ class Navigation extends Component {
     }
 
     updateLogin = () => {
-        setTimeout(() => {
-            if(window.localStorage.getItem('dataUser') && window.localStorage.getItem('dataUser').length !== 0)
-            {
-                this.setState({ login: true });
-            }
-            else
-            {
-                this.setState({ login: false });
-            }
-            this.updateLogin()
-        }, 1000);
+        if(window.localStorage.getItem('dataUser') && window.localStorage.getItem('dataUser').length !== 0)
+        {
+            this.setState({ login: true });
+        }
+        else
+        {
+            this.setState({ login: false });
+        }
+        setInterval(() => {this.updateLogin()}, 1000);
     }
 
     async revokeToken()
@@ -69,7 +68,7 @@ class Navigation extends Component {
     render() {
         return (
             <>
-                <Navbar bg="dark" variant="dark">
+                <Navbar collapseOnSelect expand="md" bg="dark" variant="dark">
                     <Container>
                         <Navbar.Brand href="/">
                             <img
@@ -81,14 +80,16 @@ class Navigation extends Component {
                             />{' '}
                         BounsBot
                         </Navbar.Brand>
-                        <Navbar.Toggle aria-controls="basic-navbar-nav" />
-                        <Navbar.Collapse id="basic-navbar-nav">
+                        <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+                        <Navbar.Collapse id="responsive-navbar-nav">
                         <Nav className="me-auto">
                             <Nav.Link href="/commandes">Commandes</Nav.Link>
-                            {/* <Nav.Link href="/playlist">Playlist</Nav.Link> */}
+                            <Nav.Link href="/playlist">Playlists</Nav.Link>
                             <Nav.Link href="/level">Levels</Nav.Link>
+                            <Nav.Link href="/demo">Démo</Nav.Link>
                         </Nav>
-                        </Navbar.Collapse>
+
+                        <Nav>
                         {(() => {
                             var EtatConnexion = [];
                             if(this.state.login)
@@ -105,16 +106,21 @@ class Navigation extends Component {
                             }
                             else
                             {
-                                EtatConnexion.push(
-                                    <div className="loginTemplate"><Navbar.Text className="loginTemplate">
-                                        <a href="/login" style={{textDecoration: "none"}}><div className="hamgn6-4 jGScIj">
-                                            <span className="hamgn6-5 iYBTfC">Se connecter</span>
-                                        </div></a>
-                                    </Navbar.Text></div>)
+                                // EtatConnexion.push(
+                                //     <div className="loginTemplate"><Navbar.Text className="loginTemplate">
+                                //         <a href="/login" style={{textDecoration: "none"}}><div className="hamgn6-4 jGScIj">
+                                //             <span className="hamgn6-5 iYBTfC">Se connecter</span>
+                                //         </div></a>
+                                //     </Navbar.Text></div>)
+
+                                EtatConnexion.push(<Nav.Link href="/login">Se connecter</Nav.Link>)
                             }
 
                             return EtatConnexion;
                         })()}
+
+                        </Nav>
+                        </Navbar.Collapse>
                     </Container>
                 </Navbar>
             </>
@@ -123,3 +129,90 @@ class Navigation extends Component {
 }
 
 export default Navigation;
+
+
+//  <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
+//       <Navbar.Brand href="#home">
+//         <Logo
+//           alt=""
+//           width="30"
+//           height="30"
+//           className="d-inline-block align-top"
+//         />
+//         Dice Roller
+//       </Navbar.Brand>
+//       <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+//       <Navbar.Collapse id="responsive-navbar-nav">
+//         <Nav className="mr-auto">
+//           <Nav.Link href="#features">Features</Nav.Link>
+//           <Nav.Link href="#pricing">Pricing</Nav.Link>
+//           <NavDropdown title="Dropdown" id="collasible-nav-dropdown">
+//             <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
+//             <NavDropdown.Item href="#action/3.2">
+//               Another action
+//             </NavDropdown.Item>
+//             <NavDropdown.Item href="#action/3.3">Something</NavDropdown.Item>
+//             <NavDropdown.Divider />
+//             <NavDropdown.Item href="#action/3.4">
+//               Separated link
+//             </NavDropdown.Item>
+//           </NavDropdown>
+//         </Nav>
+//         <Nav>
+//           <Nav.Link href="#deets">More deets</Nav.Link>
+//           <Nav.Link eventKey={2} href="#memes">
+//             Dank memes
+//           </Nav.Link>
+//         </Nav>
+//       </Navbar.Collapse>
+//     </Navbar> 
+
+
+//     <Navbar bg="dark" variant="dark">
+//     <Container>
+//         <Navbar.Brand href="/">
+//             <img
+//             alt="logo"
+//             src= { logo }
+//             width="30"
+//             height="30"
+//             className="d-inline-block align-top"
+//             />{' '}
+//         BounsBot
+//         </Navbar.Brand>
+//         <Navbar.Toggle aria-controls="basic-navbar-nav" />
+//         <Navbar.Collapse id="basic-navbar-nav">
+//         <Nav className="me-auto">
+//             <Nav.Link href="/commandes">Commandes</Nav.Link>
+//             {/* <Nav.Link href="/playlist">Playlist</Nav.Link> */}
+//             <Nav.Link href="/level">Levels</Nav.Link>
+//         </Nav>
+//         </Navbar.Collapse>
+//         {(() => {
+//             var EtatConnexion = [];
+//             if(this.state.login)
+//             {
+//                 EtatConnexion.push(
+//                     <div className="loginTemplate"><Navbar.Text>
+//                         <div className="hamgn6-4 jGScIj">
+//                             <div className="LogoNav" style={{backgroundImage: `url("https://cdn.discordapp.com/avatars/${JSON.parse(window.localStorage.getItem('dataUser')).id}/${JSON.parse(window.localStorage.getItem('dataUser')).avatar}.png?size=512`}}>
+//                             </div>
+//                             <a href="/dashboard" style={{textDecoration: "none"}}><span className="hamgn6-5 iYBTfC">{JSON.parse(window.localStorage.getItem('dataUser')).username}</span></a>
+//                             <div><img onClick={this.clickMe} style={{marginLeft:"10px",width: "27px", height: "27px", minHeight: "27px", minMidth: "27px"}} src={disconnect} alt="f"/></div>
+//                         </div>
+//                     </Navbar.Text></div>)
+//             }
+//             else
+//             {
+//                 EtatConnexion.push(
+//                     <div className="loginTemplate"><Navbar.Text className="loginTemplate">
+//                         <a href="/login" style={{textDecoration: "none"}}><div className="hamgn6-4 jGScIj">
+//                             <span className="hamgn6-5 iYBTfC">Se connecter</span>
+//                         </div></a>
+//                     </Navbar.Text></div>)
+//             }
+
+//             return EtatConnexion;
+//         })()}
+//     </Container>
+// </Navbar>

@@ -90,8 +90,9 @@ ul {
 }
 
 
-@media (max-width: 569px) {
+@media (max-width: 767px) {
     .loginTemplate {
-        display: none;
+        /* display: none; */
+        align-self: center;
     }
 }
