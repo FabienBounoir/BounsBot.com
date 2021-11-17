@@ -55,7 +55,7 @@ class Dashboard extends Component {
         {
             const result = await body.json();
 
-            let guildAdmin = result.filter(guilds => guilds.permissions === 2147483647)
+            let guildAdmin = await result.filter(guilds => guilds.permissions === 2147483647)
 
             this.setState({
                 guilds: guildAdmin, 
@@ -63,7 +63,7 @@ class Dashboard extends Component {
         }
         else
         {
-            window.localStorage.removeItem('dataDiscord');
+            await window.localStorage.removeItem('dataDiscord');
             document.location.href="/login"; 
         }
     }
@@ -106,8 +106,8 @@ class Dashboard extends Component {
 
             window.localStorage.setItem('dataDiscord', JSON.stringify(result));
 
-            this.getUser()
-            this.getGuilds()
+            await this.getUser()
+            await this.getGuilds()
         }
         else
         {
@@ -143,19 +143,20 @@ class Dashboard extends Component {
             body: formBody
         });
 
+        console.log(body)
+
         if(body.status === 200)
         {
-
             const result = await body.json();
 
-            window.localStorage.setItem('dataDiscord', JSON.stringify(result));
+            await window.localStorage.setItem('dataDiscord', JSON.stringify(result));
             
-            this.getUser()
+            await this.getUser()
             document.location.href="/dashboard"; 
         }
         else
         {
-            window.localStorage.removeItem('dataDiscord');
+            // window.localStorage.removeItem('dataDiscord');
             document.location.href="/login"; 
         }
     }
@@ -164,8 +165,8 @@ class Dashboard extends Component {
         if(window.localStorage.getItem("dataDiscord"))
         {
             // this.refresh_token()
-            this.getUser()
             this.getGuilds()
+            this.getUser()
         }
         else if(new URLSearchParams(window.location.search).get('code'))
         {
@@ -176,7 +177,6 @@ class Dashboard extends Component {
             document.location.href="/login"; 
         }
     }
-
 
     render() {
         return (

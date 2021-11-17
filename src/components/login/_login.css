@@ -28,6 +28,19 @@
     text-align: center;
 }
 
+.guBWHp img {
+    animation: resparaiton 4s infinite both;
+}
+
+@keyframes resparaiton {
+    50% {
+        transform: scale(1.05);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
 .sc-1x57bl6-0 {
     font-family: "Open Sans", Helvetica, arial, sans-serif;
 }
@@ -70,10 +83,16 @@
     user-select: none;
     z-index: 3;
     line-height: normal;
+    transition: transform 330ms ease-in-out;
+}
+
+.boutonConnection:hover{
+    transform: scale(1.03);
 }
 
 
 .boutonConnection span {
     color: #fff;
 }
+
 
