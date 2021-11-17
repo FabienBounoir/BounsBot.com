@@ -17,13 +17,14 @@ class Guild extends Component {
     state = {
         success: false,
         error: false,
+        guildInfo: this.props.match.params.id,
         heyreaction: false,
         musique: true,
         playlist: true,
         radio: true,
         rename: true,
         sheesh: false,
-        logChannel: false,
+        logChannel: 0,
         fun: true,
         file: {},
         volume: 0.5,
@@ -49,17 +50,22 @@ class Guild extends Component {
         fetch(url + id)
             .then(response => response.json())
             .then((result) => {
-                this.setState({
-                    guildInfo: result.guild,
-                    heyreaction: result.guild[0].heyreaction,
-                    musique: result.guild[0].musique,
-                    playlist: result.guild[0].playlist,
-                    radio: result.guild[0].radio,
-                    rename: result.guild[0].rename,
-                    sheesh: result.guild[0].sheesh,
-                    logChannel: result.guild[0].logChannel,
-                    fun: result.guild[0].fun
-                });
+                console.log(result.guild)
+
+                if(result.guild.length !== 0)
+                {
+                    this.setState({
+                        guildInfo: result.guild[0]?.guild,
+                        heyreaction: result.guild[0]?.heyreaction,
+                        musique: result.guild[0]?.musique,
+                        playlist: result.guild[0]?.playlist,
+                        radio: result.guild[0]?.radio,
+                        rename: result.guild[0]?.rename,
+                        sheesh: result.guild[0]?.sheesh,
+                        logChannel: result.guild[0]?.logChannel,
+                        fun: result.guild[0]?.fun
+                    });
+                }
             })
             .catch(console.log)
     };
@@ -95,7 +101,7 @@ class Guild extends Component {
         myHeaders.append("Authorization", `Bearer ${JSON.parse(window.localStorage.getItem('dataDiscord'))?.access_token}`);
 
         var raw = await JSON.stringify({
-            "guildId": this.state.guildInfo[0]?.guild,
+            "guildId": this.state.guildInfo,
             "logChannel": this.state.logChannel,
             "sheesh": this.state.sheesh,
             "heyreaction": this.state.heyreaction,
@@ -106,6 +112,8 @@ class Guild extends Component {
             "fun": this.state.fun
         });
 
+        console.log(raw)
+
         // let url = "http://localhost:3001"
         let url = "https://backendbounsbot.herokuapp.com"
 
@@ -115,6 +123,8 @@ class Guild extends Component {
             body: raw,
             mode: 'cors'
         }).catch(console.log)
+
+        console.log(body)
 
         if(body && body.status === 200)
         {
@@ -211,8 +221,15 @@ class Guild extends Component {
                                                 option.push(<option value={value.id}>{ value.name }</option>)
                                             }
                                         }
-                                        
-                                        option.push(<option value="0">Désactivé</option>)
+
+                                        if(this.state.logChannel === 0)
+                                        {
+                                            option.push(<option value="0" selected>Désactivé</option>)
+                                        }
+                                        else
+                                        {
+                                            option.push(<option value="0">Désactivé</option>)
+                                        }
 
                                         return option;
                                     })()}
