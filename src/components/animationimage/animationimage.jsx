@@ -8,8 +8,6 @@ class AnimationImage extends React.Component {
     }
   
     tick() {
-      console.log(this.state.image)
-      console.log(this.state.increment)
         this.setState({
             increment: this.state.increment + 1 >= this.state.image.length ? (0) : (this.state.increment + 1),
         });
