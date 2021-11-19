@@ -12,7 +12,7 @@ class AnimationImage extends React.Component {
             increment: this.state.increment + 1 >= this.state.image.length ? (0) : (this.state.increment + 1),
         });
     }
-  
+    
     componentDidMount() {
       this.interval = setInterval(() => this.tick(), 7000);
     }

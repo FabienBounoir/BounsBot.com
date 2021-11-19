@@ -5,14 +5,20 @@ import logo from '../picture/logo5.svg';
 import disconnect from '../picture/disconnect.png';
 import { Navbar,Container , Nav } from 'react-bootstrap/'
 
+let interval = ""
+
 class Navigation extends Component {
     state = {
         login: false,
     }
 
+    componentWillUnmount() {
+        clearInterval(interval);
+    }
+
     componentDidMount() {
         this.updateLogin()
-        // setInterval(() => {this.updateLogin()}, 1000);
+        interval = setInterval(() => {this.updateLogin()}, 1000);
         fetch("https://backendbounsbot.herokuapp.com/discord")
     }
 
@@ -33,7 +39,6 @@ class Navigation extends Component {
         {
             this.setState({ login: false });
         }
-        setInterval(() => {this.updateLogin()}, 1000);
     }
 
     async revokeToken()

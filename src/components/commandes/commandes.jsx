@@ -71,7 +71,7 @@ export const Commandes = () => {
         </Table>
         <Table striped bordered hover variant="dark">
             <thead>
-                <tr><th className="titleCommand" colSpan="2">ㆍRadio <a className="testRadio" href="./demo">Demo</a></th></tr>
+                <tr><th className="titleCommand" colSpan="2">ㆍRadio</th></tr>{/*  <a className="testRadio" href="./demo">Demo</a> */}
             </thead>
             <tbody>
                 <tr>
@@ -86,7 +86,7 @@ export const Commandes = () => {
         </Table>
         <Table striped bordered hover variant="dark">
             <thead>
-                <tr><th className="titleCommand" colSpan="2">ㆍPlaylist <a className="testRadio" href="./playlist">Liste</a></th></tr>
+                <tr><th className="titleCommand" colSpan="2">ㆍPlaylist </th></tr> {/* <a className="testRadio" href="./playlist">Liste</a> */}
             </thead>
             <tbody>
                 <tr>

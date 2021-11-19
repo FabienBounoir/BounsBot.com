@@ -3,6 +3,10 @@
     --avatar-hue: 0deg
 }
 
+.mainscreen{
+    z-index: -2;
+}
+
 .demo-env {
     --header-primary: #fff;
     --header-secondary: #b9bbbe;
@@ -801,6 +805,10 @@ body {
 }
 
 @media only screen and (max-width:800px) {
+    #discord-main{
+        max-height: auto;
+    }
+
     #discord-server-avatar {
         display: none
     }
@@ -815,6 +823,11 @@ body {
 }
 
 @media only screen and (max-width:400px) {
+    #discord-main{
+        top: 10%;
+        max-height: auto;
+    }
+
     #discord-inner {
         display: none
     }
@@ -829,9 +842,3 @@ body {
         width: 100%;
     }
 }
-
-/* @media only screen and (max-height:610px) and (min-width:685px) {
-    #discord-main {
-        display: none
-    }
-} */
