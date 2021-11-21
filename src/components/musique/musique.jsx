@@ -49,7 +49,7 @@ class Musique extends Component {
                     actualMusique: "",
                 });
             }
-            else if(this.state.preview !== JSON.parse(result).playlist.image[0])
+            else //if(this.state.preview !== JSON.parse(result).playlist.image[0])
             {
                 this.setState({
                     file: JSON.parse(result).playlist,
@@ -156,7 +156,6 @@ class Musique extends Component {
         fetch("https://bouns-bot.herokuapp.com/bot/clearqueue", requestOptions)
         .then(response => response.text())
         .then((result) => {
-            console.log(result)
             this.getDataMusique()
             this.setState({clear: false})
         })
@@ -181,9 +180,6 @@ class Musique extends Component {
                         <p style={{color: "white", marginBottom: "0px", marginTop: "5px"}}>{  this.state.actualMusique }</p>
                     </div>
                     <div className="playerMusic">
-                        {/* <svg style={{transform: "rotate(-180deg)"}} aria-hidden="true" focusable="false" data-prefix="fas" data-icon="step-forward" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="sc-1heco5p-2 sc-1heco5p-3 zOEgw xJyPr">
-                            <path fill="currentColor" d="M384 44v424c0 6.6-5.4 12-12 12h-48c-6.6 0-12-5.4-12-12V291.6l-195.5 181C95.9 489.7 64 475.4 64 448V64c0-27.4 31.9-41.7 52.5-24.6L312 219.3V44c0-6.6 5.4-12 12-12h48c6.6 0 12 5.4 12 12z"></path>
-                        </svg> */}
                         <div onClick={this.togglePlay}>
                         {this.state.pause
                             ? 
@@ -196,15 +192,6 @@ class Musique extends Component {
                             </svg>
                         }
                         </div>
-
-                        {/* <div onClick={this.togglePause}>
-                            <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="pause-circle" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" className="sc-1heco5p-1 bgoCaT">
-                                <path fill="currentColor" d="M256 8C119 8 8 119 8 256s111 248 248 248 248-111 248-248S393 8 256 8zm-16 328c0 8.8-7.2 16-16 16h-48c-8.8 0-16-7.2-16-16V176c0-8.8 7.2-16 16-16h48c8.8 0 16 7.2 16 16v160zm112 0c0 8.8-7.2 16-16 16h-48c-8.8 0-16-7.2-16-16V176c0-8.8 7.2-16 16-16h48c8.8 0 16 7.2 16 16v160z"></path>
-                            </svg>
-                        </div> */}
-                        {/* <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="step-forward" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" className="sc-1heco5p-2 zOEgw">
-                            <path fill="currentColor" d="M384 44v424c0 6.6-5.4 12-12 12h-48c-6.6 0-12-5.4-12-12V291.6l-195.5 181C95.9 489.7 64 475.4 64 448V64c0-27.4 31.9-41.7 52.5-24.6L312 219.3V44c0-6.6 5.4-12 12-12h48c6.6 0 12 5.4 12 12z"></path>
-                        </svg> */}
                     </div>
                 </div>)
 
@@ -234,7 +221,6 @@ class Musique extends Component {
 
                         return renderFile
                     })()}
-                
                 </div>)
             }
 

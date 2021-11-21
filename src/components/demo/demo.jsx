@@ -56,7 +56,13 @@ class Demo extends Component {
         voicePanel.classList.remove("hidden");
 
         setTimeout(() => {
-            this.radio.play();
+            // try {
+                this.radio.play();
+            // } catch (error) {
+            //     this.setState({
+            //         messageData: this.state.messageData.concat({ name: "Bouns'Bot", picture: "user-6", text: "error" })
+            //     });
+            // }
         }, 1000);
 
         this.inVocal = true;
