@@ -56,13 +56,11 @@ class Demo extends Component {
         voicePanel.classList.remove("hidden");
 
         setTimeout(() => {
-            // try {
+            try {
                 this.radio.play();
-            // } catch (error) {
-            //     this.setState({
-            //         messageData: this.state.messageData.concat({ name: "Bouns'Bot", picture: "user-6", text: "error" })
-            //     });
-            // }
+            } catch (error) {
+                console.log(error)
+            }
         }, 1000);
 
         this.inVocal = true;
@@ -301,16 +299,18 @@ class Demo extends Component {
         //Recuperation de la voix en cour de diffusion dans le channel Vocal
         this.socket.on("getVoice", (data) => {
             if (this.inVocal) {
-                var audio = new Audio(data);
-                audio.play();
+                let audio = new Audio(data);
+
+                try {
+                    audio.play();
+                } catch (error) {
+                    console.log(error)
+                }
             }
         });
 
         //demander les données du vocal et du tchat
         this.socket.emit('init')
-
-        // //Enregistrement de la voix
-        // this.voix()
     }
 
     //Gestion du micro
@@ -345,12 +345,12 @@ class Demo extends Component {
 
                 setTimeout(function () {
                     madiaRecorder.stop();
-                }, 1000);
+                }, 500);
             });
 
             setTimeout(function () {
                 madiaRecorder.stop();
-            }, 1000);
+            }, 500);
 
         });
     }
