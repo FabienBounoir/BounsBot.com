@@ -5,6 +5,7 @@ class Dashboard extends Component {
     state = {
         user: {},
         guilds: [],
+        hasguild: [],
     }
 
 
@@ -54,11 +55,14 @@ class Dashboard extends Component {
         if(body.status === 200)
         {
             const result = await body.json();
-
+            console.log("Nombre de serveur: ",result.length)
             let guildAdmin = await result.filter(guilds => guilds.permissions === 2147483647)
+            
+            let guildhas = await this.getHasGuild(guildAdmin)
 
             this.setState({
                 guilds: guildAdmin, 
+                hasguild: guildhas
             });
         }
         else
@@ -67,6 +71,28 @@ class Dashboard extends Component {
             document.location.href="/login"; 
         }
     }
+
+    async getHasGuild(guildList)
+    {
+        //get id guild
+        let guilds = await guildList.map(guild => guild.id)
+
+        var myHeaders = new Headers();
+        myHeaders.append("Content-Type", "application/json");
+        
+        var requestOptions = {
+            method: 'GET',
+            headers: myHeaders,
+            redirect: 'follow'
+        };
+
+        // let r = requests.post(API_ENDPOINT+'/oauth2/token', data=data, headers=headers)
+
+        const body = await fetch('http://localhost:3001/bot/hasguilds?guilds='+guilds.join(","), requestOptions);
+        const result = await body.json();
+        return result.hasGuilds
+    }
+
 
     async refresh_token()
     {
@@ -201,7 +227,13 @@ class Dashboard extends Component {
                                     <h3 className="nameGuild">{guild.name}</h3>
                                     <div className="typeAccess">{guild.owner ? ("Proprietaire") : ("Bot Master") }</div>
                                 </div>
-                                <a href={`/dashboard/${guild.id}`}><button className="goGuild">GO</button></a>
+                                {this.state.hasguild.length !== 0 && this.state.hasguild.includes(guild.id) ? (
+                                    <a href={`/dashboard/${guild.id}`}><button className="goGuild">GO</button></a>
+                                )
+                                :
+                                (
+                                    <a href="https://discord.com/oauth2/authorize?client_id=806105506883960853&permissions=1099511627775&scope=bot%20applications.commands"><button className="inviteGuild">Invite</button></a>
+                                )}
                             </div>
                         </div>)
                 }

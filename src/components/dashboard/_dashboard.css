@@ -139,6 +139,35 @@
     transform: scale(1.10);
 }
 
+.inviteGuild {
+    font-family: proxima-nova, sans-serif;
+    box-sizing: border-box;
+    cursor: pointer;
+    position: relative;
+    user-select: none;
+    padding-inline-end: 30px;
+    padding-inline-start: 30px;
+    min-height: 56px;
+    font-size: 16px;
+    line-height: 24px;
+    color: rgb(242, 244, 251);
+    border-radius: 8px;
+    transition: background-color 0.15s ease-out 0s, color, opacity, border;
+    outline: none;
+    text-decoration: none;
+    background: #313442;
+    border-width: initial;
+    border-style: none;
+    border-color: initial;
+    border-image: initial;
+    margin-left: 20px;
+    transition: transform 330ms ease-in-out;
+}
+
+.inviteGuild:hover {
+    transform: scale(1.10);
+}
+
 
 .banniere {
     position: absolute;
