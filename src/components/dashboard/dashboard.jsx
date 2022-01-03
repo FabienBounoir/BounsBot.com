@@ -58,11 +58,10 @@ class Dashboard extends Component {
             console.log("Nombre de serveur: ",result.length)
             let guildAdmin = await result.filter(guilds => guilds.permissions === 2147483647)
             
-            let guildhas = await this.getHasGuild(guildAdmin)
+            await this.getHasGuild(guildAdmin)
 
             this.setState({
                 guilds: guildAdmin, 
-                hasguild: guildhas
             });
         }
         else
@@ -88,9 +87,16 @@ class Dashboard extends Component {
 
         // let r = requests.post(API_ENDPOINT+'/oauth2/token', data=data, headers=headers)
 
-        const body = await fetch('http://localhost:3001/bot/hasguilds?guilds='+guilds.join(","), requestOptions);
-        const result = await body.json();
-        return result.hasGuilds
+        try {            
+            const body = await fetch('https://backendbounsbot.herokuapp.com/bot/hasguilds?guilds='+guilds.join(","), requestOptions)
+            const result = await body.json();
+    
+            this.setState({
+                hasguild: result.hasGuilds
+            });
+        } catch (error) {
+            console.log(error)
+        }
     }
 
 
