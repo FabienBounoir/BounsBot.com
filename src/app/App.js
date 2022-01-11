@@ -10,6 +10,7 @@ import Playlist from "../components/playlist/playlist";
 import infoPlaylist from "../components/infoPlaylist/infoPlaylist";
 import { ErreurPage } from "../components/ErreurPage/ErreurPage";
 import { Login } from "../components/login/login";
+import { TermsAndConditions } from "../components/terms-and-conditions/terms-and-conditions";
 import Dashboard from "../components/dashboard/dashboard";
 import Guild from "../components/guild/guild";
 import Demo from "../components/demo/demo";
@@ -51,6 +52,9 @@ export const App = () => {
           </Route>
           <Route exact path="/login" >
             <Login />
+          </Route>
+          <Route exact path="/terms-and-conditions" >
+            <TermsAndConditions />
           </Route>
           <Route>
             <ErreurPage />
