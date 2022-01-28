@@ -124,17 +124,17 @@
 
 .home__top .wave {
     position: absolute;
-    background: url(wave1.png) repeat-x;
+    background: url(wave.svg) repeat-x;
     bottom: -50px;
     left: 0;
     right: 0;
     width: 100%;
     height: 190px;
-    -webkit-animation: wave 12s linear infinite;
-    animation: wave 12s linear infinite;
+    -webkit-animation: wave 30s linear infinite;
+    animation: wave 30s linear infinite;
     z-index: 3;
 }
-
+/* 6192px */
 @keyframes wave{
     0% {
         background-position: 6192px 0;

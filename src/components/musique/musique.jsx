@@ -2,6 +2,8 @@ import "./_musique.css";
 import React, { Component } from 'react'
 
 var timeout = ""
+let url = "https://bouns-bot.herokuapp.com"
+// let url = "http://localhost:5342"
 
 class Musique extends Component {
 
@@ -23,7 +25,6 @@ class Musique extends Component {
     }
 
     getDataMusique = () => {
-
         const token = "Bearer " + JSON.parse(window.localStorage.getItem('dataDiscord'))?.access_token;
 
         var myHeaders = new Headers();
@@ -36,7 +37,7 @@ class Musique extends Component {
             redirect: 'follow'
         };
 
-        fetch("https://bouns-bot.herokuapp.com/bot/getfile/" + this.props.guild,requestOptions)
+        fetch(url + "/bot/getfile/" + this.props.guild,requestOptions)
         .then(response => response.text())
         .then(result => {
 
@@ -54,8 +55,8 @@ class Musique extends Component {
                 this.setState({
                     file: JSON.parse(result).playlist,
                     loadMusique: true,
-                    preview: JSON.parse(result).playlist.image[0],
-                    actualMusique: JSON.parse(result).playlist.name[0]
+                    preview: JSON.parse(result).playlist[0].image,
+                    actualMusique: JSON.parse(result).playlist[0].name
                 });
             }
         })
@@ -78,12 +79,37 @@ class Musique extends Component {
         redirect: 'follow'
         };
 
-        fetch("https://bouns-bot.herokuapp.com/bot/play", requestOptions)
+        fetch(url + "/bot/play", requestOptions)
         .then(response => response.text())
-        .then(result => {this.setState({
-            pause: !this.state.pause
-        })}
-        )
+        .then(result => {
+            this.setState({
+                pause: JSON.parse(result).play
+            })
+        })
+        .catch(error => console.log('error', error));
+    }
+
+    skipMusic = async () => {
+        var myHeaders = new Headers();
+        myHeaders.append("Content-Type", "application/json");
+        myHeaders.append("Authorization", "Bearer " + JSON.parse(window.localStorage.getItem('dataDiscord'))?.access_token);
+
+        var raw = JSON.stringify({
+            "guildId": this.props.guild
+        });
+
+        var requestOptions = {
+        method: 'PUT',
+        headers: myHeaders,
+        body: raw,
+        redirect: 'follow'
+        };
+
+        fetch(url + "/bot/skip", requestOptions)
+        .then(response => response.text())
+        .then((result) => {
+            this.getDataMusique()
+        })
         .catch(error => console.log('error', error));
     }
 
@@ -103,7 +129,7 @@ class Musique extends Component {
         redirect: 'follow'
         };
 
-        fetch("https://bouns-bot.herokuapp.com/bot/pause", requestOptions)
+        fetch(url + "/bot/pause", requestOptions)
         .then(response => response.text())
         .then(result => console.log(result))
         .catch(error => console.log('error', error));
@@ -130,7 +156,7 @@ class Musique extends Component {
             redirect: 'follow'
             };
     
-            fetch("https://bouns-bot.herokuapp.com/bot/volume", requestOptions)
+            fetch(url + "/bot/volume", requestOptions)
             .then(response => response.text())
             .then(result => {this.setState({volume:JSON.parse(result).volume}); console.log(JSON.parse(result).volume)})
             .catch(error => console.log('error', error));
@@ -153,7 +179,7 @@ class Musique extends Component {
             redirect: 'follow'
         };
 
-        fetch("https://bouns-bot.herokuapp.com/bot/clearqueue", requestOptions)
+        fetch(url + "/bot/clearqueue", requestOptions)
         .then(response => response.text())
         .then((result) => {
             this.getDataMusique()
@@ -192,6 +218,11 @@ class Musique extends Component {
                             </svg>
                         }
                         </div>
+                        <div onClick={this.skipMusic}>
+                            <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="step-forward" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" disabled="" class="sc-1heco5p-2 jBXVxi">
+                                <path fill="currentColor" d="M384 44v424c0 6.6-5.4 12-12 12h-48c-6.6 0-12-5.4-12-12V291.6l-195.5 181C95.9 489.7 64 475.4 64 448V64c0-27.4 31.9-41.7 52.5-24.6L312 219.3V44c0-6.6 5.4-12 12-12h48c6.6 0 12 5.4 12 12z"></path>
+                            </svg>
+                        </div>
                     </div>
                 </div>)
 
@@ -205,15 +236,15 @@ class Musique extends Component {
                     {(() => {
                         var renderFile = []
 
-                        if(this.state.file.name)
+                        if(this.state.file.length > 0)
                         {
-                            for (let i = 1; i < this.state.file?.name.length; i++) {
+                            for (let i = 1; i < this.state.file?.length; i++) {
                                 renderFile.push(
-                                    <p key={i}>{ this.state.file.name[i] }</p>
+                                    <p key={i}>{ this.state.file[i].title }</p>
                                 )
                             }
 
-                            if(this.state.file?.name.length <= 1 )
+                            if(this.state.file?.length <= 1 )
                             {
                                 renderFile.push(<p style={{alignSelf: "center", color: "#5a5e66"}}>Ajouter de la musique avec -play</p>)
                             }
@@ -226,7 +257,7 @@ class Musique extends Component {
 
             return musiqueGestion;
         })()}
-        <p onClick={()=> {this.setState({ clear: true })}} className="ClearQueue">Clear la queue</p>
+        <p onClick={()=> {this.setState({ clear: true })}} className="ClearQueue">Effacer la queue</p>
         {this.state.clear ? (
             <div className="cardSuccess">
             <div className="cardInsideSuccess">

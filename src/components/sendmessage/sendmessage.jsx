@@ -51,6 +51,7 @@ class SendMessage extends Component {
         };
 
         let url = "https://bouns-bot.herokuapp.com"
+        // let url = "http://localhost:5342"
 
         fetch(url + "/bot/sendto/",requestOptions)
             .then(response => response.json())

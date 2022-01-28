@@ -15,9 +15,9 @@ class Demo extends Component {
         this.leaveSound = new Audio("https://cdn.discordapp.com/attachments/825523344468082743/884722968155013130/discord-leave-sound-effect-hd.mp3");
 
         //regler volume son
-        this.radio.volume = this.getCookie("volume") || 0.4;
-        this.joinSound.volume = 0.5;
-        this.leaveSound.volume = 0.5;
+        this.radio.volume = this.getCookie("volume") || 0.1;
+        this.joinSound.volume = 0.3;
+        this.leaveSound.volume = 0.3;
 
         //si l'utilisateur est dans le voc
         this.inVocal = false;
@@ -36,9 +36,13 @@ class Demo extends Component {
         //genere la PP du client
         this.picture = `${Math.floor(Math.random() * 6)}`
 
+        //socket.io client connection
+        this.socket = io('http://localhost:3001/');
+
+        
         //socket server link
         this.socket = io("https://socketbounsbot.herokuapp.com/");
-        // this.socket = io("http://127.0.0.1:3001/"); //en local test
+        // this.socket = io("ws://localhost:3001"); //en local test
     }
 
     //appeler lorsque l'utilisateur clique sur le bouton join (salon vocal)
@@ -127,7 +131,7 @@ class Demo extends Component {
             this.radioCommandes(commande.split(' ')[1])
         }
         else if (commande.toLowerCase().indexOf(`-volume `) === 0) {
-            this.volumeCommandes(commande.split(' ')[1])
+            this.volumeCommandes(10/commande.split(' ')[1])
         }
         else if (commande === "-resume") {
             this.playCommandes()

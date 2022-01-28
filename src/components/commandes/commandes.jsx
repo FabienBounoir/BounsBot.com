@@ -44,6 +44,10 @@ export const Commandes = () => {
                     <td>Affiché les musiques dans la playlist</td>
                 </tr>
                 <tr>
+                    <td>-forcePlay (URL/NOM)</td>
+                    <td>Ajouter un son juste apres celle en cour</td>
+                </tr>
+                <tr>
                     <td>-remove (Numero)</td>
                     <td>Supprimer une musique de la playlist</td>
                 </tr>
@@ -94,6 +98,10 @@ export const Commandes = () => {
                     <td>Crée/Ajouter musique dans une playlist</td>
                 </tr>
                 <tr>
+                    <td>-setPicturePlaylist (Name) (Url Youtube)</td>
+                    <td>Mettre un logo a ça playlist</td>
+                </tr>
+                <tr>
                     <td>-playlist (Name)</td>
                     <td>Jouer la playlist</td>
                 </tr>
@@ -124,6 +132,14 @@ export const Commandes = () => {
                     <td>-setlogchannel (idChannel ou 0 pour Désactiver)</td>
                     <td>Crée/ajouter musique dans une playlist</td>
                 </tr>
+                <tr>
+                    <td>-settwitch (chaine twitch)</td>
+                    <td>Choisir la chaine que le bot doit ecouter</td>
+                </tr>    
+                <tr>
+                    <td>-setchanneltwitch (id channel Discord)</td>
+                    <td>Choisir la channel ou sera retranscrit le tchat twitch</td>
+                </tr>   
                 <tr>
                     <td>-set heyreaction (true/false)</td>
                     <td>Config les reaction de bonjour / bonne nuit</td>
@@ -167,6 +183,10 @@ export const Commandes = () => {
                     <td>-levels</td>
                     <td>Leaderboard des levels du serveur</td>
                 </tr>
+                <tr>
+                    <td>-achievement</td>
+                    <td>Voir les achievements débloqué</td>
+                </tr>   
                 <tr>
                     <td>-setbanniere + drag and drop image</td>
                     <td>Changer la bannière du rank (Best dimension = 934x282)</td>
@@ -240,6 +260,10 @@ export const Commandes = () => {
                     <td>-invite</td>
                     <td>Invité le bot sur votre serveur</td>
                 </tr>
+                <tr>
+                    <td>-help</td>
+                    <td>Voir les commandes disponible</td>
+                </tr>
             </tbody>
         </Table>
         <Table striped bordered hover variant="dark">
@@ -260,12 +284,28 @@ export const Commandes = () => {
                     <td>Ta PP en mode triggered</td>
                 </tr>   
                 <tr>
+                    <td>-missionpassed</td>
+                    <td>Ta PP en mode mission passed</td>
+                </tr>   
+                <tr>
+                    <td>-prison</td>
+                    <td>Ta PP en prison</td>
+                </tr>   
+                <tr>
+                    <td>-fact</td>
+                    <td>Afficher un fact</td>
+                </tr>   
+                <tr>
                     <td>-wasted</td>
                     <td>Ta PP en mode wasted</td>
                 </tr>
                 <tr>
                     <td>-pika</td>
                     <td>Affiche un gif de Pikachu</td>
+                </tr>
+                <tr>
+                    <td>-meteo (ville)</td>
+                    <td>Voir la meteo de la ville selectionné</td>
                 </tr>
                 <tr>
                     <td>-cat</td>
@@ -284,8 +324,20 @@ export const Commandes = () => {
                     <td>Genere un fake commentaire youtube</td>
                 </tr>  
                 <tr>
+                    <td>-anniversaire</td>
+                    <td>Jouer une musique d'anniversaire dans le channel</td>
+                </tr>
+                <tr>
                     <td>-fortnite (Pseudo)</td>
                     <td>Information compte fortnite</td>
+                </tr>  
+                <tr>
+                    <td>-minecraft (Pseudo)</td>
+                    <td>Information compte minecraft</td>
+                </tr> 
+                <tr>
+                    <td>-undercover</td>
+                    <td>Le jeu undercover (il faut trouver la personne avec le mot different)</td>
                 </tr>  
             </tbody>
         </Table>

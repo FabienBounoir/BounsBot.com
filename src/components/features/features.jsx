@@ -10,6 +10,9 @@ import Radio from '../picture/features/radio.svg';
 import Level from '../picture/features/level.svg';
 import Rank from '../picture/features/rank.svg';
 import AnimationImage from "../animationimage/animationimage";
+import join from '../picture/features/JoinChannel.svg';
+import twitch1 from '../picture/features/twitch1.svg';
+import twitch2 from '../picture/features/twitch2.svg';
 
 
 export const Features = () => {
@@ -60,9 +63,21 @@ export const Features = () => {
                                 <path fillRule="evenodd" clipRule="evenodd" d="M7.02431 0.524414H0V7.52441H7.02431V0.524414ZM35.9998 0.524414H10.5366V7.52441H35.9998V0.524414ZM0 11.0244H7.02431V18.0244H0V11.0244ZM35.9998 11.0244H10.5366V18.0244H35.9998V11.0244ZM0 21.5244H7.02431V28.5244H0V21.5244ZM35.9998 21.5244H10.5366V28.5244H35.9998V21.5244Z" fill="#0cab34"></path>
                             </svg>
                         </div> 
-                        <p>Logs de Message Supprimer / Modifier <br/>Auto Rename lorsqu'un pseudo contient des caractères spéciaux<br/>Nettoyer le tchat avec efficacité avec la commande "clear"</p>
+                        <p>Des logs de qualité avec les message supprimé / modifié, mais aussi les logs de cam et meme de partage d'ecran<br/>Auto Rename lorsqu'un pseudo contient des caractères spéciaux<br/>Nettoyer le tchat avec efficacité avec la commande "clear"</p>
                     </div>
-                    <AnimationImage img={ [Moderation,Rename] }/>
+                    <AnimationImage img={ [Moderation,join,Rename] }/>
+                </div>
+                <div className="feature active">
+                    <AnimationImage img={ [twitch1,twitch2] }/>
+                    <div className="content">
+                        <div className="title">
+                            <h3>Twitch vers Discord</h3> 
+                            <svg width="36" height="29" viewBox="0 0 36 29" fill="none" xmlns="http://www.w3.org/2000/svg" className="show-commands">
+                                <path fillRule="evenodd" clipRule="evenodd" d="M7.02431 0.524414H0V7.52441H7.02431V0.524414ZM35.9998 0.524414H10.5366V7.52441H35.9998V0.524414ZM0 11.0244H7.02431V18.0244H0V11.0244ZM35.9998 11.0244H10.5366V18.0244H35.9998V11.0244ZM0 21.5244H7.02431V28.5244H0V21.5244ZM35.9998 21.5244H10.5366V28.5244H35.9998V21.5244Z" fill="#0cab34"></path>
+                            </svg>
+                        </div> 
+                        <p>Retranscrire le tchat Twitch d'une chaine sur un channel Discord <br/>Les badges et les liens sont aussi retranscrit sur Discord</p>
+                    </div>
                 </div>
             </div>
         </div>
