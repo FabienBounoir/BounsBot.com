@@ -137,7 +137,7 @@
         user-select: none;
         color: white;
         border-radius: 8px;
-        width: calc(100vh - 200px);
+        width: calc(100vh - 100px);
     }
 }
 
@@ -151,7 +151,7 @@
         user-select: none;
         color: white;
         border-radius: 8px;
-        width: calc(100vh - 400px);
+        width: calc(100vh - 100px);
     }
 }
 
@@ -165,6 +165,6 @@
         user-select: none;
         color: white;
         border-radius: 8px;
-        width: calc(100vh - 500px);
+        width: auto;
     }
 }

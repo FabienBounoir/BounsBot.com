@@ -14,6 +14,8 @@ import { TermsAndConditions } from "../components/terms-and-conditions/terms-and
 import Dashboard from "../components/dashboard/dashboard";
 import Guild from "../components/guild/guild";
 import Demo from "../components/demo/demo";
+import Callback from "../components/callback/callback";
+import Authenticate from '../components/Authenticate';
 // import Test from "../components/sendEmbed/sendembed";
 
 export const App = () => {
@@ -42,16 +44,21 @@ export const App = () => {
           </Route>
           <Route exact path="/playlist/:id" component={infoPlaylist}>
           </Route>
-          <Route exact path="/dashboard">
+          <Authenticate exact path="/dashboard">
             <Dashboard />
-          </Route>
+          </Authenticate>
           {/* <Route exact path="/test">
             <Test />
           </Route> */}
-          <Route exact path="/dashboard/:id" component={Guild}>
-          </Route>
+          <Authenticate exact path="/dashboard/:id">
+            <Route exact path="/dashboard/:id" component={Guild}>
+            </Route>
+          </Authenticate>
           <Route exact path="/login" >
             <Login />
+          </Route>
+          <Route exact path="/oauth/callback" >
+            <Callback />
           </Route>
           <Route exact path="/terms-and-conditions" >
             <TermsAndConditions />

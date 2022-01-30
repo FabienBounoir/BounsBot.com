@@ -4,6 +4,7 @@ import React, { Component } from 'react'
 import logo from '../picture/logo5.svg';
 import disconnect from '../picture/disconnect.png';
 import { Navbar,Container , Nav } from 'react-bootstrap/'
+import { getInfoUser } from "../../utils/fetch";
 
 let interval = ""
 
@@ -17,8 +18,7 @@ class Navigation extends Component {
     }
 
     componentDidMount() {
-        this.updateLogin()
-        interval = setInterval(() => {this.updateLogin()}, 1000);
+        this.updateLogin();
         fetch("https://backendbounsbot.herokuapp.com/discord")
     }
 
@@ -30,14 +30,20 @@ class Navigation extends Component {
         document.location.href="/"
     }
 
-    updateLogin = () => {
-        if(window.localStorage.getItem('dataUser') && window.localStorage.getItem('dataUser').length !== 0)
+    updateLogin = async () => {
+
+        if(window.localStorage.getItem('dataUser') === null)
         {
-            this.setState({ login: true });
+            return this.setState({ login: false });
         }
         else
-        {
-            this.setState({ login: false });
+        {            
+            const token = JSON.parse(window.localStorage.getItem('dataDiscord')).access_token;
+    
+            const user = await getInfoUser(token)
+    
+            if(!user) return this.setState({ login: false });
+            else return this.setState({ login: true });
         }
     }
 

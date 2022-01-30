@@ -8,6 +8,7 @@ import playlistPicto from "../picture/playlistPicto.png";
 import renamePicto from "../picture/renamePicto.png";
 import reactionPicto from "../picture/reactionPicto.png";
 import logs from "../picture/logs.png";
+import twitch from "../picture/twitch.png";
 import { Form } from 'react-bootstrap/'
 // import Slider from '@mui/material/Slider';
 import Musique from "../musique/musique.jsx";
@@ -25,6 +26,8 @@ class Guild extends Component {
         rename: true,
         sheesh: false,
         logChannel: 0,
+        twitchChannel: 0,
+        chaineTwitch: "",
         fun: true,
         file: {},
         volume: 0.5,
@@ -63,6 +66,8 @@ class Guild extends Component {
                         rename: result.guild[0]?.rename,
                         sheesh: result.guild[0]?.sheesh,
                         logChannel: result.guild[0]?.logChannel,
+                        twitchChannel: result.guild[0]?.idChannelTwitchTchat,
+                        chaineTwitch: result.guild[0]?.chaineTwitch === "0" ? ("") : (result.guild[0]?.chaineTwitch),
                         fun: result.guild[0]?.fun
                     });
                 }
@@ -87,8 +92,9 @@ class Guild extends Component {
         fetch(url + "/bot/getchannels/" + this.props.match.params.id,requestOptions)
             .then(response => response.json())
             .then((result) => {
+                console.log(result)
                 this.setState({
-                    channelTextuelGuild: result.channels.filter(channel => channel.type === "text")
+                    channelTextuelGuild: result.channels.filter(channel => channel.type === "GUILD_TEXT")
                 });
             })
             .catch(console.log)
@@ -109,7 +115,9 @@ class Guild extends Component {
             "musique": this.state.musique,
             "radio": this.state.radio,
             "playlist": this.state.playlist,
-            "fun": this.state.fun
+            "fun": this.state.fun,
+            "twitchChannel": this.state.twitchChannel,
+            "chaineTwitch": this.state.chaineTwitch === "" ? ("0") : (this.state.chaineTwitch)
         });
 
         console.log(raw)
@@ -143,9 +151,7 @@ class Guild extends Component {
                     <h1>Information de la guilde</h1> 
                 </div>
                 <button className="save" onClick={this.updateGuildConfig}>Enregistrer</button>
-                {(() => {
-                    var rank = [];
-                    rank.push(<div className='componentGuild'>
+                    <div className='componentGuild'>
                         <div className="guildModule">
                             <div className="top">
                                 <img className="picto" alt='logo' width="48" height="48" src={reactionPicto} ></img>
@@ -238,42 +244,82 @@ class Guild extends Component {
                             <h5 className="hrnh5k-0 eeKdki sc-1wkjbe7-8 GoZzi">Logs</h5>
                             <div>Choisir le channel pour afficher les logs du serveur</div>
                         </div>
-                    </div>);
 
-                    if (this.state.success) {
-                        rank.push(<div className="cardSuccess">
-                                    <div className="cardInsideSuccess">
+                        <div className="guildModule">
+                        <div className="top">
+                            <img className="pictoLog" alt='logo' width="48" height="48" src={twitch} ></img>
+                            {/* <Form.Check type="switch" id="custom-switch success" onChange={() => { this.setState({ logChannel: !this.state.logChannel }) }} checked={this.state.fun} /> */}
+                            <div><Form.Control id="messageToSend" type="text" placeholder="Chaine" value={this.state.chaineTwitch}  onChange={(event) => { this.setState({ chaineTwitch: event.target.value}) }}/>
+                            <Form.Select defaultValue={this.state.twitchChannel} onChange={(event) => { this.setState({ idChannelTwitchTchat: event.target.value }) }}>
+                                {(() => {
+                                    var option = [];
+
+                                    for(let value of this.state.channelTextuelGuild)
+                                    {
+                                        if(value.id === this.state.twitchChannel)
+                                        {
+                                            option.push(<option value={value.id} selected>{ value.name }</option>)
+                                        }
+                                        else
+                                        {
+                                            option.push(<option value={value.id}>{ value.name }</option>)
+                                        }
+                                    }
+
+                                    if(this.state.logChannel === 0)
+                                    {
+                                        option.push(<option value="0" selected>Désactivé</option>)
+                                    }
+                                    else
+                                    {
+                                        option.push(<option value="0">Désactivé</option>)
+                                    }
+
+                                    return option;
+                                })()}
+                            </Form.Select></div>
+                        </div>
+                        <h5 className="hrnh5k-0 eeKdki sc-1wkjbe7-8 GoZzi">Twitch</h5>
+                        <div>Choisir la chaine twitch et le chaine pour afficher le tchat</div>
+                    </div>
+
+                    </div>
+                    {(() => {
+                        let etat = [];
+                        if (this.state.success) {
+                            etat.push(<div className="cardSuccess">
+                                <div className="cardInsideSuccess">
+                                    <div>
+                                        <h2>Success</h2>
+                                    </div>
+                                    <div className="content">Mise à jour effectué<br/><br/></div>
+                                    <div className="zoneInterationSucess">
                                         <div>
-                                            <h2>Success</h2>
+                                            <button className="BoutonClose" onClick={()=> {this.setState({ success: false })}} color="#ffffff">Fermer</button>
                                         </div>
-                                        <div className="content">Mise à jour effectué<br/><br/></div>
-                                            <div className="zoneInterationSucess">
-                                                <div>
-                                                    <button className="BoutonClose" onClick={()=> {this.setState({ success: false })}} color="#ffffff">Fermer</button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>);
-                    }
-                    else if(this.state.error)
-                    {
-                        rank.push(<div className="cardSuccess">
-                            <div className="cardInsideError">
-                                <div>
-                                    <h2>Erreur</h2>
+                                    </div>
                                 </div>
-                                <div className="content">La mise à jour des informations a échoué<br/><br/></div>
+                            </div>);
+                        }
+                        else if(this.state.error)
+                        {
+                            etat.push(<div className="cardSuccess">
+                                <div className="cardInsideError">
+                                    <div>
+                                        <h2>Erreur</h2>
+                                    </div>
+                                    <div className="content">La mise à jour des informations a échoué<br/><br/></div>
                                     <div className="zoneInterationError">
                                         <div>
                                             <button className="BoutonClose" onClick={()=> {this.setState({ error: false })}} color="#ffffff">Fermer</button>
                                         </div>
                                     </div>
                                 </div>
-                            </div>);
-                    }
-    
-                return rank;
-        })()}
+                            </div>)
+                        }
+
+                        return etat;
+                    })()}
 
         {this.state.channelTextuelGuild.length !== 0 ? (<SendMessage guild={this.props.match.params.id} channel={this.state.channelTextuelGuild}/>):("")}
 
