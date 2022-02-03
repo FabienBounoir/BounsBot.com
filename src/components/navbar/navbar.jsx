@@ -4,7 +4,7 @@ import React, { Component } from 'react'
 import logo from '../picture/logo5.svg';
 import disconnect from '../picture/disconnect.png';
 import { Navbar,Container , Nav } from 'react-bootstrap/'
-import { getInfoUser } from "../../utils/fetch";
+import Fetch from "../../utils/fetch.js";
 
 let interval = ""
 
@@ -40,7 +40,7 @@ class Navigation extends Component {
         {            
             const token = JSON.parse(window.localStorage.getItem('dataDiscord')).access_token;
     
-            const user = await getInfoUser(token)
+            const user = await Fetch.getInfoUser(token)
     
             if(!user) return this.setState({ login: false });
             else return this.setState({ login: true });

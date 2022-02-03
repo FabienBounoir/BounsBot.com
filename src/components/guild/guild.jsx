@@ -280,7 +280,7 @@ class Guild extends Component {
                             </Form.Select></div>
                         </div>
                         <h5 className="hrnh5k-0 eeKdki sc-1wkjbe7-8 GoZzi">Twitch</h5>
-                        <div>Choisir la chaine twitch et le chaine pour afficher le tchat</div>
+                        <div>Choisir la chaine twitch et le channel pour afficher le tchat (Mise en place 1 fois par jour)</div>
                     </div>
 
                     </div>

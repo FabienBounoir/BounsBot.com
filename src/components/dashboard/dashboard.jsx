@@ -1,6 +1,6 @@
 import "./_dashboard.css";
 import React, { Component } from 'react'
-import { getBounsBotHasGuild, getGuilds, getInfoUser } from "../../utils/fetch"
+import Fetch from "../../utils/fetch.js"
 
 class Dashboard extends Component {
     state = {
@@ -48,7 +48,7 @@ class Dashboard extends Component {
             window.localStorage.setItem('dataDiscord', JSON.stringify(result));
 
             await this.getUser()
-            await this.getGuilds()
+            await  Fetch.getGuilds()
         }
         else
         {
@@ -62,11 +62,11 @@ class Dashboard extends Component {
         const info = JSON.parse(window.localStorage.getItem("dataDiscord"))
         console.log(info)
 
-        const guild = await getGuilds(info.access_token)
+        const guild = await Fetch.getGuilds(info.access_token)
 
         if(!guild) return document.location.href = "/login";
 
-        const guilsHasBounsBot = await getBounsBotHasGuild(guild)
+        const guilsHasBounsBot = await  Fetch.getBounsBotHasGuild(guild)
 
         this.setState({
             guilds: guild, 

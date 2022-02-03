@@ -1,6 +1,6 @@
 import "./_callback.css";
 import { Component } from 'react'
-import { getInfoUser }  from "../../utils/fetch"
+import Fetch from "../../utils/fetch.js";
 import logo from "../picture/logo5.svg";
 
 
@@ -12,7 +12,7 @@ class Callback extends Component {
             'client_secret': "_8eU3zihkLxqEQb0EJmCDLeFVOoZEYe2",
             'grant_type': 'authorization_code',
             'code': code,
-            'redirect_uri': "http://localhost:3000/oauth/callback"
+            'redirect_uri': "https://bounsbot.herokuapp.com/oauth/callback"
         } //'redirect_uri': "http://localhost:3000/oauth/callback" | 'redirect_uri': "https://bounsbot.herokuapp.com/oauth/callback"
         
         var formBody = [];
@@ -39,7 +39,7 @@ class Callback extends Component {
 
             await window.localStorage.setItem('dataDiscord', JSON.stringify(result));
 
-            const user = await getInfoUser(result.access_token) 
+            const user = await Fetch.getInfoUser(result.access_token) 
 
             if(!user) document.location.href="/login"
             await window.localStorage.setItem('dataUser',JSON.stringify(user))
