@@ -42,8 +42,15 @@ class Navigation extends Component {
     
             const user = await Fetch.getInfoUser(token)
     
-            if(!user) return this.setState({ login: false });
-            else return this.setState({ login: true });
+            if(!user)
+            {
+                window.localStorage.removeItem('dataDiscord');
+                window.localStorage.removeItem('dataUser');
+                return this.setState({ login: false });
+            }
+            
+            await window.localStorage.setItem('dataUser',JSON.stringify(user))
+            return this.setState({ login: true });
         }
     }
 

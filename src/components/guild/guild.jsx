@@ -249,7 +249,7 @@ class Guild extends Component {
                         <div className="top">
                             <img className="pictoLog" alt='logo' width="48" height="48" src={twitch} ></img>
                             {/* <Form.Check type="switch" id="custom-switch success" onChange={() => { this.setState({ logChannel: !this.state.logChannel }) }} checked={this.state.fun} /> */}
-                            <div><Form.Control id="messageToSend" type="text" placeholder="Chaine" value={this.state.chaineTwitch}  onChange={(event) => { this.setState({ chaineTwitch: event.target.value}) }}/>
+                            <div><Form.Control type="text" placeholder="Chaine" value={this.state.chaineTwitch}  onChange={(event) => { this.setState({ chaineTwitch: event.target.value}) }}/>
                             <Form.Select defaultValue={this.state.twitchChannel} onChange={(event) => { this.setState({ idChannelTwitchTchat: event.target.value }) }}>
                                 {(() => {
                                     var option = [];
@@ -266,7 +266,7 @@ class Guild extends Component {
                                         }
                                     }
 
-                                    if(this.state.logChannel === 0)
+                                    if(this.state.twitchChannel === 0)
                                     {
                                         option.push(<option value="0" selected>Désactivé</option>)
                                     }

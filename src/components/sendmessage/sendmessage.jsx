@@ -42,7 +42,6 @@ class SendMessage extends Component {
             "message": document.getElementById('messageToSend').value
         });
 
-
         var requestOptions = {
         method: 'POST',
         headers: myHeaders,
