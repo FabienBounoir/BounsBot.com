@@ -23,7 +23,7 @@ class WelcomeConfig extends Component {
 
         try
         {
-            const welcomeConfig = await fetch("http://localhost:3001/guild/" + guildId + "/welcomemessage", {
+            const welcomeConfig = await fetch("https://backendbounsbot.herokuapp.com/guild/" + guildId + "/welcomemessage", {
                 headers: myHeaders,
                 method: "GET",
                 redirect: "follow"
@@ -52,7 +52,7 @@ class WelcomeConfig extends Component {
         console.log(this.state.welcomeMessage, this.state.welcomeActive)
 
         try{
-            const welcomeConfig = await fetch("http://localhost:3001/guild/" + this.props.guild + "/welcomemessage", {
+            const welcomeConfig = await fetch("https://backendbounsbot.herokuapp.com/guild/" + this.props.guild + "/welcomemessage", {
                 headers: myHeaders,
                 method: "PUT",
                 body: JSON.stringify({
