@@ -12,6 +12,7 @@ import twitch from "../picture/twitch.png";
 import { Form } from 'react-bootstrap/'
 // import Slider from '@mui/material/Slider';
 import Musique from "../musique/musique.jsx";
+import WelcomeMessage from "../welcomeConfig/welcomeConfig.jsx";
 import SendMessage from "../sendmessage/sendmessage"
 
 class Guild extends Component {
@@ -320,6 +321,8 @@ class Guild extends Component {
 
                         return etat;
                     })()}
+
+        <WelcomeMessage guild={this.props.match.params.id}/>
 
         {this.state.channelTextuelGuild.length !== 0 ? (<SendMessage guild={this.props.match.params.id} channel={this.state.channelTextuelGuild}/>):("")}
 

@@ -1,0 +1,113 @@
+.WelcomeComponente{
+
+    background-color: #313442;
+    padding: 30px;
+    border-radius: 8px;
+    gap: 10px;
+}
+
+.embed::before{
+    content: "";
+    position: absolute;
+    left: 0px;
+    bottom: 0px;
+    top: 0px;
+    width: 6px;
+    border-top-left-radius: 4px;
+    border-bottom-left-radius: 4px;
+    background: #0cab34;
+}
+
+.embed{
+    display: grid;
+    grid-template-columns: 1fr auto;
+    flex-wrap: wrap;
+    position: relative;
+    padding: 15px 15px 15px 18px;
+    background-color: #262834;
+    border-radius: 4px;
+    gap: 10px;
+}
+
+.iconEmbed{
+    /* left: 0px;
+    top: 0px; */
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    background: #0cab34;
+}
+
+.embedAuthor{
+    /* align-items: center; */
+    display: flex;
+    color: white;
+    gap: 5px;
+    margin-bottom: 0.5em;
+    font-weight: 500;
+}
+
+.thumbnailEmbed{
+    float: right;
+    right: -10px;
+    width: 80px;
+    height: 80px;
+    border-radius: 4px;
+    background: #0cab34;
+}
+
+.embedDescripton{
+    display: block;
+    width: 100%;
+    /* padding: 0.375rem 0.75rem; */
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #ffffff;
+    background-color: #414457;
+    background-clip: padding-box;
+    border: 1px solid #4e5459;
+    -webkit-appearance: none;
+    appearance: none;
+    border-radius: 0.25rem;
+}
+
+.embedDescripton:focus{
+    outline: none;
+}
+
+.configWelcomeEmbed{
+    display: grid;
+    grid-template-columns: 1fr auto;
+    flex-wrap: wrap;
+    position: relative;
+    padding: 15px 15px 15px 18px;
+    background-color: #262834;
+    border-radius: 4px;
+    gap: 10px;
+    align-items: center;
+}
+
+.flou{
+    animation: blur 1s ease-in-out;
+    filter: blur(5px) saturate(0);
+}
+
+@keyframes blur {
+    from {
+        filter: blur(0px) saturate(1);
+    }
+    to {
+        filter: blur(5px) saturate(0);
+
+    }
+}
+
+.interactionEmbed{
+    float: left;
+    display: flex;
+    padding-left: 10px;
+    gap: 5px;
+    align-items: center;
+    margin-top: 4px;
+}

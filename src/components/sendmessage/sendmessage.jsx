@@ -68,7 +68,6 @@ class SendMessage extends Component {
         <div style={{marginBottom: "60px"}} >
             <div style={{justifyContent: "center", marginBottom: "30px"}} className="top">
                 <h1>Envoyer un Message</h1> 
-                <p className="newModule">Nouveau</p>
             </div>   
 
             <div className="embedMessage">
