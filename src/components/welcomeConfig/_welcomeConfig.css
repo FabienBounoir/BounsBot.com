@@ -30,8 +30,6 @@
 }
 
 .iconEmbed{
-    /* left: 0px;
-    top: 0px; */
     width: 22px;
     height: 22px;
     border-radius: 50%;
@@ -39,7 +37,6 @@
 }
 
 .embedAuthor{
-    /* align-items: center; */
     display: flex;
     color: white;
     gap: 5px;
@@ -59,7 +56,6 @@
 .embedDescripton{
     display: block;
     width: 100%;
-    /* padding: 0.375rem 0.75rem; */
     font-size: 1rem;
     font-weight: 400;
     line-height: 1.5;
@@ -89,11 +85,11 @@
 }
 
 .flou{
-    animation: blur 1s ease-in-out;
+    animation: blurSaturation 1s ease-in-out;
     filter: blur(5px) saturate(0);
 }
 
-@keyframes blur {
+@keyframes blurSaturation {
     from {
         filter: blur(0px) saturate(1);
     }

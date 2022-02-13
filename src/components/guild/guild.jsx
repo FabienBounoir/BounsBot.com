@@ -58,6 +58,7 @@ class Guild extends Component {
 
                 if(result.guild.length !== 0)
                 {
+                    console.log(result.guild[0])
                     this.setState({
                         guildInfo: result.guild[0]?.guild,
                         heyreaction: result.guild[0]?.heyreaction,
@@ -117,7 +118,7 @@ class Guild extends Component {
             "radio": this.state.radio,
             "playlist": this.state.playlist,
             "fun": this.state.fun,
-            "twitchChannel": this.state.twitchChannel,
+            "twitchChannel": this.state.idChannelTwitchTchat,
             "chaineTwitch": this.state.chaineTwitch === "" ? ("0") : (this.state.chaineTwitch)
         });
 
@@ -251,7 +252,7 @@ class Guild extends Component {
                             <img className="pictoLog" alt='logo' width="48" height="48" src={twitch} ></img>
                             {/* <Form.Check type="switch" id="custom-switch success" onChange={() => { this.setState({ logChannel: !this.state.logChannel }) }} checked={this.state.fun} /> */}
                             <div><Form.Control type="text" placeholder="Chaine" value={this.state.chaineTwitch}  onChange={(event) => { this.setState({ chaineTwitch: event.target.value}) }}/>
-                            <Form.Select defaultValue={this.state.twitchChannel} onChange={(event) => { this.setState({ idChannelTwitchTchat: event.target.value }) }}>
+                            <Form.Select defaultValue={this.state.idChannelTwitchTchat} onChange={(event) => { this.setState({ idChannelTwitchTchat: event.target.value }) }}>
                                 {(() => {
                                     var option = [];
 
