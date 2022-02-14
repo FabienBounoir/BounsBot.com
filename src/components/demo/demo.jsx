@@ -206,7 +206,7 @@ class Demo extends Component {
     //commande volume (met a jour le volume du bot)
     volumeCommandes(volume) {
         if (!(isNaN(volume))) {
-            let number = parseInt(volume)
+            let number = Number(volume)
             if (number >= 0 && number <= 1) {
                 this.radio.volume = volume;
                 this.setState({
