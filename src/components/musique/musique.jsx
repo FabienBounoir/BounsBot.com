@@ -56,7 +56,7 @@ class Musique extends Component {
                     file: JSON.parse(result).playlist,
                     loadMusique: true,
                     preview: JSON.parse(result).playlist[0].image,
-                    actualMusique: JSON.parse(result).playlist[0].name
+                    actualMusique: JSON.parse(result).playlist[0].title
                 });
             }
         })
