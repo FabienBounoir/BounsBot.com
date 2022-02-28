@@ -103,7 +103,7 @@ class Navigation extends Component {
                         <Nav className="me-auto">
                             <Nav.Link href="/commandes">Commandes</Nav.Link>
                             <Nav.Link href="/playlist">Playlists</Nav.Link>
-                            <Nav.Link href="/level">Levels</Nav.Link>
+                            {/* <Nav.Link href="/level">Levels</Nav.Link> */}
                             <Nav.Link href="/demo">Démo</Nav.Link>
                         </Nav>
 

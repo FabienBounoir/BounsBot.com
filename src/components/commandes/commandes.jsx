@@ -10,6 +10,7 @@ export const Commandes = () => {
             <div className="search search-bar" data-v-7085cbe2=""></div>
         </div>
         <>
+        <p class="home__top__bot__title__desc"><i>Les commandes sont en train d'être remplacé par le nouveau système d'intégrer Discord</i></p>
         <Table striped bordered hover variant="dark">
             <thead>
                 <tr><th className="titleCommand" colSpan="2">ㆍMusique</th></tr>
@@ -85,6 +86,10 @@ export const Commandes = () => {
                 <tr>
                     <td>-radio (Numero)</td>
                     <td>Sélectionner la radio a écouter (24h/24)</td>
+                </tr>
+                <tr>
+                    <td>-currentradio (Numero)</td>
+                    <td>Voir la radio en train d'etre jouer</td>
                 </tr>
             </tbody>
         </Table>
@@ -253,8 +258,8 @@ export const Commandes = () => {
                     <td>Resevoir un magnifique pong du Bouns'bot</td>
                 </tr>
                 <tr>
-                    <td>-report (texte)</td>
-                    <td>Report un bug sur le Bot ou demander une amélioration</td>
+                    <td>-suppot (texte)</td>
+                    <td>Contacter le support pour des Questions/Ameliorations</td>
                 </tr>
                 <tr>
                     <td>-invite</td>
