@@ -10,7 +10,7 @@ export const Commandes = () => {
             <div className="search search-bar" data-v-7085cbe2=""></div>
         </div>
         <>
-        <p class="home__top__bot__title__desc"><i>Les commandes sont en train d'être remplacé par le nouveau système d'intégrer Discord</i></p>
+        <p class="home__top__bot__title__desc"><i>Les commandes sont en train d'être remplacé par le nouveau système de Slash Commandes integré à Discord</i></p>
         <Table striped bordered hover variant="dark">
             <thead>
                 <tr><th className="titleCommand" colSpan="2">ㆍMusique</th></tr>

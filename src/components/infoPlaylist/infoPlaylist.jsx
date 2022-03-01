@@ -47,7 +47,7 @@ class infoPlaylist extends Component {
                             <a href={this.state.playlistList[0].musique[i].link} target="_blank" rel="noreferrer" style={{"textDecoration": "none" }}>
                                 <Card.Img variant="top" src={ this.state.playlistList[0].musique[i].image } style={{ borderRadius: "10px" }} />
                                 <Card.Body>
-                                <Card.Title style={{ color: '#0cab34', fontSize: '150%' }}>{ this.state.playlistList[0].musique[i].name }</Card.Title>
+                                <Card.Title style={{ color: 'var(--color-principal)', fontSize: '150%' }}>{ this.state.playlistList[0].musique[i].name }</Card.Title>
                                 </Card.Body>
                             </a>
                             </Card>);

@@ -112,7 +112,7 @@ features .feature .image {
     line-height: 72px;
     text-transform: uppercase;
     margin: 0;
-    color: #0cab34;
+    color: var(--color-principal);
 }
 
 .features .feature .content .title .show-commands {

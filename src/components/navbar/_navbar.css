@@ -51,7 +51,7 @@ ul {
 	border: 0px;
 	padding: 4px 8px 4px 8px;
     color: #fff;
-    background-color: #0cab34;
+    background-color: var(--color-principal) ;
     border-radius: 4px;
     text-decoration: none;
     position: relative;

@@ -17,7 +17,7 @@
     -webkit-box-pack: center;
     justify-content: center;
     flex-direction: row;
-    color: #0cab34;
+    color: var(--color-principal) ;
 }
 
 .playerMusic svg {
@@ -28,7 +28,7 @@
 
 .ClearQueue{
     text-align: right;
-    color:  #0fab35;
+    color:  var(--color-principal);
     margin-bottom: 0;
     padding-right: 0.7em;
     cursor: pointer;
@@ -36,7 +36,7 @@
 }
 
 .ClearQueue:hover {
-    color:  #0c8b2c;
+    color:  var(--color-principal-hover);
 }
 
 .musiqueRender{

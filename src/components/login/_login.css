@@ -60,7 +60,7 @@
     font-size: 21px;
     padding: 27px 51px;
     color: rgb(255, 255, 255);
-    background: #0cab34;
+    background: var(--color-principal) ;
     border: none;
     cursor: pointer;
     min-height: 32px;
@@ -71,7 +71,7 @@
 .boutonConnection {
     padding: 14px 18px 14px 18px;
     color: #fff;
-    background-color: #0cab34;
+    background-color: var(--color-principal) ;
     border-radius: 4px;
     text-decoration: none;
     position: relative;

@@ -10,7 +10,7 @@
 .sendButton {
     padding: 14px 18px 14px 18px;
     color: #fff;
-    background-color: #0cab34;
+    background-color: var(--color-principal) ;
     border-radius: 4px;
     text-decoration: none;
     position: relative;

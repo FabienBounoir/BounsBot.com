@@ -15,7 +15,7 @@
 .testRadio{
     padding: 4px 7px 5px 7px;
     color: #fff;
-    background-color: #0cab34;
+    background-color: var(--color-principal);
     border-radius: 4px;
     text-decoration: none;
     cursor: pointer;
@@ -35,21 +35,21 @@
 .commands-list .top h1 {
     margin: -2px 0 -12px;
     font-size: 55px;
-    color: #0cab34;
+    color: var(--color-principal);
     font-family: "Uni Sans","Arial",sans-serif;
     font-weight: bold;
 }
 
 .commands-list {
     min-height: calc(100vh - 470px);
-    background-color: #383c41;
+    background-color: var(--back-first-color);
     padding: 50px;
 }
 
 .titleCommand {
     text-align: left;
     font-size: 25px;
-    color: #0cab34;
+    color: var(--color-principal);
 
 }
 

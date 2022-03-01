@@ -16,14 +16,14 @@
 
 .title1Terms{
     font-size: 50px;
-    color: #0cab34;
+    color: var(--color-principal);
     font-weight: 700;
     text-align: center;
 }
 
 .title2Terms{
     font-size: 30px;
-    color: #0cab34;
+    color: var(--color-principal);
     font-weight:300;
     text-align: center;
 }

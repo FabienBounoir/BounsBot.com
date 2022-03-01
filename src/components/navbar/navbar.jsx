@@ -18,6 +18,21 @@ class Navigation extends Component {
     }
 
     componentDidMount() {
+
+        let date = new Date();
+        if(date.getMonth() === 9 && date.getDate() === 31)
+        {
+            let r = document.getElementsByTagName("html")[0];
+            r.style.setProperty('--color-principal', '#FC4C02');
+            r.style.setProperty('--color-principal-hover', '#D34509');
+        }
+        else if(date.getMonth() === 11 && (date.getDate() === 25 || date.getDate() === 24))
+        {
+            let r = document.getElementsByTagName("html")[0];
+            r.style.setProperty('--color-principal', '#ff0000');
+            r.style.setProperty('--color-principal-hover', '#ec5353');
+        }
+
         this.updateLogin();
         fetch("https://backendbounsbot.herokuapp.com/discord")
     }

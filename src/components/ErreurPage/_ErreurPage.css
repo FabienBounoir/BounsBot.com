@@ -9,7 +9,7 @@
     -ms-flex-align: center;
     align-items: center;
     width: 100%;
-    background-color: #212529;
+    background-color: var(--back-html-color);
 }
 
 .error-page img {

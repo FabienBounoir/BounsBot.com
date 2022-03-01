@@ -1,5 +1,5 @@
 .leaderboardglobal{
-    background-color: #202225;
+    background-color: var(--back-second-color);
 }
 
 .top {
@@ -12,14 +12,14 @@
 
 .leaderboardglobal{
     min-height: calc(100vh - 470px);
-    background-color: #383c41;
+    background-color: var(--back-first-color);
     padding: 50px;
 }
 
 .top h1 {
     margin: -2px 0 -12px;
     font-size: 55px;
-    color: #0cab34;
+    color: var(--color-principal) ;
     font-family: "Uni Sans","Arial",sans-serif;
     font-weight: bold;
 }

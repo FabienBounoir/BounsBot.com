@@ -62,7 +62,7 @@
 }
 
 b {
-    color: #0cab34;
+    color: var(--color-principal);
 }
 
 #role-0 {
@@ -97,7 +97,7 @@ b {
 
 #role-6 {
     /* background: url("https://bounsbot.herokuapp.com/static/media/logo5.a661761a.svg"); */
-    color: #0cab34;
+    color: var(--color-principal);
 }
 
 #badbounstv {
@@ -133,7 +133,7 @@ b {
 }
 
 .BackgroundGreen {
-    background-color: #0cab34;
+    background-color: var(--color-principal);
 }
 
 #discord-main {

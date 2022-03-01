@@ -1,7 +1,7 @@
 .home__top__bot__invite {
     padding: 14px 18px 14px 18px;
     color: #fff;
-    background-color: #0cab34;
+    background-color: var(--color-principal) ;
     border-radius: 4px;
     text-decoration: none;
     position: relative;
@@ -14,6 +14,10 @@
     z-index: 3;
     line-height: normal;
     transition: transform 330ms ease-in-out;
+}
+
+.WaveColor{
+    fill: var(--color-principal);
 }
 
 .home__top__bot__invite:hover{
@@ -99,7 +103,7 @@
 }
 
 .home__top__bot__title__activities span {
-    color: #0cab34;
+    color: var(--color-principal) ;
     font-size: 30px;
     left: 0;
     opacity: 0;
@@ -117,7 +121,7 @@
 }
 
 .home__top {
-    background-color: #202225;
+    background-color: var(--back-second-color);
     position: relative;
     z-index: 5;
 }
