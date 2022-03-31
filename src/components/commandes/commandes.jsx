@@ -258,7 +258,7 @@ export const Commandes = () => {
                     <td>Resevoir un magnifique pong du Bouns'bot</td>
                 </tr>
                 <tr>
-                    <td>-suppot (texte)</td>
+                    <td>-support (texte)</td>
                     <td>Contacter le support pour des Questions/Ameliorations</td>
                 </tr>
                 <tr>
@@ -319,10 +319,6 @@ export const Commandes = () => {
                 <tr>
                     <td>-dog</td>
                     <td>Affiche un chien dans le channel</td>
-                </tr>   
-                <tr>
-                    <td>-anniv</td>
-                    <td>Souhaiter un joyeux anniversaire a un membre du serveur</td>
                 </tr>   
                 <tr>
                     <td>-comment (Nom) (Text)</td>
