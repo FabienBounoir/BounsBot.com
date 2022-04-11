@@ -1,6 +1,7 @@
 import "./_guild.css";
 import React, { Component } from 'react'
 import funPicto from "../picture/funPicto.png";
+import gamePicto from "../picture/game.png";
 import musiquePicto from "../picture/musiquePicto.png";
 import radioPicto from "../picture/radioPicto.png";
 import sheeshPicto from "../picture/sheeshPicto.png";
@@ -68,6 +69,7 @@ class Guild extends Component {
                         rename: result.guild[0]?.rename,
                         sheesh: result.guild[0]?.sheesh,
                         logChannel: result.guild[0]?.logChannel,
+                        game: result.guild[0]?.game,
                         twitchChannel: result.guild[0]?.idChannelTwitchTchat,
                         chaineTwitch: result.guild[0]?.chaineTwitch === "0" ? ("") : (result.guild[0]?.chaineTwitch),
                         fun: result.guild[0]?.fun
@@ -210,6 +212,91 @@ class Guild extends Component {
                             <h5 className="hrnh5k-0 eeKdki sc-1wkjbe7-8 GoZzi">Fun</h5>
                             <div>Laissez vos membres s'amuser avec des commandes funs et ludiques</div>
                         </div>
+                        <div className="guildModule">
+                            <div className="top">
+                                <img className="picto" alt='logo' width="48" height="48" src={gamePicto} ></img>
+                                <Form.Check type="switch" id="custom-switch success" onChange={() => { this.setState({ fun: !this.state.game }) }} checked={this.state.game} />
+                            </div>
+                            <h5 className="hrnh5k-0 eeKdki sc-1wkjbe7-8 GoZzi">Game</h5>
+                            <div>Plusieurs jeux sont disponibles pour vous amuser</div>
+                        </div>
+                        <div className="guildModule">
+                            <div className="top">
+                                <img className="pictoLog" alt='logo' width="48" height="48" src={logs} ></img>
+                                {/* <Form.Check type="switch" id="custom-switch success" onChange={() => { this.setState({ logChannel: !this.state.logChannel }) }} checked={this.state.fun} /> */}
+                                <Form.Select defaultValue={this.state.logChannel} onChange={(event) => { this.setState({ logChannel: event.target.value }) }}>
+                                    {(() => {
+                                        var option = [];
+
+                                        for(let value of this.state.channelTextuelGuild)
+                                        {
+                                            if(value.id === this.state.logChannel)
+                                            {
+                                                option.push(<option value={value.id} selected>{ value.name }</option>)
+                                            }
+                                            else
+                                            {
+                                                option.push(<option value={value.id}>{ value.name }</option>)
+                                            }
+                                        }
+
+                                        if(this.state.logChannel === 0)
+                                        {
+                                            option.push(<option value="0" selected>Désactivé</option>)
+                                        }
+                                        else
+                                        {
+                                            option.push(<option value="0">Désactivé</option>)
+                                        }
+
+                                        return option;
+                                    })()}
+                                </Form.Select>
+                            </div>
+                            <h5 className="hrnh5k-0 eeKdki sc-1wkjbe7-8 GoZzi">Logs</h5>
+                            <div>Choisir le channel pour afficher les logs du serveur</div>
+                        </div>
+                        </div>
+
+                        <div className="guildModule">
+                        <div className="top">
+                            <img className="pictoLog" alt='logo' width="48" height="48" src={twitch} ></img>
+                            {/* <Form.Check type="switch" id="custom-switch success" onChange={() => { this.setState({ logChannel: !this.state.logChannel }) }} checked={this.state.fun} /> */}
+                            <div><Form.Control type="text" placeholder="Chaine" value={this.state.chaineTwitch}  onChange={(event) => { this.setState({ chaineTwitch: event.target.value}) }}/>
+                            <Form.Select defaultValue={this.state.idChannelTwitchTchat} onChange={(event) => { this.setState({ idChannelTwitchTchat: event.target.value }) }}>
+                                {(() => {
+                                    var option = [];
+
+                                    for(let value of this.state.channelTextuelGuild)
+                                    {
+                                        if(value.id === this.state.twitchChannel)
+                                        {
+                                            option.push(<option value={value.id} selected>{ value.name }</option>)
+                                        }
+                                        else
+                                        {
+                                            option.push(<option value={value.id}>{ value.name }</option>)
+                                        }
+                                    }
+
+                                    if(this.state.twitchChannel === 0)
+                                    {
+                                        option.push(<option value="0" selected>Désactivé</option>)
+                                    }
+                                    else
+                                    {
+                                        option.push(<option value="0">Désactivé</option>)
+                                    }
+
+                                    return option;
+                                })()}
+                            </Form.Select></div>
+                        </div>
+                        <h5 className="hrnh5k-0 eeKdki sc-1wkjbe7-8 GoZzi">Twitch</h5>
+                        <div>Choisir la chaine twitch et le channel pour afficher le tchat (Mise en place 1 fois par jour)</div>
+                    </div>
+
+                    <div className='componentGuild'>
                         <div className="guildModule">
                             <div className="top">
                                 <img className="pictoLog" alt='logo' width="48" height="48" src={logs} ></img>
