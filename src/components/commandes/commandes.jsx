@@ -25,6 +25,10 @@ export const Commandes = () => {
                     <td>Arreté la musique en train d'etre joué</td>
                 </tr>
                 <tr>
+                    <td>-dj (@user / Id User)</td>
+                    <td>Controller la musique directement avec son compte spotify (prérequis: avoir l'activiter spotify sur son compte discord)</td>
+                </tr>
+                <tr>
                     <td>-add (URL/NOM)</td>
                     <td>Permet d'ajouté une musique a la file d'attente</td>
                 </tr>
@@ -42,7 +46,7 @@ export const Commandes = () => {
                 </tr>
                 <tr>
                     <td>-list</td>
-                    <td>Affiché les musiques dans la playlist</td>
+                    <td>Afficher les musiques dans la playlist</td>
                 </tr>
                 <tr>
                     <td>-forcePlay (URL/NOM)</td>
@@ -69,8 +73,20 @@ export const Commandes = () => {
                     <td>Avoir les lyrics de la musique en cours ou celle-ci passé en paramètre</td>
                 </tr>
                 <tr>
+                    <td>-shuffle</td>
+                    <td>Melanger les musiques qui sont dans la file d'attente</td>
+                </tr>
+                <tr>
                     <td>-volume (chiffre)</td>
                     <td>Changer le volume de la musique actuelle</td>
+                </tr>
+                <tr>
+                    <td>-favoris (@User)</td>
+                    <td>Lancer les favoris d'une personne</td>
+                </tr>
+                <tr>
+                    <td>-nowplay</td>
+                    <td>Voir la musique en cour de lecture</td>
                 </tr>
             </tbody>
         </Table>
@@ -130,6 +146,29 @@ export const Commandes = () => {
         </Table>
         <Table striped bordered hover variant="dark">
             <thead>
+                <tr><th className="titleCommand" colSpan="2">ㆍChannel Temporaire</th></tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>-channeltempo</td>
+                    <td>Afficher la configuration actuelle des channels temporaire</td>
+                </tr>  
+                <tr>
+                    <td>-settempo (Id Channel)</td>
+                    <td>Set un channel en createur de channel temporaire</td>
+                </tr>
+                <tr>
+                    <td>-deletetempo (Id Channel)</td>
+                    <td>Enlever la configuration d'un channel temporaire</td>
+                </tr>  
+                <tr>
+                    <td>-namechanneltemporaire (name)</td>
+                    <td>Choisir un template de nom pour le channel temporaire</td>
+                </tr>  
+            </tbody>
+        </Table>
+        <Table striped bordered hover variant="dark">
+            <thead>
                 <tr><th className="titleCommand" colSpan="2">ㆍConfiguration</th></tr>
             </thead>
             <tbody>
@@ -145,6 +184,10 @@ export const Commandes = () => {
                     <td>-setchanneltwitch (id channel Discord)</td>
                     <td>Choisir la channel ou sera retranscrit le tchat twitch</td>
                 </tr>   
+                <tr>
+                    <td>-setwelcomemessage</td>
+                    <td>Mettre en place un message de bienvenue envoyer en MP au membre du serveur</td>
+                </tr>  
                 <tr>
                     <td>-set heyreaction (true/false)</td>
                     <td>Config les reaction de bonjour / bonne nuit</td>
@@ -168,7 +211,11 @@ export const Commandes = () => {
                 <tr>
                     <td>-set playlist (true/false)</td>
                     <td>Config les commandes playlist</td>
-                </tr>   
+                </tr>  
+                <tr>
+                    <td>-set game (true/false)</td>
+                    <td>Config les commandes games</td>
+                </tr>  
                 <tr>
                     <td>-set fun (true/false)</td>
                     <td>Config les commandes fun</td>
@@ -273,9 +320,32 @@ export const Commandes = () => {
         </Table>
         <Table striped bordered hover variant="dark">
             <thead>
+                <tr><th className="titleCommand" colSpan="2">ㆍGame</th></tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>-undercover</td>
+                    <td>Le jeu undercover (il faut trouver la personne avec le mot different)</td>
+                </tr>  
+                <tr>
+                    <td>-combatpokemon</td>
+                    <td>Fight toi avec un pokemon random contre une autre personne</td>
+                </tr>  
+                <tr>
+                    <td>-motus</td>
+                    <td>Le jeu motus directement sur discord</td>
+                </tr>  
+            </tbody>
+        </Table>
+        <Table striped bordered hover variant="dark">
+            <thead>
                 <tr><th className="titleCommand" colSpan="2">ㆍOthers</th></tr>
             </thead>
             <tbody>
+                <tr>
+                    <td>-userInfo (Id User / @User)</td>
+                    <td>Voir les informations d'un compte discord</td>
+                </tr>
                 <tr>
                     <td>-picture</td>
                     <td>Le bot affiche ta pp sans aucun respect</td>
@@ -336,10 +406,6 @@ export const Commandes = () => {
                     <td>-minecraft (Pseudo)</td>
                     <td>Information compte minecraft</td>
                 </tr> 
-                <tr>
-                    <td>-undercover</td>
-                    <td>Le jeu undercover (il faut trouver la personne avec le mot different)</td>
-                </tr>  
             </tbody>
         </Table>
         <Table striped bordered hover variant="dark">
