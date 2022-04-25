@@ -4,7 +4,7 @@ import AnimationText from "../animationtext/animationtext";
 
 export const HomePage = () => {
     return (
-        <div id="head" className ="home__top">
+        <div id="head" className="home__top">
             <div className ="home__top__bot">
                 <img
                 alt="logo"

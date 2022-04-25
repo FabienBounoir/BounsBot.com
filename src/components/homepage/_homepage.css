@@ -1,7 +1,7 @@
 .home__top__bot__invite {
     padding: 14px 18px 14px 18px;
     color: #fff;
-    background-color: var(--color-principal) ;
+    background-color: var(--color-principal);
     border-radius: 4px;
     text-decoration: none;
     position: relative;
@@ -16,11 +16,11 @@
     transition: transform 330ms ease-in-out;
 }
 
-.WaveColor{
+.WaveColor {
     fill: var(--color-principal);
 }
 
-.home__top__bot__invite:hover{
+.home__top__bot__invite:hover {
     transform: scale(1.10);
 }
 
@@ -29,7 +29,7 @@
 }
 
 .home__top__bot__title__desc {
-    color: hsla(0,0%,100%,.7);
+    color: hsla(0, 0%, 100%, .7);
     font-size: 20px;
     text-align: center;
     margin: 20px 0 0;
@@ -68,12 +68,12 @@
     animation: run 1s ease-out 0s 1;
 }
 
-.home__top__bot img{
+.home__top__bot img {
     /* transition: transform 530ms ease-in-out; */
     animation: resparaiton 2s infinite both;
 }
 
-.home__top__bot img:hover{
+.home__top__bot img:hover {
     transform: rotate(100px);
     /* rotate: 1200px; */
     /* scale(1.10) */
@@ -83,6 +83,7 @@
     50% {
         transform: scale(1.05);
     }
+
     100% {
         transform: scale(1);
     }
@@ -103,7 +104,7 @@
 }
 
 .home__top__bot__title__activities span {
-    color: var(--color-principal) ;
+    color: var(--color-principal);
     font-size: 30px;
     left: 0;
     opacity: 0;
@@ -128,7 +129,7 @@
 
 .home__top .wave {
     position: absolute;
-    background: url(wave.svg) repeat-x;
+    background: url(wave.png) repeat-x;
     bottom: -50px;
     left: 0;
     right: 0;
@@ -138,11 +139,13 @@
     animation: wave 30s linear infinite;
     z-index: 3;
 }
+
 /* 6192px */
-@keyframes wave{
+@keyframes wave {
     0% {
         background-position: 6192px 0;
     }
+
     100% {
         background-position: 0 0;
     }

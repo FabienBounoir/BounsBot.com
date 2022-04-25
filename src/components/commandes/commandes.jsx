@@ -10,10 +10,10 @@ export const Commandes = () => {
             <div className="search search-bar" data-v-7085cbe2=""></div>
         </div>
         <>
-        <p class="home__top__bot__title__desc"><i>Les commandes sont en train d'être remplacé par le nouveau système de Slash Commandes integré à Discord</i></p>
+        <p class="home__top__bot__title__desc"><i>Toutes les commandes sont maintenant disponibles en slash commande</i></p>
         <Table striped bordered hover variant="dark">
             <thead>
-                <tr><th className="titleCommand" colSpan="2">ㆍMusique</th></tr>
+                <tr><th className="titleCommand" id="musiqueCommande" colSpan="2">ㆍMusique</th></tr>
             </thead>
             <tbody>
                 <tr>
@@ -22,7 +22,7 @@ export const Commandes = () => {
                 </tr>
                 <tr>
                     <td>-stop</td>
-                    <td>Arreté la musique en train d'etre joué</td>
+                    <td>Arreter la musique en train d'etre joué</td>
                 </tr>
                 <tr>
                     <td>-dj (@user / Id User)</td>
@@ -92,7 +92,7 @@ export const Commandes = () => {
         </Table>
         <Table striped bordered hover variant="dark">
             <thead>
-                <tr><th className="titleCommand" colSpan="2">ㆍRadio</th></tr>{/*  <a className="testRadio" href="./demo">Demo</a> */}
+                <tr><th className="titleCommand" id="radioCommande" colSpan="2">ㆍRadio</th></tr>{/*  <a className="testRadio" href="./demo">Demo</a> */}
             </thead>
             <tbody>
                 <tr>
@@ -111,7 +111,7 @@ export const Commandes = () => {
         </Table>
         <Table striped bordered hover variant="dark">
             <thead>
-                <tr><th className="titleCommand" colSpan="2">ㆍPlaylist </th></tr> {/* <a className="testRadio" href="./playlist">Liste</a> */}
+                <tr><th className="titleCommand" id="playlistCommande" colSpan="2">ㆍPlaylist </th></tr> {/* <a className="testRadio" href="./playlist">Liste</a> */}
             </thead>
             <tbody>
                 <tr>
@@ -146,7 +146,7 @@ export const Commandes = () => {
         </Table>
         <Table striped bordered hover variant="dark">
             <thead>
-                <tr><th className="titleCommand" colSpan="2">ㆍChannel Temporaire</th></tr>
+                <tr><th className="titleCommand" id="tempChannelCommande" colSpan="2">ㆍChannel Temporaire</th></tr>
             </thead>
             <tbody>
                 <tr>
@@ -169,7 +169,7 @@ export const Commandes = () => {
         </Table>
         <Table striped bordered hover variant="dark">
             <thead>
-                <tr><th className="titleCommand" colSpan="2">ㆍConfiguration</th></tr>
+                <tr><th className="titleCommand" id="configCommande" colSpan="2">ㆍConfiguration</th></tr>
             </thead>
             <tbody>
                 <tr>
@@ -224,7 +224,7 @@ export const Commandes = () => {
         </Table>
         <Table striped bordered hover variant="dark">
             <thead>
-                <tr><th className="titleCommand" colSpan="2">ㆍLevel</th></tr>
+                <tr><th className="titleCommand" id="levelCommande" colSpan="2">ㆍLevel</th></tr>
             </thead>
             <tbody>
                 <tr>
@@ -247,7 +247,7 @@ export const Commandes = () => {
         </Table>
         <Table striped bordered hover variant="dark">
             <thead>
-                <tr><th className="titleCommand" colSpan="2">ㆍAdministration</th></tr>
+                <tr><th className="titleCommand" id="AdministrateurCommande" colSpan="2">ㆍAdministrateur</th></tr>
             </thead>
             <tbody>
                 <tr>
@@ -270,7 +270,7 @@ export const Commandes = () => {
         </Table>
         <Table striped bordered hover variant="dark">
             <thead>
-                <tr><th className="titleCommand" colSpan="2">ㆍModération</th></tr>
+                <tr><th className="titleCommand" id="ModerationCommande" colSpan="2">ㆍModération</th></tr>
             </thead>
             <tbody>
                 <tr>
@@ -293,7 +293,7 @@ export const Commandes = () => {
         </Table>
         <Table striped bordered hover variant="dark">
             <thead>
-                <tr><th className="titleCommand" colSpan="2">ㆍBot</th></tr>
+                <tr><th className="titleCommand" id="botCommande" colSpan="2">ㆍBot</th></tr>
             </thead>
             <tbody>
                 <tr>
@@ -320,7 +320,7 @@ export const Commandes = () => {
         </Table>
         <Table striped bordered hover variant="dark">
             <thead>
-                <tr><th className="titleCommand" colSpan="2">ㆍGame</th></tr>
+                <tr><th className="titleCommand" id="gameCommande" colSpan="2">ㆍGame</th></tr>
             </thead>
             <tbody>
                 <tr>
@@ -339,7 +339,7 @@ export const Commandes = () => {
         </Table>
         <Table striped bordered hover variant="dark">
             <thead>
-                <tr><th className="titleCommand" colSpan="2">ㆍOthers</th></tr>
+                <tr><th className="titleCommand" id="otherCommande" colSpan="2">ㆍOthers</th></tr>
             </thead>
             <tbody>
                 <tr>
@@ -410,7 +410,7 @@ export const Commandes = () => {
         </Table>
         <Table striped bordered hover variant="dark">
             <thead>
-                <tr><th className="titleCommand" colSpan="2">ㆍ Advance</th></tr>
+                <tr><th className="titleCommand" id="advanceCommande" colSpan="2">ㆍ Advance</th></tr>
             </thead>
             <tbody>
                 <tr>
