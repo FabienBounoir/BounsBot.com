@@ -1,5 +1,4 @@
 import "./_features.css";
-import { Link } from "react-router-dom"
 import Reaction from '../picture/features/reaction.svg';
 import Reaction2 from '../picture/features/reaction2.svg';
 import Sheesh from '../picture/features/sheesh.svg';
