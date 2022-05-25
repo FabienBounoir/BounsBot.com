@@ -247,6 +247,41 @@ export const Commandes = () => {
         </Table>
         <Table striped bordered hover variant="dark">
             <thead>
+                <tr><th className="titleCommand" id="gameCommande" colSpan="2">ㆍGame</th></tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>-motus</td>
+                    <td>Le jeu motus directement sur discord</td>
+                </tr>  
+                <tr>
+                    <td>-morpion</td>
+                    <td>Le jeu morpion directement sur discord pour affronter tes amis</td>
+                </tr> 
+                <tr>
+                    <td>-chifumi</td>
+                    <td>Le jeu chifumi directement sur discord pour affronter tes amis</td>
+                </tr>        
+                <tr>
+                    <td>-pendu</td>
+                    <td>Test tes connaissance en trouvant le mot en moin de 6 coups</td>
+                </tr>        
+                <tr>
+                    <td>-puissance4</td>
+                    <td>Un puissance 4 sur discord pour affronter tes amis</td>
+                </tr>   
+                <tr>
+                    <td>-undercover</td>
+                    <td>Le jeu undercover (il faut trouver la personne avec le mot different)</td>
+                </tr>  
+                <tr>
+                    <td>-combatpokemon</td>
+                    <td>Fight toi avec un pokemon random contre une autre personne</td>
+                </tr>             
+            </tbody>
+        </Table>
+        <Table striped bordered hover variant="dark">
+            <thead>
                 <tr><th className="titleCommand" id="AdministrateurCommande" colSpan="2">ㆍAdministrateur</th></tr>
             </thead>
             <tbody>
@@ -316,25 +351,6 @@ export const Commandes = () => {
                     <td>-help</td>
                     <td>Voir les commandes disponible</td>
                 </tr>
-            </tbody>
-        </Table>
-        <Table striped bordered hover variant="dark">
-            <thead>
-                <tr><th className="titleCommand" id="gameCommande" colSpan="2">ㆍGame</th></tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>-undercover</td>
-                    <td>Le jeu undercover (il faut trouver la personne avec le mot different)</td>
-                </tr>  
-                <tr>
-                    <td>-combatpokemon</td>
-                    <td>Fight toi avec un pokemon random contre une autre personne</td>
-                </tr>  
-                <tr>
-                    <td>-motus</td>
-                    <td>Le jeu motus directement sur discord</td>
-                </tr>  
             </tbody>
         </Table>
         <Table striped bordered hover variant="dark">

@@ -1,4 +1,5 @@
 import "./_features.css";
+import { Link } from "react-router-dom"
 import Reaction from '../picture/features/reaction.svg';
 import Reaction2 from '../picture/features/reaction2.svg';
 import Sheesh from '../picture/features/sheesh.svg';
@@ -15,25 +16,30 @@ import twitch1 from '../picture/features/twitch1.svg';
 import twitch2 from '../picture/features/twitch2.svg';
 import tempoVocaux from '../picture/features/tempoVocaux.svg';
 
+import chifumi from '../picture/features/chifumi.svg';
+import morpion from '../picture/features/morpion.svg';
+import puissance4 from '../picture/features/puissance4.svg';
+
 
 export const Features = () => {
     return (
         <div className="features">
             <div className="features__content">
                 <div className="feature active">
-                    <AnimationImage img={ [Reaction,Reaction2,Sheesh] }/>
+                    <AnimationImage img={ [morpion,chifumi,puissance4] }/>
                     <div className="content">
                         <div className="title">
-                            <h3>Action Réaction</h3> 
-                            <a href="/commandes">
+                            <h3>Plein de jeu</h3> 
+                            <a href="/commandes#configCommande">
                             <svg width="36" height="29" viewBox="0 0 36 29" fill="none" xmlns="http://www.w3.org/2000/svg" className="show-commands">
                             <path fillRule="evenodd" clipRule="evenodd" d="M7.02431 0.524414H0V7.52441H7.02431V0.524414ZM35.9998 0.524414H10.5366V7.52441H35.9998V0.524414ZM0 11.0244H7.02431V18.0244H0V11.0244ZM35.9998 11.0244H10.5366V18.0244H35.9998V11.0244ZM0 21.5244H7.02431V28.5244H0V21.5244ZM35.9998 21.5244H10.5366V28.5244H35.9998V21.5244Z" fill="var(--color-principal)"></path>
                             </svg>
                             </a>
                         </div> 
-                        <p>Un message de Bonjour / Bonne Nuit et BounsBot réagit !!!</p>
+                        <p>Tu veux affronter tes amis, Tu as donc à ta disposition plusieurs jeux comme le morpion, puissance4, chifumi, le motus, et bientôt d'autre 👀</p>
                     </div>
                 </div>
+
                 <div className="feature active">
                     <div className="content">
                         <div className="title">
@@ -103,6 +109,20 @@ export const Features = () => {
                         <p>Créer des salons temporaires automatiques, avec un nom prédéfini et une limite de personne par défaut.</p>
                     </div>
                     <AnimationImage img={ [tempoVocaux] }/>
+                </div>
+                <div className="feature active">
+                    <AnimationImage img={ [Reaction,Reaction2,Sheesh] }/>
+                    <div className="content">
+                        <div className="title">
+                            <h3>Action Réaction</h3> 
+                            <a href="/commandes">
+                            <svg width="36" height="29" viewBox="0 0 36 29" fill="none" xmlns="http://www.w3.org/2000/svg" className="show-commands">
+                            <path fillRule="evenodd" clipRule="evenodd" d="M7.02431 0.524414H0V7.52441H7.02431V0.524414ZM35.9998 0.524414H10.5366V7.52441H35.9998V0.524414ZM0 11.0244H7.02431V18.0244H0V11.0244ZM35.9998 11.0244H10.5366V18.0244H35.9998V11.0244ZM0 21.5244H7.02431V28.5244H0V21.5244ZM35.9998 21.5244H10.5366V28.5244H35.9998V21.5244Z" fill="var(--color-principal)"></path>
+                            </svg>
+                            </a>
+                        </div> 
+                        <p>Un message de Bonjour / Bonne Nuit et BounsBot réagit !!!</p>
+                    </div>
                 </div>
             </div>
         </div>
