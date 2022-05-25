@@ -1,15 +1,20 @@
 .componentGuild {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr; 
+    grid-template-columns: 1fr 1fr 1fr;
     gap: 40px;
     /* padding-top: 24px;
     padding-bottom: 24px; */
     width: 90%;
     gap: 40px;
     /* width: 70%; */
-    margin-top: 57px;
+    /* margin-top: 57px; */
     margin-bottom: 60px;
-    
+
+}
+
+
+.componentGuild:last-child {
+    margin-top: 0;
 }
 
 .listFile {
@@ -62,12 +67,12 @@
     flex-direction: row;
 }
 
-.picto{
+.picto {
     width: "48";
     height: "48";
 }
 
-.pictoLog{
+.pictoLog {
     width: "48";
     height: "48";
 }
@@ -99,11 +104,27 @@
     border-image: initial;
 }
 
-.save{
-    margin-top: 30px;
+.form-check-input:checked {
+    background-color: var(--color-principal) !important;
+    border-color: var(--color-principal) !important;
+}
+
+.form-check-input:focus {
+    border-color: var(--color-principal) !important;
+    outline: 0;
+    box-shadow: 0 0 0 0.25rem rgb(var(--color-principal) / 25%) !important;
+}
+
+
+input[type=range] {
+    accent-color: var(--color-principal);
+}
+
+.save {
+    margin: 30px 0;
     padding: 14px 18px 14px 18px;
     color: #fff;
-    background-color: var(--color-principal) ;
+    background-color: var(--color-principal);
     border-radius: 4px;
     text-decoration: none;
     position: relative;
@@ -117,7 +138,7 @@
     transition: transform 330ms ease-in-out;
 }
 
-.save:hover{
+.save:hover {
     transform: scale(1.10);
 }
 
@@ -138,7 +159,7 @@
     backdrop-filter: blur(10px);
 }
 
-@-moz-document url-prefix(){
+@-moz-document url-prefix() {
     .cardSuccess {
         background-color: rgba(0, 0, 0, 0.8);
     }
@@ -151,7 +172,7 @@
     max-height: calc(100% - 100px);
     display: flex;
     flex-direction: column;
-    background-color: var(--color-principal) ;
+    background-color: var(--color-principal);
 }
 
 .cardInsideError {
@@ -170,6 +191,7 @@
     0% {
         backdrop-filter: blur(0px);
     }
+
     100% {
         backdrop-filter: blur(10px);
     }
@@ -205,14 +227,14 @@
     transition: transform 330ms ease-in-out;
 }
 
-.BoutonClose:hover{
+.BoutonClose:hover {
     transform: scale(1.10);
 }
 
 @media (max-width: 800px) {
     .componentGuild {
         display: grid;
-        grid-template-columns: 1fr 1fr; 
+        grid-template-columns: 1fr 1fr;
         gap: 24px;
         /* padding-top: 100px; */
         width: 90%;
@@ -238,7 +260,7 @@
 @media (max-width: 580px) {
     .componentGuild {
         display: grid;
-        grid-template-columns: 1fr; 
+        grid-template-columns: 1fr;
         gap: 14px;
         /* padding-top: 100px; */
         width: 95%;
@@ -248,13 +270,12 @@
 .top h1 {
     margin: -2px 0 -12px;
     font-size: 40px;
-    color: var(--color-principal) ;
-    font-family: "Uni Sans","Arial",sans-serif;
+    color: var(--color-principal);
+    font-family: "Uni Sans", "Arial", sans-serif;
     font-weight: bold;
 }
 
-@media only screen and (max-width: 720px)
-{
+@media only screen and (max-width: 720px) {
     .top h1 {
         font-size: 35px;
     }
@@ -264,8 +285,7 @@
     }
 }
 
-@media only screen and (max-width: 720px)
-{
+@media only screen and (max-width: 720px) {
     .Dashboard {
         padding: 10px;
     }

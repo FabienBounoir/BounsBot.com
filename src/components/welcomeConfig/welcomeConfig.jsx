@@ -1,5 +1,5 @@
 import "./_welcomeConfig.css";
-import React, { Component, useState } from 'react'
+import React, { Component } from 'react'
 import { Form } from 'react-bootstrap/'
 
 class WelcomeConfig extends Component {
@@ -11,8 +11,6 @@ class WelcomeConfig extends Component {
     }
 
     componentDidMount() {
-        console.log("testttt", this.props.guild)
-
         this.getWelcomeConfig(this.props.guild)
     }
 
@@ -30,9 +28,7 @@ class WelcomeConfig extends Component {
             })
     
             const welcomeConfigJson = await welcomeConfig.json()
-    
-            console.log(welcomeConfigJson.welcomeConfig)
-    
+
             this.setState({
                 welcomeActive: await welcomeConfigJson.welcomeConfig.welcomeActive,
                 welcomeMessage: await welcomeConfigJson.welcomeConfig.welcomeMessage
@@ -48,8 +44,6 @@ class WelcomeConfig extends Component {
         var myHeaders = new Headers();
         myHeaders.append("Content-Type", "application/json");
         myHeaders.append("Authorization", `Bearer ${JSON.parse(window.localStorage.getItem('dataDiscord'))?.access_token}`);
-
-        console.log(this.state.welcomeMessage, this.state.welcomeActive)
 
         try{
             const welcomeConfig = await fetch("https://backendbounsbot.herokuapp.com/guild/" + this.props.guild + "/welcomemessage", {
@@ -78,7 +72,6 @@ class WelcomeConfig extends Component {
                     status: "Échec de la sauvegarde",
                     color: {color: "#de3b45"}
                 })
-                console.log(welcomeConfigJson.erreur)
             }
 
             setTimeout(() => {
@@ -87,9 +80,6 @@ class WelcomeConfig extends Component {
                     color: {color: "#18c238"}
                 })
             }, 5000)
-
-
-            console.log(welcomeConfigJson)
         }
         catch(error){
             console.log(error)
@@ -110,7 +100,7 @@ class WelcomeConfig extends Component {
                             <span className="iconEmbed"></span>
                             Nom du serveur
                         </div>
-                        <textarea id="messageWelcome" disabled={!this.state.welcomeActive} style={{Background: "#313442"}} className="embedDescripton" rows="6" placeholder="Message to send" value={this.state.welcomeMessage} onChange={event => {console.log(event.target);this.setState({ welcomeMessage: event.target.value })}} />
+                        <textarea id="messageWelcome" disabled={!this.state.welcomeActive} style={{Background: "#313442"}} className="embedDescripton" rows="6" placeholder="Message to send" value={this.state.welcomeMessage} onChange={event => {this.setState({ welcomeMessage: event.target.value })}} />
                     </div>
                     <div>
                         <span className="thumbnailEmbed"></span>

@@ -1,4 +1,3 @@
-import "./_guild.css";
 import React, { Component } from 'react'
 import funPicto from "../picture/funPicto.png";
 import gamePicto from "../picture/game.png";
@@ -15,6 +14,7 @@ import { Form } from 'react-bootstrap/'
 import Musique from "../musique/musique.jsx";
 import WelcomeMessage from "../welcomeConfig/welcomeConfig.jsx";
 import SendMessage from "../sendmessage/sendmessage"
+import "./_guild.css";
 
 class Guild extends Component {
     state = {
@@ -55,7 +55,7 @@ class Guild extends Component {
         fetch(url + id)
             .then(response => response.json())
             .then((result) => {
-                console.log(result.guild)
+                console.log("les CONFIG",result.guild)
 
                 if(result.guild.length !== 0)
                 {
@@ -243,7 +243,7 @@ class Guild extends Component {
                                             }
                                         }
 
-                                        if(this.state.logChannel === 0)
+                                        if(this.state.logChannel === "0")
                                         {
                                             option.push(<option value="0" selected>Désactivé</option>)
                                         }
@@ -281,7 +281,7 @@ class Guild extends Component {
                                         }
                                     }
 
-                                    if(this.state.twitchChannel === 0)
+                                    if(this.state.twitchChannel === "0")
                                     {
                                         option.push(<option value="0" selected>Désactivé</option>)
                                     }
