@@ -96,7 +96,7 @@ class Playlist extends Component {
                                 <div className="cardCenter">
                                     <Card key={ i } className="cardTemplate" style={{ width: '18rem', backgroundColor: "#181818", color:'white', margin: "10px", borderRadius: "10px" }}>
                                     <a href={"/playlist/" + this.state.playlistList[i].nom} style={{"textDecoration": "none" }}>
-                                    <Card.Img width="254px" height="254px" variant="top" src={this.state.playlistList[i].picture} style={{ borderRadius: "10px" }} />
+                                    <Card.Img loading="lazy" width="254px" height="254px" variant="top" src={this.state.playlistList[i].picture} style={{ borderRadius: "10px" }} />
                                     <Card.Body>
                                         <Card.Title style={{ color: 'var(--color-principal)', fontSize: '150%' }}>{ this.state.playlistList[i].nom[0].toUpperCase() }{ this.state.playlistList[i].nom.slice(1) }</Card.Title>
                                     </Card.Body>
