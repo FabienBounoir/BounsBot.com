@@ -1,6 +1,7 @@
 {
   "short_name": "BounsBot",
-  "name": "BounsBot",
+  "name": "Bouns'Bot",
+  "description": "Bouns'Bot a bot discord with nice commands developed by BadbounsTV. You can play music, play games, moderate your discord, etc",
   "icons": [
     {
       "src": "favicon.ico",
@@ -20,6 +21,6 @@
   ],
   "start_url": ".",
   "display": "standalone",
-  "theme_color": "#000000",
-  "background_color": "#ffffff"
+  "theme_color": "#0cab34",
+  "background_color": "#05691E"
 }

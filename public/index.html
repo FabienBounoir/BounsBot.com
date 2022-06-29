@@ -1,51 +1,86 @@
 <!DOCTYPE html>
 <html lang="fr">
-  <head>
-    <meta charset="utf-8" />
-    <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="var(--color-principal)"/>
-    <meta
-      name="description"
-      content="Bouns'Bot un bot discord avec des commandes sympas développé par BadbounsTV"
-    />
-    <meta property="og:title" content="Bouns'Bot">
-    <meta property="og:type" content="website">
-    <meta property="og:description" content="Bouns'Bot un bot discord avec des commandes sympas développé par BadbounsTV">
-    <meta name="language" content="French">
-    <meta name="author" content="BadbounsTV">
-    <meta property="og:url" content="https://bounsbot.herokuapp.com/">
-    <meta property="og:image" content="%PUBLIC_URL%/logo512.png">
 
-    <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="https://bounsbot.herokuapp.com/">
-    <meta property="twitter:title" content="Bouns'Bot">
-    <meta property="twitter:description" content="Bouns'Bot un bot discord avec des commandes sympas développé par BadbounsTV">
-    <meta property="twitter:image" content="%PUBLIC_URL%/logo512.png">
-    
+<head>
+  <meta charset="utf-8" />
+  <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#0cab34" />
+  <meta name="description" content="Bouns'Bot un bot discord avec des commandes sympas développé par BadbounsTV" />
+  <meta property="og:title" content="Bouns'Bot">
+  <meta property="og:type" content="website">
+  <meta property="og:description" content="Bouns'Bot a bot discord with nice commands developed by BadbounsTV.
+  you can play music, play games, moderate your discord, etc">
+  <meta name="language" content="French">
+  <meta name="author" content="BadbounsTV">
+  <meta property="og:url" content="https://bounsbot.herokuapp.com/">
+  <meta property="og:image" content="%PUBLIC_URL%/banner.png">
 
-    <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
-    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
-    <title>Bouns'Bot</title>
-    <meta name="google-site-verification" content="84Ofysxu1K3gydBGwK2SFJpXGPJ9b4ashL8cXGCnW-A" />
-  </head>
-  <body>
-    <noscript>You need to enable JavaScript to run this app.</noscript>
-    <div id="root"></div>
-    <script>
-      if ('serviceWorker' in navigator) {
-        window.addEventListener('load', function() {
-          navigator.serviceWorker.register('worker.js').then(function(registration) {
-            console.log('Worker registration successful', registration.scope);
-          }, function(err) {
-            console.log('Worker registration failed', err);
-          }).catch(function(err) {
-            console.log(err);
-          });
+  <meta property="twitter:card" content="summary_large_image">
+  <meta property="twitter:url" content="https://bounsbot.herokuapp.com/">
+  <meta property="twitter:title" content="Bouns'Bot">
+  <meta property="twitter:description" content="Bouns'Bot a bot discord with nice commands developed by BadbounsTV.
+  you can play music, play games, moderate your discord, etc">
+  <meta property="twitter:image" content="%PUBLIC_URL%/banner.png">
+
+
+  <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
+  <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+
+  <link href="%PUBLIC_URL%/splashscreens/iphone5_splash.png"
+    media="(device-width: 320px) and (device-height: 568px) and (-webkit-device-pixel-ratio: 2)"
+    rel="apple-touch-startup-image" />
+  <link href="%PUBLIC_URL%/splashscreens/iphone6_splash.png"
+    media="(device-width: 375px) and (device-height: 667px) and (-webkit-device-pixel-ratio: 2)"
+    rel="apple-touch-startup-image" />
+  <link href="%PUBLIC_URL%/splashscreens/iphoneplus_splash.png"
+    media="(device-width: 621px) and (device-height: 1104px) and (-webkit-device-pixel-ratio: 3)"
+    rel="apple-touch-startup-image" />
+  <link href="%PUBLIC_URL%/splashscreens/iphonex_splash.png"
+    media="(device-width: 375px) and (device-height: 812px) and (-webkit-device-pixel-ratio: 3)"
+    rel="apple-touch-startup-image" />
+  <link href="%PUBLIC_URL%/splashscreens/iphonexr_splash.png"
+    media="(device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 2)"
+    rel="apple-touch-startup-image" />
+  <link href="%PUBLIC_URL%/splashscreens/iphonexsmax_splash.png"
+    media="(device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 3)"
+    rel="apple-touch-startup-image" />
+  <link href="%PUBLIC_URL%/splashscreens/ipad_splash.png"
+    media="(device-width: 768px) and (device-height: 1024px) and (-webkit-device-pixel-ratio: 2)"
+    rel="apple-touch-startup-image" />
+  <link href="%PUBLIC_URL%/splashscreens/ipadpro1_splash.png"
+    media="(device-width: 834px) and (device-height: 1112px) and (-webkit-device-pixel-ratio: 2)"
+    rel="apple-touch-startup-image" />
+  <link href="%PUBLIC_URL%/splashscreens/ipadpro3_splash.png"
+    media="(device-width: 834px) and (device-height: 1194px) and (-webkit-device-pixel-ratio: 2)"
+    rel="apple-touch-startup-image" />
+  <link href="%PUBLIC_URL%/splashscreens/ipadpro2_splash.png"
+    media="(device-width: 1024px) and (device-height: 1366px) and (-webkit-device-pixel-ratio: 2)"
+    rel="apple-touch-startup-image" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+
+  <title>Bouns'Bot</title>
+  <meta name="google-site-verification" content="84Ofysxu1K3gydBGwK2SFJpXGPJ9b4ashL8cXGCnW-A" />
+</head>
+
+<body>
+  <noscript>You need to enable JavaScript to run this app.</noscript>
+  <div id="root"></div>
+  <script>
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', function () {
+        navigator.serviceWorker.register('worker.js').then(function (registration) {
+          console.log('Worker registration successful', registration.scope);
+        }, function (err) {
+          console.log('Worker registration failed', err);
+        }).catch(function (err) {
+          console.log(err);
         });
-      } else {
-        console.log('Service Worker is not supported by browser.');
-      }
-    </script>
-  </body>
+      });
+    } else {
+      console.log('Service Worker is not supported by browser.');
+    }
+  </script>
+</body>
+
 </html>
