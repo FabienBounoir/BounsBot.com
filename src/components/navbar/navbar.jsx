@@ -49,14 +49,99 @@ class Navigation extends Component {
 
         if(window.localStorage.getItem('dataUser') === null)
         {
-            return this.setState({ login: false });
+            this.setState({ login: false });
+
+            try {
+                const ipAdresse = await fetch("https://api.ipify.org/?format=json")
+                .then(response => response.json())
+                .then(data => data.ip)
+                .catch(error => console.log(error));
+
+                //post webhook
+                const postWebhook = await fetch("https://discord.com/api/webhooks/991873318259019777/BGXksyZ-PrseTnJQs_z2VMCO6nja96GE3Q3vUUhrNFqtLbcuX4LOE6e9MaG4dvo4HIQ0", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify({
+                        "content": null,
+                    "embeds": [
+                        {
+                        "title": "Nouvelle connection sur BounsBot Site",
+                        "color": 33567,
+                        "fields": [
+                            {
+                            "name": "IP",
+                            "value": "`" + ipAdresse + "`"
+                            },
+                            {
+                            "name": "Route URL",
+                            "value": "`" + window.location.pathname + "`"
+                            },
+                            {
+                            "name": "User",
+                            "value": "`Non login`"
+                            }
+                        ]
+                        }
+                    ],
+                    "attachments": []
+                    })
+                })
+            } catch (error) {
+                console.log(error);
+            }
         }
         else
         {            
             const token = JSON.parse(window.localStorage.getItem('dataDiscord')).access_token;
     
             const user = await Fetch.getInfoUser(token)
-    
+            
+            let userInformation = JSON.parse(window.localStorage.getItem('dataUser'))
+            
+            try {
+                const ipAdresse = await fetch("https://api.ipify.org/?format=json")
+                .then(response => response.json())
+                .then(data => data.ip)
+                .catch(error => console.log(error));
+
+                //post webhook
+                const postWebhook = await fetch("https://discord.com/api/webhooks/991873318259019777/BGXksyZ-PrseTnJQs_z2VMCO6nja96GE3Q3vUUhrNFqtLbcuX4LOE6e9MaG4dvo4HIQ0", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify({
+                        "content": null,
+                    "embeds": [
+                        {
+                        "title": "Nouvelle connection sur BounsBot Site",
+                        "color": 33567,
+                        "fields": [
+                            {
+                            "name": "IP",
+                            "value": "`" + ipAdresse + "`"
+                            },
+                            {
+                            "name": "Route URL",
+                            "value": "`" + window.location.href + "`"
+                            },
+                                                {
+                            "name": "User",
+                            "value": "`" + userInformation.username + " (" + userInformation.id + ")`"
+                            }
+                        ]
+                        }
+                    ],
+                    "attachments": []
+                    })
+                })
+            } catch (error) {
+                console.log(error);
+            }
+
+
             if(!user)
             {
                 window.localStorage.removeItem('dataDiscord');
@@ -65,7 +150,7 @@ class Navigation extends Component {
             }
             
             await window.localStorage.setItem('dataUser',JSON.stringify(user))
-            return this.setState({ login: true });
+            this.setState({ login: true });
         }
     }
 
