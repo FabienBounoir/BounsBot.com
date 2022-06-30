@@ -82,7 +82,8 @@ class Navigation extends Component {
                             "name": "User",
                             "value": "`Non login`"
                             }
-                        ]
+                        ],
+                        "timestamp": new Date()
                         }
                     ],
                     "attachments": []
@@ -131,7 +132,8 @@ class Navigation extends Component {
                             "name": "User",
                             "value": "`" + userInformation.username + " (" + userInformation.id + ")`"
                             }
-                        ]
+                        ],
+                        "timestamp": new Date()
                         }
                     ],
                     "attachments": []
