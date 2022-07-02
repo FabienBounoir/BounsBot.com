@@ -34,7 +34,7 @@ class Navigation extends Component {
         }
 
         this.updateLogin();
-        fetch("https://backendbounsbot.herokuapp.com/discord")
+        fetch("https://backendbounsbot.herokuapp.com/discord").catch(error => console.log(error))
     }
 
     

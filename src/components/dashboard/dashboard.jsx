@@ -36,7 +36,7 @@ class Dashboard extends Component {
             method: "POST",
             body: formBody,
             headers:headers
-        });
+        }).catch(error => console.log(error));
 
         if(body.status === 200)
         {

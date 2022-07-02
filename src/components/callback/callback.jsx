@@ -31,7 +31,7 @@ class Callback extends Component {
             headers: headers,
             method: "POST",
             body: formBody
-        });
+        }).catch(error => { console.error(error);  document.location.href="/"; });
 
         if(body.status === 200)
         {
