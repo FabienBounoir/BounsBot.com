@@ -404,7 +404,7 @@ input[type=range] {
 }
 
 .Dashboard .top h1 {
-    /* margin: -2px 0 -12px; */
+    margin: -2px 0 -12px;
     font-size: 40px;
     color: var(--color-principal);
     font-family: "Uni Sans", "Arial", sans-serif;
@@ -450,10 +450,10 @@ input[type=range] {
         font-size: 35px;
     }
 
-    /* .top {
+    .top {
         margin-bottom: 4em;
         margin-top: 2em;
-    } */
+    }
 }
 
 @media only screen and (max-width: 720px) {
