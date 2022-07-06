@@ -237,7 +237,7 @@ export const Commandes = () => {
                 </tr>
                 <tr>
                     <td>-achievement</td>
-                    <td>Voir les achievements débloqués/td>
+                    <td>Voir les achievements débloqués</td>
                 </tr>   
                 <tr>
                     <td>-setbanniere + drag and drop image</td>

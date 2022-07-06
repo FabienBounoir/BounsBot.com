@@ -9,7 +9,20 @@
     /* width: 70%; */
     /* margin-top: 57px; */
     margin-bottom: 60px;
+    margin-top: 2em;
+}
 
+.GuildInformation .top h1:first-child {
+    margin: 1em;
+}
+
+.GuildInformation {
+
+    display: flex;
+    flex-direction: column;
+    -webkit-box-align: center;
+    align-items: center;
+    background-color: var(--back-html-color);
 }
 
 .componentGuild:last-child {
@@ -56,16 +69,17 @@
     border-radius: 8px;
 }
 
-.top {
+.guildModule .top {
     display: flex;
     -webkit-box-align: center;
     align-items: center;
     -webkit-box-pack: justify;
     justify-content: space-between;
     flex-direction: row;
+    margin-bottom: 2em;
 }
 
-.top h1 {
+.guildModule .top h1 {
     margin-bottom: 4em;
     margin-top: 2em;
 }
@@ -403,8 +417,8 @@ input[type=range] {
     }
 }
 
-.Dashboard .top h1 {
-    margin: -2px 0 -12px;
+.GuildInformation .top h1 {
+    /* margin: -2px 0 -12px; */
     font-size: 40px;
     color: var(--color-principal);
     font-family: "Uni Sans", "Arial", sans-serif;
@@ -446,11 +460,11 @@ input[type=range] {
 }
 
 @media only screen and (max-width: 720px) {
-    .top h1 {
+    .GuildInformation .top h1 {
         font-size: 35px;
     }
 
-    .top {
+    .GuildInformation .top {
         margin-bottom: 4em;
         margin-top: 2em;
     }

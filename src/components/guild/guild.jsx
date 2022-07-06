@@ -253,7 +253,7 @@ class Guild extends Component {
 
     render() {
         return (
-            <div className="Dashboard">
+            <div className="GuildInformation">
                 <div className="top" style={{justifyContent: "center"}}>
                     <h1>Informations du serveur</h1> 
                 </div>

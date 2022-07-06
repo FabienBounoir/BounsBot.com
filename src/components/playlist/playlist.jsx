@@ -91,7 +91,7 @@ class Playlist extends Component {
                                     <a href={"/playlist/" + this.state.playlistList[i].nom} style={{"textDecoration": "none" }}>
                                     <Card.Img loading="lazy" width="254px" height="254px" variant="top" src={this.state.playlistList[i].picture} style={{ borderRadius: "10px" }} />
                                     <Card.Body>
-                                        <Card.Title style={{ color: 'var(--color-principal)', fontSize: '150%' }}>{ this.state.playlistList[i].nom[0].toUpperCase() }{ this.state.playlistList[i].nom.slice(1) }</Card.Title>
+                                        <Card.Title style={{ color: 'var(--color-principal)', fontSize: '150%' }}>{ this.state.playlistList[i]?.nom[0]?.toUpperCase() }{ this.state.playlistList[i].nom.slice(1) }</Card.Title>
                                     </Card.Body>
                                     <ListGroup style={{"borderRadius": "10px" }}>
                                     <ListGroupItem style={{backgroundColor: "var(--color-principal)" }} >{ this.state.playlistList[i].ownerName }</ListGroupItem>
