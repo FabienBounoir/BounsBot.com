@@ -1,12 +1,14 @@
 import "./_dashboard.css";
 import React, { Component } from 'react'
 import Fetch from "../../utils/fetch.js"
+import Loading from "../loading/loading.jsx";
 
 class Dashboard extends Component {
     state = {
         user: {},
         guilds: [],
         hasguild: [],
+        loading: true
     }
 
     async refresh_token()
@@ -41,10 +43,6 @@ class Dashboard extends Component {
         if(body.status === 200)
         {
             const result = await body.json();
-
-            // console.log(result)
-            // console.log(window.localStorage.getItem('dataDiscord'))
-
             window.localStorage.setItem('dataDiscord', JSON.stringify(result));
 
             await this.getUser()
@@ -66,11 +64,12 @@ class Dashboard extends Component {
 
         if(!guild) return document.location.href = "/login";
 
-        const guilsHasBounsBot = await  Fetch.getBounsBotHasGuild(guild)
+        const guilsHasBounsBot = await Fetch.getBounsBotHasGuild(guild)
 
         this.setState({
             guilds: guild, 
-            hasguild: guilsHasBounsBot
+            hasguild: guilsHasBounsBot,
+            loading: false
         });
     }
 
@@ -135,6 +134,10 @@ class Dashboard extends Component {
                 return guildList;
                 })()}
                 </div>
+
+                {(() => {
+                    if(this.state.loading) return <Loading />
+                })()}
             </div>
         )
     }
