@@ -30,7 +30,6 @@ class Playlist extends Component {
         fetch(url + `?page=${this.state.page}`)
         .then(response => response.json())
         .then((result) => {
-            // console.log(result)
             this.setState({
             playlistList: this.state.playlistList.concat(result.playlist),
             page: this.state.page + 1,
@@ -43,13 +42,7 @@ class Playlist extends Component {
     };
 
     _handleKeyDown = (e) => {
-        console.log(e.key)
-        console.log(document.getElementById('PLaylistSearch').value.length)
-
         clearTimeout(searchValide)
-
-        // if(document.getElementById('PLaylistSearch').value.length !== 0 || e.key === "Enter")
-        // {
 
         searchValide = setTimeout(() => {
 

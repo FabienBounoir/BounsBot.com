@@ -12,6 +12,8 @@ package-lock.json
 # production
 /build
 
+/src/components/sendEmbed/
+
 # misc
 .DS_Store
 .env.local

@@ -3,12 +3,17 @@ import "./_level.css";
 import React, { Component } from 'react'
 import InfiniteScroll from 'react-infinite-scroll-component';
 import { Spinner } from 'react-bootstrap/'
+import Loading from "../loading/loading.jsx";
+
+// let url = "http://localhost:3001/"
+let url = "https://backendbounsbot.herokuapp.com/"
 
 class Level extends Component {
   state = {
     level: [],
     page: 0,
-    hasMoreData: true
+    hasMoreData: true,
+    loading: true
   }
 
     componentDidMount() {
@@ -17,24 +22,23 @@ class Level extends Component {
 
     getData = () => {
       let id = new URLSearchParams(window.location.search).get('id') || ""
-        let twitch = new URLSearchParams(window.location.search).get('twitch') != null
+      let twitch = new URLSearchParams(window.location.search).get('twitch') != null
 
-        //production
-        let url = twitch ? ("https://backendbounsbot.herokuapp.com/twitch/") : (`https://backendbounsbot.herokuapp.com/Discord/`)
-
-        //dev
-        // let url = twitch ? ("http://localhost:3001/twitch/") : (`http://localhost:3001/Discord/`)
-
-        fetch(url + id + `?page=${this.state.page}`)
+      fetch(url + `${twitch ? ("twitch/") : ("discord/")}` + id + `?page=${this.state.page}`)
         .then(response => response.json())
         .then((result) => {
             this.setState({
               level: this.state.level.concat(result.rank), 
               page: this.state.page + 1, 
-              hasMoreData: result.rank.length !== 0
+              hasMoreData: result.rank.length !== 0,
+              loading: false
             });
         })
-        .catch(console.log)
+        .catch((error) =>
+        {
+          window.location.href = "/"
+          console.log(error)
+        })
     };
 
     render() {
@@ -102,6 +106,10 @@ class Level extends Component {
             return rank;
           })()}
           </InfiniteScroll>
+
+          {(() => {
+            if(this.state.loading) return <Loading />
+          })()}
         </div>
       )
     }

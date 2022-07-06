@@ -131,7 +131,6 @@ class Musique extends Component {
 
         fetch(url + "/bot/pause", requestOptions)
         .then(response => response.text())
-        .then(result => console.log(result))
         .catch(error => console.log('error', error));
     }
 
@@ -158,7 +157,7 @@ class Musique extends Component {
     
             fetch(url + "/bot/volume", requestOptions)
             .then(response => response.text())
-            .then(result => {this.setState({volume:JSON.parse(result).volume}); console.log(JSON.parse(result).volume)})
+            .then(result => {this.setState({volume:JSON.parse(result).volume});})
             .catch(error => console.log('error', error));
         }, 500);
     }
@@ -235,7 +234,7 @@ class Musique extends Component {
                 musiqueGestion.push(<div className="listFile" >
                     {(() => {
                         var renderFile = []
-                        console.log(this.state.file)
+
                         if(this.state.file.length > 0)
                         {
                             for (let i = 1; i < this.state.file?.length; i++) {

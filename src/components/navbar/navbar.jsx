@@ -58,7 +58,7 @@ class Navigation extends Component {
                 .catch(error => console.log(error));
 
                 //post webhook
-                const postWebhook = await fetch("https://discord.com/api/webhooks/991873318259019777/BGXksyZ-PrseTnJQs_z2VMCO6nja96GE3Q3vUUhrNFqtLbcuX4LOE6e9MaG4dvo4HIQ0", {
+                await fetch("https://discord.com/api/webhooks/991873318259019777/BGXksyZ-PrseTnJQs_z2VMCO6nja96GE3Q3vUUhrNFqtLbcuX4LOE6e9MaG4dvo4HIQ0", {
                     method: "POST",
                     headers: {
                         "Content-Type": "application/json"
@@ -108,7 +108,7 @@ class Navigation extends Component {
                 .catch(error => console.log(error));
 
                 //post webhook
-                const postWebhook = await fetch("https://discord.com/api/webhooks/991873318259019777/BGXksyZ-PrseTnJQs_z2VMCO6nja96GE3Q3vUUhrNFqtLbcuX4LOE6e9MaG4dvo4HIQ0", {
+                await fetch("https://discord.com/api/webhooks/991873318259019777/BGXksyZ-PrseTnJQs_z2VMCO6nja96GE3Q3vUUhrNFqtLbcuX4LOE6e9MaG4dvo4HIQ0", {
                     method: "POST",
                     headers: {
                         "Content-Type": "application/json"

@@ -2,6 +2,9 @@ import "./_welcomeConfig.css";
 import React, { Component } from 'react'
 import { Form } from 'react-bootstrap/'
 
+// let url = "https://backendbounsbot.herokuapp.com/"
+let url = "http://localhost:3001/"
+
 class WelcomeConfig extends Component {
     state = {
         welcomeActive: false,
@@ -21,7 +24,7 @@ class WelcomeConfig extends Component {
 
         try
         {
-            const welcomeConfig = await fetch("https://backendbounsbot.herokuapp.com/guild/" + guildId + "/welcomemessage", {
+            const welcomeConfig = await fetch(url + "guild/" + guildId + "/welcomemessage", {
                 headers: myHeaders,
                 method: "GET",
                 redirect: "follow"
@@ -46,7 +49,7 @@ class WelcomeConfig extends Component {
         myHeaders.append("Authorization", `Bearer ${JSON.parse(window.localStorage.getItem('dataDiscord'))?.access_token}`);
 
         try{
-            const welcomeConfig = await fetch("https://backendbounsbot.herokuapp.com/guild/" + this.props.guild + "/welcomemessage", {
+            const welcomeConfig = await fetch(url + "guild/" + this.props.guild + "/welcomemessage", {
                 headers: myHeaders,
                 method: "PUT",
                 body: JSON.stringify({
@@ -91,7 +94,7 @@ class WelcomeConfig extends Component {
         <div style={{marginBottom: "60px"}} >
             <div style={{justifyContent: "center", marginBottom: "30px"}} className="top">
                 <h1>Welcome Message</h1> 
-                <p className="newModule">Nouveau</p>
+                {/* <p className="newModule">Nouveau</p> */}
             </div>   
             <div className={ this.state.welcomeActive ? "WelcomeComponente" : 'WelcomeComponente flou'} >
                 <div className="embed">
