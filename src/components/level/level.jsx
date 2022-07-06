@@ -44,7 +44,7 @@ class Level extends Component {
     render() {
       return (
         <div className="leaderboardglobal">
-          <div className="top"><h1>LEVEL</h1><div className="search search-bar" data-v-7085cbe2=""></div></div>
+          <div className="top"><h1>LEVELS</h1><div className="search search-bar" data-v-7085cbe2=""></div></div>
           <InfiniteScroll
           dataLength={this.state.level.length}
           next={this.getData}

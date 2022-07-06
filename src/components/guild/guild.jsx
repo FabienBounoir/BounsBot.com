@@ -255,7 +255,7 @@ class Guild extends Component {
         return (
             <div className="Dashboard">
                 <div className="top" style={{justifyContent: "center"}}>
-                    <h1>Information de la guilde</h1> 
+                    <h1>Informations du serveur</h1> 
                 </div>
                 {/* <button className="save" onClick={this.updateGuildConfig}>Enregistrer</button> */}
                     <div className='componentGuild'>
@@ -333,7 +333,7 @@ class Guild extends Component {
                             <Form.Check type="switch" id="custom-switch success" onChange={() => { this.setState({ configuration: {...this.state.configuration,rename: !this.state.configuration.rename } }) }} checked={this.state.configuration.rename} />
                             </div>
                             <h5 className="hrnh5k-0 eeKdki sc-1wkjbe7-8 GoZzi">Rename</h5>
-                            <div>Laissez le bot rename les membres lorsque leur pseudo n'est pas identifiable par la moderation</div>
+                            <div>Laissez le bot rename les membres lorsque leurs pseudos ne sont pas identifiables par la modération</div>
                         </div>
                         <div className="guildModule">
                             <div className="top">
@@ -349,7 +349,7 @@ class Guild extends Component {
                             <Form.Check type="switch" id="custom-switch success" onChange={() => { this.setState({ configuration: {...this.state.configuration,sheesh: !this.state.configuration.sheesh } }) }} checked={this.state.configuration.sheesh} />
                             </div>
                             <h5 className="hrnh5k-0 eeKdki sc-1wkjbe7-8 GoZzi">Sheesh</h5>
-                            <div>Laissez le bot reagir avec son meilleur SHEEEESHHHH si un membre dit sheesh</div>
+                            <div>Laissez le bot réagir avec son meilleur "SHEEEESHHHH" si un membre dit "sheesh"</div>
                         </div>
                         <div className="guildModule">
                             <div className="top">
@@ -391,7 +391,7 @@ class Guild extends Component {
                             </Form.Select></div>
                         </div>
                         <h5 className="hrnh5k-0 eeKdki sc-1wkjbe7-8 GoZzi">Twitch</h5>
-                        <div>Choisir la chaine twitch et le channel pour afficher le tchat (Mise en place 1 fois par jour)</div>
+                        <div>Choisir la chaine Twitch et le channel pour afficher le tchat (Mise en place 1 fois par jour)</div>
                     </div>
                     </div>
 
@@ -409,7 +409,7 @@ class Guild extends Component {
                                 </Form.Select>
                             </div>
                             <h5 className="hrnh5k-0 eeKdki sc-1wkjbe7-8 GoZzi">Messages</h5>
-                            <div>Pouvoir modérer les différents messages écrits sur la guilde</div>
+                            <div>Pouvoir modérer les différents messages sur le serveur</div>
                         </div>
 
                         <div className="guildModule">
@@ -425,7 +425,7 @@ class Guild extends Component {
                                 </Form.Select>
                             </div>
                             <h5 className="hrnh5k-0 eeKdki sc-1wkjbe7-8 GoZzi">Vocaux</h5>
-                            <div>Pouvoir modérer les différents vocaux sur la guilde</div>
+                            <div>Pouvoir modérer les différents vocaux sur le serveur</div>
                         </div>
                     
                         <div className="guildModule">
@@ -443,7 +443,7 @@ class Guild extends Component {
                                 </Form.Select>
                             </div>
                             <h5 className="hrnh5k-0 eeKdki sc-1wkjbe7-8 GoZzi">Users</h5>
-                            <div>Pouvoir voir en temps réel les changements effectués sur un utilisateur</div>
+                            <div>Voir en temps réel les changements effectués sur un utilisateur</div>
                         </div>
 
                         <div className="guildModule">
@@ -461,7 +461,7 @@ class Guild extends Component {
                                 </Form.Select>
                             </div>
                             <h5 className="hrnh5k-0 eeKdki sc-1wkjbe7-8 GoZzi">Ban / Unban</h5>
-                            <div>Pouvoir voir en temps réel les differents ban / unban sur la guilde</div>
+                            <div>Voir en temps réel les differents ban / unban sur le serveur</div>
                         </div>
                     
                         <div className="guildModule">
@@ -479,7 +479,7 @@ class Guild extends Component {
                                 </Form.Select>
                             </div>
                             <h5 className="hrnh5k-0 eeKdki sc-1wkjbe7-8 GoZzi">Join / Leave</h5>
-                            <div>Pouvoir voir les arrivées & départ des différents utilisateurs</div>
+                            <div>Voir les arrivés & départs des différents utilisateurs</div>
                         </div>
                     
 

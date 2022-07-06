@@ -28,14 +28,14 @@ export const Features = () => {
                     <AnimationImage img={ [morpion,chifumi,puissance4] }/>
                     <div className="content">
                         <div className="title">
-                            <h3>Plein de jeu</h3> 
+                            <h3>Pleins de jeux</h3> 
                             <a href="/commandes#configCommande">
                             <svg width="36" height="29" viewBox="0 0 36 29" fill="none" xmlns="http://www.w3.org/2000/svg" className="show-commands">
                             <path fillRule="evenodd" clipRule="evenodd" d="M7.02431 0.524414H0V7.52441H7.02431V0.524414ZM35.9998 0.524414H10.5366V7.52441H35.9998V0.524414ZM0 11.0244H7.02431V18.0244H0V11.0244ZM35.9998 11.0244H10.5366V18.0244H35.9998V11.0244ZM0 21.5244H7.02431V28.5244H0V21.5244ZM35.9998 21.5244H10.5366V28.5244H35.9998V21.5244Z" fill="var(--color-principal)"></path>
                             </svg>
                             </a>
                         </div> 
-                        <p>Tu veux affronter tes amis, Tu as donc à ta disposition plusieurs jeux comme le morpion, puissance4, chifumi, le motus, et bientôt d'autre 👀</p>
+                        <p>Tu veux affronter tes amis, tu as donc à ta disposition plusieurs jeux: le morpion, puissance4, chifumi, le motus, et bientôt d'autres 👀</p>
                     </div>
                 </div>
 
@@ -64,20 +64,20 @@ export const Features = () => {
                             </svg>
                             </a>
                         </div> 
-                        <p>Un bot musique acceptant les Liens Youtube / Fichier Externe (.mp3 / .mp4 / .flac / .ogg / .aac / .webm / .wav)<br/>Plus de 40 radio disponibles !!<br/>Crée / Modifier / Jouer une playlist.</p>
+                        <p>Un bot musique acceptant les liens Youtube / Spotify / deezer /soundcloud et fichier externe (.mp3 / .mp4 / .flac / .ogg / .aac / .webm / .wav)<br/>Plus de 40 radios disponibles !!<br/>Créer / Modifier / Jouer une playlist.</p>
                     </div>
                 </div>
                 <div className="feature active">
                     <div className="content">
                         <div className="title">
-                            <h3>Moderation</h3> 
+                            <h3>Modération</h3> 
                             <a href="/commandes#ModerationCommande">
                             <svg width="36" height="29" viewBox="0 0 36 29" fill="none" xmlns="http://www.w3.org/2000/svg" className="show-commands">
                                 <path fillRule="evenodd" clipRule="evenodd" d="M7.02431 0.524414H0V7.52441H7.02431V0.524414ZM35.9998 0.524414H10.5366V7.52441H35.9998V0.524414ZM0 11.0244H7.02431V18.0244H0V11.0244ZM35.9998 11.0244H10.5366V18.0244H35.9998V11.0244ZM0 21.5244H7.02431V28.5244H0V21.5244ZM35.9998 21.5244H10.5366V28.5244H35.9998V21.5244Z" fill="var(--color-principal)"></path>
                             </svg>
                             </a>
                         </div> 
-                        <p>Des logs de qualité avec les message supprimé / modifié, mais aussi les logs de cam et meme de partage d'ecran<br/>Auto Rename lorsqu'un pseudo contient des caractères spéciaux<br/>Nettoyer le tchat avec efficacité avec la commande "clear".</p>
+                        <p>Des logs de qualités avec les messages supprimés / modifiés, mais aussi les logs de cam et même de partage d'écran<br/>Auto Rename lorsqu'un pseudo contient des caractères spéciaux<br/>Nettoyer le tchat avec efficacité avec la commande "clear".</p>
                     </div>
                     <AnimationImage img={ [Moderation,join,Rename] }/>
                 </div>
@@ -92,13 +92,13 @@ export const Features = () => {
                             </svg>
                             </a>
                         </div> 
-                        <p>Retranscrire le tchat Twitch d'une chaine sur un channel Discord <br/>Les badges et les liens sont aussi retranscrit sur Discord<br/>Si un message est supprimer ou si un utilisateur et timeout/ban ces messages seront instant supprimer sur discord.</p>
+                        <p>Retranscrire le tchat Twitch d'une chaine sur un channel Discord <br/>Les badges et les liens sont aussi retranscrits sur Discord<br/>Si un message est supprimé ou si un utilisateur est timeout/ban ces messages seront instantanement supprimés sur Discord.</p>
                     </div>
                 </div>
                 <div className="feature active">
                     <div className="content">
                         <div className="title">
-                            <h3>Salon temporaires</h3> 
+                            <h3>Salons temporaires</h3> 
                             <a href="/commandes#tempChannelCommande">
                             <svg width="36" height="29" viewBox="0 0 36 29" fill="none" xmlns="http://www.w3.org/2000/svg" className="show-commands">
                                 <path fillRule="evenodd" clipRule="evenodd" d="M7.02431 0.524414H0V7.52441H7.02431V0.524414ZM35.9998 0.524414H10.5366V7.52441H35.9998V0.524414ZM0 11.0244H7.02431V18.0244H0V11.0244ZM35.9998 11.0244H10.5366V18.0244H35.9998V11.0244ZM0 21.5244H7.02431V28.5244H0V21.5244ZM35.9998 21.5244H10.5366V28.5244H35.9998V21.5244Z" fill="var(--color-principal)"></path>
