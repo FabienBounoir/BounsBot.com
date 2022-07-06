@@ -384,7 +384,8 @@ class Guild extends Component {
                             {/* <Form.Check type="switch" id="custom-switch success" onChange={() => { this.setState({ logChannel: !this.state.logChannel }) }} checked={this.state.fun} /> */}
                             <div><Form.Control type="text" placeholder="Chaine" value={this.state.configuration.chaineTwitch} onChange={(event) => { this.setState({ configuration: {...this.state.configuration,chaineTwitch: event.target.value } }) }}/>
                                 <Form.Select defaultValue={this.state.configuration.idChannelTwitchTchat} onChange={(event) => { this.setState({ configuration: {...this.state.configuration,idChannelTwitchTchat: event.target.value } }) }}>
-                                {(() => {
+                                    {(() => {
+                                        console.log(this.state.configuration.idChannelTwitchTchat)
                                     return this.getChannelForSelector(this.state.channelTextuelGuild, this.state.configuration.idChannelTwitchTchat);
                                 })()}
                             </Form.Select></div>

@@ -2,8 +2,8 @@ import "./_welcomeConfig.css";
 import React, { Component } from 'react'
 import { Form } from 'react-bootstrap/'
 
-// let url = "https://backendbounsbot.herokuapp.com/"
-let url = "http://localhost:3001/"
+let url = "https://backendbounsbot.herokuapp.com/"
+// let url = "http://localhost:3001/"
 
 class WelcomeConfig extends Component {
     state = {
