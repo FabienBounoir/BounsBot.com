@@ -173,7 +173,7 @@ export const Commandes = () => {
             </thead>
             <tbody>
                 <tr>
-                    <td>-log [message|user|vocal|join_leave|ban_unban] (Channel id ou 0 pour desactiver)</td>
+                    <td>-log [message | user | vocal | join_leave | ban_unban] (Channel id ou 0 pour desactiver)</td>
                     <td>Choisir le channel de log</td>
                 </tr>
                 <tr>

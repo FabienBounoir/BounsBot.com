@@ -1,4 +1,5 @@
 import "./_features.css";
+import { Link } from "react-router-dom"
 import Reaction from '../picture/features/reaction.svg';
 import Reaction2 from '../picture/features/reaction2.svg';
 import Sheesh from '../picture/features/sheesh.svg';
@@ -29,11 +30,13 @@ export const Features = () => {
                     <div className="content">
                         <div className="title">
                             <h3>Pleins de jeux</h3> 
-                            <a href="/commandes#configCommande">
-                            <svg width="36" height="29" viewBox="0 0 36 29" fill="none" xmlns="http://www.w3.org/2000/svg" className="show-commands">
-                            <path fillRule="evenodd" clipRule="evenodd" d="M7.02431 0.524414H0V7.52441H7.02431V0.524414ZM35.9998 0.524414H10.5366V7.52441H35.9998V0.524414ZM0 11.0244H7.02431V18.0244H0V11.0244ZM35.9998 11.0244H10.5366V18.0244H35.9998V11.0244ZM0 21.5244H7.02431V28.5244H0V21.5244ZM35.9998 21.5244H10.5366V28.5244H35.9998V21.5244Z" fill="var(--color-principal)"></path>
-                            </svg>
-                            </a>
+                            {/* <a href="/commandes#configCommande"> */}
+                                <Link to="/commandes#configCommande">
+                                    <svg width="36" height="29" viewBox="0 0 36 29" fill="none" xmlns="http://www.w3.org/2000/svg" className="show-commands">
+                                        <path fillRule="evenodd" clipRule="evenodd" d="M7.02431 0.524414H0V7.52441H7.02431V0.524414ZM35.9998 0.524414H10.5366V7.52441H35.9998V0.524414ZM0 11.0244H7.02431V18.0244H0V11.0244ZM35.9998 11.0244H10.5366V18.0244H35.9998V11.0244ZM0 21.5244H7.02431V28.5244H0V21.5244ZM35.9998 21.5244H10.5366V28.5244H35.9998V21.5244Z" fill="var(--color-principal)"></path>
+                                    </svg>
+                                </Link>
+                            {/* </a> */}
                         </div> 
                         <p>Tu veux affronter tes amis, tu as donc à ta disposition plusieurs jeux: le morpion, puissance4, chifumi, le motus, et bientôt d'autres 👀</p>
                     </div>
@@ -43,11 +46,13 @@ export const Features = () => {
                     <div className="content">
                         <div className="title">
                             <h3>Niveaux et points d'XP</h3> 
-                            <a href="/commandes#levelCommande">
+                            {/* <a href="/commandes#levelCommande"> */}
+                            <Link to="/commandes#levelCommande">
                             <svg width="36" height="29" viewBox="0 0 36 29" fill="none" xmlns="http://www.w3.org/2000/svg" className="show-commands">
                                 <path fillRule="evenodd" clipRule="evenodd" d="M7.02431 0.524414H0V7.52441H7.02431V0.524414ZM35.9998 0.524414H10.5366V7.52441H35.9998V0.524414ZM0 11.0244H7.02431V18.0244H0V11.0244ZM35.9998 11.0244H10.5366V18.0244H35.9998V11.0244ZM0 21.5244H7.02431V28.5244H0V21.5244ZM35.9998 21.5244H10.5366V28.5244H35.9998V21.5244Z" fill="var(--color-principal)"></path>
-                                </svg>
-                                </a>
+                            </svg>
+                            </Link>
+                                {/* </a> */}
                         </div> 
                         <p>Laissez vos membres se démarquer sur votre serveur grâce au système de Leveling.<br/>Vous pourrez afficher le classement.</p>
                     </div>
@@ -58,11 +63,13 @@ export const Features = () => {
                     <div className="content">
                         <div className="title">
                             <h3>Musique, Playlist, Radio</h3> 
-                            <a href="/commandes#musiqueCommande">
-                            <svg width="36" height="29" viewBox="0 0 36 29" fill="none" xmlns="http://www.w3.org/2000/svg" className="show-commands">
-                            <path fillRule="evenodd" clipRule="evenodd" d="M7.02431 0.524414H0V7.52441H7.02431V0.524414ZM35.9998 0.524414H10.5366V7.52441H35.9998V0.524414ZM0 11.0244H7.02431V18.0244H0V11.0244ZM35.9998 11.0244H10.5366V18.0244H35.9998V11.0244ZM0 21.5244H7.02431V28.5244H0V21.5244ZM35.9998 21.5244H10.5366V28.5244H35.9998V21.5244Z" fill="var(--color-principal)"></path>
-                            </svg>
-                            </a>
+                            {/* <a href="/commandes#musiqueCommande"> */}
+                                <Link to="/commandes#musiqueCommande">
+                                    <svg width="36" height="29" viewBox="0 0 36 29" fill="none" xmlns="http://www.w3.org/2000/svg" className="show-commands">
+                                    <path fillRule="evenodd" clipRule="evenodd" d="M7.02431 0.524414H0V7.52441H7.02431V0.524414ZM35.9998 0.524414H10.5366V7.52441H35.9998V0.524414ZM0 11.0244H7.02431V18.0244H0V11.0244ZM35.9998 11.0244H10.5366V18.0244H35.9998V11.0244ZM0 21.5244H7.02431V28.5244H0V21.5244ZM35.9998 21.5244H10.5366V28.5244H35.9998V21.5244Z" fill="var(--color-principal)"></path>
+                                    </svg>
+                                        {/* </a> */}
+                                </Link>
                         </div> 
                         <p>Un bot musique acceptant les liens Youtube / Spotify / deezer /soundcloud et fichier externe (.mp3 / .mp4 / .flac / .ogg / .aac / .webm / .wav)<br/>Plus de 40 radios disponibles !!<br/>Créer / Modifier / Jouer une playlist.</p>
                     </div>
@@ -71,11 +78,13 @@ export const Features = () => {
                     <div className="content">
                         <div className="title">
                             <h3>Modération</h3> 
-                            <a href="/commandes#ModerationCommande">
-                            <svg width="36" height="29" viewBox="0 0 36 29" fill="none" xmlns="http://www.w3.org/2000/svg" className="show-commands">
-                                <path fillRule="evenodd" clipRule="evenodd" d="M7.02431 0.524414H0V7.52441H7.02431V0.524414ZM35.9998 0.524414H10.5366V7.52441H35.9998V0.524414ZM0 11.0244H7.02431V18.0244H0V11.0244ZM35.9998 11.0244H10.5366V18.0244H35.9998V11.0244ZM0 21.5244H7.02431V28.5244H0V21.5244ZM35.9998 21.5244H10.5366V28.5244H35.9998V21.5244Z" fill="var(--color-principal)"></path>
-                            </svg>
-                            </a>
+                            {/* <a href="/commandes#ModerationCommande"> */}
+                                <Link to="/commandes#ModerationCommande">
+                                    <svg width="36" height="29" viewBox="0 0 36 29" fill="none" xmlns="http://www.w3.org/2000/svg" className="show-commands">
+                                        <path fillRule="evenodd" clipRule="evenodd" d="M7.02431 0.524414H0V7.52441H7.02431V0.524414ZM35.9998 0.524414H10.5366V7.52441H35.9998V0.524414ZM0 11.0244H7.02431V18.0244H0V11.0244ZM35.9998 11.0244H10.5366V18.0244H35.9998V11.0244ZM0 21.5244H7.02431V28.5244H0V21.5244ZM35.9998 21.5244H10.5366V28.5244H35.9998V21.5244Z" fill="var(--color-principal)"></path>
+                                    </svg>
+                                    {/* </a> */}
+                                </Link>
                         </div> 
                         <p>Des logs de qualités avec les messages supprimés / modifiés, mais aussi les logs de cam et même de partage d'écran<br/>Auto Rename lorsqu'un pseudo contient des caractères spéciaux<br/>Nettoyer le tchat avec efficacité avec la commande "clear".</p>
                     </div>
@@ -86,11 +95,13 @@ export const Features = () => {
                     <div className="content">
                         <div className="title">
                             <h3>Twitch vers Discord</h3> 
-                            <a href="/commandes#configCommande">
-                            <svg width="36" height="29" viewBox="0 0 36 29" fill="none" xmlns="http://www.w3.org/2000/svg" className="show-commands">
-                            <path fillRule="evenodd" clipRule="evenodd" d="M7.02431 0.524414H0V7.52441H7.02431V0.524414ZM35.9998 0.524414H10.5366V7.52441H35.9998V0.524414ZM0 11.0244H7.02431V18.0244H0V11.0244ZM35.9998 11.0244H10.5366V18.0244H35.9998V11.0244ZM0 21.5244H7.02431V28.5244H0V21.5244ZM35.9998 21.5244H10.5366V28.5244H35.9998V21.5244Z" fill="var(--color-principal)"></path>
-                            </svg>
-                            </a>
+                            {/* <a href="/commandes#configCommande"> */}
+                            <Link to="/commandes#configCommande">
+                                <svg width="36" height="29" viewBox="0 0 36 29" fill="none" xmlns="http://www.w3.org/2000/svg" className="show-commands">
+                                <path fillRule="evenodd" clipRule="evenodd" d="M7.02431 0.524414H0V7.52441H7.02431V0.524414ZM35.9998 0.524414H10.5366V7.52441H35.9998V0.524414ZM0 11.0244H7.02431V18.0244H0V11.0244ZM35.9998 11.0244H10.5366V18.0244H35.9998V11.0244ZM0 21.5244H7.02431V28.5244H0V21.5244ZM35.9998 21.5244H10.5366V28.5244H35.9998V21.5244Z" fill="var(--color-principal)"></path>
+                                </svg>
+                                {/* </a> */}
+                            </Link>
                         </div> 
                         <p>Retranscrire le tchat Twitch d'une chaine sur un channel Discord <br/>Les badges et les liens sont aussi retranscrits sur Discord<br/>Si un message est supprimé ou si un utilisateur est timeout/ban ces messages seront instantanement supprimés sur Discord.</p>
                     </div>
@@ -99,11 +110,13 @@ export const Features = () => {
                     <div className="content">
                         <div className="title">
                             <h3>Salons temporaires</h3> 
-                            <a href="/commandes#tempChannelCommande">
-                            <svg width="36" height="29" viewBox="0 0 36 29" fill="none" xmlns="http://www.w3.org/2000/svg" className="show-commands">
-                                <path fillRule="evenodd" clipRule="evenodd" d="M7.02431 0.524414H0V7.52441H7.02431V0.524414ZM35.9998 0.524414H10.5366V7.52441H35.9998V0.524414ZM0 11.0244H7.02431V18.0244H0V11.0244ZM35.9998 11.0244H10.5366V18.0244H35.9998V11.0244ZM0 21.5244H7.02431V28.5244H0V21.5244ZM35.9998 21.5244H10.5366V28.5244H35.9998V21.5244Z" fill="var(--color-principal)"></path>
-                            </svg>
-                            </a>
+                            {/* <a href="/commandes#tempChannelCommande"> */}
+                                <Link to="/commandes#tempChannelCommande">
+                                    <svg width="36" height="29" viewBox="0 0 36 29" fill="none" xmlns="http://www.w3.org/2000/svg" className="show-commands">
+                                        <path fillRule="evenodd" clipRule="evenodd" d="M7.02431 0.524414H0V7.52441H7.02431V0.524414ZM35.9998 0.524414H10.5366V7.52441H35.9998V0.524414ZM0 11.0244H7.02431V18.0244H0V11.0244ZM35.9998 11.0244H10.5366V18.0244H35.9998V11.0244ZM0 21.5244H7.02431V28.5244H0V21.5244ZM35.9998 21.5244H10.5366V28.5244H35.9998V21.5244Z" fill="var(--color-principal)"></path>
+                                    </svg>
+                                </Link>
+                            {/* </a> */}
                         </div> 
                         <p>Créer des salons temporaires automatiques, avec un nom prédéfini et une limite de personne par défaut.</p>
                     </div>
@@ -114,11 +127,13 @@ export const Features = () => {
                     <div className="content">
                         <div className="title">
                             <h3>Action Réaction</h3> 
-                            <a href="/commandes">
-                            <svg width="36" height="29" viewBox="0 0 36 29" fill="none" xmlns="http://www.w3.org/2000/svg" className="show-commands">
-                            <path fillRule="evenodd" clipRule="evenodd" d="M7.02431 0.524414H0V7.52441H7.02431V0.524414ZM35.9998 0.524414H10.5366V7.52441H35.9998V0.524414ZM0 11.0244H7.02431V18.0244H0V11.0244ZM35.9998 11.0244H10.5366V18.0244H35.9998V11.0244ZM0 21.5244H7.02431V28.5244H0V21.5244ZM35.9998 21.5244H10.5366V28.5244H35.9998V21.5244Z" fill="var(--color-principal)"></path>
-                            </svg>
-                            </a>
+                            {/* <a href="/commandes"> */}
+                                <Link to="/commandes">
+                                    <svg width="36" height="29" viewBox="0 0 36 29" fill="none" xmlns="http://www.w3.org/2000/svg" className="show-commands">
+                                        <path fillRule="evenodd" clipRule="evenodd" d="M7.02431 0.524414H0V7.52441H7.02431V0.524414ZM35.9998 0.524414H10.5366V7.52441H35.9998V0.524414ZM0 11.0244H7.02431V18.0244H0V11.0244ZM35.9998 11.0244H10.5366V18.0244H35.9998V11.0244ZM0 21.5244H7.02431V28.5244H0V21.5244ZM35.9998 21.5244H10.5366V28.5244H35.9998V21.5244Z" fill="var(--color-principal)"></path>
+                                    </svg>
+                                </Link>
+                            {/* </a> */}
                         </div> 
                         <p>Un message de Bonjour / Bonne Nuit et BounsBot réagit !!!</p>
                     </div>

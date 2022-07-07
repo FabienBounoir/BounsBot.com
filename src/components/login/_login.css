@@ -13,6 +13,7 @@
     position: absolute;
     top: 0px;
     left: 0px;
+    z-index: -1;
 }
 
 .awsUQ {
@@ -28,7 +29,7 @@
     text-align: center;
 }
 
-.guBWHp img {
+.guBWHp svg {
     animation: resparaiton 4s infinite both;
 }
 
@@ -36,6 +37,7 @@
     50% {
         transform: scale(1.05);
     }
+
     100% {
         transform: scale(1);
     }
@@ -60,7 +62,7 @@
     font-size: 21px;
     padding: 27px 51px;
     color: rgb(255, 255, 255);
-    background: var(--color-principal) ;
+    background: var(--color-principal);
     border: none;
     cursor: pointer;
     min-height: 32px;
@@ -71,7 +73,7 @@
 .boutonConnection {
     padding: 14px 18px 14px 18px;
     color: #fff;
-    background-color: var(--color-principal) ;
+    background-color: var(--color-principal);
     border-radius: 4px;
     text-decoration: none;
     position: relative;
@@ -86,7 +88,7 @@
     transition: transform 330ms ease-in-out;
 }
 
-.boutonConnection:hover{
+.boutonConnection:hover {
     transform: scale(1.03);
 }
 
@@ -94,5 +96,3 @@
 .boutonConnection span {
     color: #fff;
 }
-
-

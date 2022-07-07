@@ -282,7 +282,7 @@ class Guild extends Component {
 
 
 
-                            <Form.Check className="picto" type="switch" id="custom-switch success" onChange={() => { this.setState({ configuration: {...this.state.configuration,heyreaction: !this.state.configuration.heyreaction } }) }} checked={this.state.heyreaction} />
+                            <Form.Check className="picto" type="switch" id="custom-switch success" onChange={() => { this.setState({ configuration: {...this.state.configuration,heyreaction: !this.state.configuration.heyreaction } }) }} checked={this.state.configuration.heyreaction} />
                             </div>
                             <h5 className="hrnh5k-0 eeKdki sc-1wkjbe7-8 GoZzi">Réactions</h5>
                             <div>Laissez le bot réagir avec 👋 / 💤 suivant le message</div>

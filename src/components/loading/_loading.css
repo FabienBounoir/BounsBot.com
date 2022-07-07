@@ -16,7 +16,7 @@
     z-index: 2001;
 }
 
-.alignImage img {
+.alignImage svg {
     width: calc(100% - 40px);
     height: auto;
     animation: loadingLogo 2.5s ease-in-out infinite;
