@@ -1,6 +1,11 @@
 var CACHE_NAME = 'pwa-task-manager';
 var urlsToCache = [
   '/',
+  '/commandes',
+  '/playlist',
+  '/level',
+  '/demo',
+  '/dashboard',
   '/completed'
 ];
 
