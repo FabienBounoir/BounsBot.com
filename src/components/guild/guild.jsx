@@ -35,6 +35,11 @@ class Guild extends Component {
                 user: "0",
                 ban_unban: "0",
                 join_leave: "0",
+                guild: "0",
+                roles: "0",
+                channels: "0",
+                invites: "0",
+                emotes_stickers: "0"
             },
         },
         // success: false,
