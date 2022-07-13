@@ -1,8 +1,6 @@
 // import React from "react";
 import "./_navbar.css";
 import React, { Component } from 'react'
-import logo from '../picture/logo5.svg';
-import disconnect from '../picture/disconnect.png';
 import { Navbar,Container , Nav } from 'react-bootstrap/'
 import Fetch from "../../utils/fetch.js";
 import { Link, useHistory } from "react-router-dom"
@@ -19,9 +17,6 @@ class Navigation extends Component {
     }
 
     componentDidMount() {
-        let r = document.getElementsByTagName("html")[0];
-
-
         // r.style.setProperty('--color-principal', "#" + Math.floor(Math.random() * 16777215).toString(16));
         // r.style.setProperty('--color-principal-hover', "#" + Math.floor(Math.random() * 16777215).toString(16));
 

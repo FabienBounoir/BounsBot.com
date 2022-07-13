@@ -1,15 +1,12 @@
 import React from 'react';
 import "./_loading.css";
 
-import logo from "../picture/logo5.svg";
-
 function Loading() {
   // const [count, setCount] = useState(0);
 
   return (
       <div class="loadingFullPage">
         <div class="alignImage">
-        {/* <img src={logo} alt="Logo Chargement" /> */}
                 <svg width="267" height="267" viewBox="0 0 500 500" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <g clip-path="url(#clip0_118_58)">
                     <path d="M480.19 140C480.19 140 490.99 194.74 457.05 228.2C457.05 228.2 437.73 240.13 397.05 249.47C380.716 253.174 364.172 255.886 347.51 257.59C283.32 264.34 261.1 295.43 256.12 304.04L254.94 303.21C254.94 303.21 254.94 303.13 254.94 302.94V302.83C254.946 302.76 254.946 302.69 254.94 302.62V302.55C254.951 302.504 254.951 302.456 254.94 302.41C254.94 302.11 255 301.73 255.04 301.28C255.03 301.217 255.03 301.153 255.04 301.09C256.27 290.33 267.26 241.44 364.42 218.09C389.61 212.02 409.34 204.62 424.77 196.81C476.54 170.68 480.19 140 480.19 140Z" fill="url(#paint0_linear_118_58)"/>

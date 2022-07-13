@@ -1,18 +1,11 @@
 import "./_homepage.css";
-import logo from "../picture/logo5.svg";
+
 import AnimationText from "../animationtext/animationtext";
 
 export const HomePage = () => {
     return (
         <div id="head" className="home__top">
             <div className ="home__top__bot">
-                {/* <img
-                alt="logo"
-                src= { logo }
-                width="267"
-                height="267"
-                className Name="d-inline-block align-top"
-                /> */}
 
                 <svg class="logo" width="267" height="267" viewBox="0 0 500 500" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <g clip-path="url(#clip0_118_58)">

@@ -1,10 +1,8 @@
 import "./_login.css";
-import logo from "../picture/logo5.svg";
 
 export const Login = () => {
     return (
         <div className="sc-10wydb9-0 guBWHp">
-            {/* <img alt="logo" src= { logo } className="sc-10wydb9-1 awsUQ"/> */}
 
                 <svg className="sc-10wydb9-1 awsUQ"  viewBox="0 0 500 500" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <g clip-path="url(#clip0_118_58)">

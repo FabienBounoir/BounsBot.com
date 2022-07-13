@@ -178,3 +178,24 @@
         transform: translateX(-50%);
     }
 }
+
+@keyframes moveleftboucleMobile {
+    0% {
+        transform: translateX(0%) scale(2);
+    }
+
+    100% {
+        transform: translateX(-100%) scale(2);
+    }
+}
+
+#root {
+    overflow-x: hidden;
+}
+
+@media screen and (max-width: 768px) {
+    .wave {
+        animation: moveleftboucleMobile 5s linear infinite;
+        transform: scale(2);
+    }
+}
