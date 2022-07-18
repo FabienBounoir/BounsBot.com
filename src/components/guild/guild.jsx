@@ -14,7 +14,7 @@ import "./_guild.css";
 let url = "https://backendbounsbot.herokuapp.com/"
 
 // let urlBot = "http://localhost:3001/"
-let urlBot = "https://bouns-bot.herokuapp.com/"
+let urlBot = process.env.URL_BOT || "https://bouns-bot.herokuapp.com"
 
 class Guild extends Component {
     state = {
@@ -150,7 +150,7 @@ class Guild extends Component {
         // let url = "http://localhost:3001"
         // let url = "https://bouns-bot.herokuapp.com"
 
-        await fetch(urlBot + "bot/getchannels/" + this.props.match.params.id,requestOptions)
+        await fetch(urlBot + "/bot/getchannels/" + this.props.match.params.id,requestOptions)
             .then(response => response.json())
             .then((result) => {
                 this.setState({
