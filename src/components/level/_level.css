@@ -2,6 +2,83 @@
     background-color: var(--back-second-color);
 }
 
+.leaderboard {
+    display: flex;
+    /* flex-wrap: wrap-reverse; */
+    gap: 2em;
+}
+
+.rolesInfo {
+    background-color: #3e4246;
+    padding: 1rem 1.5rem;
+    border-radius: 3px;
+    height: min-content;
+    max-height: min-content;
+    min-height: min-content;
+    text-align: left;
+    white-space: nowrap;
+}
+
+.roleRender {
+    color: white;
+    font-size: 12px;
+    font-weight: 500;
+    background: #292b2f;
+    border-radius: 4px;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    height: 22px;
+    margin: 0 4px 4px 0;
+    padding: 4px;
+    display: flex;
+    flex-wrap: nowrap;
+    max-width: fit-content;
+    flex-direction: row;
+    -o-box-align: center;
+    align-items: center;
+}
+
+.roleRender span {
+    border-radius: 50%;
+    width: 12px;
+    height: 12px;
+    margin: 4px 2px 4px 4px;
+    /* background-color: green; */
+}
+
+.roleInfo div {
+    margin: 4px 4px 4px 2px;
+}
+
+.rolesInfo h1 {
+    color: var(--color-principal);
+    font-size: 1rem;
+    font-weight: bold;
+    margin: 0;
+    padding-bottom: 0.5rem !important;
+}
+
+.borderTop {
+    border-top: 1px solid var(--color-principal);
+
+    height: 1rem;
+}
+
+.roleInfo {
+    padding-bottom: 1rem;
+}
+
+.roleInfo h5 {
+    font-weight: 700 !important;
+    color: var(--color-principal-hover);
+    font-size: .75rem !important;
+    line-height: 1rem !important;
+}
+
+.leaderboardLevel {
+    flex: 3;
+}
+
 .leaderboardglobal .top {
     display: flex;
     justify-content: space-between;
@@ -13,7 +90,7 @@
 .leaderboardglobal {
     min-height: calc(100vh - 470px);
     background-color: var(--back-first-color);
-    padding: 50px;
+    padding: 2.5em 15em;
 }
 
 .leaderboardglobal .top h1 {
@@ -341,13 +418,31 @@
     margin-bottom: 100px;
 }
 
+@media screen and (max-width: 1300px) {
+    .leaderboardglobal {
+        padding: 2.5em 7em;
+    }
+}
+
+@media screen and (max-width: 1000px) {
+    .leaderboardglobal {
+        padding: 2.5em;
+    }
+}
+
 @media screen and (max-width: 650px) {
     .leaderboardPlayerStats .leaderboardPlayerStatBlock:first-child {
         display: none;
     }
 
-    .leaderboardglobal {
+    /* .leaderboardglobal {
         padding: 20px;
+    } */
+}
+
+@media screen and (max-width: 800px) {
+    .rolesInfo {
+        display: none;
     }
 }
 

@@ -4,16 +4,18 @@ import React, { Component } from 'react'
 import InfiniteScroll from 'react-infinite-scroll-component';
 import { Spinner } from 'react-bootstrap/'
 import Loading from "../loading/loading.jsx";
+import GainRolesLevels from "../gainRolesLevels/gainRolesLevels.jsx";
 
-// let url = "http://localhost:3001/"
-let url = "https://backendbounsbot.herokuapp.com/"
+let url = "http://localhost:3001/"
+// let url = "https://backendbounsbot.herokuapp.com/"
 
 class Level extends Component {
   state = {
     level: [],
+    levelsRole: [],
     page: 0,
     hasMoreData: true,
-    loading: true
+    loading: true,
   }
 
     componentDidMount() {
@@ -27,16 +29,18 @@ class Level extends Component {
       fetch(url + `${twitch ? ("twitch/") : ("discord/")}` + id + `?page=${this.state.page}`)
         .then(response => response.json())
         .then((result) => {
+          console.log(result)
             this.setState({
               level: this.state.level.concat(result.rank), 
               page: this.state.page + 1, 
               hasMoreData: result.rank.length !== 0,
-              loading: false
+              loading: false,
+              levelsRole: result.levelsRole
             });
         })
         .catch((error) =>
         {
-          window.location.href = "/"
+          // window.location.href = "/"
           console.log(error)
         })
     };
@@ -45,7 +49,11 @@ class Level extends Component {
       return (
         <div className="leaderboardglobal">
           <div className="top"><h1>LEVELS</h1><div className="search search-bar" data-v-7085cbe2=""></div></div>
-          <InfiniteScroll
+
+          <div className="leaderboard">
+          <div className="leaderboardLevel">
+            <InfiniteScroll
+            
           dataLength={this.state.level.length}
           next={this.getData}
           hasMore={this.state.hasMoreData}
@@ -105,7 +113,16 @@ class Level extends Component {
 
             return rank;
           })()}
-          </InfiniteScroll>
+              </InfiniteScroll>
+            </div>
+            
+            {(() => {
+              if (this.state.levelsRole && this.state.levelsRole.length > 0) {
+                return (<GainRolesLevels levelsRole={this.state.levelsRole} />)
+              }
+            })()}
+        
+          </div>
 
           {(() => {
             if(this.state.loading) return <Loading />
