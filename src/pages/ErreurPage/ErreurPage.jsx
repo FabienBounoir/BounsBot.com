@@ -1,5 +1,5 @@
 import "./_ErreurPage.css";
-import logo404 from '../picture/404page.png';
+import logo404 from '../../components/picture/404page.png';
 
 export const ErreurPage = () => {
     return (

@@ -4,21 +4,62 @@ import './App.css';
 import Navigation from "../components/navbar/navbar";
 import { HomePage } from "../components/homepage/homepage";
 import { Features } from "../components/features/features";
-import { Commandes } from "../components/commandes/commandes";
-import Level from "../components/level/level";
-import Playlist from "../components/playlist/playlist";
-import infoPlaylist from "../components/infoPlaylist/infoPlaylist";
-import { ErreurPage } from "../components/ErreurPage/ErreurPage";
-import { Login } from "../components/login/login";
-import { TermsAndConditions } from "../components/terms-and-conditions/terms-and-conditions";
-import Dashboard from "../components/dashboard/dashboard";
-import Guild from "../components/guild/guild";
-import Demo from "../components/demo/demo";
+import { Commandes } from "../pages/commandes/commandes";
+import Level from "../pages/level/level";
+import Playlist from "../pages/playlist/playlist";
+import infoPlaylist from "../pages/infoPlaylist/infoPlaylist";
+import { ErreurPage } from "../pages/ErreurPage/ErreurPage";
+import { Login } from "../pages/login/login";
+import { TermsAndConditions } from "../pages/terms-and-conditions/terms-and-conditions";
+import Dashboard from "../pages/dashboard/dashboard";
+import Guild from "../pages/guild/guild";
+import Demo from "../pages/demo/demo";
 import Callback from "../components/callback/callback";
 import Authenticate from '../components/Authenticate';
 // import Test from "../components/sendEmbed/sendembed";
 
 export const App = () => {
+
+  //create randomColor but not dark or light
+  let randomColor = () => {
+    let color = "";
+    let letters = "0123456789ABCDEF";
+    for (let i = 0; i < 6; i++) {
+      color += letters[Math.floor(Math.random() * 16)];
+    }
+
+    if (color.substring(0, 2) === "00" || color.substring(0, 2) === "11") {
+      randomColor();
+    }
+    return color;
+  }
+
+  let componentDidMount = () => {
+    let r = document.getElementsByTagName("html")[0];
+
+    if (Math.floor(Math.random() * 10) === 3) {
+      r.style.setProperty('--color-principal', "#" + randomColor());
+      r.style.setProperty('--color-principal-hover', "#" + randomColor());
+    }
+
+    let date = new Date();
+    if (date.getMonth() === 9 && date.getDate() === 31) {
+      let r = document.getElementsByTagName("html")[0];
+      r.style.setProperty('--color-principal', '#FC4C02');
+      r.style.setProperty('--color-principal-hover', '#D34509');
+    }
+    else if (date.getMonth() === 11 && (date.getDate() === 25 || date.getDate() === 24)) {
+      let r = document.getElementsByTagName("html")[0];
+      r.style.setProperty('--color-principal', '#ff0000');
+      r.style.setProperty('--color-principal-hover', '#ec5353');
+    }
+
+    // this.updateLogin();
+    fetch("https://backendbounsbot.herokuapp.com/discord").catch(error => console.log(error))
+  }
+
+  componentDidMount()
+
   return (
     <div className="App">
       <BrowserRouter>
@@ -26,7 +67,7 @@ export const App = () => {
         <Switch>
           <Route exact path="/">
             <HomePage />
-            <Features /> 
+            <Features />
           </Route>
 
           <Route exact path="/commandes">
@@ -34,7 +75,7 @@ export const App = () => {
           </Route>
 
           <Route exact path="/level">
-            <Level/>
+            <Level />
           </Route>
           <Route exact path="/demo">
             <Demo />

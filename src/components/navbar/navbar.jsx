@@ -17,25 +17,25 @@ class Navigation extends Component {
     }
 
     componentDidMount() {
-        // r.style.setProperty('--color-principal', "#" + Math.floor(Math.random() * 16777215).toString(16));
-        // r.style.setProperty('--color-principal-hover', "#" + Math.floor(Math.random() * 16777215).toString(16));
+    //     // r.style.setProperty('--color-principal', "#" + Math.floor(Math.random() * 16777215).toString(16));
+    //     // r.style.setProperty('--color-principal-hover', "#" + Math.floor(Math.random() * 16777215).toString(16));
 
-        let date = new Date();
-        if(date.getMonth() === 9 && date.getDate() === 31)
-        {
-            let r = document.getElementsByTagName("html")[0];
-            r.style.setProperty('--color-principal', '#FC4C02');
-            r.style.setProperty('--color-principal-hover', '#D34509');
-        }
-        else if(date.getMonth() === 11 && (date.getDate() === 25 || date.getDate() === 24))
-        {
-            let r = document.getElementsByTagName("html")[0];
-            r.style.setProperty('--color-principal', '#ff0000');
-            r.style.setProperty('--color-principal-hover', '#ec5353');
-        }
+    //     let date = new Date();
+    //     if(date.getMonth() === 9 && date.getDate() === 31)
+    //     {
+    //         let r = document.getElementsByTagName("html")[0];
+    //         r.style.setProperty('--color-principal', '#FC4C02');
+    //         r.style.setProperty('--color-principal-hover', '#D34509');
+    //     }
+    //     else if(date.getMonth() === 11 && (date.getDate() === 25 || date.getDate() === 24))
+    //     {
+    //         let r = document.getElementsByTagName("html")[0];
+    //         r.style.setProperty('--color-principal', '#ff0000');
+    //         r.style.setProperty('--color-principal-hover', '#ec5353');
+    //     }
 
+    //     fetch("https://backendbounsbot.herokuapp.com/discord").catch(error => console.log(error))
         this.updateLogin();
-        fetch("https://backendbounsbot.herokuapp.com/discord").catch(error => console.log(error))
     }
     
     clickMe = () => {
@@ -101,7 +101,7 @@ class Navigation extends Component {
         else
         {            
             this.setState({ login: true });
-            const token = JSON.parse(window.localStorage.getItem('dataDiscord')).access_token;
+            const token = JSON.parse(window.localStorage.getItem('dataDiscord'))?.access_token;
     
             const user = await Fetch.getInfoUser(token)
             

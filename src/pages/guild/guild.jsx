@@ -2,11 +2,11 @@ import React, { Component } from 'react'
 
 import { Form } from 'react-bootstrap/'
 // import Slider from '@mui/material/Slider';
-import Musique from "../musique/musique.jsx";
-import WelcomeMessage from "../welcomeConfig/welcomeConfig.jsx";
-import SendMessage from "../sendmessage/sendmessage"
-import Loading from "../loading/loading.jsx";
-import logo from "../picture/logo5.svg";
+import Musique from "../../components/musique/musique.jsx";
+import WelcomeMessage from "../../components/welcomeConfig/welcomeConfig.jsx";
+import SendMessage from "../../components/sendmessage/sendmessage"
+import Loading from "../../components/loading/loading.jsx";
+import logo from "../../components/picture/logo5.svg";
 
 import "./_guild.css";
 

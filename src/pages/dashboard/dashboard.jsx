@@ -1,7 +1,8 @@
 import "./_dashboard.css";
 import React, { Component } from 'react'
 import Fetch from "../../utils/fetch.js"
-import Loading from "../loading/loading.jsx";
+import Loading from "../../components/loading/loading.jsx";
+import { Link } from "react-router-dom"
 
 class Dashboard extends Component {
     state = {
@@ -101,7 +102,9 @@ class Dashboard extends Component {
                                     <div className="typeAccess">{guild.owner ? ("Proprietaire") : ("Bot Master") }</div>
                                 </div>
                                 {this.state.hasguild.length !== 0 && this.state.hasguild.includes(guild.id) ? (
-                                    <a href={`/dashboard/${guild.id}`}><button className="goGuild">GO</button></a>
+                                    // <a href={`/dashboard/${guild.id}`}>
+                                        <Link to={`/dashboard/${guild.id}`}><button className="goGuild">GO</button></Link>
+                                    // </a>
                                 )
                                 :
                                 (

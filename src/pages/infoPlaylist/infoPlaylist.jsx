@@ -1,6 +1,6 @@
 import "./_infoPlaylist.css";
 import React, { Component } from 'react'
-import backArrow from "../picture/backArrow.png";
+import backArrow from "../../components/picture/backArrow.png";
 import { Card } from 'react-bootstrap/'
 import { Spinner } from 'react-bootstrap/'
 
