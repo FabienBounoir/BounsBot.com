@@ -6,8 +6,8 @@ import { Spinner } from 'react-bootstrap/'
 import Loading from "../loading/loading.jsx";
 import GainRolesLevels from "../gainRolesLevels/gainRolesLevels.jsx";
 
-let url = "http://localhost:3001/"
-// let url = "https://backendbounsbot.herokuapp.com/"
+// let url = "http://localhost:3001/"
+let url = "https://backendbounsbot.herokuapp.com/"
 
 class Level extends Component {
   state = {
