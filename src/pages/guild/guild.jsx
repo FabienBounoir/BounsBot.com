@@ -6,7 +6,7 @@ import Musique from "../../components/musique/musique.jsx";
 import WelcomeMessage from "../../components/welcomeConfig/welcomeConfig.jsx";
 import SendMessage from "../../components/sendmessage/sendmessage"
 import Loading from "../../components/loading/loading.jsx";
-import logo from "../../components/picture/logo5.svg";
+import logo from "../../assets/picture/logo5.svg";
 
 import "./_guild.css";
 

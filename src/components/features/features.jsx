@@ -1,24 +1,24 @@
 import "./_features.css";
 import { Link } from "react-router-dom"
-import Reaction from '../picture/features/reaction.svg';
-import Reaction2 from '../picture/features/reaction2.svg';
-import Sheesh from '../picture/features/sheesh.svg';
-import Moderation from '../picture/features/moderation.svg';
-import Rename from '../picture/features/rename.svg';
-import Musique from '../picture/features/musique.svg';
-import Playlist from '../picture/features/playlist.svg';
-import Radio from '../picture/features/radio.svg';
-import Level from '../picture/features/level.svg';
-import Rank from '../picture/features/rank.svg';
+import Reaction from '../../assets/picture/features/reaction.svg';
+import Reaction2 from '../../assets/picture/features/reaction2.svg';
+import Sheesh from '../../assets/picture/features/sheesh.svg';
+import Moderation from '../../assets/picture/features/moderation.svg';
+import Rename from '../../assets/picture/features/rename.svg';
+import Musique from '../../assets/picture/features/musique.svg';
+import Playlist from '../../assets/picture/features/playlist.svg';
+import Radio from '../../assets/picture/features/radio.svg';
+import Level from '../../assets/picture/features/level.svg';
+import Rank from '../../assets/picture/features/rank.svg';
 import AnimationImage from "../animationimage/animationimage";
-import join from '../picture/features/JoinChannel.svg';
-import twitch1 from '../picture/features/twitch1.svg';
-import twitch2 from '../picture/features/twitch2.svg';
-import tempoVocaux from '../picture/features/tempoVocaux.svg';
+import join from '../../assets/picture/features/JoinChannel.svg';
+import twitch1 from '../../assets/picture/features/twitch1.svg';
+import twitch2 from '../../assets/picture/features/twitch2.svg';
+import tempoVocaux from '../../assets/picture/features/tempoVocaux.svg';
 
-import chifumi from '../picture/features/chifumi.svg';
-import morpion from '../picture/features/morpion.svg';
-import puissance4 from '../picture/features/puissance4.svg';
+import chifumi from '../../assets/picture/features/chifumi.svg';
+import morpion from '../../assets/picture/features/morpion.svg';
+import puissance4 from '../../assets/picture/features/puissance4.svg';
 
 
 export const Features = () => {
