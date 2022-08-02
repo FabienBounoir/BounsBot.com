@@ -154,7 +154,7 @@ class Guild extends Component {
             .then(response => response.json())
             .then((result) => {
                 this.setState({
-                    channelTextuelGuild: result.channels.filter(channel => channel.type === "GUILD_TEXT")
+                    channelTextuelGuild: result.channels.filter(channel => channel.type === 0)
                 });
             })
             .catch(console.log)
