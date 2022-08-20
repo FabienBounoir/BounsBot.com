@@ -1,7 +1,9 @@
 html {
   --logo-bouns-bot: "var(--color-principal)";
-  --color-principal: #0cab34;
-  --color-principal-hover: #058f28;
+  /* --color-principal: #0cab34; */
+  /* --color-principal-hover: #058f28; */
+  --color-principal: #EF3F3F;
+  --color-principal-hover: #A80C00;
   --back-first-color: #383c41;
   --back-second-color: #202225;
   --back-html-color: #212529;

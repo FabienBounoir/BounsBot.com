@@ -460,7 +460,7 @@ class Demo extends Component {
                         <div className="demo-env member-list" role="group">
                             <div className="voiceUser clickable userSmall" id="discord-bot-voiceuser" tabIndex="-1" role="button">
                                 <div className="content">
-                                    <div className="avatarContainer avatar avatarSmall avatarSpeaking" style={{ backgroundImage: "url('/static/media/logo5.a661761a.svg')" }}>
+                                    <div className="avatarContainer avatar avatarSmall avatarSpeaking" style={{ backgroundImage: "url('https://cdn.discordapp.com/attachments/806282416364585062/1010652379332497408/Bounsbot.svg')" }}>
                                     </div>
                                     <div className="usernameFont username usernameSpeaking" style={{ textAlign: "left;" }}>Bouns'Bot</div>
                                 </div>

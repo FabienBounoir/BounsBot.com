@@ -1,7 +1,7 @@
 import "./_callback.css";
 import { Component } from 'react'
 import Fetch from "../../utils/fetch.js";
-import logo from "../../assets/picture/logo5.svg";
+import logo from "../../assets/picture/Bounsbot.svg";
 
 
 class Callback extends Component {
