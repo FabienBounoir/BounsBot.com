@@ -34,7 +34,7 @@ export const Features = () => {
         <div className="features">
             <div className="features__content">
                 <div className="feature active">
-                    <AnimationImage img={[morpion, chifumi, puissance4]} time="3000" />
+                    <AnimationImage img={[morpion, chifumi, puissance4]} />
                     <div className="content">
                         <div className="title">
                             <h3>Pleins de jeux</h3>
@@ -60,10 +60,10 @@ export const Features = () => {
                         </div>
                         <p>Laissez vos membres se démarquer sur votre serveur grâce au système de Leveling.<br />Vous pourrez afficher le classement.</p>
                     </div>
-                    <AnimationImage img={[Level, Rank, Achievement]} time="1000" />
+                    <AnimationImage img={[Level, Rank, Achievement]} />
                 </div>
                 <div className="feature active">
-                    <AnimationImage img={[Musique, Radio, Playlist]} time="1000" />
+                    <AnimationImage img={[Musique, Radio, Playlist]} />
                     <div className="content">
                         <div className="title">
                             <h3>Musique, Playlist, Radio</h3>
@@ -88,7 +88,7 @@ export const Features = () => {
                         </div>
                         <p>Des logs de qualités avec les messages supprimés / modifiés, mais aussi les logs de cam et même de partage d'écran<br />Auto Rename lorsqu'un pseudo contient des caractères spéciaux<br />Nettoyer le tchat avec efficacité avec la commande "clear".</p>
                     </div>
-                    <AnimationImage img={[LogTextuel, LogVocal, AppElement, Rename]} time="2000" />
+                    <AnimationImage img={[LogTextuel, LogVocal, AppElement, Rename]} />
                 </div>
                 <div className="feature active">
                     <AnimationImage img={[twitch1, twitch2]} />
