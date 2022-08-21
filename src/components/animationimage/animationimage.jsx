@@ -16,7 +16,7 @@ class AnimationImage extends React.Component {
 
   componentDidMount() {
     if (this.state.image.length > 1) {
-      this.interval = setInterval(() => { this.tick(); console.log("coucou", "coucou", "coucou") }, this.state.time || 7000);
+      this.interval = setInterval(() => this.tick(), this.state.time || 7000);
     }
   }
 
@@ -26,7 +26,7 @@ class AnimationImage extends React.Component {
 
   render() {
     return (
-      <img className="image" alt="logo" src={this.state.image[this.state.increment]} />
+      <img className="image" alt="Feature Element" src={this.state.image[this.state.increment]} />
     );
   }
 }
