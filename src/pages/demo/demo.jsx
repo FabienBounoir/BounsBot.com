@@ -39,7 +39,7 @@ class Demo extends Component {
         //socket.io client connection
         this.socket = io('http://localhost:3001/');
 
-        
+
         //socket server link
         this.socket = io("https://socketbounsbot.herokuapp.com/");
         // this.socket = io("ws://localhost:3001"); //en local test
@@ -96,8 +96,7 @@ class Demo extends Component {
             muet: !this.state.muet
         });
 
-        if(this.state.muet)
-        {
+        if (this.state.muet) {
             this.voix();
         }
 
@@ -131,7 +130,7 @@ class Demo extends Component {
             this.radioCommandes(commande.split(' ')[1])
         }
         else if (commande.toLowerCase().indexOf(`-volume `) === 0) {
-            this.volumeCommandes(10/commande.split(' ')[1])
+            this.volumeCommandes(commande.split(' ')[1] / 10)
         }
         else if (commande === "-resume") {
             this.playCommandes()
@@ -206,17 +205,18 @@ class Demo extends Component {
     //commande volume (met a jour le volume du bot)
     volumeCommandes(volume) {
         if (!(isNaN(volume))) {
-            let number = Number(volume)
+            let number = volume;
+            console.log(number)
             if (number >= 0 && number <= 1) {
                 this.radio.volume = volume;
                 this.setState({
-                    messageData: this.state.messageData.concat({ name: "Bouns'Bot", picture: "user-6", text: `Volume réglé sur ${volume}` })
+                    messageData: this.state.messageData.concat({ name: "Bouns'Bot", picture: "user-6", text: `Volume réglé sur ${volume * 10}` })
                 });
                 this.setCookie("volume", volume)
             }
             else {
                 this.setState({
-                    messageData: this.state.messageData.concat({ name: "Bouns'Bot", picture: "user-6", text: "Volume non compris entre 0 et 1" })
+                    messageData: this.state.messageData.concat({ name: "Bouns'Bot", picture: "user-6", text: "Volume non compris entre 0 et 10" })
                 });
             }
         }
