@@ -1,7 +1,7 @@
 import "./_infoPlaylist.css";
 import React, { Component } from 'react'
 import backArrow from "../../assets/picture/backArrow.png";
-import { Card, Spinner } from 'react-bootstrap/'
+import { Card } from 'react-bootstrap/'
 import Loading from "../../components/loading/loading.jsx";
 
 class infoPlaylist extends Component {
@@ -56,7 +56,6 @@ class infoPlaylist extends Component {
                         }
                         else if (this.state.load) {
                             return <Loading />
-                            // return <div><Spinner animation="grow" variant="danger" /><Spinner animation="grow" variant="danger" /><Spinner animation="grow" variant="danger" /></div>
                         }
                         else {
                             return <h1 style={{ paddingTop: "50px" }}>Cette playlist est introuvable</h1>
