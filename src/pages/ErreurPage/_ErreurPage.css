@@ -68,9 +68,19 @@ transform: translate(-50%, -50%);
     overflow: scroll;
 }
 
+.pError {
+    fill: var(--color-principal);
+    stroke: var(--color-principal);
+}
+
+.sError {
+    fill: var(--color-principal-hover);
+    stroke: var(--color-principal-hover);
+}
+
 @media (max-width: 1024px) {
     .ErreurPage__container {
-        align-items: flex-end;
+        /* align-items: flex-end; */
         /* grid-template-columns: 1fr; */
         /* height: 90vh; */
         gap: 0;
