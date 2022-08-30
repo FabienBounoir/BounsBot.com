@@ -104,7 +104,7 @@ class Dashboard extends Component {
                                         )
                                             :
                                             (
-                                                <a href={"https://discord.com/oauth2/authorize?client_id=806105506883960853&permissions=1945627743&scope=bot%20applications.commands&guild_id=" + guild.id}><button className="inviteGuild">Invite</button></a>
+                                                <a href={"https://discord.com/oauth2/authorize?client_id=1012688780471308339&permissions=1945627743&scope=bot%20applications.commands&guild_id=" + guild.id}><button className="inviteGuild">Invite</button></a>
                                             )}
                                     </div>
                                 </div>)
