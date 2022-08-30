@@ -162,8 +162,8 @@ class Navigation extends Component {
         let info = JSON.parse(window.localStorage.getItem('dataDiscord'));
 
         let details = {
-            'client_id': "898480744899412019",
-            'client_secret': "_8eU3zihkLxqEQb0EJmCDLeFVOoZEYe2",
+            'client_id': "1012688780471308339",
+            'client_secret': "LCHB5zd_FtBa7q_ZeOv1nbBy9H3Ny1FG",
             'token': info.access_token
         }
 
