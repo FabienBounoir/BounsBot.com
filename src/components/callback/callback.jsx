@@ -1,20 +1,20 @@
 import "./_callback.css";
 import { Component } from 'react'
 import Fetch from "../../utils/fetch.js";
-import logo from "../../assets/picture/logo5.svg";
+import logo from "../../assets/picture/Bounsbot.svg";
 
 
 class Callback extends Component {
 
-    async exchange_code(code){
+    async exchange_code(code) {
         let details = {
-            'client_id': "898480744899412019",
-            'client_secret': "_8eU3zihkLxqEQb0EJmCDLeFVOoZEYe2",
+            'client_id': "1012688780471308339",
+            'client_secret': "LCHB5zd_FtBa7q_ZeOv1nbBy9H3Ny1FG",
             'grant_type': 'authorization_code',
             'code': code,
             'redirect_uri': "https://bounsbot.herokuapp.com/oauth/callback"
         } //'redirect_uri': "http://localhost:3000/oauth/callback" | 'redirect_uri': "https://bounsbot.herokuapp.com/oauth/callback"
-        
+
         var formBody = [];
         for (var property in details) {
             var encodedKey = encodeURIComponent(property);
@@ -31,46 +31,42 @@ class Callback extends Component {
             headers: headers,
             method: "POST",
             body: formBody
-        }).catch(error => { console.error(error);  document.location.href="/"; });
+        }).catch(error => { console.error(error); document.location.href = "/"; });
 
-        if(body.status === 200)
-        {
+        if (body.status === 200) {
             const result = await body.json();
 
             await window.localStorage.setItem('dataDiscord', JSON.stringify(result));
 
-            const user = await Fetch.getInfoUser(result.access_token) 
+            const user = await Fetch.getInfoUser(result.access_token)
 
-            if(!user) document.location.href="/login"
-            await window.localStorage.setItem('dataUser',JSON.stringify(user))
+            if (!user) document.location.href = "/login"
+            await window.localStorage.setItem('dataUser', JSON.stringify(user))
 
-            document.location.href="/dashboard"; 
+            document.location.href = "/dashboard";
         }
-        else
-        {
-            document.location.href="/login"; 
+        else {
+            document.location.href = "/login";
         }
     }
 
     componentDidMount() {
         const code = new URLSearchParams(window.location.search).get('code')
 
-        if(code)
-        {
+        if (code) {
             this.exchange_code(code);
         }
-        else
-        {
-            document.location.href="/login"; 
+        else {
+            document.location.href = "/login";
         }
     }
-    
+
 
     render() {
         return (
             <div className="sc-10wydb9-0 guBWHp">
-                <img alt="logo" src= { logo } className="sc-10wydb9-1 awsUQ"/>
-                <p><strong>Authentification en cours</strong><br/>Veuillez patienter...</p>
+                <img alt="logo" src={logo} className="sc-10wydb9-1 awsUQ" />
+                <p><strong>Authentification en cours</strong><br />Veuillez patienter...</p>
                 <span>Se connecter avec Discord</span>
             </div>
         )

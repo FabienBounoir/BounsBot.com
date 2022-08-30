@@ -5,6 +5,7 @@ import InfiniteScroll from 'react-infinite-scroll-component';
 import { Spinner } from 'react-bootstrap/'
 import { Form, Card, ListGroup, ListGroupItem } from 'react-bootstrap/'
 import { Link } from "react-router-dom"
+import Loading from "../../components/loading/loading.jsx";
 
 let searchValide
 
@@ -29,17 +30,17 @@ class Playlist extends Component {
         // let url = `http://localhost:3001/playlist/`
 
         fetch(url + `?page=${this.state.page}`)
-        .then(response => response.json())
-        .then((result) => {
-            this.setState({
-            playlistList: this.state.playlistList.concat(result.playlist),
-            page: this.state.page + 1,
-            hasMoreData: result.playlist.length !== 0,
-            recherche: false,
-            load: false
-            });
-        })
-        .catch(console.log)
+            .then(response => response.json())
+            .then((result) => {
+                this.setState({
+                    playlistList: this.state.playlistList.concat(result.playlist),
+                    page: this.state.page + 1,
+                    hasMoreData: result.playlist.length !== 0,
+                    recherche: false,
+                    load: false
+                });
+            })
+            .catch(console.log)
     };
 
     _handleKeyDown = (e) => {
@@ -48,15 +49,13 @@ class Playlist extends Component {
         searchValide = setTimeout(() => {
 
             let url = ""
-            let message = document.getElementById('PLaylistSearch').value.replace('Backspace','');
+            let message = document.getElementById('PLaylistSearch').value.replace('Backspace', '');
 
-            if(message !== "")
-            {
+            if (message !== "") {
                 url = "https://backendbounsbot.herokuapp.com/playlist/search/"
                 // url = `http://localhost:3001/playlist/search/`
             }
-            else
-            {
+            else {
                 url = "https://backendbounsbot.herokuapp.com/playlist/"
                 // url = `http://localhost:3001/playlist/`
             }
@@ -75,52 +74,50 @@ class Playlist extends Component {
 
     render() {
         return (
-        <div className="leaderboardglobal">
-            <div className="top"><h1 id="titre" >PLAYLIST</h1><div className="search search-bar" data-v-7085cbe2=""><Form.Control type="text" id="PLaylistSearch" onKeyDown={this._handleKeyDown}  placeholder="Recherche Playlist" /></div></div>
+            <div className="leaderboardglobal">
+                <div className="top"><h1 id="titre" >PLAYLIST</h1><div className="search search-bar" data-v-7085cbe2=""><Form.Control type="text" id="PLaylistSearch" onKeyDown={this._handleKeyDown} placeholder="Recherche Playlist" /></div></div>
 
-            <div >
-                {(() => {
-                    var playlistElement = [];
-                    
-                    if(this.state.playlistList.length !== 0)
-                    {
-                        for (let i = 0; i < this.state.playlistList.length; i++) {
+                <div >
+                    {(() => {
+                        var playlistElement = [];
 
-                            playlistElement.push(
-                                <div className="cardCenter">
-                                    <Card key={ i } className="cardTemplate" style={{ width: '18rem', backgroundColor: "#181818", color:'white', margin: "10px", borderRadius: "10px" }}>
-                                        {/* <a href={"/playlist/" + this.state.playlistList[i].nom} style={{ "textDecoration": "none" }}> */}
-                                    <Link to={"/playlist/" + this.state.playlistList[i].nom} style={{ "textDecoration": "none" }}>
-                                    <Card.Img loading="lazy" width="254px" height="254px" variant="top" src={this.state.playlistList[i].picture} style={{ borderRadius: "10px" }} />
-                                    <Card.Body>
-                                        <Card.Title style={{ color: 'var(--color-principal)', fontSize: '150%' }}>{ this.state.playlistList[i]?.nom[0]?.toUpperCase() }{ this.state.playlistList[i].nom.slice(1) }</Card.Title>
-                                    </Card.Body>
-                                    <ListGroup style={{"borderRadius": "10px" }}>
-                                    <ListGroupItem style={{backgroundColor: "var(--color-principal)" }} >{ this.state.playlistList[i].ownerName }</ListGroupItem>
-                                    <ListGroupItem style={{backgroundColor: "var(--color-principal)" }} >{ this.state.playlistList[i].musique.length } musiques</ListGroupItem>
-                                    </ListGroup>
-                                    </Link>
-                                    {/* </a> */}
-                                    </Card>
-                                </div>
-                            );
+                        if (this.state.playlistList.length !== 0) {
+                            for (let i = 0; i < this.state.playlistList.length; i++) {
+
+                                playlistElement.push(
+                                    <div className="cardCenter">
+                                        <Card key={i} className="cardTemplate" style={{ width: '18rem', backgroundColor: "#181818", color: 'white', margin: "10px", borderRadius: "10px" }}>
+                                            {/* <a href={"/playlist/" + this.state.playlistList[i].nom} style={{ "textDecoration": "none" }}> */}
+                                            <Link to={"/playlist/" + this.state.playlistList[i].nom} style={{ "textDecoration": "none" }}>
+                                                <Card.Img loading="lazy" width="254px" height="254px" variant="top" src={this.state.playlistList[i].picture} style={{ borderRadius: "10px" }} />
+                                                <Card.Body>
+                                                    <Card.Title style={{ color: 'var(--color-principal)', fontSize: '150%' }}>{this.state.playlistList[i]?.nom[0]?.toUpperCase()}{this.state.playlistList[i].nom.slice(1)}</Card.Title>
+                                                </Card.Body>
+                                                <ListGroup style={{ "borderRadius": "10px" }}>
+                                                    <ListGroupItem style={{ backgroundColor: "var(--color-principal)" }} >{this.state.playlistList[i].ownerName}</ListGroupItem>
+                                                    <ListGroupItem style={{ backgroundColor: "var(--color-principal)" }} >{this.state.playlistList[i].musique.length} musiques</ListGroupItem>
+                                                </ListGroup>
+                                            </Link>
+                                            {/* </a> */}
+                                        </Card>
+                                    </div>
+                                );
+                            }
+                            return <InfiniteScroll dataLength={this.state.playlistList.length} next={this.getData} hasMore={this.state.hasMoreData} loader={<div><Spinner animation="grow" variant="success" /><Spinner animation="grow" variant="success" /><Spinner animation="grow" variant="success" /></div>}><div className="renderPLaylist">{playlistElement}</div></InfiniteScroll>;
                         }
-                        return <InfiniteScroll dataLength={this.state.playlistList.length} next={this.getData} hasMore={this.state.hasMoreData} loader={<div><Spinner animation="grow" variant="success" /><Spinner animation="grow" variant="success" /><Spinner animation="grow" variant="success" /></div>}><div className="renderPLaylist">{playlistElement}</div></InfiniteScroll>;
-                    }
-                    else if(this.state.load)
-                    {
-                        return <div><Spinner animation="grow" variant="success" /><Spinner animation="grow" variant="success" /><Spinner animation="grow" variant="success" /></div>
-                    }
-                    else
-                    {
-                        return <h1 style={{paddingTop:"50px"}}>Cette playlist est introuvable</h1>
-                    }
-                })()}
+                        else if (this.state.load) {
+                            return <Loading />
+                            // return <div><Spinner animation="grow" variant="danger" /><Spinner animation="grow" variant="danger" /><Spinner animation="grow" variant="danger" /></div>
+                        }
+                        else {
+                            return <h1 style={{ paddingTop: "50px" }}>Cette playlist est introuvable</h1>
+                        }
+                    })()}
+                </div>
             </div>
-        </div>
         )
     }
-    }
+}
 
 export default Playlist;
 

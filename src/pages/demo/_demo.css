@@ -96,7 +96,7 @@ b {
 }
 
 #role-6 {
-    /* background: url("https://bounsbot.herokuapp.com/static/media/logo5.a661761a.svg"); */
+    /* background: url("https://cdn.discordapp.com/attachments/806282416364585062/1010652379332497408/Bounsbot.svg"); */
     color: var(--color-principal);
 }
 
@@ -323,7 +323,7 @@ b {
 }
 
 .discord-inner-message .avatar.user-6 {
-    background: url("https://bounsbot.herokuapp.com/static/media/logo5.a661761a.svg");
+    background: url("https://cdn.discordapp.com/attachments/806282416364585062/1010652379332497408/Bounsbot.svg");
     background-size: contain;
     background-repeat: no-repeat;
 }
@@ -368,7 +368,7 @@ b {
     -moz-user-select: none;
     -ms-user-select: none;
     -webkit-user-select: none;
-    background: url('https://bounsbot.herokuapp.com/static/media/logo5.a661761a.svg');
+    background: url('https://cdn.discordapp.com/attachments/806282416364585062/1010652067490177064/guildLogo.svg');
     background-size: contain;
     background-repeat: no-repeat;
     background-color: #202225

@@ -1,19 +1,110 @@
 .error-page {
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-pack: center;
-    -ms-flex-pack: center;
-    justify-content: center;
-    -webkit-box-align: center;
-    -ms-flex-align: center;
-    align-items: center;
-    width: 100%;
     background-color: var(--back-html-color);
+    height: 100%;
+    display: grid;
+    justify-content: center;
 }
 
-.error-page img {
-    max-width: 1200px;
-    width: 100%;
-    margin: 40px 0 60px;
+/* #error {
+    width: max-content;
+} */
+
+/* #error svg {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    width: 30em;
+
+transform: translate(-50%, -50%);
+}*/
+
+#error svg {
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+}
+
+.ErreurPage__container {
+    background: var(--back-html-color);
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap-reverse;
+    align-items: center;
+    justify-content: center;
+    gap: 5em;
+    height: 80vh;
+}
+
+.ErreurPage__container__error {
+    width: max-content;
+}
+
+.ErreurPage__container__text {
+    max-width: 600px;
+    margin-top: 20px;
+    color: white;
+    text-align: left;
+    text-transform: uppercase;
+    text-rendering: geometricPrecision;
+
+}
+
+.ErreurPage__container__text h1 {
+    font-weight: 900;
+    color: var(--color-principal);
+}
+
+.ErreurPage__container__text p {
+    padding: 1em 0 1em 0;
+    font-size: 100%;
+    max-width: 30em;
+}
+
+/* #root {
+    overflow-x: visible;
+} */
+
+.ErreurPage {
+    overflow: scroll;
+}
+
+.pError {
+    fill: var(--color-principal);
+    stroke: var(--color-principal);
+}
+
+.sError {
+    fill: var(--color-principal-hover);
+    stroke: var(--color-principal-hover);
+}
+
+@media (max-width: 1024px) {
+    .ErreurPage__container {
+        /* align-items: flex-end; */
+        /* grid-template-columns: 1fr; */
+        /* height: 90vh; */
+        gap: 0;
+    }
+
+    .ErreurPage__container__text p {
+        padding: 1em;
+        font-size: 100%;
+        text-align: justify;
+    }
+
+
+    .ErreurPage__container__text {
+        max-width: 600px;
+        margin-top: 20px;
+        color: white;
+        text-align: center;
+        text-transform: uppercase;
+        text-rendering: geometricPrecision;
+    }
+}
+
+@media (max-width: 1024px) {
+    #error {
+        width: 20em;
+    }
 }
