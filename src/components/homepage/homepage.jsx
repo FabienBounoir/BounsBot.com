@@ -24,7 +24,7 @@ export const HomePage = () => {
                         console.log("rotate", rotate);
 
                         particulesNano.push(<svg class="particulesNano" width={size} height={size2} style={{
-                            top, left, transform: `rotate(${rotate})`
+                            top, left, transform: `rotate(${rotate})`, animation: `nanoParticuleAnimation ${Math.floor(Math.random() * 8) + 3}s linear infinite`
                         }} viewBox="0 0 944 882" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M305.841 728.275C300.49 728.275 295.544 731.126 292.862 735.757L221.678 858.652C215.886 868.652 223.101 881.17 234.658 881.17H719.492C731.049 881.17 738.264 868.652 732.472 858.652L661.289 735.757C658.606 731.126 653.66 728.275 648.309 728.275H305.841Z" fill="var(--color-principal)" />
                             <path d="M853.511 525.341C902.931 505.457 926.883 449.27 906.996 399.851C887.111 350.435 830.923 326.499 781.506 346.381C732.083 366.265 708.13 422.457 728.021 471.878C747.909 521.291 804.096 545.224 853.511 525.341Z" fill="url(#paint0_linear_7_295)" />
