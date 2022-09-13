@@ -156,7 +156,7 @@
 .particulesNano {
     position: absolute;
     z-index: -99;
-    animation: nanoParticuleAnimation 5s linear infinite;
+    /* animation: nanoParticuleAnimation 5s linear infinite; */
     filter: brightness(0.5);
 }
 
