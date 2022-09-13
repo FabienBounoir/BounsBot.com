@@ -1,5 +1,4 @@
 import "./_ErreurPage.css";
-import logo404 from '../../assets/picture/404page.png';
 import lottie from 'lottie-web'
 import logo from "../../assets/data.json";
 import React from "react";
