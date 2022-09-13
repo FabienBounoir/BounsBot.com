@@ -153,6 +153,27 @@
     }
 }
 
+.particulesNano {
+    position: absolute;
+    z-index: -99;
+    animation: nanoParticuleAnimation 5s linear infinite;
+    filter: brightness(0.5);
+}
+
+@keyframes nanoParticuleAnimation {
+    0% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
 .wave {
     position: absolute;
     /* background: url(wave.png) repeat-x; */

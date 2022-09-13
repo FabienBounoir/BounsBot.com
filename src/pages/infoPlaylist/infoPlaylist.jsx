@@ -1,6 +1,5 @@
 import "./_infoPlaylist.css";
 import React, { Component } from 'react'
-import backArrow from "../../assets/picture/backArrow.png";
 import { Card } from 'react-bootstrap/'
 import Loading from "../../components/loading/loading.jsx";
 
@@ -33,7 +32,7 @@ class infoPlaylist extends Component {
     render() {
         return (
             <div className="leaderboardglobal">
-                <div className="top"><a href="/playlist" style={{ "textDecoration": "none" }}> {this.state.playlistList[0] ? (<h1 id="titre" >⬅ {this.state.playlistList[0].nom[0].toUpperCase() + this.state.playlistList[0].nom.slice(1)}</h1>) : (<img className="picto" alt='logo' width="40" height="40" src={backArrow} ></img>)}</a></div>
+                <div className="top"><a href="/playlist" style={{ "textDecoration": "none" }}> <h1 id="titre" >⬅ {this.state.playlistList[0]?.nom ? this.state.playlistList[0]?.nom[0]?.toUpperCase() + this.state.playlistList[0]?.nom?.slice(1) : ""}</h1></a></div>
 
                 <div >
                     {(() => {

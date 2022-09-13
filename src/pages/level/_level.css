@@ -343,10 +343,10 @@
     padding: 1px;
     width: 60px;
     height: 60px;
-    background-color: #50555a;
+    /* background-color: #50555a; */
     position: relative;
     z-index: 1;
-    margin-inline-start: 30px;
+    margin-inline-start: 20px;
 }
 
 .leaderboardPlayerIcon {
@@ -394,7 +394,7 @@
 }
 
 .leaderboardPlayerStat {
-    display: none;
+    /* display: none; */
 }
 
 /* .spinneur{
@@ -409,6 +409,18 @@
     -webkit-box-pack: center;
     justify-content: center;
 } */
+
+
+.niveau {
+    position: absolute;
+    top: 55%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 20px;
+    font-weight: 600;
+    color: #fff;
+    /* color: var(--color-principal); */
+}
 
 .text-success {
     color: #198754 !important;
