@@ -12,6 +12,17 @@ html {
   animation: test 0.3s infinite;
 }
 
+*::-moz-selection {
+  background-color: var(--color-principal);
+  color: #fff;
+}
+
+/* pour Safari et Chrome */
+*::selection {
+  background-color: var(--color-principal);
+  color: #fff;
+}
+
 /* @keyframes test {
   0% {
     --color-principal: #ffffff;

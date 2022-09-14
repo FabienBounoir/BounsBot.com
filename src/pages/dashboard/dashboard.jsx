@@ -90,7 +90,7 @@ class Dashboard extends Component {
                                 <div className="Guild">
                                     <div className="profilGuild">
                                         <div className="banniere" style={{ background: "url(\"https://cdn.discordapp.com/icons/" + guild.id + "/" + guild.icon + ".jpg\")" }}></div>
-                                        <img className='imageGuild' size="80" radius="40" src={`https://cdn.discordapp.com/icons/${guild.id}/${guild.icon}.jpg`} onError={(e) => { e.target.outerHTML = `<img class='imageGuild' size="80" radius="40" src='https://cdn.discordapp.com/embed/avatars/${Math.floor(Math.random() * 6)}.png'/>` }} alt="Logo de ----"></img>
+                                        <img className='imageGuild' size="80" radius="40" src={`https://cdn.discordapp.com/icons/${guild.id}/${guild.icon}.jpg`} onError={(e) => { e.target.outerHTML = `<img className='imageGuild' size="80" radius="40" src='https://cdn.discordapp.com/embed/avatars/${Math.floor(Math.random() * 6)}.png'/>` }} alt="Logo de ----"></img>
                                     </div>
                                     <div className="info">
                                         <div className="infoGuild">

@@ -14,6 +14,8 @@
     z-index: 3;
     line-height: normal;
     transition: transform 330ms ease-in-out;
+    display: flex;
+    gap: 0.3em;
 }
 
 .WaveColor {
@@ -177,7 +179,7 @@
 .wave {
     position: absolute;
     /* background: url(wave.png) repeat-x; */
-    bottom: -50px;
+    bottom: -35px;
     left: 0;
     right: 0;
     width: 200vw;

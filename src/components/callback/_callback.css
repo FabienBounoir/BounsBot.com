@@ -1,21 +1,7 @@
-.commands-list .top {
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-pack: justify;
-    -ms-flex-pack: justify;
-    justify-content: space-between;
-    height: 56px;
-    margin-bottom: 46px;
-    -webkit-box-align: center;
-    -ms-flex-align: center;
-    align-items: center;
-}
-
-.testRadio{
+.testRadio {
     padding: 4px 7px 5px 7px;
     color: #fff;
-    background-color: var(--color-principal) ;
+    background-color: var(--color-principal);
     border-radius: 4px;
     text-decoration: none;
     cursor: pointer;
@@ -32,24 +18,11 @@
     background-color: #085e1d;
 }
 
-.commands-list .top h1 {
-    margin: -2px 0 -12px;
-    font-size: 55px;
-    color: var(--color-principal) ;
-    font-family: "Uni Sans","Arial",sans-serif;
-    font-weight: bold;
-}
-
-.commands-list {
-    min-height: calc(100vh - 470px);
-    background-color: var(--back-first-color);
-    padding: 50px;
-}
 
 .titleCommand {
     text-align: left;
     font-size: 25px;
-    color: var(--color-principal) ;
+    color: var(--color-principal);
 
 }
 
@@ -57,24 +30,6 @@ tr td:first-child {
     font-weight: bold;
 }
 
-td{
+td {
     text-align: left;
-}
-
-@media only screen and (max-width: 720px)
-{
-    .commands-list .top h1 {
-        font-size: 40px;
-    }
-
-    .commands-list .top {
-        margin-bottom: 25px;
-    }
-}
-
-@media only screen and (max-width: 720px)
-{
-    .commands-list {
-        padding: 10px;
-    }
 }

@@ -5,9 +5,9 @@ function Loading() {
   // const [count, setCount] = useState(0);
 
   return (
-    <div class="loadingFullPage">
-      <div class="alignImage">
-        {/* <svg class="logo" width="267" height="249" viewBox="0 0 944 882" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <div className="loadingFullPage">
+      <div className="alignImage">
+        {/* <svg className="logo" width="267" height="249" viewBox="0 0 944 882" fill="none" xmlns="http://www.w3.org/2000/svg">
 <path d="M305.841 728.275C300.49 728.275 295.544 731.126 292.862 735.757L221.678 858.652C215.886 868.652 223.101 881.17 234.658 881.17H719.492C731.049 881.17 738.264 868.652 732.472 858.652L661.289 735.757C658.606 731.126 653.66 728.275 648.309 728.275H305.841Z" fill="var(--color-principal)"/>
 <path d="M853.511 525.341C902.931 505.457 926.883 449.27 906.996 399.851C887.111 350.435 830.923 326.499 781.506 346.381C732.083 366.265 708.13 422.457 728.021 471.878C747.909 521.291 804.096 545.224 853.511 525.341Z" fill="url(#paint0_linear_7_295)"/>
 <path d="M65.6184 489.699C101.85 529.117 163.176 531.703 202.599 495.477C242.032 459.241 244.618 397.896 208.373 358.471C172.14 319.06 110.819 316.477 71.3992 352.7C31.9687 388.933 29.3798 450.273 65.6184 489.699Z" fill="url(#paint1_linear_7_295)"/>
@@ -25,8 +25,8 @@ function Loading() {
 <path d="M439.988 113.071C460.211 135.076 494.444 136.521 516.45 116.299C538.461 96.0717 539.903 61.8283 519.67 39.823C499.445 17.8274 465.219 16.3871 443.217 36.6051C421.21 56.8285 419.763 91.0648 439.988 113.071Z" fill="url(#paint3_linear_7_295)"/>
 </g>
 <defs>
-<filter id="filter0_d_7_295" x="46" y="112" width="862" height="742" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
-<feFlood flood-opacity="0" result="BackgroundImageFix"/>
+<filter id="filter0_d_7_295" x="46" y="112" width="862" height="742" filterUnits="userSpaceOnUse" colorInterpolationFilters="sRGB">
+<feFlood floodOpacity="0" result="BackgroundImageFix"/>
 <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
 <feOffset dy="4"/>
 <feGaussianBlur stdDeviation="32"/>
@@ -35,8 +35,8 @@ function Loading() {
 <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_7_295"/>
 <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_7_295" result="shape"/>
 </filter>
-<filter id="filter1_d_7_295" x="421.717" y="22.3359" width="116.233" height="116.232" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
-<feFlood flood-opacity="0" result="BackgroundImageFix"/>
+<filter id="filter1_d_7_295" x="421.717" y="22.3359" width="116.233" height="116.232" filterUnits="userSpaceOnUse" colorInterpolationFilters="sRGB">
+<feFlood floodOpacity="0" result="BackgroundImageFix"/>
 <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
 <feOffset dy="4"/>
 <feGaussianBlur stdDeviation="2"/>
@@ -46,20 +46,20 @@ function Loading() {
 <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_7_295" result="shape"/>
 </filter>
 <linearGradient id="paint0_linear_7_295" x1="890.5" y1="375.5" x2="759.5" y2="479" gradientUnits="userSpaceOnUse">
-<stop stop-color="var(--color-principal-hover)"/>
-<stop offset="1" stop-color="var(--color-principal)"/>
+<stop stopColor="var(--color-principal-hover)"/>
+<stop offset="1" stopColor="var(--color-principal)"/>
 </linearGradient>
 <linearGradient id="paint1_linear_7_295" x1="74.5" y1="348.5" x2="200.5" y2="491.5" gradientUnits="userSpaceOnUse">
-<stop stop-color="var(--color-principal)"/>
-<stop offset="1" stop-color="var(--color-principal-hover)"/>
+<stop stopColor="var(--color-principal)"/>
+<stop offset="1" stopColor="var(--color-principal-hover)"/>
 </linearGradient>
 <linearGradient id="paint2_linear_7_295" x1="844" y1="556" x2="110" y2="547.5" gradientUnits="userSpaceOnUse">
-<stop stop-color="var(--color-principal)"/>
-<stop offset="1" stop-color="var(--color-principal-hover)"/>
+<stop stopColor="var(--color-principal)"/>
+<stop offset="1" stopColor="var(--color-principal-hover)"/>
 </linearGradient>
 <linearGradient id="paint3_linear_7_295" x1="524.317" y1="39.6792" x2="444.498" y2="102.746" gradientUnits="userSpaceOnUse">
-<stop stop-color="var(--color-principal-hover)"/>
-<stop offset="1" stop-color="var(--color-principal)"/>
+<stop stopColor="var(--color-principal-hover)"/>
+<stop offset="1" stopColor="var(--color-principal)"/>
 </linearGradient>
 </defs>
 </svg> */}
@@ -80,33 +80,33 @@ function Loading() {
           </g>
           <defs>
             <linearGradient id="paint0_linear_250_597" x1="920.5" y1="411.5" x2="789.5" y2="515" gradientUnits="userSpaceOnUse">
-              <stop stop-color="var(--color-principal-hover)" />
-              <stop offset="1" stop-color="var(--color-principal)" />
+              <stop stopColor="var(--color-principal-hover)" />
+              <stop offset="1" stopColor="var(--color-principal)" />
             </linearGradient>
             <linearGradient id="paint1_linear_250_597" x1="74.5" y1="384.5" x2="200.5" y2="527.5" gradientUnits="userSpaceOnUse">
-              <stop stop-color="var(--color-principal)" />
-              <stop offset="1" stop-color="var(--color-principal-hover)" />
+              <stop stopColor="var(--color-principal)" />
+              <stop offset="1" stopColor="var(--color-principal-hover)" />
             </linearGradient>
             <linearGradient id="paint2_linear_250_597" x1="858" y1="592" x2="124" y2="583.5" gradientUnits="userSpaceOnUse">
-              <stop stop-color="var(--color-principal)" />
-              <stop offset="1" stop-color="var(--color-principal-hover)" />
+              <stop stopColor="var(--color-principal)" />
+              <stop offset="1" stopColor="var(--color-principal-hover)" />
             </linearGradient>
             <linearGradient id="paint3_linear_250_597" x1="538.317" y1="75.6792" x2="458.498" y2="138.746" gradientUnits="userSpaceOnUse">
-              <stop stop-color="var(--color-principal-hover)" />
-              <stop offset="1" stop-color="var(--color-principal)" />
+              <stop stopColor="var(--color-principal-hover)" />
+              <stop offset="1" stopColor="var(--color-principal)" />
             </linearGradient>
 
             <linearGradient id="paint4_linear_250_597" x1="404.907" y1="499.154" x2="344.257" y2="547.075" gradientUnits="userSpaceOnUse">
-              <stop stop-color="var(--color-principal-hover)" />
-              <stop offset="1" stop-color="var(--color-principal)" />
+              <stop stopColor="var(--color-principal-hover)" />
+              <stop offset="1" stopColor="var(--color-principal)" />
             </linearGradient>
             <linearGradient id="paint5_linear_250_597" x1="528.116" y1="499.154" x2="467.466" y2="547.075" gradientUnits="userSpaceOnUse">
-              <stop stop-color="var(--color-principal-hover)" />
-              <stop offset="1" stop-color="var(--color-principal)" />
+              <stop stopColor="var(--color-principal-hover)" />
+              <stop offset="1" stopColor="var(--color-principal)" />
             </linearGradient>
             <linearGradient id="paint6_linear_250_597" x1="651.327" y1="499.154" x2="590.677" y2="547.075" gradientUnits="userSpaceOnUse">
-              <stop stop-color="var(--color-principal-hover)" />
-              <stop offset="1" stop-color="var(--color-principal)" />
+              <stop stopColor="var(--color-principal-hover)" />
+              <stop offset="1" stopColor="var(--color-principal)" />
             </linearGradient>
 
             <clipPath id="clip0_250_597">

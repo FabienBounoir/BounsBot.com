@@ -378,25 +378,25 @@ class Level extends Component {
                                 <path d="M453.988 113.071C474.211 135.076 508.444 136.521 530.45 116.299V116.299C552.461 96.0717 553.903 61.8283 533.67 39.823V39.823C513.445 17.8274 479.219 16.3871 457.217 36.6051V36.6051C435.21 56.8285 433.763 91.0648 453.988 113.071V113.071Z" fill="url(#paint3_linear_831_495)" />
                                 <defs>
                                   <linearGradient id="paint0_linear_831_495" x1="920.5" y1="375.5" x2="789.5" y2="479" gradientUnits="userSpaceOnUse">
-                                    <stop stop-color="var(--color-principal-hover)" />
-                                    <stop offset="1" stop-color="var(--color-principal)" />
+                                    <stop stopColor="var(--color-principal-hover)" />
+                                    <stop offset="1" stopColor="var(--color-principal)" />
                                   </linearGradient>
                                   <linearGradient id="paint1_linear_831_495" x1="74.5" y1="348.5" x2="200.5" y2="491.5" gradientUnits="userSpaceOnUse">
-                                    <stop stop-color="var(--color-principal)" />
-                                    <stop offset="1" stop-color="var(--color-principal-hover)" />
+                                    <stop stopColor="var(--color-principal)" />
+                                    <stop offset="1" stopColor="var(--color-principal-hover)" />
                                   </linearGradient>
                                   <linearGradient id="paint2_linear_831_495" x1="858" y1="556" x2="124" y2="547.5" gradientUnits="userSpaceOnUse">
-                                    <stop stop-color="var(--color-principal)" />
-                                    <stop offset="1" stop-color="var(--color-principal-hover)" />
+                                    <stop stopColor="var(--color-principal)" />
+                                    <stop offset="1" stopColor="var(--color-principal-hover)" />
                                   </linearGradient>
                                   <linearGradient id="paint3_linear_831_495" x1="538.317" y1="39.6792" x2="458.498" y2="102.746" gradientUnits="userSpaceOnUse">
-                                    <stop stop-color="var(--color-principal-hover)" />
-                                    <stop offset="1" stop-color="var(--color-principal)" />
+                                    <stop stopColor="var(--color-principal-hover)" />
+                                    <stop offset="1" stopColor="var(--color-principal)" />
                                   </linearGradient>
                                 </defs>
                               </svg>
 
-                              <p class="niveau">{this.calculeLevel(this.state.level[i].xp)}</p>
+                              <p className="niveau">{this.calculeLevel(this.state.level[i].xp)}</p>
 
                               {/* <div className="leaderboardPlayerStatName">
                                 NIVEAU

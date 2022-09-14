@@ -1,3 +1,161 @@
+.command__input input {
+    outline: none;
+    border: none;
+    width: 100%;
+    padding: 17px 22px;
+    -webkit-padding-end: 4rem;
+    padding-inline-end: 3.5rem;
+    border-radius: 12px;
+    background-color: #1f1f25;
+    color: #FFFFFF;
+}
+
+.command__input {
+    margin-bottom: 1em;
+}
+
+.btnSearch {
+    font-size: 14px;
+    /* box-shadow: none !important; */
+    border-radius: 12px;
+    text-transform: capitalize !important;
+    color: #8f8f92;
+}
+
+.commands-pills {
+    display: flex;
+    padding: 0;
+    grid-gap: 5px;
+    gap: 5px;
+}
+
+.btn-commands-category {
+    /* color: #686873; */
+    background-color: #1f1f25;
+    padding: 13px 28px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.btn-commands-category:hover {
+    box-shadow: var(--color-principal) 0px 0px 0px 1px inset;
+    /* transi: test 2s ease-in-out; */
+    transition: box-shadow 0.3s ease-in-out;
+}
+
+.nav-pills {
+
+    overflow: scroll;
+
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+    text-decoration: none;
+}
+
+.nav-pills::-webkit-scrollbar {
+    display: none;
+}
+
+.nav-pills {
+    border-radius: 12px;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+.nav-pills li {
+    list-style: none;
+}
+
+.commands-listing {
+    display: flex;
+    flex-direction: column;
+    grid-gap: 15px;
+    gap: 15px;
+    padding-bottom: 15px;
+    color: white
+}
+
+.command-card__container {
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    padding: 29px;
+    border-radius: 12px;
+    background-color: #1f1f25;
+    transition: all .4s;
+}
+
+.command-card__container h5 {
+    margin-bottom: 0rem;
+}
+
+.command-card__body>div {
+    display: flex;
+    flex-direction: column;
+    flex: 1 1 45%;
+}
+
+.command-card__body {
+    display: none;
+    flex-wrap: wrap;
+    grid-gap: 15px;
+    gap: 15px;
+    margin-top: 30px;
+}
+
+.command-card__container.active .command-card__body {
+    display: flex;
+}
+
+.command-card__header>div {
+    grid-gap: 16px;
+    gap: 16px;
+    display: flex;
+    align-items: flex-start;
+}
+
+.command-card__header {
+    width: 100%;
+    display: flex;
+    grid-gap: 16px;
+    gap: 16px;
+    cursor: pointer;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.command-card__header .arrow {
+    border-left: 4px var(--color-principal) solid;
+    border-bottom: 4px var(--color-principal) solid;
+    transform: rotate(136deg);
+    width: 10px;
+    height: 10px;
+}
+
+.command-card__header.active .arrow {
+    transform: rotate(316deg);
+}
+
+.btn-commands-category.active {
+    /* box-shadow: var(--color-principal-hover) 0px 0px 0px 1px inset;
+     */
+    background-color: var(--color-principal);
+    color: white;
+    cursor: not-allowed;
+}
+
+.fa-magnifying-glass {
+    color: #8f8f92;
+    position: absolute;
+    top: 50%;
+    right: 0;
+    transform: translate(-20px, -50%);
+}
+
+.command__input {
+    position: relative;
+}
+
 .commands-list .top {
     display: -webkit-box;
     display: -ms-flexbox;
@@ -12,7 +170,7 @@
     align-items: center;
 }
 
-.testRadio{
+.testRadio {
     padding: 4px 7px 5px 7px;
     color: #fff;
     background-color: var(--color-principal);
@@ -36,14 +194,15 @@
     margin: -2px 0 -12px;
     font-size: 55px;
     color: var(--color-principal);
-    font-family: "Uni Sans","Arial",sans-serif;
+    font-family: "Uni Sans", "Arial", sans-serif;
     font-weight: bold;
 }
 
 .commands-list {
     min-height: calc(100vh - 470px);
     background-color: var(--back-first-color);
-    padding: 50px;
+    /* padding: 50px; */
+    padding: 2.5em 15em;
 }
 
 .titleCommand {
@@ -57,12 +216,23 @@ tr td:first-child {
     font-weight: bold;
 }
 
-td{
+td {
     text-align: left;
 }
 
-@media only screen and (max-width: 720px)
-{
+@media screen and (max-width: 1300px) {
+    .commands-list {
+        padding: 2.5em 7em;
+    }
+}
+
+@media screen and (max-width: 1000px) {
+    .commands-list {
+        padding: 2.5em;
+    }
+}
+
+@media only screen and (max-width: 720px) {
     .commands-list .top h1 {
         font-size: 40px;
     }
@@ -72,8 +242,7 @@ td{
     }
 }
 
-@media only screen and (max-width: 720px)
-{
+@media only screen and (max-width: 720px) {
     .commands-list {
         padding: 10px;
     }

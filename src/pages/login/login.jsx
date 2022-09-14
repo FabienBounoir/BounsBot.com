@@ -22,8 +22,8 @@ export const Login = () => {
                     <path d="M439.988 113.071C460.211 135.076 494.444 136.521 516.45 116.299C538.461 96.0717 539.903 61.8283 519.67 39.823C499.445 17.8274 465.219 16.3871 443.217 36.6051C421.21 56.8285 419.763 91.0648 439.988 113.071Z" fill="url(#paint3_linear_7_295)" />
                 </g>
                 <defs>
-                    <filter id="filter0_d_7_295" x="46" y="112" width="862" height="742" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
-                        <feFlood flood-opacity="0" result="BackgroundImageFix" />
+                    <filter id="filter0_d_7_295" x="46" y="112" width="862" height="742" filterUnits="userSpaceOnUse" colorInterpolationFilters="sRGB">
+                        <feFlood floodOpacity="0" result="BackgroundImageFix" />
                         <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha" />
                         <feOffset dy="4" />
                         <feGaussianBlur stdDeviation="32" />
@@ -32,8 +32,8 @@ export const Login = () => {
                         <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_7_295" />
                         <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_7_295" result="shape" />
                     </filter>
-                    <filter id="filter1_d_7_295" x="421.717" y="22.3359" width="116.233" height="116.232" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
-                        <feFlood flood-opacity="0" result="BackgroundImageFix" />
+                    <filter id="filter1_d_7_295" x="421.717" y="22.3359" width="116.233" height="116.232" filterUnits="userSpaceOnUse" colorInterpolationFilters="sRGB">
+                        <feFlood floodOpacity="0" result="BackgroundImageFix" />
                         <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha" />
                         <feOffset dy="4" />
                         <feGaussianBlur stdDeviation="2" />
@@ -43,20 +43,20 @@ export const Login = () => {
                         <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_7_295" result="shape" />
                     </filter>
                     <linearGradient id="paint0_linear_7_295" x1="890.5" y1="375.5" x2="759.5" y2="479" gradientUnits="userSpaceOnUse">
-                        <stop stop-color="var(--color-principal-hover)" />
-                        <stop offset="1" stop-color="var(--color-principal)" />
+                        <stop stopColor="var(--color-principal-hover)" />
+                        <stop offset="1" stopColor="var(--color-principal)" />
                     </linearGradient>
                     <linearGradient id="paint1_linear_7_295" x1="74.5" y1="348.5" x2="200.5" y2="491.5" gradientUnits="userSpaceOnUse">
-                        <stop stop-color="var(--color-principal)" />
-                        <stop offset="1" stop-color="var(--color-principal-hover)" />
+                        <stop stopColor="var(--color-principal)" />
+                        <stop offset="1" stopColor="var(--color-principal-hover)" />
                     </linearGradient>
                     <linearGradient id="paint2_linear_7_295" x1="844" y1="556" x2="110" y2="547.5" gradientUnits="userSpaceOnUse">
-                        <stop stop-color="var(--color-principal)" />
-                        <stop offset="1" stop-color="var(--color-principal-hover)" />
+                        <stop stopColor="var(--color-principal)" />
+                        <stop offset="1" stopColor="var(--color-principal-hover)" />
                     </linearGradient>
                     <linearGradient id="paint3_linear_7_295" x1="524.317" y1="39.6792" x2="444.498" y2="102.746" gradientUnits="userSpaceOnUse">
-                        <stop stop-color="var(--color-principal-hover)" />
-                        <stop offset="1" stop-color="var(--color-principal)" />
+                        <stop stopColor="var(--color-principal-hover)" />
+                        <stop offset="1" stopColor="var(--color-principal)" />
                     </linearGradient>
                 </defs>
             </svg>
