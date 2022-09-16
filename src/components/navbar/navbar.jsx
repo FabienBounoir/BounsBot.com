@@ -273,7 +273,7 @@ class Navigation extends Component {
                                     var EtatConnexion = [];
                                     if (this.state.login) {
                                         EtatConnexion.push(
-                                            <div className="loginTemplate"><Navbar.Text>
+                                            <div key="45678" className="loginTemplate"><Navbar.Text>
                                                 <div className="hamgn6-4 jGScIj">
                                                     <div className="LogoNav" style={{ backgroundImage: `url("https://cdn.discordapp.com/avatars/${JSON.parse(window.localStorage.getItem('dataUser')).id}/${JSON.parse(window.localStorage.getItem('dataUser')).avatar}.png?size=512` }}>
                                                     </div>
@@ -306,7 +306,7 @@ class Navigation extends Component {
                                             </Navbar.Text></div>)
                                     }
                                     else {
-                                        EtatConnexion.push(<Nav.Link><Link to="/login" style={{ textDecoration: "none" }}>Se connecter</Link></Nav.Link>)
+                                        EtatConnexion.push(<Nav.Link key="948508"><Link to="/login" style={{ textDecoration: "none" }}>Se connecter</Link></Nav.Link>)
                                     }
 
                                     return EtatConnexion;

@@ -278,7 +278,7 @@ class Level extends Component {
 
   getData = () => {
     let id = new URLSearchParams(window.location.search).get('id') || ""
-    let twitch = new URLSearchParams(window.location.search).get('twitch') != null
+    let twitch = new URLSearchParams(window.location.search).get('twitch') !== null
 
     fetch(url + `${twitch ? ("twitch/") : ("discord/")}` + id + `?page=${this.state.page}`)
       .then(response => response.json())

@@ -4,8 +4,8 @@ import './App.css';
 import Navigation from "../components/navbar/navbar";
 import { HomePage } from "../components/homepage/homepage";
 import { Features } from "../components/features/features";
-import { Commandes } from "../pages/commandes/commandes";
 import Level from "../pages/level/level";
+import Commandes from "../pages/commandes/commandes";
 import Playlist from "../pages/playlist/playlist";
 import infoPlaylist from "../pages/infoPlaylist/infoPlaylist";
 import { ErreurPage } from "../pages/ErreurPage/ErreurPage";
@@ -37,7 +37,7 @@ export const App = () => {
   let componentDidMount = () => {
     let r = document.getElementsByTagName("html")[0];
 
-    if (Math.floor(Math.random() * 10) === 3) {
+    if (true ||Math.floor(Math.random() * 10) === 3) {
       r.style.setProperty('--color-principal', "#" + randomColor());
       r.style.setProperty('--color-principal-hover', "#" + randomColor());
     }
