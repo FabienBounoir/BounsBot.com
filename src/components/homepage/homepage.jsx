@@ -21,9 +21,8 @@ export const HomePage = () => {
 
                         //rotation random -180° à 180°
                         let rotate = Math.floor(Math.random() * 360) - 180 + "deg";
-                        console.log("rotate", rotate);
 
-                        particulesNano.push(<svg className="particulesNano" width={size} height={size2} style={{
+                        particulesNano.push(<svg key={i} className="particulesNano" width={size} height={size2} style={{
                             top, left, transform: `rotate(${rotate})`, animation: `nanoParticuleAnimation ${Math.floor(Math.random() * 8) + 3}s linear infinite`
                         }} viewBox="0 0 944 882" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M305.841 728.275C300.49 728.275 295.544 731.126 292.862 735.757L221.678 858.652C215.886 868.652 223.101 881.17 234.658 881.17H719.492C731.049 881.17 738.264 868.652 732.472 858.652L661.289 735.757C658.606 731.126 653.66 728.275 648.309 728.275H305.841Z" fill="var(--color-principal)" />
@@ -168,8 +167,8 @@ export const HomePage = () => {
 
                         for (let i = 0; i < 2; i++) {
 
-                            svg.push(<svg width="2064" height="219" viewBox="0 0 2064 219" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <g clip-path="url(#clip0_846_502)">
+                            svg.push(<svg key={i} width="2064" height="219" viewBox="0 0 2064 219" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <g clipPath="url(#clip0_846_502)">
                                     <path d="M0 87.4993V218.999L2064 218.999V95.4993C2021 107.999 1879.8 125.699 1659 96.4993C1442.2 21.2993 1233 19.4993 1155.5 27.9993C991.667 75.166 624.4 152.099 466 82.4993C307.6 12.8993 89.3333 56.8326 0 87.4993Z" fill="#40454A" />
                                     <g filter="url(#filter0_dd_846_502)">
                                         <path d="M439 53.0008C287.397 -5.23017 84 37.3341 0 69.0008V111.001C99.2 80.2007 212.667 69.6674 257 68.0007C330.6 67.2007 412 90.9419 445 100.001C470.5 107.001 545.7 132.301 678.5 127.501C811.3 122.701 991.5 85.8341 1065 68.0007C1131.17 54.0007 1293.2 30.4007 1412 48.0007C1560.5 70.0007 1573.5 99.0007 1710.5 132.501C1820.1 159.301 1992 131.5 2064 111.001V69.0007C1980 98 1902.83 102.501 1875 104.501C1775 104.501 1733.7 111.701 1544.5 40.5007C1355.3 -30.6993 1098.33 10.834 993.5 40.5007C871 71.0007 590 111 439 53.0008Z" fill="url(#paint0_linear_846_502)" />

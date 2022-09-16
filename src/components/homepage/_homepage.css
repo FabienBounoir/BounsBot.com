@@ -16,6 +16,7 @@
     transition: transform 330ms ease-in-out;
     display: flex;
     gap: 0.3em;
+    width: fit-content;
 }
 
 .WaveColor {
