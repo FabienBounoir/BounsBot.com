@@ -37,7 +37,7 @@ export const App = () => {
   let componentDidMount = () => {
     let r = document.getElementsByTagName("html")[0];
 
-    if (true ||Math.floor(Math.random() * 10) === 3) {
+    if (Math.floor(Math.random() * 10) === 3) {
       r.style.setProperty('--color-principal', "#" + randomColor());
       r.style.setProperty('--color-principal-hover', "#" + randomColor());
     }
