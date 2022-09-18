@@ -16,6 +16,7 @@ import Guild from "../pages/guild/guild";
 import Demo from "../pages/demo/demo";
 import Callback from "../components/callback/callback";
 import Authenticate from '../components/Authenticate';
+import Footer from '../components/footer/footer';
 // import Test from "../components/sendEmbed/sendembed";
 
 export const App = () => {
@@ -68,6 +69,7 @@ export const App = () => {
           <Route exact path="/">
             <HomePage />
             <Features />
+            <Footer />
           </Route>
 
           <Route exact path="/commandes">

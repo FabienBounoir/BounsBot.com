@@ -263,7 +263,7 @@ class Navigation extends Component {
                         <Navbar.Collapse id="responsive-navbar-nav">
                             <Nav className="me-auto">
                                 <Nav.Link><Link to="/commandes">Commandes</Link></Nav.Link>
-                                <Nav.Link><Link to="/playlist">Playlists</Link></Nav.Link>
+                                {/* <Nav.Link><Link to="/playlist">Playlists</Link></Nav.Link> */}
                                 <Nav.Link><Link to="/level">Levels</Link></Nav.Link>
                                 <Nav.Link><Link to="/demo">Démo</Link></Nav.Link>
                             </Nav>

@@ -666,6 +666,30 @@
             ]
         },
         {
+            "name": "ajouter",
+            "description": "Ajoute une musique à la file d'attente",
+            "type": "Musique",
+            "usages": [
+                "/ajouter <Url>",
+                "/ajouter <Name>"
+            ],
+            "examples": [
+                "/ajouter https://www.youtube.com/watch?v=dQw4w9WgXcQ",
+                "/ajouter Never gonna give you up"
+            ]
+        },
+        {
+            "name": "autoplay",
+            "description": "Active ou désactive l'autoplay de la musique",
+            "type": "Musique",
+            "usages": [
+                "/autoplay"
+            ],
+            "examples": [
+                "/autoplay"
+            ]
+        },
+        {
             "name": "clearqueue",
             "description": "Supprime la file de musique",
             "type": "Musique",
@@ -675,6 +699,39 @@
             "examples": [
                 "/clearqueue"
             ]
+        },
+        {
+            "name": "dj",
+            "description": "controle la musique avec votre compte spotify lier a votre discord",
+            "type": "Musique",
+            "usages": [
+                "/dj",
+                "/dj <User>"
+            ],
+            "examples": [
+                "/dj",
+                "/dj @BadbounsTV"
+            ]
+        },
+        {
+            "name": "favoris",
+            "description": "Ecoute les favoris de quelqu'un ou de toi-même",
+            "type": "Musique",
+            "usages": [
+                "/favoris",
+                "/favoris <User>"
+            ],
+            "examples": [
+                "/favoris",
+                "/favoris @Maouui"
+            ]
+        },
+        {
+            "name": "forceplay",
+            "description": "Force play music after the current music",
+            "type": "Musique",
+            "usages": [],
+            "examples": []
         },
         {
             "name": "liste",
@@ -734,6 +791,19 @@
             ]
         },
         {
+            "name": "play",
+            "description": "Joue une musique",
+            "type": "Musique",
+            "usages": [
+                "/play <url>",
+                "/play <name>"
+            ],
+            "examples": [
+                "/play https://www.youtube.com/watch?v=dQw4w9WgXcQ",
+                "/play Never gonna give you up"
+            ]
+        },
+        {
             "name": "playfile",
             "description": "Joue un fichier musique",
             "type": "Musique",
@@ -742,6 +812,19 @@
             ],
             "examples": [
                 "/playfile ..."
+            ]
+        },
+        {
+            "name": "randommusique",
+            "description": "Joue une musique aléatoire connue par le bot",
+            "type": "Musique",
+            "usages": [
+                "/randommusique",
+                "/randommusique <Nombre>"
+            ],
+            "examples": [
+                "/randommusique",
+                "/randommusique 69"
             ]
         },
         {
@@ -819,6 +902,21 @@
             ],
             "examples": [
                 "/volume 23"
+            ]
+        },
+        {
+            "name": "playlist",
+            "description": "gestion des playlists",
+            "type": "Playlist",
+            "usages": [
+                "/playlist play <Playlist>",
+                "/playlist info <Playlist>",
+                "/playlist delete <Playlist>"
+            ],
+            "examples": [
+                "/playlist play BounsBot",
+                "/playlist info funk",
+                "/playlist delete Jul"
             ]
         },
         {

@@ -235,9 +235,9 @@
     -moz-box-flex: 1;
     -o-box-flex: 1;
     box-flex: 1;
-    -webkit-flex: 0 0 20%;
+    /* -webkit-flex: 0 0 20%;
     -ms-flex: 0 0 20%;
-    flex: 0 0 20%;
+    flex: 0 0 20%; */
     -webkit-box-orient: horizontal;
     -moz-box-orient: horizontal;
     -o-box-orient: horizontal;
@@ -459,7 +459,7 @@
 }
 
 @media screen and (max-width: 515px) {
-    .leaderboardPlayerStats {
+    .leaderboardPlayerStatBlock {
         display: none;
     }
 }
@@ -468,6 +468,10 @@
     .leaderboardPlayerIcon {
         /* display: none; */
         grid: 0%;
+    }
+
+    .leaderboardPlayerStats {
+        display: none;
     }
 
     .leaderboardPlayer .leaderboardPlayerLeft {

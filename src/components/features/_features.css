@@ -30,7 +30,8 @@
 
 .features__content {
     width: 100%;
-    max-width: 1200px;
+    max-width: calc(100vh - -25vh);
+    /*1200px; */
     margin-top: 1em;
 }
 
@@ -57,10 +58,21 @@ features .feature .image {
     -webkit-box-pack: center;
     -ms-flex-pack: center;
     justify-content: center;
-    margin: 0 64px;
+    margin: 0 64px 0 0;
     -webkit-box-flex: 1;
     -ms-flex: 1 0;
     flex: 1 0;
+    text-align: center;
+}
+
+.features .feature .content:nth-child(2n) {
+    /* background-color: red; */
+    margin: 0 0 0 64px;
+    text-align: center;
+}
+
+.features .feature .content p {
+    text-align: justify;
 }
 
 .features .feature {
@@ -80,24 +92,6 @@ features .feature .image {
     -o-transition: transform .7s ease-in-out, opacity 1s ease-in-out;
     transition: transform .7s ease-in-out, opacity 1s ease-in-out;
     transition: transform .7s ease-in-out, opacity 1s ease-in-out, -webkit-transform .7s ease-in-out;
-}
-
-.features .feature .content {
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-    -ms-flex-direction: column;
-    flex-direction: column;
-    -webkit-box-pack: center;
-    -ms-flex-pack: center;
-    justify-content: center;
-    margin: 0 64px;
-    -webkit-box-flex: 1;
-    -ms-flex: 1 0;
-    flex: 1 0;
-    text-align: left;
 }
 
 .features .feature .content .title {
@@ -166,8 +160,20 @@ features .feature .image {
         display: flex;
         -webkit-box-align: center;
         -ms-flex-align: center;
-        align-items: center
+        align-items: center;
+        text-align: center;
     }
+
+    .features .feature .content {
+        text-align: center;
+        margin: 0;
+    }
+
+    .features .feature .content:nth-child(2n) {
+        text-align: center;
+        margin: 0;
+    }
+
 
     .features .feature .content .title h3 {
         font-family: "Uni Sans", "Arial", sans-serif;
@@ -191,11 +197,23 @@ features .feature .image {
         font-size: 40px;
         line-height: 50px
     }
+
+    .features .feature .content:nth-child(2n) {
+        text-align: center;
+        margin: 0;
+        text-align: left;
+    }
 }
 
 @media screen and (max-width: 720px) {
     .features {
         padding: 40px 30px
+    }
+
+    .features .feature .content .title h3 {
+        font-size: 36px;
+        line-height: 46px;
+        text-align: left;
     }
 
     .features .feature .content .title .show-commands {
@@ -206,6 +224,11 @@ features .feature .image {
         left: 0;
         width: 100%;
         height: 100%
+    }
+
+    .features .feature .content:nth-child(2n) {
+        text-align: center;
+        margin: 0;
     }
 
     .features .feature .content p {
@@ -224,10 +247,16 @@ features .feature .image {
 
     .features .feature .content .title h3 {
         font-size: 36px;
-        line-height: 46px
+        line-height: 46px;
+        text-align: left;
     }
 
     .features .feature .content {
+        margin: 0 20px;
+    }
+
+    .features .feature .content:nth-child(2n) {
+        text-align: center;
         margin: 0 20px;
     }
 }

@@ -86,11 +86,13 @@ class Dashboard extends Component {
                         var guildList = [];
 
                         for (let guild of this.state.guilds) {
+                            let random = Math.floor(Math.random() * 6)
+
                             guildList.push(
                                 <div className="Guild">
                                     <div className="profilGuild">
-                                        <div className="banniere" style={{ background: "url(\"https://cdn.discordapp.com/icons/" + guild.id + "/" + guild.icon + ".jpg\")" }}></div>
-                                        <img className='imageGuild' size="80" radius="40" src={`https://cdn.discordapp.com/icons/${guild.id}/${guild.icon}.jpg`} onError={(e) => { e.target.outerHTML = `<img className='imageGuild' size="80" radius="40" src='https://cdn.discordapp.com/embed/avatars/${Math.floor(Math.random() * 6)}.png'/>` }} alt="Logo de ----"></img>
+                                        <div className="banniere" style={{ background: "url(\"https://cdn.discordapp.com/icons/" + guild.id + "/" + guild.icon + ".jpg\"), " + `url(https://cdn.discordapp.com/embed/avatars/${random}.png)` }}></div>
+                                        <img className='imageGuild' size="80" radius="40" src={`https://cdn.discordapp.com/icons/${guild.id}/${guild.icon}.jpg`} onError={(e) => { e.target.outerHTML = `<img class='imageGuild' size="80" radius="40" src='https://cdn.discordapp.com/embed/avatars/${random}.png'/>` }} alt={"Logo de " + guild.name}></img>
                                     </div>
                                     <div className="info">
                                         <div className="infoGuild">
@@ -132,10 +134,12 @@ class Dashboard extends Component {
                     })()}
                 </div>
 
-                {(() => {
-                    if (this.state.loading) return <Loading />
-                })()}
-            </div>
+                {
+                    (() => {
+                        if (this.state.loading) return <Loading />
+                    })()
+                }
+            </div >
         )
     }
 }

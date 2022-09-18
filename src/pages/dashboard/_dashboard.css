@@ -48,11 +48,12 @@
 
 .listGuild {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
     gap: 40px;
-    /* width: 70%; */
+
     margin-top: 57px;
     margin-bottom: 60px;
+    width: 70vw;
 
 }
 
@@ -289,6 +290,11 @@
 }
 
 @media (max-width: 750px) {
+    .Dashboard {
+        padding-left: 0em;
+        padding-right: 0em;
+    }
+
     .listGuild {
         display: grid;
         grid-template-columns: 1fr;

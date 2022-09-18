@@ -183,23 +183,39 @@
     bottom: -35px;
     left: 0;
     right: 0;
-    width: 200vw;
+    width: 500vw;
     height: 190px;
 
     /* -webkit-animation: wave 30s linear infinite; */
     /* animation: wave 30s linear infinite; */
     z-index: 3;
     display: flex;
-    animation: moveleftboucle 5s linear infinite;
+    animation: moveleftboucle 25s ease-in-out infinite;
 }
+
+@media screen and (min-width: 1400px) {}
+
+@media screen and (min-width: 1600px) {}
+
+@media screen and (min-width: 3000px) {
+    .wave {
+        animation: none;
+    }
+}
+
+
 
 @keyframes moveleftboucle {
     0% {
         transform: translateX(0%);
     }
 
-    100% {
+    50% {
         transform: translateX(-50%);
+    }
+
+    100% {
+        transform: translateX(0%);
     }
 }
 

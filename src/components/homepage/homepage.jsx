@@ -9,14 +9,14 @@ export const HomePage = () => {
 
                 {(() => {
                     let particulesNano = [];
-                    let nbParticule = Math.floor(Math.random() * 50) + 20;
+                    let nbParticule = 20 || Math.floor(Math.random() * 50) + 20;
 
                     for (let i = 0; i < nbParticule; i++) {
-                        let size = Math.floor(Math.random() * 40) + 1;
+                        let size = Math.floor(Math.random() * 30) + 10;
                         let size2 = Math.floor(249 * size / 267);
 
                         //position random sur la div
-                        let top = Math.floor(Math.random() * 90) + "%";
+                        let top = Math.floor(Math.random() * 90) + 2 + "%";
                         let left = Math.floor(Math.random() * 90) + 5 + "%";
 
                         //rotation random -180° à 180°
@@ -165,7 +165,7 @@ export const HomePage = () => {
                     {(() => {
                         let svg = [];
 
-                        for (let i = 0; i < 2; i++) {
+                        for (let i = 0; i < 5; i++) {
 
                             svg.push(<svg key={i} width="2064" height="219" viewBox="0 0 2064 219" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <g clipPath="url(#clip0_846_502)">
