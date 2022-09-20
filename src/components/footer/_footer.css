@@ -3,6 +3,23 @@
     padding: 3rem 1.5rem 4rem;
 }
 
+.footer-bottom {
+    background-color: #202225;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+    padding: 1rem 0;
+}
+
+.footer-bottom p {
+    color: #fff;
+    font-size: 1.1rem;
+    text-align: center;
+    margin: 0;
+}
+
 .container {
     -webkit-flex-grow: 1;
     flex-grow: 1;
