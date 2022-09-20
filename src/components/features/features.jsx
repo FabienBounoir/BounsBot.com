@@ -1,5 +1,5 @@
 import "./_features.css";
-import { Link } from "react-router-dom"
+// import { Link } from "react-router-dom"
 import AnimationImage from "../animationimage/animationimage";
 
 import Reaction from '../../assets/picture/features/reaction1.png';

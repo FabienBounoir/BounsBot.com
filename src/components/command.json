@@ -209,8 +209,16 @@
             "name": "setwelcomemessage",
             "description": "Configurer le message de bienvenue sur le serveur [in progress]",
             "type": "Configuration",
-            "usages": [],
-            "examples": []
+            "usages": [
+                "/welcomemessage enable",
+                "/welcomemessage disable",
+                "/welcomemessage set"
+            ],
+            "examples": [
+                "/welcomemessage enable",
+                "/welcomemessage disable",
+                "/welcomemessage set"
+            ]
         },
         {
             "name": "twitch",

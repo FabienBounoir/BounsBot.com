@@ -1,20 +1,12 @@
 import "./_footer.css";
-
+import { Link } from "react-router-dom"
 
 export const Footer = () => {
     return (
         <div className="footer">
-            <div className="footer__container">
-                <div className="footer__container__left">
-                    <div className="footer__container__left__link">
-                        <a href="mailto:bounoirfabien@gmail.com" target="_blank" rel="noreferrer">Contactez-nous</a>
-                    </div>
-                    <div className="footer__container__left__link">
-                        <a href="https://discord.gg/2Z8Z7Z9" target="_blank" rel="noreferrer">Discord</a>
-                    </div>
-                </div>
-                <div className="footer__container__right">
-                    <div className="footer__container__right__logo">
+            <div className="container">
+                <div className="columns">
+                    <div className="column">
                         <svg className="logo" width="100" height="93" viewBox="0 0 944 882" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M305.841 728.275C300.49 728.275 295.544 731.126 292.862 735.757L221.678 858.652C215.886 868.652 223.101 881.17 234.658 881.17H719.492C731.049 881.17 738.264 868.652 732.472 858.652L661.289 735.757C658.606 731.126 653.66 728.275 648.309 728.275H305.841Z" fill="var(--color-principal)" />
                             <path d="M853.511 525.341C902.931 505.457 926.883 449.27 906.996 399.851C887.111 350.435 830.923 326.499 781.506 346.381C732.083 366.265 708.13 422.457 728.021 471.878C747.909 521.291 804.096 545.224 853.511 525.341Z" fill="url(#paint0_linear_7_295)" />
@@ -71,6 +63,38 @@ export const Footer = () => {
                                 </linearGradient>
                             </defs>
                         </svg>
+                    </div>
+
+                    <div className="column">
+                        <h5>Bouns'bot</h5>
+                        <p>
+                            <Link to="/a-propos" style={{ textDecoration: "none" }}>Qui sommes-nous ?</Link>
+                        </p>
+                        <p>
+                            <Link to="/terms" style={{ textDecoration: "none" }}>Conditions générales d'utilisation</Link>
+                        </p>
+                        <p>
+                            <Link to="/privacy" style={{ textDecoration: "none" }}>Politique de confidentialité</Link>
+                        </p>
+                    </div>
+
+                    <div className="column">
+                        <h5>Community</h5>
+                        <p>
+                            <a href="https://discord.gg/KxedRVTutX">Serveur d'aide</a>
+                        </p>
+                        <p>
+                            <a href="https://github.com/FabienBounoir/BounsBot-Front">Code source</a>
+                        </p>
+                        {/* <p>
+                            <a href="https://github.com/FabienBounoir/BounsBot-Front">Code source</a>
+                        </p>
+                        <p>
+                            <a href="google.fr">Politique de confidentialité</a>
+                        </p>
+                        <p>
+                            <a href="google.fr">Conditions générales d'utilisation</a>
+                        </p> */}
                     </div>
                 </div>
             </div>

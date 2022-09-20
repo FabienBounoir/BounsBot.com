@@ -1,0 +1,34 @@
+.privacy {
+    padding: 0 20px;
+    margin: 0 auto;
+    /* max-width: 800px; */
+    font-size: 16px;
+    line-height: 1.5;
+    color: white;
+    background: var(--back-first-color);
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+.privacy-section {
+    max-width: 800px;
+    padding: 3rem;
+    font-size: 1.1rem;
+}
+
+.privacy-section {
+    text-align: left;
+}
+
+.privacy-section:first-child {
+    text-align: center;
+}
+
+@media screen and (max-width: 768px) {
+    .privacy-section {
+        padding: 1rem;
+    }
+}

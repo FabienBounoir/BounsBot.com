@@ -9,15 +9,17 @@ import Commandes from "../pages/commandes/commandes";
 import Playlist from "../pages/playlist/playlist";
 import infoPlaylist from "../pages/infoPlaylist/infoPlaylist";
 import { ErreurPage } from "../pages/ErreurPage/ErreurPage";
+import { Privacy } from "../pages/privacy/privacy";
 import { Login } from "../pages/login/login";
-import { TermsAndConditions } from "../pages/terms-and-conditions/terms-and-conditions";
 import Dashboard from "../pages/dashboard/dashboard";
 import Guild from "../pages/guild/guild";
 import Demo from "../pages/demo/demo";
 import Callback from "../components/callback/callback";
 import Authenticate from '../components/Authenticate';
 import Footer from '../components/footer/footer';
-// import Test from "../components/sendEmbed/sendembed";
+import { Bio } from "../pages/bio/bio";
+import { Terms } from "../pages/terms/terms";
+import ScrollToTop from "../utils/ScrollToTop"
 
 export const App = () => {
 
@@ -90,9 +92,6 @@ export const App = () => {
           <Authenticate exact path="/dashboard">
             <Dashboard />
           </Authenticate>
-          {/* <Route exact path="/test">
-            <Test />
-          </Route> */}
           <Authenticate exact path="/dashboard/:id">
             <Route exact path="/dashboard/:id" component={Guild}>
             </Route>
@@ -100,11 +99,26 @@ export const App = () => {
           <Route exact path="/login" >
             <Login />
           </Route>
+          <Route exact path="/privacy" >
+            <ScrollToTop>
+              <Privacy />
+              <Footer />
+            </ScrollToTop>
+          </Route>
+          <Route exact path="/a-propos" >
+            <ScrollToTop>
+              <Bio />
+              <Footer />
+            </ScrollToTop>
+          </Route>
+          <Route exact path="/terms" >
+            <ScrollToTop>
+              <Terms />
+              <Footer />
+            </ScrollToTop>
+          </Route>
           <Route exact path="/oauth/callback" >
             <Callback />
-          </Route>
-          <Route exact path="/terms-and-conditions" >
-            <TermsAndConditions />
           </Route>
           <Route>
             <ErreurPage />
