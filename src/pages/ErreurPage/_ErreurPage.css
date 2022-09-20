@@ -33,6 +33,7 @@ transform: translate(-50%, -50%);
     justify-content: center;
     gap: 5em;
     height: 80vh;
+    padding: 0 1em;
 }
 
 .ErreurPage__container__error {
@@ -100,6 +101,7 @@ transform: translate(-50%, -50%);
         text-align: center;
         text-transform: uppercase;
         text-rendering: geometricPrecision;
+        text-align: -webkit-center;
     }
 }
 
