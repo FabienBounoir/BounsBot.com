@@ -63,17 +63,18 @@ export const Features = () => {
                     <AnimationImage img={[Level, Rank, Achievement]} />
                 </div>
                 <div className="feature active">
-                    <AnimationImage img={[Musique, Radio, Playlist]} />
+                    <AnimationImage img={[Radio]} />
                     <div className="content">
                         <div className="title">
-                            <h3>Musique, Playlist, Radio</h3>
+                            <h3>Radio</h3>
                             {/* <Link to="/commandes#musiqueCommande">
                                 <svg width="36" height="29" viewBox="0 0 36 29" fill="none" xmlns="http://www.w3.org/2000/svg" className="show-commands">
                                     <path fillRule="evenodd" clipRule="evenodd" d="M7.02431 0.524414H0V7.52441H7.02431V0.524414ZM35.9998 0.524414H10.5366V7.52441H35.9998V0.524414ZM0 11.0244H7.02431V18.0244H0V11.0244ZM35.9998 11.0244H10.5366V18.0244H35.9998V11.0244ZM0 21.5244H7.02431V28.5244H0V21.5244ZM35.9998 21.5244H10.5366V28.5244H35.9998V21.5244Z" fill="var(--color-principal)"></path>
                                 </svg>
                             </Link> */}
                         </div>
-                        <p>Un bot musique acceptant les liens Youtube / Spotify / deezer /soundcloud et fichier externe (.mp3 / .mp4 / .flac / .ogg / .aac / .webm / .wav)<br />Plus de 40 radios disponibles !!<br />Créer / Modifier / Jouer une playlist.</p>
+                        {/* <p>Un bot musique acceptant les liens Youtube / Spotify / deezer /soundcloud et fichier externe (.mp3 / .mp4 / .flac / .ogg / .aac / .webm / .wav)<br />Plus de 40 radios disponibles !!<br />Créer / Modifier / Jouer une playlist.</p> */}
+                        <p>Vous pouvez écouter l'une des 60,000 radios disponibles à vous de trouver la radio qui vous correspond</p>
                     </div>
                 </div>
                 <div className="feature active">

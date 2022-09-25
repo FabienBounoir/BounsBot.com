@@ -206,18 +206,20 @@
             ]
         },
         {
-            "name": "setwelcomemessage",
+            "name": "welcomemessage",
             "description": "Configurer le message de bienvenue sur le serveur [in progress]",
             "type": "Configuration",
             "usages": [
                 "/welcomemessage enable",
                 "/welcomemessage disable",
-                "/welcomemessage set"
+                "/welcomemessage set",
+                "/welcomemessage information"
             ],
             "examples": [
                 "/welcomemessage enable",
                 "/welcomemessage disable",
-                "/welcomemessage set"
+                "/welcomemessage set",
+                "/welcomemessage information"
             ]
         },
         {
@@ -271,14 +273,17 @@
             ]
         },
         {
-            "name": "setbanner",
+            "name": "card",
             "description": "Permet de définir votre bannière pour la carte de classement",
             "type": "Engagement",
             "usages": [
-                "/setBanner <Img>"
+                "/card setbanner <Image>",
+                "/card setcolor <Hexa code>"
             ],
             "examples": [
-                "/setbanner ..."
+                "/card setbanner ...",
+                "/card setcolor #7DDF64",
+                "/card setcolor #9A031E"
             ]
         },
         {
