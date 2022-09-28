@@ -15,7 +15,7 @@
 
 .privacy-section {
     max-width: 800px;
-    padding: 3rem;
+    padding: 2rem;
     font-size: 1.1rem;
 }
 
@@ -26,6 +26,93 @@
 .privacy-section:first-child {
     text-align: center;
 }
+
+.privacy-section ul {
+    display: block;
+}
+
+.privacy-section h1, h2, h3, h4, h5, h6 {
+    color: var(--color-principal);
+    font-weight: 600 !important;
+}
+
+.privacy-section h5 {
+    display: list-item;
+    list-style-type: disc;
+}
+
+.privacy-section section {
+    display: block;
+    margin-left: 2em;
+    background: transparent;
+    /* text-indent: -2em; */
+}
+
+.privacy-section .linkButton {
+    display: block;
+    margin-top: 0rem;
+    margin-bottom: 1rem;
+    padding: 0.5rem 1rem;
+    background-color: var(--color-principal);
+    border: 1px solid var(--color-principal-hover);
+    border-radius: 5px;
+    color: white;
+    text-decoration: none;
+    font-size: 1.1rem;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.privacy-section .signature {
+    display: block;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    padding: 0.5rem 1rem;
+    background-color: var(--color-principal);
+    border: 1px solid var(--color-principal-hover);
+    border-radius: 5px;
+    color: white;
+    text-decoration: none;
+    font-size: 1.1rem;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    text-align: center;
+}
+
+.privacy-section .signature p {
+    margin: 1em;
+}
+
+.privacy .last-update {
+    padding: 0;
+    margin: 0 0 1.3em 0;
+    font-style: italic;
+    border-radius: 5px;
+    color: white;
+    text-decoration: none;
+}
+
+.privacy-section .signature b {
+    color: white;
+}
+
+.privacy-section a {
+    text-decoration: none;
+}
+
+.privacy-section code {
+    background-color: var(--back-second-color);
+    color: var(--color-principal);
+    padding: 0.2rem 0.5rem;
+    border-radius: 5px;
+    margin: 0 0.5em;
+}
+
+.privacy-section .linkButton:hover {
+    background-color: var(--color-principal-hover);
+    border: 1px solid var(--color-principal);
+}
+
 
 @media screen and (max-width: 768px) {
     .privacy-section {

@@ -613,7 +613,7 @@ class Guild extends Component {
 
                 {this.state.channelTextuelGuild.length !== 0 ? (<SendMessage guild={this.props.match.params.id} channel={this.state.channelTextuelGuild} />) : ("")}
 
-                <Musique guild={this.props.match.params.id} />
+                {/* <Musique guild={this.props.match.params.id} /> */}
 
                 {(() => {
                     if (this.loading) return <Loading />
