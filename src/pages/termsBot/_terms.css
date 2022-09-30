@@ -1,0 +1,126 @@
+.terms {
+    padding: 0 20px;
+    margin: 0 auto;
+    /* max-width: 800px; */
+    font-size: 16px;
+    line-height: 1.5;
+    color: white;
+    background: var(--back-first-color);
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+.terms-section {
+    max-width: 800px;
+    padding: 3rem;
+    font-size: 1.1rem;
+}
+
+.terms-section {
+    text-align: left;
+}
+
+.terms-section:first-child {
+    text-align: center;
+}
+
+.terms-section ul {
+    display: block;
+}
+
+.terms-section h1, h2, h3, h4, h5, h6 {
+    color: var(--color-principal);
+    font-weight: 600 !important;
+}
+
+.terms-section h5 {
+    display: list-item;
+    list-style-type: disc;
+}
+
+.terms-section section {
+    display: block;
+    margin-left: 2em;
+    background: transparent;
+    /* text-indent: -2em; */
+}
+
+.terms-section .linkButton {
+    display: block;
+    margin-top: 0rem;
+    margin-bottom: 1rem;
+    padding: 0.5rem 1rem;
+    background-color: var(--color-principal);
+    border: 1px solid var(--color-principal-hover);
+    border-radius: 5px;
+    color: white;
+    text-decoration: none;
+    font-size: 1.1rem;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.terms-section .signature {
+    display: block;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    padding: 0.5rem 1rem;
+    background-color: var(--color-principal);
+    border: 1px solid var(--color-principal-hover);
+    border-radius: 5px;
+    color: white;
+    text-decoration: none;
+    font-size: 1.1rem;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    text-align: center;
+}
+
+.terms-section .signature p {
+    margin: 1em;
+}
+
+
+.terms-section .signature b {
+    color: white;
+}
+
+.terms-section .signature button {
+    background-color: white;
+    border: 1px solid var(--color-principal-hover);
+    color: var(--color-principal);
+}
+
+
+
+.terms-section a {
+    text-decoration: none;
+}
+
+.terms-section code {
+    background-color: var(--back-second-color);
+    color: var(--color-principal);
+    padding: 0.2rem 0.5rem;
+    border-radius: 5px;
+    margin: 0 0.1em;
+}
+
+.terms-section .linkButton:hover {
+    background-color: var(--color-principal-hover);
+    border: 1px solid var(--color-principal);
+}
+
+.terms-section h1 {
+    font-family: Satoshi, sans-serif;
+    color: #fff;
+}
+
+
+@media screen and (max-width: 768px) {
+    .terms-section {
+        padding: 1rem;
+    }
+}

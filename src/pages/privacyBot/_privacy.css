@@ -19,6 +19,7 @@
     font-size: 1.1rem;
 }
 
+
 .privacy-section {
     text-align: left;
 }
@@ -34,6 +35,11 @@
 .privacy-section h1, h2, h3, h4, h5, h6 {
     color: var(--color-principal);
     font-weight: 600 !important;
+}
+
+.privacy-section h1 {
+    font-family: Satoshi, sans-serif;
+    color: #fff;
 }
 
 .privacy-section h5 {
@@ -103,9 +109,10 @@
 .privacy-section code {
     background-color: var(--back-second-color);
     color: var(--color-principal);
-    padding: 0.2rem 0.5rem;
+    padding: 0.2rem 0.3rem;
     border-radius: 5px;
-    margin: 0 0.5em;
+    margin: 0 0.1em;
+    white-space: nowrap;
 }
 
 .privacy-section .linkButton:hover {

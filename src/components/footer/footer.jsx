@@ -69,23 +69,29 @@ export const Footer = () => {
                         <div className="column">
                             <h5>Bouns'bot</h5>
                             <p>
-                                <Link to="/a-propos" style={{ textDecoration: "none" }}>Qui sommes-nous ?</Link>
+                                <Link to="/a-propos" style={{ textDecoration: "none" }}>Our history</Link>
                             </p>
                             <p>
-                                <Link to="/terms" style={{ textDecoration: "none" }}>Conditions générales d'utilisation</Link>
+                                <Link to="/bot/terms" style={{ textDecoration: "none" }}>Terms of Service</Link>
                             </p>
                             <p>
-                                <Link to="/privacy" style={{ textDecoration: "none" }}>Politique de confidentialité</Link>
+                                <Link to="/bot/privacy" style={{ textDecoration: "none" }}>Privacy Policy</Link>
+                            </p>
+                            <p>
+                                <a href="https://discord.gg/KxedRVTutX">Support server</a>
                             </p>
                         </div>
 
                         <div className="column">
-                            <h5>Community</h5>
+                            <h5>Site</h5>
                             <p>
-                                <a href="https://discord.gg/KxedRVTutX">Serveur d'aide</a>
+                                <Link to="/bot/terms" style={{ textDecoration: "none" }}>Terms of Service</Link>
                             </p>
                             <p>
-                                <a href="https://github.com/FabienBounoir/BounsBot-Front">Code source</a>
+                                <Link to="/bot/privacy" style={{ textDecoration: "none" }}>Privacy Policy</Link>
+                            </p>
+                            <p>
+                                <a href="https://github.com/FabienBounoir/BounsBot-Front">Source code</a>
                             </p>
                         </div>
                     </div>

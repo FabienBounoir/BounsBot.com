@@ -9,7 +9,7 @@ import Commandes from "../pages/commandes/commandes";
 import Playlist from "../pages/playlist/playlist";
 import infoPlaylist from "../pages/infoPlaylist/infoPlaylist";
 import { ErreurPage } from "../pages/ErreurPage/ErreurPage";
-import { Privacy } from "../pages/privacy/privacy";
+import { PrivacyBot } from "../pages/privacyBot/privacy";
 import { Login } from "../pages/login/login";
 import Dashboard from "../pages/dashboard/dashboard";
 import Guild from "../pages/guild/guild";
@@ -18,7 +18,7 @@ import Callback from "../components/callback/callback";
 import Authenticate from '../components/Authenticate';
 import Footer from '../components/footer/footer';
 import { Bio } from "../pages/bio/bio";
-import { Terms } from "../pages/terms/terms";
+import { TermsBot } from "../pages/termsBot/terms";
 import ScrollToTop from "../utils/ScrollToTop"
 
 export const App = () => {
@@ -99,9 +99,9 @@ export const App = () => {
           <Route exact path="/login" >
             <Login />
           </Route>
-          <Route exact path="/privacy" >
+          <Route exact path="/bot/privacy" >
             <ScrollToTop>
-              <Privacy />
+              <PrivacyBot />
               <Footer />
             </ScrollToTop>
           </Route>
@@ -111,9 +111,9 @@ export const App = () => {
               <Footer />
             </ScrollToTop>
           </Route>
-          <Route exact path="/terms" >
+          <Route exact path="/bot/terms" >
             <ScrollToTop>
-              <Terms />
+              <TermsBot />
               <Footer />
             </ScrollToTop>
           </Route>
