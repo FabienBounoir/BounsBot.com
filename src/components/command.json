@@ -108,6 +108,17 @@
             ]
         },
         {
+            "name": "liens",
+            "description": "Affiche les liens utiles du bot",
+            "type": "Bot",
+            "usages": [
+                "/liens"
+            ],
+            "examples": [
+                "/liens"
+            ]
+        },
+        {
             "name": "channeltemporaire",
             "description": "Configure les channels temporaires",
             "type": "ChannelTemporaire",
