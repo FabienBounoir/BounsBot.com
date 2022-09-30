@@ -19,14 +19,14 @@ export const TermsBot = () => {
                     Welcome to Bouns'bot. Please read on to learn the rules and restrictions that govern your use of our proprietary bots. If you have any questions, comments, or concerns regarding these terms or the Services, please contact us at our Discord support server.
                 </p>
                 <p>
-                    These Terms of Use (the “Terms”) are a binding contract between you and Earth. (“Earth,” “we” and “us”).
+                    These Terms of Use (the "Terms”) are a binding contract between you and Bouns'bot. ("Bouns'bot" "we" and "us”).
                     Your use of the Services in any way means that you agree to all of these Terms, and these Terms will remain in effect while you use the Services. These Terms include the provisions in this document as well as those in the Privacy Policy and Copyright Dispute Policy.
                 </p>
                 <p>
                     You may not use Bouns'bot to violate any applicable laws or regulations, Discord’s Terms of Service, or Discord Community Guidelines. You also may not use Bouns'bot to harm anyone or anything.
                 </p>
                 <p>
-                    When using bot commands that use external services, additional terms may apply to you.Here are ToSes that apply to certain commands: Genius, Twitch, Topgg, Google. Do not use Bouns'bot to violate the terms of any service.
+                    When using bot commands that use external services, additional terms may apply to you.Here are ToSes that apply to certain commands: <a href="https://genius.com/static/privacy_policy">Genius</a>, <a href="https://www.twitch.tv/p/fr-fr/legal/terms-of-service/">Twitch</a>, <a href="https://top.gg/terms">Topgg</a>, <a href="https://policies.google.com/terms?hl=en">Google</a>. Do not use Bouns'bot to violate the terms of any service.
                 </p>
 
                 <h2>What about my privacy?</h2>
@@ -51,10 +51,10 @@ export const TermsBot = () => {
                     What are the basics of using Bouns'bot?
                 </h2>
                 <p>
-                    You may need to access certain parts or features of the Services (e.g. our proprietary bots) by using your account credentials and password from other services (“Third Party Account”), such as those offered by Discord. By using the Services through a Third Party Account, you permit us to access certain information from such account for use by the Services. You are ultimately in control of how much information is accessible to us and may exercise such control by adjusting your privacy settings on your Third Party Account. We store your account credentials but will not store your password. You promise to provide us with accurate, complete, and updated registration information about yourself. You may not use any Third Party Account that you do not have the right to use, or another person’s account credentials without authorization from that other person. You may not transfer your account to anyone else without our prior written permission.
+                    You may need to access certain parts or features of the Services (e.g. our proprietary bots) by using your account credentials and password from other services ("Third Party Account”), such as those offered by Discord. By using the Services through a Third Party Account, you permit us to access certain information from such account for use by the Services. You are ultimately in control of how much information is accessible to us and may exercise such control by adjusting your privacy settings on your Third Party Account. We store your account credentials but will not store your password. You promise to provide us with accurate, complete, and updated registration information about yourself. You may not use any Third Party Account that you do not have the right to use, or another person’s account credentials without authorization from that other person. You may not transfer your account to anyone else without our prior written permission.
                 </p>
                 <p>
-                    You represent and warrant that you are an individual of legal age to form a binding contract (or if not, you’ve received your parent’s or guardian’s permission to use the Services and have gotten your parent or guardian to agree to these Terms on your behalf). If you’re agreeing to these Terms on behalf of an organization or entity, you represent and warrant that you are authorized to agree to these Terms on that organization’s or entity’s behalf and bind them to these Terms (in which case, the references to “you” and “your” in these Terms, except for in this sentence, refer to that organization or entity).
+                    You represent and warrant that you are an individual of legal age to form a binding contract (or if not, you’ve received your parent’s or guardian’s permission to use the Services and have gotten your parent or guardian to agree to these Terms on your behalf). If you’re agreeing to these Terms on behalf of an organization or entity, you represent and warrant that you are authorized to agree to these Terms on that organization’s or entity’s behalf and bind them to these Terms (in which case, the references to "you” and "your” in these Terms, except for in this sentence, refer to that organization or entity).
                 </p>
                 <section>
                     <h5>
