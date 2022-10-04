@@ -91,7 +91,7 @@ class Dashboard extends Component {
                             guildList.push(
                                 <div className="Guild">
                                     <div className="profilGuild">
-                                        <div className="banniere" style={{ background: "url(\"https://cdn.discordapp.com/icons/" + guild.id + "/" + guild.icon + ".jpg\"), " + `url(https://cdn.discordapp.com/embed/avatars/${random}.png)` }}></div>
+                                        <div className="banniere" style={{ background: `url("https://cdn.discordapp.com/icons/guild.id/${guild.icon}.jpg"), url(https://cdn.discordapp.com/embed/avatars/${random}.png)` }}></div>
                                         <img className='imageGuild' size="80" radius="40" src={`https://cdn.discordapp.com/icons/${guild.id}/${guild.icon}.jpg`} onError={(e) => { e.target.outerHTML = `<img class='imageGuild' size="80" radius="40" src='https://cdn.discordapp.com/embed/avatars/${random}.png'/>` }} alt={"Logo de " + guild.name}></img>
                                     </div>
                                     <div className="info">

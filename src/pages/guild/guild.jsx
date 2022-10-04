@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 
 import { Form } from 'react-bootstrap/'
 // import Slider from '@mui/material/Slider';
-import Musique from "../../components/musique/musique.jsx";
+// import Musique from "../../components/musique/musique.jsx";
 import WelcomeMessage from "../../components/welcomeConfig/welcomeConfig.jsx";
 import SendMessage from "../../components/sendmessage/sendmessage"
 import Loading from "../../components/loading/loading.jsx";

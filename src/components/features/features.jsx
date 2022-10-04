@@ -16,8 +16,8 @@ import LogVocal from '../../assets/picture/features/logVocal.png';
 import LogTextuel from '../../assets/picture/features/logTextuel.png';
 import AppElement from '../../assets/picture/features/appElement.png';
 
-import Musique from '../../assets/picture/features/music.png';
-import Playlist from '../../assets/picture/features/playlist.png';
+// import Musique from '../../assets/picture/features/music.png';
+// import Playlist from '../../assets/picture/features/playlist.png';
 import Radio from '../../assets/picture/features/radio.png';
 
 import Level from '../../assets/picture/features/level.png';
