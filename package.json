@@ -23,7 +23,7 @@
     "vite-tsconfig-paths": "^3.5.1"
   },
   "scripts": {
-    "start": "vite --host",
+    "start": "vite --host --port $PORT",
     "build": "vite build",
     "serve": "vite preview",
     "test": "vite test"
