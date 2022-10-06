@@ -14,14 +14,14 @@ class SendMessage extends Component {
         myHeaders.append("Authorization", `Bearer ${JSON.parse(window.localStorage.getItem('dataDiscord'))?.access_token}`);
 
         var requestOptions = {
-        method: 'GET',
-        headers: myHeaders,
-        redirect: 'follow'
+            method: 'GET',
+            headers: myHeaders,
+            redirect: 'follow'
         };
 
-        let url = process.env.URL_BOT || "https://bouns-bot.herokuapp.com"
+        let url = import.meta.env.URL_BOT || "https://bouns-bot.herokuapp.com"
 
-        fetch(url + "/bot/getchannels/" + this.props.guild,requestOptions)
+        fetch(url + "/bot/getchannels/" + this.props.guild, requestOptions)
             .then(response => response.json())
             .then((result) => {
                 this.setState({
@@ -43,20 +43,19 @@ class SendMessage extends Component {
         });
 
         var requestOptions = {
-        method: 'POST',
-        headers: myHeaders,
-        body: raw,
-        redirect: 'follow'
+            method: 'POST',
+            headers: myHeaders,
+            body: raw,
+            redirect: 'follow'
         };
 
-        let url = process.env.URL_BOT || "https://bouns-bot.herokuapp.com"
+        let url = import.meta.env.URL_BOT || "https://bouns-bot.herokuapp.com"
         // let url = "http://localhost:5342"
 
-        fetch(url + "/bot/sendto/",requestOptions)
+        fetch(url + "/bot/sendto/", requestOptions)
             .then(response => response.json())
             .then((result) => {
-                if(result.message)
-                {
+                if (result.message) {
                     document.getElementById('messageToSend').value = ""
                 }
             })
@@ -65,30 +64,29 @@ class SendMessage extends Component {
 
     render() {
         return (
-        <div style={{marginBottom: "60px"}} >
-            <div style={{justifyContent: "center", marginBottom: "30px"}} className="top">
-                <h1>Envoyer un Message</h1> 
-            </div>   
+            <div style={{ marginBottom: "60px" }} >
+                <div style={{ justifyContent: "center", marginBottom: "30px" }} className="top">
+                    <h1>Envoyer un Message</h1>
+                </div>
 
-            <div className="embedMessage">
-                <Form.Control size="lg" id="messageToSend" type="text" placeholder="Code createur Bad-bouns" />
-                <Form.Select value={this.state.channelSelect} onChange={(event) => { this.setState({ channelSelect: event.target.value }) }}>
-                    {(() => {
-                        var option = [];
+                <div className="embedMessage">
+                    <Form.Control size="lg" id="messageToSend" type="text" placeholder="Code createur Bad-bouns" />
+                    <Form.Select value={this.state.channelSelect} onChange={(event) => { this.setState({ channelSelect: event.target.value }) }}>
+                        {(() => {
+                            var option = [];
 
-                        for(let value of this.state.channelTextuelGuild)
-                        {
-                            option.push(<option value={value.id}>{ value.name }</option>)
-                        }
+                            for (let value of this.state.channelTextuelGuild) {
+                                option.push(<option value={value.id}>{value.name}</option>)
+                            }
 
-                        option.push(<option value="0" selected>Choisi un Channel</option>)
+                            option.push(<option value="0" selected>Choisi un Channel</option>)
 
-                        return option;
-                    })()}
-                </Form.Select>
-                <button className="sendButton" onClick={this.sendMessage}>Envoyer</button>
+                            return option;
+                        })()}
+                    </Form.Select>
+                    <button className="sendButton" onClick={this.sendMessage}>Envoyer</button>
+                </div>
             </div>
-        </div>
         )
     }
 }

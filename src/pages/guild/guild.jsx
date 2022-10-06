@@ -14,7 +14,7 @@ import "./_guild.css";
 let url = "https://backendbounsbot.herokuapp.com/"
 
 // let urlBot = "http://localhost:3001/"
-let urlBot = process.env.URL_BOT || "https://bouns-bot.herokuapp.com"
+let urlBot = import.meta.env.URL_BOT || "https://bouns-bot.herokuapp.com"
 
 class Guild extends Component {
     state = {

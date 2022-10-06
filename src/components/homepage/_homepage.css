@@ -71,6 +71,19 @@
     animation: run 1s ease-out 0s 1;
 }
 
+.home__halloween {
+    background: url(/spider.svg);
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+.home__halloween_bottom {
+    background: url(/spider_bottom.svg);
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: right bottom;
+}
+
 .home__top__bot .logo {
     /* transition: transform 530ms ease-in-out; */
     animation: resparaiton 2s infinite both;
@@ -193,17 +206,11 @@
     animation: moveleftboucle 25s ease-in-out infinite;
 }
 
-@media screen and (min-width: 1400px) {}
-
-@media screen and (min-width: 1600px) {}
-
 @media screen and (min-width: 3000px) {
     .wave {
         animation: none;
     }
 }
-
-
 
 @keyframes moveleftboucle {
     0% {
@@ -234,6 +241,14 @@
 }
 
 @media screen and (max-width: 768px) {
+    .home__halloween {
+        background: var(--back-second-color);
+    }
+
+    .home__halloween_bottom {
+        background: var(--back-second-color);
+    }
+
     .wave {
         animation: moveleftboucleMobile 5s linear infinite;
         transform: scale(2);
