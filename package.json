@@ -19,7 +19,7 @@
     "web-vitals": "^1.0.1"
   },
   "scripts": {
-    "start": "vite --port 3000",
+    "start": "vite --port $PORT",
     "build": "vite build",
     "serve": "vite preview",
     "test": "vite test"
