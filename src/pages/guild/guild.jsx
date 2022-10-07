@@ -603,7 +603,7 @@ class Guild extends Component {
                     return etat;
                 })()}
 
-                <div id="card" className="cardSave"><div className="saveConfig"><div style={{ display: "flex", alignItems: "center", flexDirection: "row", gap: "0.3em" }}><Avatar classElement="logoChangement" width="10" height="28" /> Changements détectés ! Veuillez enregistrer ou annuler.</div><button className="cancelButton" type="button" onClick={this.resetUpdate}>Annuler</button><button className="saveButton" type="button" disabled={this.state.loadingChargement} onClick={this.updateGuildConfig}>Enregistrer</button></div></div>
+                <div id="card" className="cardSave"><div className="saveConfig"><div style={{ display: "flex", alignItems: "center", flexDirection: "row", gap: "0.3em" }}><Avatar classElement="logoChangement" width="30" height="28" /> Changements détectés ! Veuillez enregistrer ou annuler.</div><button className="cancelButton" type="button" onClick={this.resetUpdate}>Annuler</button><button className="saveButton" type="button" disabled={this.state.loadingChargement} onClick={this.updateGuildConfig}>Enregistrer</button></div></div>
 
                 <WelcomeMessage guild={this.props.match.params.id} />
 
