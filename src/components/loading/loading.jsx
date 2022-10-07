@@ -1,5 +1,6 @@
 import React from 'react';
 import "./_loading.css";
+import Avatar from "../avatar/avatar";
 
 function Loading() {
   // const [count, setCount] = useState(0);

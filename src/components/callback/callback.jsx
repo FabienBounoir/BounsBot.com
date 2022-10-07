@@ -2,6 +2,7 @@ import "./_callback.css";
 import { Component } from 'react'
 import Fetch from "../../utils/fetch.js";
 import logo from "../../assets/picture/Bounsbot.svg";
+import Avatar from "../avatar/avatar";
 
 
 class Callback extends Component {
@@ -53,6 +54,7 @@ class Callback extends Component {
     componentDidMount() {
         const code = new URLSearchParams(window.location.search).get('code')
 
+        return
         if (code) {
             this.exchange_code(code);
         }
@@ -65,7 +67,7 @@ class Callback extends Component {
     render() {
         return (
             <div className="sc-10wydb9-0 guBWHp">
-                <img alt="logo" src={logo} className="sc-10wydb9-1 awsUQ" />
+                <Avatar classElement="sc-10wydb9-1 awsUQ" />
                 <p><strong>Authentification en cours</strong><br />Veuillez patienter...</p>
                 <span>Se connecter avec Discord</span>
             </div>

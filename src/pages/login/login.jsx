@@ -1,10 +1,13 @@
 import "./_login.css";
+import Avatar from "../../components/avatar/avatar";
 
 export const Login = () => {
     return (
         <div className="sc-10wydb9-0 guBWHp">
 
-            <svg className="sc-10wydb9-1 awsUQ" viewBox="0 0 944 882" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <Avatar classElement="sc-10wydb9-1 awsUQ" />
+
+            {/* <svg className="sc-10wydb9-1 awsUQ" viewBox="0 0 944 882" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M305.841 728.275C300.49 728.275 295.544 731.126 292.862 735.757L221.678 858.652C215.886 868.652 223.101 881.17 234.658 881.17H719.492C731.049 881.17 738.264 868.652 732.472 858.652L661.289 735.757C658.606 731.126 653.66 728.275 648.309 728.275H305.841Z" fill="var(--color-principal)" />
                 <path d="M853.511 525.341C902.931 505.457 926.883 449.27 906.996 399.851C887.111 350.435 830.923 326.499 781.506 346.381C732.083 366.265 708.13 422.457 728.021 471.878C747.909 521.291 804.096 545.224 853.511 525.341Z" fill="url(#paint0_linear_7_295)" />
                 <path d="M65.6184 489.699C101.85 529.117 163.176 531.703 202.599 495.477C242.032 459.241 244.618 397.896 208.373 358.471C172.14 319.06 110.819 316.477 71.3992 352.7C31.9687 388.933 29.3798 450.273 65.6184 489.699Z" fill="url(#paint1_linear_7_295)" />
@@ -59,7 +62,7 @@ export const Login = () => {
                         <stop offset="1" stopColor="var(--color-principal)" />
                     </linearGradient>
                 </defs>
-            </svg>
+            </svg> */}
 
             <p><strong>Bienvenue sur le site de Bouns'Bot !</strong><br />Connecte-toi pour continuer...</p>
             <a className="boutonConnection" href="https://discord.com/api/oauth2/authorize?client_id=1012688780471308339&redirect_uri=https%3A%2F%2Fbounsbot.herokuapp.com%2Foauth%2Fcallback&response_type=code&scope=email%20identify%20connections%20guilds%20guilds.join" >

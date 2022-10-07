@@ -46,10 +46,10 @@ export const App = () => {
     }
 
     let date = new Date();
-    if (date.getMonth() === 9 && date.getDate() === 31) {
+    if (date.getMonth() === 9) { //&& date.getDate() === 31
       let r = document.getElementsByTagName("html")[0];
-      r.style.setProperty('--color-principal', '#FC4C02');
-      r.style.setProperty('--color-principal-hover', '#D34509');
+      r.style.setProperty('--color-principal', '#ff5e00');
+      r.style.setProperty('--color-principal-hover', '#702a00');
     }
     else if (date.getMonth() === 11 && (date.getDate() === 25 || date.getDate() === 24)) {
       let r = document.getElementsByTagName("html")[0];
