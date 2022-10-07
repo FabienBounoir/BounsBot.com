@@ -72,13 +72,13 @@
 }
 
 .home__halloween {
-    background: url(/spider.svg);
+    background: url(spider.svg);
     background-repeat: no-repeat;
     background-size: contain;
 }
 
 .home__halloween_bottom {
-    background: url(/spider_bottom.svg);
+    background: url(spider_bottom.svg);
     background-repeat: no-repeat;
     background-size: contain;
     background-position: right bottom;
