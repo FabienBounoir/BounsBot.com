@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import Avatar from "../avatar/avatar";
+import Avatar from "../../components/avatar/avatar";
 import { Form } from 'react-bootstrap/'
 import WelcomeMessage from "../../components/welcomeConfig/welcomeConfig.jsx";
 import SendMessage from "../../components/sendmessage/sendmessage"
