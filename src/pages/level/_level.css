@@ -109,6 +109,44 @@
     color: #fff;
 }
 
+.leaderboardPlayerStatTextLoading {
+    animation: cssSkeletonAnimation 1.5s infinite;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    filter: blur(3px);
+}
+
+.leaderboardPlayerStatBlock .leaderboardPlayerStatValueLoading {
+    height: 20px;
+    border-radius: 1em;
+    margin-inline-start: 15px;
+
+    background: linear-gradient(90deg, #50555a 0%, #3e4246 50%, #50555a 100%);
+    animation: cssSkeletonAnimation 1.5s infinite;
+    /* background-color: #50555a; */
+    /* width: 1000Px; */
+    width: 4em;
+
+    display: flex;
+    -o-box-orient: vertical;
+    flex-direction: column;
+    -o-box-align: center;
+    align-items: center;
+}
+
+@keyframes cssSkeletonAnimation {
+    0% {
+        background-position: -200px 0;
+    }
+
+    100% {
+        background-position: calc(200px + 100%) 0;
+    }
+}
+
+
+
 .leaderboardPlayerStatBlock .leaderboardPlayerStatName {
     font-size: 12px;
     font-weight: 300;
@@ -360,6 +398,31 @@
     height: 50px;
     border-radius: 50%;
     margin-inline-start: 15px;
+}
+
+.leaderboardPlayerIconLoading {
+    -webkit-box-flex: 1;
+    -moz-box-flex: 1;
+    -o-box-flex: 1;
+    box-flex: 1;
+    -webkit-flex: 0 0 50px;
+    -ms-flex: 0 0 50px;
+    flex: 0 0 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin-inline-start: 15px;
+    background: linear-gradient(90deg, #50555a 0%, #3e4246 50%, #50555a 100%);
+    animation: cssSkeletonAnimation 1.5s infinite;
+}
+
+.leaderboardPlayerUsernameLoading {
+    box-flex: 1;
+    height: 20px;
+    border-radius: 1em;
+    margin-inline-start: 15px;
+    background: linear-gradient(90deg, #50555a 0%, #3e4246 50%, #50555a 100%);
+    animation: cssSkeletonAnimation 1.5s infinite;
+    width: 10em;
 }
 
 .leaderboardPlayerUsername {

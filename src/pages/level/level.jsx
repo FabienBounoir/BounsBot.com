@@ -316,6 +316,44 @@ class Level extends Component {
     return levels.findIndex(element => element.totalxp >= xp);
   }
 
+  renderLoadingAnimation = () => {
+    let loadingLevelNumber = Math.floor(Math.random() * (7 - 3 + 1)) + 3;
+    let loadingLevel = [];
+    let random = Math.floor(Math.random() * (12 - 6 + 1)) + 6;
+
+    for (let i = 0; i < loadingLevelNumber; i++) {
+      loadingLevel.push(<div key={this.state.level.length + 1 + i} className="leaderboardPlayersListContainer">
+        <div className="leaderboardPlayer">
+          <div className="leaderboardPlayerLeft">
+            <div className={this.state.level.length === 0 ? ("leaderboardRank premier") : (this.state.level.length === 1 ? ("leaderboardRank second") : (this.state.level.length === 2 ? ("leaderboardRank troisieme") : ("leaderboardRank")))}>
+              {this.state.level.length + i + 1}
+            </div>
+            <div className="leaderboardPlayerIconLoading">
+            </div>
+            <div className="leaderboardPlayerUsernameLoading" style={{ width: `${Math.floor(Math.random() * (12 - 6 + 1)) + 6}em` }}>
+            </div>
+          </div>
+          <div className="leaderboardPlayerStats">
+            <div className="leaderboardPlayerStatBlock">
+              <div className="leaderboardPlayerStatValueLoading">
+              </div>
+            </div>
+            <div className="leaderboardPlayerStatBlock">
+              <div className="leaderboardPlayerStatValueLoading">
+              </div>
+            </div>
+            <div className="leaderboardPlayerStat">
+              <div className="leaderboardPlayerStatTextLoading" style={{ background: `linear-gradient(90deg, var(--color-principal) 0%, var(--color-principal-hover) 50%, var(--color-principal) 100%)` }} >
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>)
+    }
+
+    return loadingLevel
+  }
+
   render() {
     return (
       <div className="leaderboardglobal">
@@ -328,7 +366,8 @@ class Level extends Component {
               dataLength={this.state.level.length}
               next={this.getData}
               hasMore={this.state.hasMoreData}
-              loader={<div><Spinner animation="grow" variant="success" /><Spinner animation="grow" variant="success" /><Spinner animation="grow" variant="success" /></div>}
+              loader={this.renderLoadingAnimation()}
+            // {<div><Spinner animation="grow" variant="success" /><Spinner animation="grow" variant="success" /><Spinner animation="grow" variant="success" /></div>}
             >
 
               {(() => {
