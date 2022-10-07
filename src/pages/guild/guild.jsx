@@ -1,13 +1,9 @@
 import React, { Component } from 'react'
-
+import Avatar from "../avatar/avatar";
 import { Form } from 'react-bootstrap/'
-// import Slider from '@mui/material/Slider';
-// import Musique from "../../components/musique/musique.jsx";
 import WelcomeMessage from "../../components/welcomeConfig/welcomeConfig.jsx";
 import SendMessage from "../../components/sendmessage/sendmessage"
 import Loading from "../../components/loading/loading.jsx";
-import logo from "../../assets/picture/Bounsbot.svg";
-
 import "./_guild.css";
 
 // let url = "http://localhost:3001/"
@@ -607,7 +603,7 @@ class Guild extends Component {
                     return etat;
                 })()}
 
-                <div id="card" className="cardSave"><div className="saveConfig"><div style={{ display: "flex", alignItems: "center", flexDirection: "row", gap: "0.3em" }}><img id="logoChangement" width="30px" src={logo} alt="LogoBounsBot" />Changements détectés ! Veuillez enregistrer ou annuler.</div><button className="cancelButton" type="button" onClick={this.resetUpdate}>Annuler</button><button className="saveButton" type="button" disabled={this.state.loadingChargement} onClick={this.updateGuildConfig}>Enregistrer</button></div></div>
+                <div id="card" className="cardSave"><div className="saveConfig"><div style={{ display: "flex", alignItems: "center", flexDirection: "row", gap: "0.3em" }}><Avatar classElement="logoChangement" width="10" height="28" /> Changements détectés ! Veuillez enregistrer ou annuler.</div><button className="cancelButton" type="button" onClick={this.resetUpdate}>Annuler</button><button className="saveButton" type="button" disabled={this.state.loadingChargement} onClick={this.updateGuildConfig}>Enregistrer</button></div></div>
 
                 <WelcomeMessage guild={this.props.match.params.id} />
 
