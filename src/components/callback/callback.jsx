@@ -1,7 +1,6 @@
 import "./_callback.css";
 import { Component } from 'react'
 import Fetch from "../../utils/fetch.js";
-import logo from "../../assets/picture/Bounsbot.svg";
 import Avatar from "../avatar/avatar";
 
 

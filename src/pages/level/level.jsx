@@ -2,7 +2,6 @@
 import "./_level.css";
 import React, { Component } from 'react'
 import InfiniteScroll from 'react-infinite-scroll-component';
-import { Spinner } from 'react-bootstrap/'
 import Loading from "../../components/loading/loading.jsx";
 import GainRolesLevels from "../../components/gainRolesLevels/gainRolesLevels.jsx";
 
@@ -319,7 +318,6 @@ class Level extends Component {
   renderLoadingAnimation = () => {
     let loadingLevelNumber = Math.floor(Math.random() * (7 - 3 + 1)) + 3;
     let loadingLevel = [];
-    let random = Math.floor(Math.random() * (12 - 6 + 1)) + 6;
 
     for (let i = 0; i < loadingLevelNumber; i++) {
       loadingLevel.push(<div key={this.state.level.length + 1 + i} className="leaderboardPlayersListContainer">
