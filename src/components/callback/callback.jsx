@@ -54,7 +54,6 @@ class Callback extends Component {
     componentDidMount() {
         const code = new URLSearchParams(window.location.search).get('code')
 
-        return
         if (code) {
             this.exchange_code(code);
         }
