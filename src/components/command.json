@@ -375,6 +375,19 @@
             ]
         },
         {
+            "name": "lovecalcule",
+            "description": "Calcule le pourcentage d'amour entre deux utilisateurs",
+            "type": "Fun",
+            "usages": [
+                "/lovecalcule <User1> <User2>"
+            ],
+            "examples": [
+                "/lovecalcule @Azerius @Eskomad",
+                "/lovecalcule @BadbounsTV @Wumpus",
+                "/lovecalcule @Azerius @BadbounsTV"
+            ]
+        },
+        {
             "name": "meme",
             "description": "Affiche un meme aléatoire",
             "type": "Fun",
@@ -659,10 +672,14 @@
             "description": "Supprime les messages d'un salon",
             "type": "Modération",
             "usages": [
-                "/clear <NbMessage>"
+                "/clear <NbMessage>",
+                "/clear <User>",
+                "/clear <User> <NbMessage>"
             ],
             "examples": [
-                "/clear 42"
+                "/clear 42",
+                "/clear @Wumpus",
+                "/clear @BadbounsTV 69"
             ]
         },
         {
@@ -821,6 +838,18 @@
             ],
             "examples": [
                 "/skip"
+            ]
+        },
+        {
+            "name": "skipto",
+            "description": "Passer un nombre de musique prédéfinie",
+            "type": "Musique",
+            "usages": [
+                "/skipto <Nombre>"
+            ],
+            "examples": [
+                "/skipto 5",
+                "/skipto 12"
             ]
         },
         {
