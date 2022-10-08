@@ -443,17 +443,6 @@
             ]
         },
         {
-            "name": "lightshot",
-            "description": "Affiche un screenshot aléatoire provenant de lightshot",
-            "type": "Fun",
-            "usages": [
-                "/lightshot"
-            ],
-            "examples": [
-                "/lightshot"
-            ]
-        },
-        {
             "name": "traduire",
             "description": "Traduit une phrase",
             "type": "Fun",
@@ -897,7 +886,7 @@
             "examples": [
                 "/radio search funk",
                 "/radio set 1",
-                "/radio custom https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+                "/radio custom https://streams.ilovemusic.de/iloveradio17.mp3"
             ]
         },
         {
