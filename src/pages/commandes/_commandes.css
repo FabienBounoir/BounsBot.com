@@ -44,12 +44,11 @@
 }
 
 .nav-pills {
-
     overflow: scroll;
-
     -ms-overflow-style: none;
     scrollbar-width: none;
     text-decoration: none;
+    margin-bottom: 1rem;
 }
 
 .nav-pills::-webkit-scrollbar {
