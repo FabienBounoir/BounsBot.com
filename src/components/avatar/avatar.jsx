@@ -1,3 +1,5 @@
+let random = Math.random()
+
 function setAvatar(props) {
     const { classElement, width, height, styleElement } = props;
 
@@ -6,7 +8,7 @@ function setAvatar(props) {
 
     //if mois octobre et jour 31
     if (date.getMonth() === 9) {
-        if (Math.random() < 0.5) {
+        if (random < 0.5) {
             return (
                 <svg className={classElement} width={width} height={height} style={styleElement} viewBox="0 0 944 943" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M305.841 728.275C300.49 728.275 295.544 731.126 292.862 735.757L221.678 858.652C215.886 868.652 223.101 881.17 234.658 881.17H719.492C731.049 881.17 738.264 868.652 732.472 858.652L661.289 735.757C658.606 731.126 653.66 728.275 648.309 728.275H305.841Z" fill="#0E74FE" />
