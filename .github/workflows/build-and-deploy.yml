@@ -22,7 +22,8 @@ jobs:
         host: ${{ secrets.HOST }}
         username: ${{ secrets.USERNAME }}
         password: ${{ secrets.PASSWORD }}
-        source: "./*"
-        target: "/var/www/html"
         port: ${{ secrets.PORT }}
+        source: "./build/*"
+        target: "/var/www/html"
+        strip_components: 1
   
