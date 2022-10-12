@@ -7,7 +7,7 @@ import GainRolesLevels from "../../components/gainRolesLevels/gainRolesLevels.js
 
 // let url = "http://localhost:3001/"
 // let url = "https://backendbounsbot.herokuapp.com/"
-let url = "https://api.bounsbot.com/"
+let url = "http://api.bounsbot.com/"
 
 let levels = [
   { "value": 1, "totalxp": 100 },
