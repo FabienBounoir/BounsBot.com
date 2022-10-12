@@ -15,7 +15,8 @@ class infoPlaylist extends Component {
 
     getData = () => {
         let id = this.props.match.params.id
-        let url = "https://backendbounsbot.herokuapp.com/playlist/"
+        // let url = "https://backendbounsbot.herokuapp.com/playlist/"
+        let url = "https://api.bounsbot.com/playlist/"
 
         fetch(url + id)
             .then(response => response.json())

@@ -24,7 +24,8 @@ class Playlist extends Component {
 
     getData = () => {
         //production
-        let url = "https://backendbounsbot.herokuapp.com/playlist/"
+        // let url = "https://backendbounsbot.herokuapp.com/playlist/"
+        let url = "https://api.bounsbot.com/playlist/"
 
         //dev
         // let url = `http://localhost:3001/playlist/`
@@ -53,10 +54,12 @@ class Playlist extends Component {
 
             if (message !== "") {
                 url = "https://backendbounsbot.herokuapp.com/playlist/search/"
+                url = "https://api.bounsbot.com/playlist/search/"
                 // url = `http://localhost:3001/playlist/search/`
             }
             else {
-                url = "https://backendbounsbot.herokuapp.com/playlist/"
+                // url = "https://backendbounsbot.herokuapp.com/playlist/"
+                url = "https://api.bounsbot.com/playlist/"
                 // url = `http://localhost:3001/playlist/`
             }
 

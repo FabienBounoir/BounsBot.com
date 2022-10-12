@@ -7,7 +7,8 @@ import Loading from "../../components/loading/loading.jsx";
 import "./_guild.css";
 
 // let url = "http://localhost:3001/"
-let url = "https://backendbounsbot.herokuapp.com/"
+// let url = "https://backendbounsbot.herokuapp.com/"
+let url = "https://api.bounsbot.com/"
 
 // let urlBot = "http://localhost:3001/"
 let urlBot = process.env.URL_BOT || "https://bouns-bot.herokuapp.com"
