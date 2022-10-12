@@ -12,8 +12,8 @@ class Callback extends Component {
             'client_secret': "LCHB5zd_FtBa7q_ZeOv1nbBy9H3Ny1FG",
             'grant_type': 'authorization_code',
             'code': code,
-            'redirect_uri': "https://bounsbot.herokuapp.com/oauth/callback"
-        } //'redirect_uri': "http://localhost:3000/oauth/callback" | 'redirect_uri': "https://bounsbot.herokuapp.com/oauth/callback"
+            'redirect_uri': "https://bounsbot.com/oauth/callback"
+        } //'redirect_uri': "http://localhost:3000/oauth/callback" | 'redirect_uri': "https://bounsbot.com/oauth/callback"
 
         var formBody = [];
         for (var property in details) {

@@ -123,7 +123,7 @@ class Dashboard extends Component {
                                             <h3 className="nameGuildTemplate"> </h3>
                                             <div className="typeAccessTemplate"></div>
                                         </div>
-                                        {/* <a href={`https://bounsbot.herokuapp.com/dashboard/${guild.id}`}><button className="goGuild">GO</button></a> */}
+                                        {/* <a href={`https://bounsbot.com/dashboard/${guild.id}`}><button className="goGuild">GO</button></a> */}
                                         <div className="goGuildTemplate"></div>
                                     </div>
                                 </div>)
