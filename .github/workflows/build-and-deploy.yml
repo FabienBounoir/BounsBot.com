@@ -16,6 +16,8 @@ jobs:
       run: npm install
     - name: Build
       run: npm run build
+    - name: Remove old build in vps
+      run: ssh ${{ secrets.HOST }}@${{ secrets.USERNAME }} -p ${{ secrets.PASSWORD }} 'rm -rf /var/www/html/*'
     - name: Copy to vps
       uses: appleboy/scp-action@master
       with:
