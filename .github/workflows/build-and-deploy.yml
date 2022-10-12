@@ -22,7 +22,7 @@ jobs:
         host: ${{ secrets.HOST }}
         username: ${{ secrets.USERNAME }}
         password: ${{ secrets.PASSWORD }}
-        source: "./build/*"
+        source: "./*"
         target: "/var/www/html"
         port: ${{ secrets.PORT }}
   
