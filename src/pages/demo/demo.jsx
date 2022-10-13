@@ -387,7 +387,7 @@ class Demo extends Component {
     //Radio disponible pour le bot
     selectRadio(radio) {
         const Radiostations = {
-            1: "https://streams.ilovemusic.de/iloveradio14.mp3",
+            1: "http://stream.kissfm.de/kissfm-electro/mp3-128/internetradio/",
             2: "https://baseradiode.stream.laut.fm/baseradiode",
             3: "https://streams.ilovemusic.de/iloveradio17.mp3",
             4: "https://streams.ilovemusic.de/iloveradio2.mp3",
@@ -397,35 +397,46 @@ class Demo extends Component {
             8: "https://streams.ilovemusic.de/iloveradio14.mp3",
             9: "https://streams.ilovemusic.de/iloveradio13.mp3",
             10: "https://streams.ilovemusic.de/iloveradio8.mp3",
+
             11: "https://streams.ilovemusic.de/iloveradio21.mp3",
             12: "https://streams.ilovemusic.de/iloveradio109.mp3",
             13: "https://streams.ilovemusic.de/iloveradio24.mp3",
             14: "https://streams.ilovemusic.de/iloveradio18.mp3",
             15: "https://streams.ilovemusic.de/iloveradio4.mp3",
-            16: "https://stream-mz.planetradio.co.uk/net2national.mp3",
-            17: "http://icy-e-bab-02-gos.sharp-stream.com/absoluteradio.mp3",
-            18: "http://ais.absoluteradio.co.uk/absolute70s.mp3",
-            19: "http://ais.absoluteradio.co.uk/absolute80s.mp3",
-            20: "http://ais.absoluteradio.co.uk/absolute90s.mp3",
-            21: "http://ais.absoluteradio.co.uk/absolute00s.mp3",
-            22: "http://icy-e-bab-04-cr.sharp-stream.com/absoluteclassicrock.mp3",
+
+            16: "https://ice31.securenetsystems.net/BGFMRAD",
+            17: "https://strw1.openstream.co/878?aw_0_1st.collectionid%3D3672%26stationId%3D3672%26publisherId%3D902%26k%3D1665680049",
+            18: "https://scdn.nrjaudio.fm/fr/30617/mp3_128.mp3?cdn_path=adswizz_lbs12&adws_out_b1",
+            19: "https://allzic08.ice.infomaniak.ch/allzic08.mp3",
+            20: "https://allzic24.ice.infomaniak.ch/allzic24.mp3",
+            21: "https://allzic49.ice.infomaniak.ch/allzic49.mp3",
+            22: "https://str4uice.streamakaci.com/4uclassicrock320.mp3",
+
             23: "https://n05a-eu.rcs.revma.com/cpkhx08pq18uv?_=1449027306?retry=0&rj-tok=AAABfIXTSQ8A3gx2ubZXeVS17A&rj-ttl=5",
-            24: "http://radio886.fluidstream.eu/886_live.mp3",
+
+            24: "https://austria-kultradio.stream.laut.fm/austria-kultradio?t302=2022-10-13_18-49-01&uuid=daefd93f-2d76-49d9-83d2-c9f2fcb8db8e",
             25: "http://onair.krone.at/kronehit.mp3",
+
             26: "http://cdn.nrjaudio.fm/audio1/fr/30401/mp3_128.mp3?origine=fluxradios",
             27: "http://www.skyrock.fm/stream.php/tunein16_128mp3.mp3",
             28: "http://funradiobe.ice.infomaniak.ch/funradiobe-high.mp3",
             29: "http://cdn.nrjaudio.fm/audio1/fr/30001/mp3_128.mp3",
+
             30: "http://icestreaming.rai.it:80/1.mp3",
             31: "http://icestreaming.rai.it:80/2.mp3",
+
             32: "http://icecast.err.ee:80/vikerraadio.mp3",
             33: "http://icecast.err.ee:80/raadiotallinn.mp3",
+
             34: "http://icecast8.play.cz/color128.mp3",
             35: "http://ice.abradio.cz:8000/helax128.mp3",
+
             36: "http://icecast6.play.cz/cro2-128.mp3",
             37: "http://icecast4.play.cz/spin128.mp3",
+
             38: "http://icecast.omroep.nl/radio1-bb-mp3",
             39: "http://21223.live.streamtheworld.com/RADIO538.mp3",
+
             40: "http://streams2.radio90.pl:8000/radio90_128kbps_stereo.mp3",
             41: "http://stream2.nadaje.com:8076/,stream.mp3"
         }
