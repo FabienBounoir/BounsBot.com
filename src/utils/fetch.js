@@ -63,7 +63,7 @@ export default class Fetch {
 
         try {
             // const body = await fetch('https://backendbounsbot.herokuapp.com/bot/hasguilds?guilds='+guilds.join(","), requestOptions)
-            const body = await fetch('http://api.bounsbot.com/bot/hasguilds?guilds=' + guilds.join(","), requestOptions)
+            const body = await fetch('https://api.bounsbot.com/bot/hasguilds?guilds=' + guilds.join(","), requestOptions)
             const result = await body.json();
 
             return result.hasGuilds || null
