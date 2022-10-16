@@ -11,7 +11,7 @@ import "./_guild.css";
 let url = "https://api.bounsbot.com/"
 
 // let urlBot = "http://localhost:3001/"
-let urlBot = process.env.URL_BOT || "https://bouns-bot.herokuapp.com"
+let urlBot = process.env.URL_BOT || "https://guild.bounsbot.com" || "https://bouns-bot.herokuapp.com"
 
 class Guild extends Component {
     state = {
@@ -84,11 +84,6 @@ class Guild extends Component {
 
     getData = async () => {
         let id = this.props.match.params.id
-        //let url = "https://backendbounsbot.herokuapp.com/guild/"
-
-        //dev
-        // let url = "http://localhost:3001/guild/"
-        // let url = "https://backendbounsbot.herokuapp.com/guild/"
 
         fetch(url + "guild/" + id)
             .then(response => response.json())
@@ -142,9 +137,6 @@ class Guild extends Component {
             headers: myHeaders,
             redirect: 'follow'
         };
-
-        // let url = "http://localhost:3001"
-        // let url = "https://bouns-bot.herokuapp.com"
 
         await fetch(urlBot + "/bot/getchannels/" + this.props.match.params.id, requestOptions)
             .then(response => response.json())
