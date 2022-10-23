@@ -73,14 +73,13 @@ ul {
     color: rgba(255, 255, 255, .55);
 }
 
-.iYBTfC {
+.dashboard_button {
     margin-inline-start: 10px;
     font-weight: 600;
     font-size: 13px;
     color: rgb(255, 255, 255);
     text-overflow: ellipsis;
     white-space: nowrap;
-    overflow-x: hidden;
 }
 
 .LogoNav {
@@ -92,7 +91,7 @@ ul {
     min-width: 30px;
 }
 
-.jGScIj {
+.login_button_container {
     display: flex;
     -webkit-box-align: center;
     align-items: center;
@@ -101,7 +100,7 @@ ul {
 
 
 @media (max-width: 767px) {
-    .loginTemplate {
+    .login-template {
         /* display: none; */
         align-self: center;
     }

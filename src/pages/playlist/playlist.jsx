@@ -77,7 +77,7 @@ class Playlist extends Component {
 
     render() {
         return (
-            <div className="leaderboardglobal">
+            <div className="playlist_container">
                 <div className="top"><h1 id="titre" >PLAYLIST</h1><div className="search search-bar" data-v-7085cbe2=""><Form.Control type="text" id="PLaylistSearch" onKeyDown={this._handleKeyDown} placeholder="Recherche Playlist" /></div></div>
 
                 <div >
@@ -106,7 +106,7 @@ class Playlist extends Component {
                                     </div>
                                 );
                             }
-                            return <InfiniteScroll dataLength={this.state.playlistList.length} next={this.getData} hasMore={this.state.hasMoreData} loader={<div><Spinner animation="grow" variant="success" /><Spinner animation="grow" variant="success" /><Spinner animation="grow" variant="success" /></div>}><div className="renderPLaylist">{playlistElement}</div></InfiniteScroll>;
+                            return <InfiniteScroll dataLength={this.state.playlistList.length} next={this.getData} hasMore={this.state.hasMoreData} loader={<div><Spinner animation="grow" variant="success" /><Spinner animation="grow" variant="success" /><Spinner animation="grow" variant="success" /></div>}><div className="renderPlaylist">{playlistElement}</div></InfiniteScroll>;
                         }
                         else if (this.state.load) {
                             return <Loading />

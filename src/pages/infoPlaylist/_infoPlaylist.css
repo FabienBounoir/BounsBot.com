@@ -1,17 +1,8 @@
-.renderPLaylist{
-    /* grid-auto-rows: auto; */
-    grid-template-rows: 1fr;
-    overflow-y: hidden;
-    justify-content: center;
-    display: grid;
-    grid-template-columns: repeat(auto-fill,minmax(300px,1fr));
-}
-
-.color{
+.color {
     background-color: red;
 }
 
-.cardTemplate{
+.cardTemplate {
     -webkit-box-flex: 1;
     background-color: #181818;
     border-radius: 4px;
@@ -26,19 +17,19 @@
     border-radius: 15px;
 }
 
-.card:hover{
+.card:hover {
     background-color: red;
 }
 
-.conteneur{
+.conteneur {
     height: 100%;
 }
 
-.image{
+.image {
     margin-bottom: 16px;
     position: relative;
 }
 
-.info{
+.info {
     min-height: 62px;
 }

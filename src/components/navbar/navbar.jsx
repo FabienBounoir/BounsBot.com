@@ -107,12 +107,12 @@ class Navigation extends Component {
                                     var EtatConnexion = [];
                                     if (this.state.login) {
                                         EtatConnexion.push(
-                                            <div key="45678" className="loginTemplate"><Navbar.Text>
-                                                <div className="hamgn6-4 jGScIj">
+                                            <div key="45678" className="login-template"><Navbar.Text>
+                                                <div className="login_button_container">
                                                     <div className="LogoNav" style={{ backgroundImage: `url("https://cdn.discordapp.com/avatars/${JSON.parse(window.localStorage.getItem('dataUser')).id}/${JSON.parse(window.localStorage.getItem('dataUser')).avatar}.png?size=512` }}>
                                                     </div>
-                                                    <Link to="/dashboard" style={{ textDecoration: "none" }}><span className="hamgn6-5 iYBTfC">{JSON.parse(window.localStorage.getItem('dataUser')).username}</span></Link>
-                                                    {/* <a href="/dashboard" style={{textDecoration: "none"}}><span className="hamgn6-5 iYBTfC">{JSON.parse(window.localStorage.getItem('dataUser')).username}</span></a> */}
+                                                    <Link to="/dashboard" style={{ textDecoration: "none" }}><span className="hamgn6-5 dashboard_button">{JSON.parse(window.localStorage.getItem('dataUser')).username}</span></Link>
+                                                    {/* <a href="/dashboard" style={{textDecoration: "none"}}><span className="hamgn6-5 dashboard_button">{JSON.parse(window.localStorage.getItem('dataUser')).username}</span></a> */}
                                                     <div onClick={this.clickMe}>
                                                         {/* <img onClick={this.clickMe} style={{ marginLeft: "10px", width: "27px", height: "27px", minHeight: "27px", minMidth: "27px" }} src={disconnect} alt="f" /> */}
                                                         <svg style={{ marginLeft: "10px", width: "27px", height: "27px", minHeight: "27px", minMidth: "27px" }} viewBox="0 0 512 512" fill="none" xmlns="http://www.w3.org/2000/svg">

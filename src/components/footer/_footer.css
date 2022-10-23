@@ -65,8 +65,6 @@
 
 .column a:hover {
     color: var(--color-principal);
-    /* box-shadow: var(--color-principal-hover) 0px 0px 0px 1px; */
-    /* transition: all 0.5s; */
     animation: color-change 1s infinite alternate;
 }
 
@@ -78,8 +76,6 @@
 
 .column Link:hover {
     color: var(--color-principal);
-    /* box-shadow: var(--color-principal-hover) 0px 0px 0px 1px; */
-    /* transition: all 0.5s; */
     animation: color-change 1s infinite alternate;
 }
 
@@ -88,7 +84,6 @@
     justify-content: left;
     align-items: center;
     width: 50%;
-    /* padding-left: 7em; */
 }
 
 .column:first-child svg {
@@ -96,7 +91,6 @@
 }
 
 .column svg:hover {
-    /* filter: drop-shadow(0 0 0.75rem var(--color-principal)); */
     animation: respirationFooter 3s infinite alternate;
 }
 
@@ -104,7 +98,6 @@
     0% {
         filter: drop-shadow(0 0 0rem var(--color-principal));
     }
-
 
     95% {
         filter: drop-shadow(0 0 0.75rem var(--color-principal));

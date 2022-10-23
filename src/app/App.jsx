@@ -2,12 +2,16 @@
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import './App.css';
 import Navigation from "../components/navbar/navbar";
+
 import { HomePage } from "../components/homepage/homepage";
+import Footer from '../components/footer/footer';
+
+// import { Features } from "../components/oldFeatures/features";
+// import Playlist from "../pages/playlist/playlist";
+// import infoPlaylist from "../pages/infoPlaylist/infoPlaylist";
 import { Features } from "../components/features/features";
 import Level from "../pages/level/level";
 import Commandes from "../pages/commandes/commandes";
-import Playlist from "../pages/playlist/playlist";
-import infoPlaylist from "../pages/infoPlaylist/infoPlaylist";
 import { ErreurPage } from "../pages/ErreurPage/ErreurPage";
 import { PrivacyBot } from "../pages/privacyBot/privacy";
 import { Login } from "../pages/login/login";
@@ -16,7 +20,6 @@ import Guild from "../pages/guild/guild";
 import Demo from "../pages/demo/demo";
 import Callback from "../components/callback/callback";
 import Authenticate from '../components/Authenticate';
-import Footer from '../components/footer/footer';
 import { Bio } from "../pages/bio/bio";
 import { TermsBot } from "../pages/termsBot/terms";
 import ScrollToTop from "../utils/ScrollToTop"
@@ -56,9 +59,6 @@ export const App = () => {
       r.style.setProperty('--color-principal', '#ff0000');
       r.style.setProperty('--color-principal-hover', '#ec5353');
     }
-
-    // this.updateLogin();
-    fetch("https://backendbounsbot.herokuapp.com/discord").catch(error => console.log(error))
   }
 
   componentDidMount()
@@ -84,11 +84,11 @@ export const App = () => {
           <Route exact path="/demo">
             <Demo />
           </Route>
-          <Route exact path="/playlist">
+          {/* <Route exact path="/playlist">
             <Playlist />
           </Route>
           <Route exact path="/playlist/:id" component={infoPlaylist}>
-          </Route>
+          </Route> */}
           <Authenticate exact path="/dashboard">
             <Dashboard />
           </Authenticate>

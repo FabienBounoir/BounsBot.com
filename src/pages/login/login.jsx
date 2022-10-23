@@ -3,9 +3,9 @@ import Avatar from "../../components/avatar/avatar";
 
 export const Login = () => {
     return (
-        <div className="sc-10wydb9-0 guBWHp">
+        <div className="container-logo">
 
-            <Avatar classElement="sc-10wydb9-1 awsUQ" />
+            <Avatar classElement="width-logo-svg" />
             <p><strong>Bienvenue sur le site de Bouns'Bot !</strong><br />Connecte-toi pour continuer...</p>
             {/* <a className="boutonConnection" href="https://discord.com/api/oauth2/authorize?client_id=1013448884963516488&redirect_uri=http%3A%2F%2Flocalhost%3A3001%2Foauth%2Ftoken&response_type=code&scope=identify%20email%20guilds%20connections"> */}
             <a className="boutonConnection" href="https://discord.com/api/oauth2/authorize?client_id=1012688780471308339&redirect_uri=https%3A%2F%2Fbounsbot.com%2Foauth%2Fcallback&response_type=code&scope=email%20identify%20connections%20guilds%20guilds.join" >

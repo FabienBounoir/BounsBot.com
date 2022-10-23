@@ -60,7 +60,10 @@
     text-decoration: none;
     font-size: 1.1rem;
     font-weight: 600;
-    transition: all 0.3s ease;
+
+    transition-property: background-color, border-color;
+    transition-duration: 0.3s;
+    transition-timing-function: ease;
 }
 
 .terms-section .signature {
@@ -75,7 +78,6 @@
     text-decoration: none;
     font-size: 1.1rem;
     font-weight: 600;
-    transition: all 0.3s ease;
     text-align: center;
 }
 

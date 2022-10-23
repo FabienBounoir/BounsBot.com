@@ -3,7 +3,7 @@
     --avatar-hue: 0deg
 }
 
-.mainscreen{
+.mainscreen {
     z-index: -2;
 }
 
@@ -106,30 +106,37 @@ b {
 }
 
 @keyframes RGBWhiteMode {
-  12.5% {
-    color: #FF0000;
-  }
-  25% {
-    color: #FFA500;
-  }
-  37.5% {
-    color: #FFFF00;
-  }
-  50% {
-    color: #7FFF00;
-  }
-  62.5% {
-    color: #00FFFF;
-  }
-  75% {
-    color: #0000FF;
-  }
-  87.5% {
-    color: #9932CC;
-  }
-  100% {
-    color: #FF1493;
-  }
+    12.5% {
+        color: #FF0000;
+    }
+
+    25% {
+        color: #FFA500;
+    }
+
+    37.5% {
+        color: #FFFF00;
+    }
+
+    50% {
+        color: #7FFF00;
+    }
+
+    62.5% {
+        color: #00FFFF;
+    }
+
+    75% {
+        color: #0000FF;
+    }
+
+    87.5% {
+        color: #9932CC;
+    }
+
+    100% {
+        color: #FF1493;
+    }
 }
 
 .BackgroundGreen {
@@ -266,8 +273,7 @@ b {
 }
 
 #discord-inner-messages {
-    overflow: hidden;
-    overflow-y: auto;
+    overflow: hidden scroll;
     height: 90%;
     margin: 10px;
     text-align: left;
@@ -494,7 +500,7 @@ b {
 }
 
 .demo-env.panel#discord-voice-panel.hidden {
-    display: none!important
+    display: none !important
 }
 
 .demo-env.panel#discord-voice-panel .demo-env.inner {
@@ -543,11 +549,10 @@ b {
     white-space: nowrap;
     text-overflow: ellipsis;
     overflow: hidden;
-    padding-bottom: 2px
-    background-color #292b2f
+    padding-bottom: 2px background-color #292b2f
 }
 
-.rtcConnectionStatus .contents{
+.rtcConnectionStatus .contents {
     background-color: #292b2f;
 }
 
@@ -784,11 +789,11 @@ body {
     margin: 0;
     padding: 0;
     color: #fff;
-    overflow-x: hidden;
-    font-family: Open Sans,Helvetica,arial,sans-serif;
+    font-family: Open Sans, Helvetica, arial, sans-serif;
 }
 
 @media only screen and (max-width:1250px) {
+
     /* #discord-main {
         width: 50vw
     } */
@@ -798,14 +803,15 @@ body {
     #discord-channel-list, #discord-voice-panel {
         width: 200px
     }
+
     #discord-voice-panel>div.inner.demo-env {
-        font-size: 86%!important;
-        margin-right: -18px!important
+        font-size: 86% !important;
+        margin-right: -18px !important
     }
 }
 
 @media only screen and (max-width:800px) {
-    #discord-main{
+    #discord-main {
         max-height: auto;
     }
 
@@ -813,17 +819,17 @@ body {
         display: none
     }
 
-    #discord-channel-list{
+    #discord-channel-list {
         border-bottom-left-radius: 8px;
     }
 
-    #discord-voice-panel{
+    #discord-voice-panel {
         border-bottom-left-radius: 8px;
     }
 }
 
 @media only screen and (max-width:400px) {
-    #discord-main{
+    #discord-main {
         top: 10%;
         max-height: auto;
     }
@@ -832,13 +838,13 @@ body {
         display: none
     }
 
-    #discord-channel-list{
+    #discord-channel-list {
         width: -webkit-fill-available;
         border-bottom-left-radius: 8px;
         border-bottom-right-radius: 8px;
     }
-    #discord-voice-panel
-    {
+
+    #discord-voice-panel {
         width: 100%;
     }
 }

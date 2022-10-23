@@ -81,7 +81,10 @@
     padding: 29px;
     border-radius: 12px;
     background-color: #1f1f25;
-    transition: all .4s;
+
+    transition-property: display, height;
+    transition-duration: 0.4s;
+    transition-timing-function: ease;
 }
 
 .command-card__container h5 {
@@ -101,35 +104,17 @@
     display: flex;
 
     overflow: hidden;
-
-
-    /* opacity: 0; */
     height: 0;
-    /* padding-top: 0;
-    padding-bottom: 0;
-    margin-top: 0;
-    margin-bottom: 0;
-    border-top-width: 0;
-    border-bottom-width: 0; */
-    transition: all 0.3s ease-in;
 }
 
 
 .command-card__container.active .command-card__body {
     margin-top: 30px;
     height: fit-content;
-    transition: all 0.3s ease-in;
 
-    /* opacity: 1; */
-
-    /* opacity: 0;
-    height: 0px;
-    padding-top: 0;
-    padding-bottom: 0;
-    margin-top: 0;
-    margin-bottom: 0;
-    border-top-width: 0;
-    border-bottom-width: 0; */
+    /* transition-property: height, margin-top;
+    transition-duration: 0.3s;
+    transition-timing-function: ease-in; */
 }
 
 .command-card__container {
@@ -182,7 +167,9 @@
 
 .command-card__header .logo {
     filter: grayscale(100%);
-    transition: all .4s;
+
+    transition-property: filter, transform;
+    transition-duration: 0.4s;
 
     width: 26px;
     height: 24px;
@@ -208,7 +195,9 @@
 
 .command-card__container .arrow {
     transform: rotate(0deg);
-    transition: all .4s;
+
+    transition-property: transform;
+    transition-duration: 0.4s;
 }
 
 .command-card__container.active .arrow {
@@ -222,12 +211,12 @@
 }
 
 .btn-commands-category.active {
-    /* box-shadow: var(--color-principal-hover) 0px 0px 0px 1px inset;
-     */
     background-color: var(--color-principal);
     color: white;
     cursor: not-allowed;
-    transition: all .4s;
+
+    transition-property: background-color, color;
+    transition-duration: 0.4s;
 }
 
 .fa-magnifying-glass {

@@ -57,15 +57,15 @@ class Callback extends Component {
             this.exchange_code(code);
         }
         else {
-            document.location.href = "/login";
+            // document.location.href = "/login";
         }
     }
 
 
     render() {
         return (
-            <div className="sc-10wydb9-0 guBWHp">
-                <Avatar classElement="sc-10wydb9-1 awsUQ" />
+            <div className="container-logo">
+                <Avatar classElement="width-logo-svg" />
                 <p><strong>Authentification en cours</strong><br />Veuillez patienter...</p>
                 <span>Se connecter avec Discord</span>
             </div>

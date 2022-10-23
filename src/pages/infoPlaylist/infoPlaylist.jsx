@@ -32,7 +32,7 @@ class infoPlaylist extends Component {
 
     render() {
         return (
-            <div className="leaderboardglobal">
+            <div className="playlist_container">
                 <div className="top"><a href="/playlist" style={{ "textDecoration": "none" }}> <h1 id="titre" >⬅ {this.state.playlistList[0]?.nom ? this.state.playlistList[0]?.nom[0]?.toUpperCase() + this.state.playlistList[0]?.nom?.slice(1) : ""}</h1></a></div>
 
                 <div >
@@ -52,7 +52,7 @@ class infoPlaylist extends Component {
                                     </Card>);
                             }
 
-                            return <div className="renderPLaylist">{playlistElement}</div>;
+                            return <div className="renderPlaylist">{playlistElement}</div>;
                         }
                         else if (this.state.load) {
                             return <Loading />

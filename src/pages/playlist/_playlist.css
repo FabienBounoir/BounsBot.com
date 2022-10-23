@@ -1,11 +1,33 @@
-.renderPLaylist {
+.renderPlaylist {
     /* grid-auto-rows: auto; */
     grid-template-rows: 1fr;
-    overflow-y: hidden;
     justify-content: center;
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
     gap: 1em;
+}
+
+.playlist_container {
+    background-color: var(--back-second-color);
+    min-height: calc(100vh - 470px);
+    background-color: var(--back-first-color);
+    padding: 2.5em 15em;
+}
+
+.playlist_container .top {
+    display: flex;
+    justify-content: space-between;
+    height: 56px;
+    margin-bottom: 46px;
+    align-items: center;
+}
+
+.playlist_container .top h1 {
+    margin: -2px 0 -12px;
+    font-size: 55px;
+    color: var(--color-principal);
+    font-family: "Uni Sans", "Arial", sans-serif;
+    font-weight: bold;
 }
 
 .color {
@@ -46,6 +68,18 @@
 
 .info {
     min-height: 62px;
+}
+
+@media screen and (max-width: 1500px) {
+    .playlist_container {
+        padding: 2.5em;
+    }
+}
+
+@media screen and (max-width: 1000px) {
+    .playlist_container {
+        padding: 2.5em;
+    }
 }
 
 @media (max-width: 435px) {
