@@ -7,13 +7,21 @@ import Avatar from "../avatar/avatar";
 class Callback extends Component {
 
     async exchange_code(code) {
+        // let details = {
+        //     'client_id': "1012688780471308339",
+        //     'client_secret': "LCHB5zd_FtBa7q_ZeOv1nbBy9H3Ny1FG",
+        //     'grant_type': 'authorization_code',
+        //     'code': code,
+        //     'redirect_uri': "https://bounsbot.com/oauth/callback"
+        // } //'redirect_uri': "http://localhost:3000/oauth/callback" | 'redirect_uri': "https://bounsbot.com/oauth/callback"
+
         let details = {
-            'client_id': "1012688780471308339",
-            'client_secret': "LCHB5zd_FtBa7q_ZeOv1nbBy9H3Ny1FG",
+            'client_id': "1013448884963516488",
+            'client_secret': "PlF8oWhLUFNWgfm2XX2kvloOsTcJ7Nvl",
             'grant_type': 'authorization_code',
             'code': code,
-            'redirect_uri': "https://bounsbot.com/oauth/callback"
-        } //'redirect_uri': "http://localhost:3000/oauth/callback" | 'redirect_uri': "https://bounsbot.com/oauth/callback"
+            'redirect_uri': "http://localhost:3000/oauth/callback"
+        }
 
         var formBody = [];
         for (var property in details) {
@@ -31,7 +39,8 @@ class Callback extends Component {
             headers: headers,
             method: "POST",
             body: formBody
-        }).catch(error => { console.error(error); document.location.href = "/"; });
+        }).catch(error => { console.error(error); });//document.location.href = "/"; });
+
 
         if (body.status === 200) {
             const result = await body.json();
@@ -46,6 +55,7 @@ class Callback extends Component {
             document.location.href = "/dashboard";
         }
         else {
+            // console.log(body, body.status, body.statusText)
             document.location.href = "/login";
         }
     }

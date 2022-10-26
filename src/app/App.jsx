@@ -92,10 +92,16 @@ export const App = () => {
           <Authenticate exact path="/dashboard">
             <Dashboard />
           </Authenticate>
-          <Authenticate exact path="/dashboard/:id">
+          {/* <Authenticate exact path="/dashboard/:id/:type">
             <Route exact path="/dashboard/:id" component={Guild}>
             </Route>
-          </Authenticate>
+          </Authenticate> */}
+
+          {/* <Authenticate exact path="/dashboard/:id/:typeconfig">
+            <Route exact path="/dashboard/:id/:typeconfig" component={Dashboard()}>
+            </Route>
+          </Authenticate> */}
+
           <Route exact path="/login" >
             <Login />
           </Route>

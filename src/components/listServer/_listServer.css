@@ -1,0 +1,40 @@
+.guildSeparator {
+    position: relative;
+    margin: 0 0 8px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    width: 72px;
+}
+
+.guildSeparator span {
+    height: 2px;
+    width: 32px;
+    border-radius: 1px;
+    background: var(--color-principal);
+}
+
+.list_item:hover {
+    cursor: pointer;
+}
+
+/* .list_item:hover span .name {
+    color: var(--color-principal);
+    display: block;
+} */
+
+.list_item span {
+    display: none;
+    background: green;
+}
+
+.list_item:hover span {
+    display: block;
+    position: absolute;
+    top: 25%;
+    left: 100%;
+    /* white-space: nowrap; */
+}
