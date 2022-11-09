@@ -1,5 +1,5 @@
 import "./_commandes.css";
-import { commands } from "./../../components/command.json"
+import commandList from "./../../components/command.json"
 import { Component } from "react";
 
 class Commandes extends Component {
@@ -12,13 +12,13 @@ class Commandes extends Component {
 
     componentDidMount() {
         let types = ["Tout"];
-        for (let command of commands) {
+        for (let command of commandList.commands) {
             command.open = false
             if (!types.includes(command.type)) {
                 types.push(command.type)
             }
         }
-        this.setState({ commands, types })
+        this.setState({ commands: commandList.commands, types })
     }
 
     openCommand = (index) => {

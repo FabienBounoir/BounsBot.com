@@ -49,6 +49,7 @@
 .picture img {
     padding-top: 3.5em;
     width: inherit;
+    pointer-events: none;
 }
 
 .picture img:first-child {
@@ -109,14 +110,18 @@
 }
 
 @media screen and (max-width: 1100px) {
-    .columns {
+    /* .revertMobile {
+        flex-direction: column
+    } */
+
+    .features .columns {
         flex-direction: column-reverse;
         margin-left: 0 !important;
         margin-right: 0 !important;
         margin-top: 0 !important;
     }
 
-    .revertMobile {
+    .features .columns.revertMobile {
         flex-direction: column
     }
 
