@@ -1,92 +1,144 @@
 import Fetch from "../../utils/fetch.js"
 import { useState, useEffect } from "react"
-import { useParams } from 'react-router-dom';
+import { useParams, Link } from 'react-router-dom';
+import Loading from "../loading/LoadingFullPage.jsx";
 import "./_listServer.css";
 
-export const ListServer = () => {
+export const ListServer = (props) => {
+
     const { id, typeconfig } = useParams();
-    const [guilds, setGuilds] = useState([])
-    const [loading, setLoading] = useState(true)
+    //get element guilds from params component
+    const [guilds, setGuilds] = useState(props?.guilds || [])
+    const [loading, setLoading] = useState(props?.loading || true)
     const [hasguild, setHasguild] = useState([])
     const [activeGuild, setActiveGuild] = useState(id || "user")
     const [type, setType] = useState(typeconfig || "description")
 
-    //get argument from url
-    console.log(id, type)
+    //change activeGuild or type when the url change
+    useEffect(() => {
+        setActiveGuild(id || "user")
+        setType(typeconfig || "description")
+    }, [id, typeconfig])
 
-
-    const getGuilds = async () => {
-        const info = JSON.parse(window.localStorage.getItem("dataDiscord"))
-        const guild = await Fetch.getGuilds(info.access_token)
-
-        if (!guild) return document.location.href = "/login";
-
-        setGuilds(guild)
-        setLoading(false)
-    }
-
-
+    useEffect(() => {
+        setGuilds(props?.guilds)
+        setLoading(props?.loading)
+    }, [props])
 
     const renderProfil = () => {
         return (<>
-
-            <div className={`list_item${activeGuild == "user" ? " active" : ""}`}>
+            <Link className={`list_item${activeGuild === "user" ? " active" : ""}`} to={`/dashboard/user/description`}>
                 < div className={`list_balise`} >
                     <div className="balise active">
                         <span></span>
                     </div>
                 </div >
                 <div className="userAvatar">
-                    <img src={`https://cdn.discordapp.com/avatars/${JSON.parse(window.localStorage.getItem('dataUser')).id}/${JSON.parse(window.localStorage.getItem('dataUser')).avatar}.png?size=512`} alt="Avatar" />
+                    <img src={`https://cdn.discordapp.com/avatars/${JSON.parse(window.localStorage.getItem('dataUser')).id}/${JSON.parse(window.localStorage.getItem('dataUser')).avatar}.webp?size=256`} alt="Avatar" />
                 </div>
-            </div >
+            </Link>
             <div className="guildSeparator">
                 <span></span>
             </div>
         </>
         )
-
     }
 
+    const LoaderGuildEffect = () => {
+        let renderLoading = []
+        //random entre 4 et 10
+        let random = Math.floor(Math.random() * (12 - 4 + 1) + 7)
+
+        for (let i = 0; i < random; i++) {
+
+            renderLoading.push(
+                <div key={i} className={`list_item`}>
+                    < div className="list_balise" >
+                        <div>
+                            <span></span>
+                        </div>
+                    </div >
+                    <div className="guildAvatar loader">
+                        <div></div>
+                        {/* <img src={`https://cdn.discordapp.com/icons/${guild.id}/${guild.icon}.webp`} alt={guild.name} onError={(e) => { e.target.outerHTML = `<img src='https://cdn.discordapp.com/embed/avatars/${random}.png'/>` }} /> */}
+                    </div>
+                    <span>
+                        <div className="name">
+                            {/* {guild.name} */}
+                        </div>
+                    </span>
+                </div>)
+        }
+
+        return renderLoading
+    }
+
+    const popUpCreate = (guildId) => {
+        let modal = window.open("https://discord.com/oauth2/authorize?client_id=" + process.env.REACT_APP_CLIENT_ID + "&permissions=1945627743&redirect_uri=" + process.env.REACT_APP_REDIRECT_URI + "callback&scope=bot%20applications.commands&guild_id=" + guildId, 'popup', 'width=1040px,height=555px,toolbar=no,scrollbars=no,resizable=yes')
+
+        modal.addEventListener('popstate', function (event) {
+            // Log the state data to the console
+            console.log(event.state);
+        });
+
+        //https://discord.com/oauth2/authorize?scope=bot+applications.commands&response_type=code&redirect_uri=https%3A%2F%2Fmee6.xyz%2Fguild-oauth&permissions=296150887519&client_id=159985415099514880&guild_id=757024209447813130
+    }
 
     const renderGuilds = () => {
         let render = []
-
+        // let i = 0
         for (let guild of guilds) {
             let random = Math.floor(Math.random() * 6)
 
-            render.push(<div className={`list_item${activeGuild == guild.id ? " active" : ""}`}>
-                < div className="list_balise" >
-                    <div className="balise active">
-                        <span></span>
-                    </div>
-                </div >
-                <div className="guildAvatar">
-                    <img src={`https://cdn.discordapp.com/icons/${guild.id}/${guild.icon}.png`} alt={guild.name} onError={(e) => { e.target.outerHTML = `<img src='https://cdn.discordapp.com/embed/avatars/${random}.png'/>` }} />
-                </div>
-                <span>
-                    <div className="name">
-                        {guild.name}
-                    </div>
-                </span>
-            </div >)
+            if (guild.hasguild) {
+                render.push(
+                    <Link key={guild.id} className={`list_item${activeGuild === guild.id ? " active" : ""}`} to={`/dashboard/${guild.id}/dashboard`}>
+                        < div className="list_balise" >
+                            <div className="balise active">
+                                <span></span>
+                            </div>
+                        </div >
+                        <div className="guildAvatar">
+                            <img src={`https://cdn.discordapp.com/icons/${guild.id}/${guild.icon}.webp`} alt={guild.name} onError={(e) => { e.target.outerHTML = `<img src='https://cdn.discordapp.com/embed/avatars/${random}.png'/>` }} />
+                        </div>
+                        <span>
+                            <div className="name">
+                                {guild.name}
+                            </div>
+                        </span>
+                    </Link>)
+            }
+            else {
+                render.push(
+                    <div key={guild.id} className={`list_item${activeGuild === guild.id ? " active" : ""}`} onClick={() => { popUpCreate(guild.id) }}>
+                        < div className="list_balise" >
+                            <div className="balise active">
+                                <span></span>
+                            </div>
+                        </div >
+                        <div className="guildAvatar inviteBot">
+                            <img src={`https://cdn.discordapp.com/icons/${guild.id}/${guild.icon}.webp`} alt={guild.name} onError={(e) => { e.target.outerHTML = `<img src='https://cdn.discordapp.com/embed/avatars/${random}.png'/>` }} />
+                        </div>
+                        <span>
+                            <div className="name">
+                                {guild.name}
+                            </div>
+                        </span>
+                    </div>)
+            }
+            // i++
 
         }
 
         return render
     }
 
-
-    //juste when the component is mounted
-    useEffect(() => {
-        getGuilds()
-    }, [])
-
-
     return (
         <div className="servers">
             {renderProfil()}
-            {renderGuilds()}
+            {loading ? LoaderGuildEffect() : renderGuilds()}
+
+            {/* {loaderEffect()} */}
         </div>
     )
 }

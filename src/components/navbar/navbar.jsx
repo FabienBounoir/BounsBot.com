@@ -58,8 +58,8 @@ class Navigation extends Component {
         let info = JSON.parse(window.localStorage.getItem('dataDiscord'));
 
         let details = {
-            'client_id': "1012688780471308339",
-            'client_secret': "LCHB5zd_FtBa7q_ZeOv1nbBy9H3Ny1FG",
+            'client_id': process.env.REACT_APP_CLIENT_ID,
+            'client_secret': process.env.REACT_APP_CLIENT_SECRET,
             'token': info.access_token
         }
 
@@ -111,7 +111,7 @@ class Navigation extends Component {
                                                 <div className="login_button_container">
                                                     <div className="LogoNav" style={{ backgroundImage: `url("https://cdn.discordapp.com/avatars/${JSON.parse(window.localStorage.getItem('dataUser')).id}/${JSON.parse(window.localStorage.getItem('dataUser')).avatar}.png?size=512` }}>
                                                     </div>
-                                                    <Link to="/dashboard" style={{ textDecoration: "none" }}><span className="hamgn6-5 dashboard_button">{JSON.parse(window.localStorage.getItem('dataUser')).username}</span></Link>
+                                                    <Link to="/dashboard/user/description" style={{ textDecoration: "none" }}><span className="hamgn6-5 dashboard_button">{JSON.parse(window.localStorage.getItem('dataUser')).username}</span></Link>
                                                     {/* <a href="/dashboard" style={{textDecoration: "none"}}><span className="hamgn6-5 dashboard_button">{JSON.parse(window.localStorage.getItem('dataUser')).username}</span></a> */}
                                                     <div onClick={this.clickMe}>
                                                         {/* <img onClick={this.clickMe} style={{ marginLeft: "10px", width: "27px", height: "27px", minHeight: "27px", minMidth: "27px" }} src={disconnect} alt="f" /> */}

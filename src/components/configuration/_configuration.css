@@ -1,5 +1,5 @@
 .configuration_list {
-    background: red;
+    background: #2e3137;
 
     flex-direction: column;
     min-height: 0;
@@ -7,6 +7,7 @@
     -webkit-box-flex: 0;
     -ms-flex: 0 0 auto;
     flex: 0 0 auto;
+    overflow-y: scroll;
 }
 
 .config {
@@ -24,9 +25,210 @@
     flex-direction: column;
     position: relative;
     overflow: hidden;
-    background: blue;
+    /* background: green; */
 
     -webkit-box-flex: 1;
     -ms-flex: 1 1 auto;
     flex: 1 1 auto;
+    overflow-y: scroll;
+
+    padding: 3em 3em 3em 3em;
+}
+
+.configuration_list header {
+    height: max-content;
+    border-radius: 0;
+
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    border: 0;
+    padding: 0;
+    border-bottom: 2px solid #22252a;
+
+
+    /* inset: 0px; */
+    /* z-index: 1; */
+    /* transform: scale(1.4); */
+    /* filter: blur(10px); */
+    /* opacity: 0.3; */
+}
+
+.configuration_list header.withBanner {
+    /* height: 135px; */
+    /* filter: blur(3px); */
+    /* backdrop-filter: blur(3px); */
+    /* background-color: rgba(0, 0, 0, 0.3);` */
+
+}
+
+.configuration_list header.withBanner p {
+    background: linear-gradient(0deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.8) 100%);
+    height: 135px;
+}
+
+/* .configuration_list header.withoutBanner {
+    height: max-content;
+} */
+
+.configuration_list header p {
+    padding: 0.5em 0.5em 0.5em;
+    margin: 0;
+    /* padding: 0; */
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+
+    font-size: 1.2em;
+    font-weight: 700;
+    /* //text shadow for lisibility */
+    text-shadow: 0 0 2px rgba(0, 0, 0, 0.5);
+    text-rendering: optimizeLegibility;
+
+
+    /* 
+    font-family: var(--bs-font-sans-serif);
+    color: #212529; */
+}
+
+.configList .title {
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    position: relative;
+    fill: aliceblue;
+    padding: 2em 0 0 0;
+
+    margin-inline-start: 12px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    font-weight: 900;
+    color: rgb(242, 244, 251);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-size: 10px;
+    line-height: 16px;
+}
+
+.configList .title:first-child {
+    padding: 1em 0 0 0;
+}
+
+.configList .element {
+    /* padding-left: 1em;
+    fill: aliceblue; */
+
+    padding: 0.5em 0 0.5em 1em;
+    margin: 3px 0;
+    flex: 1 1 0%;
+    /* margin-inline-start: 16px; */
+    transition: color 0.15s ease-out 0s;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    border-radius: 0.3em;
+    cursor: pointer;
+
+    line-height: 16px;
+    font-weight: 500;
+}
+
+.configList .element:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.configList .element div svg {
+    width: 1em;
+}
+
+.configList .element div {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 0.5em;
+}
+
+.configList a {
+    text-decoration: none;
+    color: #cccdd0;
+}
+
+.configList a:hover {
+    text-decoration: none;
+    color: rgb(245, 245, 245);
+}
+
+.configList .active {
+    color: #fff;
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.configList .title div {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 0.5em;
+}
+
+.configList .title div svg {
+    width: 1em;
+}
+
+.configList {
+    color: white;
+    text-align: left;
+    margin: 0.5em;
+    display: block;
+    padding: 0;
+    user-select: none;
+}
+
+.configList * {
+    padding: 0;
+    margin: 0;
+}
+
+.configList li {
+    list-style-type: none;
+}
+
+.buttonMenu {
+    /* background-color: red; */
+    display: none;
+    background: transparent;
+}
+
+@media (max-width: 900px) {
+    .buttonMenu {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .config {
+        padding: 3em 3em 3em 2em;
+    }
+
+    .close {
+        min-width: 0;
+        max-width: 0;
+        width: 0;
+    }
+
+    .buttonMenu span {
+        display: flex;
+        align-items: center;
+        width: 1em;
+        justify-content: center;
+        height: 5em;
+        background-color: #2e3137;
+        color: white;
+        font-size: 1.5em;
+        cursor: pointer;
+        border-radius: 0 0.3em 0.3em 0;
+    }
+
+    .buttonMenu span svg {
+        rotate: 90deg;
+
+    }
 }

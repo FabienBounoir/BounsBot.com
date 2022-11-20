@@ -33,11 +33,11 @@ export default class Fetch {
         const body = await fetch('https://discord.com/api/users/@me/guilds', {
             headers: headers,
             method: "GET"
-        });
+        })
+
 
         if (body.status === 200) {
-            const result = await body.json();
-            console.log("Nombre de serveur: ", result.length)
+            const result = await body.json()
             let guildAdmin = await result.filter(guilds => guilds.permissions === 2147483647)
 
             return guildAdmin
@@ -63,7 +63,7 @@ export default class Fetch {
 
         try {
             // const body = await fetch('https://backendbounsbot.herokuapp.com/bot/hasguilds?guilds='+guilds.join(","), requestOptions)
-            const body = await fetch('https://api.bounsbot.com/bot/hasguilds?guilds=' + guilds.join(","), requestOptions)
+            const body = await fetch(process.env.REACT_APP_HOSTNAME_BACKEND + '/bot/hasguilds?guilds=' + guilds.join(","), requestOptions)
             const result = await body.json();
 
             return result.hasGuilds || null

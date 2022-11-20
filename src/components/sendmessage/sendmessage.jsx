@@ -19,7 +19,7 @@ class SendMessage extends Component {
             redirect: 'follow'
         };
 
-        let url = process.env.URL_BOT || "https://guild.bounsbot.com" || "https://bouns-bot.herokuapp.com"
+        let url = process.env.REACT_APP_HOSTNAME_BOT
 
         fetch(url + "/bot/getchannels/" + this.props.guild, requestOptions)
             .then(response => response.json())
@@ -49,8 +49,7 @@ class SendMessage extends Component {
             redirect: 'follow'
         };
 
-        let url = process.env.URL_BOT || "https://guild.bounsbot.com" || "https://bouns-bot.herokuapp.com"
-        // let url = "http://localhost:5342"
+        let url = process.env.REACT_APP_HOSTNAME_BOT 
 
         fetch(url + "/bot/sendto/", requestOptions)
             .then(response => response.json())

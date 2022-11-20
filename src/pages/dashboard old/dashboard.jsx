@@ -1,7 +1,7 @@
 import "./_dashboard.css";
 import React, { Component } from 'react'
 import Fetch from "../../utils/fetch.js"
-import Loading from "../../components/loading/loading.jsx";
+import LoadingFullPage from "../../components/loading/LoadingFullPage.jsx";
 import { Link } from "react-router-dom"
 
 class Dashboard extends Component {
@@ -16,8 +16,8 @@ class Dashboard extends Component {
         let info = JSON.parse(window.localStorage.getItem('dataDiscord'));
 
         let details = {
-            'client_id': "1012688780471308339",
-            'client_secret': "LCHB5zd_FtBa7q_ZeOv1nbBy9H3Ny1FG",
+            'client_id': process.env.REACT_APP_CLIENT_ID,
+            'client_secret': process.env.REACT_APP_CLIENT_SECRET,
             'grant_type': 'refresh_token',
             'refresh_token': info.refresh_token
         }//'Content-Type': 'application/x-www-form-urlencoded',
@@ -106,7 +106,7 @@ class Dashboard extends Component {
                                         )
                                             :
                                             (
-                                                <a href={"https://discord.com/oauth2/authorize?client_id=1012688780471308339&permissions=1945627743&scope=bot%20applications.commands&guild_id=" + guild.id}><button className="goGuild inviteGuild">Invite</button></a>
+                                                <a href={"https://discord.com/oauth2/authorize?client_id=" + process.env.REACT_APP_CLIENT_ID + "&permissions=1945627743&scope=bot%20applications.commands&guild_id=" + guild.id}><button className="goGuild inviteGuild">Invite</button></a>
                                             )}
                                     </div>
                                 </div>)
@@ -136,7 +136,7 @@ class Dashboard extends Component {
 
                 {
                     (() => {
-                        if (this.state.loading) return <Loading />
+                        if (this.state.loading) return <LoadingFullPage />
                     })()
                 }
             </div >

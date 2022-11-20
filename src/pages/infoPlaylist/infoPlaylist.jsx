@@ -1,7 +1,7 @@
 import "./_infoPlaylist.css";
 import React, { Component } from 'react'
 import { Card } from 'react-bootstrap/'
-import Loading from "../../components/loading/loading.jsx";
+import LoadingFullPage from "../../components/loading/LoadingFullPage.jsx";
 
 class infoPlaylist extends Component {
     state = {
@@ -16,7 +16,7 @@ class infoPlaylist extends Component {
     getData = () => {
         let id = this.props.match.params.id
         // let url = "https://backendbounsbot.herokuapp.com/playlist/"
-        let url = "https://api.bounsbot.com/playlist/"
+        let url = process.env.REACT_APP_HOSTNAME_BACKEND + "/playlist/"
 
         fetch(url + id)
             .then(response => response.json())
@@ -55,7 +55,7 @@ class infoPlaylist extends Component {
                             return <div className="renderPlaylist">{playlistElement}</div>;
                         }
                         else if (this.state.load) {
-                            return <Loading />
+                            return <LoadingFullPage />
                         }
                         else {
                             return <h1 style={{ paddingTop: "50px" }}>Cette playlist est introuvable</h1>

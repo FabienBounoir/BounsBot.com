@@ -2,8 +2,7 @@ import "./_musique.css";
 import React, { Component } from 'react'
 
 var timeout = ""
-let url = process.env.URL_BOT || "https://guild.bounsbot.com" || "https://bouns-bot.herokuapp.com"
-// let url = "http://localhost:5342"
+let url = process.env.REACT_APP_HOSTNAME_BOT
 
 class Musique extends Component {
 

@@ -1,10 +1,12 @@
 .dashboard {
     display: flex;
-    min-height: calc(100vh - 80px);
     background-color: #383c41;
-    height: calc(100vh - 55px);
-    max-height: calc(100vh - 55px);
 
+    /* min-height: calc(100vh - 80px); */
+    height: var(--dashboard-height);
+    /* calc(var(--doc-height) - 55px); */
+    /* max-height: calc(100vh - 55px); */
+    /* min-height: -webkit-fill-available; */
 }
 
 .servers {
@@ -58,6 +60,10 @@
     -ms-flex-pack: center;
     justify-content: center;
     width: 72px;
+}
+
+.servers .list_item:last-child {
+    margin: 0 0 20px;
 }
 
 .servers .list_item .guildAvatar img {
@@ -180,4 +186,14 @@
 
 .list_item:hover.active .list_balise .balise {
     height: 29px;
+}
+
+.configuration_list {
+    /* transition: width 0.3s ease-out 0s; */
+    transition: width 0.3s ease-in-out, min-width 0.3s ease-in-out, max-width 0.3s ease-in-out;
+}
+
+.servers {
+    /* transition: width 0.3s ease-out 0s; */
+    transition: width 0.2s ease-in-out, min-width 0.2s ease-in-out, max-width 0.2s ease-in-out;
 }

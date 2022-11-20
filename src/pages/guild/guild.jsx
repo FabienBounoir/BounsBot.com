@@ -3,15 +3,11 @@ import Avatar from "../../components/avatar/avatar";
 import { Form } from 'react-bootstrap/'
 import WelcomeMessage from "../../components/welcomeConfig/welcomeConfig.jsx";
 import SendMessage from "../../components/sendmessage/sendmessage"
-import Loading from "../../components/loading/loading.jsx";
-import "./_guild.css";
+import LoadingFullPage from "../../components/loading/LoadingFullPage.jsx";
+// import "./_guild.css";
 
-// let url = "http://localhost:3001/"
-// let url = "https://backendbounsbot.herokuapp.com/"
-let url = "https://api.bounsbot.com/"
-
-// let urlBot = "http://localhost:3001/"
-let urlBot = process.env.URL_BOT || "https://guild.bounsbot.com" || "https://bouns-bot.herokuapp.com"
+let url = process.env.REACT_APP_HOSTNAME_BACKEND
+let urlBot = process.env.REACT_APP_HOSTNAME_BOT
 
 class Guild extends Component {
     state = {
@@ -605,7 +601,7 @@ class Guild extends Component {
                 {/* <Musique guild={this.props.match.params.id} /> */}
 
                 {(() => {
-                    if (this.loading) return <Loading />
+                    if (this.loading) return <LoadingFullPage />
                 })()}
             </div>
 
