@@ -1,23 +1,15 @@
-import Fetch from "../../utils/fetch.js"
 import { useState, useEffect } from "react"
 import { useParams, Link } from 'react-router-dom';
-import Loading from "../loading/LoadingFullPage.jsx";
 import "./_listServer.css";
 
 export const ListServer = (props) => {
-
     const { id, typeconfig } = useParams();
-    //get element guilds from params component
     const [guilds, setGuilds] = useState(props?.guilds || [])
     const [loading, setLoading] = useState(props?.loading || true)
-    const [hasguild, setHasguild] = useState([])
     const [activeGuild, setActiveGuild] = useState(id || "user")
-    const [type, setType] = useState(typeconfig || "description")
 
-    //change activeGuild or type when the url change
     useEffect(() => {
         setActiveGuild(id || "user")
-        setType(typeconfig || "description")
     }, [id, typeconfig])
 
     useEffect(() => {
@@ -77,8 +69,7 @@ export const ListServer = (props) => {
         let modal = window.open("https://discord.com/oauth2/authorize?client_id=" + process.env.REACT_APP_CLIENT_ID + "&permissions=1945627743&redirect_uri=" + process.env.REACT_APP_REDIRECT_URI + "callback&scope=bot%20applications.commands&guild_id=" + guildId, 'popup', 'width=1040px,height=555px,toolbar=no,scrollbars=no,resizable=yes')
 
         modal.addEventListener('popstate', function (event) {
-            // Log the state data to the console
-            console.log(event.state);
+
         });
 
         //https://discord.com/oauth2/authorize?scope=bot+applications.commands&response_type=code&redirect_uri=https%3A%2F%2Fmee6.xyz%2Fguild-oauth&permissions=296150887519&client_id=159985415099514880&guild_id=757024209447813130

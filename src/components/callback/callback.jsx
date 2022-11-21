@@ -47,7 +47,6 @@ class Callback extends Component {
             document.location.href = "/dashboard/user/description";
         }
         else {
-            // console.log(body, body.status, body.statusText)
             document.location.href = "/login";
         }
     }
