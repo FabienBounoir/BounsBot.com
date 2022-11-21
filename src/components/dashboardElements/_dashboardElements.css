@@ -1,4 +1,240 @@
-/* ///////////////////////////////////////////////// */
+/* /////////////// Dashboard Info ////////////////// */
+
+.infoDashboard {
+    display: flex;
+    flex-direction: column;
+    /* justify-content: center; */
+    /* align-items: center; */
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+    padding: 20px;
+    margin: 10px;
+    background-image: url("../../assets/picture/personnage.png");
+    /* background-size: cover; */
+    background-repeat: no-repeat;
+    background-position: bottom;
+    background-size: 80%;
+}
+
+.infoDashboard h1 {
+    font-size: 2.5rem;
+    font-weight: 500;
+    color: var(--color-principal);
+    margin-bottom: 10px;
+    text-align: left;
+}
+
+.infoDashboard__content {
+    display: flex;
+    flex-direction: column;
+    /* justify-content: center; */
+    /* align-items: */
+    text-align: justify;
+    width: 100%;
+    height: 100%;
+    color: white;
+}
+
+.infoDashboard__content a {
+    text-decoration: none;
+    color: var(--color-principal);
+}
+
+/* /////////////// End Dashboard Info ////////////////// */
+
+/* ///////////////////////// Player Musique //////////////////////////// */
+
+.containerPlayer {
+    display: grid;
+    grid-template-areas: "titre"
+        "file-attente"
+        "player";
+    grid-template-rows: 1fr auto;
+    grid-template-columns: 1fr;
+    height: 100%
+}
+
+.containerPlayer>h1 {
+    grid-area: titre;
+    text-align: left;
+    font-size: 1.5em;
+    margin: 0;
+    padding: 0;
+    color: #fff;
+    border-bottom: 1px solid #4d4b4b;
+}
+
+.file-attente {
+    grid-area: file-attente;
+    padding: 10px;
+    height: calc(100vh - (60px + 90px + 6em));
+    overflow-y: scroll;
+    overflow-x: hidden;
+    gap: 10px;
+    display: grid;
+}
+
+.file-attente .list {
+    display: grid;
+    grid-template-areas: "pochette name interaction";
+    grid-template-columns: 60px auto 60px;
+    /* text-align: left; */
+}
+
+.file-attente .list .pochette {
+    grid-area: pochette;
+    width: 100%;
+    height: 100%;
+    /* background-color: #000; */
+}
+
+.file-attente .list .pochette .interaction {
+    grid-area: interaction;
+    width: 100%;
+    height: 100%;
+}
+
+.file-attente .list .pochette img {
+    width: 50px;
+    height: 50px;
+}
+
+.file-attente .list .titre {
+    grid-area: name;
+    width: 100%;
+    height: 100%;
+    text-align: left;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    color: whitesmoke;
+    display: flex;
+    align-items: center;
+}
+
+.file-attente .list .titre p {
+    margin: 0;
+    padding: 0;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.file-attente h1 {
+    margin: 0;
+    padding: 0;
+    font-size: 1.5em;
+    font-weight: 400;
+    color: #fff;
+    text-align: left
+}
+
+.playing-bar {
+    grid-area: player;
+    background-color: #2e3137;
+    height: 90px;
+    border: 1px solid var(--color-principal);
+    border-radius: 10px;
+    display: grid;
+    grid-template-areas: "cover player-control volume-control";
+    grid-template-rows: 1fr;
+    grid-template-columns: 1fr 2fr 1fr;
+}
+
+.cover {
+    grid-area: cover;
+    border-radius: 10px;
+    height: 100%;
+    width: 100%;
+    display: grid;
+    grid-template-columns: auto 1fr;
+    grid-template-rows: 1fr;
+    gap: 10px;
+    align-items: center;
+    padding: 10px;
+}
+
+.cover img {
+    width: 50px;
+    height: 50px;
+    border-radius: 10px;
+}
+
+.cover p {
+    color: var(--color-principal);
+    text-align: left;
+    font-size: 1.2rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    margin: 0;
+
+}
+
+.player-control {
+    grid-area: player-control;
+    height: 100%;
+    width: 100%;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    flex-wrap: nowrap;
+}
+
+.player-control>.disable {
+    cursor: not-allowed;
+}
+
+.player-control svg {
+    fill: var(--color-principal);
+    margin: 0 10px;
+    cursor: pointer;
+}
+
+.player-control svg[id="play-pause"] {
+    width: 50px;
+    height: 50px;
+}
+
+.player-control svg:active {
+    transform: scale(0.9);
+}
+
+.player-control svg[id="skip"] {
+    width: 30px;
+    height: 30px;
+    fill: var(--color-principal-hover);
+}
+
+.player-control>.disable {
+    cursor: not-allowed;
+}
+
+.volume-control {
+    grid-area: volume-control;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    text-align: end;
+    justify-content: flex-end;
+    padding: 10px;
+}
+
+.volume-control input {
+    accent-color: var(--color-principal);
+}
+
+.volume-control svg {
+    fill: var(--color-principal);
+    cursor: pointer;
+}
+
+/* ///////////////////////// End Player Musique ///////////////////////////// */
+
+
+/* /////////////////////// Send Message component ////////////////////////// */
 
 .demo {
     padding: 16px 0;

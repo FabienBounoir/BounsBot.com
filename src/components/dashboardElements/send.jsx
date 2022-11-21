@@ -11,9 +11,10 @@ export const Send = (props) => {
     const [loadingChargement, setLoadingChargement] = useState(false);
     const [loading, setLoading] = useState(true)
     const [channel, setChannel] = useState([])
+    const [message, setMessage] = useState("")
     const [messageConfig, setMessageConfig] = useState({
         message: "",
-        guild: props.guildId,
+        guildId: props.guildId,
         channel: "",
     })
 
@@ -26,7 +27,6 @@ export const Send = (props) => {
     }, [props.guildId])
 
     let getChannelGuild = async () => {
-        console.log("---------------- FETCH CHANNEL ----------------")
         var myHeaders = new Headers();
         myHeaders.append("Content-Type", "application/json");
         myHeaders.append("Authorization", `Bearer ${JSON.parse(window.localStorage.getItem('dataDiscord'))?.access_token}`);
@@ -40,18 +40,14 @@ export const Send = (props) => {
         await fetch(process.env.REACT_APP_HOSTNAME_BOT + "/bot/getchannels/" + props.guildId, requestOptions)
             .then(response => response.json())
             .then((result) => {
-                console.log(result.channels)
                 setChannel(result.channels.filter(channel => channel.type === 0)
                 );
             })
             .catch(console.log)
-
-        console.log("---------------- END FETCH CHANNEL ----------------")
     };
 
 
     let selectChannel = (channel) => {
-        console.log(channel)
         setMessageConfig({
             ...messageConfig,
             channel
@@ -69,17 +65,16 @@ export const Send = (props) => {
             })
         }
         else {
-            return <option value="">Aucun channel</option>
+            return <p>Aucun channel</p>
         }
     }
 
     let sendmessage = async () => {
-        console.log("---------------- SEND MESSAGE ----------------")
         if (messageConfig.message.length == 0 || messageConfig.channel == "" || loadingChargement) return;
         setLoadingChargement(true)
         var myHeaders = new Headers();
         myHeaders.append("Content-Type", "application/json");
-        myHeaders.append("Authorization", `Bearer ${JSON.parse(window.localStorage.getItem('dataDiscord'))?.access_token}`);
+        myHeaders.append("authorization", `Bearer ${JSON.parse(window.localStorage.getItem('dataDiscord'))?.access_token}`);
 
         var raw = await JSON.stringify(messageConfig);
 
@@ -92,20 +87,21 @@ export const Send = (props) => {
 
         let url = process.env.REACT_APP_HOSTNAME_BOT
 
-        fetch(url + "/bot/sendto/", requestOptions)
-            .then(response => response.json())
-            .then((result) => {
-                if (result.message) {
-                    setMessageConfig({
-                        ...messageConfig,
-                        message: ""
-                    })
-                    setLoadingChargement(false)
-                }
-            })
-            .catch(console.log)
-    }
+        const result = await fetch(url + "/bot/sendto/", requestOptions)
 
+        if (result.status == 200) {
+            setMessageConfig({
+                ...messageConfig,
+                message: ""
+            })
+            setMessage("✅ Message envoyé avec succès")
+            setLoadingChargement(false)
+        }
+        else {
+            setMessage("❌ une erreur est survenue...")
+            setLoadingChargement(false)
+        }
+    }
 
     return (
         <>
@@ -133,13 +129,13 @@ export const Send = (props) => {
                                             <span className="timestamp">{new Date().toLocaleDateString()}</span>
                                         </div>
                                         <div className="message_content">
-                                            <p>{messageConfig.channel == "" ? "Sélection un channel." : (messageConfig.message ? messageConfig.message : "Bonjour je suis Bouns'bot.")}</p>
+                                            <p>{messageConfig.channel == "" ? "Sélection un channel." : (message ? message : "Bonjour je suis Bouns'bot.")}</p>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                             <div className={"SendMessageInput" + (messageConfig.channel == "" || loadingChargement ? " disable" : "")}>
-                                <input disabled={messageConfig.channel == "" || loadingChargement} type="text" placeholder="Envoyer un message" value={messageConfig.message} onChange={(e) => setMessageConfig({ ...messageConfig, message: e.target.value })} />
+                                <input disabled={messageConfig.channel == "" || loadingChargement} type="text" placeholder="Envoyer un message" value={messageConfig.message} onChange={(e) => { setMessageConfig({ ...messageConfig, message: e.target.value }); setMessage(e.target.value) }} />
                                 <svg width="28px" height="28px" viewBox="0 0 28 28" version="1.1" onClick={() => sendmessage()}>
                                     <g id="🔍-Product-Icons" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
                                         <g id="ic_fluent_send_28_filled" fill="var(--color-principal)" fill-rule="nonzero">

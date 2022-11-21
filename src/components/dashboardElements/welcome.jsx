@@ -29,12 +29,12 @@ export const Welcome = (props) => {
         headers.append("Authorization", `Bearer ${JSON.parse(window.localStorage.getItem('dataDiscord'))?.access_token}`);
 
         try {
-            console.log(await fetch(`${process.env.REACT_APP_HOSTNAME_BACKEND}/guild/${props.guildId}/welcome`, {
+            await fetch(`${process.env.REACT_APP_HOSTNAME_BACKEND}/guild/${props.guildId}/welcome`, {
                 method: "PUT",
                 headers,
                 body: JSON.stringify(configuration),
                 redirect: 'follow'
-            }).then(res => res.json()))
+            }).then(res => res.json())
         } catch (error) {
             return console.log("Save Configuration Error", error)
         }
@@ -58,7 +58,6 @@ export const Welcome = (props) => {
     }, [props.guildId])
 
     useEffect(() => {
-        console.log(configuration, initialConfig)
         const keys1 = Object.keys(configuration);
         const keys2 = Object.keys(initialConfig);
 

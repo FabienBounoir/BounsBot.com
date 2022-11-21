@@ -21,8 +21,6 @@ export const Dashboard = (props) => {
             getConfigurationDashboard()
         ])
 
-        // await getChannelGuild();
-        // let config = await fetch(`http://localhost:3001/guild/${props.guildId}/commandtype`).then(res => res.json()) || {}
         setLoading(false)
     }, [props.guildId])
 
@@ -72,21 +70,20 @@ export const Dashboard = (props) => {
     let updateConfig = async () => {
         setLoadingChargement(true)
 
-        console.log("DATA", data)
-
         let headers = new Headers();
         headers.append("Content-Type", "application/json");
         headers.append("Authorization", `Bearer ${JSON.parse(window.localStorage.getItem('dataDiscord'))?.access_token}`);
 
 
         try {
-            console.log(await fetch(`${process.env.REACT_APP_HOSTNAME_BACKEND}/guild/${props.guildId}/commandtype`, {
+            await fetch(`${process.env.REACT_APP_HOSTNAME_BACKEND}/guild/${props.guildId}/commandtype`, {
                 method: "PUT",
                 headers,
                 body: JSON.stringify(data),
                 redirect: 'follow'
-            }).then(res => res.json()))
+            }).then(res => res.json())
         } catch (error) {
+            setLoadingChargement(false)
             return console.log("Save Configuration Error", error)
         }
 
@@ -96,7 +93,6 @@ export const Dashboard = (props) => {
     }
 
     let getChannelGuild = async () => {
-        console.log("---------------- FETCH CHANNEL ----------------")
         var myHeaders = new Headers();
         myHeaders.append("Content-Type", "application/json");
         myHeaders.append("Authorization", `Bearer ${JSON.parse(window.localStorage.getItem('dataDiscord'))?.access_token}`);
@@ -110,35 +106,36 @@ export const Dashboard = (props) => {
         await fetch(process.env.REACT_APP_HOSTNAME_BOT + "/bot/getchannels/" + props.guildId, requestOptions)
             .then(response => response.json())
             .then((result) => {
-                console.log(result.channels)
                 setChannel(result.channels.filter(channel => channel.type === 0)
                 );
             })
             .catch(console.log)
-
-        console.log("---------------- END FETCH CHANNEL ----------------")
     };
 
     let getConfigurationDashboard = async () => {
-        console.log("---------------- FETCH CONFIGURATION ----------------")
-        let config = await fetch(`${process.env.REACT_APP_HOSTNAME_BACKEND}/guild/${props.guildId}/commandtype`).then(res => res.json()) || {}
+        let config = await fetch(`${process.env.REACT_APP_HOSTNAME_BACKEND}/guild/${props.guildId}/commandtype`).then(res => res.json()) || {
+            guild: props.guildId,
+            sheesh: false,
+            heyreaction: false,
+            rename: true,
+            musique: true,
+            radio: true,
+            playlist: true,
+            fun: true,
+            game: true,
+            chaineTwitch: "0",
+            idChannelTwitchTchat: "0",
+        }
 
-        console.log("CONFIGURATION", config)
         await Promise.all([
             setInitialConfig(config),
             setData(config)
         ])
-
-        console.log("---------------- END FETCH CONFIGURATION ----------------")
     }
 
     return (<>
         {loading ?
             <LoadingComponent />
-            // <div className="loading">
-
-
-            // </div>
             : <>
 
                 <div className="block">

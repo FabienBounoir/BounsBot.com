@@ -5,6 +5,7 @@ import { Logs } from "../dashboardElements/logs.jsx";
 import { Welcome } from "../dashboardElements/welcome.jsx";
 import { Send } from "../dashboardElements/send.jsx";
 import { Musique } from "../dashboardElements/musique.jsx";
+import { InfoDashboard } from "../dashboardElements/infoDashboard.jsx";
 
 import "./_configuration.css";
 import "../dashboardElements/_dashboardElements.css";
@@ -18,23 +19,18 @@ export const Configuration = (props) => {
     const [config, setConfig] = useState([])
     const [open, setOpen] = useState(true)
 
-    //get argument from url
-    // console.log(id, type)
-
-    //when component reload 
     useEffect(async () => {
         if (activeGuild !== "user") {
             setConfig(await fetch(`${process.env.REACT_APP_HOSTNAME_BACKEND}/guild/${activeGuild}/features`).then(res => res.json()).then(res => {
-                console.log(res)
                 return res.configurationFeatures
             }))
         }
         else {
             setConfig([
                 {
-                    name: "user",
+                    name: "Dashboard",
                     elements: [{
-                        name: "Description",
+                        name: "Information",
                         url: "description",
                     }]
                 }
@@ -64,7 +60,6 @@ export const Configuration = (props) => {
     }, [props.user])
 
     const getHeaderType = () => {
-        console.log(guild)
         if ((guild && guild?.icon !== null) || (user && user?.avatar !== null)) {
             return 'withBanner'
         }
@@ -111,11 +106,12 @@ export const Configuration = (props) => {
         let element = config.find(element => element.elements.find(element => element.url === type))
         if (!element && activeGuild !== "user") {
             return <Dashboard guildId={id} />
-
-            // return <h1 style={{ color: "red" }} >{type}</h1>
         }
 
-        if (type === "dashboard") {
+        if (type === "description") {
+            return <InfoDashboard />
+        }
+        else if (type === "dashboard") {
             return (<Dashboard guildId={id} />)
         }
         else if (type === "logs") {
@@ -136,9 +132,6 @@ export const Configuration = (props) => {
     }
 
     const triggerListServer = (etat) => {
-        console.log("clique")
-        // this.setState({ close: !this.state.close })
-
         if (!etat) {
             setOpen(!open)
         }

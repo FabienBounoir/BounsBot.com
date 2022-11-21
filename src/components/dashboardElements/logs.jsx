@@ -74,12 +74,12 @@ export const Logs = (props) => {
         headers.append("Authorization", `Bearer ${JSON.parse(window.localStorage.getItem('dataDiscord'))?.access_token}`);
 
         try {
-            console.log(await fetch(`${process.env.REACT_APP_HOSTNAME_BACKEND}/guild/${props.guildId}/logs`, {
+            await fetch(`${process.env.REACT_APP_HOSTNAME_BACKEND}/guild/${props.guildId}/logs`, {
                 method: "PUT",
                 headers,
                 body: JSON.stringify(data),
                 redirect: 'follow'
-            }).then(res => res.json()))
+            }).then(res => res.json())
         } catch (error) {
             return console.log("Save Configuration Error", error)
         }
@@ -90,7 +90,6 @@ export const Logs = (props) => {
     }
 
     let getChannelGuild = async () => {
-        console.log("---------------- FETCH CHANNEL ----------------")
         var myHeaders = new Headers();
         myHeaders.append("Content-Type", "application/json");
         myHeaders.append("Authorization", `Bearer ${JSON.parse(window.localStorage.getItem('dataDiscord'))?.access_token}`);
@@ -104,26 +103,19 @@ export const Logs = (props) => {
         await fetch(process.env.REACT_APP_HOSTNAME_BOT + "/bot/getchannels/" + props.guildId, requestOptions)
             .then(response => response.json())
             .then((result) => {
-                console.log(result.channels)
                 setChannel(result.channels.filter(channel => channel.type === 0)
                 );
             })
             .catch(console.log)
-
-        console.log("---------------- END FETCH CHANNEL ----------------")
     };
 
     let getConfigurationLogs = async () => {
-        console.log("---------------- FETCH CONFIGURATION ----------------")
         let config = await fetch(`${process.env.REACT_APP_HOSTNAME_BACKEND}/guild/${props.guildId}/logs`).then(res => res.json()) || { logs: {} }
 
-        console.log("CONFIGURATION", config)
         await Promise.all([
             setInitialConfig(config),
             setData(config)
         ])
-
-        console.log("---------------- END FETCH CONFIGURATION ----------------")
     }
 
     return (<>
