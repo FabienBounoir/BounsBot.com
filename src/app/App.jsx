@@ -24,8 +24,13 @@ import Authenticate from '../components/Authenticate';
 import { Bio } from "../pages/bio/bio";
 import { TermsBot } from "../pages/termsBot/terms";
 import ScrollToTop from "../utils/ScrollToTop"
+import { useEffect } from "react";
 
 export const App = () => {
+
+  useEffect(() => {
+    setEnvColor()
+  }, [])
 
   //create randomColor but not dark or light
   let randomColor = () => {
@@ -41,13 +46,8 @@ export const App = () => {
     return color;
   }
 
-  let componentDidMount = () => {
+  let setEnvColor = () => {
     let r = document.getElementsByTagName("html")[0];
-
-    if (Math.floor(Math.random() * 10) === 3) {
-      r.style.setProperty('--color-principal', "#" + randomColor());
-      r.style.setProperty('--color-principal-hover', "#" + randomColor());
-    }
 
     let date = new Date();
     if (date.getMonth() === 9) { //&& date.getDate() === 31
@@ -60,9 +60,11 @@ export const App = () => {
       r.style.setProperty('--color-principal', '#ff0000');
       r.style.setProperty('--color-principal-hover', '#ec5353');
     }
+    else if (Math.random() < 0.1) {
+      r.style.setProperty('--color-principal', "#" + randomColor());
+      r.style.setProperty('--color-principal-hover', "#" + randomColor());
+    }
   }
-
-  componentDidMount()
 
   return (
     <div className="App">
