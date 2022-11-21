@@ -16,15 +16,9 @@ export default class Fetch {
         else {
             return null
         }
-
-        // console.log(`https://cdn.discordapp.com/avatars/${result.id}/${result.avatar}.png?size=512`)
-        // console.log(`https://cdn.discordapp.com/banners/${result.id}/${result.banner}.png?size=1280`)
-        //https://cdn.discordapp.com/banners/266636247017979904/9faf7228f56379b4006a44f9457a9355.png?size=1280
-        //https://cdn.discordapp.com/banners/266636247017979904/a_05403f6196307ceb2b639b1522e63e12.png
     };
 
     static async getGuilds(token) {
-        console.log(token)
         let headers = {
             'Content-Type': 'application/x-www-form-urlencoded',
             'Authorization': 'Bearer ' + token
@@ -68,7 +62,7 @@ export default class Fetch {
 
             return result.hasGuilds || null
         } catch (error) {
-            console.log(error)
+            console.error(error)
         }
     };
 }

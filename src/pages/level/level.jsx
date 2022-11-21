@@ -5,8 +5,6 @@ import InfiniteScroll from 'react-infinite-scroll-component';
 import LoadingFullPage from "../../components/loading/LoadingFullPage.jsx";
 import GainRolesLevels from "../../components/gainRolesLevels/gainRolesLevels.jsx";
 
-let url = process.env.REACT_APP_HOSTNAME_BACKEND
-
 let levels = [
   { "value": 1, "totalxp": 100 },
   { "value": 2, "totalxp": 255 },
@@ -278,10 +276,9 @@ class Level extends Component {
     let id = new URLSearchParams(window.location.search).get('id') || ""
     let twitch = new URLSearchParams(window.location.search).get('twitch') !== null
 
-    fetch(url + `${twitch ? ("/twitch/") : ("/discord/")}` + id + `?page=${this.state.page}`)
+    fetch(process.env.REACT_APP_HOSTNAME_BACKEND + `${twitch ? ("/twitch/") : ("/discord/")}` + id + `?page=${this.state.page}`)
       .then(response => response.json())
       .then((result) => {
-        console.log(result)
         this.setState({
           level: this.state.level.concat(result.rank),
           page: this.state.page + 1,
@@ -291,7 +288,6 @@ class Level extends Component {
         });
       })
       .catch((error) => {
-        // window.location.href = "/"
         console.log(error)
       })
   };

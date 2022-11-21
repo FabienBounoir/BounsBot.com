@@ -2,7 +2,6 @@ import "./_login.css";
 import Avatar from "../../components/avatar/avatar";
 
 export const Login = () => {
-    console.log(process.env)
     return (
         <div className="container-logo">
 

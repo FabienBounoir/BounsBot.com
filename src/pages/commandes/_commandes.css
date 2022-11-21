@@ -78,6 +78,7 @@
     text-align: left;
     display: flex;
     flex-direction: column;
+    cursor: pointer;
     padding: 29px;
     border-radius: 12px;
     background-color: #1f1f25;
