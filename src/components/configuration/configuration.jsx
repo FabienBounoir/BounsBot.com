@@ -83,14 +83,14 @@ export const Configuration = (props) => {
     const renderListingConfig = () => {
         let list = []
         for (let i = 0; i < config.length; i++) {
-            list.push(<li className="title">
+            list.push(<li key={i} className="title">
                 <div>
                     <p>{config[i].name}</p>
                 </div>
             </li>);
 
             for (let j = 0; j < config[i].elements.length; j++) {
-                list.push(<Link onClick={() => triggerListServer(false)} to={`/dashboard/${activeGuild}/` + config[i].elements[j].url}><li className={"element " + (type === config[i].elements[j].url ? "active" : "")}>
+                list.push(<Link key={i + "-" + j} onClick={() => triggerListServer(false)} to={`/dashboard/${activeGuild}/` + config[i].elements[j].url}><li className={"element " + (type === config[i].elements[j].url ? "active" : "")}>
                     <div>
                         <p>{config[i].elements[j].name}</p>
                     </div>

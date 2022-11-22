@@ -4,19 +4,6 @@ import TypeIt from "typeit";
 import { useEffect } from "react";
 
 export const HomePage = () => {
-    let click = 0;
-
-    const addClick = () => {
-        console.log(click)
-        click++;
-        if (click === 5) {
-            //play sound
-            const audio = new Audio("/sounds/secret.mp3");
-            audio.play();
-            click = 0;
-        }
-    }
-
     const scrollToFeatures = () => {
         document.getElementsByClassName("features")[0].scrollIntoView({ behavior: "smooth" });
     }
@@ -73,7 +60,7 @@ export const HomePage = () => {
                         //rotation random -180° à 180°
                         let rotate = Math.floor(Math.random() * 360) - 180 + "deg";
 
-                        particulesNano.push(<Avatar classElement="particulesNano" width={size} height={size2} styleElement={{ top, left, transform: `rotate(${rotate})`, animation: `nanoParticuleAnimation ${Math.floor(Math.random() * 8) + 5}s linear infinite` }} />);
+                        particulesNano.push(<Avatar key={i} classElement="particulesNano" width={size} height={size2} styleElement={{ top, left, transform: `rotate(${rotate})`, animation: `nanoParticuleAnimation ${Math.floor(Math.random() * 8) + 5}s linear infinite` }} />);
                     }
                     return particulesNano;
                 }
@@ -99,9 +86,9 @@ export const HomePage = () => {
             </div>
 
             <div className="homepage__scrollAnimation" onClick={() => scrollToFeatures()}>
-                <div class="chevron"></div>
-                <div class="chevron"></div>
-                <div class="chevron"></div>
+                <div className="chevron"></div>
+                <div className="chevron"></div>
+                <div className="chevron"></div>
             </div>
 
 

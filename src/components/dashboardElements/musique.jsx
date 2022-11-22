@@ -37,7 +37,6 @@ export const Musique = (props) => {
         fetch(process.env.REACT_APP_HOSTNAME_BOT + "/bot/getfile/" + props.guildId, requestOptions)
             .then(response => response.json())
             .then(result => {
-                console.log(result)
                 setMusic(result?.playlist || [])
                 // if (JSON.parse(result).playlist.length === 0) {
                 //     this.setState({
@@ -90,7 +89,7 @@ export const Musique = (props) => {
 
     let renderVolumeIcon = () => {
 
-        return (<svg role="presentation" height="16" width="16" aria-label="Volume élevé" id="volume-icon" viewBox="0 0 16 16" class="Svg-ytk21e-0 eqtHWV"><path d="M9.741.85a.75.75 0 01.375.65v13a.75.75 0 01-1.125.65l-6.925-4a3.642 3.642 0 01-1.33-4.967 3.639 3.639 0 011.33-1.332l6.925-4a.75.75 0 01.75 0zm-6.924 5.3a2.139 2.139 0 000 3.7l5.8 3.35V2.8l-5.8 3.35zm8.683 4.29V5.56a2.75 2.75 0 010 4.88z"></path><path d="M11.5 13.614a5.752 5.752 0 000-11.228v1.55a4.252 4.252 0 010 8.127v1.55z"></path></svg>
+        return (<svg role="presentation" height="16" width="16" aria-label="Volume élevé" id="volume-icon" viewBox="0 0 16 16" className="Svg-ytk21e-0 eqtHWV"><path d="M9.741.85a.75.75 0 01.375.65v13a.75.75 0 01-1.125.65l-6.925-4a3.642 3.642 0 01-1.33-4.967 3.639 3.639 0 011.33-1.332l6.925-4a.75.75 0 01.75 0zm-6.924 5.3a2.139 2.139 0 000 3.7l5.8 3.35V2.8l-5.8 3.35zm8.683 4.29V5.56a2.75 2.75 0 010 4.88z"></path><path d="M11.5 13.614a5.752 5.752 0 000-11.228v1.55a4.252 4.252 0 010 8.127v1.55z"></path></svg>
         )
     }
 
@@ -134,12 +133,12 @@ export const Musique = (props) => {
 			C315.662,233.564,313.652,237.364,310.292,239.651z" />
                                 </svg>}
 
-                            <svg id="skip" viewBox="0 0 16 16" class="Svg-ytk21e-0 eqtHWV"><path d="M12.7 1a.7.7 0 00-.7.7v5.15L2.05 1.107A.7.7 0 001 1.712v12.575a.7.7 0 001.05.607L12 9.149V14.3a.7.7 0 00.7.7h1.6a.7.7 0 00.7-.7V1.7a.7.7 0 00-.7-.7h-1.6z"></path></svg>
+                            <svg id="skip" viewBox="0 0 16 16" className="Svg-ytk21e-0 eqtHWV"><path d="M12.7 1a.7.7 0 00-.7.7v5.15L2.05 1.107A.7.7 0 001 1.712v12.575a.7.7 0 001.05.607L12 9.149V14.3a.7.7 0 00.7.7h1.6a.7.7 0 00.7-.7V1.7a.7.7 0 00-.7-.7h-1.6z"></path></svg>
 
                         </div>
                         <div className="volume-control">
                             {renderVolumeIcon()}
-                            <input type="range" min="0" max="100" value="50" class="slider" id="myRange" />
+                            <input type="range" min="0" max="100" value="50" className="slider" id="myRange" />
                         </div>
 
 

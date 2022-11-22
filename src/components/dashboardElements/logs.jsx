@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react"
-import { Link } from 'react-router-dom';
 import { Form } from 'react-bootstrap/'
 import Avatar from "../avatar/avatar";
 import LoadingComponent from "../loading/LoadingComponent.jsx";
@@ -43,7 +42,7 @@ export const Logs = (props) => {
     let getChannelForSelector = (allChannel, selectedchannel) => {
         var option = [];
 
-        if (selectedchannel === "0" || selectedchannel == null) {
+        if (selectedchannel === "0" || selectedchannel === null) {
             option.push(<option value="0" selected>❌ Désactivé</option>)
         }
         else {

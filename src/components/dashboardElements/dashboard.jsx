@@ -53,10 +53,10 @@ export const Dashboard = (props) => {
 
         for (let value of allChannel) {
             if (value.id === selectedchannel) {
-                option.push(<option value={value.id} selected>{value.name}</option>)
+                option.push(<option key={value.id} value={value.id} selected>{value.name}</option>)
             }
             else {
-                option.push(<option value={value.id}>{value.name}</option>)
+                option.push(<option key={value.id} value={value.id}>{value.name}</option>)
             }
         }
 

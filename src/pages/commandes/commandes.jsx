@@ -71,7 +71,7 @@ class Commandes extends Component {
                             {(() => {
                                 let typesList = [];
                                 for (let type of this.state.types) {
-                                    typesList.push(<li className={"btnSearch btn-commands-category " + (this.state.activeType === type ? "active" : "")} onClick={() => { this.selectType(type) }} >{type}</li>)
+                                    typesList.push(<li key={type} className={"btnSearch btn-commands-category " + (this.state.activeType === type ? "active" : "")} onClick={() => { this.selectType(type) }} >{type}</li>)
                                 }
                                 return typesList;
                             })()}
