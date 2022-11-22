@@ -102,10 +102,14 @@ class Navigation extends Component {
                         <Navbar.Toggle aria-controls="responsive-navbar-nav" id="buttonToggleNav" />
                         <Navbar.Collapse id="responsive-navbar-nav">
                             <Nav className="me-auto">
-                                <Nav.Link><Link onClick={() => { this.eventClick() }} to="/commandes">Commandes</Link></Nav.Link>
-                                {/* <Nav.Link><Link to="/playlist">Playlists</Link></Nav.Link> */}
+                                <Nav.Link as={Link} to="/commandes" onClick={() => { this.eventClick() }}>Commandes</Nav.Link>
+                                <Nav.Link as={Link} to="/level" onClick={() => { this.eventClick() }}>Levels</Nav.Link>
+                                <Nav.Link as={Link} to="/demo" onClick={() => { this.eventClick() }}>Démo</Nav.Link>
+
+                                {/* <Nav.Link><Link onClick={() => { this.eventClick() }} to="/commandes">Commandes</Link></Nav.Link>
+                                {/* <Nav.Link><Link to="/playlist">Playlists</Link></Nav.Link> 
                                 <Nav.Link><Link onClick={() => { this.eventClick() }} to="/level">Levels</Link></Nav.Link>
-                                <Nav.Link><Link onClick={() => { this.eventClick() }} to="/demo">Démo</Link></Nav.Link>
+                                <Nav.Link><Link onClick={() => { this.eventClick() }} to="/demo">Démo</Link></Nav.Link> */}
                             </Nav>
 
                             <Nav>
@@ -146,7 +150,7 @@ class Navigation extends Component {
                                             </Navbar.Text></div>)
                                     }
                                     else {
-                                        EtatConnexion.push(<Nav.Link key="948508"><Link onClick={() => { this.eventClick() }} to="/login" style={{ textDecoration: "none" }}>Se connecter</Link></Nav.Link>)
+                                        EtatConnexion.push(<Nav.Link key="948508" as={Link} to="/login" onClick={() => { this.eventClick() }} style={{ textDecoration: "none" }}>Se connecter</Nav.Link>)
                                     }
 
                                     return EtatConnexion;
