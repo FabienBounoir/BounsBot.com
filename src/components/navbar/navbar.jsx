@@ -82,6 +82,12 @@ class Navigation extends Component {
         });
     }
 
+    eventClick = () => {
+        if (window.innerWidth <= 768) {
+            document.getElementById("buttonToggleNav").click();
+        }
+    }
+
     render() {
         return (
             <>
@@ -93,13 +99,13 @@ class Navigation extends Component {
                             BounsBot
                         </Link>
                         </Navbar.Brand>
-                        <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+                        <Navbar.Toggle aria-controls="responsive-navbar-nav" id="buttonToggleNav" />
                         <Navbar.Collapse id="responsive-navbar-nav">
                             <Nav className="me-auto">
-                                <Nav.Link><Link to="/commandes">Commandes</Link></Nav.Link>
+                                <Nav.Link><Link onClick={() => { this.eventClick() }} to="/commandes">Commandes</Link></Nav.Link>
                                 {/* <Nav.Link><Link to="/playlist">Playlists</Link></Nav.Link> */}
-                                <Nav.Link><Link to="/level">Levels</Link></Nav.Link>
-                                <Nav.Link><Link to="/demo">Démo</Link></Nav.Link>
+                                <Nav.Link><Link onClick={() => { this.eventClick() }} to="/level">Levels</Link></Nav.Link>
+                                <Nav.Link><Link onClick={() => { this.eventClick() }} to="/demo">Démo</Link></Nav.Link>
                             </Nav>
 
                             <Nav>
@@ -111,7 +117,7 @@ class Navigation extends Component {
                                                 <div className="login_button_container">
                                                     <div className="LogoNav" style={{ backgroundImage: `url("https://cdn.discordapp.com/avatars/${JSON.parse(window.localStorage.getItem('dataUser')).id}/${JSON.parse(window.localStorage.getItem('dataUser')).avatar}.png?size=512` }}>
                                                     </div>
-                                                    <Link to="/dashboard/user/description" style={{ textDecoration: "none" }}><span className="hamgn6-5 dashboard_button">{JSON.parse(window.localStorage.getItem('dataUser')).username}</span></Link>
+                                                    <Link onClick={() => { this.eventClick() }} to="/dashboard/user/description" style={{ textDecoration: "none" }}><span className="hamgn6-5 dashboard_button">{JSON.parse(window.localStorage.getItem('dataUser')).username}</span></Link>
                                                     {/* <a href="/dashboard" style={{textDecoration: "none"}}><span className="hamgn6-5 dashboard_button">{JSON.parse(window.localStorage.getItem('dataUser')).username}</span></a> */}
                                                     <div onClick={this.clickMe}>
                                                         {/* <img onClick={this.clickMe} style={{ marginLeft: "10px", width: "27px", height: "27px", minHeight: "27px", minMidth: "27px" }} src={disconnect} alt="f" /> */}
@@ -140,7 +146,7 @@ class Navigation extends Component {
                                             </Navbar.Text></div>)
                                     }
                                     else {
-                                        EtatConnexion.push(<Nav.Link key="948508"><Link to="/login" style={{ textDecoration: "none" }}>Se connecter</Link></Nav.Link>)
+                                        EtatConnexion.push(<Nav.Link key="948508"><Link onClick={() => { this.eventClick() }} to="/login" style={{ textDecoration: "none" }}>Se connecter</Link></Nav.Link>)
                                     }
 
                                     return EtatConnexion;
