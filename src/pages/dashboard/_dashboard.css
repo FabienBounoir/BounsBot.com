@@ -196,5 +196,5 @@
 
 .servers {
     /* transition: width 0.3s ease-out 0s; */
-    transition: width 0.2s ease-in-out, min-width 0.2s ease-in-out, max-width 0.2s ease-in-out;
+    transition: width 0.4s ease-in-out, min-width 0.4s ease-in-out, max-width 0.4s ease-in-out;
 }

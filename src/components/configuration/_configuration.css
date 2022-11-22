@@ -4,6 +4,7 @@
     flex-direction: column;
     min-height: 0;
     width: 240px;
+    max-width: 240px;
     -webkit-box-flex: 0;
     -ms-flex: 0 0 auto;
     flex: 0 0 auto;
@@ -132,6 +133,12 @@
     font-weight: 500;
 }
 
+.configList p {
+    text-overflow: ellipsis;
+    overflow-x: clip;
+    white-space: nowrap;
+}
+
 .configList .element:hover {
     background-color: rgba(255, 255, 255, 0.1);
 }
@@ -248,5 +255,13 @@
 @media screen and (max-width: 340px) {
     .configuration_list {
         width: calc(100vw - (30px + 72px));
+        min-width: 0;
+        max-width: calc(100vw - (30px + 72px));
+    }
+
+    .configuration_list.close {
+        width: 0;
+        min-width: 0;
+        max-width: 0;
     }
 }
