@@ -5,7 +5,7 @@ import InfiniteScroll from 'react-infinite-scroll-component';
 import { Spinner } from 'react-bootstrap/'
 import { Form, Card, ListGroup, ListGroupItem } from 'react-bootstrap/'
 import { Link } from "react-router-dom"
-import Loading from "../../components/loading/loading.jsx";
+import LoadingFullPage from "../../components/loading/LoadingFullPage.jsx";
 
 let searchValide
 
@@ -25,10 +25,7 @@ class Playlist extends Component {
     getData = () => {
         //production
         // let url = "https://backendbounsbot.herokuapp.com/playlist/"
-        let url = "https://api.bounsbot.com/playlist/"
-
-        //dev
-        // let url = `http://localhost:3001/playlist/`
+        let url = process.env.REACT_APP_HOSTNAME_BACKEND + "/playlist/"
 
         fetch(url + `?page=${this.state.page}`)
             .then(response => response.json())
@@ -53,14 +50,10 @@ class Playlist extends Component {
             let message = document.getElementById('PLaylistSearch').value.replace('Backspace', '');
 
             if (message !== "") {
-                // url = "https://backendbounsbot.herokuapp.com/playlist/search/"
-                url = "https://api.bounsbot.com/playlist/search/"
-                // url = `http://localhost:3001/playlist/search/`
+                url = process.env.REACT_APP_HOSTNAME_BACKEND + "/playlist/search/"
             }
             else {
-                // url = "https://backendbounsbot.herokuapp.com/playlist/"
-                url = "https://api.bounsbot.com/playlist/"
-                // url = `http://localhost:3001/playlist/`
+                url = process.env.REACT_APP_HOSTNAME_BACKEND + "/playlist/"
             }
 
             fetch(url + message)
@@ -109,7 +102,7 @@ class Playlist extends Component {
                             return <InfiniteScroll dataLength={this.state.playlistList.length} next={this.getData} hasMore={this.state.hasMoreData} loader={<div><Spinner animation="grow" variant="success" /><Spinner animation="grow" variant="success" /><Spinner animation="grow" variant="success" /></div>}><div className="renderPlaylist">{playlistElement}</div></InfiniteScroll>;
                         }
                         else if (this.state.load) {
-                            return <Loading />
+                            return <LoadingFullPage />
                             // return <div><Spinner animation="grow" variant="danger" /><Spinner animation="grow" variant="danger" /><Spinner animation="grow" variant="danger" /></div>
                         }
                         else {

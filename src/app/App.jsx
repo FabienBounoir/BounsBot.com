@@ -16,37 +16,42 @@ import { ErreurPage } from "../pages/ErreurPage/ErreurPage";
 import { PrivacyBot } from "../pages/privacyBot/privacy";
 import { Login } from "../pages/login/login";
 import Dashboard from "../pages/dashboard/dashboard";
-import Guild from "../pages/guild/guild";
+// import Guild from "../pages/guild/guild";
+
 import Demo from "../pages/demo/demo";
 import Callback from "../components/callback/callback";
 import Authenticate from '../components/Authenticate';
 import { Bio } from "../pages/bio/bio";
 import { TermsBot } from "../pages/termsBot/terms";
 import ScrollToTop from "../utils/ScrollToTop"
+import { useEffect } from "react";
 
 export const App = () => {
+
+  useEffect(() => {
+    setEnvColor()
+  }, [])
 
   //create randomColor but not dark or light
   let randomColor = () => {
     let color = "";
     let letters = "0123456789ABCDEF";
-    for (let i = 0; i < 6; i++) {
-      color += letters[Math.floor(Math.random() * 16)];
-    }
 
-    if (color.substring(0, 2) === "00" || color.substring(0, 2) === "11") {
-      randomColor();
+    do {
+      color = "";
+      for (let i = 0; i < 6; i++) {
+        color += letters[Math.floor(Math.random() * 16)];
+      }
+      // console.log("%c test couleur", `color: #${color}`)
     }
+    //tant que la couleur est trop claire ou trop foncée
+    while (parseInt(color, 16) > 0x999999 || parseInt(color, 16) < 0x333333)
+
     return color;
   }
 
-  let componentDidMount = () => {
+  let setEnvColor = () => {
     let r = document.getElementsByTagName("html")[0];
-
-    if (Math.floor(Math.random() * 10) === 3) {
-      r.style.setProperty('--color-principal', "#" + randomColor());
-      r.style.setProperty('--color-principal-hover', "#" + randomColor());
-    }
 
     let date = new Date();
     if (date.getMonth() === 9) { //&& date.getDate() === 31
@@ -54,14 +59,17 @@ export const App = () => {
       r.style.setProperty('--color-principal', '#ff5e00');
       r.style.setProperty('--color-principal-hover', '#702a00');
     }
-    else if (date.getMonth() === 11 && (date.getDate() === 25 || date.getDate() === 24)) {
+    else if (date.getMonth() === 11 && (date.getDate() <= 26 && date.getDate() >= 15)) {
       let r = document.getElementsByTagName("html")[0];
-      r.style.setProperty('--color-principal', '#ff0000');
-      r.style.setProperty('--color-principal-hover', '#ec5353');
+      //frozen color
+      r.style.setProperty('--color-principal', '#00bfff');
+      r.style.setProperty('--color-principal-hover', '#00688b');
+    }
+    else if (Math.random() < 0.1) {
+      r.style.setProperty('--color-principal', "#" + randomColor());
+      r.style.setProperty('--color-principal-hover', "#" + randomColor());
     }
   }
-
-  componentDidMount()
 
   return (
     <div className="App">
@@ -92,10 +100,16 @@ export const App = () => {
           <Authenticate exact path="/dashboard">
             <Dashboard />
           </Authenticate>
-          <Authenticate exact path="/dashboard/:id">
+          {/* <Authenticate exact path="/dashboard/:id/:type">
             <Route exact path="/dashboard/:id" component={Guild}>
             </Route>
+          </Authenticate> */}
+
+          <Authenticate exact path="/dashboard/:id/:typeconfig">
+            <Route exact path="/dashboard/:id/:typeconfig" component={Dashboard}>
+            </Route>
           </Authenticate>
+
           <Route exact path="/login" >
             <Login />
           </Route>

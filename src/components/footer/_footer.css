@@ -28,12 +28,11 @@
     width: auto;
 }
 
-.columns {
+.footer .container .columns {
     display: flex;
     flex-wrap: wrap;
-
     width: 100%;
-
+    align-content: center;
 }
 
 .column {
@@ -139,7 +138,7 @@
 }
 
 @media screen and (max-width: 768px) {
-    .columns {
+    .footer .container .columns {
         flex-direction: column;
         text-align: center;
         align-items: center;

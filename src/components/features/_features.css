@@ -9,20 +9,47 @@
     box-sizing: inherit;
     /* height: 700vh; */
     background-color: #40454a;
-    padding-top: 100px;
+    padding-top: 50px;
 
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-
 }
+
+.features>.header {
+    color: white;
+    font-size: 2em;
+    margin-bottom: 2em;
+    position: relative;
+}
+
+.features>.header svg:first-of-type {
+    position: absolute;
+    /* top: -42px;
+    right: -30px; */
+    top: -25px;
+    right: -46px;
+    fill: var(--color-principal)
+}
+
+.features>.header svg:last-of-type {
+    position: absolute;
+    /* bottom: -42px;
+    left: -30px; */
+    /* bottom: -23px; */
+    bottom: -126px;
+    left: -47px;
+    fill: var(--color-principal)
+}
+
+
 
 .features .columns {
     display: -webkit-flex;
     display: flex;
-    margin-left: -0.75rem;
-    margin-right: -0.75rem;
+    margin-left: -1.25rem;
+    /* margin-right: -0.75rem; */
     margin-top: -0.75rem;
     /* display: block; */
 }
@@ -47,15 +74,21 @@
 }
 
 .picture img {
-    padding-top: 3.5em;
+    /* padding-top: 3.5em; */
+    margin-top: 3.5em;
     width: inherit;
+    pointer-events: none;
+    border-radius: 0.5rem;
+    filter: drop-shadow(0 0 20px rgba(0, 0, 0, .3));
 }
 
 .picture img:first-child {
-    padding-top: 6em;
+    /* padding-top: 6em; */
+    margin-top: 6em;
 }
 
 .article {
+    filter: drop-shadow(0 0 20px rgba(0, 0, 0, .3));
     background-color: var(--color-principal);
     color: white;
     padding: 1rem;
@@ -109,14 +142,18 @@
 }
 
 @media screen and (max-width: 1100px) {
-    .columns {
+    /* .revertMobile {
+        flex-direction: column
+    } */
+
+    .features .columns {
         flex-direction: column-reverse;
         margin-left: 0 !important;
         margin-right: 0 !important;
         margin-top: 0 !important;
     }
 
-    .revertMobile {
+    .features .columns.revertMobile {
         flex-direction: column
     }
 
@@ -131,10 +168,18 @@
         /* justify-content: center; */
         flex-direction: row;
         overflow-x: scroll;
+        scroll-snap-type: x mandatory;
         gap: 1em;
         align-self: center;
         border-radius: 0.5rem;
         padding: 0;
+    }
+
+    .picture img {
+        padding-top: 0;
+        width: 100%;
+        pointer-events: none;
+        scroll-snap-align: center;
     }
 
     .articleContainer {

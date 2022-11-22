@@ -2,12 +2,8 @@
 import "./_level.css";
 import React, { Component } from 'react'
 import InfiniteScroll from 'react-infinite-scroll-component';
-import Loading from "../../components/loading/loading.jsx";
+import LoadingFullPage from "../../components/loading/LoadingFullPage.jsx";
 import GainRolesLevels from "../../components/gainRolesLevels/gainRolesLevels.jsx";
-
-// let url = "http://localhost:3001/"
-// let url = "https://backendbounsbot.herokuapp.com/"
-let url = "https://api.bounsbot.com/"
 
 let levels = [
   { "value": 1, "totalxp": 100 },
@@ -280,10 +276,9 @@ class Level extends Component {
     let id = new URLSearchParams(window.location.search).get('id') || ""
     let twitch = new URLSearchParams(window.location.search).get('twitch') !== null
 
-    fetch(url + `${twitch ? ("twitch/") : ("discord/")}` + id + `?page=${this.state.page}`)
+    fetch(process.env.REACT_APP_HOSTNAME_BACKEND + `${twitch ? ("/twitch/") : ("/discord/")}` + id + `?page=${this.state.page}`)
       .then(response => response.json())
       .then((result) => {
-        console.log(result)
         this.setState({
           level: this.state.level.concat(result.rank),
           page: this.state.page + 1,
@@ -293,7 +288,6 @@ class Level extends Component {
         });
       })
       .catch((error) => {
-        // window.location.href = "/"
         console.log(error)
       })
   };
@@ -464,7 +458,7 @@ class Level extends Component {
         </div>
 
         {(() => {
-          if (this.state.loading) return <Loading />
+          if (this.state.loading) return <LoadingFullPage />
         })()}
       </div>
     )

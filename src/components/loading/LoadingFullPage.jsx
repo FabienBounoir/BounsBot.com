@@ -1,7 +1,7 @@
 import React from 'react';
 import "./_loading.css";
 
-function Loading() {
+function LoadingFullPage() {
   return (
     <div className="loadingFullPage">
       <div className="alignImage">
@@ -60,4 +60,4 @@ function Loading() {
   );
 }
 
-export default Loading;
+export default LoadingFullPage;

@@ -2,18 +2,18 @@ import "./_callback.css";
 import { Component } from 'react'
 import Fetch from "../../utils/fetch.js";
 import Avatar from "../avatar/avatar";
-
+import { Redirect } from "react-router-dom";
 
 class Callback extends Component {
 
     async exchange_code(code) {
         let details = {
-            'client_id': "1012688780471308339",
-            'client_secret': "LCHB5zd_FtBa7q_ZeOv1nbBy9H3Ny1FG",
+            'client_id': process.env.REACT_APP_CLIENT_ID,
+            'client_secret': process.env.REACT_APP_CLIENT_SECRET,
             'grant_type': 'authorization_code',
             'code': code,
-            'redirect_uri': "https://bounsbot.com/oauth/callback"
-        } //'redirect_uri': "http://localhost:3000/oauth/callback" | 'redirect_uri': "https://bounsbot.com/oauth/callback"
+            'redirect_uri': process.env.REACT_APP_HOSTNAME + "/oauth/callback"
+        }
 
         var formBody = [];
         for (var property in details) {
@@ -31,7 +31,8 @@ class Callback extends Component {
             headers: headers,
             method: "POST",
             body: formBody
-        }).catch(error => { console.error(error); document.location.href = "/"; });
+        }).catch(error => { console.error(error); });//document.location.href = "/"; });
+
 
         if (body.status === 200) {
             const result = await body.json();
@@ -43,7 +44,7 @@ class Callback extends Component {
             if (!user) document.location.href = "/login"
             await window.localStorage.setItem('dataUser', JSON.stringify(user))
 
-            document.location.href = "/dashboard";
+            document.location.href = "/dashboard/user/description";
         }
         else {
             document.location.href = "/login";

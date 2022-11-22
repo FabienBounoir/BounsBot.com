@@ -37,7 +37,7 @@ class Demo extends Component {
         this.picture = `${Math.floor(Math.random() * 6)}`
 
         //socket.io client connection
-        this.socket = io('http://localhost:3001/');
+        // this.socket = io('http://localhost:3001/');
 
 
         //socket server link
