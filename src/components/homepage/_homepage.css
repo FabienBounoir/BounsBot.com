@@ -1,21 +1,3 @@
-/* //créé une home page qui prends toute la page avec a gauche un texte qui bouge et a droite un avatar */
-/* .homepage {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    height: calc(100vh - 56px);
-    width: 100vw;
-    background-color: #1e1e1e;
-    color: white;
-    font-family: 'Roboto', sans-serif;
-    font-size: 1.5em;
-    font-weight: 300;
-    padding: 0 5vw;
-    box-sizing: border-box;
-    overflow: hidden;
-} */
-
 .particulesNano {
     position: absolute;
     z-index: 0;
@@ -33,7 +15,7 @@
     grid-template-rows: 1fr;
     grid-template-areas: "text avatar";
     height: calc(100vh - 56px);
-    width: 100vw;
+    width: 100%;
     background-color: #1e1e1e;
     color: white;
     font-family: 'Roboto', sans-serif;
@@ -48,6 +30,18 @@
     background: linear-gradient(180deg, #1e1e1e 0%, var(--color-principal) 350%);
     border-bottom: 5px solid var(--color-principal);
     gap: 32px;
+}
+
+.home_halloween {
+    background: url(./spider_top.webp) no-repeat, url(./spider_bottom.webp) no-repeat right bottom, linear-gradient(180deg, #1e1e1e 0%, var(--color-principal) 350%);
+    background-size: contain;
+}
+
+.home_noel {
+    background: url("https://media.discordapp.net/attachments/927300810390515712/1044410881989169256/image.png") bottom left no-repeat, url("https://media.discordapp.net/attachments/927300810390515712/1044412151059726466/image.png") bottom right no-repeat, linear-gradient(180deg, #1e1e1e 0%, var(--color-principal) 350%);
+    /* url(./noel.webp) no-repeat, */
+    background-size: contain;
+    background-size: 20%;
 }
 
 @keyframes nanoParticuleAnimation {
@@ -454,5 +448,43 @@
 
     .buttonContainer {
         margin: 10px
+    }
+}
+
+@media screen and (max-height: 482px) {
+    .homepage__text h1 {
+        font-size: 30px;
+        line-height: 40px;
+    }
+
+    .homepage__avatar svg {
+        width: 100%;
+        height: 100%;
+        max-width: 200px;
+        max-height: 200px;
+        /* animation: avatarAnimation 5s linear infinite; */
+    }
+
+    .buttonContainer {
+        margin: 10px
+    }
+}
+
+@media screen and (max-height: 480px) and (max-width: 320px) {
+    .homepage__text h1 {
+        font-size: 20px;
+        line-height: 25px;
+    }
+
+    .homepage__avatar svg {
+        width: 100%;
+        height: 100%;
+        max-width: 200px;
+        max-height: 200px;
+        /* animation: avatarAnimation 5s linear infinite; */
+    }
+
+    .homepage__text .buttonContainer {
+        margin: 10px;
     }
 }
