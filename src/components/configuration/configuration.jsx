@@ -142,10 +142,12 @@ export const Configuration = (props) => {
         if (open) {
             document.getElementsByClassName("configuration_list")[0].classList.add("close")
             document.getElementsByClassName("servers")[0].classList.add("close")
+            document.getElementsByClassName("config")[0].classList.add("disabledConfig")
         }
         else {
             document.getElementsByClassName("configuration_list")[0].classList.remove("close")
             document.getElementsByClassName("servers")[0].classList.remove("close")
+            document.getElementsByClassName("config")[0].classList.remove("disabledConfig")
         }
     }
 

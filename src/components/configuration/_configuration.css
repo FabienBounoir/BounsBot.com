@@ -202,16 +202,28 @@
         display: flex;
         align-items: center;
         justify-content: center;
+        min-width: 24px;
+        max-width: 24px;
     }
 
     .config {
         padding: 3em 3em 3em 2em;
+        filter: brightness(0.5);
+        transition: filter 0.5s;
+        min-width: 97%;
+        /* min-width: min-content; */
+        pointer-events: none;
     }
 
     .close {
         min-width: 0;
         max-width: 0;
         width: 0;
+    }
+
+    .disabledConfig {
+        filter: brightness(1);
+        pointer-events: auto;
     }
 
     .buttonMenu span {
@@ -230,5 +242,11 @@
     .buttonMenu span svg {
         rotate: 90deg;
 
+    }
+}
+
+@media screen and (max-width: 340px) {
+    .configuration_list {
+        width: calc(100vw - (30px + 72px));
     }
 }

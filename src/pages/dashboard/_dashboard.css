@@ -4,6 +4,7 @@
 
     /* min-height: calc(100vh - 80px); */
     height: var(--dashboard-height);
+    overflow-x: hidden;
     /* calc(var(--doc-height) - 55px); */
     /* max-height: calc(100vh - 55px); */
     /* min-height: -webkit-fill-available; */
