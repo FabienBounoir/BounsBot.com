@@ -36,13 +36,17 @@ export const App = () => {
   let randomColor = () => {
     let color = "";
     let letters = "0123456789ABCDEF";
-    for (let i = 0; i < 6; i++) {
-      color += letters[Math.floor(Math.random() * 16)];
-    }
 
-    if (color.substring(0, 2) === "00" || color.substring(0, 2) === "11") {
-      randomColor();
+    do {
+      color = "";
+      for (let i = 0; i < 6; i++) {
+        color += letters[Math.floor(Math.random() * 16)];
+      }
+      // console.log("%c test couleur", `color: #${color}`)
     }
+    //tant que la couleur est trop claire ou trop foncée
+    while (parseInt(color, 16) > 0x999999 || parseInt(color, 16) < 0x333333)
+
     return color;
   }
 
@@ -55,10 +59,11 @@ export const App = () => {
       r.style.setProperty('--color-principal', '#ff5e00');
       r.style.setProperty('--color-principal-hover', '#702a00');
     }
-    else if (date.getMonth() === 11 && (date.getDate() === 25 || date.getDate() === 24)) {
+    else if (date.getMonth() === 11 && (date.getDate() <= 26 && date.getDate() >= 15)) {
       let r = document.getElementsByTagName("html")[0];
-      r.style.setProperty('--color-principal', '#ff0000');
-      r.style.setProperty('--color-principal-hover', '#ec5353');
+      //frozen color
+      r.style.setProperty('--color-principal', '#00bfff');
+      r.style.setProperty('--color-principal-hover', '#00688b');
     }
     else if (Math.random() < 0.1) {
       r.style.setProperty('--color-principal', "#" + randomColor());
