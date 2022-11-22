@@ -509,10 +509,6 @@
     .leaderboardPlayerStats .leaderboardPlayerStatBlock:first-child {
         display: none;
     }
-
-    /* .leaderboardglobal {
-        padding: 20px;
-    } */
 }
 
 @media screen and (max-width: 800px) {
@@ -544,5 +540,9 @@
 
     .leaderboardPlayer {
         padding-right: 0;
+    }
+
+    .leaderboardglobal {
+        padding: 0.5em;
     }
 }
