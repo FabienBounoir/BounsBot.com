@@ -109,6 +109,10 @@
     letter-spacing: 1px;
     font-size: 10px;
     line-height: 16px;
+
+
+    padding: 1em 0 0;
+    font-family: Whitney, "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
 .configList .title:first-child {
