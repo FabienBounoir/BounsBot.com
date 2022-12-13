@@ -59,15 +59,40 @@ export const App = () => {
       r.style.setProperty('--color-principal', '#ff5e00');
       r.style.setProperty('--color-principal-hover', '#702a00');
     }
-    else if (date.getMonth() === 11 && (date.getDate() <= 26 && date.getDate() >= 15)) {
+    else if (date.getMonth() === 11 && (date.getDate() <= 26 && date.getDate() >= 10)) {
       let r = document.getElementsByTagName("html")[0];
       //frozen color
       r.style.setProperty('--color-principal', '#00bfff');
       r.style.setProperty('--color-principal-hover', '#00688b');
+      setSnow();
     }
     else if (Math.random() < 0.1) {
       r.style.setProperty('--color-principal', "#" + randomColor());
       r.style.setProperty('--color-principal-hover', "#" + randomColor());
+    }
+  }
+
+  let setSnow = () => {
+    var embedimSnow = document.getElementById('embedim--snow');
+    console.log(embedimSnow)
+    if (!embedimSnow) {
+      console.log("dedans")
+      function embRand(a, b) {
+        return Math.floor(Math.random() * (b - a + 1)) + a
+      }
+
+      var embCSS = '.embedim-snow{position: absolute;width: 10px;height: 10px;background: white;border-radius: 50%;margin-top:-10px}';
+      var embHTML = '';
+
+      for (let i = 1; i < 120; i++) {
+
+        embHTML += '<i class="embedim-snow"></i>'; var rndX = (embRand(0, 1000000) * 0.0001), rndO = embRand(-100000, 100000) * 0.0001, rndT = (embRand(3, 8) * 10).toFixed(2), rndS = (embRand(0, 10000) * 0.0001).toFixed(2);
+
+        embCSS += '.embedim-snow:nth-child(' + i + '){' + 'opacity:' + (embRand(1, 10000) * 0.0001).toFixed(2) + ';' + 'transform:translate(' + rndX.toFixed(2) + 'vw,-10px) scale(' + rndS + ');' + 'animation:fall-' + i + ' ' + embRand(10, 30) + 's -' + embRand(0, 30) + 's linear infinite' + '}' + '@keyframes fall-' + i + '{' + rndT + '%{' + 'transform:translate(' + (rndX + rndO).toFixed(2) + 'vw,' + rndT + 'vh) scale(' + rndS + ')' + '}' + 'to{' + 'transform:translate(' + (rndX + (rndO / 2)).toFixed(2) + 'vw, 105vh) scale(' + rndS + ')' + '}' + '}'
+      }
+      embedimSnow = document.createElement('div'); embedimSnow.id = 'embedim--snow';
+      embedimSnow.innerHTML = '<style>#embedim--snow{position:fixed;pointer-events: none;left:0;top:0;bottom:0;width:100vw;height:100vh;overflow:hidden;z-index:9999999;pointer-events:none}' + embCSS + '</style>' + embHTML;
+      document.body.appendChild(embedimSnow)
     }
   }
 

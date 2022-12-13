@@ -1,6 +1,5 @@
 
 import { useState, useEffect } from "react"
-import { Link } from 'react-router-dom';
 import { Form } from 'react-bootstrap/'
 import Avatar from "../../components/avatar/avatar";
 
