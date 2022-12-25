@@ -180,6 +180,7 @@
         width: 100%;
         pointer-events: none;
         scroll-snap-align: center;
+        filter: none;
     }
 
     .articleContainer {
