@@ -10,7 +10,7 @@ export const Bio = () => {
             <div className="privacy-section">
                 <p><b>Bouns'bot</b> is a bot born from a passion for development and programming<br /> made by <b>BadbounsTV</b></p>
                 <p>The bot is constantly evolving, and is regularly updated.</p>
-                <p>it is currently in version <b>2.2.0</b></p>
+                <p>it is currently in version <b>2.3.2</b></p>
                 {/* <br /> */}
                 <p>The philosophy of <b>Bouns'bot</b> is to offer a complete, quality bot, with all the features you would expect from a bot, all for free!</p>
                 <p>Many features available on <b>Bouns'bot</b> are exclusive features, and not available on any other bot.</p>

@@ -23,11 +23,11 @@ import Callback from "../components/callback/callback";
 import Authenticate from '../components/Authenticate';
 import { Bio } from "../pages/bio/bio";
 import { TermsBot } from "../pages/termsBot/terms";
+import { Info } from "../components/info/info";
 import ScrollToTop from "../utils/ScrollToTop"
 import { useEffect } from "react";
 
 export const App = () => {
-
   useEffect(() => {
     setEnvColor()
   }, [])
@@ -74,9 +74,7 @@ export const App = () => {
 
   let setSnow = () => {
     var embedimSnow = document.getElementById('embedim--snow');
-    console.log(embedimSnow)
     if (!embedimSnow) {
-      console.log("dedans")
       function embRand(a, b) {
         return Math.floor(Math.random() * (b - a + 1)) + a
       }
@@ -84,7 +82,11 @@ export const App = () => {
       var embCSS = '.embedim-snow{position: absolute;width: 10px;height: 10px;background: white;border-radius: 50%;margin-top:-10px}';
       var embHTML = '';
 
-      for (let i = 1; i < 120; i++) {
+      let nbSnow = 100;
+
+      if (window.innerWidth < 900) nbSnow = 30;
+
+      for (let i = 1; i < nbSnow; i++) {
 
         embHTML += '<i class="embedim-snow"></i>'; var rndX = (embRand(0, 1000000) * 0.0001), rndO = embRand(-100000, 100000) * 0.0001, rndT = (embRand(3, 8) * 10).toFixed(2), rndS = (embRand(0, 10000) * 0.0001).toFixed(2);
 
@@ -103,6 +105,7 @@ export const App = () => {
         <Switch>
           <Route exact path="/">
             <HomePage />
+            <Info />
             <Features />
             <Footer />
           </Route>

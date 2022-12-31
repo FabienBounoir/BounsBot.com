@@ -1,0 +1,72 @@
+.infoComponent {
+    margin: 0;
+    padding: 0;
+    background-color: #1f2129;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    /* height: 40px; */
+    /* min-height: 60vh; */
+    /* max-height: 50vh; */
+    padding: 40px 10px 40px 10px;
+}
+
+.infoComponent h2 {
+    -webkit-box-pack: center;
+    justify-content: center;
+    /* padding-top: 40px; */
+    /* padding-bottom: 84px; */
+}
+
+.infoComponent .guildList {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    /* width: 55vw; */
+}
+
+.infoComponent .guildList .guild {
+    background-color: #17181e;
+    color: #9b9d9f;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    text-align: left;
+    align-items: center;
+    margin: 16px;
+    /* background-color: #1f2129; */
+    border-radius: 16px;
+    padding: 16px;
+}
+
+.infoComponent .guildList .guild h3 {
+    color: #fff;
+    font-size: 16px;
+    padding: 0;
+    margin: 0;
+}
+
+.infoComponent .guildList .guild p {
+    /* color: #fff; */
+    /* font-size: 16px; */
+    padding: 0;
+    margin: 0;
+}
+
+.infoComponent .guildList .guild img {
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    margin-right: 16px;
+}
+
+.infoComponent .guildList .guild .member {
+    display: flex;
+    flex-direction: row;
+    justify-content: left;
+    align-items: center;
+    gap: 8px;
+}
