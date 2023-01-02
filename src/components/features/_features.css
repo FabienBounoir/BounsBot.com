@@ -181,6 +181,14 @@
         pointer-events: none;
         scroll-snap-align: center;
         filter: none;
+        margin-top: 0;
+
+    }
+
+    .picture img:first-child {
+        /* padding-top: 6em; */
+        margin-top: 0em;
+        margin-top: 0;
     }
 
     .articleContainer {
