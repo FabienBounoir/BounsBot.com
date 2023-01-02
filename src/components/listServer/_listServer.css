@@ -69,3 +69,9 @@
         background-color: hsl(200, 20%, 95%);
     }
 }
+
+@media screen and (max-width: 900px) {
+    .servers {
+        padding-top: 10px;
+    }
+}
