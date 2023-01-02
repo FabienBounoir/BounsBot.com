@@ -18,6 +18,7 @@ export const ListServer = (props) => {
     }, [props])
 
     const renderProfil = () => {
+        let random = Math.floor(Math.random() * 6)
         return (<>
             <Link className={`list_item${activeGuild === "user" ? " active" : ""}`} to={`/dashboard/user/description`}>
                 < div className={`list_balise`} >
@@ -26,7 +27,7 @@ export const ListServer = (props) => {
                     </div>
                 </div >
                 <div className="userAvatar">
-                    <img src={`https://cdn.discordapp.com/avatars/${JSON.parse(window.localStorage.getItem('dataUser')).id}/${JSON.parse(window.localStorage.getItem('dataUser')).avatar}.webp?size=256`} alt="Avatar" />
+                    <img src={`https://cdn.discordapp.com/avatars/${JSON.parse(window.localStorage.getItem('dataUser')).id}/${JSON.parse(window.localStorage.getItem('dataUser')).avatar}.webp?size=256`} alt="Avatar" onError={(e) => { e.target.outerHTML = `<img src='https://cdn.discordapp.com/embed/avatars/${random}.png'/>` }} />
                 </div>
             </Link>
             <div className="guildSeparator">

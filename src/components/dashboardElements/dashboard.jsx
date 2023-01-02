@@ -106,8 +106,7 @@ export const Dashboard = (props) => {
         await fetch(process.env.REACT_APP_HOSTNAME_BOT + "/bot/getchannels/" + props.guildId, requestOptions)
             .then(response => response.json())
             .then((result) => {
-                setChannel(result.channels.filter(channel => channel.type === 0)
-                );
+                setChannel(result?.channels?.filter(channel => channel.type === 0) || []);
             })
             .catch(console.log)
     };
