@@ -118,7 +118,7 @@ export const Configuration = (props) => {
             return (<Logs guildId={id} />)
         }
         else if (type === "welcome") {
-            return (<Welcome guildId={id} name={guild?.name} iconLink={guild?.icon ? `https://cdn.discordapp.com/icons/${guild?.id}/${guild?.icon}.gif?size=256` : null} />)
+            return (<Welcome guildId={id} user={props.user} name={guild?.name} iconLink={guild?.icon ? `https://cdn.discordapp.com/icons/${guild?.id}/${guild?.icon}.gif?size=256` : null} />)
         }
         else if (type === "guild_message") {
             return (<Send guildId={id} />)

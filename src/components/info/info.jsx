@@ -11,7 +11,7 @@ export const Info = (props) => {
     }, [props.guildId])
 
     let getInfo = async () => {
-        let stats = await fetch("https://guild.bounsbot.com/bot/stats").then(res => res.json())
+        let stats = await fetch(`${process.env.REACT_APP_HOSTNAME_BACKEND}/bot/stats`).then(res => res.json())
         setInfo(stats)
     }
 
