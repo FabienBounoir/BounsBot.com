@@ -22,92 +22,501 @@ export const Welcome = (props) => {
 
     const getConfiguration = async () => {
         let res = await fetch(`${process.env.REACT_APP_HOSTNAME_BACKEND}/guild/${props.guildId}/welcome`).then(res => res.json()) || {}
-        console.log(res)
         await setInitialConfig(JSON.parse(JSON.stringify(res)));
         await setConfiguration(JSON.parse(JSON.stringify(res)))
     }
 
     const renderCanvas = (guild) => {
+        if (canvasRef.current === null) return
+
         let canvas = canvasRef.current
+        /**
+         * @type {CanvasRenderingContext2D}
+         */
+        let ctx = canvas.getContext("2d");
+        ctx.globalCompositeOperation = 'source-over';
+        ctx.resetTransform();
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        ctx.restore();
+        ctx.save();
+
+        // theme2(guild)
+        switch (`${guild?.design}`) {
+            case "0":
+                theme1(guild, canvas)
+                break;
+            case "1":
+                theme2(guild, canvas)
+                break;
+
+            case "2":
+                theme3(guild, canvas)
+                break;
+
+            case "3":
+                theme4(guild, canvas)
+                break;
+
+            default:
+                theme1(guild, canvas)
+                break;
+        }
+    }
+
+    const theme1 = (guild, canvas) => {
+        if (canvasRef.current === null) return
 
         let ctx = canvas.getContext("2d");
 
-        let avatar = new Image();
-        let random = Math.floor(Math.random() * 6);
+        let colorText = guild?.colorText || "#FFFFF";
+        let colorAmbient = guild?.colorAmbiance || '#fb0f32';
 
-        avatar.src = props?.user?.avatar ? `https://cdn.discordapp.com/avatars/${props?.user?.id}/${props?.user?.avatar}.webp?size=1024` : `https://cdn.discordapp.com/embed/avatars/${random}.png`
-        avatar.onload = function () {
-            ctx.drawImage(avatar, 0, 0, 500, 500);
+        let background = new Image();
+        background.src = (guild.background || "https://media.discordapp.net/attachments/1014101467126304798/1055788116486660166/image.png")
+        background.onload = function () {
+            ctx.drawImage(background, -10, -10, 1240, 540);
 
-            let background = new Image();
+            //--------- ADD Fill style -----------//
 
-            const file = fileInputRef?.current?.files[0];
-            if (file) {
-                const reader = new FileReader();
-                reader.onload = event => {
-                    background.src = event.target.result;
-                };
-                reader.readAsDataURL(file);
+            ctx.fillStyle = "rgba(0, 0, 0, 0.5)";
+            ctx.moveTo(400, 0);
+            ctx.lineTo(1200, 0);
+            ctx.lineTo(1200, 500);
+            ctx.lineTo(500, 500);
+            ctx.closePath();
+            ctx.fill();
+            ctx.save();
+
+            //---------- LINE ----------//
+
+            ctx.fillStyle = colorAmbient
+            ctx.beginPath();
+            ctx.moveTo(390, 0);
+            ctx.lineTo(410, 0);
+            ctx.lineTo(510, 500);
+            ctx.lineTo(490, 500);
+            ctx.closePath();
+            ctx.fill();
+
+            //--------------------//
+
+            ctx.textBaseline = 'middle';
+
+            ctx.font = "bold 70px Arial";
+            ctx.fillStyle = colorText
+            ctx.textAlign = "left";
+            ctx.fillText("Welcome", 490, 120); //450
+
+            ctx.font = "bold 70px Arial";
+            // ctx.fillText("BadbounsTV#2000", 520, 270); //480
+
+            const maxWidth = 630;
+            let text = `${props?.user?.username}#${props?.user?.discriminator}`;
+            let fontSize = 70;
+
+            ctx.font = `bold ${fontSize}px Arial`;
+
+            while (ctx.measureText(text).width > maxWidth) {
+                fontSize--;
+                ctx.font = `bold ${fontSize}px Arial`;
             }
-            else {
-                background.src = guild?.background || "https://media.discordapp.net/attachments/1014101467126304798/1055788116486660166/image.png";
+
+            ctx.fillText(text, 520, 250);
+
+            ctx.fillText("Sur le serveur", 540, 380); //500
+
+            ctx.beginPath();
+            ctx.moveTo(0, 0);
+            ctx.moveTo(400, 0);
+            ctx.lineTo(500, 500);
+            ctx.lineTo(0, 500);
+            ctx.lineTo(0, 0);
+            ctx.closePath();
+
+            ctx.clip();
+
+            let avatar = new Image();
+            avatar.src = (props?.user?.avatar ? `https://cdn.discordapp.com/avatars/${props?.user?.id}/${props?.user?.avatar}.webp?size=1024` : `https://cdn.discordapp.com/embed/avatars/${Math.floor(Math.random() * 6)}.png`)
+            avatar.onload = function () {
+                ctx.drawImage(avatar, 0, 0, 500, 500);
+                ctx.restore();
             }
-            background.onload = function () {
+        }
+    }
 
-                ctx.save();
-                ctx.beginPath();
-                ctx.moveTo(400, 0);
-                ctx.lineTo(1200, 0);
-                ctx.lineTo(1200, 500);
-                ctx.lineTo(500, 500);
-                ctx.closePath();
+    const theme2 = (guild, canvas) => {
+        if (canvasRef.current === null) return
 
-                ctx.clip();
-                // ctx.filter = "blur(5px)";
-                ctx.drawImage(background, -10, -10, 1240, 540);
+        let ctx = canvas.getContext("2d");
 
-                //--------- ADD Fill style -----------//
+        let colorText = guild?.colorText || "#FFFFF";
+        let colorAmbient = guild?.colorAmbiance || '#fb0f32';
 
+        let background = new Image();
+        background.src = (guild.background || "https://media.discordapp.net/attachments/1014101467126304798/1055788116486660166/image.png")
+        background.onload = function () {
+            ctx.drawImage(background, 0, 0, 1200, 500);
 
-                ctx.fillStyle = "rgba(0, 0, 0, 0.5)";
-                ctx.moveTo(400, 0);
-                ctx.lineTo(1200, 0);
-                ctx.lineTo(1200, 500);
-                ctx.lineTo(500, 500);
-                ctx.closePath();
-                ctx.fill();
-                // ctx.filter = "blur(0px)";
-                ctx.save();
+            ctx.fillStyle = "rgba(0, 0, 0, 0.5)";
+            ctx.fillRect(0, 0, 1200, 500);
 
-                //---------- LINE ----------//
+            //drawn rectangle with Border
+            ctx.globalAlpha = 0.6;
+            ctx.fillStyle = colorAmbient;
+            ctx.strokeStyle = colorAmbient;
 
-                ctx.fillStyle = (guild?.colorAmbiance || '#fb0f32');
-                ctx.beginPath();
-                ctx.moveTo(390, 0);
-                ctx.lineTo(410, 0);
-                ctx.lineTo(510, 500);
-                ctx.lineTo(390, 500);
-                ctx.closePath();
-                ctx.fill();
+            ctx.lineWidth = 20;
+            ctx.lineJoin = 'round';
 
-                //--------------------//
+            ctx.strokeRect(150, 30, 920, 440);
+            ctx.fillRect(160, 40, 900, 420);
 
-                ctx.font = "bold 70px Arial";
-                ctx.fillStyle = guild?.colorText //|| "white");
-                ctx.textAlign = "left";
-                ctx.fillText("Welcome", 490, 150); //450
+            ctx.globalAlpha = 1;
 
-                ctx.font = "60px Arial";
-                ctx.textAlign = "left";
-                ctx.fillText((props?.user?.username + "#" + props?.user?.discriminator || "Wumpus#1234"), 520, 270); //480
+            //Display Text
+            ctx.textAlign = 'center';
+            ctx.fillStyle = colorText;
 
-                ctx.font = "bold 70px Arial";
-                // ctx.textAlign = "center";
-                ctx.fillText("To the server", 540, 390); //500
+            //resize text
+            const maxWidth = 800;
+            let text = `Bienvenue ${props?.user?.username || "Wumpus"} sur le serveur !`
+            let fontSize = 57;
+
+            ctx.font = `${fontSize}px Arial`;
+
+            while (ctx.measureText(text).width > maxWidth) {
+                fontSize--;
+                ctx.font = `${fontSize}px Arial`;
+            }
+
+            ctx.fillText(text, 610, 400);
+            ctx.globalAlpha = 0.8;
+
+            ctx.fillStyle = darkenColor(colorText, 20);
+            //resize text
+            const maxWidth2 = 900;
+            let text2 = `Tu es le ${Math.floor(Math.random() * 1000)}ème membres, Assure toi de lire les règles !` || 'You’re 83848434 member, Make sure to read rules !';
+            let fontSize2 = 45;
+
+            ctx.font = `${fontSize2}px Arial`;
+
+            while (ctx.measureText(text2).width > maxWidth2) {
+                fontSize2--;
+                ctx.font = `${fontSize2}px Arial`;
+            }
+
+            ctx.fillText(text2, 610, 450);
+
+            ctx.globalAlpha = 1;
+
+            //add avatar with border and clip
+            ctx.beginPath();
+            ctx.lineWidth = 15;
+            ctx.arc(600, 200, 150, 0, Math.PI * 2, true);
+            ctx.closePath();
+            ctx.clip();
+
+            let avatar = new Image();
+            avatar.src = props?.user?.avatar ? `https://cdn.discordapp.com/avatars/${props?.user?.id}/${props?.user?.avatar}.webp?size=1024` : `https://cdn.discordapp.com/embed/avatars/${Math.floor(Math.random() * 6)}.png`
+            avatar.onload = function () {
+                ctx.drawImage(avatar, 450, 50, 300, 300);
+
+                ctx.stroke();
+                ctx.restore();
 
                 ctx.save();
             }
         }
+    }
+
+    const theme3 = (guild, canvas) => {
+        let ctx = canvas.getContext("2d");
+
+        let colorText = guild?.colorText || "#FFFFF";
+        let colorAmbient = guild?.colorAmbiance || '#fb0f32';
+
+        let background = new Image();
+        background.src = (guild.background || "https://media.discordapp.net/attachments/1014101467126304798/1055788116486660166/image.png")
+        background.onload = function () {
+            ctx.drawImage(background, 0, 0, 1200, 500);
+
+            ctx.fillStyle = "rgba(0, 0, 0, 0.5)";
+            ctx.fillRect(0, 0, 1200, 500);
+
+
+            //drawn rectangle with Border
+            ctx.globalAlpha = 1;
+            ctx.fillStyle = colorAmbient;
+            ctx.strokeStyle = colorAmbient;
+
+            ctx.lineWidth = 20;
+            ctx.lineJoin = 'round';
+
+
+
+            //Display Text
+            ctx.textAlign = 'center';
+            ctx.fillStyle = colorText;
+
+            //resize text
+            const maxWidth = 450;
+            let text = 'BIENVENUE';
+            let fontSize = 80;
+
+            ctx.font = `bold ${fontSize}px Arial`;
+
+            while (ctx.measureText(text).width > maxWidth) {
+                fontSize--;
+                ctx.font = `${fontSize}px Arial`;
+            }
+
+            ctx.fillText(text, 610, 400);
+
+            ctx.globalAlpha = 0.8;
+
+            ctx.fillStyle = darkenColor(colorText, 20);
+            //resize text
+            const maxWidth2 = 700;
+            let text2 = (props?.user?.username + "#" + props?.user?.discriminator || "Wumpus#1234");
+            let fontSize2 = 45;
+
+            ctx.font = `${fontSize2}px Arial`;
+
+            while (ctx.measureText(text2).width > maxWidth2) {
+                fontSize2--;
+                ctx.font = `${fontSize2}px Arial`;
+            }
+
+            ctx.fillText(text2, 610, 450);
+
+            ctx.globalAlpha = 1;
+
+
+            //utiliser cette forme pour ensuite masker le texte    
+            ctx.fillStyle = darkenColor(colorAmbient, 50);
+            ctx.globalAlpha = 0.5;
+
+            ctx.translate(850, 0);
+            ctx.beginPath();
+            ctx.moveTo(0, 0);
+            ctx.moveTo(368.998, 98.2458);
+            ctx.lineTo(368.998, 228.183);
+            ctx.lineTo(368.998, 306.482);
+            ctx.bezierCurveTo(315.63, 319.584, 276.831, 327.713, 220.802, 313.578);
+            ctx.bezierCurveTo(199.099, 308.117, 177.184, 301.828, 158.122, 289.863);
+            ctx.bezierCurveTo(139.06, 277.899, 123.138, 259.28, 120.121, 238.394);
+            ctx.bezierCurveTo(116.882, 215.906, 126.975, 202.459, 104.322, 188.015);
+            ctx.bezierCurveTo(82.3096, 173.971, 57.4627, 163.151, 37.4331, 146.302);
+            ctx.bezierCurveTo(-11.4181, 105.154, -8.09407, 44.8246, 22.4084, 0);
+            ctx.lineTo(97.6517, 0);
+            ctx.lineTo(243.435, 0);
+            ctx.lineTo(368.998, 0);
+            ctx.lineTo(368.998, 84.1072);
+            ctx.lineTo(368.998, 109.297);
+            ctx.lineTo(368.998, 122.553);
+            ctx.lineTo(368.998, 98.2458);
+            ctx.closePath();
+            ctx.fill();
+
+            ctx.translate(-850, 0);
+
+            ctx.beginPath();
+            ctx.moveTo(-1.52698, 401.752);
+            ctx.lineTo(-0.903813, 271.816);
+            ctx.lineTo(-0.528289, 193.518);
+            ctx.bezierCurveTo(52.9017, 180.672, 91.7396, 172.73, 147.7, 187.133);
+            ctx.bezierCurveTo(169.377, 192.698, 191.261, 199.092, 210.265, 211.148);
+            ctx.bezierCurveTo(229.27, 223.204, 245.102, 241.899, 248.019, 262.799);
+            ctx.bezierCurveTo(251.15, 285.302, 240.993, 298.701, 263.577, 313.254);
+            ctx.bezierCurveTo(285.521, 327.403, 310.316, 338.342, 330.265, 355.287);
+            ctx.bezierCurveTo(378.918, 396.668, 375.305, 456.981, 344.587, 501.659);
+            ctx.lineTo(269.345, 501.298);
+            ctx.lineTo(123.561, 501.298);
+            ctx.lineTo(-1.52698, 501.298);
+            ctx.lineTo(-1.52698, 415.893);
+            ctx.lineTo(-1.52698, 390.703);
+            ctx.lineTo(-1.52698, 377.447);
+            ctx.lineTo(-1.52698, 401.752);
+            ctx.closePath();
+            ctx.fill();
+
+            ctx.globalAlpha = 1;
+
+            let text3 = '#12';
+
+            //Form generate
+
+            ctx.fillStyle = colorText
+
+            let maxWidth3 = 275;
+            let fontSize3 = 70;
+
+            ctx.font = `bold ${fontSize3}px Arial`;
+
+            while (ctx.measureText(text3).width > maxWidth3) {
+                fontSize3--;
+                ctx.font = `bold ${fontSize3}px Arial`;
+            }
+            // ctx.fillStyle = colorText;
+            ctx.textAlign = 'right';
+            ctx.textBaseline = 'middle';
+
+            ctx.fillText(text3, 1160, 70);
+
+            //add avatar with border and clip
+            ctx.beginPath();
+            ctx.lineWidth = 15;
+            ctx.arc(600, 175, 150, 0, Math.PI * 2, true);
+            ctx.closePath();
+            ctx.clip();
+
+
+            let avatar = new Image();
+            avatar.src = props?.user?.avatar ? `https://cdn.discordapp.com/avatars/${props?.user?.id}/${props?.user?.avatar}.webp?size=1024` : `https://cdn.discordapp.com/embed/avatars/${Math.floor(Math.random() * 6)}.png`
+            avatar.onload = function () {
+                ctx.drawImage(avatar, 455, 30, 290, 290);
+
+                ctx.stroke();
+                ctx.restore();
+
+
+
+                ctx.save();
+            }
+
+        }
+    }
+
+    const theme4 = (guild, canvas) => {
+        let ctx = canvas.getContext("2d");
+
+        let colorText = guild?.colorText || "#FFFFF";
+        let colorAmbient = guild?.colorAmbiance || '#fb0f32';
+
+        let background = new Image();
+        background.src = (guild.background || "https://media.discordapp.net/attachments/1014101467126304798/1055788116486660166/image.png")
+        background.onload = function () {
+            ctx.drawImage(background, 0, 0, 1200, 500);
+
+            ctx.textAlign = 'center';
+            ctx.textBaseline = 'middle';
+
+            ctx.fillStyle = "rgba(0, 0, 0, 0.5)";
+            ctx.fillRect(0, 0, 1200, 500);
+
+
+            //drawn rectangle with Border
+            ctx.globalAlpha = 1;
+            ctx.fillStyle = colorAmbient;
+            ctx.strokeStyle = colorAmbient;
+
+            ctx.lineWidth = 20;
+            ctx.lineJoin = 'round';
+
+
+
+            //Display Text
+            ctx.textAlign = 'center';
+            ctx.fillStyle = colorText;
+
+            //resize text
+            const maxWidth = 900;
+            let text = `Welcome ${props?.user?.username}`;
+            let fontSize = 80;
+
+            ctx.font = `bold ${fontSize}px Arial`;
+
+            while (ctx.measureText(text).width > maxWidth) {
+                fontSize--;
+                ctx.font = `${fontSize}px Arial`;
+            }
+
+            ctx.fillText(text, 610, 90);
+
+
+            ctx.textAlign = 'center';
+            ctx.fillStyle = colorText;
+
+            //resize text
+            const maxWidth2 = 600;
+            let text2 = `To ${props?.name}`;
+            let fontSize2 = 85;
+
+            ctx.font = `bold ${fontSize2}px Arial`;
+
+            while (ctx.measureText(text2).width > maxWidth2) {
+                fontSize2--;
+                ctx.font = `${fontSize2}px Arial`;
+            }
+
+            ctx.fillText(text2, 850, 190);
+
+            ctx.fillStyle = darkenColor(colorAmbient, 20);
+
+            const maxWidth3 = 500;
+            let text3 = `Tu es le ${Math.floor(Math.random() * 1000) + 1}ème membre !`;
+            let fontSize3 = 85;
+
+            ctx.font = `bold ${fontSize3}px Arial`;
+
+            while (ctx.measureText(text3).width > maxWidth3) {
+                fontSize3--;
+                ctx.font = `${fontSize3}px Arial`;
+            }
+
+            ctx.fillText(text3, 900, 320);
+
+            const maxWidth4 = 500;
+            let text4 = 'Assure toi de lire les règles !';
+            let fontSize4 = 85;
+
+            ctx.font = `bold ${fontSize4}px Arial`;
+
+            while (ctx.measureText(text4).width > maxWidth4) {
+                fontSize4--;
+                ctx.font = `${fontSize4}px Arial`;
+            }
+
+            ctx.fillText(text4, 900, 380);
+
+
+
+            ctx.beginPath();
+            ctx.lineWidth = 15;
+            ctx.ellipse(320, 500, 300, 340, 0, 0, 2 * Math.PI);
+            ctx.closePath();
+
+            ctx.clip();
+
+
+            let avatar = new Image();
+            avatar.src = "https://cdn.discordapp.com/avatars/266636247017979904/a8085a037c0d0a3e592bf36be3875949.png?size=1024";
+            avatar.onload = function () {
+                ctx.drawImage(avatar, 20, 160, 600, 600);
+
+                ctx.restore();
+                ctx.save();
+            }
+        }
+    }
+
+    function darkenColor(color, amount) {
+        // Convert the color to RGB values
+        const r = parseInt(color.substring(1, 3), 16);
+        const g = parseInt(color.substring(3, 5), 16);
+        const b = parseInt(color.substring(5, 7), 16);
+
+        // Decrease the value of each color component
+        const newR = Math.max(r - amount, 0);
+        const newG = Math.max(g - amount, 0);
+        const newB = Math.max(b - amount, 0);
+
+        // Convert the modified RGB values back to a hexadecimal code
+        const newColor = '#' + newR.toString(16).padStart(2, '0') +
+            newG.toString(16).padStart(2, '0') +
+            newB.toString(16).padStart(2, '0');
+
+        return newColor;
     }
 
     const updateConfig = async () => {
@@ -117,20 +526,27 @@ export const Welcome = (props) => {
         headers.append("Content-Type", "application/json");
         headers.append("Authorization", `Bearer ${JSON.parse(window.localStorage.getItem('dataDiscord'))?.access_token}`);
 
+        let info = null
+
         try {
-            await fetch(`${process.env.REACT_APP_HOSTNAME_BACKEND}/guild/${props.guildId}/welcome`, {
+            info = await fetch(`${process.env.REACT_APP_HOSTNAME_BACKEND}/guild/${props.guildId}/welcome`, {
                 method: "PUT",
                 headers,
                 body: JSON.stringify(configuration),
                 redirect: 'follow'
-            }).then(res => res.json())
+            })
         } catch (error) {
             return console.log("Save Configuration Error", error)
         }
 
-        setInitialConfig(JSON.parse(JSON.stringify(configuration)))
-        setChangeNotSave(false)
-        setLoadingChargement(false)
+        if (info.status === 200) {
+            setInitialConfig(JSON.parse(JSON.stringify(configuration)))
+            setChangeNotSave(false)
+            setLoadingChargement(false)
+        }
+        else {
+            console.log("Update Welcome Error")
+        }
     }
 
     let getChannelGuild = async () => {
@@ -161,8 +577,14 @@ export const Welcome = (props) => {
         await getChannelGuild()
         await getConfiguration()
         setLoading(false)
-        renderCanvas(configuration.GUILD)
+        // renderCanvas(configuration.GUILD)
     }, [props.guildId])
+
+    useEffect(() => {
+        if (!loading) {
+            renderCanvas(configuration.GUILD)
+        }
+    }, [loading])
 
     useEffect(() => {
         let DM = configuration?.DM
@@ -244,8 +666,16 @@ export const Welcome = (props) => {
         setConfiguration(config)
     }
 
+    const updateTheme = (value) => {
+        let config = { ...configuration }
+
+        config.GUILD.design = value
+
+        setConfiguration(config)
+    }
+
     let getChannelForSelector = (allChannel, selectedchannel) => {
-        var option = [];
+        let option = [];
 
         if (selectedchannel === "0") {
             option.push(<option value="0" selected>❌ Désactivé</option>)
@@ -260,6 +690,21 @@ export const Welcome = (props) => {
             }
             else {
                 option.push(<option key={value.id} value={value.id}>{value.name}</option>)
+            }
+        }
+
+        return option;
+    }
+
+    let optionsTheme = (design) => {
+        let option = []
+
+        for (let i = 0; i < 4; i++) {
+            if (design === i) {
+                option.push(<option value={i} selected>Theme {i + 1}</option>)
+            }
+            else {
+                option.push(<option value={i}>Theme {i + 1}</option>)
             }
         }
 
@@ -333,6 +778,17 @@ export const Welcome = (props) => {
 
                             <div className="separator"></div>
 
+                            <div style={{ marginBottom: "10px" }}>
+                                <span>Theme de la carte:</span>
+                                <Form.Select defaultValue={configuration?.GUILD?.design} onChange={(event) => { updateTheme(event.target.value) }}>
+                                    {(() => {
+                                        return optionsTheme(configuration?.GUILD?.design);
+                                    })()}
+                                </Form.Select>
+                            </div>
+
+                            <div className="separator"></div>
+
                             <div >
                                 <span>Couleur:</span>
                                 <div style={{ display: "flex", flexDirection: "row" }}>
@@ -346,18 +802,6 @@ export const Welcome = (props) => {
                                     </div>
                                 </div>
                             </div>
-
-                            {/* <div >
-
-                                <div style={{ display: "flex", flexDirection: "row" }}>
-                                    <div className="colorModule">
-                                        <span>Background</span>
-                                        <input type="file" ref={fileInputRef} />
-                                    </div>
-                                </div>
-
-                            </div> */}
-
                         </div>
                     </div>
 
