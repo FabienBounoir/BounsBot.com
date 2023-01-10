@@ -27,7 +27,7 @@
         },
         {
             "name": "data",
-            "description": "data management collected by bounsbot",
+            "description": "Gestion des données collectées par bounsbot",
             "type": "Bot",
             "usages": [
                 "/data get",
@@ -43,7 +43,7 @@
         },
         {
             "name": "help",
-            "description": "obtenir la liste des commandes disponibles",
+            "description": "Obtenir la liste des commandes disponibles",
             "type": "Bot",
             "usages": [
                 "/help"
@@ -54,7 +54,7 @@
         },
         {
             "name": "invite",
-            "description": "invite le bot dans votre serveur !",
+            "description": "Invite le bot dans votre serveur !",
             "type": "Bot",
             "usages": [
                 "/invite"
@@ -64,8 +64,19 @@
             ]
         },
         {
+            "name": "liens",
+            "description": "Affiche les liens utile du bot",
+            "type": "Bot",
+            "usages": [
+                "/liens"
+            ],
+            "examples": [
+                "/liens"
+            ]
+        },
+        {
             "name": "patchnote",
-            "description": "The information on the bot patch!",
+            "description": "Les informations sur la dernier version de Bouns'Bot !",
             "type": "Bot",
             "usages": [
                 "/patchnote"
@@ -76,7 +87,7 @@
         },
         {
             "name": "ping",
-            "description": "teste la latence du bot",
+            "description": "Teste la latence du bot",
             "type": "Bot",
             "usages": [
                 "/ping"
@@ -87,7 +98,7 @@
         },
         {
             "name": "report",
-            "description": "rapport un bug sur le Bot ou demandez une amélioration",
+            "description": "Rapporte un bug sur le Bot ou demandez une amélioration",
             "type": "Bot",
             "usages": [
                 "/report"
@@ -105,17 +116,6 @@
             ],
             "examples": [
                 "/stats"
-            ]
-        },
-        {
-            "name": "liens",
-            "description": "Affiche les liens utiles du bot",
-            "type": "Bot",
-            "usages": [
-                "/liens"
-            ],
-            "examples": [
-                "/liens"
             ]
         },
         {
@@ -146,7 +146,7 @@
         },
         {
             "name": "gainrolelevel",
-            "description": "configurer des roles pouvant être obtenu avec de l'xp",
+            "description": "Configurer des roles pouvant être obtenu avec de l'xp",
             "type": "Configuration",
             "usages": [
                 "/gainrolelevel add <Level> <Role>",
@@ -176,7 +176,7 @@
         },
         {
             "name": "reactionrole",
-            "description": "recuperer des roles en cliquant sur des reactions",
+            "description": "Récuperer des roles en cliquant sur des reactions",
             "type": "Configuration",
             "usages": [
                 "/reactionrole add <Channel> <MessageID> <Role> <Emoji>",
@@ -191,7 +191,7 @@
         },
         {
             "name": "regex",
-            "description": "configure les mots ou les expressions régulières qui ne peuvent jamais être envoyés au channel",
+            "description": "Configure les mots ou les expressions régulières qui ne peuvent jamais être envoyés au channel",
             "type": "Configuration",
             "usages": [
                 "/regex add <Regex>",
@@ -206,7 +206,7 @@
         },
         {
             "name": "set",
-            "description": "active ou désactive une fonctionnalité du bot",
+            "description": "Active ou désactive une fonctionnalité du bot",
             "type": "Configuration",
             "usages": [
                 "/set <Categories> <Etat>"
@@ -214,23 +214,6 @@
             "examples": [
                 "/set radio true",
                 "/set game false"
-            ]
-        },
-        {
-            "name": "welcomemessage",
-            "description": "Configurer le message de bienvenue sur le serveur [in progress]",
-            "type": "Configuration",
-            "usages": [
-                "/welcomemessage enable",
-                "/welcomemessage disable",
-                "/welcomemessage set",
-                "/welcomemessage information"
-            ],
-            "examples": [
-                "/welcomemessage enable",
-                "/welcomemessage disable",
-                "/welcomemessage set",
-                "/welcomemessage information"
             ]
         },
         {
@@ -247,6 +230,47 @@
             ]
         },
         {
+            "name": "welcome",
+            "description": "Configurer le message de bienvenue sur le serveur",
+            "type": "Configuration",
+            "usages": [
+                "/welcome guild enable",
+                "/welcome guild disable",
+                "/welcome guild background <Image>",
+                "/welcome guild ambiance-color <Color>",
+                "/welcome guild text-color <Color>",
+                "/welcome guild channel <Channel>",
+                "/welcome guild cardtheme",
+                "/welcome dm set",
+                "/welcome dm information",
+                "/welcome dm enable",
+                "/welcome dm disable",
+                "/welcome role list",
+                "/welcome role add <Role>",
+                "/welcome role remove <Role>",
+                "/welcome role enable",
+                "/welcome role disable"
+            ],
+            "examples": [
+                "/welcome guild enable",
+                "/welcome guild disable",
+                "/welcome guild background <Image>",
+                "/welcome guild ambiance-color Red",
+                "/welcome guild text-color Blue",
+                "/welcome guild channel <#714815862074376253>",
+                "/welcome guild cardtheme",
+                "/welcome dm set",
+                "/welcome dm information",
+                "/welcome dm enable",
+                "/welcome dm disable",
+                "/welcome role list",
+                "/welcome role add <@&914813842074376253>",
+                "/welcome role remove <@&914813842074376253>",
+                "/welcome role enable",
+                "/welcome role disable"
+            ]
+        },
+        {
             "name": "achievement",
             "description": "Voir les succées d'un utilisateurs",
             "type": "Engagement",
@@ -257,6 +281,52 @@
             "examples": [
                 "/achievement",
                 "/achievement @Maouui"
+            ]
+        },
+        {
+            "name": "card",
+            "description": "Défini votre carte de classement",
+            "type": "Engagement",
+            "usages": [
+                "/card rank setbanner <Image>",
+                "/card rank setcolor <Color>"
+            ],
+            "examples": [
+                "/card rank setbanner <Image>",
+                "/card rank setcolor #13C4A3"
+            ]
+        },
+        {
+            "name": "gameclassement",
+            "description": "Affiche le classement des jeux",
+            "type": "Engagement",
+            "usages": [
+                "/gameclassement global démineur",
+                "/gameclassement global paires",
+                "/gameclassement global motus",
+                "/gameclassement global pendu",
+                "/gameclassement serveur démineur",
+                "/gameclassement serveur paires",
+                "/gameclassement serveur motus",
+                "/gameclassement serveur pendu",
+                "/gameclassement user démineur <User>",
+                "/gameclassement user paires <User>",
+                "/gameclassement user motus <User>",
+                "/gameclassement user pendu <User>"
+            ],
+            "examples": [
+                "/gameclassement global démineur",
+                "/gameclassement global paires",
+                "/gameclassement global motus",
+                "/gameclassement global pendu",
+                "/gameclassement serveur démineur",
+                "/gameclassement serveur paires",
+                "/gameclassement serveur motus",
+                "/gameclassement serveur pendu",
+                "/gameclassement user démineur @BadbounsTV",
+                "/gameclassement user paires @RushJumpers",
+                "/gameclassement user motus @Zarteex",
+                "/gameclassement user pendu @Maouui"
             ]
         },
         {
@@ -284,17 +354,14 @@
             ]
         },
         {
-            "name": "card",
-            "description": "Permet de définir votre bannière pour la carte de classement",
-            "type": "Engagement",
+            "name": "meme",
+            "description": "Affiche un meme aléatoire",
+            "type": "Fun",
             "usages": [
-                "/card setbanner <Image>",
-                "/card setcolor <Hexa code>"
+                "/meme"
             ],
             "examples": [
-                "/card setbanner ...",
-                "/card setcolor #7DDF64",
-                "/card setcolor #9A031E"
+                "/meme"
             ]
         },
         {
@@ -316,7 +383,7 @@
         },
         {
             "name": "anniversaire",
-            "description": "Joue Happy Birthday dans le salon vocal",
+            "description": "Joue joyeux anniversaire dans le salon vocal",
             "type": "Fun",
             "usages": [
                 "/anniversaire"
@@ -327,7 +394,7 @@
         },
         {
             "name": "avatar",
-            "description": "Commande sur les avatar",
+            "description": "Les commandes sur l'avatar",
             "type": "Fun",
             "usages": [
                 "/avatar prison <User>",
@@ -341,61 +408,56 @@
             ]
         },
         {
-            "name": "commentytb",
-            "description": "Crée un commentaire youtube personnalisé",
+            "name": "commentaire",
+            "description": "Créer un commentaire youtube personnalisé",
             "type": "Fun",
             "usages": [
-                "/commentytb <User> <Text>"
+                "/commentaire <User> <Text>"
             ],
             "examples": [
-                "/commentytb Wumpus Le bot est trop bien"
+                "/commentaire Wumpus Le bot est trop bien"
             ]
         },
         {
             "name": "fortnite",
-            "description": "voir les statistiques d'un compte Fortnite",
+            "description": "Voir les statistiques lier à fortnite",
             "type": "Fun",
             "usages": [
-                "/fortnite <Username>"
+                "/fortnite compte <Username>",
+                "/fortnite carte",
+                "/fortnite news",
+                "/fortnite derniers-objets"
             ],
             "examples": [
-                "/fortnite TTV-BadbounsTV"
+                "/fortnite compte TTV-BadbounsTV",
+                "/fortnite carte",
+                "/fortnite news",
+                "/fortnite derniers-objets"
             ]
         },
         {
-            "name": "joke",
+            "name": "blague",
             "description": "Demande une des 2000 blagues disponibles",
             "type": "Fun",
             "usages": [
-                "/joke <Type>"
+                "/blague <Type>"
             ],
             "examples": [
-                "/joke Développeur",
-                "/joke Beauf"
+                "/blague Développeur",
+                "/blague Beauf"
             ]
         },
         {
-            "name": "lovecalcule",
-            "description": "Calcule le pourcentage d'amour entre deux utilisateurs",
+            "name": "love",
+            "description": "Calcul le pourcentage d'amour entre deux personnes",
             "type": "Fun",
             "usages": [
-                "/lovecalcule <User1> <User2>"
+                "/love calcule <User1> <User2>"
             ],
             "examples": [
-                "/lovecalcule @Azerius @Eskomad",
-                "/lovecalcule @BadbounsTV @Wumpus",
-                "/lovecalcule @Azerius @BadbounsTV"
-            ]
-        },
-        {
-            "name": "meme",
-            "description": "Affiche un meme aléatoire",
-            "type": "Fun",
-            "usages": [
-                "/meme"
-            ],
-            "examples": [
-                "/meme"
+                "/love calcule @Azerius @Eskomad",
+                "/love calcule @BadbounsTV @Wumpus",
+                "/love calcule @Azerius @BadbounsTV"
             ]
         },
         {
@@ -414,10 +476,12 @@
             "description": "Info sur un joueur Minecraft!",
             "type": "Fun",
             "usages": [
-                "/minecraft <Username>"
+                "/minecraft profil <Username>",
+                "/minecraft createachievement <Block> <Title> <Text>"
             ],
             "examples": [
-                "/minecraft Aypierre"
+                "/minecraft Aypierre",
+                "/minecraft createachievement grass Achievement tu es trop fort"
             ]
         },
         {
@@ -433,7 +497,7 @@
         },
         {
             "name": "pokemon",
-            "description": "Trouve un pokemon avec son id",
+            "description": "Trouver un pokemon avec son id ou afficher un pokemon aléatoire",
             "type": "Fun",
             "usages": [
                 "/pokemon"
@@ -443,8 +507,19 @@
             ]
         },
         {
+            "name": "lightshot",
+            "description": "Affiche une capture d'écran aléatoire de lightshot",
+            "type": "Fun",
+            "usages": [
+                "/lightshot"
+            ],
+            "examples": [
+                "/lightshot"
+            ]
+        },
+        {
             "name": "traduire",
-            "description": "Traduit une phrase",
+            "description": "Traduire une phrase",
             "type": "Fun",
             "usages": [
                 "/traduire <Langue> <Text>"
@@ -454,21 +529,19 @@
             ]
         },
         {
-            "name": "userinfo",
-            "description": "Affiche les informations d'un utilisateur",
-            "type": "Fun",
+            "name": "paires",
+            "description": "C'est à vous de trouver les émojis qui vont ensemble.",
+            "type": "Games",
             "usages": [
-                "/userinfo",
-                "/userinfo <User>"
+                "/paires"
             ],
             "examples": [
-                "/userinfo",
-                "/userinfo 806105506883960853"
+                "/paires"
             ]
         },
         {
             "name": "activity",
-            "description": "demarrer ou rejoindre une channel vocal d'activity",
+            "description": "Créer une invitation d'activité dans le salon vocal",
             "type": "Games",
             "usages": [
                 "/activity <Channel> <activity>"
@@ -478,16 +551,33 @@
             ]
         },
         {
+            "name": "arrangesentence",
+            "description": "Arranger la phrase",
+            "type": "Games",
+            "usages": [
+                "/arrangesentence"
+            ],
+            "examples": [
+                "/arrangesentence"
+            ]
+        },
+        {
             "name": "bingo",
             "description": "Trouve le nombre avant les autres",
             "type": "Games",
             "usages": [
-                "/bingo",
-                "/bingo <Min> <Max>"
+                "/bingo facile",
+                "/bingo moyen",
+                "/bingo difficile",
+                "/bingo personnalisation difficile <Min> <Max>",
+                "/bingo personnalisation nombre"
             ],
             "examples": [
-                "/bingo",
-                "/bingo 1 9999"
+                "/bingo facile",
+                "/bingo moyen",
+                "/bingo difficile",
+                "/bingo personnalisation difficile 1 7394353",
+                "/bingo personnalisation nombre"
             ]
         },
         {
@@ -513,8 +603,19 @@
             ]
         },
         {
+            "name": "pays",
+            "description": "Trouve le pays grace au drapeaux",
+            "type": "Games",
+            "usages": [
+                "/pays"
+            ],
+            "examples": [
+                "/pays"
+            ]
+        },
+        {
             "name": "demineur",
-            "description": "Jouez à un jeu du démineur !",
+            "description": "Jouez à un jeu du demineur !",
             "type": "Games",
             "usages": [
                 "/demineur"
@@ -524,19 +625,30 @@
             ]
         },
         {
-            "name": "fightpokemon",
-            "description": "Fight with a pokemon",
+            "name": "combatpokemon",
+            "description": "Combat avec un pokemon",
             "type": "Games",
             "usages": [
-                "/fightpokemon"
+                "/combatpokemon"
             ],
             "examples": [
-                "/fightpokemon"
+                "/combatpokemon"
+            ]
+        },
+        {
+            "name": "lucky-luke",
+            "description": "Joue à un jeu de lucky luke avec tes amis",
+            "type": "Games",
+            "usages": [
+                "/lucky-luke"
+            ],
+            "examples": [
+                "/lucky-luke"
             ]
         },
         {
             "name": "mastermind",
-            "description": "Start a mastermind game",
+            "description": "Jouer au mastermind",
             "type": "Games",
             "usages": [
                 "/mastermind"
@@ -580,13 +692,17 @@
         },
         {
             "name": "quiz",
-            "description": "un quiz de FOU",
+            "description": "Plein de quiz disponible",
             "type": "Games",
             "usages": [
-                "/quiz"
+                "/quiz débutant",
+                "/quiz confirmé",
+                "/quiz expert"
             ],
             "examples": [
-                "/quiz"
+                "/quiz débutant",
+                "/quiz confirmé",
+                "/quiz expert"
             ]
         },
         {
@@ -613,29 +729,18 @@
         },
         {
             "name": "undercover",
-            "description": "Find the undercover (person doesn't have the same word) in the voice (game inspired by Sofyan)",
+            "description": "Trouvez l'undercover (la personne qui n'a pas le même mot) dans le channel vocal",
             "type": "Games",
             "usages": [
                 "/undercover"
             ],
             "examples": [
                 "/undercover"
-            ]
-        },
-        {
-            "name": "uno",
-            "description": "Le jeu Uno",
-            "type": "Games",
-            "usages": [
-                "/uno"
-            ],
-            "examples": [
-                "/uno"
             ]
         },
         {
             "name": "whothatpokemon",
-            "description": "Qui est ce pokémon ?",
+            "description": "Qui est ce pokemon?",
             "type": "Games",
             "usages": [
                 "/whothatpokemon"
@@ -658,7 +763,7 @@
         },
         {
             "name": "clear",
-            "description": "Supprime les messages d'un salon",
+            "description": "Effacer des messages dans le salon",
             "type": "Modération",
             "usages": [
                 "/clear <NbMessage>",
@@ -672,21 +777,62 @@
             ]
         },
         {
-            "name": "renommer",
+            "name": "serveurinfo",
+            "description": "Informations sur le serveur",
+            "type": "Modération",
+            "usages": [
+                "/serveurinfo"
+            ],
+            "examples": [
+                "/serveurinfo"
+            ]
+        },
+        {
+            "name": "membre",
+            "description": "Obtenir des informations sur un membre",
+            "type": "Modération",
+            "usages": [
+                "/membre all",
+                "/membre discriminator <Discriminator>",
+                "/membre name <Name>",
+                "/membre nickname <Nickname>"
+            ],
+            "examples": [
+                "/membre all",
+                "/membre discriminator 1342",
+                "/membre name Bad",
+                "/membre nickname badabouns"
+            ]
+        },
+        {
+            "name": "rename",
             "description": "Renomme un utilisateur",
             "type": "Modération",
             "usages": [
-                "/renommer <User>",
-                "/renommer <User> <Name>"
+                "/rename <User>",
+                "/rename <User> <NewName>"
             ],
             "examples": [
-                "/renommer @BadbounsTV",
-                "/renommer 299871378201509889 Azerty"
+                "/rename Wumpus",
+                "/rename Wumpus Nelly"
+            ]
+        },
+        {
+            "name": "transcript",
+            "description": "Transcript d'un salon",
+            "type": "Modération",
+            "usages": [
+                "/transcript",
+                "/transcript <Limit>"
+            ],
+            "examples": [
+                "/transcript",
+                "/transcript 25"
             ]
         },
         {
             "name": "unban",
-            "description": "Unban un utilisateur du serveur",
+            "description": "Débannir un utilisateur du serveur",
             "type": "Modération",
             "usages": [
                 "/unban <User>"
@@ -696,14 +842,29 @@
             ]
         },
         {
-            "name": "clearqueue",
-            "description": "Supprime la file de musique",
-            "type": "Musique",
+            "name": "userinfo",
+            "description": "Affiche les informations d'un utilisateur",
+            "type": "Modération",
             "usages": [
-                "/clearqueue"
+                "/userinfo",
+                "/userinfo <User>"
             ],
             "examples": [
-                "/clearqueue"
+                "/userinfo",
+                "/userinfo 806105506883960853"
+            ]
+        },
+        {
+            "name": "viderlafile",
+            "description": "Supprime toute la musique dans la file d'attente",
+            "type": "Musique",
+            "usages": [
+                "/clearqueue",
+                "/viderlafile"
+            ],
+            "examples": [
+                "/clearqueue",
+                "/viderlafile"
             ]
         },
         {
@@ -718,43 +879,51 @@
             ]
         },
         {
-            "name": "loop",
-            "description": "Boucle la musique en cours",
+            "name": "boucle",
+            "description": "Mettre en boucle la musique actuelle",
             "type": "Musique",
             "usages": [
-                "/loop"
+                "/loop",
+                "/boucle"
             ],
             "examples": [
-                "/loop"
+                "/loop",
+                "/boucle"
             ]
         },
         {
-            "name": "lyrics",
-            "description": "get lyrics of musique",
+            "name": "paroles",
+            "description": "Obtenir les paroles de la musique",
             "type": "Musique",
             "usages": [
+                "/paroles",
+                "/paroles <Name>",
                 "/lyrics",
                 "/lyrics <Name>"
             ],
             "examples": [
+                "/paroles",
+                "/paroles Never gonna give you up",
                 "/lyrics",
                 "/lyrics Never gonna give you up"
             ]
         },
         {
-            "name": "nowplaying",
-            "description": "Savoir la musique en cours",
+            "name": "musiqueactuelle",
+            "description": "Connaître la musique en cour de lecture",
             "type": "Musique",
             "usages": [
-                "/nowplaying"
+                "/nowplaying",
+                "/musiqueactuelle"
             ],
             "examples": [
-                "/nowplaying"
+                "/nowplaying",
+                "/musiqueactuelle"
             ]
         },
         {
             "name": "pause",
-            "description": "Met en pause la musique en cours",
+            "description": "Met en pause la musique actuelle",
             "type": "Musique",
             "usages": [
                 "/pause"
@@ -765,7 +934,7 @@
         },
         {
             "name": "playfile",
-            "description": "Joue un fichier musique",
+            "description": "Jouer un fichier audio",
             "type": "Musique",
             "usages": [
                 "/playfile <Fichier>"
@@ -775,41 +944,34 @@
             ]
         },
         {
-            "name": "remove",
-            "description": "Supprime une musique de la file d'attente",
+            "name": "retirer",
+            "description": "Retirer une musique de la file d'attente",
             "type": "Musique",
             "usages": [
+                "/retirer <Index>",
                 "/remove <Index>"
             ],
             "examples": [
-                "/remove 3"
+                "/retirer 3",
+                "/remove 4"
             ]
         },
         {
-            "name": "resume",
+            "name": "reprendre",
             "description": "Reprend la musique en pause",
             "type": "Musique",
             "usages": [
+                "/reprendre",
                 "/resume"
             ],
             "examples": [
+                "/reprendre",
                 "/resume"
-            ]
-        },
-        {
-            "name": "seek",
-            "description": "Move the current song to a specific time",
-            "type": "Musique",
-            "usages": [
-                "/seek <Time>"
-            ],
-            "examples": [
-                "/seek 120"
             ]
         },
         {
             "name": "melanger",
-            "description": "Mélange les musiques de la file d'attente",
+            "description": "Mélange la musique qui est dans la file d'attente",
             "type": "Musique",
             "usages": [
                 "/melanger"
@@ -820,7 +982,7 @@
         },
         {
             "name": "skip",
-            "description": "Passer la musique en cours",
+            "description": "Passez la musique actuelle",
             "type": "Musique",
             "usages": [
                 "/skip"
@@ -831,7 +993,7 @@
         },
         {
             "name": "skipto",
-            "description": "Passer un nombre de musique prédéfinie",
+            "description": "Passer à la musique spécifiée",
             "type": "Musique",
             "usages": [
                 "/skipto <Nombre>"
@@ -843,7 +1005,7 @@
         },
         {
             "name": "stop",
-            "description": "Déconnecte le bot",
+            "description": "Déconnecte le bot du salon vocal",
             "type": "Musique",
             "usages": [
                 "/stop"
@@ -854,7 +1016,7 @@
         },
         {
             "name": "volume",
-            "description": "Change le volume de la musique",
+            "description": "Configure le volume de la musique et de la radio sur le serveur",
             "type": "Musique",
             "usages": [
                 "/volume <Volume>"
@@ -864,34 +1026,38 @@
             ]
         },
         {
-            "name": "currentradio",
-            "description": "Affiche la radio en cours",
+            "name": "actuelradio",
+            "description": "Affiche la radio actuelle",
             "type": "Radio",
             "usages": [
+                "/actuelradio",
                 "/currentradio"
             ],
             "examples": [
+                "/actuelradio",
                 "/currentradio"
             ]
         },
         {
             "name": "radio",
-            "description": "Voir/Lire une radio",
+            "description": "Gerer la radio sur votre serveur",
             "type": "Radio",
             "usages": [
                 "/radio search <Name>",
+                "/radio list",
                 "/radio set <Chiffre>",
                 "/radio custom <Url>"
             ],
             "examples": [
                 "/radio search funk",
+                "/radio list",
                 "/radio set 1",
                 "/radio custom https://streams.ilovemusic.de/iloveradio17.mp3"
             ]
         },
         {
             "name": "ticket",
-            "description": "configurer les channels de log",
+            "description": "Gestion du système de ticket",
             "type": "ticket",
             "usages": [
                 "/ticket init",
