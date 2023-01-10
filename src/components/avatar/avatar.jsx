@@ -1,4 +1,5 @@
 let random = Math.random()
+const audio = new Audio("https://cdn.discordapp.com/attachments/1014101467126304798/1062388394610675773/tetris-99-main-theme.mp3");
 
 function setAvatar(props) {
     const { classElement, width, height, styleElement, easterEgg } = props;
@@ -10,8 +11,13 @@ function setAvatar(props) {
 
         click++;
         if (click === 10) {
-            const audio = new Audio("https://www.myinstants.com/media/sounds/daft-punk-robot-rock-official-audio.mp3");
-            audio.play();
+            if (!audio.paused) {
+                audio.pause();
+            }
+            else {
+                audio.volume = 0.2;
+                audio.play();
+            }
             click = 0;
         }
     }
