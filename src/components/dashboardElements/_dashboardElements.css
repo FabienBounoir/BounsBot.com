@@ -359,6 +359,13 @@
     z-index: 1;
 }
 
+.demo .message .content .message_content pre {
+    text-align: left;
+    color: #fff;
+    line-break: anywhere;
+    white-space: break-spaces;
+}
+
 .demo .message .content .message_content p {
     text-align: left;
     color: #fff;
@@ -407,6 +414,11 @@
     flex-direction: row;
     justify-content: space-between;
     gap: 10px;
+
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: center;
 }
 
 .SendMessageInput.disable {
@@ -455,6 +467,25 @@
     color: #fff;
     font-size: 16px;
     outline: none;
+}
+
+.SendMessageInput textarea {
+    width: 100%;
+    border: none;
+    background-color: transparent;
+    color: #fff;
+    font-size: 16px;
+    outline: none;
+
+    resize: none;
+    min-height: 28px;
+    height: 28px;
+    max-height: 100px;
+}
+
+.SendMessageInput textarea::-webkit-scrollbar {
+    width: 0px;
+    background: transparent;
 }
 
 .channelForSend {

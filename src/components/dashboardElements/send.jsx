@@ -1,10 +1,10 @@
 
-import { useState, useEffect } from "react"
+import { useState, useEffect, useRef } from "react"
 import Avatar from "../../components/avatar/avatar";
 import LoadingComponent from "../loading/LoadingComponent.jsx";
 
-
 export const Send = (props) => {
+    const textareaRef = useRef(null);
     const [loadingChargement, setLoadingChargement] = useState(false);
     const [loading, setLoading] = useState(true)
     const [channel, setChannel] = useState([])
@@ -15,12 +15,15 @@ export const Send = (props) => {
         channel: "",
     })
 
-    useEffect(async () => {
-        setLoading(true)
-        await Promise.all([
-            getChannelGuild()
-        ])
-        setLoading(false)
+    useEffect(() => {
+        async function fetchData() {
+            setLoading(true)
+            await Promise.all([
+                getChannelGuild()
+            ])
+            setLoading(false)
+        }
+        fetchData()
     }, [props.guildId])
 
     let getChannelGuild = async () => {
@@ -66,6 +69,11 @@ export const Send = (props) => {
         }
     }
 
+    let resizeTextarea = () => {
+        textareaRef.current.style.height = 'auto';
+        textareaRef.current.style.height = `${textareaRef.current.scrollHeight}px`;
+    }
+
     let sendmessage = async () => {
         if (messageConfig.message.length === 0 || messageConfig.channel === "" || loadingChargement) return;
         setLoadingChargement(true)
@@ -92,6 +100,7 @@ export const Send = (props) => {
                 message: ""
             })
             setMessage("✅ Message envoyé avec succès")
+            resizeTextarea()
             setLoadingChargement(false)
         }
         else {
@@ -126,13 +135,18 @@ export const Send = (props) => {
                                             <span className="timestamp">{new Date().toLocaleDateString()}</span>
                                         </div>
                                         <div className="message_content">
-                                            <p>{messageConfig.channel === "" ? "Sélection un channel." : (message ? message : "Bonjour je suis Bouns'bot.")}</p>
+                                            <pre>
+                                                <p>{messageConfig.channel === "" ? "Sélection un channel." : (message ? message : "Bonjour je suis Bouns'bot.")}</p>
+                                            </pre>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                             <div className={"SendMessageInput" + (messageConfig.channel === "" || loadingChargement ? " disable" : "")}>
-                                <input disabled={messageConfig.channel === "" || loadingChargement} type="text" placeholder="Envoyer un message" value={messageConfig.message} onChange={(e) => { setMessageConfig({ ...messageConfig, message: e.target.value }); setMessage(e.target.value) }} />
+                                {/* <input disabled={messageConfig.channel === "" || loadingChargement} type="text" placeholder="Envoyer un message" value={messageConfig.message} onChange={(e) => { setMessageConfig({ ...messageConfig, message: e.target.value }); setMessage(e.target.value) }} /> */}
+
+                                <textarea ref={textareaRef} rows={1} disabled={messageConfig.channel === "" || loadingChargement} placeholder="Envoyer un message" value={messageConfig.message} onChange={(e) => { setMessageConfig({ ...messageConfig, message: e.target.value }); setMessage(e.target.value); resizeTextarea() }} />
+
                                 <svg width="28px" height="28px" viewBox="0 0 28 28" version="1.1" onClick={() => sendmessage()}>
                                     <g id="🔍-Product-Icons" stroke="none" stroke-width="1" fill="none" fillRule="evenodd">
                                         <g id="ic_fluent_send_28_filled" fill="var(--color-principal)" fillRule="nonzero">
@@ -148,7 +162,10 @@ export const Send = (props) => {
                             </div>
                         </div>
 
+                        {/* <p> coucouegzegze zeh gzeh gze!h gzeh !gzeh !ghrgerg reij geri gierj gjer ijgerijg er g referger gre  gerg erg </p> */}
                     </div>
+
+
                 </div>}
             {/* <div>{JSON.stringify(channel)}</div> */}
 
