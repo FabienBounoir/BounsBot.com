@@ -150,7 +150,7 @@ class Navigation extends Component {
                                             </Navbar.Text></div>)
                                     }
                                     else {
-                                        EtatConnexion.push(<Nav.Link key="948508" as={Link} to="/login" onClick={() => { this.eventClick() }} style={{ textDecoration: "none" }}>Se connecter</Nav.Link>)
+                                        EtatConnexion.push(<a href={process.env.REACT_APP_OAUTH2_LINK} style={{ textDecoration: "none", color: "var(--color-principal)", padding: "0.5rem 1rem" }} key="948509" onClick={() => { this.eventClick() }}>Se connecter</a>)
                                     }
 
                                     return EtatConnexion;

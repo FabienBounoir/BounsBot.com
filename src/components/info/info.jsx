@@ -61,7 +61,7 @@ export const Info = (props) => {
         }
     }
 
-    return (
+    return (info?.bestGuild ? (
         <div className="infoComponent">
             <h2>Bounsbot, le bot Discord approuvé par plus de {formatNumber(info?.guild)} serveurs</h2>
             <div className="guildList">
@@ -69,7 +69,7 @@ export const Info = (props) => {
                     return renderGuilds();
                 })()}
             </div>
-        </div>)
+        </div>) : (null))
 }
 
 

@@ -6,6 +6,7 @@ import { Welcome } from "../dashboardElements/welcome.jsx";
 import { Send } from "../dashboardElements/send.jsx";
 import { Musique } from "../dashboardElements/musique.jsx";
 import { InfoDashboard } from "../dashboardElements/infoDashboard.jsx";
+import { LevelsConfig } from "../dashboardElements/levels.jsx";
 
 import "./_configuration.css";
 import "../dashboardElements/_dashboardElements.css";
@@ -122,6 +123,9 @@ export const Configuration = (props) => {
         }
         else if (type === "guild_message") {
             return (<Send guildId={id} />)
+        }
+        else if (type === "levels") {
+            return (<LevelsConfig guildId={id} />)
         }
         else if (type === "musique") {
             return (<Musique guildId={id} />)

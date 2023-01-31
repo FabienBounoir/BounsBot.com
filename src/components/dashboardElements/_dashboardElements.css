@@ -1,3 +1,179 @@
+button.addRoleReward {
+    background-color: var(--color-principal);
+    color: white;
+    border: none;
+    border-radius: 10px;
+    padding: 10px;
+    margin: 10px;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.roleRewardElement {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+    gap: 10px;
+    padding: 5px;
+}
+
+.roleRewardElement p {
+    margin: 0;
+    padding: 0;
+    font-size: 1.2rem;
+}
+
+.slidecontainer {
+    width: 100%;
+}
+
+.radioComponent h6 {
+    margin: 0;
+    padding: 0;
+    margin-top: 10px;
+    margin-bottom: 5px;
+    font-size: 1.2rem;
+}
+
+/* The slider itself */
+.slider {
+    -webkit-appearance: none;
+    /* Override default CSS styles */
+    appearance: none;
+    width: 100%;
+    /* Full-width */
+    height: 8px;
+    /* Specified height */
+    background: white;
+    /* Grey background */
+    outline: none;
+    /* Remove outline */
+    /* opacity: 0.7; */
+    /* Set transparency (for mouse-over effects on hover) */
+    -webkit-transition: .2s;
+    /* 0.2 seconds transition on hover */
+    transition: opacity .2s;
+}
+
+/* Mouse-over effects */
+.slider:hover {
+    opacity: 1;
+    /* Fully shown on mouse-over */
+}
+
+/* The slider handle (use -webkit- (Chrome, Opera, Safari, Edge) and -moz- (Firefox) to override default look) */
+.slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    /* Override default look */
+    appearance: none;
+    width: 25px;
+    /* Set a specific slider handle width */
+    height: 25px;
+    /* Slider handle height */
+    background: var(--color-principal);
+    /* Green background */
+    cursor: pointer;
+    /* Cursor on hover */
+}
+
+.slider::-moz-range-thumb {
+    width: 25px;
+    /* Set a specific slider handle width */
+    height: 25px;
+    /* Slider handle height */
+    background: var(--color-principal);
+    /* Green background */
+    cursor: pointer;
+    /* Cursor on hover */
+}
+
+.slider {
+    -webkit-appearance: none;
+    width: 100%;
+    height: 8px;
+    border-radius: 5px;
+    background: white;
+    outline: none;
+    /* opacity: 0.7; */
+    -webkit-transition: .2s;
+    transition: opacity .2s;
+}
+
+.slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    background: var(--color-principal);
+    cursor: pointer;
+}
+
+.slider::-moz-range-thumb {
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    background: var(--color-principal);
+    cursor: pointer;
+}
+
+.xpConfigType {
+    display: flex;
+    flex-direction: column !important;
+    gap: 0 !important;
+    align-items: flex-start;
+    text-align: left;
+}
+
+.radioButton {
+    display: flex;
+    flex-direction: row;
+    gap: 1em;
+    align-items: center;
+    text-align: left;
+}
+
+input[type="radio"] {
+    /* Add if not using autoprefixer */
+    -webkit-appearance: none;
+    appearance: none;
+    /* For iOS < 15 to remove gradient background */
+    background-color: #fff;
+    /* Not removed via appearance */
+    margin: 0;
+
+    font: inherit;
+    color: currentColor;
+    width: 1.15em;
+    height: 1.15em;
+    border: 0.15em solid currentColor;
+    border-radius: 50%;
+    transform: translateY(-0.075em);
+
+    display: grid;
+    place-content: center;
+    cursor: pointer;
+}
+
+input[type="radio"]::before {
+    content: "";
+    width: 0.65em;
+    height: 0.65em;
+    border-radius: 50%;
+    transform: scale(0);
+    transition: 120ms transform ease-in-out;
+    box-shadow: inset 1em 1em var(--color-principal);
+}
+
+input[type="radio"]:checked::before {
+    transform: scale(1);
+}
+
+
+
 .color-picker {
     position: relative;
     display: inline-block;
@@ -392,7 +568,7 @@
     padding: 10px;
     background-color: #14171d;
     display: grid;
-    grid-template-columns: 0.5fr 1fr;
+    grid-template-columns: 1fr 1fr;
     gap: 10px;
 }
 
@@ -403,7 +579,8 @@
     background-color: #36393f;
     padding: 10px;
     border-radius: 5px;
-    max-width: 440px;
+    max-width: 650px;
+    min-height: 200px;
 }
 
 .SendMessageInput {

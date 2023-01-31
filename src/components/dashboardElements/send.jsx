@@ -2,6 +2,7 @@
 import { useState, useEffect, useRef } from "react"
 import Avatar from "../../components/avatar/avatar";
 import LoadingComponent from "../loading/LoadingComponent.jsx";
+import { Form } from 'react-bootstrap/'
 
 export const Send = (props) => {
     const textareaRef = useRef(null);
@@ -13,6 +14,7 @@ export const Send = (props) => {
         message: "",
         guildId: props.guildId,
         channel: "",
+        replyTo: "",
     })
 
     useEffect(() => {
@@ -99,14 +101,37 @@ export const Send = (props) => {
                 ...messageConfig,
                 message: ""
             })
-            setMessage("✅ Message envoyé avec succès")
+            setMessage("✅ Message envoyé avec succès.")
             resizeTextarea()
             setLoadingChargement(false)
         }
         else {
-            setMessage("❌ une erreur est survenue...")
+            let msg = await result.json()
+            setMessage(msg.message || "❌ une erreur est survenue...")
             setLoadingChargement(false)
         }
+    }
+
+    let getChannelForSelector = (allChannel, selectedchannel) => {
+        let option = [];
+
+        if (selectedchannel === "0") {
+            option.push(<option value="0" selected>❌ Désactivé</option>)
+        }
+        else {
+            option.push(<option value="0">❌ Désactivé</option>)
+        }
+
+        for (let value of allChannel) {
+            if (value.id === selectedchannel) {
+                option.push(<option key={value.id} value={value.id} selected>{value.name}</option>)
+            }
+            else {
+                option.push(<option key={value.id} value={value.id}>{value.name}</option>)
+            }
+        }
+
+        return option;
     }
 
     return (
@@ -157,9 +182,28 @@ export const Send = (props) => {
                             </div>
                         </div>
                         <div>
-                            <div className="channelForSend">
+                            {/* <div className="channelForSend">
                                 {listChannel()}
+                            </div> */}
+
+                            <div className="configWelcomeCanvas">
+                                <div style={{ marginBottom: "10px", color: "white", textAlign: "left" }}>
+                                    <span>Channel:</span>
+                                    <Form.Select defaultValue={messageConfig?.channel} onChange={(e) => { setMessageConfig({ ...messageConfig, channel: e.target.value }) }}>
+                                        {(() => {
+                                            return getChannelForSelector(channel, messageConfig?.channel);
+                                        })()}
+                                    </Form.Select>
+                                </div>
+
+                                <div className="separator"></div>
+
+                                <div style={{ marginBottom: "10px", color: "white", textAlign: "left" }}>
+                                    <span>Répondre à un message:</span>
+                                    <Form.Control type="text" placeholder="Message Id" value={messageConfig.replyTo} onChange={(e) => { setMessageConfig({ ...messageConfig, replyTo: e.target.value }) }} />
+                                </div>
                             </div>
+
                         </div>
 
                         {/* <p> coucouegzegze zeh gzeh gze!h gzeh !gzeh !ghrgerg reij geri gierj gjer ijgerijg er g referger gre  gerg erg </p> */}

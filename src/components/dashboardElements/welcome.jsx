@@ -794,11 +794,11 @@ export const Welcome = (props) => {
                                 <div style={{ display: "flex", flexDirection: "row" }}>
                                     <div className="colorModule">
                                         <span>Ambiance</span>
-                                        <input type="color" value={configuration?.GUILD?.colorAmbiance} onChange={(e) => { updateColorGuild({ colorAmbiance: e.target.value }) }} />
+                                        <input type="color" defaultValue={"#000000"} value={configuration?.GUILD?.colorAmbiance} onChange={(e) => { updateColorGuild({ colorAmbiance: e.target.value }) }} />
                                     </div>
                                     <div className="colorModule">
                                         <span>Texte</span>
-                                        <input type="color" value={configuration?.GUILD?.colorText} onChange={(e) => { updateColorGuild({ colorText: e.target.value }) }} />
+                                        <input type="color" defaultValue={"#FFFFFF"} value={configuration?.GUILD?.colorText} onChange={(e) => { updateColorGuild({ colorText: e.target.value }) }} />
                                     </div>
                                 </div>
                             </div>
