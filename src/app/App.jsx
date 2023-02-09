@@ -11,7 +11,7 @@ import Footer from '../components/footer/footer';
 // import infoPlaylist from "../pages/infoPlaylist/infoPlaylist";
 import { Features } from "../components/features/features";
 import Level from "../pages/level/level";
-import Commandes from "../pages/commandes/commandes";
+import { Commandes } from "../pages/commandes/commandes";
 import { ErreurPage } from "../pages/ErreurPage/ErreurPage";
 import { PrivacyBot } from "../pages/privacyBot/privacy";
 import { Login } from "../pages/login/login";
