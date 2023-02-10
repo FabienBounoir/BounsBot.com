@@ -23,15 +23,19 @@ export const Commandes = () => {
     }, [])
 
     const filteredCommands = () => {
-        let commands = configuration.commands;
+        let commands = configuration.commands.sort((a, b) => {
+            if (a.name < b.name) return -1;
+            if (a.name > b.name) return 1;
+            return 0;
+        });
         if (configuration.activeType !== "Tout") {
-            commands = commands.filter(command => command.type === configuration.activeType);
+            commands = commands.filter(command => command.type === configuration.activeType)
         }
         if (configuration.query) {
             commands = commands.filter(command =>
                 command.name.toLowerCase().includes(configuration.query.toLowerCase()) ||
                 command.description.toLowerCase().includes(configuration.query.toLowerCase())
-            );
+            )
         }
         return commands;
     };
@@ -97,6 +101,9 @@ export const Commandes = () => {
                     {(() => {
                         let commandListing = [];
                         let commands = filteredCommands();
+
+                        if (commands.length === 0) commandListing.push(<div className="no-result">Aucun résultat</div>)
+
                         for (let [index, command] of commands.entries()) {
                             commandListing.push(
                                 <Command

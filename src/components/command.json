@@ -14,6 +14,27 @@
             ]
         },
         {
+            "name": "poll",
+            "description": "Créer un sondage",
+            "type": "Engagement",
+            "usages": [
+                "/poll create <Question>",
+                "/poll create <Question> <Choice1> <Choice2> <Duration> <MaxChoice>",
+                "/poll close <PollID>",
+                "/poll delete <PollID>",
+                "/poll list",
+                "/poll search <Query>"
+            ],
+            "examples": [
+                "/poll create Quel est votre jeu préféré ?",
+                "/role create Quel est votre jeu préféré ? Fortnite Minecraft Among Us 60 1",
+                "/poll close Bj2d9",
+                "/poll delete oF21q",
+                "/poll list",
+                "/poll search Among"
+            ]
+        },
+        {
             "name": "slowmode",
             "description": "Activer un slowmode dans le salon",
             "type": "Modération",
@@ -221,10 +242,12 @@
             "description": "Configurer la retranscription d'un tchat twitch sur discord",
             "type": "Configuration",
             "usages": [
+                "/twitch link-account",
                 "/twitch set <Channel> <TwitchChannel>",
                 "/twitch disable"
             ],
             "examples": [
+                "/twitch link-account",
                 "/twitch set <#926060445461274645> Squeezie",
                 "/twitch disable"
             ]
@@ -1072,6 +1095,29 @@
                 "/ticket roleremove @Modérateur",
                 "/ticket adduser @badbounsTV",
                 "/ticket removeuser @badbounsTV"
+            ]
+        },
+        {
+            "name": "xp",
+            "description": "Gerer l'xp des membres",
+            "type": "Configuration",
+            "usages": [
+                "/xp all-user add <Nombre>",
+                "/xp all-user remove <Nombre>",
+                "/xp all-user clear-all",
+                "/xp multiplier actual",
+                "/xp multiplier set <Nombre>",
+                "/xp user <Action> <User> <Nombre>"
+            ],
+            "examples": [
+                "/xp all-user add 10",
+                "/xp all-user remove 10",
+                "/xp all-user clear-all",
+                "/xp multiplier actual",
+                "/xp multiplier set 2",
+                "/xp user add @badbounsTV 10",
+                "/xp user remove @badbounsTV 10",
+                "/xp user clear @badbounsTV"
             ]
         }
     ]
