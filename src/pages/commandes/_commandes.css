@@ -296,7 +296,7 @@
 }
 
 .commands-list {
-    min-height: calc(100vh - 470px);
+    min-height: calc(100vh - 56px);
     background-color: var(--back-first-color);
     /* padding: 50px; */
     padding: 2.5em 15em;

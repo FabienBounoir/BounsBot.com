@@ -22,7 +22,22 @@ export const Commandes = () => {
 
     }, [])
 
+    const filteredCommands = () => {
+        let commands = configuration.commands;
+        if (configuration.activeType !== "Tout") {
+            commands = commands.filter(command => command.type === configuration.activeType);
+        }
+        if (configuration.query) {
+            commands = commands.filter(command =>
+                command.name.toLowerCase().includes(configuration.query.toLowerCase()) ||
+                command.description.toLowerCase().includes(configuration.query.toLowerCase())
+            );
+        }
+        return commands;
+    };
+
     function openCommand(index) {
+        console.log(index)
         let commands = configuration.commands
         commands[index].open = !commands[index].open
 
@@ -47,26 +62,6 @@ export const Commandes = () => {
 
         setConfiguration({ ...configuration, query, commands, activeType: "Tout" })
     }
-
-    // function openCommand() {
-    //     // Code pour ouvrir la commande
-    //     console.log("Ouverture de la commande");
-    // }
-
-    const filteredCommands = () => {
-        let commands = configuration.commands;
-        if (configuration.activeType !== "Tout") {
-            commands = commands.filter(command => command.type === configuration.activeType);
-        }
-        if (configuration.query) {
-            commands = commands.filter(command =>
-                command.name.toLowerCase().includes(configuration.query.toLowerCase()) ||
-                command.description.toLowerCase().includes(configuration.query.toLowerCase())
-            );
-        }
-        return commands;
-    };
-
 
     return (
         <div transition="page" className="commands-list" >
@@ -124,6 +119,7 @@ const Command = ({ command, onClick }) => {
     let ref = useRef(null);
 
     const [contentMaxHeight, setContentMaxHeight] = useState(0);
+    const [open, setOpen] = useState(false);
 
     // useEffect(() => {
     //     if (command.open) {
@@ -146,7 +142,7 @@ const Command = ({ command, onClick }) => {
 
 
     return (
-        <div className={'command-card__container ' + (command.open ? 'active' : '')} onClick={onClick}>
+        <div className={'command-card__container ' + (open ? 'active' : '')} onClick={() => { setOpen(!open) }}>
             <div className="command-card__header">
                 <div>
                     <h5 className="command-card__header__title">{`${(command.name + "").charAt().toUpperCase()}${(command.name + "").substring(1)}`} <span>- {`${(command.description + "").charAt().toUpperCase()}${(command.description + "").substring(1)}`}</span></h5>
@@ -154,7 +150,7 @@ const Command = ({ command, onClick }) => {
                 <svg className="arrow" version="1.1" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="15px" height="15px" viewBox="0 0 30.021 30.021"><path d="M29.069,22.276c-0.791,0.932-1.917,1.409-3.052,1.409c-0.913,0-1.834-0.312-2.587-0.949l-8.42-7.152l-8.42,7.151 c-1.683,1.43-4.208,1.225-5.639-0.459c-1.43-1.686-1.224-4.208,0.46-5.64l11.01-9.351c1.493-1.269,3.686-1.269,5.178,0 l11.011,9.351C30.294,18.068,30.499,20.591,29.069,22.276z" fill="var(--color-principal)" /></svg>
             </div>
 
-            <div className="command-card__body" ref={ref} style={{ maxHeight: command.open ? contentMaxHeight : 0 }}>
+            <div className="command-card__body" ref={ref} style={{ maxHeight: open ? contentMaxHeight : 0 }}>
                 <div className="command-card__body__usage">
                     <h5>Utilisation:</h5>
                     <div className="elementBody">
