@@ -559,7 +559,7 @@ class Level extends Component {
                         <rect x="419" y="632" width="117" height="32" rx="9" fill="#532727" />
                         <path d="M564.878 590.804C571.021 590.721 576.16 595.645 575.375 601.739C574.378 609.473 572.197 617.071 568.876 624.328C563.977 635.03 556.695 644.773 547.453 652.993C538.21 661.213 527.192 667.745 515.037 672.21C502.883 676.674 489.835 678.982 476.652 679C463.469 679.018 450.413 676.744 438.243 672.312C426.073 667.88 415.032 661.378 405.761 653.182C396.49 644.987 389.174 635.263 384.238 624.574C380.892 617.33 378.685 609.74 377.661 602.012C376.854 595.917 381.98 590.974 388.128 591.041C394.304 591.108 399.147 596.222 400.222 602.305C401.126 607.422 402.703 612.444 404.931 617.268C408.76 625.56 414.435 633.103 421.627 639.46C428.818 645.817 437.383 650.861 446.824 654.299C456.264 657.737 466.391 659.501 476.618 659.487C486.844 659.473 496.966 657.683 506.394 654.22C515.822 650.756 524.369 645.689 531.539 639.313C538.708 632.937 544.357 625.379 548.157 617.077C550.367 612.25 551.926 607.227 552.812 602.11C553.868 596.021 558.698 590.888 564.878 590.804Z" fill="black" />
                         <rect x="383.678" y="591.4" width="185.644" height="16.8" rx="5" fill="black" />
-                        <path d="M465.721 72.1191C465.721 69.3577 467.959 67.1191 470.721 67.1191H489.849C492.61 67.1191 494.849 69.3577 494.849 72.1191V189.399C494.849 192.16 492.61 194.399 489.849 194.399H470.721C467.959 194.399 465.721 192.16 465.721 189.399V72.1191Z" fill="#A80C00" />
+                        <path d="M465.721 72.1191C465.721 69.3577 467.959 67.1191 470.721 67.1191H489.849C492.61 67.1191 494.849 69.3577 494.849 72.1191V189.399C494.849 192.16 492.61 194.399 489.849 194.399H470.721C467.959 194.399 465.721 192.16 465.721 189.399V72.1191Z" fill="var(--color-principal-hover)" />
                         <path d="M439.988 113.071C460.211 135.076 494.444 136.521 516.45 116.299C538.461 96.0717 539.903 61.8283 519.67 39.823C499.445 17.8274 465.219 16.3871 443.217 36.6051C421.21 56.8285 419.763 91.0648 439.988 113.071Z" fill="url(#paint6_linear_901_545)" />
                         <path d="M364.457 294.931C371.701 295.595 377.637 288.371 377.637 281.811C377.637 274.587 371.701 269.335 364.457 268.69C326.226 265.41 287.995 273.942 253.709 291.651C238.557 299.539 251.737 322.499 266.889 314.631C297.212 298.875 330.834 292.315 364.457 294.931ZM686.119 314.631C701.271 322.499 714.451 300.183 699.299 291.651C665.676 273.942 626.781 265.41 589.214 268.69C581.97 269.335 576.035 274.587 576.035 281.811C576.035 288.371 581.97 295.595 589.214 294.931C622.837 292.315 656.46 298.875 686.119 314.631Z" fill="black" />
                         <path d="M508.798 651.389C506.742 661.78 474.883 660.743 460.537 657.904C446.191 655.064 414.3 641.928 416.356 631.538C418.413 621.148 453.638 617.439 467.984 620.278C482.33 623.117 510.855 640.999 508.798 651.389Z" fill="#C45F5F" />
@@ -759,25 +759,25 @@ class Level extends Component {
                             <stop offset="1" stop-color="#D3D4D3" />
                           </linearGradient>
                           <linearGradient id="paint2_linear_901_545" x1="890.5" y1="375.5" x2="759.5" y2="479" gradientUnits="userSpaceOnUse">
-                            <stop stop-color="#950A00" />
-                            <stop offset="1" stop-color="#FA6666" />
+                            <stop stop-color="var(--color-principal-hover)" />
+                            <stop offset="1" stop-color="var(--color-principal)" />
                           </linearGradient>
                           <linearGradient id="paint3_linear_901_545" x1="74.5" y1="348.5" x2="200.5" y2="491.5" gradientUnits="userSpaceOnUse">
-                            <stop stop-color="#FE6B6B" />
-                            <stop offset="1" stop-color="#AC1105" />
+                            <stop stop-color="var(--color-principal)" />
+                            <stop offset="1" stop-color="var(--color-principal-hover)" />
                           </linearGradient>
                           <linearGradient id="paint4_linear_901_545" x1="844" y1="556" x2="110" y2="547.5" gradientUnits="userSpaceOnUse">
-                            <stop stop-color="#FF6C6C" />
-                            <stop offset="1" stop-color="#A80C00" />
+                            <stop stop-color="var(--color-principal)" />
+                            <stop offset="1" stop-color="var(--color-principal-hover)" />
                           </linearGradient>
                           <linearGradient id="paint5_linear_901_545" x1="272.709" y1="716.773" x2="396.52" y2="810.939" gradientUnits="userSpaceOnUse">
-                            <stop offset="0.0986931" stop-color="#B51B10" />
-                            <stop offset="0.808424" stop-color="#E5504D" />
-                            <stop offset="0.989583" stop-color="#F15D5B" />
+                            <stop offset="0.0986931" stop-color="var(--color-principal-hover)" />
+                            <stop offset="0.808424" stop-color="var(--color-principal)" />
+                            <stop offset="0.989583" stop-color="var(--color-principal)" />
                           </linearGradient>
                           <linearGradient id="paint6_linear_901_545" x1="524.317" y1="39.6792" x2="444.498" y2="102.746" gradientUnits="userSpaceOnUse">
-                            <stop stop-color="#950A00" />
-                            <stop offset="1" stop-color="#FA6666" />
+                            <stop stop-color="var(--color-principal-hover)" />
+                            <stop offset="1" stop-color="var(--color-principal)" />
                           </linearGradient>
                         </defs>
                       </svg>
