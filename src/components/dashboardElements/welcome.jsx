@@ -14,6 +14,7 @@ export const Welcome = (props) => {
     const [changeNotSave, setChangeNotSave] = useState(false);
     const [loadingChargement, setLoadingChargement] = useState(false);
     const [timer, setTimer] = useState(null);
+    const [loadingError, setLoadingError] = useState(false);
 
     const [channel, setChannel] = useState([])
     const fileInputRef = useRef(null);
@@ -574,8 +575,16 @@ export const Welcome = (props) => {
 
     useEffect(async () => {
         setLoading(true)
-        await getChannelGuild()
-        await getConfiguration()
+        try {
+            await new Promise.all([
+                getChannelGuild(),
+                getConfiguration()
+            ])
+        }
+        catch (error) {
+            return setLoadingError(true)
+        }
+
         setLoading(false)
         // renderCanvas(configuration.GUILD)
     }, [props.guildId])
@@ -712,7 +721,7 @@ export const Welcome = (props) => {
     }
 
     return (<>
-        {loading ? <LoadingComponent /> :
+        {loading ? <LoadingComponent error={loadingError} errorMessage="Une erreur est survenue" /> :
             <><div className="block padding-1">
                 <div className="infoActive">
                     <h5>Envoyer un message privé aux nouveaux membres</h5>

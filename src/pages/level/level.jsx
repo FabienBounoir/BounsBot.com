@@ -266,6 +266,7 @@ class Level extends Component {
     page: 0,
     hasMoreData: true,
     loading: true,
+    errorLoading: false
   }
 
   componentDidMount() {
@@ -288,6 +289,9 @@ class Level extends Component {
         });
       })
       .catch((error) => {
+        this.setState({
+          errorLoading: true,
+        })
         console.log(error)
       })
   };
@@ -458,7 +462,7 @@ class Level extends Component {
         </div>
 
         {(() => {
-          if (this.state.loading) return <LoadingFullPage />
+          if (this.state.loading) return <LoadingFullPage error={this.state.errorLoading} />
         })()}
       </div>
     )

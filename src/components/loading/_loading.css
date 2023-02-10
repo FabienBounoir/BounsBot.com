@@ -30,6 +30,17 @@
     z-index: 2001;
 }
 
+.alignImageComponent.error {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 2001;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+}
+
 @media screen and (max-width: 900px) {
     .alignImageComponent {
         padding-right: 24px;
@@ -43,11 +54,63 @@
     filter: drop-shadow(0px 0px 10px rgba(0, 0, 0, 0.5));
 }
 
+.alignImageComponent.error svg {
+    width: 10em;
+    animation: none;
+}
+
 .alignImage svg {
     width: calc(100% - 40px);
     height: auto;
     animation: loadingLogo 2.5s ease-in-out infinite;
     filter: drop-shadow(0px 0px 10px rgba(0, 0, 0, 0.5));
+}
+
+.alignImage.error svg {
+    width: 10em;
+    animation: none;
+}
+
+.alignImage.error {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1em;
+}
+
+/* .alignImage.error button {
+    margin-top: 1em;
+} */
+
+.alignImage.error button, .alignImageComponent.error button {
+    text-align: center;
+    padding: 14px 18px 14px 18px;
+    color: #fff;
+    background-color: var(--color-principal);
+    border-radius: 10px;
+    border: 0px;
+    text-decoration: none;
+    position: relative;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    z-index: 3;
+    line-height: normal;
+    transition: transform 330ms ease-in-out;
+    display: flex;
+    gap: 0.3em;
+    width: fit-content;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.alignImage.error button:hover, .alignImageComponent.error button:hover {
+    transform: scale(1.10);
 }
 
 .animUp1 {
@@ -63,6 +126,28 @@
 .animUp3 {
     /* position: relative; */
     animation: loadingCircle3 3s ease-in-out infinite;
+}
+
+.zoomAndRotate {
+    animation: zoomAndRotateAnimation 1s ease-in-out infinite;
+}
+
+@keyframes zoomAndRotateAnimation {
+    0% {
+        fill: var(--color-principal);
+        stroke-dasharray: 0 100;
+    }
+
+    50% {
+        fill: var(--color-principal);
+        stroke-dasharray: 100 100;
+    }
+
+    100% {
+        fill: var(--color-principal);
+        stroke-dasharray: 0 100;
+    }
+
 }
 
 @keyframes loadingLogo {

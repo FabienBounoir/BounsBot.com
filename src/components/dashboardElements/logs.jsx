@@ -12,13 +12,20 @@ export const Logs = (props) => {
 
     const [loading, setLoading] = useState(true)
     const [channel, setChannel] = useState([])
+    const [loadingError, setLoadingError] = useState(false)
 
     useEffect(async () => {
         setLoading(true)
-        await Promise.all([
-            getChannelGuild(),
-            getConfigurationLogs()
-        ])
+        try {
+            await Promise.all([
+                getChannelGuild(),
+                getConfigurationLogs()
+            ])
+        }
+        catch (error) {
+            return setLoadingError(true)
+        }
+
         setLoading(false)
     }, [props.guildId])
 
@@ -119,7 +126,7 @@ export const Logs = (props) => {
 
     return (<>
         {loading ?
-            <LoadingComponent />
+            <LoadingComponent error={loadingError} errorMessage="Une erreur est survenue" />
             : <>
                 <div className="guildModule" style={{ marginBottom: "1em" }} >
                     <div className="top">

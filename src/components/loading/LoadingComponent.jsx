@@ -1,7 +1,58 @@
 import React from 'react';
 import "./_loading.css";
+import { useHistory } from "react-router-dom";
 
-function LoadingComponent() {
+function LoadingComponent({ error, url = "/", errorMessage = "Une erreur est survenue" }) {
+    if (error) return (
+        <div className="loadingComponent">
+            <div className="alignImageComponent error">
+                <h3>{errorMessage}</h3>
+                <svg width="267" height="267" viewBox="0 0 973 973" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <g clip-path="url(#clip0_1896_285)">
+                        <path d="M318.841 774.275C313.49 774.275 308.544 777.126 305.862 781.757L234.678 904.652C228.886 914.652 236.101 927.17 247.658 927.17H732.492C744.049 927.17 751.264 914.652 745.472 904.652L674.289 781.757C671.606 777.126 666.66 774.275 661.309 774.275H318.841Z" fill="var(--color-principal-hover)" />
+                        <path d="M882.511 571.341C931.931 551.456 955.883 495.269 935.996 445.85V445.85C916.111 396.435 859.923 372.498 810.506 392.38V392.38C761.083 412.265 737.13 468.457 757.021 517.878V517.878C776.909 567.291 833.096 591.224 882.511 571.341V571.341Z" fill="url(#paint0_linear_1896_285)" />
+                        <path d="M64.6184 535.699C100.85 575.117 162.176 577.703 201.599 541.477V541.477C241.032 505.241 243.618 443.896 207.373 404.471V404.471C171.14 365.06 109.819 362.477 70.3992 398.7V398.7C30.9687 434.933 28.3798 496.273 64.6184 535.699V535.699Z" fill="url(#paint1_linear_1896_285)" />
+                        <path d="M829.009 708.527C721.084 869.479 280.083 876.795 157.523 708.527C34.9637 538.43 260.595 210.804 491.08 218.12C721.566 227.266 935.106 549.404 829.009 708.527Z" fill="url(#paint2_linear_1896_285)" />
+                        <path d="M793.213 687.39C697.638 829.923 307.106 836.402 198.573 687.391C90.0387 536.76 289.848 246.628 493.957 253.107C698.065 261.205 887.167 546.478 793.213 687.39Z" fill="black" />
+                        <path d="M478.721 118.119C478.721 115.358 480.959 113.119 483.721 113.119H502.849C505.61 113.119 507.849 115.358 507.849 118.119V235.399C507.849 238.16 505.61 240.399 502.849 240.399H483.721C480.959 240.399 478.721 238.16 478.721 235.399V118.119Z" fill="var(--color-principal-hover)" />
+                        <path d="M452.988 159.071C473.211 181.076 507.444 182.521 529.45 162.299V162.299C551.461 142.072 552.903 107.828 532.67 85.823V85.823C512.445 63.8274 478.219 62.3871 456.217 82.6051V82.6051C434.21 102.829 432.763 137.065 452.988 159.071V159.071Z" fill="url(#paint3_linear_1896_285)" />
+                        <path className='zoomAndRotate' d="M389.171 687.946L493.627 581.683L597.836 687.686C603.104 693.045 610.04 695.74 616.976 695.74C623.915 695.74 630.839 693.043 636.113 687.69L636.119 687.684C646.626 676.985 646.629 659.69 636.117 648.998L636.117 648.998L531.771 542.873L636.108 436.749L632.543 433.244L636.108 436.749C646.619 426.057 646.619 408.752 636.108 398.061C625.544 387.315 608.395 387.311 597.836 398.061C597.835 398.062 597.835 398.062 597.834 398.063L493.618 504.064L389.411 398.063C378.855 387.314 361.686 387.311 351.135 398.062C340.617 408.753 340.617 426.058 351.136 436.749C351.137 436.749 351.137 436.75 351.138 436.751L455.465 542.874L350.89 649.258C350.889 649.258 350.889 649.258 350.889 649.258C340.372 659.957 340.369 677.253 350.89 687.946C356.158 693.305 363.094 696 370.03 696C376.966 696 383.902 693.305 389.171 687.946L385.605 684.44L389.171 687.946Z" fill="url(#paint4_linear_1896_285)" stroke="url(#paint5_linear_1896_285)" stroke-width="10" />
+                    </g>
+                    <defs>
+                        <linearGradient id="paint0_linear_1896_285" x1="919.5" y1="421.5" x2="788.5" y2="525" gradientUnits="userSpaceOnUse">
+                            <stop stop-color="var(--color-principal-hover)" />
+                            <stop offset="1" stop-color="var(--color-principal)" />
+                        </linearGradient>
+                        <linearGradient id="paint1_linear_1896_285" x1="73.5" y1="394.5" x2="199.5" y2="537.5" gradientUnits="userSpaceOnUse">
+                            <stop stop-color="var(--color-principal)" />
+                            <stop offset="1" stop-color="var(--color-principal-hover)" />
+                        </linearGradient>
+                        <linearGradient id="paint2_linear_1896_285" x1="857" y1="602" x2="123" y2="593.5" gradientUnits="userSpaceOnUse">
+                            <stop stop-color="var(--color-principal)" />
+                            <stop offset="1" stop-color="var(--color-principal-hover)" />
+                        </linearGradient>
+                        <linearGradient id="paint3_linear_1896_285" x1="537.317" y1="85.6792" x2="457.498" y2="148.746" gradientUnits="userSpaceOnUse">
+                            <stop stop-color="var(--color-principal-hover)" />
+                            <stop offset="1" stop-color="var(--color-principal)" />
+                        </linearGradient>
+                        <linearGradient id="paint4_linear_1896_285" x1="639" y1="580.121" x2="347.987" y2="577.349" gradientUnits="userSpaceOnUse">
+                            <stop stop-color="var(--color-principal)" />
+                            <stop offset="1" stop-color="var(--color-principal-hover)" />
+                        </linearGradient>
+                        <linearGradient id="paint5_linear_1896_285" x1="639" y1="580.121" x2="347.987" y2="577.349" gradientUnits="userSpaceOnUse">
+                            <stop stop-color="var(--color-principal)" />
+                            <stop offset="1" stop-color="var(--color-principal-hover)" />
+                        </linearGradient>
+                        <clipPath id="clip0_1896_285">
+                            <rect width="973" height="973" fill="white" />
+                        </clipPath>
+                    </defs>
+                </svg>
+            </div>
+        </div>
+    );
+
+
     return (
         <div className="loadingComponent">
             <div className="alignImageComponent">

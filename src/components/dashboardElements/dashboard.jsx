@@ -13,13 +13,18 @@ export const Dashboard = (props) => {
 
     const [loading, setLoading] = useState(true)
     const [channel, setChannel] = useState([])
+    const [loadingError, setLoadingError] = useState(false)
 
     useEffect(async () => {
         setLoading(true)
-        await Promise.all([
-            getChannelGuild(),
-            getConfigurationDashboard()
-        ])
+        try {
+            await Promise.all([
+                getChannelGuild(),
+                getConfigurationDashboard()
+            ])
+        } catch (error) {
+            return setLoadingError(true)
+        }
 
         setLoading(false)
     }, [props.guildId])
@@ -134,7 +139,7 @@ export const Dashboard = (props) => {
 
     return (<>
         {loading ?
-            <LoadingComponent />
+            <LoadingComponent error={loadingError} errorMessage="Une erreur est survenue" />
             : <>
 
                 <div className="block">

@@ -12,17 +12,21 @@ export const LevelsConfig = (props) => {
     const [initialConfig, setInitialConfig] = useState({})
     const [changeNotSave, setChangeNotSave] = useState(false);
     const [roles, setRoles] = useState([])
+    const [loadingError, setLoadingError] = useState(false)
 
-    useEffect(() => {
-        async function fetchData() {
-            setLoading(true)
+    useEffect(async () => {
+        setLoading(true)
+
+        try {
             await Promise.all([
                 getXpConfigGuild(),
                 getRoleGuild()
             ])
-            setLoading(false)
+        } catch (e) {
+            return setLoadingError(true)
         }
-        fetchData()
+
+        setLoading(false)
     }, [props.guildId])
 
     useEffect(() => {
@@ -79,7 +83,6 @@ export const LevelsConfig = (props) => {
             .then((rolesResult) => {
                 setRoles(rolesResult.filter(role => role.tags?.botId == null && role.name !== "@everyone"))
             })
-            .catch(console.log)
     };
 
     const resetChange = () => {
@@ -185,7 +188,6 @@ export const LevelsConfig = (props) => {
                 setInitialConfig(JSON.parse(JSON.stringify(result)))
                 setXpConfig(result);
             })
-            .catch(console.log)
     };
 
     let recompenseRole = () => {
@@ -194,7 +196,7 @@ export const LevelsConfig = (props) => {
         let rolesRewards = []
 
 
-        if (xpConfig.gainRolesLevels.length == 0) {
+        if (xpConfig?.gainRolesLevels?.length == 0) {
             return (
                 <div className="roleRewardElement noElement">
                     <p>Aucune récompense de rôle</p>
@@ -203,7 +205,7 @@ export const LevelsConfig = (props) => {
 
         }
 
-        for (let i = 0; i < xpConfig.gainRolesLevels.length; i++) {
+        for (let i = 0; i < xpConfig?.gainRolesLevels?.length; i++) {
             rolesRewards.push(
                 <div className="roleRewardElement">
                     <Form.Control min={"1"} max type="number" value={xpConfig?.gainRolesLevels[i]?.level} placeholder="Level"
@@ -260,16 +262,9 @@ export const LevelsConfig = (props) => {
         return rolesForSelector
     }
 
-    useEffect(() => {
-        console.log("multiplicator", xpConfig.multiplicator)
-
-    }, [xpConfig])
-
-
     return (
         <>
-            {loading ? <LoadingComponent /> :
-                // JSON.stringify(xpConfig)
+            {loading ? <LoadingComponent error={loadingError} errorMessage="Trop de Level 👀" /> :
                 <>
                     <div className="block padding-1">
                         <div className="infoActive">

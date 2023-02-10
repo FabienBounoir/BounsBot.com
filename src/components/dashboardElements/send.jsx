@@ -10,6 +10,7 @@ export const Send = (props) => {
     const [loading, setLoading] = useState(true)
     const [channel, setChannel] = useState([])
     const [message, setMessage] = useState("")
+    const [loadingError, setLoadingError] = useState(false)
     const [messageConfig, setMessageConfig] = useState({
         message: "",
         guildId: props.guildId,
@@ -20,9 +21,13 @@ export const Send = (props) => {
     useEffect(() => {
         async function fetchData() {
             setLoading(true)
-            await Promise.all([
-                getChannelGuild()
-            ])
+            try {
+                await Promise.all([
+                    getChannelGuild()
+                ])
+            } catch (e) {
+                return setLoadingError(true)
+            }
             setLoading(false)
         }
         fetchData()
@@ -45,9 +50,7 @@ export const Send = (props) => {
                 setChannel(result.channels.filter(channel => channel.type === 0)
                 );
             })
-            .catch(console.log)
     };
-
 
     let selectChannel = (channel) => {
         setMessageConfig({
@@ -136,7 +139,7 @@ export const Send = (props) => {
 
     return (
         <>
-            {loading ? <LoadingComponent /> :
+            {loading ? <LoadingComponent error={loadingError} errorMessage="Un message ou ça ?" /> :
                 <div className="block padding-1 heightMax">
                     <div className="infoActive">
                         <h5>Envoyer un message sur un channel du discord</h5>
