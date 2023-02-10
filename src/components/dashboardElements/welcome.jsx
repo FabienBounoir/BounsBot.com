@@ -576,12 +576,13 @@ export const Welcome = (props) => {
     useEffect(async () => {
         setLoading(true)
         try {
-            await new Promise.all([
+            await Promise.all([
                 getChannelGuild(),
                 getConfiguration()
             ])
         }
         catch (error) {
+            console.log("Error", error)
             return setLoadingError(true)
         }
 
