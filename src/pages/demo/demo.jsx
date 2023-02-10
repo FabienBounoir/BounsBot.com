@@ -41,7 +41,7 @@ class Demo extends Component {
 
 
         //socket server link
-        this.socket = io("https://socketbounsbot.herokuapp.com/");
+        this.socket = io("https://socket.bounsbot.com/");
         // this.socket = io("ws://localhost:3001"); //en local test
     }
 
