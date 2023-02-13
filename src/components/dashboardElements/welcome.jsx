@@ -546,6 +546,7 @@ export const Welcome = (props) => {
             setLoadingChargement(false)
         }
         else {
+            alert("Une erreur est survenue lors de la sauvegarde de la configuration")
             console.log("Update Welcome Error")
         }
     }

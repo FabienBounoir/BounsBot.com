@@ -31,10 +31,7 @@ export const Info = (props) => {
 
 
     let renderGuilds = () => {
-        console.log("coucou")
         if (info?.bestGuild) {
-            console.log("🚀 ~ file: info.jsx:21 ~ renderGuilds ~ bestGuild", info)
-
             let guilds = []
 
             for (let guild of info.bestGuild) {

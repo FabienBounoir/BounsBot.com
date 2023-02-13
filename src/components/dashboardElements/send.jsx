@@ -208,14 +208,10 @@ export const Send = (props) => {
                             </div>
 
                         </div>
-
-                        {/* <p> coucouegzegze zeh gzeh gze!h gzeh !gzeh !ghrgerg reij geri gierj gjer ijgerijg er g referger gre  gerg erg </p> */}
                     </div>
 
 
                 </div>}
-            {/* <div>{JSON.stringify(channel)}</div> */}
-
         </>
     )
 }

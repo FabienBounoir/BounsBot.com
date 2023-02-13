@@ -280,7 +280,6 @@ class Level extends Component {
     fetch(process.env.REACT_APP_HOSTNAME_BACKEND + `${twitch ? ("/twitch/") : ("/discord/")}` + id + `?page=${this.state.page}`)
       .then(response => response.json())
       .then((result) => {
-        console.log(result)
         this.setState({
           level: this.state.level.concat(result.rank),
           page: this.state.page + 1,

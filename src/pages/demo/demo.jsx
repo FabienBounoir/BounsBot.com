@@ -206,7 +206,6 @@ class Demo extends Component {
     volumeCommandes(volume) {
         if (!(isNaN(volume))) {
             let number = volume;
-            console.log(number)
             if (number >= 0 && number <= 1) {
                 this.radio.volume = volume;
                 this.setState({

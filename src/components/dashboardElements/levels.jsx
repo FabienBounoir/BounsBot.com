@@ -201,7 +201,6 @@ export const LevelsConfig = (props) => {
         await fetch(process.env.REACT_APP_HOSTNAME_BOT + "/guild/" + props.guildId + "/xpconfig", requestOptions)
             .then(response => response.json())
             .then((result) => {
-                console.log(result)
                 setInitialConfig(JSON.parse(JSON.stringify(result.xpconfig)))
                 setXpConfig(result.xpconfig);
                 setChannels(result.channels.filter(channel => channel.type === 0 || channel.type === 2));
@@ -335,9 +334,7 @@ export const LevelsConfig = (props) => {
                     <div className="channelRenderDesign">
                         <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" viewBox="0 0 24 24" fill="none" onClick={() => {
                             let newChannels = xpConfig.channels
-                            console.log("newChannels", newChannels)
                             newChannels = newChannels.filter(c => c != channel)
-                            console.log("newChannels", newChannels)
                             setXpConfig({ ...xpConfig, channels: newChannels })
                         }
                         }>
@@ -377,8 +374,6 @@ export const LevelsConfig = (props) => {
         for (let role of xpConfig.roles) {
             let roleElement = roles.find(r => r.id == role)
 
-            console.log("roleElement", roleElement)
-
             if (roleElement == undefined) {
                 setInitialConfig({ ...initialConfig, roles: initialConfig.roles.filter(r => r != role) })
                 setXpConfig({ ...xpConfig, roles: xpConfig.roles.filter(r => r != role) })
@@ -390,9 +385,7 @@ export const LevelsConfig = (props) => {
                         <div>{roleElement?.name}</div>
                         <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" viewBox="0 0 24 24" fill="none" onClick={() => {
                             let newRoles = xpConfig.roles
-                            console.log("newRoles", newRoles)
                             newRoles = newRoles.filter(r => r != role)
-                            console.log("newRoles", newRoles)
                             setXpConfig({ ...xpConfig, roles: newRoles })
                         }
                         }>
@@ -513,7 +506,7 @@ export const LevelsConfig = (props) => {
 
                             <label>Multiplicateur: x{xpConfig.multiplicator}</label>
                             <div class="slidecontainer">
-                                <input type="range" min={0.25} max={3} step={0.25} value={xpConfig.multiplicator} class="slider" onChange={(e) => { console.log("e", e); setXpConfig({ ...xpConfig, multiplicator: e.target.value }) }} />
+                                <input type="range" min={0.25} max={3} step={0.25} value={xpConfig.multiplicator} class="slider" onChange={(e) => { setXpConfig({ ...xpConfig, multiplicator: e.target.value }) }} />
                             </div>
 
                         </div>
