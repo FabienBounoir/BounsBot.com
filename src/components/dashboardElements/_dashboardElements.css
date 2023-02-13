@@ -10,6 +10,79 @@ button.addRoleReward {
     transition: 0.3s;
 }
 
+.channelRenderDesign {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    background-color: #3e4246;
+    color: white;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: 0.3s;
+    max-width: fit-content;
+    padding: 0 10px;
+}
+
+.channelRenderDesign svg {
+    margin-right: 10px;
+    fill: white;
+}
+
+.channelElements {
+    /* border: 1px solid var(--color-principal); */
+    border-radius: 10px;
+    padding: 10px;
+    margin-top: 7px;
+    margin-bottom: 15px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 10px;
+    background: #212125;
+}
+
+.roleElements {
+    border-radius: 10px;
+    padding: 10px;
+    margin-top: 7px;
+    margin-bottom: 15px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 10px;
+    background: #212125;
+}
+
+.roleRenderXP {
+    color: white;
+    font-size: 12px;
+    font-weight: 500;
+    background: #292b2f;
+    border-radius: 4px;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    height: 22px;
+    margin: 0 4px 4px 0;
+    padding: 4px;
+    display: flex;
+    flex-wrap: nowrap;
+    max-width: fit-content;
+    flex-direction: row;
+    -o-box-align: center;
+    align-items: center;
+    gap: 5px;
+}
+
+.roleRenderXP span {
+    border-radius: 50%;
+    width: 12px;
+    height: 12px;
+    margin: 4px 2px 4px 4px;
+    /* background-color: green; */
+}
+
 .roleRewardElement {
     display: flex;
     flex-direction: row;

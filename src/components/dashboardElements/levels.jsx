@@ -12,15 +12,17 @@ export const LevelsConfig = (props) => {
     const [initialConfig, setInitialConfig] = useState({})
     const [changeNotSave, setChangeNotSave] = useState(false);
     const [roles, setRoles] = useState([])
+    const [channels, setChannels] = useState([])
     const [loadingError, setLoadingError] = useState(false)
+    const [channelXp, setChannelXp] = useState("0")
+    const [roleXp, setRoleXp] = useState("0")
 
     useEffect(async () => {
         setLoading(true)
 
         try {
             await Promise.all([
-                getXpConfigGuild(),
-                getRoleGuild()
+                getXpConfigGuild()
             ])
         } catch (e) {
             return setLoadingError(true)
@@ -51,10 +53,28 @@ export const LevelsConfig = (props) => {
             }
 
             if (key[i] === "channels") {
+                if (xpConfig[key[i]].length !== initialConfig[key[i]].length) {
+                    return setChangeNotSave(true)
+                }
+
+                for (let j = 0; j < xpConfig[key[i]].length; j++) {
+                    if (xpConfig[key[i]][j] !== initialConfig[key[i]][j]) {
+                        return setChangeNotSave(true)
+                    }
+                }
                 continue
             }
 
             if (key[i] === "roles") {
+                if (xpConfig[key[i]].length !== initialConfig[key[i]].length) {
+                    return setChangeNotSave(true)
+                }
+
+                for (let j = 0; j < xpConfig[key[i]].length; j++) {
+                    if (xpConfig[key[i]][j] !== initialConfig[key[i]][j]) {
+                        return setChangeNotSave(true)
+                    }
+                }
                 continue
             }
 
@@ -67,23 +87,19 @@ export const LevelsConfig = (props) => {
         setChangeNotSave(false)
     }, [xpConfig])
 
-    let getRoleGuild = async () => {
-        var myHeaders = new Headers();
-        myHeaders.append("Content-Type", "application/json");
-        myHeaders.append("Authorization", `Bearer ${JSON.parse(window.localStorage.getItem('dataDiscord'))?.access_token}`);
+    useEffect(() => {
+        if (channelXp !== "0") {
+            setXpConfig({ ...xpConfig, channels: [...xpConfig.channels, channelXp] })
+        }
+        setChannelXp("0")
+    }, [channelXp])
 
-        var requestOptions = {
-            method: 'GET',
-            headers: myHeaders,
-            redirect: 'follow'
-        };
-
-        await fetch(process.env.REACT_APP_HOSTNAME_BOT + "/bot/getroles/" + props.guildId, requestOptions)
-            .then(response => response.json())
-            .then((rolesResult) => {
-                setRoles(rolesResult.filter(role => role.tags?.botId == null && role.name !== "@everyone"))
-            })
-    };
+    useEffect(() => {
+        if (roleXp !== "0") {
+            setXpConfig({ ...xpConfig, roles: [...xpConfig.roles, roleXp] })
+        }
+        setRoleXp("0")
+    }, [roleXp])
 
     const resetChange = () => {
         setXpConfig(JSON.parse(JSON.stringify(initialConfig)))
@@ -185,8 +201,11 @@ export const LevelsConfig = (props) => {
         await fetch(process.env.REACT_APP_HOSTNAME_BOT + "/guild/" + props.guildId + "/xpconfig", requestOptions)
             .then(response => response.json())
             .then((result) => {
-                setInitialConfig(JSON.parse(JSON.stringify(result)))
-                setXpConfig(result);
+                console.log(result)
+                setInitialConfig(JSON.parse(JSON.stringify(result.xpconfig)))
+                setXpConfig(result.xpconfig);
+                setChannels(result.channels.filter(channel => channel.type === 0 || channel.type === 2));
+                setRoles(result.roles.filter(role => role.tags?.botId == null && role.name !== "@everyone"))
             })
     };
 
@@ -243,10 +262,21 @@ export const LevelsConfig = (props) => {
         return rolesRewards
     }
 
-    let getRolesForSelector = (roles, id) => {
+    let getRolesForSelector = (roles, id, filterRole) => {
         let rolesForSelector = []
 
+        if (filterRole) {
+            rolesForSelector.push(
+                <option value={"0"} selected>Ajouter un rôle</option>
+            )
+        }
+
         for (let i = 0; i < roles.length; i++) {
+            if (filterRole && filterRole.includes(roles[i].id)) {
+                continue
+            }
+
+
             if (roles[i].id == id) {
                 rolesForSelector.push(
                     <option value={roles[i].id} selected>{roles[i].name}</option>
@@ -260,6 +290,126 @@ export const LevelsConfig = (props) => {
         }
 
         return rolesForSelector
+    }
+
+    let getChannelsForSelector = (channels, id, filterChannel) => {
+        let channelsForSelector = []
+
+        if (filterChannel) {
+            channelsForSelector.push(
+                <option value={"0"} selected>Ajouter un channel</option>
+            )
+        }
+
+        for (let i = 0; i < channels.length; i++) {
+            if (filterChannel && filterChannel.includes(channels[i].id)) {
+                continue
+            }
+
+            if (channels[i].id == id) {
+                channelsForSelector.push(
+                    <option value={channels[i].id} selected>{channels[i].name}</option>
+                )
+            }
+            else {
+                channelsForSelector.push(
+                    <option value={channels[i].id}>{channels[i].name}</option>
+                )
+            }
+        }
+
+        return channelsForSelector
+    }
+
+    let moduleChannel = () => {
+        let channelsModule = []
+        for (let channel of xpConfig.channels) {
+            let channelElement = channels.find(c => c.id == channel)
+
+            if (channelElement == undefined) {
+                setInitialConfig({ ...initialConfig, channels: initialConfig.channels.filter(c => c != channel) })
+                setXpConfig({ ...xpConfig, channels: xpConfig.channels.filter(c => c != channel) })
+            }
+            else {
+                channelsModule.push(
+                    <div className="channelRenderDesign">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" viewBox="0 0 24 24" fill="none" onClick={() => {
+                            let newChannels = xpConfig.channels
+                            console.log("newChannels", newChannels)
+                            newChannels = newChannels.filter(c => c != channel)
+                            console.log("newChannels", newChannels)
+                            setXpConfig({ ...xpConfig, channels: newChannels })
+                        }
+                        }>
+                            <path fill-rule="evenodd" clip-rule="evenodd" d="M16.9498 8.46447C17.3404 8.07394 17.3404 7.44078 16.9498 7.05025C16.5593 6.65973 15.9261 6.65973 15.5356 7.05025L12.0001 10.5858L8.46455 7.05025C8.07402 6.65973 7.44086 6.65973 7.05033 7.05025C6.65981 7.44078 6.65981 8.07394 7.05033 8.46447L10.5859 12L7.05033 15.5355C6.65981 15.9261 6.65981 16.5592 7.05033 16.9497C7.44086 17.3403 8.07402 17.3403 8.46455 16.9497L12.0001 13.4142L15.5356 16.9497C15.9261 17.3403 16.5593 17.3403 16.9498 16.9497C17.3404 16.5592 17.3404 15.9261 16.9498 15.5355L13.4143 12L16.9498 8.46447Z" fill="#FFFFFF" />
+                        </svg>
+                        <div>{channelElement?.name}</div>
+                    </div>
+                )
+            }
+        }
+
+        channelsModule.push(
+            <Form.Select defaultValue={channelXp} onChange={(e) => { setChannelXp(e.target.value) }}>
+                {getChannelsForSelector(channels, channelXp, xpConfig.channels)}
+            </Form.Select>
+        )
+
+        return channelsModule
+    }
+
+    function decimalToHex(decimal) {
+        if (decimal == 0) return "#000000"
+
+        var r = (decimal >> 16) & 255;
+        var g = (decimal >> 8) & 255;
+        var b = decimal & 255;
+
+        var hexR = r.toString(16).padStart(2, '0');
+        var hexG = g.toString(16).padStart(2, '0');
+        var hexB = b.toString(16).padStart(2, '0');
+
+        return "#" + hexR + hexG + hexB;
+    }
+
+    let moduleRole = () => {
+        let rolesModule = []
+        for (let role of xpConfig.roles) {
+            let roleElement = roles.find(r => r.id == role)
+
+            console.log("roleElement", roleElement)
+
+            if (roleElement == undefined) {
+                setInitialConfig({ ...initialConfig, roles: initialConfig.roles.filter(r => r != role) })
+                setXpConfig({ ...xpConfig, roles: xpConfig.roles.filter(r => r != role) })
+            }
+            else {
+                rolesModule.push(
+                    <div className="roleRenderXP">
+                        <span style={{ background: `${decimalToHex(roleElement?.color)}` }}></span>
+                        <div>{roleElement?.name}</div>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" viewBox="0 0 24 24" fill="none" onClick={() => {
+                            let newRoles = xpConfig.roles
+                            console.log("newRoles", newRoles)
+                            newRoles = newRoles.filter(r => r != role)
+                            console.log("newRoles", newRoles)
+                            setXpConfig({ ...xpConfig, roles: newRoles })
+                        }
+                        }>
+                            <path fill-rule="evenodd" clip-rule="evenodd" d="M16.9498 8.46447C17.3404 8.07394 17.3404 7.44078 16.9498 7.05025C16.5593 6.65973 15.9261 6.65973 15.5356 7.05025L12.0001 10.5858L8.46455 7.05025C8.07402 6.65973 7.44086 6.65973 7.05033 7.05025C6.65981 7.44078 6.65981 8.07394 7.05033 8.46447L10.5859 12L7.05033 15.5355C6.65981 15.9261 6.65981 16.5592 7.05033 16.9497C7.44086 17.3403 8.07402 17.3403 8.46455 16.9497L12.0001 13.4142L15.5356 16.9497C15.9261 17.3403 16.5593 17.3403 16.9498 16.9497C17.3404 16.5592 17.3404 15.9261 16.9498 15.5355L13.4143 12L16.9498 8.46447Z" fill="#FFFFFF" />
+                        </svg>
+                    </div>
+                )
+            }
+        }
+
+        rolesModule.push(
+            <Form.Select defaultValue={roleXp} onChange={(e) => { setRoleXp(e.target.value) }}>
+                {getRolesForSelector(roles, roleXp, xpConfig.roles)}
+            </Form.Select>
+        )
+
+        return rolesModule
     }
 
     return (
@@ -369,7 +519,7 @@ export const LevelsConfig = (props) => {
                         </div>
                     </div>
 
-                    <div className="block padding-1" style={{ display: "none" }}>
+                    <div className="block padding-1">
                         <div className="infoActive">
                             <h5>Salon sans Xp</h5>
                         </div>
@@ -379,7 +529,6 @@ export const LevelsConfig = (props) => {
                         <div className={"informationConfig xpConfigType"}>
                             <div>
                                 <div className="radioButton">
-
                                     <input
                                         type="radio"
                                         name="channelRestriction"
@@ -389,6 +538,11 @@ export const LevelsConfig = (props) => {
                                     />
                                     <label>Xp dans tous les channels sauf celui-ci</label>
                                 </div>
+                                <div className="channelElements" style={{ display: xpConfig.channelType == "ALL_WITHOUT" ? "flex" : "none" }}>
+
+                                    {moduleChannel()}
+                                </div>
+
                                 <div className="radioButton">
 
                                     <input
@@ -401,13 +555,14 @@ export const LevelsConfig = (props) => {
                                     <label>Xp que dans ces channels</label>
                                 </div>
 
-
+                                <div className="channelElements" style={{ display: xpConfig.channelType == "WITHOUT_EXCEPT" ? "flex" : "none" }}>
+                                    {moduleChannel()}
+                                </div>
                             </div>
-
                         </div>
                     </div>
 
-                    <div className="block padding-1" style={{ display: "none" }}>
+                    <div className="block padding-1">
                         <div className="infoActive">
                             <h5>Rôles sans Xp</h5>
                         </div>
@@ -426,6 +581,10 @@ export const LevelsConfig = (props) => {
                                     />
                                     <label>Autorisé tout les rôles sauf</label>
                                 </div>
+                                <div className="roleElements" style={{ display: xpConfig.rolesType == "ALL_WITHOUT" ? "flex" : "none" }}>
+                                    {moduleRole()}
+                                </div>
+
                                 <div className="radioButton">
                                     <input
                                         type="radio"
@@ -436,6 +595,11 @@ export const LevelsConfig = (props) => {
                                     />
                                     <label>Empecher tout les rôles sauf</label>
                                 </div>
+                                <div className="roleElements" style={{ display: xpConfig.rolesType == "WITHOUT_EXCEPT" ? "flex" : "none" }}>
+                                    {moduleRole()}
+                                </div>
+
+
                             </div>
                         </div>
                     </div>
