@@ -33,28 +33,6 @@ export const App = () => {
 
   useEffect(() => {
     setEnvColor()
-    document.addEventListener('keydown', function (event) {
-      console.log(event.key)
-      if (event.key === "Backspace" && code != "") {
-        code = code.slice(0, -1);
-      }
-
-      if (event.key === "Enter") {
-        code = "";
-      }
-
-      if (event.key == "b" && event.key == "o" && event.key == "u" && event.key == "n" && event.key == "s") {
-        code += event.key.toLowerCase();
-      }
-
-      console.log(code)
-
-      if (code == "bouns") {
-        console.log("bouns")
-        let r = document.getElementsByTagName("html")[0];
-        colorUpdate(r);
-      }
-    });
   }, [])
 
   //create randomColor but not dark or light
