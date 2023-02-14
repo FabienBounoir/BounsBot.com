@@ -110,7 +110,7 @@ export const Dashboard = (props) => {
             redirect: 'follow'
         };
 
-        await fetch(process.env.REACT_APP_HOSTNAME_BOT + "/bot/getchannels/" + props.guildId, requestOptions)
+        await fetch(process.env.REACT_APP_HOSTNAME_BACKEND + "/bot/getchannels/" + props.guildId, requestOptions)
             .then(response => response.json())
             .then((result) => {
                 setChannel(result?.channels?.filter(channel => channel.type === 0) || []);

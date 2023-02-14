@@ -200,7 +200,7 @@ export const LevelsConfig = (props) => {
             redirect: 'follow'
         };
 
-        await fetch(process.env.REACT_APP_HOSTNAME_BOT + "/guild/" + props.guildId + "/xpconfig", requestOptions)
+        await fetch(process.env.REACT_APP_HOSTNAME_BACKEND + "/guild/" + props.guildId + "/xpconfig", requestOptions)
             .then(response => response.json())
             .then((result) => {
                 setRoles(result.roles.filter(role => !role.tags?.botId && role.name !== "@everyone"))

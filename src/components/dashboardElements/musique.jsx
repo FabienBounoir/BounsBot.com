@@ -33,7 +33,7 @@ export const Musique = (props) => {
             redirect: 'follow'
         };
 
-        fetch(process.env.REACT_APP_HOSTNAME_BOT + "/bot/getfile/" + props.guildId, requestOptions)
+        fetch(process.env.REACT_APP_HOSTNAME_BACKEND + "/bot/getfile/" + props.guildId, requestOptions)
             .then(response => response.json())
             .then(result => {
                 setMusic(result?.playlist || [])

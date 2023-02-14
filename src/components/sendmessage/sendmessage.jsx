@@ -19,7 +19,7 @@ class SendMessage extends Component {
             redirect: 'follow'
         };
 
-        let url = process.env.REACT_APP_HOSTNAME_BOT
+        let url = process.env.REACT_APP_HOSTNAME_BACKEND
 
         fetch(url + "/bot/getchannels/" + this.props.guild, requestOptions)
             .then(response => response.json())
@@ -49,7 +49,7 @@ class SendMessage extends Component {
             redirect: 'follow'
         };
 
-        let url = process.env.REACT_APP_HOSTNAME_BOT 
+        let url = process.env.REACT_APP_HOSTNAME_BACKEND
 
         fetch(url + "/bot/sendto/", requestOptions)
             .then(response => response.json())
