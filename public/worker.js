@@ -1,4 +1,4 @@
-var CACHE_NAME = 'pwa-task-manager';
+var CACHE_NAME = 'pwa-bounsbot';
 var urlsToCache = [
   '/',
   '/commandes',
@@ -37,7 +37,7 @@ self.addEventListener('fetch', event => {
 
 // Update a service worker
 self.addEventListener('activate', event => {
-  var cacheWhitelist = ['pwa-task-manager'];
+  var cacheWhitelist = ['pwa-bounsbot'];
   event.waitUntil(
     caches.keys().then(cacheNames => {
       return Promise.all(
