@@ -1,11 +1,10 @@
 
-import { useState, useEffect, useRef } from "react"
+import { useState, useEffect } from "react"
 import Avatar from "../avatar/avatar";
 import LoadingComponent from "../loading/LoadingComponent.jsx";
 import { Form } from 'react-bootstrap/'
 
 export const LevelsConfig = (props) => {
-    const textareaRef = useRef(null);
     const [loadingChargement, setLoadingChargement] = useState(false);
     const [loading, setLoading] = useState(true)
     const [xpConfig, setXpConfig] = useState([])
@@ -17,18 +16,21 @@ export const LevelsConfig = (props) => {
     const [channelXp, setChannelXp] = useState("0")
     const [roleXp, setRoleXp] = useState("0")
 
-    useEffect(async () => {
-        setLoading(true)
+    useEffect(() => {
 
-        try {
-            await Promise.all([
-                getXpConfigGuild()
-            ])
-        } catch (e) {
-            return setLoadingError(true)
+        async function fetchData() {
+            setLoading(true)
+            try {
+                await Promise.all([
+                    getXpConfigGuild()
+                ])
+            } catch (e) {
+                return setLoadingError(true)
+            }
+            setLoading(false)
         }
+        fetchData()
 
-        setLoading(false)
     }, [props.guildId])
 
     useEffect(() => {
@@ -201,10 +203,10 @@ export const LevelsConfig = (props) => {
         await fetch(process.env.REACT_APP_HOSTNAME_BOT + "/guild/" + props.guildId + "/xpconfig", requestOptions)
             .then(response => response.json())
             .then((result) => {
+                setRoles(result.roles.filter(role => !role.tags?.botId && role.name !== "@everyone"))
+                setChannels(result.channels.filter(channel => channel.type === 0 || channel.type === 2));
                 setInitialConfig(JSON.parse(JSON.stringify(result.xpconfig)))
                 setXpConfig(result.xpconfig);
-                setChannels(result.channels.filter(channel => channel.type === 0 || channel.type === 2));
-                setRoles(result.roles.filter(role => role.tags?.botId == null && role.name !== "@everyone"))
             })
     };
 
@@ -214,7 +216,7 @@ export const LevelsConfig = (props) => {
         let rolesRewards = []
 
 
-        if (xpConfig?.gainRolesLevels?.length == 0) {
+        if (xpConfig?.gainRolesLevels?.length === 0) {
             return (
                 <div className="roleRewardElement noElement">
                     <p>Aucune récompense de rôle</p>
@@ -276,7 +278,7 @@ export const LevelsConfig = (props) => {
             }
 
 
-            if (roles[i].id == id) {
+            if (roles[i].id === id) {
                 rolesForSelector.push(
                     <option value={roles[i].id} selected>{roles[i].name}</option>
                 )
@@ -305,7 +307,7 @@ export const LevelsConfig = (props) => {
                 continue
             }
 
-            if (channels[i].id == id) {
+            if (channels[i].id === id) {
                 channelsForSelector.push(
                     <option value={channels[i].id} selected>{channels[i].name}</option>
                 )
@@ -323,9 +325,9 @@ export const LevelsConfig = (props) => {
     let moduleChannel = () => {
         let channelsModule = []
         for (let channel of xpConfig.channels) {
-            let channelElement = channels.find(c => c.id == channel)
+            let channelElement = channels.find(c => c.id === channel)
 
-            if (channelElement == undefined) {
+            if (channelElement === undefined) {
                 setInitialConfig({ ...initialConfig, channels: initialConfig.channels.filter(c => c != channel) })
                 setXpConfig({ ...xpConfig, channels: xpConfig.channels.filter(c => c != channel) })
             }
@@ -373,6 +375,8 @@ export const LevelsConfig = (props) => {
         let rolesModule = []
         for (let role of xpConfig.roles) {
             let roleElement = roles.find(r => r.id == role)
+
+            console.log(roleElement)
 
             if (roleElement == undefined) {
                 setInitialConfig({ ...initialConfig, roles: initialConfig.roles.filter(r => r != role) })

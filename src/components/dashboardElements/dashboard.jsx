@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react"
-import { Link } from 'react-router-dom';
 import { Form } from 'react-bootstrap/'
 import Avatar from "../../components/avatar/avatar";
 import LoadingComponent from "../../components/loading/LoadingComponent.jsx";
@@ -15,18 +14,21 @@ export const Dashboard = (props) => {
     const [channel, setChannel] = useState([])
     const [loadingError, setLoadingError] = useState(false)
 
-    useEffect(async () => {
-        setLoading(true)
-        try {
-            await Promise.all([
-                getChannelGuild(),
-                getConfigurationDashboard()
-            ])
-        } catch (error) {
-            return setLoadingError(true)
-        }
+    useEffect(() => {
+        async function fetchData() {
+            setLoading(true)
+            try {
+                await Promise.all([
+                    getChannelGuild(),
+                    getConfigurationDashboard()
+                ])
+            } catch (error) {
+                return setLoadingError(true)
+            }
 
-        setLoading(false)
+            setLoading(false)
+        }
+        fetchData();
     }, [props.guildId])
 
     useEffect(() => {
@@ -145,7 +147,7 @@ export const Dashboard = (props) => {
                 <div className="block">
                     <h3>Textuel</h3>
                     <div className="modules">
-                        {typeof data.heyreaction == 'boolean' ? <div className="guildModule">
+                        {typeof data.heyreaction === 'boolean' ? <div className="guildModule">
                             <div className="top">
                                 {/* <img className="picto" alt='logo' width="48" height="48" src={reactionPicto} ></img> */}
                                 <svg className="pictoLog" width="45" height="45" viewBox="0 0 384 384" >
@@ -174,7 +176,7 @@ export const Dashboard = (props) => {
                             <div>Laissez le bot réagir avec 👋 / 💤 suivant le message</div>
                         </div> : ""}
 
-                        {typeof data?.rename == "boolean" ?
+                        {typeof data?.rename === "boolean" ?
                             <div className="guildModule">
                                 <div className="top">
                                     <svg className="pictoLog" width="45" height="45" viewBox="0 0 24 24">
@@ -189,7 +191,7 @@ export const Dashboard = (props) => {
                             </div>
                             : ""}
 
-                        {typeof data.sheesh == 'boolean' ?
+                        {typeof data.sheesh === 'boolean' ?
                             <div className="guildModule">
                                 <div className="top">
                                     <svg className="pictoLog" width="55" height="55" viewBox="0 0 400 400" >
@@ -213,7 +215,7 @@ export const Dashboard = (props) => {
                 <div className="block">
                     <h3>Multimedia</h3>
                     <div className="modules">
-                        {typeof data.radio == 'boolean' ?
+                        {typeof data.radio === 'boolean' ?
                             <div className="guildModule">
                                 <div className="top">
                                     <svg className="pictoLog" width="45" height="45" viewBox="0 0 60 60">
@@ -227,7 +229,7 @@ export const Dashboard = (props) => {
                             </div>
                             : ""}
 
-                        {typeof data.musique == 'boolean' ?
+                        {typeof data.musique === 'boolean' ?
                             <div className="guildModule">
                                 <div className="top">
                                     <svg className="pictoLog" width="45" height="45" viewBox="0 0 514 514" >
@@ -241,7 +243,7 @@ export const Dashboard = (props) => {
                             </div>
                             : ""}
 
-                        {typeof data.playlist == 'boolean' ?
+                        {typeof data.playlist === 'boolean' ?
                             <div className="guildModule">
                                 <div className="top">
                                     <svg className="pictoLog" width="45" height="45" viewBox="0 0 512 512" >
@@ -264,7 +266,7 @@ export const Dashboard = (props) => {
                     <h3>Activité</h3>
                     <div className="modules">
 
-                        {typeof data.game == 'boolean' ?
+                        {typeof data.game === 'boolean' ?
                             <div className="guildModule">
                                 <div className="top">
                                     <svg className="pictoLog" width="48" height="48" viewBox="0 0 577 577" >
@@ -277,7 +279,7 @@ export const Dashboard = (props) => {
                                 <div>Plusieurs jeux sont disponibles pour vous amuser</div>
                             </div> : ""}
 
-                        {typeof data.fun == 'boolean' ?
+                        {typeof data.fun === 'boolean' ?
                             <div className="guildModule">
 
                                 <div className="top">

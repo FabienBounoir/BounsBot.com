@@ -7,14 +7,17 @@ export const Musique = (props) => {
     const [loading, setLoading] = useState(false)
     const [pause, setPause] = useState(false)
     const [music, setMusic] = useState([])
-    const [haveBeforeMusic, setHaveBeforeMusic] = useState(false)
+    const [haveBeforeMusic] = useState(false) //setHaveBeforeMusic
 
-    useEffect(async () => {
-        setLoading(true)
-        await Promise.all([
-            getMusic()
-        ])
-        setLoading(false)
+    useEffect(() => {
+        async function fetchData() {
+            setLoading(true)
+            await Promise.all([
+                getMusic()
+            ])
+            setLoading(false)
+        }
+        fetchData();
     }, [props.guildId])
 
     let getMusic = async () => {
@@ -65,7 +68,7 @@ export const Musique = (props) => {
             return (
                 <div className="list">
                     <div className="pochette">
-                        <img src={file.image} />
+                        <img src={file.image} alt="IMG" />
                     </div>
                     <div className="titre">
                         <p>{file.title}</p>

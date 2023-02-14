@@ -9,7 +9,7 @@ import LoadingComponent from "../loading/LoadingComponent.jsx";
 export const Welcome = (props) => {
     const [configuration, setConfiguration] = useState({})
     const [initialConfig, setInitialConfig] = useState({})
-    const [embedNumber, setEmbedNumber] = useState(0)
+    const [embedNumber] = useState(0) //setEmbedNumber
     const [loading, setLoading] = useState(true)
     const [changeNotSave, setChangeNotSave] = useState(false);
     const [loadingChargement, setLoadingChargement] = useState(false);
@@ -17,7 +17,6 @@ export const Welcome = (props) => {
     const [loadingError, setLoadingError] = useState(false);
 
     const [channel, setChannel] = useState([])
-    const fileInputRef = useRef(null);
     const canvasRef = useRef(null)
 
 
@@ -574,20 +573,23 @@ export const Welcome = (props) => {
         setConfiguration(JSON.parse(JSON.stringify(initialConfig)))
     }
 
-    useEffect(async () => {
-        setLoading(true)
-        try {
-            await Promise.all([
-                getChannelGuild(),
-                getConfiguration()
-            ])
-        }
-        catch (error) {
-            console.log("Error", error)
-            return setLoadingError(true)
-        }
+    useEffect(() => {
+        async function fetchData() {
+            setLoading(true)
+            try {
+                await Promise.all([
+                    getChannelGuild(),
+                    getConfiguration()
+                ])
+            }
+            catch (error) {
+                console.log("Error", error)
+                return setLoadingError(true)
+            }
 
-        setLoading(false)
+            setLoading(false)
+        }
+        fetchData();
         // renderCanvas(configuration.GUILD)
     }, [props.guildId])
 

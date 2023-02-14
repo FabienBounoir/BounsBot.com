@@ -52,27 +52,27 @@ export const Send = (props) => {
             })
     };
 
-    let selectChannel = (channel) => {
-        setMessageConfig({
-            ...messageConfig,
-            channel
-        })
-    }
+    // let selectChannel = (channel) => {
+    //     setMessageConfig({
+    //         ...messageConfig,
+    //         channel
+    //     })
+    // }
 
-    let listChannel = () => {
-        if (channel.length > 0) {
-            return channel.map((channel, index) => {
-                if (messageConfig.channel === channel.id) {
-                    return <p value={channel.id} key={index} onClick={() => selectChannel(channel.id)} className="channelSelected">{channel.name}</p>
-                } else {
-                    return <p key={index} value={channel.id} onClick={() => selectChannel(channel.id)}>{channel.name}</p>
-                }
-            })
-        }
-        else {
-            return <p>Aucun channel</p>
-        }
-    }
+    // let listChannel = () => {
+    //     if (channel.length > 0) {
+    //         return channel.map((channel, index) => {
+    //             if (messageConfig.channel === channel.id) {
+    //                 return <p value={channel.id} key={index} onClick={() => selectChannel(channel.id)} className="channelSelected">{channel.name}</p>
+    //             } else {
+    //                 return <p key={index} value={channel.id} onClick={() => selectChannel(channel.id)}>{channel.name}</p>
+    //             }
+    //         })
+    //     }
+    //     else {
+    //         return <p>Aucun channel</p>
+    //     }
+    // }
 
     let resizeTextarea = () => {
         textareaRef.current.style.height = 'auto';

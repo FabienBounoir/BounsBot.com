@@ -27,9 +27,34 @@ import { Info } from "../components/info/info";
 import ScrollToTop from "../utils/ScrollToTop"
 import { useEffect } from "react";
 
+let code = ""
+
 export const App = () => {
+
   useEffect(() => {
     setEnvColor()
+    document.addEventListener('keydown', function (event) {
+      console.log(event.key)
+      if (event.key === "Backspace" && code != "") {
+        code = code.slice(0, -1);
+      }
+
+      if (event.key === "Enter") {
+        code = "";
+      }
+
+      if (event.key == "b" && event.key == "o" && event.key == "u" && event.key == "n" && event.key == "s") {
+        code += event.key.toLowerCase();
+      }
+
+      console.log(code)
+
+      if (code == "bouns") {
+        console.log("bouns")
+        let r = document.getElementsByTagName("html")[0];
+        colorUpdate(r);
+      }
+    });
   }, [])
 
   //create randomColor but not dark or light
@@ -67,9 +92,13 @@ export const App = () => {
       setSnow();
     }
     else if (Math.random() < 0.1) {
-      r.style.setProperty('--color-principal', "#" + randomColor());
-      r.style.setProperty('--color-principal-hover', "#" + randomColor());
+      colorUpdate(r);
     }
+  }
+
+  let colorUpdate = (r) => {
+    r.style.setProperty('--color-principal', "#" + randomColor());
+    r.style.setProperty('--color-principal-hover', "#" + randomColor());
   }
 
   let setSnow = () => {
@@ -90,7 +119,7 @@ export const App = () => {
 
         embHTML += '<i class="embedim-snow"></i>'; var rndX = (embRand(0, 1000000) * 0.0001), rndO = embRand(-100000, 100000) * 0.0001, rndT = (embRand(3, 8) * 10).toFixed(2), rndS = (embRand(0, 10000) * 0.0001).toFixed(2);
 
-        embCSS += '.embedim-snow:nth-child(' + i + '){' + 'opacity:' + (embRand(1, 10000) * 0.0001).toFixed(2) + ';' + 'transform:translate(' + rndX.toFixed(2) + 'vw,-10px) scale(' + rndS + ');' + 'animation:fall-' + i + ' ' + embRand(10, 30) + 's -' + embRand(0, 30) + 's linear infinite' + '}' + '@keyframes fall-' + i + '{' + rndT + '%{' + 'transform:translate(' + (rndX + rndO).toFixed(2) + 'vw,' + rndT + 'vh) scale(' + rndS + ')' + '}' + 'to{' + 'transform:translate(' + (rndX + (rndO / 2)).toFixed(2) + 'vw, 105vh) scale(' + rndS + ')' + '}' + '}'
+        embCSS += '.embedim-snow:nth-child(' + i + '){opacity:' + (embRand(1, 10000) * 0.0001).toFixed(2) + ';transform:translate(' + rndX.toFixed(2) + 'vw,-10px) scale(' + rndS + ');animation:fall-' + i + ' ' + embRand(10, 30) + 's -' + embRand(0, 30) + 's linear infinite}@keyframes fall-' + i + '{' + rndT + '%{transform:translate(' + (rndX + rndO).toFixed(2) + 'vw,' + rndT + 'vh) scale(' + rndS + ')}to{transform:translate(' + (rndX + (rndO / 2)).toFixed(2) + 'vw, 105vh) scale(' + rndS + ')}}'
       }
       embedimSnow = document.createElement('div'); embedimSnow.id = 'embedim--snow';
       embedimSnow.innerHTML = '<style>#embedim--snow{position:fixed;pointer-events: none;left:0;top:0;bottom:0;width:100vw;height:100vh;overflow:hidden;z-index:9999999;pointer-events:none}' + embCSS + '</style>' + embHTML;

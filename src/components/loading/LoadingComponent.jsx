@@ -1,6 +1,5 @@
 import React from 'react';
 import "./_loading.css";
-import { useHistory } from "react-router-dom";
 
 function LoadingComponent({ error, url = "/", errorMessage = "Une erreur est survenue" }) {
     if (error) return (

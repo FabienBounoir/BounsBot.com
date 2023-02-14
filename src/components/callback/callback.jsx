@@ -2,7 +2,6 @@ import "./_callback.css";
 import { Component } from 'react'
 import Fetch from "../../utils/fetch.js";
 import Avatar from "../avatar/avatar";
-import { Redirect } from "react-router-dom";
 
 class Callback extends Component {
 

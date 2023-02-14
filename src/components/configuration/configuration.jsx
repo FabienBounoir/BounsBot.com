@@ -20,24 +20,26 @@ export const Configuration = (props) => {
     const [config, setConfig] = useState([])
     const [open, setOpen] = useState(true)
 
-    useEffect(async () => {
-        if (activeGuild !== "user") {
-            setConfig(await fetch(`${process.env.REACT_APP_HOSTNAME_BACKEND}/guild/${activeGuild}/features`).then(res => res.json()).then(res => {
-                return res.configurationFeatures
-            }))
+    useEffect(() => {
+        async function fetchData() {
+            if (activeGuild !== "user") {
+                setConfig(await fetch(`${process.env.REACT_APP_HOSTNAME_BACKEND}/guild/${activeGuild}/features`).then(res => res.json()).then(res => {
+                    return res.configurationFeatures
+                }))
+            }
+            else {
+                setConfig([
+                    {
+                        name: "Dashboard",
+                        elements: [{
+                            name: "Information",
+                            url: "description",
+                        }]
+                    }
+                ])
+            }
         }
-        else {
-            setConfig([
-                {
-                    name: "Dashboard",
-                    elements: [{
-                        name: "Information",
-                        url: "description",
-                    }]
-                }
-            ])
-        }
-
+        fetchData();
     }, [activeGuild])
 
 

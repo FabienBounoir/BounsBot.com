@@ -30,15 +30,18 @@ export const Logs = (props) => {
     }, [props.guildId])
 
     useEffect(() => {
-        const keys1 = Object.keys(data);
-        const keys2 = Object.keys(initialConfig);
+        if (!data.logs) return
+        if (!initialConfig.logs) return
+
+        const keys1 = Object.keys(data.logs);
+        const keys2 = Object.keys(initialConfig.logs);
 
         if (keys1.length !== keys2.length) {
             return setChangeNotSave(true)
         }
 
         for (let key of keys1) {
-            if (data[key] !== initialConfig[key]) {
+            if (data.logs[key] !== initialConfig.logs[key]) {
                 return setChangeNotSave(true)
             }
         }

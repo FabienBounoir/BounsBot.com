@@ -4,10 +4,13 @@ import "./_info.css";
 export const Info = (props) => {
     const [info, setInfo] = useState(props.alerte)
 
-    useEffect(async () => {
-        await Promise.all([
-            getInfo()
-        ])
+    useEffect(() => {
+        async function fetchData() {
+            await Promise.all([
+                getInfo()
+            ])
+        }
+        fetchData()
     }, [props.guildId])
 
     let getInfo = async () => {
