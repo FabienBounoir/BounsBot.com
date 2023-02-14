@@ -6,6 +6,9 @@ jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
 
+    env:
+      CI: false
+
     steps:
     - uses: actions/checkout@v2
     - name: Use Node.js 16
