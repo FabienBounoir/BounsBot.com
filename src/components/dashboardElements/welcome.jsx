@@ -219,6 +219,7 @@ export const Welcome = (props) => {
             let avatar = new Image();
             avatar.src = props?.user?.avatar ? `https://cdn.discordapp.com/avatars/${props?.user?.id}/${props?.user?.avatar}.webp?size=1024` : `https://cdn.discordapp.com/embed/avatars/${Math.floor(Math.random() * 6)}.png`
             avatar.onload = function () {
+                ctx.strokeStyle = colorText;
                 ctx.drawImage(avatar, 450, 50, 300, 300);
 
                 ctx.stroke();
@@ -246,8 +247,8 @@ export const Welcome = (props) => {
 
             //drawn rectangle with Border
             ctx.globalAlpha = 1;
-            ctx.fillStyle = colorAmbient;
-            ctx.strokeStyle = colorAmbient;
+            ctx.fillStyle = colorText;
+            ctx.strokeStyle = colorText;
 
             ctx.lineWidth = 20;
             ctx.lineJoin = 'round';
