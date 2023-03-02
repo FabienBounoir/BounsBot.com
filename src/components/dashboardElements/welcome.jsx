@@ -491,7 +491,7 @@ export const Welcome = (props) => {
 
 
             let avatar = new Image();
-            avatar.src = "https://cdn.discordapp.com/avatars/266636247017979904/a8085a037c0d0a3e592bf36be3875949.png?size=1024";
+            avatar.src = props?.user?.avatar ? `https://cdn.discordapp.com/avatars/${props?.user?.id}/${props?.user?.avatar}.webp?size=1024` : `https://cdn.discordapp.com/embed/avatars/${Math.floor(Math.random() * 6)}.png`
             avatar.onload = function () {
                 ctx.drawImage(avatar, 20, 160, 600, 600);
 
