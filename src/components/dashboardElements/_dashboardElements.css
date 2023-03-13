@@ -10,6 +10,12 @@ button.addRoleReward {
     transition: 0.3s;
 }
 
+.categorie_config {
+    text-align: left;
+    color: white;
+
+}
+
 .channelRenderDesign {
     display: flex;
     flex-direction: row;

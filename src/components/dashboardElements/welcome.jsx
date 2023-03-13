@@ -15,15 +15,20 @@ export const Welcome = (props) => {
     const [loadingChargement, setLoadingChargement] = useState(false);
     const [timer, setTimer] = useState(null);
     const [loadingError, setLoadingError] = useState(false);
+    const [roles, setRoles] = useState([])
 
     const [channel, setChannel] = useState([])
     const canvasRef = useRef(null)
+    const [roleXp, setRoleXp] = useState("0")
 
 
     const getConfiguration = async () => {
         let res = await fetch(`${process.env.REACT_APP_HOSTNAME_BACKEND}/guild/${props.guildId}/welcome`).then(res => res.json()) || {}
-        await setInitialConfig(JSON.parse(JSON.stringify(res)));
-        await setConfiguration(JSON.parse(JSON.stringify(res)))
+
+        await setChannel(res?.channels?.filter(channel => channel.type === 0) || [])
+        await setRoles(res?.roles?.filter(role => !role.tags?.botId && role.name !== "@everyone") || [])
+        await setInitialConfig(JSON.parse(JSON.stringify(res.config)));
+        await setConfiguration(JSON.parse(JSON.stringify(res.config)))
     }
 
     const renderCanvas = (guild) => {
@@ -58,9 +63,28 @@ export const Welcome = (props) => {
                 break;
 
             default:
-                theme1(guild, canvas)
+                themeDisable(guild, canvas)
                 break;
         }
+    }
+
+    const themeDisable = (guild, canvas) => {
+        if (canvasRef.current === null) return
+
+        let ctx = canvas.getContext("2d");
+
+
+        ctx.fillStyle = "rgba(0, 0, 0, 0.5)";
+        ctx.fillRect(0, 0, 1200, 500);
+
+        ctx.textBaseline = 'middle';
+
+        ctx.font = "bold 70px Arial";
+        ctx.textAlign = "center";
+        ctx.fillStyle = "#FFFFFF"
+        ctx.fillText("Carte de bienvenue désactivée", 600, 250); //450
+
+
     }
 
     const theme1 = (guild, canvas) => {
@@ -551,37 +575,30 @@ export const Welcome = (props) => {
         }
     }
 
-    let getChannelGuild = async () => {
-        var myHeaders = new Headers();
-        myHeaders.append("Content-Type", "application/json");
-        myHeaders.append("Authorization", `Bearer ${JSON.parse(window.localStorage.getItem('dataDiscord'))?.access_token}`);
-
-        var requestOptions = {
-            method: 'GET',
-            headers: myHeaders,
-            redirect: 'follow'
-        };
-
-        await fetch(process.env.REACT_APP_HOSTNAME_BACKEND + "/bot/getchannels/" + props.guildId, requestOptions)
-            .then(response => response.json())
-            .then((result) => {
-                setChannel(result?.channels?.filter(channel => channel.type === 0) || []);
-            })
-            .catch(console.log)
-    };
-
     const resetChange = () => {
         setConfiguration(JSON.parse(JSON.stringify(initialConfig)))
+    }
+
+    useEffect(() => {
+        if (roleXp !== "0") {
+            updateRoleConfig(roleXp)
+        }
+        setRoleXp("0")
+    }, [roleXp])
+
+    let updateRoleConfig = async (newRole) => {
+        let config = { ...configuration }
+
+        config.ROLE.roles = [...config.ROLE.roles, newRole]
+
+        setConfiguration(config)
     }
 
     useEffect(() => {
         async function fetchData() {
             setLoading(true)
             try {
-                await Promise.all([
-                    getChannelGuild(),
-                    getConfiguration()
-                ])
+                await getConfiguration()
             }
             catch (error) {
                 console.log("Error", error)
@@ -591,7 +608,6 @@ export const Welcome = (props) => {
             setLoading(false)
         }
         fetchData();
-        // renderCanvas(configuration.GUILD)
     }, [props.guildId])
 
     useEffect(() => {
@@ -628,6 +644,16 @@ export const Welcome = (props) => {
             if (configuration.GUILD[Guild[i]] !== initialConfig.GUILD[GuildInitial[i]]) return setChangeNotSave(true)
         }
 
+        if (configuration?.ROLE?.active !== initialConfig?.ROLE?.active) return setChangeNotSave(true)
+
+        if (configuration?.ROLE?.roles?.length !== initialConfig?.ROLE?.roles?.length) return setChangeNotSave(true)
+
+        console.log(configuration)
+
+        for (let i = 0; i < configuration?.ROLE?.roles?.length; i++) {
+            if (configuration?.ROLE?.roles[i] !== initialConfig?.ROLE?.roles[i]) return setChangeNotSave(true)
+        }
+
         setChangeNotSave(false)
     }, [configuration])
 
@@ -644,6 +670,14 @@ export const Welcome = (props) => {
         let config = { ...configuration }
 
         config.DM.active = e.target.checked
+
+        setConfiguration(config)
+    }
+
+    const updateEtatROLE = (e) => {
+        let config = { ...configuration }
+
+        config.ROLE.active = e.target.checked
 
         setConfiguration(config)
     }
@@ -688,15 +722,24 @@ export const Welcome = (props) => {
         setConfiguration(config)
     }
 
+    let updateContent = (e) => {
+        let config = { ...configuration }
+
+        config.GUILD.content = e.target.value
+
+        setConfiguration(config)
+    }
+
+    let updateDefaultPseudo = (e) => {
+        let config = { ...configuration }
+
+        config.GUILD.defaultPseudo = e.target.value
+
+        setConfiguration(config)
+    }
+
     let getChannelForSelector = (allChannel, selectedchannel) => {
         let option = [];
-
-        if (selectedchannel === "0") {
-            option.push(<option value="0" selected>❌ Désactivé</option>)
-        }
-        else {
-            option.push(<option value="0">❌ Désactivé</option>)
-        }
 
         for (let value of allChannel) {
             if (value.id === selectedchannel) {
@@ -713,60 +756,169 @@ export const Welcome = (props) => {
     let optionsTheme = (design) => {
         let option = []
 
-        for (let i = 0; i < 4; i++) {
-            if (design === i) {
-                option.push(<option value={i} selected>Theme {i + 1}</option>)
+        for (let i = -1; i < 4; i++) {
+            let theme = ""
+            if (i === -1) {
+                theme = "⛔️ Ne pas envoyer de carte"
             }
             else {
-                option.push(<option value={i}>Theme {i + 1}</option>)
+                theme = `🃏 Theme ${i + 1}`
+            }
+
+            if (design === i) {
+                option.push(<option value={i} selected>{theme}</option>)
+            }
+            else {
+                option.push(<option value={i}>{theme}</option>)
             }
         }
 
         return option;
     }
 
+    let fixInitialRoleConfig = (roles) => {
+        let newConfig = { ...initialConfig }
+
+        newConfig.ROLE.roles = roles
+
+        setInitialConfig(newConfig)
+    }
+
+    let fixRoleConfig = (roles) => {
+        let newConfig = { ...configuration }
+
+        newConfig.ROLE.roles = roles
+
+        setConfiguration(newConfig)
+    }
+
+    function decimalToHex(decimal) {
+        if (decimal == 0) return "#000000"
+
+        var r = (decimal >> 16) & 255;
+        var g = (decimal >> 8) & 255;
+        var b = decimal & 255;
+
+        var hexR = r.toString(16).padStart(2, '0');
+        var hexG = g.toString(16).padStart(2, '0');
+        var hexB = b.toString(16).padStart(2, '0');
+
+        return "#" + hexR + hexG + hexB;
+    }
+
+
+
+    let moduleRole = () => {
+        let rolesModule = []
+        for (let role of configuration.ROLE.roles) {
+            let roleElement = roles.find(r => r.id == role)
+
+            console.log(roleElement)
+
+            if (roleElement == undefined) {
+                fixInitialRoleConfig(initialConfig.ROLE.roles.filter(r => r != role))
+                fixRoleConfig(configuration.ROLE.roles.filter(r => r != role))
+            }
+            else {
+                rolesModule.push(
+                    <div className="roleRenderXP">
+                        <span style={{ background: `${decimalToHex(roleElement?.color)}` }}></span>
+                        <div>{roleElement?.name}</div>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" viewBox="0 0 24 24" fill="none" onClick={() => {
+                            let newRoles = configuration.ROLE.roles
+                            newRoles = newRoles.filter(r => r != role)
+                            fixRoleConfig(newRoles)
+                        }
+                        }>
+                            <path fill-rule="evenodd" clip-rule="evenodd" d="M16.9498 8.46447C17.3404 8.07394 17.3404 7.44078 16.9498 7.05025C16.5593 6.65973 15.9261 6.65973 15.5356 7.05025L12.0001 10.5858L8.46455 7.05025C8.07402 6.65973 7.44086 6.65973 7.05033 7.05025C6.65981 7.44078 6.65981 8.07394 7.05033 8.46447L10.5859 12L7.05033 15.5355C6.65981 15.9261 6.65981 16.5592 7.05033 16.9497C7.44086 17.3403 8.07402 17.3403 8.46455 16.9497L12.0001 13.4142L15.5356 16.9497C15.9261 17.3403 16.5593 17.3403 16.9498 16.9497C17.3404 16.5592 17.3404 15.9261 16.9498 15.5355L13.4143 12L16.9498 8.46447Z" fill="#FFFFFF" />
+                        </svg>
+                    </div>
+                )
+            }
+        }
+
+        rolesModule.push(
+            <Form.Select defaultValue={roleXp} onChange={(e) => { setRoleXp(e.target.value) }}>
+                {getRolesForSelector(roles, roleXp, configuration.ROLE.roles)}
+            </Form.Select>
+        )
+
+        return rolesModule
+    }
+
+    let getRolesForSelector = (roles, id, filterRole) => {
+        let rolesForSelector = []
+
+        if (filterRole) {
+            rolesForSelector.push(
+                <option value={"0"} selected>Ajouter un rôle</option>
+            )
+        }
+
+        for (let i = 0; i < roles.length; i++) {
+            if (filterRole && filterRole.includes(roles[i].id)) {
+                continue
+            }
+
+
+            if (roles[i].id === id) {
+                rolesForSelector.push(
+                    <option value={roles[i].id} selected>{roles[i].name}</option>
+                )
+            }
+            else {
+                rolesForSelector.push(
+                    <option value={roles[i].id}>{roles[i].name}</option>
+                )
+            }
+        }
+
+        return rolesForSelector
+    }
+
     return (<>
         {loading ? <LoadingComponent error={loadingError} errorMessage="Une erreur est survenue" /> :
-            <><div className="block padding-1">
-                <div className="infoActive">
-                    <h5>Envoyer un message privé aux nouveaux membres</h5>
-                    <Form.Check className="picto" type="switch" id="custom-switch success" checked={configuration?.DM?.active} onChange={(e) => { updateEtatDm(e) }} />
-                </div>
+            <>
+                <div className="block padding-1">
+                    <div className="infoActive">
+                        <h5>Envoyer un message privé aux nouveaux membres</h5>
+                        <Form.Check className="picto" type="switch" id="custom-switch success" checked={configuration?.DM?.active} onChange={(e) => { updateEtatDm(e) }} />
+                    </div>
 
-                <div className="separator"></div>
+                    <div className="separator"></div>
 
-                <div className={"informationConfig" + (configuration?.DM?.active ? "" : " welcomeDisable")}>
-                    <div className="WelcomeComponente" >
-                        <div className="embed">
-                            <div>
-                                <div className="embedAuthor">
-                                    {props.iconLink ?
-                                        //on error replace .gif to .webp
-                                        <img className="iconEmbed" src={props.iconLink} alt="icon" onError={(e) => { e.target.src = props.iconLink.replace(".gif", ".webp") }} />
-                                        : <span className="iconEmbed color"></span>}
-                                    {props.name}
+                    <div className={"informationConfig" + (configuration?.DM?.active ? "" : " welcomeDisable")}>
+                        <div className="WelcomeComponente" >
+                            <div className="embed">
+                                <div>
+                                    <div className="embedAuthor">
+                                        {props.iconLink ?
+                                            //on error replace .gif to .webp
+                                            <img className="iconEmbed" src={props.iconLink} alt="icon" onError={(e) => { e.target.src = props.iconLink.replace(".gif", ".webp") }} />
+                                            : <span className="iconEmbed color"></span>}
+                                        {props.name}
+                                    </div>
+                                    <textarea id="messageWelcome" disabled={!configuration?.DM?.active} style={{ Background: "#313442", maxHeight: '300px', minHeight: "100px", resize: configuration?.DM?.active ? "vertical" : "none" }} className="embedDescripton" rows="6" placeholder="Message to send" value={configuration?.DM.embeds[embedNumber]?.description} onChange={event => { updateEmbedDm(embedNumber, { description: event.target.value }) }} />
                                 </div>
-                                <textarea id="messageWelcome" disabled={!configuration?.DM?.active} style={{ Background: "#313442", maxHeight: '300px', minHeight: "100px", resize: configuration?.DM?.active ? "vertical" : "none" }} className="embedDescripton" rows="6" placeholder="Message to send" value={configuration?.DM.embeds[embedNumber]?.description} onChange={event => { updateEmbedDm(embedNumber, { description: event.target.value }) }} />
-                            </div>
-                            <div>
-                                {props.iconLink ?
-                                    <img className="thumbnailEmbed" src={props.iconLink} alt="icon" onError={(e) => { e.target.src = props.iconLink.replace(".gif", ".webp") }} />
-                                    : <span className="thumbnailEmbed color"></span>}
+                                <div>
+                                    {props.iconLink ?
+                                        <img className="thumbnailEmbed" src={props.iconLink} alt="icon" onError={(e) => { e.target.src = props.iconLink.replace(".gif", ".webp") }} />
+                                        : <span className="thumbnailEmbed color"></span>}
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div className="info">
-                        <ul>
-                            <li><span className="tag">{`{server}`}</span>Nom du serveur</li>
-                            <li><span className="tag">{`{id}`}</span>Id du membre</li>
-                            <li><span className="tag">{`{user}`}</span>Mention du membre</li>
-                            <li><span className="tag">{`{membercount}`}</span>Nombre de membres</li>
-                            <li><span className="tag">{`{bot}`}</span>Mention du bot</li>
-                        </ul>
+                        <div className="info">
+                            <ul>
+                                <li><span className="tag">{`{server}`}</span>Nom du serveur</li>
+                                <li><span className="tag">{`{id}`}</span>Id du membre</li>
+                                <li><span className="tag">{`{user}`}</span>Mention du membre</li>
+                                <li><span className="tag">{`{membercount}`}</span>Nombre de membres</li>
+                                <li><span className="tag">{`{bot}`}</span>Mention du bot</li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
 
-            </div>
                 <div className="block padding-1">
                     <div className="infoActive">
                         <h5>Envoyer un message quand un membre rejoint votre serveur</h5>
@@ -775,25 +927,46 @@ export const Welcome = (props) => {
 
                     <div className="separator"></div>
 
+                    <p className="categorie_config" >Salon pour les Messages de Bienvenue</p>
+
+                    <Form.Select style={{ "max-width": "530px" }} defaultValue={configuration?.GUILD?.channel} disabled={!configuration?.GUILD?.active} onChange={(event) => { updateSelectMenu(event.target.value) }}>
+                        {(() => {
+                            return getChannelForSelector(channel, configuration?.GUILD?.channel);
+                        })()}
+                    </Form.Select>
+
+                    <div className="separator" style={{ "marginTop": "15px" }} ></div>
+
+                    <p className="categorie_config" >Message de bienvenue</p>
+
+                    <Form.Control
+                        style={{ "max-width": "530px" }}
+                        as="textarea"
+                        rows={3}
+                        placeholder="Entrer le message de bienvenue"
+                        disabled={!configuration?.GUILD?.active}
+                        value={configuration?.GUILD?.content}
+                        onChange={(event) => { updateContent(event) }}
+                    />
+
+
+                    <div className="separator" style={{ "marginTop": "15px" }} ></div>
+
                     <div className={"informationWelcomeCanvas" + (configuration?.GUILD?.active ? "" : " welcomeDisable")}>
                         <div className="WelcomeComponente" >
                             <canvas width="1200" height="500" ref={canvasRef} style={{ borderRadius: "10px" }} ></canvas>
 
                         </div>
                         <div className="configWelcomeCanvas">
-                            <div style={{ marginBottom: "10px" }}>
+                            {/* <div style={{ marginBottom: "10px" }}>
                                 <span>Salon de messages de bienvenue:</span>
-                                <Form.Select defaultValue={configuration?.GUILD?.channel} onChange={(event) => { updateSelectMenu(event.target.value) }}>
-                                    {(() => {
-                                        return getChannelForSelector(channel, configuration?.GUILD?.channel);
-                                    })()}
-                                </Form.Select>
+                            
                             </div>
 
-                            <div className="separator"></div>
+                            <div className="separator"></div> */}
 
                             <div style={{ marginBottom: "10px" }}>
-                                <span>Theme de la carte:</span>
+                                <p>Theme de la carte:</p>
                                 <Form.Select defaultValue={configuration?.GUILD?.design} onChange={(event) => { updateTheme(event.target.value) }}>
                                     {(() => {
                                         return optionsTheme(configuration?.GUILD?.design);
@@ -804,7 +977,7 @@ export const Welcome = (props) => {
                             <div className="separator"></div>
 
                             <div >
-                                <span>Couleur:</span>
+                                <p>Couleur:</p>
                                 <div style={{ display: "flex", flexDirection: "row" }}>
                                     <div className="colorModule">
                                         <span>Ambiance</span>
@@ -819,7 +992,39 @@ export const Welcome = (props) => {
                         </div>
                     </div>
 
-                </div></>
+                </div>
+
+                <div className="block padding-1">
+                    <div className="infoActive">
+                        <h5>Donner un rôle aux nouveaux membres</h5>
+                        <Form.Check className="picto" type="switch" id="custom-switch success" checked={configuration?.ROLE?.active} onChange={(e) => { updateEtatROLE(e) }} />
+                    </div>
+
+                    <div className="separator"></div>
+
+                    <div className="roleElements" style={{ display: "flex" }}>
+                        {moduleRole()}
+                    </div>
+                </div>
+
+                <div className="block padding-1">
+                    <div className="infoActive">
+                        <h5>Renommer les membres lorsqu'ils rejoignent le serveur</h5>
+                        {/* <Form.Check className="picto" type="switch" id="custom-switch success" checked={configuration?.ROLE?.active} onChange={(e) => { updateEtatROLE(e) }} /> */}
+                    </div>
+
+                    <div className="separator"></div>
+                    <Form.Control
+                        style={{ "max-width": "530px" }}
+                        placeholder="Entrer le pseudo"
+                        value={configuration?.GUILD?.defaultPseudo}
+                        onChange={(event) => { updateDefaultPseudo(event) }}
+                    />
+
+                </div>
+
+
+            </>
         }
 
         <div id="card" className={"cardSave" + (changeNotSave ? " hidden" : "")} ><div className="saveConfig"><div style={{ display: "flex", alignItems: "center", flexDirection: "row", gap: "0.3em" }}><Avatar classElement="logoChangement" width="30" height="28" /> Changements détectés ! Veuillez enregistrer ou annuler.</div><div className="buttonContainer"><button className="cancelButton" disabled={loadingChargement} type="button" onClick={resetChange}>Annuler</button><button className="saveButton" type="button" disabled={loadingChargement} onClick={updateConfig}>Enregistrer</button></div></div></div>
