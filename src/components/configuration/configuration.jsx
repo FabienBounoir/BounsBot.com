@@ -7,6 +7,7 @@ import { Send } from "../dashboardElements/send.jsx";
 import { Musique } from "../dashboardElements/musique.jsx";
 import { InfoDashboard } from "../dashboardElements/infoDashboard.jsx";
 import { LevelsConfig } from "../dashboardElements/levels.jsx";
+import { Rename } from "../dashboardElements/rename";
 
 import "./_configuration.css";
 import "../dashboardElements/_dashboardElements.css";
@@ -111,29 +112,25 @@ export const Configuration = (props) => {
             return <Dashboard guildId={id} />
         }
 
-        if (type === "description") {
-            return <InfoDashboard />
-        }
-        else if (type === "dashboard") {
-            return (<Dashboard guildId={id} />)
-        }
-        else if (type === "logs") {
-            return (<Logs guildId={id} />)
-        }
-        else if (type === "welcome") {
-            return (<Welcome guildId={id} user={props.user} name={guild?.name} iconLink={guild?.icon ? `https://cdn.discordapp.com/icons/${guild?.id}/${guild?.icon}.gif?size=256` : null} />)
-        }
-        else if (type === "guild_message") {
-            return (<Send guildId={id} />)
-        }
-        else if (type === "levels") {
-            return (<LevelsConfig guildId={id} />)
-        }
-        else if (type === "musique") {
-            return (<Musique guildId={id} />)
-        }
-        else {
-            return (<h1 style={{ color: "red" }} >{type}</h1>)
+        switch (type) {
+            case "description":
+                return <InfoDashboard />;
+            case "dashboard":
+                return <Dashboard guildId={id} />;
+            case "logs":
+                return <Logs guildId={id} />;
+            case "welcome":
+                return <Welcome guildId={id} user={props.user} name={guild?.name} iconLink={guild?.icon ? `https://cdn.discordapp.com/icons/${guild?.id}/${guild?.icon}.gif?size=256` : null} />;
+            case "guild_message":
+                return <Send guildId={id} />;
+            case "levels":
+                return <LevelsConfig guildId={id} />;
+            case "rename":
+                return <Rename guildId={id} />;
+            case "musique":
+                return <Musique guildId={id} />;
+            default:
+                return <h1 style={{ color: "red" }} >{type}</h1>;
         }
     }
 
