@@ -1,3 +1,64 @@
+.guilds-container {
+    overflow-x: hidden !important;
+    display: flex !important;
+    flex-direction: row !important;
+    position: relative;
+    width: calc(100% - 32px);
+}
+
+.guilds-container::before {
+    background: -moz-linear-gradient(90deg, rgba(31, 33, 41, 1) 0%, rgba(0, 0, 0, 0) 100%);
+    background: -webkit-linear-gradient(90deg, rgba(31, 33, 41, 1) 0%, rgba(0, 0, 0, 0) 100%);
+    background: linear-gradient(90deg, rgba(31, 33, 41, 1) 0%, rgba(0, 0, 0, 0) 100%);
+    content: "";
+    height: 100%;
+    position: absolute;
+    width: 15%;
+    z-index: 2;
+}
+
+
+.guilds-container::after {
+    background: -moz-linear-gradient(270deg, rgba(31, 33, 41, 1) 0%, rgba(0, 0, 0, 0) 100%);
+    background: -webkit-linear-gradient(270deg, rgba(31, 33, 41, 1) 0%, rgba(0, 0, 0, 0) 100%);
+    background: linear-gradient(270deg, rgba(31, 33, 41, 1) 0%, rgba(0, 0, 0, 0) 100%);
+    content: "";
+    height: 100%;
+    position: absolute;
+    right: 0;
+    width: 15%;
+    z-index: 2;
+}
+
+.guilds-elements {
+    flex: 0 0 auto;
+    padding-left: 5vw;
+    min-width: 100%;
+    z-index: 1;
+    display: flex;
+    transform: translateX(-2%);
+    flex-direction: row;
+    align-items: center;
+    animation: scroll 76.8s linear 0s infinite;
+    animation-play-state: running;
+    animation-delay: 1s;
+    animation-direction: normal;
+}
+
+@keyframes scroll {
+    0% {
+        transform: translateX(-2%);
+    }
+
+    50% {
+        transform: translateX(-20%);
+    }
+
+    100% {
+        transform: translateX(-2%);
+    }
+}
+
 .infoComponent {
     margin: 0;
     padding: 0;
@@ -19,16 +80,16 @@
     /* padding-bottom: 84px; */
 }
 
-.infoComponent .guildList {
+/* .infoComponent .guilds-container {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
-    /* width: 55vw; */
-}
 
-.infoComponent .guildList .guild {
+} */
+
+.infoComponent .guilds-container .guilds {
     background-color: #17181e;
     color: #9b9d9f;
     display: flex;
@@ -42,28 +103,28 @@
     padding: 16px;
 }
 
-.infoComponent .guildList .guild h3 {
+.infoComponent .guilds-container .guilds h3 {
     color: #fff;
     font-size: 16px;
     padding: 0;
     margin: 0;
 }
 
-.infoComponent .guildList .guild p {
+.infoComponent .guilds-container .guilds p {
     /* color: #fff; */
     /* font-size: 16px; */
     padding: 0;
     margin: 0;
 }
 
-.infoComponent .guildList .guild img {
+.infoComponent .guilds-container .guilds img {
     width: 64px;
     height: 64px;
     border-radius: 50%;
     margin-right: 16px;
 }
 
-.infoComponent .guildList .guild .member {
+.infoComponent .guilds-container .guilds .member {
     display: flex;
     flex-direction: row;
     justify-content: left;

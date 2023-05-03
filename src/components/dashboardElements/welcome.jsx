@@ -476,7 +476,7 @@ export const Welcome = (props) => {
 
             ctx.fillText(text2, 850, 190);
 
-            ctx.fillStyle = darkenColor(colorAmbient, 20);
+            ctx.fillStyle = colorAmbient //darkenColor(colorAmbient, 20);
 
             const maxWidth3 = 500;
             let text3 = `Tu es le ${Math.floor(Math.random() * 1000) + 1}ème membre !`;

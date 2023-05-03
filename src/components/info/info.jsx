@@ -32,14 +32,16 @@ export const Info = (props) => {
 
     }
 
-
     let renderGuilds = () => {
         if (info?.bestGuild) {
             let guilds = []
 
+            info.bestGuild = info.bestGuild.slice(0, 7)
+
             for (let guild of info.bestGuild) {
                 guilds.push(
-                    <div className="guild">
+                    <div className="guilds">
+                        {/* style="--play: running; --direction: normal; --duration: 76.8s; --delay: 0s; --iteration-count: infinite;"> */}
                         <img src={guild.iconURL || "https://media.discordapp.net/attachments/1014101467126304798/1056241554764869673/image.png?width=1290&height=1290"} alt="logo" onError={(e) => { e.target.outerHTML = `<img loading="lazy" src='https://media.discordapp.net/attachments/1014101467126304798/1056241554764869673/image.png?width=1290&height=1290'/>` }} />
                         <div>
                             <h3>{guild.name}</h3>
@@ -57,6 +59,7 @@ export const Info = (props) => {
                         </div>
                     </div>)
             }
+
             return guilds
         }
     }
@@ -64,10 +67,12 @@ export const Info = (props) => {
     return (info?.bestGuild ? (
         <div className="infoComponent">
             <h2>Bounsbot, le bot Discord approuvé par plus de {formatNumber(info?.guild)} serveurs</h2>
-            <div className="guildList">
-                {(() => {
-                    return renderGuilds();
-                })()}
+            <div className="guilds-container">
+                <div className="guilds-elements">
+                    {(() => {
+                        return renderGuilds();
+                    })()}
+                </div>
             </div>
         </div>) : (null))
 }

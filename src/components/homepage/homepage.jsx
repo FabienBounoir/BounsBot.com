@@ -70,15 +70,20 @@ export const HomePage = () => {
 
 
                 <div className="buttonContainer">
-                    <a className="invite_bot_button" href={"https://discord.com/api/oauth2/authorize?client_id=" + process.env.REACT_APP_CLIENT_ID + "&permissions=1945627743&scope=bot%20applications.commands"} >
-                        <span>Inviter Bouns'bot</span>
-                    </a>
+                    <span>
+                        <a className="invite_bot_button" href={"https://discord.com/api/oauth2/authorize?client_id=" + process.env.REACT_APP_CLIENT_ID + "&permissions=1945627743&scope=bot%20applications.commands"} >
+                            <span>Inviter Bouns'bot</span>
+                        </a>
+                    </span>
 
-                    <a className="invite_bot_button" href={"https://discord.gg/KxedRVTutX"} >
-                        <span>Support</span></a>
+                    <span>
+                        <a className="invite_bot_button" href={"https://discord.gg/KxedRVTutX"} >
+                            <span>Support</span>
+                        </a>
+                    </span>
                 </div>
 
-            </div>
+            </div >
             <div className="homepage__avatar">
                 <Avatar easterEgg={true} />
             </div>
@@ -90,6 +95,6 @@ export const HomePage = () => {
             </div>
 
 
-        </div>
+        </div >
     )
 }
