@@ -260,7 +260,7 @@
     font-size: 18px;
 }
 
-.invite_bot_button:first-of-type {
+.buttonContainer span:first-of-type .invite_bot_button {
     text-align: center;
     padding: 14px 18px 14px 18px;
     color: #fff;
@@ -285,7 +285,7 @@
     justify-content: center;
 }
 
-.invite_bot_button:last-of-type {
+.buttonContainer span:last-of-type .invite_bot_button {
     text-align: center;
     padding: 14px 18px 14px 18px;
     color: #fff;
