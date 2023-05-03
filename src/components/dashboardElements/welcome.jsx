@@ -741,6 +741,8 @@ export const Welcome = (props) => {
     let getChannelForSelector = (allChannel, selectedchannel) => {
         let option = [];
 
+        option.push(<option value={"0"}>⛔️ Aucun</option>)
+
         for (let value of allChannel) {
             if (value.id === selectedchannel) {
                 option.push(<option key={value.id} value={value.id} selected>{value.name}</option>)
