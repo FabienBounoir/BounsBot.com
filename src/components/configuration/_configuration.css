@@ -9,6 +9,16 @@
     -ms-flex: 0 0 auto;
     flex: 0 0 auto;
     overflow-y: scroll;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+.configuration_list::-webkit-scrollbar {
+    display: none;
+}
+
+.config::-webkit-scrollbar {
+    display: none;
 }
 
 .config {
@@ -34,6 +44,9 @@
     overflow-y: scroll;
 
     padding: 3em 3em 3em 3em;
+
+    -ms-overflow-style: none;
+    scrollbar-width: none;
 }
 
 .configuration_list header {
