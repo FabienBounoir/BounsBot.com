@@ -816,13 +816,11 @@
             "type": "Modération",
             "usages": [
                 "/membre all",
-                "/membre discriminator <Discriminator>",
                 "/membre name <Name>",
                 "/membre nickname <Nickname>"
             ],
             "examples": [
                 "/membre all",
-                "/membre discriminator 1342",
                 "/membre name Bad",
                 "/membre nickname badabouns"
             ]

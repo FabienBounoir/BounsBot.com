@@ -52,7 +52,7 @@ export const HomePage = () => {
                         let size2 = Math.floor(249 * size / 267);
 
                         //position random sur la div
-                        let top = Math.floor(Math.random() * 90) + 5 + "%";
+                        let top = Math.floor(Math.random() * 85) + 5 + "%";
                         let left = Math.floor(Math.random() * 90) + 5 + "%";
 
                         //rotation random -180° à 180°
@@ -65,7 +65,8 @@ export const HomePage = () => {
             })()}
 
             <div className="homepage__text">
-                <h1><span>Bouns'Bot</span> le meilleur bot pour Discord</h1>
+                {/* <h1><span>Bouns'Bot</span> </h1> le meilleur bot pour Discord */}
+                <h1>Créez le serveur Discord ultime</h1>
                 <p id="typeit">Votre acolyte pour <b>la radio</b> sur votre serveur.</p>
 
 
@@ -77,14 +78,14 @@ export const HomePage = () => {
                     </span>
 
                     <span>
-                        <a className="invite_bot_button" href={"https://discord.gg/KxedRVTutX"} >
+                        <a className="support_button" href={"https://discord.gg/KxedRVTutX"} >
                             <span>Support</span>
                         </a>
                     </span>
                 </div>
 
             </div >
-            <div className="homepage__avatar">
+            <div className="homepage__avatar div-flottante">
                 <Avatar easterEgg={true} />
             </div>
 

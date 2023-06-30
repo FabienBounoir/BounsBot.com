@@ -1,3 +1,31 @@
+@keyframes floating {
+    0% {
+        transform: translate(0, 0);
+    }
+
+    50% {
+        transform: translate(0, 10px);
+    }
+
+    100% {
+        transform: translate(0, 0);
+    }
+}
+
+.div-flottante {
+    animation-name: floating;
+    animation-duration: 3s;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+    /* animation-timing-function: cubic-bezier(0.25, 0.5, 0.75, 0.5); */
+    position: relative;
+    /* Ajoutez cette propriété pour utiliser le positionnement relatif */
+}
+
+/* --------- */
+
+
+
 .particulesNano {
     position: absolute;
     z-index: 0;
@@ -14,7 +42,7 @@
     grid-template-columns: 1fr 1fr;
     grid-template-rows: 1fr;
     grid-template-areas: "text avatar";
-    height: calc(100vh - 56px);
+    height: calc(100vh - 85px);
     width: 100%;
     background-color: #1e1e1e;
     color: white;
@@ -93,7 +121,7 @@
 
 .homepage__scrollAnimation {
     position: absolute;
-    bottom: 3em;
+    bottom: 4em;
     left: 50%;
     cursor: pointer;
     width: 100px;
@@ -179,7 +207,7 @@
     align-items: flex-start;
 
     box-sizing: border-box;
-    overflow: hidden;
+    /* overflow: hidden; */
     align-items: flex-start;
     text-align: left;
     z-index: 3;
@@ -207,11 +235,11 @@
     /* align-items: center; */
     /* align-self: center; */
     gap: 32px;
-    margin-left: 32px;
+    /* margin-left: 32px; */
 }
 
 .homepage__text .buttonContainer>span {
-    overflow: hidden;
+    /* overflow: hidden; */
     display: block;
 }
 
@@ -260,6 +288,22 @@
     font-size: 18px;
 }
 
+.support_button span:last-of-type {
+    color: #fff;
+    font-weight: 600;
+    font-size: 18px;
+}
+
+.support_button:hover {
+    transform: scale(1.10);
+}
+
+.support_button {
+    color: #fff;
+    font-weight: 600;
+    font-size: 18px;
+}
+
 .buttonContainer span:first-of-type .invite_bot_button {
     text-align: center;
     padding: 14px 18px 14px 18px;
@@ -285,11 +329,11 @@
     justify-content: center;
 }
 
-.buttonContainer span:last-of-type .invite_bot_button {
+.buttonContainer span:last-of-type .support_button {
     text-align: center;
     padding: 14px 18px 14px 18px;
     color: #fff;
-    /* background-color: var(--color-principal); */
+    background-color: rgb(255 255 255/0.1) !important;
     border-radius: 10px;
     text-decoration: none;
     position: relative;
@@ -363,7 +407,7 @@
         justify-content: center;
         align-items: center;
         box-sizing: border-box;
-        overflow: hidden;
+        /* overflow: hidden; */
         align-items: center;
         text-align: center;
         z-index: 3;

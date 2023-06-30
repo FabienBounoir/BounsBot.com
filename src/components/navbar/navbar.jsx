@@ -96,7 +96,7 @@ class Navigation extends Component {
                         <Navbar.Brand> <Link to="/">
                             <Avatar classElement="d-inline-block align-top" width="32" height="30" />
                             {' '}
-                            BounsBot
+                            <span style={{ color: "white", fontFamily: "Bebas Neue, sans-serif", letterSpacing: "3px", fontWeight: "900" }}>Bouns'Bot</span>
                         </Link>
                         </Navbar.Brand>
                         <Navbar.Toggle aria-controls="responsive-navbar-nav" id="buttonToggleNav" />

@@ -24,6 +24,7 @@ import Authenticate from '../components/Authenticate';
 import { Bio } from "../pages/bio/bio";
 import { TermsBot } from "../pages/termsBot/terms";
 import { Info } from "../components/info/info";
+import { BrandAddBot } from "../components/addBot/addBot";
 import ScrollToTop from "../utils/ScrollToTop"
 import { useEffect } from "react";
 
@@ -114,11 +115,14 @@ export const App = () => {
             <HomePage />
             <Info />
             <Features />
+            <BrandAddBot />
             <Footer />
           </Route>
 
           <Route exact path="/commandes">
             <Commandes />
+            <BrandAddBot />
+            <Footer />
           </Route>
 
           <Route exact path="/level">

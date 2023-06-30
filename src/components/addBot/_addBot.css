@@ -1,0 +1,42 @@
+.brand-add-bot {
+    background-color: var(--color-principal) !important;
+}
+
+.brand-add-bot .container {
+    padding-top: 5rem !important;
+    padding-bottom: 4rem !important;
+    padding-left: 2.5rem !important;
+    padding-right: 2.5rem !important;
+}
+
+.brand-add-bot .container h2 {
+    color: #fff !important
+}
+
+.brand-add-bot .container button {
+    gap: 0.5rem;
+    display: flex;
+    align-items: center;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    margin-top: 1rem !important;
+    border: none !important;
+
+    background-color: rgb(255 255 255) !important;
+    padding-left: 2.5rem !important;
+    padding-right: 2.5rem !important;
+    padding-top: 0.75rem !important;
+    padding-bottom: 0.75rem !important;
+
+    border-radius: 0.5rem !important;
+    transition: opacity 0.5s ease-in-out !important;
+    /* cubic-bezier(0.1, 1.35, 0.25, 1) */
+}
+
+.brand-add-bot .container button:hover {
+    opacity: 0.8;
+}
+
+.brand-add-bot .container button svg path {
+    fill: var(--color-principal-hover) !important;
+}

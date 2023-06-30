@@ -8,7 +8,8 @@
 .features {
     box-sizing: inherit;
     /* height: 700vh; */
-    background-color: #40454a;
+    /* background-color: #40454a; */
+    background-color: #1e1e1e;
     padding-top: 50px;
 
     display: flex;

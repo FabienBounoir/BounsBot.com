@@ -130,7 +130,9 @@ class Demo extends Component {
             this.radioCommandes(commande.split(' ')[1])
         }
         else if (commande.toLowerCase().indexOf(`-volume `) === 0) {
-            this.volumeCommandes(commande.split(' ')[1] / 10)
+            let volume = commande.split(' ')[1]
+            if (!volume) return;
+            this.volumeCommandes(volume)
         }
         else if (commande === "-resume") {
             this.playCommandes()
@@ -139,7 +141,9 @@ class Demo extends Component {
             this.pauseCommandes();
         }
         else if (commande.toLowerCase().indexOf(`/nick `) === 0) {
-            this.setNickname(commande.split(" ")[1])
+            let username = commande.split(" ")[1]
+            if (!username) return;
+            this.setNickname(username)
         }
     };
 
