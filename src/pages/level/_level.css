@@ -4,6 +4,15 @@
     height: 100%;
 }
 
+.infinite-scroll-component {
+    display: flex;
+    flex-direction: column;
+    /* grid-gap: 15px; */
+    gap: 15px;
+    /* padding-bottom: 15px; */
+    color: white;
+}
+
 .noLevelData {
     display: flex;
     flex-direction: column;
@@ -24,7 +33,8 @@
 }
 
 .rolesInfo {
-    background-color: #3e4246;
+    /* background-color: #3e4246; */
+    background-color: #1f1f25;
     padding: 1rem 1.5rem;
     border-radius: 3px;
     height: min-content;
@@ -151,11 +161,23 @@
 
 @keyframes cssSkeletonAnimation {
     0% {
-        background-position: -200px 0;
+        opacity: 0.5;
+    }
+
+    10% {
+        background-position: -100px 0;
+    }
+
+    50% {
+        opacity: 1;
+    }
+
+    90% {
+        background-position: calc(100px + 100%) 0;
     }
 
     100% {
-        background-position: calc(200px + 100%) 0;
+        opacity: 0.5;
     }
 }
 
@@ -196,7 +218,7 @@
 }
 
 .leaderboardPlayersListContainer {
-    margin: auto;
+    /* margin: auto; */
     max-width: 100%;
     -webkit-flex-shrink: 2;
     flex-shrink: 2;
@@ -207,10 +229,16 @@
     box-flex: 1;
     -webkit-flex-grow: 2;
     flex-grow: 2;
-    background-color: #3e4246;
     border-radius: 3px;
-    -webkit-box-shadow: 0 0 10px rgb(0 0 0 / 20%);
-    box-shadow: 0 0 10px rgb(0 0 0 / 20%);
+
+    /* padding: 29px; */
+    border-radius: 12px;
+    background-color: #1f1f25;
+
+
+    /* background-color: #3e4246; */
+    /* -webkit-box-shadow: 0 0 10px rgb(0 0 0 / 20%);
+    box-shadow: 0 0 10px rgb(0 0 0 / 20%); */
 }
 
 
@@ -458,16 +486,22 @@
     border-color: #757e8a; */
 }
 
-.premier {
-    background-color: #da9e3b;
+.leaderboardRank.premier {
+    background-color: #FFE04A;
+    color: #FF9E03;
+    font-weight: 900;
 }
 
-.second {
-    background-color: #888888;
+.leaderboardRank.second {
+    background-color: #B9DFF9;
+    color: #6093BA;
+    font-weight: 800;
 }
 
-.troisieme {
-    background-color: #e67474;
+.leaderboardRank.troisieme {
+    background-color: #F5B680;
+    color: #C66E04;
+    font-weight: 700;
 }
 
 .leaderboardPlayerStat {

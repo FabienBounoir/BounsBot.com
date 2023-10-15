@@ -274,16 +274,15 @@ class Level extends Component {
   }
 
   getData = () => {
-    let id = new URLSearchParams(window.location.search).get('id') || ""
-    let twitch = new URLSearchParams(window.location.search).get('twitch') !== null
+    let guildId = new URLSearchParams(window.location.search).get('id') || ""
 
-    fetch(process.env.REACT_APP_HOSTNAME_BACKEND + `${twitch ? ("/twitch/") : ("/discord/")}` + id + `?page=${this.state.page}`)
+    fetch(process.env.REACT_APP_HOSTNAME_BACKEND + `/levels/${guildId ? "guild" : "global"}/` + guildId + `?page=${this.state.page}`)
       .then(response => response.json())
       .then((result) => {
         this.setState({
-          level: this.state.level.concat(result.rank),
+          level: this.state.level.concat(guildId ? result.rank : result),
           page: this.state.page + 1,
-          hasMoreData: result.rank.length !== 0,
+          hasMoreData: (guildId ? result.rank : result).length !== 0,
           loading: false,
           levelsRole: result.levelsRole
         });
@@ -314,16 +313,16 @@ class Level extends Component {
     return levels.findIndex(element => element.totalxp >= xp);
   }
 
-  renderLoadingAnimation = () => {
-    let loadingLevelNumber = Math.floor(Math.random() * (7 - 3 + 1)) + 3;
+  renderLoadingAnimation = (index) => {
+    let loadingLevelNumber = Math.floor(Math.random() * (7 - 3 + 1)) + 9;
     let loadingLevel = [];
 
     for (let i = 0; i < loadingLevelNumber; i++) {
-      loadingLevel.push(<div key={this.state.level.length + 1 + i} className="leaderboardPlayersListContainer">
+      loadingLevel.push(<div key={index + 1 + i} className="leaderboardPlayersListContainer">
         <div className="leaderboardPlayer">
           <div className="leaderboardPlayerLeft">
-            <div className={this.state.level.length === 0 ? ("leaderboardRank premier") : (this.state.level.length === 1 ? ("leaderboardRank second") : (this.state.level.length === 2 ? ("leaderboardRank troisieme") : ("leaderboardRank")))}>
-              {this.state.level.length + i + 1}
+            <div className={(index + i) === 0 ? ("leaderboardRank premier") : ((index + i) === 1 ? ("leaderboardRank second") : ((index + i) === 2 ? ("leaderboardRank troisieme") : ("leaderboardRank")))}>
+              {index + i + 1}
             </div>
             <div className="leaderboardPlayerIconLoading">
             </div>
@@ -363,7 +362,7 @@ class Level extends Component {
               dataLength={this.state.level.length}
               next={this.getData}
               hasMore={this.state.hasMoreData}
-              loader={this.renderLoadingAnimation()}
+              loader={this.renderLoadingAnimation(this.state.level.length)}
             // {<div><Spinner animation="grow" variant="success" /><Spinner animation="grow" variant="success" /><Spinner animation="grow" variant="success" /></div>}
             >
 
@@ -878,7 +877,12 @@ class Level extends Component {
         </div>
 
         {(() => {
-          if (this.state.loading) return <LoadingFullPage error={this.state.errorLoading} />
+          if (this.state.loading) {
+            // return <LoadingFullPage error={this.state.errorLoading} />
+          }
+          else if (this.state.errorLoading) {
+            <LoadingFullPage error={this.state.errorLoading} />
+          }
         })()}
       </div>
     )

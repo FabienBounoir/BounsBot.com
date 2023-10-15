@@ -1,12 +1,14 @@
 .rolesInfo {
-    background-color: #3e4246;
+    /* background-color: #3e4246; */
+    background-color: #1f1f25;
     padding: 1rem 1.5rem;
-    border-radius: 3px;
+    /* border-radius: 3px; */
     height: min-content;
     max-height: min-content;
     min-height: min-content;
     text-align: left;
     white-space: nowrap;
+    border-radius: 12px;
 }
 
 .roleRender {
