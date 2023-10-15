@@ -36,6 +36,7 @@
     font-weight: 600;
     cursor: pointer;
     scroll-snap-align: start;
+    min-width: fit-content;
 }
 
 .btn-commands-category:hover {
