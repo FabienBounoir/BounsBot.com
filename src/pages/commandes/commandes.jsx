@@ -13,66 +13,196 @@ export const Commandes = () => {
     const [searchQuery, setSearchQuery] = useState("")
 
     useEffect(() => {
-
-        let commands = getCommands()
-
+        getCommands()
     }, [])
 
     const getCommands = async () => {
-        const commandsObject = await fetch(`${process.env.REACT_APP_HOSTNAME_BACKEND}/commands`).then(res => res.json())
+        try {
+            const commandsObject = await fetch(`${process.env.REACT_APP_HOSTNAME_BACKEND}/commands`).then(res => res.json())
 
-        let commands = commandsObject.commands
-        let commandLocaleLanguage = []
+            let commands = commandsObject.commands
+            let commandLocaleLanguage = []
 
-        let index = 0
+            let index = 0
 
-        for (let command of commands) {
-            let name = ""
-            let description = ""
-            let elements = []
+            for (let command of commands) {
+                let name = ""
+                let description = ""
+                let elements = []
 
-            if (command.options && command.options.length > 0 && (command.options.find(o => o.type == 1 || o.type == 2))) {
-                let argsElement = []
+                if (command.options && command.options.length > 0 && (command.options.find(o => o.type == 1 || o.type == 2))) {
+                    let argsElement = []
 
-                for (let options of command.options) {
-                    if (options.type == 1) {
-                        argsElement = []
-                        let name = ""
-                        let description = ""
+                    for (let options of command.options) {
+                        if (options.type == 1) {
+                            argsElement = []
+                            let name = ""
+                            let description = ""
 
-                        if (command.name_localizations) {
-                            let languageName = command.name_localizations[navigator.language] || command.name_localizations[navigator.language.split("-")[0]] || command.name_localizations[navigator.language?.toLowerCase()] || command.name_localizations[navigator.language.split("-")[0].toLowerCase()]
+                            if (command.name_localizations) {
+                                let languageName = command.name_localizations[navigator.language] || command.name_localizations[navigator.language.split("-")[0]] || command.name_localizations[navigator.language?.toLowerCase()] || command.name_localizations[navigator.language.split("-")[0].toLowerCase()]
 
-                            name = (languageName || command.name)
-                        }
-                        else {
-                            name = command.name
-                        }
+                                name = (languageName || command.name)
+                            }
+                            else {
+                                name = command.name
+                            }
 
-                        if (options.name_localizations) {
-                            let languageOptionsName = options.name_localizations[navigator.language] || options.name_localizations[navigator.language.split("-")[0]] || options.name_localizations[navigator.language?.toLowerCase()] || options.name_localizations[navigator.language.split("-")[0].toLowerCase()]
+                            if (options.name_localizations) {
+                                let languageOptionsName = options.name_localizations[navigator.language] || options.name_localizations[navigator.language.split("-")[0]] || options.name_localizations[navigator.language?.toLowerCase()] || options.name_localizations[navigator.language.split("-")[0].toLowerCase()]
 
-                            name += " " + (languageOptionsName || options.name)
-                        }
-                        else {
-                            name += " " + options.name
-                        }
+                                name += " " + (languageOptionsName || options.name)
+                            }
+                            else {
+                                name += " " + options.name
+                            }
 
-                        if (options.description_localizations) {
-                            let languageOptionsDescription = options.description_localizations[navigator.language] || options.description_localizations[navigator.language.split("-")[0]] || options.description_localizations[navigator.language?.toLowerCase()] || options.description_localizations[navigator.language.split("-")[0].toLowerCase()]
+                            if (options.description_localizations) {
+                                let languageOptionsDescription = options.description_localizations[navigator.language] || options.description_localizations[navigator.language.split("-")[0]] || options.description_localizations[navigator.language?.toLowerCase()] || options.description_localizations[navigator.language.split("-")[0].toLowerCase()]
 
-                            if (languageOptionsDescription) {
-                                description = languageOptionsDescription
+                                if (languageOptionsDescription) {
+                                    description = languageOptionsDescription
+                                }
+                                else {
+                                    description = options.description
+                                }
                             }
                             else {
                                 description = options.description
                             }
-                        }
-                        else {
-                            description = options.description
-                        }
 
-                        for (let option of options.options) {
+                            for (let option of options.options) {
+                                let optionName = option.name
+                                let optionDescription = option.description
+
+                                if (option.name_localizations && navigator.language) {
+                                    let languageName = option.name_localizations[navigator.language] || option.name_localizations[navigator.language.split("-")[0]] || option.name_localizations[navigator.language?.toLowerCase()] || option.name_localizations[navigator.language.split("-")[0].toLowerCase()]
+
+                                    if (languageName) {
+                                        optionName = languageName
+                                    }
+                                }
+
+
+                                if (option.description_localizations && navigator.language) {
+                                    let languageDescription = option.description_localizations[navigator.language] || option.description_localizations[navigator.language.split("-")[0]] || option.description_localizations[navigator.language?.toLowerCase()] || option.description_localizations[navigator.language.split("-")[0].toLowerCase()]
+
+                                    if (languageDescription) {
+                                        optionDescription = languageDescription
+                                    }
+                                }
+
+                                argsElement.push({ name: optionName, description: optionDescription, type: option.type, required: option.required })
+                            }
+
+                            commandLocaleLanguage.push({ name, description, type: options.type, required: options.required, elements: argsElement, category: command.category, index })
+                            index++
+                        }
+                        else if (options.type == 2) {
+                            argsElement = []
+                            let name = ""
+                            let description = ""
+
+                            if (command.name_localizations) {
+                                let languageName = command.name_localizations[navigator.language] || command.name_localizations[navigator.language.split("-")[0]] || command.name_localizations[navigator.language?.toLowerCase()] || command.name_localizations[navigator.language.split("-")[0].toLowerCase()]
+
+                                name = (languageName || command.name)
+                            }
+                            else {
+                                name = command.name
+                            }
+
+                            if (options.name_localizations) {
+                                let languageOptionsName = options.name_localizations[navigator.language] || options.name_localizations[navigator.language.split("-")[0]] || options.name_localizations[navigator.language?.toLowerCase()] || options.name_localizations[navigator.language.split("-")[0].toLowerCase()]
+
+                                name += " " + (languageOptionsName || options.name)
+                            }
+                            else {
+                                name += " " + options.name
+                            }
+
+                            let commandSubGroupName = name
+
+                            for (let optionSub of options.options) {
+
+                                if (optionSub.name_localizations) {
+                                    let languageOptionsSubName = optionSub.name_localizations[navigator.language] || optionSub.name_localizations[navigator.language.split("-")[0]] || optionSub.name_localizations[navigator.language?.toLowerCase()] || optionSub.name_localizations[navigator.language.split("-")[0].toLowerCase()]
+
+                                    name = commandSubGroupName + " " + (languageOptionsSubName || optionSub.name)
+                                }
+                                else {
+                                    name = commandSubGroupName + " " + optionSub.name
+                                }
+
+                                if (optionSub.description_localizations) {
+                                    let languageOptionsDescription = optionSub.description_localizations[navigator.language] || optionSub.description_localizations[navigator.language.split("-")[0]] || optionSub.description_localizations[navigator.language?.toLowerCase()] || optionSub.description_localizations[navigator.language.split("-")[0].toLowerCase()]
+
+                                    if (languageOptionsDescription) {
+                                        description = languageOptionsDescription
+                                    }
+                                    else {
+                                        description = optionSub.description
+                                    }
+                                }
+                                else {
+                                    description = optionSub.description
+                                }
+
+                                if (optionSub) {
+                                    for (let option of optionSub.options) {
+                                        let optionName = option.name
+                                        let optionDescription = option.description
+
+                                        if (option.name_localizations && navigator.language) {
+                                            let languageName = option.name_localizations[navigator.language] || option.name_localizations[navigator.language.split("-")[0]] || option.name_localizations[navigator.language?.toLowerCase()] || option.name_localizations[navigator.language.split("-")[0].toLowerCase()]
+
+                                            if (languageName) {
+                                                optionName = languageName
+                                            }
+                                        }
+
+
+                                        if (option.description_localizations && navigator.language) {
+                                            let languageDescription = option.description_localizations[navigator.language] || option.description_localizations[navigator.language.split("-")[0]] || option.description_localizations[navigator.language?.toLowerCase()] || option.description_localizations[navigator.language.split("-")[0].toLowerCase()]
+
+                                            if (languageDescription) {
+                                                optionDescription = languageDescription
+                                            }
+                                        }
+
+                                        argsElement.push({ name: optionName, description: optionDescription, type: option.type, required: option.required })
+                                    }
+                                }
+                                commandLocaleLanguage.push({
+                                    name, description, type: options.type, required: options.required, elements: argsElement, category: command.category, index
+                                })
+                                index++
+                            }
+                        }
+                    }
+                }
+                else {
+                    name = command.name
+                    description = command.description
+
+                    if (command.name_localizations && navigator.language) {
+                        let languageName = command.name_localizations[navigator.language] || command.name_localizations[navigator.language.split("-")[0]] || command.name_localizations[navigator.language?.toLowerCase()] || command.name_localizations[navigator.language.split("-")[0].toLowerCase()]
+
+                        if (languageName) {
+                            name = languageName
+                        }
+                    }
+
+                    if (command.description_localizations && navigator.language) {
+                        let languageDescription = command.description_localizations[navigator.language] || command.description_localizations[navigator.language.split("-")[0]] || command.description_localizations[navigator.language?.toLowerCase()] || command.description_localizations[navigator.language.split("-")[0].toLowerCase()]
+
+                        if (languageDescription) {
+                            description = languageDescription
+                        }
+                    }
+
+                    if (command.options) {
+                        for (let option of command.options) {
                             let optionName = option.name
                             let optionDescription = option.description
 
@@ -93,188 +223,30 @@ export const Commandes = () => {
                                 }
                             }
 
-                            argsElement.push({ name: optionName, description: optionDescription, type: option.type, required: option.required })
-                        }
-
-                        commandLocaleLanguage.push({ name, description, type: options.type, required: options.required, elements: argsElement, category: command.category, index })
-                        index++
-                    }
-                    else if (options.type == 2) {
-                        argsElement = []
-                        let name = ""
-                        let description = ""
-
-                        if (command.name_localizations) {
-                            let languageName = command.name_localizations[navigator.language] || command.name_localizations[navigator.language.split("-")[0]] || command.name_localizations[navigator.language?.toLowerCase()] || command.name_localizations[navigator.language.split("-")[0].toLowerCase()]
-
-                            name = (languageName || command.name)
-                        }
-                        else {
-                            name = command.name
-                        }
-
-                        if (options.name_localizations) {
-                            let languageOptionsName = options.name_localizations[navigator.language] || options.name_localizations[navigator.language.split("-")[0]] || options.name_localizations[navigator.language?.toLowerCase()] || options.name_localizations[navigator.language.split("-")[0].toLowerCase()]
-
-                            name += " " + (languageOptionsName || options.name)
-                        }
-                        else {
-                            name += " " + options.name
-                        }
-
-                        let commandSubGroupName = name
-
-                        for (let optionSub of options.options) {
-
-                            if (optionSub.name_localizations) {
-                                let languageOptionsSubName = optionSub.name_localizations[navigator.language] || optionSub.name_localizations[navigator.language.split("-")[0]] || optionSub.name_localizations[navigator.language?.toLowerCase()] || optionSub.name_localizations[navigator.language.split("-")[0].toLowerCase()]
-
-                                name = commandSubGroupName + " " + (languageOptionsSubName || optionSub.name)
-                            }
-                            else {
-                                name = commandSubGroupName + " " + optionSub.name
-                            }
-
-                            if (optionSub.description_localizations) {
-                                let languageOptionsDescription = optionSub.description_localizations[navigator.language] || optionSub.description_localizations[navigator.language.split("-")[0]] || optionSub.description_localizations[navigator.language?.toLowerCase()] || optionSub.description_localizations[navigator.language.split("-")[0].toLowerCase()]
-
-                                if (languageOptionsDescription) {
-                                    description = languageOptionsDescription
-                                }
-                                else {
-                                    description = optionSub.description
-                                }
-                            }
-                            else {
-                                description = optionSub.description
-                            }
-
-                            if (optionSub) {
-                                for (let option of optionSub.options) {
-                                    let optionName = option.name
-                                    let optionDescription = option.description
-
-                                    if (option.name_localizations && navigator.language) {
-                                        let languageName = option.name_localizations[navigator.language] || option.name_localizations[navigator.language.split("-")[0]] || option.name_localizations[navigator.language?.toLowerCase()] || option.name_localizations[navigator.language.split("-")[0].toLowerCase()]
-
-                                        if (languageName) {
-                                            optionName = languageName
-                                        }
-                                    }
-
-
-                                    if (option.description_localizations && navigator.language) {
-                                        let languageDescription = option.description_localizations[navigator.language] || option.description_localizations[navigator.language.split("-")[0]] || option.description_localizations[navigator.language?.toLowerCase()] || option.description_localizations[navigator.language.split("-")[0].toLowerCase()]
-
-                                        if (languageDescription) {
-                                            optionDescription = languageDescription
-                                        }
-                                    }
-
-                                    argsElement.push({ name: optionName, description: optionDescription, type: option.type, required: option.required })
-                                }
-                            }
-                            commandLocaleLanguage.push({
-                                name, description, type: options.type, required: options.required, elements: argsElement, category: command.category, index
-                            })
-                            index++
+                            elements.push({ name: optionName, description: optionDescription, type: option.type, required: option.required })
                         }
                     }
+
+                    commandLocaleLanguage.push({
+                        name, description, elements, category: command.category, index
+                    })
+                    index++
                 }
             }
-            else {
-                name = command.name
-                description = command.description
 
-                if (command.name_localizations && navigator.language) {
-                    let languageName = command.name_localizations[navigator.language] || command.name_localizations[navigator.language.split("-")[0]] || command.name_localizations[navigator.language?.toLowerCase()] || command.name_localizations[navigator.language.split("-")[0].toLowerCase()]
+            commandLocaleLanguage = commandLocaleLanguage.sort((a, b) => { return a.name.localeCompare(b.name) })
 
-                    if (languageName) {
-                        name = languageName
-                    }
-                }
-
-                if (command.description_localizations && navigator.language) {
-                    let languageDescription = command.description_localizations[navigator.language] || command.description_localizations[navigator.language.split("-")[0]] || command.description_localizations[navigator.language?.toLowerCase()] || command.description_localizations[navigator.language.split("-")[0].toLowerCase()]
-
-                    if (languageDescription) {
-                        description = languageDescription
-                    }
-                }
-
-                if (command.options) {
-                    for (let option of command.options) {
-                        let optionName = option.name
-                        let optionDescription = option.description
-
-                        if (option.name_localizations && navigator.language) {
-                            let languageName = option.name_localizations[navigator.language] || option.name_localizations[navigator.language.split("-")[0]] || option.name_localizations[navigator.language?.toLowerCase()] || option.name_localizations[navigator.language.split("-")[0].toLowerCase()]
-
-                            if (languageName) {
-                                optionName = languageName
-                            }
-                        }
-
-
-                        if (option.description_localizations && navigator.language) {
-                            let languageDescription = option.description_localizations[navigator.language] || option.description_localizations[navigator.language.split("-")[0]] || option.description_localizations[navigator.language?.toLowerCase()] || option.description_localizations[navigator.language.split("-")[0].toLowerCase()]
-
-                            if (languageDescription) {
-                                optionDescription = languageDescription
-                            }
-                        }
-
-                        elements.push({ name: optionName, description: optionDescription, type: option.type, required: option.required })
-                    }
-                }
-
-                commandLocaleLanguage.push({
-                    name, description, elements, category: command.category, index
-                })
-                index++
-            }
+            setDisplayedCommands(commandLocaleLanguage)
+            setCommands(commandLocaleLanguage)
+            setMenu(["All", ...commandsObject.menu.map(m => m.value)])
         }
-
-        commandLocaleLanguage = commandLocaleLanguage.sort((a, b) => { return a.name.localeCompare(b.name) })
-
-
-        setDisplayedCommands(commandLocaleLanguage)
-        setCommands(commandLocaleLanguage)
-        setMenu(["All", ...commandsObject.menu.map(m => m.value)])
-    }
-
-    // const search = () => {
-    //     let commandsSearch = []
-
-    //     if (selectedMenu !== "All") {
-    //         commandsSearch = commands.filter(command => command.category === selectedMenu)
-    //     }
-    //     else {
-    //         commandsSearch = commands
-    //     }
-
-    //     if (configuration.query) {
-    //         commandsSearch = commandsSearch.filter(command =>
-    //             command.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-    //             command.description.toLowerCase().includes(searchQuery.toLowerCase())
-    //         )
-    //     }
-
-    //     setDisplayedCommands(commandsSearch)
-    // };
-
-    function openCommand(index) {
-        console.log(index)
-        // let commands = configuration.commands
-        // commands[index].open = !commands[index].open
-
-        // setConfiguration({ ...configuration, commands })
+        catch (e) {
+            console.log("ERROR WHEN LOADING COMMANDS", e)
+        }
     }
 
     function selectType(type) {
         setSelectedMenu(type)
-
-        let commandsType = []
 
         setSearchQuery("")
 
@@ -345,7 +317,6 @@ export const Commandes = () => {
                 <div className="commands-listing">
                     {(() => {
                         let commandListing = [];
-                        // let commands = filteredCommands();
 
                         if (displayedCommands.length === 0 && commands.length > 0) commandListing.push(<div className="no-result">Aucun résultat</div>)
                         else if (commands.length === 0) {
@@ -358,12 +329,10 @@ export const Commandes = () => {
                         }
                         else {
                             for (let command of displayedCommands) {
-                                console.log("command.index", command.index)
                                 commandListing.push(
                                     <Command
                                         key={command.index}
                                         command={command}
-                                        onClick={() => openCommand(command.index)}
                                     />
                                 );
                             }
