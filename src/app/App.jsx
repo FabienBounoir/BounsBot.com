@@ -27,6 +27,7 @@ import { Info } from "../components/info/info";
 import { BrandAddBot } from "../components/addBot/addBot";
 import ScrollToTop from "../utils/ScrollToTop"
 import { useEffect } from "react";
+import Status from "../pages/status/status";
 
 let code = ""
 
@@ -96,7 +97,7 @@ export const App = () => {
 
       for (let i = 1; i < nbSnow; i++) {
 
-        embHTML += '<i class="embedim-snow"></i>'; var rndX = (embRand(0, 1000000) * 0.0001), rndO = embRand(-100000, 100000) * 0.0001, rndT = (embRand(3, 8) * 10).toFixed(2), rndS = (embRand(0, 10000) * 0.0001).toFixed(2);
+        embHTML += '<i className="embedim-snow"></i>'; var rndX = (embRand(0, 1000000) * 0.0001), rndO = embRand(-100000, 100000) * 0.0001, rndT = (embRand(3, 8) * 10).toFixed(2), rndS = (embRand(0, 10000) * 0.0001).toFixed(2);
 
         embCSS += '.embedim-snow:nth-child(' + i + '){opacity:' + (embRand(1, 10000) * 0.0001).toFixed(2) + ';transform:translate(' + rndX.toFixed(2) + 'vw,-10px) scale(' + rndS + ');animation:fall-' + i + ' ' + embRand(10, 30) + 's -' + embRand(0, 30) + 's linear infinite}@keyframes fall-' + i + '{' + rndT + '%{transform:translate(' + (rndX + rndO).toFixed(2) + 'vw,' + rndT + 'vh) scale(' + rndS + ')}to{transform:translate(' + (rndX + (rndO / 2)).toFixed(2) + 'vw, 105vh) scale(' + rndS + ')}}'
       }
@@ -121,6 +122,12 @@ export const App = () => {
 
           <Route exact path="/commandes">
             <Commandes />
+            <BrandAddBot />
+            <Footer />
+          </Route>
+
+          <Route exact path="/status">
+            <Status />
             <BrandAddBot />
             <Footer />
           </Route>
