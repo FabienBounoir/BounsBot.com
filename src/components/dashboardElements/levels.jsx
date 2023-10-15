@@ -509,8 +509,8 @@ export const LevelsConfig = (props) => {
 
 
                             <label>Multiplicateur: x{xpConfig.multiplicator}</label>
-                            <div class="slidecontainer">
-                                <input type="range" min={0.25} max={3} step={0.25} value={xpConfig.multiplicator} class="slider" onChange={(e) => { setXpConfig({ ...xpConfig, multiplicator: e.target.value }) }} />
+                            <div className="slidecontainer">
+                                <input type="range" min={0.25} max={3} step={0.25} value={xpConfig.multiplicator} className="slider" onChange={(e) => { setXpConfig({ ...xpConfig, multiplicator: e.target.value }) }} />
                             </div>
 
                         </div>
