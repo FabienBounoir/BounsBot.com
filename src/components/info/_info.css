@@ -81,9 +81,15 @@
     /* max-height: 50vh; */
     padding: 40px 10px 40px 10px;
     gap: 6em;
-    background: url(./clyde.png) no-repeat bottom left;
     background-size: 10%;
     background-color: #1f2129;
+    position: relative;
+}
+
+.infoComponent .clydeLove {
+    position: absolute;
+    bottom: -1px;
+    left: 0;
 }
 
 .infoComponent h2 {
@@ -165,5 +171,9 @@
         padding: 40px 10px 40px 10px;
         gap: 3.5em;
         background: #1f2129;
+    }
+
+    .infoComponent .clydeLove {
+        display: none;
     }
 }
