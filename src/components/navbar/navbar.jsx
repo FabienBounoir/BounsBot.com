@@ -104,7 +104,7 @@ class Navigation extends Component {
                             <Nav className="me-auto">
                                 <Nav.Link as={Link} to="/commandes" onClick={() => { this.eventClick() }}>Commandes</Nav.Link>
                                 <Nav.Link as={Link} to="/level" onClick={() => { this.eventClick() }}>Levels</Nav.Link>
-                                <Nav.Link as={Link} to="/status" onClick={() => { this.eventClick() }}>Status</Nav.Link>
+                                <Nav.Link as={Link} to="/status" onClick={() => { this.eventClick() }}>Statuts</Nav.Link>
                                 <Nav.Link as={Link} to="/demo" onClick={() => { this.eventClick() }}>Démo</Nav.Link>
 
                                 {/* <Nav.Link><Link onClick={() => { this.eventClick() }} to="/commandes">Commandes</Link></Nav.Link>

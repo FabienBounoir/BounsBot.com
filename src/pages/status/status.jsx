@@ -71,7 +71,7 @@ export const Status = () => {
     return (
         <div transition="page" className="statusContainer" >
             <div className="top">
-                <h1>Status</h1>
+                <h1>Statuts</h1>
                 <div className="statusShard" data-v-7085cbe2="" style={shards.length > 0 ? { display: "initial" } : { display: "none" }}>
                     {shards?.filter((s) => { return ![-1, 1, 3, 5].includes(s.status) })?.length || 0} / {shards.length} Shards
                 </div>
