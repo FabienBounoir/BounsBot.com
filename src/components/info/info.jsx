@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react"
 import "./_info.css";
+import guildsApi from "../../utils/API/guildsAPI"
 
 export const Info = (props) => {
     const [bestGuilds, setBestGuilds] = useState(null)
@@ -14,7 +15,7 @@ export const Info = (props) => {
     }, [props.guildId])
 
     let getInfo = async () => {
-        let guilds = await fetch(`${process.env.REACT_APP_HOSTNAME_BACKEND}/guilds/best`).then(res => res.json()) //${process.env.REACT_APP_HOSTNAME_BACKEND}
+        let guilds = await guildsApi.best()
         setBestGuilds(guilds)
     }
 
@@ -33,7 +34,7 @@ export const Info = (props) => {
 
 
     let renderGuilds = (max, display = false) => {
-        return bestGuilds?.slice(0, max)?.map((guild, index) => {
+        return bestGuilds?.guilds.slice(0, max)?.map((guild, index) => {
             return (<div className="guilds">
                 {/* style="--play: running; --direction: normal; --duration: 76.8s; --delay: 0s; --iteration-count: infinite;"> */}
                 <img src={guild.iconURL || "https://media.discordapp.net/attachments/1014101467126304798/1056241554764869673/image.png?width=1290&height=1290"} alt="logo" onError={(e) => { e.target.outerHTML = `<img loading="lazy" src='https://media.discordapp.net/attachments/1014101467126304798/1056241554764869673/image.png?width=1290&height=1290'/>` }} />
@@ -57,7 +58,7 @@ export const Info = (props) => {
 
     return (bestGuilds ? (
         <div className="infoComponent">
-            <h2>Bounsbot, le bot Discord approuvé par plus de {formatNumber(bestGuilds?.guild)} serveurs</h2>
+            <h2>Bounsbot, le bot Discord approuvé par plus de {formatNumber(bestGuilds?.totalGuild)} serveurs</h2>
             <div className="guilds-container desktop">
                 {(() => {
                     return renderGuilds(8);

@@ -4,6 +4,7 @@ import React, { useEffect, useState, useRef } from "react";
 import Command from "../../components/command/command";
 import CommandSqueleton from "../../components/command/commandSqueleton";
 import MenuSqueleton from "../../components/command/MenuSqueleton";
+import commandsAPI from "../../utils/API/commandsAPI"
 
 export const Commandes = () => {
     const [commands, setCommands] = useState([])
@@ -18,7 +19,7 @@ export const Commandes = () => {
 
     const getCommands = async () => {
         try {
-            const commandsObject = await fetch(`${process.env.REACT_APP_HOSTNAME_BACKEND}/commands`).then(res => res.json())
+            const commandsObject = await commandsAPI.get() // await fetch(`${process.env.REACT_APP_HOSTNAME_BACKEND}/commands`).then(res => res.json())
 
             let commands = commandsObject.commands
             let commandLocaleLanguage = []
