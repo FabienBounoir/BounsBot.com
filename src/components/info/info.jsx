@@ -1,8 +1,10 @@
 import { useState, useEffect } from "react"
 import "./_info.css";
 import guildsApi from "../../utils/API/guildsAPI"
+import { useTranslation } from 'react-i18next'
 
 export const Info = (props) => {
+    const { t } = useTranslation();
     const [bestGuilds, setBestGuilds] = useState(null)
 
     useEffect(() => {
@@ -58,7 +60,8 @@ export const Info = (props) => {
 
     return (bestGuilds ? (
         <div className="infoComponent">
-            <h2>Bounsbot, le bot Discord approuvé par plus de {formatNumber(bestGuilds?.totalGuild)} serveurs</h2>
+            <h2>{t("homepage.on_number_of_server", { number: formatNumber(bestGuilds?.totalGuild) })}</h2>
+            {/* })} Bounsbot, le bot Discord approuvé par plus de {formatNumber(bestGuilds?.totalGuild)} serveurs</h2> */}
             <div className="guilds-container desktop">
                 {(() => {
                     return renderGuilds(8);
