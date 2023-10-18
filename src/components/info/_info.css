@@ -84,6 +84,7 @@
     background-size: 10%;
     background-color: #1f2129;
     position: relative;
+    color: var(--color-principal);
 }
 
 .infoComponent .clydeLove {

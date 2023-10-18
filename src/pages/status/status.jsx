@@ -1,15 +1,16 @@
 import { useEffect, useState } from "react";
 import "./_status.css";
 import { Tooltip } from 'react-tooltip'
+import shardsAPI from "../../utils/API/shardsAPI"
+import { Toaster, toast } from 'sonner'
+
 
 export const Status = () => {
     const [shards, setShards] = useState([])
+    const [guildInSearch, setGuildInSearch] = useState(null)
 
-    useEffect(async () => {
-        const response = await fetch(process.env.REACT_APP_HOSTNAME_BACKEND + "/shards")
-        const data = await response.json()
-
-        setShards(data)
+    useEffect(() => {
+        shardsAPI.getStatus().then((data) => { setShards(data) })
     }, [])
 
     const shardTooltip = (shard) => {
@@ -67,6 +68,31 @@ export const Status = () => {
         )
     }
 
+    const searchGuild = async (e) => {
+        const value = e.target.value
+
+        if (value.match(/^\d{17,19}/)) {
+            //if yes, search for the shard
+            try {
+                let response = await shardsAPI.searchGuild(value)
+                if (response.shard) {
+                    setGuildInSearch(response.shard)
+                }
+                else {
+                    setGuildInSearch(null)
+                    toast.error("Aucune shard n'a été trouvé pour ce serveur.")
+                }
+            }
+            catch (err) {
+                setGuildInSearch(null)
+                toast.error("Une erreur est survenue lors de la recherche du serveur. Veuillez réessayer plus tard.")
+            }
+        }
+        else {
+            setGuildInSearch(null)
+        }
+    }
+
 
     return (
         <div transition="page" className="statusContainer" >
@@ -80,18 +106,22 @@ export const Status = () => {
             <p>
                 Bienvenue sur la page "Statuts de Bouns'bot". Ici, vous trouverez des informations sur les différents shards et leur état actuel. Cela vous permettra de rester informé en cas de problèmes éventuels et de savoir si cela a une incidence sur votre serveur.</p>
 
+            <input type="text" placeholder="Rechercher un serveur" onChange={(e) => {
+                searchGuild(e)
+            }} />
             <div className="shardGrid">
 
                 {(() => {
                     let shardsComponent = []
                     for (let shard of shards) {
-                        shardsComponent.push(<><div className={"shard" + ([-1, 1, 3, 5].includes(shard.status) ? " error" : "")} data-tooltip-id={"ShardStatus-" + shard.cluster_id} data-tooltip-html={shardTooltip(shard)} >{shard.cluster_id + 1}</div><Tooltip className="shardTooltips" opacity={0.99} id={"ShardStatus-" + shard.cluster_id} ></Tooltip> </>)
+                        shardsComponent.push(<><div className={("shard" + ([-1, 1, 3, 5].includes(shard.status) ? " error" : "")) + (guildInSearch == shard.cluster_id ? " guild-in-shard" : "")} data-tooltip-id={"ShardStatus-" + shard.cluster_id} data-tooltip-html={shardTooltip(shard)} >{shard.cluster_id + 1}</div><Tooltip className="shardTooltips" opacity={0.99} id={"ShardStatus-" + shard.cluster_id} ></Tooltip> </>)
                     }
                     return shardsComponent
                 })()}
 
             </div>
 
+            <Toaster richColors expand={false} position="top-center" />
         </div>
     )
 

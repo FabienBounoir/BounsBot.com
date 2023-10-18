@@ -83,6 +83,32 @@
     animation: errorAnim 2s infinite
 }
 
+.shardGrid .shard.guild-in-shard {
+    /* animation: name duration timing-function delay iteration-count direction fill-mode; */
+
+    background: var(--color-principal);
+    color: #1f1f25;
+    animation: breathing 2s infinite;
+}
+
+@keyframes breathing {
+    0% {
+        background-color: var(--color-principal);
+        color: #1f1f25;
+    }
+
+    50% {
+        background-color: #1f1f25;
+        color: var(--color-principal);
+    }
+
+    100% {
+        background-color: var(--color-principal);
+        color: #1f1f25;
+    }
+}
+
+
 @keyframes errorAnim {
     0% {
         border: 0px solid rgba(255, 0, 0, 70%);
