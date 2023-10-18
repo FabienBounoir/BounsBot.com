@@ -1,28 +1,29 @@
-const hostname = process.env.REACT_APP_HOSTNAME_BACKEND +"/levels"
+const hostname = process.env.REACT_APP_HOSTNAME_BACKEND + "/levels"
 
-const global = (page) => {
+const global = (page = 0) => {
     return new Promise(async (resolve, reject) => {
-        try{
-            const response = await fetch(`${hostname}/global/${new URLSearchParams({page})}`)
-            .then(response => response.json())
+        try {
+            const response = await fetch(`${hostname}/global?${new URLSearchParams({ page })}`)
 
-            resolve(response)
+            if (response.status !== 200) return reject(new Error("Error while fetching data"))
+
+            resolve(response.json())
         }
-        catch(e){
+        catch (e) {
             reject(e)
         }
     })
 }
 
-const guild = (guildId, page) =>{
+const guild = (guildId, page = 0) => {
     return new Promise(async (resolve, reject) => {
-        try{
-            const response = await fetch(`${hostname}/guild/${guildId}/${new URLSearchParams({page})}`)
-            .then(response => response.json())
+        try {
+            const response = await fetch(`${hostname}/guild/${guildId}?${new URLSearchParams({ page })}`)
+            if (response.status !== 200) return reject(new Error("Error while fetching data"))
 
-            resolve(response)
+            resolve(response.json())
         }
-        catch(e){
+        catch (e) {
             reject(e)
         }
     })
