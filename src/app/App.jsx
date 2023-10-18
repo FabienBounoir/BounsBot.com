@@ -28,6 +28,7 @@ import { BrandAddBot } from "../components/addBot/addBot";
 import ScrollToTop from "../utils/ScrollToTop"
 import { useEffect } from "react";
 import Status from "../pages/status/status";
+import i18n from '../i18n';
 
 let code = ""
 

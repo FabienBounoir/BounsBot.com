@@ -1,0 +1,34 @@
+{
+    "homepage":{
+        "text_header": "Create the ultimate Discord server",
+        "invite_button":"Invite Bouns'bot",
+        "support": "Support"
+    },
+    "feature": {
+        "fonctionnality": "Features",
+        "multimedia": {
+            "name": "Multimedia",
+            "description1": "Play songs on demand or listen to a radio station all day without ever having to stop.",
+            "description2": "The party won't stop even when you leave, as Bouns'bot stays in your channel 24/7!"
+        },
+        "game": {
+            "name": "Games",
+            "description1": "Play a variety of mini-games! You can play over 15 mini-games alone or against your friends.",
+            "description2": "Distinguish yourself with the built-in Bouns'bot ranking and test your general knowledge with our quiz."
+        },
+        "logs": {
+            "name": "Logs",
+            "description1": "What's that? You didn't know Wumpus turned on his camera!",
+            "description2": "With Bouns'bot, you have access to all the logs available on Discord; simply activate what you need."
+        },
+        "ticket": {
+            "name": "Tickets",
+            "description": "Bouns’bot allows you to create private support channels, which we call tickets, between your team and those seeking assistance."
+        },
+        "engagement": {
+            "name": "Engagement",
+            "description": "Reward your members with XP points and keep track of the most active members on your custom leaderboard."
+        }
+    }
+    
+}

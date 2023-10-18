@@ -13,12 +13,14 @@ import radio from "../../assets/picture/features/radioTemplate.webp";
 import support from "../../assets/picture/features/supportTemplate.webp";
 import ticket from "../../assets/picture/features/ticketTemplate.webp";
 import transcript from "../../assets/picture/features/transcriptTemplate.webp";
+import { useTranslation } from "react-i18next";
 
 export const Features = () => {
+    const { t } = useTranslation();
     return (<>
         <div className="features">
             <div className="header">
-                <h1>Fonctionnalités</h1>
+                <h1>{t("feature.fonctionnality")}</h1>
                 <svg width="24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M22.002 21.067c-4.257-2.694-7.128-7.058-7.877-11.976L12.849.718A.855.855 0 0 0 12 0a.852.852 0 0 0-.849.718L9.875 9.091c-.749 4.918-3.62 9.282-7.877 11.976l-1.106.699a.838.838 0 0 0-.392.708v.052c0 .287.147.554.392.708l1.106.699c4.257 2.694 7.128 7.058 7.877 11.976l1.276 8.373A.855.855 0 0 0 12 45a.852.852 0 0 0 .849-.718l1.276-8.373c.749-4.918 3.62-9.282 7.877-11.976l1.106-.699a.838.838 0 0 0 .392-.708v-.052a.838.838 0 0 0-.392-.708l-1.106-.699Z" ></path></svg>
                 <svg width="24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M22.002 21.067c-4.257-2.694-7.128-7.058-7.877-11.976L12.849.718A.855.855 0 0 0 12 0a.852.852 0 0 0-.849.718L9.875 9.091c-.749 4.918-3.62 9.282-7.877 11.976l-1.106.699a.838.838 0 0 0-.392.708v.052c0 .287.147.554.392.708l1.106.699c4.257 2.694 7.128 7.058 7.877 11.976l1.276 8.373A.855.855 0 0 0 12 45a.852.852 0 0 0 .849-.718l1.276-8.373c.749-4.918 3.62-9.282 7.877-11.976l1.106-.699a.838.838 0 0 0 .392-.708v-.052a.838.838 0 0 0-.392-.708l-1.106-.699Z" ></path></svg>
 
@@ -29,13 +31,12 @@ export const Features = () => {
                         <div className="picture">
                             <img src={radio} alt="Reaction" />
                             <img src={music} alt="Reaction" />
-                            {/* <img src="https://media.discordapp.net/attachments/1015543023146389506/1031680265950613544/unknown.png?width=1948&height=1290" alt="Reaction" /> */}
                         </div>
 
                         <div className="articleContainer left">
                             <article className="article">
-                                <h2>Multimedia</h2>
-                                <p>Jouez des chansons à la demande ou écoutez une station de radio toute la journée sans jamais devoir vous arrêter.<br />La fête ne s'arrêtera pas non plus quand vous partirez, car Bouns'bot reste dans votre channel 24h/24, 7j/7 !</p>
+                                <h2>{t("feature.multimedia.name")}</h2>
+                                <p>{t("feature.multimedia.description1")}<br /> {t("feature.multimedia.description2")}</p>
                             </article>
                         </div>
                     </div>
@@ -47,8 +48,8 @@ export const Features = () => {
                     <div className="columns revertMobile">
                         <div className="articleContainer right">
                             <article className="article">
-                                <h2>Les Jeux</h2>
-                                <p>Jouez à un grand nombre de mini-jeux ! Vous pouvez jouer à plus de 15 mini-jeux seuls ou contre vos amis. <br />Démarqué vous grâce au classement intégré à Bouns'bot , et venez tester votre culture générale grâce à notre quiz.</p>
+                                <h2>{t("feature.game.name")}</h2>
+                                <p>{t("feature.multimedia.description1")}<br />{t("feature.multimedia.description2")}</p>
                             </article>
                         </div>
 
@@ -73,8 +74,8 @@ export const Features = () => {
 
                         <div className="articleContainer left">
                             <article className="article">
-                                <h2>Les Logs</h2>
-                                <p>Comment ça, vous ne savez pas que Wumpus a allumé sa caméra ! <br />Avec Bouns'bot vous avez accès à tous les logs disponibles sur Discord, il vous suffit d'activer ce dont vous avez besoin.</p>
+                                <h2>{t("feature.logs.name")}</h2>
+                                <p>{t("feature.logs.description1")}<br />{t("feature.logs.description2")}</p>
                             </article>
 
                         </div>
@@ -87,8 +88,8 @@ export const Features = () => {
                     <div className="columns revertMobile">
                         <div className="articleContainer right">
                             <article className="article">
-                                <h2>Les Tickets</h2>
-                                <p>Bouns’bot permet de créer des channels de supports privés, que nous appelons des tickets, entre votre équipe et les personnes qui cherchent de l'aide.</p>
+                                <h2>{t("feature.ticket.name")}</h2>
+                                <p>{t("feature.ticket.description")}</p>
                             </article>
                         </div>
 
@@ -112,8 +113,8 @@ export const Features = () => {
 
                         <div className="articleContainer left">
                             <article className="article">
-                                <h2>L'engagement</h2>
-                                <p>Récompensez vos membres avec des points d'XP et gardez la trace des membres les plus actifs sur votre tableau de classement personnalisé.</p>
+                                <h2>{t("feature.engagement.name")}</h2>
+                                <p>{t("feature.engagement.description")}</p>
                             </article>
                         </div>
                     </div>
