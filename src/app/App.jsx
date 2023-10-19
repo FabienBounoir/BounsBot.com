@@ -11,7 +11,7 @@ import Footer from '../components/footer/footer';
 // import Playlist from "../pages/playlist/playlist";
 // import infoPlaylist from "../pages/infoPlaylist/infoPlaylist";
 import { Features } from "../components/features/features";
-import Level from "../pages/level/level";
+import { Levels } from "../pages/levels/levels";
 import { Commandes } from "../pages/commandes/commandes";
 import { ErreurPage } from "../pages/ErreurPage/ErreurPage";
 import { PrivacyBot } from "../pages/privacyBot/privacy";
@@ -31,13 +31,11 @@ import { useEffect } from "react";
 import Status from "../pages/status/status";
 import i18n from '../i18n';
 
-let code = ""
-
 export const App = () => {
 
   useEffect(() => {
     setEnvColor()
-  }, [])
+  })
 
   //create randomColor but not dark or light
   let randomColor = () => {
@@ -137,7 +135,7 @@ export const App = () => {
           </Route>
 
           <Route exact path="/level">
-            <Level />
+            <Levels />
           </Route>
           <Route exact path="/demo">
             <Demo />
