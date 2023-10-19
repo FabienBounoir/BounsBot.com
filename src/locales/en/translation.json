@@ -41,5 +41,18 @@
         "status": "Status",
         "login": "Log In",
         "demo": "Demo"
+    },
+    "commands": {
+        "search_command": "Search a command",
+        "usage": "Usage",
+        "example": "Examples"
+    },
+    "footer": {
+        "our_history": "Our history",
+        "terms_of_service": "Terms of Service",
+        "privacy_policy": "Privacy Policy",
+        "support_server": "Support Server",
+        "source_code": "Source Code",
+        "all_rights_reserved": "All rights reserved"
     }
 }

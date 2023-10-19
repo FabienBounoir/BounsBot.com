@@ -46,5 +46,13 @@
         "search_command": "Rechercher une commande",
         "usage": "Utilisation",
         "example": "Exemples"
+    },
+    "footer":{
+        "our_history":"Notre histoire",
+        "terms_of_service":"Conditions d'utilisation",
+        "privacy_policy":"Politique de confidentialité",
+        "support_server":"Serveur support",
+        "source_code":"Code source",
+        "all_rights_reserved": "Tous droits réservés"
     }
 }
