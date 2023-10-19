@@ -243,9 +243,17 @@
     transition: transform .4s;
 }
 
+.command-card__header__title {
+    color: var(--color-principal)
+}
+
 .command-card__header__title span {
     color: #8f8f92;
     font-size: 0.9rem;
+}
+
+.command-card__body h5 {
+    color: var(--color-principal)
 }
 
 .btn-commands-category.active {

@@ -1,33 +1,34 @@
 {
-    "homepage":{
+    "homepage": {
         "text_header": "Créez le serveur Discord ultime",
-        "invite_button":"Inviter Bouns'bot",
-        "support": "Support"
+        "invite_button": "Inviter Bouns'bot",
+        "support": "Support",
+        "on_number_of_server": "Bounsbot, le bot Discord approuvé par plus de {{number}} serveurs"
     },
-    "feature":{
+    "feature": {
         "fonctionnality": "Fonctionnalités",
-        "multimedia":{
-            "name":"Multimedia",
-            "description1":"Jouez des chansons à la demande ou écoutez une station de radio toute la journée sans jamais devoir vous arrêter.",
-            "description2":"La fête ne s'arrêtera pas non plus quand vous partirez, car Bouns'bot reste dans votre channel 24h/24, 7j/7 !"
+        "multimedia": {
+            "name": "Multimedia",
+            "description1": "Jouez des chansons à la demande ou écoutez une station de radio toute la journée sans jamais devoir vous arrêter.",
+            "description2": "La fête ne s'arrêtera pas non plus quand vous partirez, car Bouns'bot reste dans votre channel 24h/24, 7j/7 !"
         },
-        "game":{
-            "name":"Les Jeux",
-            "description1":"Jouez à un grand nombre de mini-jeux ! Vous pouvez jouer à plus de 15 mini-jeux seuls ou contre vos amis.",
-            "description2":"Démarqué vous grâce au classement intégré à Bouns'bot , et venez tester votre culture générale grâce à notre quiz."
+        "game": {
+            "name": "Les Jeux",
+            "description1": "Jouez à un grand nombre de mini-jeux ! Vous pouvez jouer à plus de 15 mini-jeux seuls ou contre vos amis.",
+            "description2": "Démarqué vous grâce au classement intégré à Bouns'bot , et venez tester votre culture générale grâce à notre quiz."
         },
-        "logs":{
-            "name":"Les Logs",
-            "description1":"Comment ça, vous ne savez pas que Wumpus a allumé sa caméra !",
-            "description2":"Avec Bouns'bot vous avez accès à tous les logs disponibles sur Discord, il vous suffit d'activer ce dont vous avez besoin."
+        "logs": {
+            "name": "Les Logs",
+            "description1": "Comment ça, vous ne savez pas que Wumpus a allumé sa caméra !",
+            "description2": "Avec Bouns'bot vous avez accès à tous les logs disponibles sur Discord, il vous suffit d'activer ce dont vous avez besoin."
         },
-        "ticket":{
-            "name":"Les Tickets",
-            "description":"Bouns’bot permet de créer des channels de supports privés, que nous appelons des tickets, entre votre équipe et les personnes qui cherchent de l'aide."
+        "ticket": {
+            "name": "Les Tickets",
+            "description": "Bouns’bot permet de créer des channels de supports privés, que nous appelons des tickets, entre votre équipe et les personnes qui cherchent de l'aide."
         },
-        "engagement":{
-            "name":"L'engagement",
-            "description":"Récompensez vos membres avec des points d'XP et gardez la trace des membres les plus actifs sur votre tableau de classement personnalisé."
+        "engagement": {
+            "name": "L'engagement",
+            "description": "Récompensez vos membres avec des points d'XP et gardez la trace des membres les plus actifs sur votre tableau de classement personnalisé."
         }
     },
     "brand":{

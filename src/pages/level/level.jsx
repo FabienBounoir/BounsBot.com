@@ -4,6 +4,7 @@ import React, { Component } from 'react'
 import InfiniteScroll from 'react-infinite-scroll-component';
 import LoadingFullPage from "../../components/loading/LoadingFullPage.jsx";
 import GainRolesLevels from "../../components/gainRolesLevels/gainRolesLevels.jsx";
+import levelApi from "../../utils/API/levelsAPI"
 
 let levels = [
   { "value": 1, "totalxp": 100 },
@@ -273,26 +274,24 @@ class Level extends Component {
     this.getData();
   }
 
-  getData = () => {
+  getData = async () => {
     let guildId = new URLSearchParams(window.location.search).get('id') || ""
 
-    fetch(process.env.REACT_APP_HOSTNAME_BACKEND + `/levels/${guildId ? "guild" : "global"}/` + guildId + `?page=${this.state.page}`)
-      .then(response => response.json())
-      .then((result) => {
-        this.setState({
-          level: this.state.level.concat(guildId ? result.rank : result),
-          page: this.state.page + 1,
-          hasMoreData: (guildId ? result.rank : result).length !== 0,
-          loading: false,
-          levelsRole: result.levelsRole
-        });
+    try {
+      let result = await (!guildId ? levelApi.global(this.state.page) : levelApi.guild(guildId, this.state.page || 0))
+
+      this.setState({
+        level: this.state.level.concat(guildId ? result.rank : result),
+        page: this.state.page + 1,
+        hasMoreData: (guildId ? result.rank : result).length !== 0,
+        loading: false,
+        levelsRole: result.levelsRole
+      });
+    } catch (error) {
+      this.setState({
+        errorLoading: true,
       })
-      .catch((error) => {
-        this.setState({
-          errorLoading: true,
-        })
-        console.log(error)
-      })
+    }
   };
 
   formatNumber = (number) => {
@@ -877,11 +876,8 @@ class Level extends Component {
         </div>
 
         {(() => {
-          if (this.state.loading) {
-            // return <LoadingFullPage error={this.state.errorLoading} />
-          }
-          else if (this.state.errorLoading) {
-            <LoadingFullPage error={this.state.errorLoading} />
+          if (this.state.errorLoading) {
+            return <LoadingFullPage error={this.state.errorLoading} />
           }
         })()}
       </div>
