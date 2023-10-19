@@ -6,6 +6,7 @@
     margin-right: 10px;
 
     animation: opacityChange 2s infinite;
+    user-select: none;
 }
 
 .command-card__header__title_squeleton .description {
@@ -15,6 +16,7 @@
     border-radius: 5px;
 
     animation: opacityChange 5s infinite;
+    user-select: none;
 }
 
 .btn-commands-category_squeleton {
@@ -34,6 +36,7 @@
     box-shadow: var(--color-principal) 0px 0px 0px 1px inset;
     /* transi: test 2s ease-in-out; */
     transition: box-shadow 0.3s ease-in-out;
+    user-select: none;
 }
 
 .btn-commands-category_squeleton.active {
@@ -43,6 +46,7 @@
 
     transition-property: background-color, color;
     transition-duration: 0.4s;
+    user-select: none;
 }
 
 @keyframes opacityChange {

@@ -5,8 +5,11 @@ import Command from "../../components/command/command";
 import CommandSqueleton from "../../components/command/commandSqueleton";
 import MenuSqueleton from "../../components/command/MenuSqueleton";
 import commandsAPI from "../../utils/API/commandsAPI"
+import { useTranslation } from "react-i18next";
 
 export const Commandes = () => {
+    const { t } = useTranslation();
+
     const [commands, setCommands] = useState([])
     const [displayedCommands, setDisplayedCommands] = useState([])
     const [menu, setMenu] = useState([])
@@ -281,12 +284,12 @@ export const Commandes = () => {
     return (
         <div transition="page" className="commands-list" >
             <div className="top">
-                <h1>COMMANDES</h1>
+                <h1>{t("title.commands")}</h1>
                 <div className="search search-bar" data-v-7085cbe2=""></div>
             </div>
             <>
                 <div className="command__input">
-                    <input type="text" placeholder="Rechercher une commande" onChange={(e) => search(e)} value={searchQuery} />
+                    <input type="text" placeholder={t("commands.search_command")} onChange={(e) => search(e)} value={searchQuery} />
                     <p className="fa-solid fa-magnifying-glass">
                         <svg width="25" height="25" viewBox="0 0 298 298" xmlns="http://www.w3.org/2000/svg">
                             <path d="M230.942 199.589C239.601 208.247 239.601 222.284 230.942 230.943C222.285 239.601 208.248 239.6 199.59 230.943L149.494 180.847C140.837 172.189 140.835 158.152 149.493 149.494C158.152 140.835 172.189 140.836 180.848 149.494L230.942 199.589Z" fill="var(--color-principal-hover)" />

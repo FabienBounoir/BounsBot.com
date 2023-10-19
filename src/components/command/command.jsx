@@ -2,6 +2,7 @@ import { Link } from "react-router-dom"
 import Avatar from "../avatar/avatar";
 import { memo, useEffect, useMemo, useState } from "react";
 import { useRef } from "react";
+import { useTranslation } from "react-i18next";
 
 let typeExample = new Map([
     [3, ["Hello-World", "<:PepeEuh:955820244327354389>", "https://www.youtu.be/dQw4w9WgXcQ"]],
@@ -17,6 +18,7 @@ let typeExample = new Map([
 
 
 export const Command = memo(({ command }) => {
+    const { t } = useTranslation();
     let ref = useRef(null);
 
     const [contentMaxHeight, setContentMaxHeight] = useState(0);
@@ -70,13 +72,13 @@ export const Command = memo(({ command }) => {
         return (
             <>
                 <div className="command-card__body__usage">
-                    <h5>Utilisation:</h5>
+                    <h5>{t("commands.usage")}:</h5>
                     <div className="elementBody">
                         <pre>{usages.join("\n")}</pre>
                     </div>
                 </div>
                 <div className="command-card__body__examples">
-                    <h5>Exemples:</h5>
+                    <h5>{t("commands.example")}:</h5>
                     <div className="elementBody">
                         <pre>{examples.join("\n")}</pre>
                     </div>
