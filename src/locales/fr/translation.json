@@ -33,5 +33,8 @@
     "brand":{
         "slogan":"Créer un serveur Discord à votre image",
         "add_bot":"Ajouter Bouns'Bot"
+    },
+    "title":{
+        "commands": "Commandes"
     }
 }

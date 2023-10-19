@@ -29,6 +29,9 @@
             "name": "Engagement",
             "description": "Reward your members with XP points and keep track of the most active members on your custom leaderboard."
         }
+    },
+    "brand": {
+        "slogan": "Create a Discord server that reflects your identity",
+        "add_bot": "Add Bouns'Bot"
     }
-    
 }
