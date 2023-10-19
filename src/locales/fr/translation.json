@@ -36,6 +36,15 @@
         "add_bot":"Ajouter Bouns'Bot"
     },
     "title":{
-        "commands": "Commandes"
+        "commands": "Commandes",
+        "levels": "Levels",
+        "status": "Statuts",
+        "login": "Se connecter",
+        "demo": "Démo"
+    },
+    "commands":{
+        "search_command": "Rechercher une commande",
+        "usage": "Utilisation",
+        "example": "Exemples"
     }
 }

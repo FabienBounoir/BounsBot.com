@@ -34,5 +34,12 @@
     "brand": {
         "slogan": "Create a Discord server that reflects your identity",
         "add_bot": "Add Bouns'Bot"
+    },
+    "title":{
+        "commands": "Commands",
+        "levels": "Levels",
+        "status": "Status",
+        "login": "Log In",
+        "demo": "Demo"
     }
 }
