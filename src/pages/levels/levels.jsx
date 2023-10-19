@@ -9,7 +9,7 @@ import LevelSqueleton from "../../components/levels/levelsSqueleton";
 import Level from "../../components/levels/level";
 
 export const Levels = () => {
-  const [levels,setLevels] = useState([]);
+  const [levels, setLevels] = useState([]);
   const [levelsRole, setLevelsRole] = useState([]);
   const [page, setPage] = useState(0);
   const [hasMoreData, setHasMoreData] = useState(true);
@@ -18,14 +18,13 @@ export const Levels = () => {
 
   useEffect(() => {
     getData()
-  })
+  }, [])
 
   const getData = async () => {
     let guildId = new URLSearchParams(window.location.search).get('id') || ""
 
     try {
       let result = await (!guildId ? levelApi.global(page) : levelApi.guild(guildId, page || 0))
-
       setHasMoreData((guildId ? result.rank : result).length !== 0)
       setPage(page + 1)
       setLevels(levels.concat(guildId ? result.rank : result))
@@ -46,7 +45,7 @@ export const Levels = () => {
           <InfiniteScroll
 
             dataLength={levels.length}
-            next={getData}
+            next={() => getData()}
             hasMore={hasMoreData}
             loader={<LevelSqueleton index={levels?.length || 0} />} >
 
@@ -470,7 +469,7 @@ export const Levels = () => {
               }
 
               for (let i = 0; i < levels.length; i++) {
-                rank.push(<Level level={levels[i]} i />);
+                rank.push(<Level level={levels[i]} i={i} />);
               }
 
               return rank;

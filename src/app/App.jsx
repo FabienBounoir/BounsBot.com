@@ -1,7 +1,7 @@
 // import logo from '../components/picture/logo.svg';
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import './App.css';
-import {Navigation} from "../components/navbar/navbar";
+import { Navigation } from "../components/navbar/navbar";
 
 
 import { HomePage } from "../components/homepage/homepage";
@@ -35,7 +35,7 @@ export const App = () => {
 
   useEffect(() => {
     setEnvColor()
-  })
+  }, [])
 
   //create randomColor but not dark or light
   let randomColor = () => {

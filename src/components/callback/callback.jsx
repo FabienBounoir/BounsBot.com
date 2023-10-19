@@ -4,7 +4,6 @@ import Fetch from "../../utils/fetch.js";
 import Avatar from "../avatar/avatar";
 
 class Callback extends Component {
-
     async exchange_code(code) {
         let details = {
             'client_id': process.env.REACT_APP_CLIENT_ID,
@@ -51,8 +50,14 @@ class Callback extends Component {
     }
 
     componentDidMount() {
+
         const code = new URLSearchParams(window.location.search).get('code')
 
+        // fetch("http://localhost:3400/api/auth/login?code=" + code).then(res => res.json()).then(data => {
+        //     console.log(data)
+        // })
+
+        return
         if (code) {
             this.exchange_code(code);
         }
