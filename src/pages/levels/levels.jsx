@@ -4,11 +4,13 @@ import React, { useEffect, useState } from 'react'
 import InfiniteScroll from 'react-infinite-scroll-component';
 import LoadingFullPage from "../../components/loading/LoadingFullPage.jsx";
 import GainRolesLevels from "../../components/gainRolesLevels/gainRolesLevels.jsx";
-import levelApi from "../../utils/API/levelsAPI"
+import * as levelApi from "../../utils/API/levelsAPI"
 import LevelSqueleton from "../../components/levels/levelsSqueleton";
 import Level from "../../components/levels/level";
+import { useTranslation } from "react-i18next";
 
 export const Levels = () => {
+  const { t } = useTranslation();
   const [levels, setLevels] = useState([]);
   const [levelsRole, setLevelsRole] = useState([]);
   const [page, setPage] = useState(0);
@@ -38,7 +40,7 @@ export const Levels = () => {
 
   return (
     <div className="leaderboardglobal">
-      <div className="top"><h1>LEVELS</h1><div className="search search-bar" data-v-7085cbe2=""></div></div>
+      <div className="top"><h1>{t("title.levels")}</h1><div className="search search-bar" data-v-7085cbe2=""></div></div>
 
       <div className="leaderboard">
         <div className="leaderboardLevel">
@@ -462,7 +464,7 @@ export const Levels = () => {
                         </linearGradient>
                       </defs>
                     </svg>
-                    <span>Je crois qu'il n'y a pas d'information pour cette guild</span>
+                    <span>{t("levels.no_guild_leaderboard")}</span>
                   </div>
 
                 )

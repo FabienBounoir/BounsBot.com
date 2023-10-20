@@ -31,28 +31,35 @@
             "description": "Récompensez vos membres avec des points d'XP et gardez la trace des membres les plus actifs sur votre tableau de classement personnalisé."
         }
     },
-    "brand":{
-        "slogan":"Créer un serveur Discord à votre image",
-        "add_bot":"Ajouter Bouns'Bot"
+    "brand": {
+        "slogan": "Créer un serveur Discord à votre image",
+        "add_bot": "Ajouter Bouns'Bot"
     },
-    "title":{
+    "title": {
         "commands": "Commandes",
         "levels": "Levels",
         "status": "Statuts",
         "login": "Se connecter",
         "demo": "Démo"
     },
-    "commands":{
+    "commands": {
         "search_command": "Rechercher une commande",
         "usage": "Utilisation",
         "example": "Exemples"
     },
-    "footer":{
-        "our_history":"Notre histoire",
-        "terms_of_service":"Conditions d'utilisation",
-        "privacy_policy":"Politique de confidentialité",
-        "support_server":"Serveur support",
-        "source_code":"Code source",
+    "footer": {
+        "our_history": "Notre histoire",
+        "terms_of_service": "Conditions d'utilisation",
+        "privacy_policy": "Politique de confidentialité",
+        "support_server": "Serveur support",
+        "source_code": "Code source",
         "all_rights_reserved": "Tous droits réservés"
+    },
+    "levels": {
+        "messages": "MESSAGES",
+        "experience": "EXPÉRIENCE",
+        "no_guild_leaderboard": "Je crois qu'il n'y a pas d'information pour ce serveur...",
+        "role_rewards": "Récompenses de rôle",
+        "level_number": "LEVEL {{level}}"
     }
 }

@@ -7,9 +7,6 @@ import { Navigation } from "../components/navbar/navbar";
 import { HomePage } from "../components/homepage/homepage";
 import Footer from '../components/footer/footer';
 
-// import { Features } from "../components/oldFeatures/features";
-// import Playlist from "../pages/playlist/playlist";
-// import infoPlaylist from "../pages/infoPlaylist/infoPlaylist";
 import { Features } from "../components/features/features";
 import { Levels } from "../pages/levels/levels";
 import { Commandes } from "../pages/commandes/commandes";
@@ -17,7 +14,6 @@ import { ErreurPage } from "../pages/ErreurPage/ErreurPage";
 import { PrivacyBot } from "../pages/privacyBot/privacy";
 import { Login } from "../pages/login/login";
 import Dashboard from "../pages/dashboard/dashboard";
-// import Guild from "../pages/guild/guild";
 
 import Demo from "../pages/demo/demo";
 import Callback from "../components/callback/callback";
@@ -27,12 +23,11 @@ import { TermsBot } from "../pages/termsBot/terms";
 import { Info } from "../components/info/info";
 import { BrandAddBot } from "../components/addBot/addBot";
 import ScrollToTop from "../utils/ScrollToTop"
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import Status from "../pages/status/status";
 import i18n from '../i18n';
 
 export const App = () => {
-
   useEffect(() => {
     setEnvColor()
   }, [])
@@ -47,7 +42,6 @@ export const App = () => {
       for (let i = 0; i < 6; i++) {
         color += letters[Math.floor(Math.random() * 16)];
       }
-      // console.log("%c test couleur", `color: #${color}`)
     }
     //tant que la couleur est trop claire ou trop foncée
     while (parseInt(color, 16) > 0x999999 || parseInt(color, 16) < 0x333333)
@@ -122,7 +116,7 @@ export const App = () => {
             <Footer />
           </Route>
 
-          <Route exact path="/commandes">
+          <Route exact path="/commands">
             <Commandes />
             <BrandAddBot />
             <Footer />
@@ -140,18 +134,10 @@ export const App = () => {
           <Route exact path="/demo">
             <Demo />
           </Route>
-          {/* <Route exact path="/playlist">
-            <Playlist />
-          </Route>
-          <Route exact path="/playlist/:id" component={infoPlaylist}>
-          </Route> */}
+
           <Authenticate exact path="/dashboard">
             <Dashboard />
           </Authenticate>
-          {/* <Authenticate exact path="/dashboard/:id/:type">
-            <Route exact path="/dashboard/:id" component={Guild}>
-            </Route>
-          </Authenticate> */}
 
           <Authenticate exact path="/dashboard/:id/:typeconfig">
             <Route exact path="/dashboard/:id/:typeconfig" component={Dashboard}>

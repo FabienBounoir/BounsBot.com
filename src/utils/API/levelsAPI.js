@@ -1,6 +1,6 @@
 const hostname = process.env.REACT_APP_HOSTNAME_BACKEND + "/levels"
 
-const global = (page = 0) => {
+export const global = (page = 0) => {
     return new Promise(async (resolve, reject) => {
         try {
             const response = await fetch(`${hostname}/global?${new URLSearchParams({ page })}`)
@@ -15,7 +15,7 @@ const global = (page = 0) => {
     })
 }
 
-const guild = (guildId, page = 0) => {
+export const guild = (guildId, page = 0) => {
     return new Promise(async (resolve, reject) => {
         try {
             const response = await fetch(`${hostname}/guild/${guildId}?${new URLSearchParams({ page })}`)
@@ -29,7 +29,7 @@ const guild = (guildId, page = 0) => {
     })
 }
 
-module.exports = {
-    global,
-    guild
-}
+// module.exports = {
+//     global,
+//     guild
+// }

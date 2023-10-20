@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import "./_status.css";
 import { Tooltip } from 'react-tooltip'
-import shardsAPI from "../../utils/API/shardsAPI"
+import * as shardsAPI from "../../utils/API/shardsAPI"
 import { Toaster, toast } from 'sonner'
 
 

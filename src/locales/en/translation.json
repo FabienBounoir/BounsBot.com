@@ -35,7 +35,7 @@
         "slogan": "Create a Discord server that reflects your identity",
         "add_bot": "Add Bouns'Bot"
     },
-    "title":{
+    "title": {
         "commands": "Commands",
         "levels": "Levels",
         "status": "Status",
@@ -54,5 +54,12 @@
         "support_server": "Support Server",
         "source_code": "Source Code",
         "all_rights_reserved": "All rights reserved"
+    },
+    "levels": {
+        "messages": "MESSAGES",
+        "experience": "Experience",
+        "no_guild_leaderboard": "I don't think there's any information for this guild...",
+        "role_rewards": "Role Rewards",
+        "level_number": "LEVEL {{level}}"
     }
 }

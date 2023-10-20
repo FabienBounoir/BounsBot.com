@@ -4,7 +4,7 @@ import React, { useEffect, useState, useRef } from "react";
 import Command from "../../components/command/command";
 import CommandSqueleton from "../../components/command/commandSqueleton";
 import MenuSqueleton from "../../components/command/MenuSqueleton";
-import commandsAPI from "../../utils/API/commandsAPI"
+import * as commandsAPI from "../../utils/API/commandsAPI"
 import { useTranslation } from "react-i18next";
 
 export const Commandes = () => {

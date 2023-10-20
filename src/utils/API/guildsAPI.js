@@ -1,55 +1,55 @@
 const hostname = process.env.REACT_APP_HOSTNAME_BACKEND + "/guilds"
 
-const sendMessage = (messageComponent) => {
+export const sendMessage = (messageComponent) => {
     return new Promise(async (resolve, reject) => {
-        try{
-            const response = await fetch(`${hostname}/send`,{
+        try {
+            const response = await fetch(`${hostname}/send`, {
                 body: JSON.stringify(messageComponent),
                 method: "POST"
             })
-            .then(response => response.json())
+                .then(response => response.json())
 
             resolve(response)
         }
-        catch(e){
+        catch (e) {
             reject(e)
         }
     })
 }
 
-const hasThisGuild = (guildIds) => {
+export const hasThisGuild = (guildIds) => {
     return new Promise(async (resolve, reject) => {
-        try{
-            const response = await fetch(`${hostname}/has`,{
-                body: JSON.stringify({has: guildIds}),
+        try {
+            const response = await fetch(`${hostname}/has`, {
+                body: JSON.stringify({ has: guildIds }),
                 method: "POST"
             })
-            .then(response => response.json())
+                .then(response => response.json())
 
             resolve(response)
         }
-        catch(e){
+        catch (e) {
             reject(e)
         }
     })
 }
 
-const best = () => {
+export const best = () => {
     return new Promise(async (resolve, reject) => {
-        try{
+        try {
             const response = await fetch(`${hostname}/best`)
-            .then(response => response.json())
+                .then(response => response.json())
 
             resolve(response)
         }
-        catch(e){
+        catch (e) {
             reject(e)
         }
     })
 }
 
-module.exports = {
-    sendMessage,
-    hasThisGuild,
-    best
-}
+// module.exports = {
+//     sendMessage,
+//     hasThisGuild,
+//     best
+// }

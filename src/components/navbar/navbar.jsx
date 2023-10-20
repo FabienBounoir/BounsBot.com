@@ -46,7 +46,7 @@ export const Navigation = () => {
         }
     }
 
-    const revokeToken = async() => {
+    const revokeToken = async () => {
         let info = JSON.parse(window.localStorage.getItem('dataDiscord'));
 
         let details = {
@@ -93,7 +93,7 @@ export const Navigation = () => {
                     <Navbar.Toggle aria-controls="responsive-navbar-nav" id="buttonToggleNav" />
                     <Navbar.Collapse id="responsive-navbar-nav">
                         <Nav className="me-auto">
-                            <Nav.Link as={Link} to="/commandes" onClick={() => { eventClick() }}>{t("title.commands")}</Nav.Link>
+                            <Nav.Link as={Link} to="/commands" onClick={() => { eventClick() }}>{t("title.commands")}</Nav.Link>
                             <Nav.Link as={Link} to="/level" onClick={() => { eventClick() }}>{t("title.levels")}</Nav.Link>
                             <Nav.Link as={Link} to="/status" onClick={() => { eventClick() }}>{t("title.status")}</Nav.Link>
                             <Nav.Link as={Link} to="/demo" onClick={() => { eventClick() }}>{t("title.demo")}</Nav.Link>
@@ -109,7 +109,7 @@ export const Navigation = () => {
                                                 <div className="LogoNav" style={{ backgroundImage: `url("https://cdn.discordapp.com/avatars/${JSON.parse(window.localStorage.getItem('dataUser')).id}/${JSON.parse(window.localStorage.getItem('dataUser')).avatar}.png?size=512` }}>
                                                 </div>
                                                 <Link onClick={() => { eventClick() }} to="/dashboard/user/description" style={{ textDecoration: "none" }}><span className="hamgn6-5 dashboard_button">{JSON.parse(window.localStorage.getItem('dataUser')).username}</span></Link>
-                                                <div onClick={() => {clickMe()}}>
+                                                <div onClick={() => { clickMe() }}>
                                                     <svg style={{ marginLeft: "10px", width: "27px", height: "27px", minHeight: "27px", minMidth: "27px" }} viewBox="0 0 512 512" fill="none" xmlns="http://www.w3.org/2000/svg">
                                                         <path
                                                             d="M192 256C192 220.715 220.715 192 256 192H341.333V21.333C341.333 9.557 331.797 0 320 0H21.333C9.536 0 0 9.557 0 21.333V490.666C0 502.442 9.536 511.999 21.333 511.999H320C331.797 511.999 341.333 502.442 341.333 490.666V341.333V320H256C220.715 320 192 291.285 192 256Z"
