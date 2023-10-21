@@ -9,7 +9,20 @@
 }
 
 .loader.disabled {
-    display: none;
+    animation: removeLoader 2s ease-out;
+    animation-fill-mode: forwards;
+    /* animation-delay: 1s; */
+}
+
+@keyframes removeLoader {
+    0% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
+        display: none;
+    }
 }
 
 .loader .loader-container {

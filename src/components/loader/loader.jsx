@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import "./_loader.css"
 
 const textLoading = [
@@ -50,13 +50,17 @@ export const Loader = () => {
             if (new Date().getTime() - time < 2000) {
                 setTimeout(() => {
                     setLoading(false)
-                }, 2000 - (new Date().getTime() - time))
+                }, 1500 - (new Date().getTime() - time))
             }
         })
 
         return () => {
             window.removeEventListener("load", () => { })
         }
+    }, [])
+
+    const textLoadingTemplate = useMemo(() => {
+        return textLoading[Math.floor(Math.random() * textLoading.length)]
     }, [])
 
 
@@ -117,7 +121,7 @@ export const Loader = () => {
                 </div>
                 <div className="loader-bar">
                     <div className="loader-bar-container">
-                        <div className="loader-bar-content">{textLoading[Math.floor(Math.random() * textLoading.length)]}</div>
+                        <div className="loader-bar-content">{textLoadingTemplate}</div>
                     </div>
                 </div>
             </div>
