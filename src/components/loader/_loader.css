@@ -14,6 +14,7 @@
     animation-fill-mode: forwards;
     /* animation-delay: 1s; */
     pointer-events: none;
+    display: none;
 }
 
 @keyframes removeLoader {
@@ -22,7 +23,7 @@
     }
 
     100% {
-        opacity: 0;
+        /* opacity: 0; */
         display: none;
         pointer-events: none;
     }
