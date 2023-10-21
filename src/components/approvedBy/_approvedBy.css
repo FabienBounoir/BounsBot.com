@@ -8,6 +8,11 @@
     max-width: 80%;
 }
 
+.infoComponent {
+    min-height: 500px;
+    height: 100svh;
+}
+
 
 .guilds-container.tablette {
     display: none;
@@ -16,7 +21,6 @@
 
     gap: 2rem !important;
     justify-content: center;
-    max-width: 80%;
 }
 
 .guilds-container.mobile {
@@ -26,7 +30,6 @@
 
     gap: 2rem !important;
     justify-content: center;
-    max-width: 80%;
 }
 
 @media (max-width: 1350px) {
@@ -69,23 +72,110 @@
 }
 
 .infoComponent {
+    overflow: hidden;
     margin: 0;
     padding: 0;
     display: flex;
-    /* gap:  */
     flex-direction: column;
     justify-content: center;
     align-items: center;
     height: calc(100vh - 120px);
-    /* min-height: 60vh; */
-    /* max-height: 50vh; */
     padding: 40px 10px 40px 10px;
     gap: 6em;
-    background-size: 10%;
-    background-color: #1f2129;
+    background: linear-gradient(180deg, var(--color-principal) 0%, var(--color-principal-hover) 350%);
     position: relative;
-    color: var(--color-principal);
+    color: #1f2129;
 }
+
+.infoComponent .info-content {
+    z-index: 5;
+}
+
+.pillar_bg-noise {
+    z-index: 3;
+    background-image: url("./noise_bg.png");
+    background-position: 0 0;
+    background-size: 110px;
+    position: absolute;
+    top: 0%;
+    bottom: 0%;
+    left: 0%;
+    right: 0%;
+}
+
+.infoComponent .cloud {
+    z-index: 1;
+    position: absolute;
+    top: 10%;
+    bottom: auto;
+    left: 23%;
+    right: auto;
+    animation: cloud1Animation 10s ease-in-out infinite alternate;
+}
+
+.infoComponent .cloud_2 {
+    z-index: 1;
+    position: absolute;
+    width: 31%;
+    top: 79%;
+    left: auto;
+    right: -2%;
+    animation: cloud2Animation 10s ease-in-out infinite alternate;
+}
+
+.infoComponent .cloud_3 {
+    z-index: 1;
+    position: absolute;
+    top: auto;
+    bottom: -1px;
+    left: 5%;
+    right: auto;
+    animation: cloud3Animation 14s ease-in-out infinite alternate;
+}
+
+
+@keyframes cloud1Animation {
+    0% {
+        transform: translateX(0%);
+    }
+
+    50% {
+        transform: translateX(10%);
+    }
+
+    100% {
+        transform: translateX(0%);
+    }
+}
+
+@keyframes cloud2Animation {
+    0% {
+        transform: translateX(0%);
+    }
+
+    50% {
+        transform: translateX(-10%);
+    }
+
+    100% {
+        transform: translateX(0%);
+    }
+}
+
+@keyframes cloud3Animation {
+    0% {
+        transform: translateX(0%);
+    }
+
+    40% {
+        transform: translateX(8%);
+    }
+
+    90% {
+        transform: translateX(0%);
+    }
+}
+
 
 .infoComponent .clydeLove {
     position: absolute;
@@ -96,30 +186,40 @@
 .infoComponent h2 {
     -webkit-box-pack: center;
     justify-content: center;
-    /* padding-top: 40px; */
-    /* padding-bottom: 84px; */
+    z-index: 4;
 }
 
 
 .infoComponent .guilds-container .guilds {
-    background-color: #17181e;
-    color: #9b9d9f;
+    background-color: #FFFFFF;
+    color: #17181e;
+    border: 2px solid #BABABB;
+    filter: drop-shadow(1px 3px 9px var(--color-principal-hover));
+
     display: flex;
     flex-direction: row;
     justify-content: left;
     text-align: left;
     align-items: center;
-    /* margin: 16px; */
-    /* background-color: #1f2129; */
     border-radius: 16px;
     padding: 16px;
+    z-index: 5;
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.3s ease-in-out, transform 0.7s ease-in-out;
+}
+
+.infoComponent .guilds-container .guilds.active {
+    opacity: 1;
+    transform: translateY(0px);
 }
 
 .infoComponent .guilds-container .guilds h3 {
-    color: #fff;
+    color: #17181e;
     font-size: 16px;
     padding: 0;
     margin: 0;
+    z-index: 10;
 }
 
 .infoComponent .guilds-container .guilds p {
@@ -158,6 +258,15 @@
         display: grid;
     }
 
+    .infoComponent .cloud_3 {
+        display: none;
+    }
+
+    .infoComponent .cloud_2 {
+        display: none;
+    }
+
+
     .infoComponent {
         margin: 0;
         padding: 0;
@@ -171,7 +280,7 @@
         /* max-height: 50vh; */
         padding: 40px 10px 40px 10px;
         gap: 3.5em;
-        background: #1f2129;
+        /* background: #1f2129; */
     }
 
     .infoComponent .clydeLove {

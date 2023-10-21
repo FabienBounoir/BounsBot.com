@@ -31,19 +31,35 @@
     right: -30px; */
     top: -25px;
     right: -46px;
-    fill: var(--color-principal)
+    fill: var(--color-principal);
+    animation: zoom 1s ease-in-out infinite alternate;
+    vertical-align: middle;
+    transform-style: preserve-3d;
+    will-change: transform;
 }
 
 .features>.header svg:last-of-type {
     position: absolute;
-    /* bottom: -42px;
-    left: -30px; */
-    /* bottom: -23px; */
-    bottom: -126px;
+    bottom: -26px;
     left: -47px;
-    fill: var(--color-principal)
+    fill: var(--color-principal);
+    animation: zoom 1s ease-in-out infinite alternate;
+    animation-delay: 0.8;
+    animation: zoom 1s ease-in-out infinite alternate;
+    vertical-align: middle;
+    transform-style: preserve-3d;
+    will-change: transform;
 }
 
+@keyframes zoom {
+    0% {
+        transform: translate3d(0px, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg)
+    }
+
+    100% {
+        transform: translate3d(0px, 0px, 0px) scale3d(0.802406, 0.802406, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg)
+    }
+}
 
 
 .features .columns {
