@@ -20,12 +20,13 @@ import Callback from "../components/callback/callback";
 import Authenticate from '../components/Authenticate';
 import { Bio } from "../pages/bio/bio";
 import { TermsBot } from "../pages/termsBot/terms";
-import { Info } from "../components/info/info";
+import { ApprovedBy } from "../components/approvedBy/approvedBy";
 import { BrandAddBot } from "../components/addBot/addBot";
 import ScrollToTop from "../utils/ScrollToTop"
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import Status from "../pages/status/status";
 import i18n from '../i18n';
+import Loader from "../components/loader/loader";
 
 export const App = () => {
   useEffect(() => {
@@ -107,10 +108,11 @@ export const App = () => {
     <div className="App">
       <BrowserRouter>
         <Navigation />
+        <Loader />
         <Switch>
           <Route exact path="/">
             <HomePage />
-            <Info />
+            <ApprovedBy />
             <Features />
             <BrandAddBot />
             <Footer />
