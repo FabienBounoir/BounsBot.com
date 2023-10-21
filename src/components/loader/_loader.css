@@ -6,6 +6,7 @@
     right: 0;
     background-color: #2B2D31;
     z-index: 9999;
+    pointer-events: none;
 }
 
 .loader.disabled {
@@ -23,6 +24,7 @@
     100% {
         opacity: 0;
         display: none;
+        pointer-events: none;
     }
 }
 
