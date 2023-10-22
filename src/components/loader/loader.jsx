@@ -68,7 +68,7 @@ export const Loader = () => {
         <div className={"loader" + (loading ? "" : " disabled")}>
             <div className="loader-container">
                 <div className="loader-logo">
-                    <svg width="291" viewBox="0 0 291 265" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <svg width="180" viewBox="0 0 291 265" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path
                             d="M107.856 183.338C106.431 183.338 105.112 184.097 104.397 185.331L89.5053 210.992C87.9578 213.659 89.8818 217 92.965 217H197.494C200.577 217 202.501 213.659 200.953 210.992L186.062 185.331C185.346 184.097 184.028 183.338 182.602 183.338H107.856Z"
                             fill="#E9E9E9" />

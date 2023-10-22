@@ -68,7 +68,6 @@ export const HomePage = () => {
             })()}
 
             <div className="homepage__text">
-                {/* <h1><span>Bouns'Bot</span> </h1> le meilleur bot pour Discord */}
                 <h1> {t("homepage.text_header")}</h1>
                 <p id="typeit">Votre acolyte pour <b>la radio</b> sur votre serveur.</p>
 
