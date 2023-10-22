@@ -93,7 +93,7 @@
 
 .pillar_bg-noise {
     z-index: 3;
-    background-image: url("./noise_bg.png");
+    background-image: url("/public/noise_bg.png");
     background-position: 0 0;
     background-size: 110px;
     position: absolute;
@@ -318,6 +318,4 @@
         margin-bottom: auto;
         margin-top: auto;
     }
-
-
 }
