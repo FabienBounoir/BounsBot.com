@@ -1,4 +1,5 @@
 import { useTranslation } from "react-i18next";
+import { useMemo } from "react";
 
 let levels = [
   { "value": 1, "totalxp": 100 },
@@ -273,73 +274,77 @@ export const Level = ({ level, i }) => {
     return levels.findIndex(element => element.totalxp >= xp);
   }
 
-  return (<div key={level.identifiant} className="leaderboardPlayersListContainer">
-    <div className="leaderboardPlayer">
-      <div className="leaderboardPlayerLeft">
-        <div className={i === 0 ? ("leaderboardRank premier") : (i === 1 ? ("leaderboardRank second") : (i === 2 ? ("leaderboardRank troisieme") : ("leaderboardRank")))}>
-          {i + 1}
+
+  const renderLevel = useMemo(() => {
+    return (<div key={level.identifiant} className="leaderboardPlayersListContainer">
+      <div className="leaderboardPlayer">
+        <div className="leaderboardPlayerLeft">
+          <div className={i === 0 ? ("leaderboardRank premier") : (i === 1 ? ("leaderboardRank second") : (i === 2 ? ("leaderboardRank troisieme") : ("leaderboardRank")))}>
+            {i + 1}
+          </div>
+          <div className="leaderboardPlayerIcon">
+            <img loading="lazy" src={level.picture} onError={(e) => { e.target.outerHTML = `<img loading="lazy" src='https://cdn.discordapp.com/embed/avatars/${Math.floor(Math.random() * 6)}.png'/>` }} alt="" />
+          </div>
+          <div className="leaderboardPlayerUsername">
+            {level.username}
+          </div>
         </div>
-        <div className="leaderboardPlayerIcon">
-          <img loading="lazy" src={level.picture} onError={(e) => { e.target.outerHTML = `<img loading="lazy" src='https://cdn.discordapp.com/embed/avatars/${Math.floor(Math.random() * 6)}.png'/>` }} alt="" />
-        </div>
-        <div className="leaderboardPlayerUsername">
-          {level.username}
+        <div className="leaderboardPlayerStats">
+          <div className="leaderboardPlayerStatBlock">
+            <div className="leaderboardPlayerStatName">
+              {t("levels.messages")}
+            </div>
+            <div className="leaderboardPlayerStatValue">
+              {formatNumber(level.nbMessage)}
+            </div>
+          </div>
+          <div className="leaderboardPlayerStatBlock">
+            <div className="leaderboardPlayerStatName">
+              {t("levels.experience")}
+            </div>
+            <div className="leaderboardPlayerStatValue">
+              {formatNumber(level.xp)}
+            </div>
+          </div>
+          <div className="leaderboardPlayerStat">
+            <div className="leaderboardPlayerStatText">
+              <svg width="50" height="45" viewBox="0 0 974 882" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M319.841 728.275C314.49 728.275 309.544 731.126 306.862 735.757L235.678 858.652C229.886 868.652 237.101 881.17 248.658 881.17H733.492C745.049 881.17 752.264 868.652 746.472 858.652L675.289 735.757C672.606 731.126 667.66 728.275 662.309 728.275H319.841Z" fill="var(--color-principal)" />
+                <path d="M883.511 525.341C932.931 505.456 956.883 449.269 936.996 399.85V399.85C917.111 350.435 860.923 326.498 811.506 346.38V346.38C762.083 366.265 738.13 422.457 758.021 471.878V471.878C777.909 521.291 834.096 545.224 883.511 525.341V525.341Z" fill="url(#paint0_linear_831_495)" />
+                <path d="M65.6184 489.699C101.85 529.117 163.176 531.703 202.599 495.477V495.477C242.032 459.241 244.618 397.896 208.373 358.471V358.471C172.14 319.06 110.819 316.477 71.3992 352.7V352.7C31.9687 388.933 29.3798 450.273 65.6184 489.699V489.699Z" fill="url(#paint1_linear_831_495)" />
+                <path d="M830.009 662.527C722.084 823.479 281.083 830.795 158.523 662.527C35.9637 492.43 261.595 164.804 492.08 172.12C722.566 181.266 936.106 503.404 830.009 662.527Z" fill="url(#paint2_linear_831_495)" />
+                <path d="M794.213 641.39C698.638 783.923 308.106 790.402 199.573 641.391C91.0387 490.76 290.848 200.628 494.957 207.107C699.065 215.205 888.167 500.478 794.213 641.39Z" fill="black" />
+                <path d="M479.721 72.1191C479.721 69.3577 481.959 67.1191 484.721 67.1191H503.849C506.61 67.1191 508.849 69.3577 508.849 72.1191V189.399C508.849 192.16 506.61 194.399 503.849 194.399H484.721C481.959 194.399 479.721 192.16 479.721 189.399V72.1191Z" fill="var(--color-principal-hover)" />
+                <path d="M453.988 113.071C474.211 135.076 508.444 136.521 530.45 116.299V116.299C552.461 96.0717 553.903 61.8283 533.67 39.823V39.823C513.445 17.8274 479.219 16.3871 457.217 36.6051V36.6051C435.21 56.8285 433.763 91.0648 453.988 113.071V113.071Z" fill="url(#paint3_linear_831_495)" />
+                <defs>
+                  <linearGradient id="paint0_linear_831_495" x1="920.5" y1="375.5" x2="789.5" y2="479" gradientUnits="userSpaceOnUse">
+                    <stop stopColor="var(--color-principal-hover)" />
+                    <stop offset="1" stopColor="var(--color-principal)" />
+                  </linearGradient>
+                  <linearGradient id="paint1_linear_831_495" x1="74.5" y1="348.5" x2="200.5" y2="491.5" gradientUnits="userSpaceOnUse">
+                    <stop stopColor="var(--color-principal)" />
+                    <stop offset="1" stopColor="var(--color-principal-hover)" />
+                  </linearGradient>
+                  <linearGradient id="paint2_linear_831_495" x1="858" y1="556" x2="124" y2="547.5" gradientUnits="userSpaceOnUse">
+                    <stop stopColor="var(--color-principal)" />
+                    <stop offset="1" stopColor="var(--color-principal-hover)" />
+                  </linearGradient>
+                  <linearGradient id="paint3_linear_831_495" x1="538.317" y1="39.6792" x2="458.498" y2="102.746" gradientUnits="userSpaceOnUse">
+                    <stop stopColor="var(--color-principal-hover)" />
+                    <stop offset="1" stopColor="var(--color-principal)" />
+                  </linearGradient>
+                </defs>
+              </svg>
+
+              <p className="niveau">{calculeLevel(level.xp)}</p>
+            </div>
+          </div>
         </div>
       </div>
-      <div className="leaderboardPlayerStats">
-        <div className="leaderboardPlayerStatBlock">
-          <div className="leaderboardPlayerStatName">
-            {t("levels.messages")}
-          </div>
-          <div className="leaderboardPlayerStatValue">
-            {formatNumber(level.nbMessage)}
-          </div>
-        </div>
-        <div className="leaderboardPlayerStatBlock">
-          <div className="leaderboardPlayerStatName">
-            {t("levels.experience")}
-          </div>
-          <div className="leaderboardPlayerStatValue">
-            {formatNumber(level.xp)}
-          </div>
-        </div>
-        <div className="leaderboardPlayerStat">
-          <div className="leaderboardPlayerStatText">
-            <svg width="50" height="45" viewBox="0 0 974 882" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M319.841 728.275C314.49 728.275 309.544 731.126 306.862 735.757L235.678 858.652C229.886 868.652 237.101 881.17 248.658 881.17H733.492C745.049 881.17 752.264 868.652 746.472 858.652L675.289 735.757C672.606 731.126 667.66 728.275 662.309 728.275H319.841Z" fill="var(--color-principal)" />
-              <path d="M883.511 525.341C932.931 505.456 956.883 449.269 936.996 399.85V399.85C917.111 350.435 860.923 326.498 811.506 346.38V346.38C762.083 366.265 738.13 422.457 758.021 471.878V471.878C777.909 521.291 834.096 545.224 883.511 525.341V525.341Z" fill="url(#paint0_linear_831_495)" />
-              <path d="M65.6184 489.699C101.85 529.117 163.176 531.703 202.599 495.477V495.477C242.032 459.241 244.618 397.896 208.373 358.471V358.471C172.14 319.06 110.819 316.477 71.3992 352.7V352.7C31.9687 388.933 29.3798 450.273 65.6184 489.699V489.699Z" fill="url(#paint1_linear_831_495)" />
-              <path d="M830.009 662.527C722.084 823.479 281.083 830.795 158.523 662.527C35.9637 492.43 261.595 164.804 492.08 172.12C722.566 181.266 936.106 503.404 830.009 662.527Z" fill="url(#paint2_linear_831_495)" />
-              <path d="M794.213 641.39C698.638 783.923 308.106 790.402 199.573 641.391C91.0387 490.76 290.848 200.628 494.957 207.107C699.065 215.205 888.167 500.478 794.213 641.39Z" fill="black" />
-              <path d="M479.721 72.1191C479.721 69.3577 481.959 67.1191 484.721 67.1191H503.849C506.61 67.1191 508.849 69.3577 508.849 72.1191V189.399C508.849 192.16 506.61 194.399 503.849 194.399H484.721C481.959 194.399 479.721 192.16 479.721 189.399V72.1191Z" fill="var(--color-principal-hover)" />
-              <path d="M453.988 113.071C474.211 135.076 508.444 136.521 530.45 116.299V116.299C552.461 96.0717 553.903 61.8283 533.67 39.823V39.823C513.445 17.8274 479.219 16.3871 457.217 36.6051V36.6051C435.21 56.8285 433.763 91.0648 453.988 113.071V113.071Z" fill="url(#paint3_linear_831_495)" />
-              <defs>
-                <linearGradient id="paint0_linear_831_495" x1="920.5" y1="375.5" x2="789.5" y2="479" gradientUnits="userSpaceOnUse">
-                  <stop stopColor="var(--color-principal-hover)" />
-                  <stop offset="1" stopColor="var(--color-principal)" />
-                </linearGradient>
-                <linearGradient id="paint1_linear_831_495" x1="74.5" y1="348.5" x2="200.5" y2="491.5" gradientUnits="userSpaceOnUse">
-                  <stop stopColor="var(--color-principal)" />
-                  <stop offset="1" stopColor="var(--color-principal-hover)" />
-                </linearGradient>
-                <linearGradient id="paint2_linear_831_495" x1="858" y1="556" x2="124" y2="547.5" gradientUnits="userSpaceOnUse">
-                  <stop stopColor="var(--color-principal)" />
-                  <stop offset="1" stopColor="var(--color-principal-hover)" />
-                </linearGradient>
-                <linearGradient id="paint3_linear_831_495" x1="538.317" y1="39.6792" x2="458.498" y2="102.746" gradientUnits="userSpaceOnUse">
-                  <stop stopColor="var(--color-principal-hover)" />
-                  <stop offset="1" stopColor="var(--color-principal)" />
-                </linearGradient>
-              </defs>
-            </svg>
+    </div>)
+  }, [])
 
-            <p className="niveau">{calculeLevel(level.xp)}</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>)
-
+  return renderLevel;
 }
 
 export default Level;
