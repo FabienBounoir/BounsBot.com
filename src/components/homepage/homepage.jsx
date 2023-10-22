@@ -81,7 +81,7 @@ export const HomePage = () => {
 
                     <span>
                         <a className="support_button" href={"https://discord.gg/KxedRVTutX"} >
-                            <span>{t("support")}</span>
+                            <span>{t("homepage.support")}</span>
                         </a>
                     </span>
                 </div>
