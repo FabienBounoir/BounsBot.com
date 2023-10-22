@@ -84,7 +84,7 @@ export const Navigation = () => {
         <>
             <Navbar collapseOnSelect expand="md" bg="dark" variant="dark">
                 <Container>
-                    <Navbar.Brand> <Link to="/">
+                    <Navbar.Brand> <Link to="/" onClick={() => { eventClick() }}>
                         <Avatar classElement="d-inline-block align-top" width="32" height="30" />
                         {' '}
                         <span style={{ color: "white", fontFamily: "Bebas Neue, sans-serif", letterSpacing: "3px", fontWeight: "900" }}>Bouns'Bot</span>

@@ -275,15 +275,49 @@
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        height: calc(100vh - 120px);
+        height: calc(100vh - 25px);
         /* min-height: 60vh; */
         /* max-height: 50vh; */
         padding: 40px 10px 40px 10px;
-        gap: 3.5em;
+        gap: 1.5em;
         /* background: #1f2129; */
+    }
+
+    .infoComponent h2 {
+        margin-bottom: auto;
+        margin-top: auto;
     }
 
     .infoComponent .clydeLove {
         display: none;
     }
+}
+
+@media (max-height: 600px) {
+    .guilds-container.mobile .guilds:nth-child(3), .guilds-container.mobile .guilds:nth-child(4) {
+        display: none;
+    }
+
+    .infoComponent {
+        margin: 0;
+        padding: 0;
+        display: flex;
+        /* gap:  */
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: calc(100vh - 25px);
+        /* min-height: 60vh; */
+        /* max-height: 50vh; */
+        padding: 40px 10px 40px 10px;
+        gap: 1.5em;
+        /* background: #1f2129; */
+    }
+
+    .infoComponent h2 {
+        margin-bottom: auto;
+        margin-top: auto;
+    }
+
+
 }
