@@ -22,7 +22,10 @@ export const hasThisGuild = (guildIds) => {
         try {
             const response = await fetch(`${hostname}/has`, {
                 body: JSON.stringify({ has: guildIds }),
-                method: "POST"
+                method: "POST",
+                headers: {
+                    'Content-Type': 'application/json'
+                }
             })
                 .then(response => response.json())
 

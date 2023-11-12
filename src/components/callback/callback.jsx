@@ -2,70 +2,66 @@ import "./_callback.css";
 import { Component } from 'react'
 import Fetch from "../../utils/fetch.js";
 import Avatar from "../avatar/avatar";
+import { login } from "../../utils/API/authAPI";
 
 class Callback extends Component {
-    async exchange_code(code) {
-        let details = {
-            'client_id': process.env.REACT_APP_CLIENT_ID,
-            'client_secret': process.env.REACT_APP_CLIENT_SECRET,
-            'grant_type': 'authorization_code',
-            'code': code,
-            'redirect_uri': process.env.REACT_APP_HOSTNAME + "/oauth/callback"
-        }
 
-        var formBody = [];
-        for (var property in details) {
-            var encodedKey = encodeURIComponent(property);
-            var encodedValue = encodeURIComponent(details[property]);
-            formBody.push(encodedKey + "=" + encodedValue);
-        }
-        formBody = formBody.join("&");
-
-        let headers = {
-            'Content-Type': 'application/x-www-form-urlencoded'
-        }
-
-        const body = await fetch('https://discord.com/api/oauth2/token', {
-            headers: headers,
-            method: "POST",
-            body: formBody
-        }).catch(error => { console.error(error); });//document.location.href = "/"; });
-
-
-        if (body.status === 200) {
-            const result = await body.json();
-
-            await window.localStorage.setItem('dataDiscord', JSON.stringify(result));
-
-            const user = await Fetch.getInfoUser(result.access_token)
-
-            if (!user) document.location.href = "/login"
-            await window.localStorage.setItem('dataUser', JSON.stringify(user))
-
-            document.location.href = "/dashboard/user/description";
-        }
-        else {
-            document.location.href = "/login";
-        }
+    state = {
+        type: null,
+        data: null
     }
 
     componentDidMount() {
-
         const code = new URLSearchParams(window.location.search).get('code')
 
-        // fetch("http://localhost:3400/api/auth/login?code=" + code).then(res => res.json()).then(data => {
-        //     console.log(data)
-        // })
+        if (!code) {
+            return document.location.href = "/login";
+        }
 
-        return
-        if (code) {
-            this.exchange_code(code);
-        }
-        else {
-            // document.location.href = "/login";
-        }
+        login(code).then(data => {
+            document.location.href = "/dashboard/user/description";
+        }).catch(error => {
+            console.error(error)
+            document.location.href = "/login";
+        })
     }
 
+    sendCode() {
+        const code = new URLSearchParams(window.location.search).get('code')
+
+        login(code).then(data => {
+            console.log(data)
+            this.setState({
+                type: "sendCode",
+                data: data
+            })
+        })
+    }
+
+    logout() {
+        fetch("http://localhost:3500/auth/logout").then(res => res.json()).then(data => {
+            console.log(data)
+            this.setState({
+                type: "logout",
+                data: data
+            })
+        })
+
+    }
+
+    getGuilds() {
+        fetch("http://localhost:3500/auth/guilds", {
+            headers: {
+                Authorization: "Bearer " + window.localStorage.getItem("token")
+            }
+        }).then(res => res.json()).then(data => {
+            console.log(data)
+            this.setState({
+                type: "getGuilds",
+                data: data
+            })
+        })
+    }
 
     render() {
         return (
@@ -73,6 +69,16 @@ class Callback extends Component {
                 <Avatar classElement="width-logo-svg" />
                 <p><strong>Authentification en cours</strong><br />Veuillez patienter...</p>
                 <span>Se connecter avec Discord</span>
+
+                <button onClick={() => { this.sendCode() }} >sendCode</button>
+                <button onClick={() => { this.logout() }} >logout</button>
+                <button onClick={() => { this.getGuilds() }} >Guilds</button>
+
+                <pre>
+                    {JSON.stringify(this.state, null, 2)}
+                </pre>
+
+
             </div>
         )
     }

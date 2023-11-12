@@ -6,6 +6,7 @@ import Fetch from "../../utils/fetch.js";
 import { Link } from "react-router-dom"
 import Avatar from "../avatar/avatar";
 import { useTranslation } from "react-i18next";
+import { getUser } from "../../utils/API/authAPI";
 
 export const Navigation = () => {
     const { t } = useTranslation();
@@ -19,29 +20,27 @@ export const Navigation = () => {
     const clickMe = () => {
         revokeToken()
         window.localStorage.removeItem('dataDiscord');
-        window.localStorage.removeItem('dataUser');
+        window.localStorage.removeItem('user');
 
         document.location.href = "/"
     }
 
     const updateLogin = async () => {
 
-        if (window.localStorage.getItem('dataUser') === null) {
+        if (window.localStorage.getItem('user') === null) {
             setlogin(false)
         }
         else {
-            setlogin(true)
-            const token = JSON.parse(window.localStorage.getItem('dataDiscord'))?.access_token;
-
-            const user = await Fetch.getInfoUser(token)
+            const user = await getUser()
 
             if (!user) {
-                window.localStorage.removeItem('dataDiscord');
-                window.localStorage.removeItem('dataUser');
+                window.localStorage.removeItem('token');
+                window.localStorage.removeItem('tokenType');
+                window.localStorage.removeItem('user');
                 return setlogin(false)
             }
 
-            await window.localStorage.setItem('dataUser', JSON.stringify(user))
+            await window.localStorage.setItem('user', JSON.stringify(user))
             setlogin(true)
         }
     }
@@ -106,9 +105,9 @@ export const Navigation = () => {
                                     EtatConnexion.push(
                                         <div key="45678" className="login-template"><Navbar.Text>
                                             <div className="login_button_container">
-                                                <div className="LogoNav" style={{ backgroundImage: `url("https://cdn.discordapp.com/avatars/${JSON.parse(window.localStorage.getItem('dataUser')).id}/${JSON.parse(window.localStorage.getItem('dataUser')).avatar}.png?size=512` }}>
+                                                <div className="LogoNav" style={{ backgroundImage: `url("https://cdn.discordapp.com/avatars/${JSON.parse(window.localStorage.getItem('user')).id}/${JSON.parse(window.localStorage.getItem('user')).avatar}.png?size=512` }}>
                                                 </div>
-                                                <Link onClick={() => { eventClick() }} to="/dashboard/user/description" style={{ textDecoration: "none" }}><span className="hamgn6-5 dashboard_button">{JSON.parse(window.localStorage.getItem('dataUser')).username}</span></Link>
+                                                <Link onClick={() => { eventClick() }} to="/dashboard/user/description" style={{ textDecoration: "none" }}><span className="hamgn6-5 dashboard_button">{JSON.parse(window.localStorage.getItem('user')).username}</span></Link>
                                                 <div onClick={() => { clickMe() }}>
                                                     <svg style={{ marginLeft: "10px", width: "27px", height: "27px", minHeight: "27px", minMidth: "27px" }} viewBox="0 0 512 512" fill="none" xmlns="http://www.w3.org/2000/svg">
                                                         <path

@@ -3,6 +3,8 @@ import React, { Component } from 'react'
 import Fetch from "../../utils/fetch.js"
 import { ListServer } from "../../components/listServer/listServer";
 import { Configuration } from "../../components/configuration/configuration";
+import { getGuilds } from "../../utils/API/authAPI";
+import { hasThisGuild } from "../../utils/API/guildsAPI";
 
 class Dashboard extends Component {
     state = {
@@ -13,23 +15,31 @@ class Dashboard extends Component {
 
 
     getGuilds = async () => {
-        const info = JSON.parse(window.localStorage.getItem("dataDiscord"))
-        const guild = await Fetch.getGuilds(info.access_token)
+        const guilds = await getGuilds()
+        if (!guilds) return document.location.href = "/login";
 
-        if (!guild) return document.location.href = "/login";
-        const hasguild = await Fetch.getBounsBotHasGuild(guild) || []
+        let guildAdmin = await guilds.filter(guild => guild.permissions === 2147483647)
+        let hasguild = []
 
-        for (let i = 0; i < guild.length; i++) {
-            guild[i].hasguild = hasguild.find(g => g === guild[i].id) ? true : false
+        const guildsId = guildAdmin.map(g => g.id)
+
+        try {
+            hasguild = await hasThisGuild(guildsId)
+        } catch (error) {
+            console.error(error)
         }
 
-        guild.sort((a, b) => {
+        for (let i = 0; i < guildAdmin.length; i++) {
+            guildAdmin[i].hasguild = hasguild.find(g => g === guildAdmin[i].id) ? true : false
+        }
+
+        guildAdmin.sort((a, b) => {
             if (a.hasguild && !b.hasguild) return -1;
             if (!a.hasguild && b.hasguild) return 1;
             return 0;
         })
 
-        this.setState({ guilds: guild, loading: false })
+        this.setState({ guilds: guildAdmin, loading: false })
     }
 
     componentDidMount() {
@@ -71,7 +81,7 @@ class Dashboard extends Component {
     render() {
         return (<div className="dashboard" >
             <ListServer guilds={this.state.guilds} loading={this.state.loading} />
-            <Configuration guilds={this.state.guilds} user={JSON.parse(window.localStorage.getItem("dataUser") || {})} loading={this.state.loading} />
+            <Configuration guilds={this.state.guilds} user={JSON.parse(window.localStorage.getItem("user") || {})} loading={this.state.loading} />
         </div>)
     }
 }
