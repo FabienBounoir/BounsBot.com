@@ -247,7 +247,7 @@ export const Configuration = (props) => {
             case "welcome":
                 return <Welcome guildId={id} configuration={configGuildUpdateSelected} setConfiguration={setConfigGuildUpdateSelected} channels={channels} rolesGuild={roles} loading={loading} user={props.user} name={guild?.name} iconLink={guild?.icon ? `https://cdn.discordapp.com/icons/${guild?.id}/${guild?.icon}.gif?size=256` : null} />;
             case "guild_message":
-                return <Send guildId={id} />;
+                return <Send guildId={id} channels={channels} />;
             case "levels":
                 return <LevelsConfig guildId={id} configuration={configGuildUpdateSelected} channelsGuild={channels} rolesGuild={roles} loading={loading} />;
             case "rename":
