@@ -8,7 +8,7 @@ import LoadingComponent from "../loading/LoadingComponent.jsx";
 
 export const Welcome = ({ guildId, configuration, setConfiguration, channels, rolesGuild, loading, iconLink, name, user }) => {
 
-    const [initialConfig, setInitialConfig] = useState({})
+    // const [initialConfig, setInitialConfig] = useState({})
     const [embedNumber] = useState(0) //setEmbedNumber
     const [timer, setTimer] = useState(null);
     const [roles, setRoles] = useState([])
@@ -556,9 +556,11 @@ export const Welcome = ({ guildId, configuration, setConfiguration, channels, ro
     }, [roleXp])
 
     let updateRoleConfig = async (newRole) => {
-        let config = { ...configuration }
+        // let config = { ...configuration }
 
-        config.ROLE.roles = [...config.ROLE.roles, newRole]
+        // config.welcome.roles = [...config.ROLE.roles, newRole]
+
+        setConfiguration({ ...configuration, welcomeRole: { ...configuration.welcomeRole, roles: [...configuration.welcomeRole.roles, newRole] } })
     }
 
     useEffect(() => {
@@ -577,11 +579,7 @@ export const Welcome = ({ guildId, configuration, setConfiguration, channels, ro
     }, [configuration])
 
     const updateEtatDm = (e) => {
-        let config = { ...configuration }
-
-        config.welcome.DM.active = e.target.checked
-
-        setConfiguration(config)
+        setConfiguration({ ...configuration, welcome: { ...configuration.welcome, DM: { ...configuration.welcome.DM, active: e.target.checked } } })
     }
 
     const updateEtatROLE = (e) => {
@@ -593,11 +591,11 @@ export const Welcome = ({ guildId, configuration, setConfiguration, channels, ro
     }
 
     const updateEmbedDm = (embedNumber, configElement) => {
-        let config = { ...configuration }
+        let embeds = JSON.parse(JSON.stringify(configuration.welcome.DM.embeds))
 
-        config.welcome.DM.embeds[embedNumber] = { ...config.welcome.DM.embeds[embedNumber], ...configElement }
+        embeds[embedNumber] = { ...embeds[embedNumber], ...configElement }
 
-        setConfiguration(config)
+        setConfiguration({ ...configuration, welcome: { ...configuration.welcome, DM: { ...configuration.welcome.DM, embeds: embeds } } })
     }
 
     const updateColorGuild = (color) => {
@@ -613,7 +611,7 @@ export const Welcome = ({ guildId, configuration, setConfiguration, channels, ro
     }
 
     let updateContent = (e) => {
-        setConfiguration({ ...configuration, welcome: { ...configuration.welcome, guild: { ...configuration.welcome.guild, content: e.target.value } } })
+        setConfiguration({ ...configuration, welcome: { ...configuration.welcome, guild: { ...configuration.welcome.guild, content: (e.target.value || null) } } })
     }
 
     let updateDefaultPseudo = (value) => {
@@ -662,20 +660,20 @@ export const Welcome = ({ guildId, configuration, setConfiguration, channels, ro
         return option;
     }
 
-    let fixInitialRoleConfig = (roles) => {
-        let newConfig = { ...initialConfig }
+    // let fixInitialRoleConfig = (roles) => {
+    //     let newConfig = { ...initialConfig }
 
-        newConfig.ROLE.roles = roles
+    //     newConfig.ROLE.roles = roles
 
-        setInitialConfig(newConfig)
-    }
+    //     setInitialConfig(newConfig)
+    // }
 
     let fixRoleConfig = (roles) => {
-        let newConfig = { ...configuration }
+        // let newConfig = { ...configuration }
 
-        newConfig.ROLE.roles = roles
+        // newConfig.welcomeRole.roles = roles
 
-        // setConfiguration(newConfig)
+        setConfiguration({ ...configuration, welcomeRole: { ...configuration.welcomeRole, roles: roles } })
     }
 
     function decimalToHex(decimal) {
@@ -699,11 +697,11 @@ export const Welcome = ({ guildId, configuration, setConfiguration, channels, ro
         for (let role of (configuration?.welcomeRole?.roles || [])) {
             let roleElement = roles.find(r => r.id == role)
 
-            if (roleElement == undefined) {
-                fixInitialRoleConfig(initialConfig.ROLE.roles.filter(r => r != role))
-                fixRoleConfig(configuration?.welcomeRole.roles.filter(r => r != role))
-            }
-            else {
+            if (roleElement != undefined) {
+                //     fixInitialRoleConfig(initialConfig.ROLE.roles.filter(r => r != role))
+                //     fixRoleConfig(configuration?.welcomeRole.roles.filter(r => r != role))
+                // }
+                // else {
                 rolesModule.push(
                     <div className="roleRenderXP">
                         <span style={{ background: `${decimalToHex(roleElement?.color)}` }}></span>
