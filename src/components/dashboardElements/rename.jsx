@@ -4,12 +4,12 @@ import Avatar from "../avatar/avatar";
 import LoadingComponent from "../loading/LoadingComponent.jsx";
 import { Form } from 'react-bootstrap/'
 
-export const Rename = ({ guildId, loading, configuration }) => {
+export const Rename = ({ guildId, loading, configuration, setConfiguration }) => {
 
     // const [loading, setLoading] = useState(true)
     // const [loadingError, setLoadingError] = useState(false)
-    const [configurationeee, setConfiguration] = useState({})
-    const [initialConfiguration, setInitialConfiguration] = useState({})
+    // const [configurationeee, setConfiguration] = useState({})
+    // const [initialConfiguration, setInitialConfiguration] = useState({})
 
     const [loadingChargement, setLoadingChargement] = useState(false);
     const [changeNotSave, setChangeNotSave] = useState(false);
@@ -60,69 +60,10 @@ export const Rename = ({ guildId, loading, configuration }) => {
     //     setChangeNotSave(false)
     // }, [configuration])
 
-    const updateConfig = async () => {
-        setLoadingChargement(true)
-
-        let headers = new Headers();
-        headers.append("Content-Type", "application/json");
-        headers.append("Authorization", `Bearer ${JSON.parse(window.localStorage.getItem('dataDiscord'))?.access_token}`);
-
-        let info = null
-
-        // setConfiguration(configuration => ({
-        //     ...configuration, renameConfig: {
-        //         ...configuration.renameConfig, wordsList: configuration.renameConfig.wordsList.filter(Boolean)
-        //     }
-        // }));
-
-        try {
-            info = await fetch(`${process.env.REACT_APP_HOSTNAME_BACKEND}/guild/${guildId}/rename`, {
-                method: "PUT",
-                headers,
-                body: JSON.stringify(configuration),
-                redirect: 'follow'
-            })
-        } catch (error) {
-            return console.log("Save Configuration Error", error)
-        }
-
-        if (info.status === 200) {
-            setInitialConfiguration(JSON.parse(JSON.stringify(configuration)))
-            setChangeNotSave(false)
-            setLoadingChargement(false)
-        }
-        else {
-            alert("Une erreur est survenue lors de la sauvegarde de la configuration")
-        }
-    }
-
-    const resetChange = () => {
-        // setConfiguration(JSON.parse(JSON.stringify(initialConfiguration)))
-    }
-
-    let getRenameConfig = async () => {
-        var myHeaders = new Headers();
-        myHeaders.append("Content-Type", "application/json");
-        myHeaders.append("Authorization", `Bearer ${JSON.parse(window.localStorage.getItem('dataDiscord'))?.access_token}`);
-
-        var requestOptions = {
-            method: 'GET',
-            headers: myHeaders,
-            redirect: 'follow'
-        };
-
-        await fetch(process.env.REACT_APP_HOSTNAME_BACKEND + "/guild/" + guildId + "/rename", requestOptions)
-            .then(response => response.json())
-            .then((result) => {
-                setInitialConfiguration(result)
-                // setConfiguration(result)
-            })
-    };
-
     return (
         <>
             {["ERROR", "LOADING"].includes(loading) ? <LoadingComponent error={loading == "ERROR"} errorMessage="Une erreur est survenue lors du chargement des données." /> :
-                <div className="block padding-1 heightMax">
+                <div className={"block padding-1 heightMax" + (configuration?.rename ? " disabled" : "")}>
                     <div className="infoActive">
                         <h5>Renommer les pseudonymes non conformes des utilisateurs</h5>
                         <Form.Check className="picto" type="switch" id="custom-switch success" checked={configuration.rename} onChange={(e) => { setConfiguration({ ...configuration, rename: e.target.checked }) }} />
@@ -208,8 +149,6 @@ export const Rename = ({ guildId, loading, configuration }) => {
 
 
                 </div>}
-
-            <div id="card" className={"cardSave" + (changeNotSave ? " hidden" : "")} ><div className="saveConfig"><div style={{ display: "flex", alignItems: "center", flexDirection: "row", gap: "0.3em" }}><Avatar classElement="logoChangement" width="30" height="28" /> Changements détectés ! Veuillez enregistrer ou annuler.</div><div className="buttonContainer"><button className="cancelButton" disabled={loadingChargement} type="button" onClick={resetChange}>Annuler</button><button className="saveButton" type="button" disabled={loadingChargement} onClick={updateConfig}>Enregistrer</button></div></div></div>
         </>
     )
 }

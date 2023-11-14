@@ -251,7 +251,7 @@ export const Configuration = (props) => {
             case "levels":
                 return <LevelsConfig guildId={id} configuration={configGuildUpdateSelected} channelsGuild={channels} rolesGuild={roles} loading={loading} />;
             case "rename":
-                return <Rename guildId={id} configuration={configGuildUpdateSelected} loading={loading} />;
+                return <Rename guildId={id} configuration={configGuildUpdateSelected} setConfiguration={setConfigGuildUpdateSelected} loading={loading} />;
             case "musique":
                 return <Musique guildId={id} />;
             default:

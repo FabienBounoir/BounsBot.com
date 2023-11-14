@@ -911,7 +911,7 @@ input[type="radio"]:checked::before {
 
 }
 
-.informationConfig {
+.block .informationConfig {
     color: white;
     display: flex;
     flex-direction: row;
@@ -919,6 +919,11 @@ input[type="radio"]:checked::before {
     transition: filter 0.2s ease-out 0s;
 
     gap: 1em;
+    transition: opacity 0.2s ease-out 0s;
+}
+
+.block.disabled .informationConfig {
+    opacity: 0.5;
 }
 
 .informationWelcomeCanvas {
@@ -1245,7 +1250,7 @@ input[type="radio"]:checked::before {
 .block {
     background-color: #292B30;
     border-radius: 5px;
-    margin-bottom: 1.5em;
+    margin-bottom: auto;
 }
 
 .form-check-input:checked {
