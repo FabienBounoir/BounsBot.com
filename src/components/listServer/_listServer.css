@@ -43,8 +43,9 @@
     filter: grayscale(100%);
 }
 
-.guildAvatar.loader {
+.guildAvatar.loading {
     border-radius: 50%;
+    background-color: var(--color-principal);
     /* background-color: red; */
 
     /* background: radial-gradient(circle,
@@ -60,9 +61,45 @@
     animation: loaderGuild 1s infinite alternate;
 }
 
+.list_item.cantChange {
+    cursor: not-allowed;
+    pointer-events: visible;
+}
+
+.list_item.cantChange:hover .guildAvatar {
+    animation: leftToRight 0.3s ease-out infinite;
+}
+
+.list_item.cantChange:hover .list_balise .balise {
+    height: 15px;
+    width: 8px;
+    opacity: 0;
+}
+
+@keyframes leftToRight {
+    0% {
+        transform: translateX(0);
+    }
+
+
+    25% {
+        transform: translateX(-2px);
+    }
+
+    75% {
+        transform: translateX(2px);
+    }
+}
+
+
+.list_item.cantChange:hover .guildAvatar img {
+    border-radius: 100% !important;
+}
+
+
 @keyframes loaderGuild {
     0% {
-        background-color: hsl(200, 20%, 70%);
+        background-color: hsla(200, 20%, 70%);
     }
 
     100% {

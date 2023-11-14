@@ -107,7 +107,7 @@ export const Navigation = () => {
                                             <div className="login_button_container">
                                                 <div className="LogoNav" style={{ backgroundImage: `url("https://cdn.discordapp.com/avatars/${JSON.parse(window.localStorage.getItem('user')).id}/${JSON.parse(window.localStorage.getItem('user')).avatar}.png?size=512` }}>
                                                 </div>
-                                                <Link onClick={() => { eventClick() }} to="/dashboard/user/description" style={{ textDecoration: "none" }}><span className="hamgn6-5 dashboard_button">{JSON.parse(window.localStorage.getItem('user')).username}</span></Link>
+                                                <Link onClick={() => { eventClick() }} to="/dashboard/user/description" style={{ textDecoration: "none" }}><span className="hamgn6-5 dashboard_button">{JSON.parse(window.localStorage.getItem('user')).global_name || JSON.parse(window.localStorage.getItem('user')).username}</span></Link>
                                                 <div onClick={() => { clickMe() }}>
                                                     <svg style={{ marginLeft: "10px", width: "27px", height: "27px", minHeight: "27px", minMidth: "27px" }} viewBox="0 0 512 512" fill="none" xmlns="http://www.w3.org/2000/svg">
                                                         <path

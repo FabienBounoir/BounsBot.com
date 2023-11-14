@@ -51,8 +51,40 @@ export const best = () => {
     })
 }
 
-// module.exports = {
-//     sendMessage,
-//     hasThisGuild,
-//     best
-// }
+export const getConfiguration = (guildId) => {
+    return new Promise(async (resolve, reject) => {
+        try {
+            const response = await fetch(`${hostname}/configuration?guildId=${guildId}`, {
+                headers: {
+                    'Content-Type': 'application/json',
+                    Authorization: `${localStorage.getItem("tokenType")} ${localStorage.getItem("token")}`
+                },
+            })
+                .then(response => response.json())
+
+            resolve(response)
+        }
+        catch (e) {
+            reject(e)
+        }
+    })
+}
+
+export const getElement = (guildId, element) => {
+    return new Promise(async (resolve, reject) => {
+        try {
+            const response = await fetch(`${hostname}/${guildId}/${element}`, {
+                headers: {
+                    'Content-Type': 'application/json',
+                    Authorization: `${localStorage.getItem("tokenType")} ${localStorage.getItem("token")}`
+                },
+            })
+                .then(response => response.json())
+
+            resolve(response)
+        }
+        catch (e) {
+            reject(e)
+        }
+    })
+}

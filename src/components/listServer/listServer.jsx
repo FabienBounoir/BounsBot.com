@@ -51,7 +51,7 @@ export const ListServer = (props) => {
                             <span></span>
                         </div>
                     </div >
-                    <div className="guildAvatar loader">
+                    <div className="guildAvatar loading">
                         <div></div>
                         {/* <img src={`https://cdn.discordapp.com/icons/${guild.id}/${guild.icon}.webp`} alt={guild.name} onError={(e) => { e.target.outerHTML = `<img src='https://cdn.discordapp.com/embed/avatars/${random}.png'/>` }} /> */}
                     </div>
@@ -82,9 +82,9 @@ export const ListServer = (props) => {
         for (let guild of guilds) {
             let random = Math.floor(Math.random() * 6)
 
-            if (guild.hasguild) {
+            if (guild.bot) {
                 render.push(
-                    <Link key={guild.id} className={`list_item${activeGuild === guild.id ? " active" : ""}`} to={`/dashboard/${guild.id}/dashboard`}>
+                    <Link key={guild.id} className={`list_item${activeGuild === guild.id ? " active" : ""}${(props.changeNotSave && activeGuild !== guild.id) ? " cantChange" : ""}`} to={`/dashboard/${guild.id}/dashboard`}>
                         < div className="list_balise" >
                             <div className="balise active">
                                 <span></span>
@@ -102,7 +102,7 @@ export const ListServer = (props) => {
             }
             else {
                 render.push(
-                    <div key={guild.id} className={`list_item${activeGuild === guild.id ? " active" : ""}`} onClick={() => { popUpCreate(guild.id) }}>
+                    <div key={guild.id} className={`list_item${activeGuild === guild.id ? " active" : ""}${(props.changeNotSave && activeGuild !== guild.id) ? " cantChange" : ""}`} onClick={() => { popUpCreate(guild.id) }}>
                         < div className="list_balise" >
                             <div className="balise active">
                                 <span></span>

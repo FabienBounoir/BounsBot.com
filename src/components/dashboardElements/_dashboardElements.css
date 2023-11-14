@@ -1104,6 +1104,7 @@ input[type="radio"]:checked::before {
 
     /* transition: all 5s; */
     /* bottom: 1000px; */
+    margin-top: 1em;
 }
 
 .hidden {
@@ -1112,6 +1113,10 @@ input[type="radio"]:checked::before {
     bottom: 0;
     margin-left: -10px;
     margin-right: -10px;
+
+    left: 40px;
+    right: 40px;
+    /* padding-bottom: 32px; */
 }
 
 .cardSave .buttonContainer {

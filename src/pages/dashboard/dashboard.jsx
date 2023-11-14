@@ -1,69 +1,26 @@
 import "./_dashboard.css";
-import React, { Component } from 'react'
+import React, { Component, useEffect, useState } from 'react'
 import Fetch from "../../utils/fetch.js"
 import { ListServer } from "../../components/listServer/listServer";
 import { Configuration } from "../../components/configuration/configuration";
-import { getGuilds } from "../../utils/API/authAPI";
+import * as guildsAPI from "../../utils/API/authAPI";
 import { hasThisGuild } from "../../utils/API/guildsAPI";
 
-class Dashboard extends Component {
-    state = {
-        guilds: [],
-        loading: true,
-        close: true
+// class Dashboard extends Component {
+export const Dashboard = () => {
+    const [guilds, setGuilds] = useState([])
+    const [loading, setLoading] = useState(true)
+    const [changeNotSave, setChangeNotSave] = useState(false);
+
+    const getGuilds = async () => {
+        const res = await guildsAPI.getGuilds()
+        if ((!res) || res.length == 0) return document.location.href = "/login";
+
+        setGuilds(res)
+        setLoading(false)
     }
 
-
-    getGuilds = async () => {
-        const guilds = await getGuilds()
-        if (!guilds) return document.location.href = "/login";
-
-        let guildAdmin = await guilds.filter(guild => guild.permissions === 2147483647)
-        let hasguild = []
-
-        const guildsId = guildAdmin.map(g => g.id)
-
-        try {
-            hasguild = await hasThisGuild(guildsId)
-        } catch (error) {
-            console.error(error)
-        }
-
-        for (let i = 0; i < guildAdmin.length; i++) {
-            guildAdmin[i].hasguild = hasguild.find(g => g === guildAdmin[i].id) ? true : false
-        }
-
-        guildAdmin.sort((a, b) => {
-            if (a.hasguild && !b.hasguild) return -1;
-            if (!a.hasguild && b.hasguild) return 1;
-            return 0;
-        })
-
-        this.setState({ guilds: guildAdmin, loading: false })
-    }
-
-    componentDidMount() {
-        this.onResize()
-        document.getElementsByTagName("body")[0].style.overflow = "hidden";
-        this.getGuilds();
-        window.addEventListener("resize", () => {
-            this.onResize()
-        })
-
-        //when rotate the phone
-        window.addEventListener("orientationchange", () => {
-            this.onResize()
-        })
-
-        //when nav element change size
-        const nav = document.querySelector("nav")
-        nav.addEventListener("transitionend", () => {
-            this.onResize()
-        })
-    }
-
-    //when width or height change we update the height of the dashboard
-    onResize = () => {
+    const onResize = () => {
         const doc = document.documentElement
         doc.style.setProperty('--doc-height', `${window.innerHeight}px`)
 
@@ -74,16 +31,36 @@ class Dashboard extends Component {
         doc.style.setProperty('--dashboard-height', `calc(var(--doc-height) - ${navHeight}px)`)
     }
 
-    componentWillUnmount() {
-        document.getElementsByTagName("body")[0].style.overflow = "auto";
-    }
+    useEffect(() => {
+        onResize()
+        document.getElementsByTagName("body")[0].style.overflow = "hidden";
+        getGuilds();
+        window.addEventListener("resize", () => {
+            onResize()
+        })
 
-    render() {
-        return (<div className="dashboard" >
-            <ListServer guilds={this.state.guilds} loading={this.state.loading} />
-            <Configuration guilds={this.state.guilds} user={JSON.parse(window.localStorage.getItem("user") || {})} loading={this.state.loading} />
-        </div>)
-    }
+        //when rotate the phone
+        window.addEventListener("orientationchange", () => {
+            onResize()
+        })
+
+        //when nav element change size
+        const nav = document.querySelector("nav")
+        nav.addEventListener("transitionend", () => {
+            onResize()
+        })
+
+        return () => {
+            document.getElementsByTagName("body")[0].style.overflow = "auto";
+            window.removeEventListener("resize", onResize)
+            window.removeEventListener("orientationchange", onResize)
+            nav.removeEventListener("transitionend", onResize)
+        }
+    }, [])
+
+    return (<div className="dashboard" >
+        <ListServer guilds={guilds} loading={loading} changeNotSave={changeNotSave} />
+        <Configuration guilds={guilds} setChangeNotSave={setChangeNotSave} changeNotSave={changeNotSave} user={JSON.parse(window.localStorage.getItem("user") || {})} loading={loading} />
+    </div>)
 }
 
-export default Dashboard;

@@ -13,7 +13,7 @@ import { Commandes } from "../pages/commandes/commandes";
 import { ErreurPage } from "../pages/ErreurPage/ErreurPage";
 import { PrivacyBot } from "../pages/privacyBot/privacy";
 import { Login } from "../pages/login/login";
-import Dashboard from "../pages/dashboard/dashboard";
+import { Dashboard } from "../pages/dashboard/dashboard";
 
 import Demo from "../pages/demo/demo";
 import Callback from "../components/callback/callback";
@@ -142,7 +142,7 @@ export const App = () => {
           </Authenticate>
 
           <Authenticate exact path="/dashboard/:id/:typeconfig">
-            <Route exact path="/dashboard/:id/:typeconfig" component={Dashboard}>
+            <Route exact path="/dashboard/:id/:typeconfig" component={() => { return Dashboard() }}>
             </Route>
           </Authenticate>
 

@@ -3,53 +3,15 @@ import { Form } from 'react-bootstrap/'
 import Avatar from "../avatar/avatar";
 import LoadingComponent from "../loading/LoadingComponent.jsx";
 
-export const Logs = (props) => {
-
-    const [data, setData] = useState({})
-    const [initialConfig, setInitialConfig] = useState({})
-    const [changeNotSave, setChangeNotSave] = useState(false);
-    const [loadingChargement, setLoadingChargement] = useState(false);
-
-    const [loading, setLoading] = useState(true)
+export const Logs = ({ guildId, configuration, updateConfiguration, channels, loading }) => {
     const [channel, setChannel] = useState([])
-    const [loadingError, setLoadingError] = useState(false)
-
-    useEffect(async () => {
-        setLoading(true)
-        try {
-            await Promise.all([
-                getChannelGuild(),
-                getConfigurationLogs()
-            ])
-        }
-        catch (error) {
-            return setLoadingError(true)
-        }
-
-        setLoading(false)
-    }, [props.guildId])
 
     useEffect(() => {
-        if (!data.logs) return
-        if (!initialConfig.logs) return
+        setChannel(channels?.filter(channel => channel.type === 0) || [])
+    }, [channels])
 
-        const keys1 = Object.keys(data.logs);
-        const keys2 = Object.keys(initialConfig.logs);
 
-        if (keys1.length !== keys2.length) {
-            return setChangeNotSave(true)
-        }
-
-        for (let key of keys1) {
-            if (data.logs[key] !== initialConfig.logs[key]) {
-                return setChangeNotSave(true)
-            }
-        }
-
-        return setChangeNotSave(false)
-    }, [data])
-
-    let getChannelForSelector = (allChannel, selectedchannel) => {
+    let getChannelForSelector = (selectedchannel) => {
         var option = [];
 
         if (selectedchannel === "0" || selectedchannel === null) {
@@ -59,7 +21,7 @@ export const Logs = (props) => {
             option.push(<option value="0">❌ Désactivé</option>)
         }
 
-        for (let value of allChannel) {
+        for (let value of channel) {
             if (value.id === selectedchannel) {
                 option.push(<option value={value.id} selected>{value.name}</option>)
             }
@@ -71,65 +33,9 @@ export const Logs = (props) => {
         return option;
     }
 
-    let resetChange = () => {
-        setData(initialConfig)
-    }
-
-    let updateConfig = async () => {
-        setLoadingChargement(true)
-
-        let headers = new Headers();
-        headers.append("Content-Type", "application/json");
-        headers.append("Authorization", `Bearer ${JSON.parse(window.localStorage.getItem('dataDiscord'))?.access_token}`);
-
-        try {
-            await fetch(`${process.env.REACT_APP_HOSTNAME_BACKEND}/guild/${props.guildId}/logs`, {
-                method: "PUT",
-                headers,
-                body: JSON.stringify(data),
-                redirect: 'follow'
-            }).then(res => res.json())
-        } catch (error) {
-            return console.log("Save Configuration Error", error)
-        }
-
-        setInitialConfig(data)
-        setLoadingChargement(false)
-        setChangeNotSave(false)
-    }
-
-    let getChannelGuild = async () => {
-        var myHeaders = new Headers();
-        myHeaders.append("Content-Type", "application/json");
-        myHeaders.append("Authorization", `Bearer ${JSON.parse(window.localStorage.getItem('dataDiscord'))?.access_token}`);
-
-        var requestOptions = {
-            method: 'GET',
-            headers: myHeaders,
-            redirect: 'follow'
-        };
-
-        await fetch(process.env.REACT_APP_HOSTNAME_BACKEND + "/bot/getchannels/" + props.guildId, requestOptions)
-            .then(response => response.json())
-            .then((result) => {
-                setChannel(result.channels.filter(channel => channel.type === 0)
-                );
-            })
-            .catch(console.log)
-    };
-
-    let getConfigurationLogs = async () => {
-        let config = await fetch(`${process.env.REACT_APP_HOSTNAME_BACKEND}/guild/${props.guildId}/logs`).then(res => res.json()) || { logs: {} }
-
-        await Promise.all([
-            setInitialConfig(config),
-            setData(config)
-        ])
-    }
-
     return (<>
-        {loading ?
-            <LoadingComponent error={loadingError} errorMessage="Une erreur est survenue" />
+        {["ERROR", "LOADING"].includes(loading) ?
+            <LoadingComponent error={loading == "ERROR"} errorMessage="Une erreur est survenue" />
             : <>
                 <div className="guildModule" style={{ marginBottom: "1em" }} >
                     <div className="top">
@@ -139,9 +45,9 @@ export const Logs = (props) => {
                             </svg>
                             <h5 className="hrnh5k-0 eeKdki sc-1wkjbe7-8 GoZzi">Messages</h5>
                         </div>
-                        <Form.Select defaultValue={data.logs?.message} onChange={(event) => { setData({ ...data, logs: { ...data.logs, message: event.target.value } }) }} >
+                        <Form.Select defaultValue={configuration.logs?.message} value={configuration.logs?.message} onChange={(event) => { updateConfiguration({ ...configuration, logs: { ...configuration.logs, message: event.target.value } }) }} >
                             {(() => {
-                                return getChannelForSelector(channel, data.logs?.message);
+                                return getChannelForSelector(configuration.logs?.message);
                             })()}
                         </Form.Select>
                     </div>
@@ -157,9 +63,9 @@ export const Logs = (props) => {
                             </svg>
                             <h5 className="hrnh5k-0 eeKdki sc-1wkjbe7-8 GoZzi">Vocaux</h5>
                         </div>
-                        <Form.Select defaultValue={data.logs?.vocal} onChange={(event) => { setData({ ...data, logs: { ...data.logs, vocal: event.target.value } }) }} >
+                        <Form.Select defaultValue={configuration.logs?.vocal} value={configuration.logs?.vocal} onChange={(event) => { updateConfiguration({ ...configuration, logs: { ...configuration.logs, vocal: event.target.value } }) }} >
                             {(() => {
-                                return getChannelForSelector(channel, data.logs?.vocal);
+                                return getChannelForSelector(configuration.logs?.vocal);
                             })()}
                         </Form.Select>
                     </div>
@@ -174,9 +80,9 @@ export const Logs = (props) => {
                             </svg>
                             <h5 className="hrnh5k-0 eeKdki sc-1wkjbe7-8 GoZzi">Users</h5>
                         </div>
-                        <Form.Select defaultValue={data.logs?.user} onChange={(event) => { setData({ ...data, logs: { ...data.logs, user: event.target.value } }) }} >
+                        <Form.Select defaultValue={configuration.logs?.user} value={configuration.logs?.user} onChange={(event) => { updateConfiguration({ ...configuration, logs: { ...configuration.logs, user: event.target.value } }) }} >
                             {(() => {
-                                return getChannelForSelector(channel, data.logs?.user);
+                                return getChannelForSelector(configuration.logs?.user);
                             })()}
                         </Form.Select>
                     </div>
@@ -192,9 +98,9 @@ export const Logs = (props) => {
                             </svg>
                             <h5 className="hrnh5k-0 eeKdki sc-1wkjbe7-8 GoZzi">Ban / Unban</h5>
                         </div>
-                        <Form.Select defaultValue={data.logs?.ban_unban} onChange={(event) => { setData({ ...data, logs: { ...data.logs, ban_unban: event.target.value } }) }} >
+                        <Form.Select defaultValue={configuration.logs?.ban_unban} value={configuration.logs?.ban_unban} onChange={(event) => { updateConfiguration({ ...configuration, logs: { ...configuration.logs, ban_unban: event.target.value } }) }} >
                             {(() => {
-                                return getChannelForSelector(channel, data.logs?.ban_unban);
+                                return getChannelForSelector(configuration.logs?.ban_unban);
                             })()}
                         </Form.Select>
                     </div>
@@ -212,9 +118,9 @@ export const Logs = (props) => {
 
                             <h5 className="hrnh5k-0 eeKdki sc-1wkjbe7-8 GoZzi">Join / Leave</h5>
                         </div>
-                        <Form.Select defaultValue={data.logs?.join_leave} onChange={(event) => { setData({ ...data, logs: { ...data.logs, join_leave: event.target.value } }) }} >
+                        <Form.Select defaultValue={configuration.logs?.join_leave} value={configuration.logs?.join_leave} onChange={(event) => { updateConfiguration({ ...configuration, logs: { ...configuration.logs, join_leave: event.target.value } }) }} >
                             {(() => {
-                                return getChannelForSelector(channel, data.logs?.join_leave);
+                                return getChannelForSelector(configuration.logs?.join_leave);
                             })()}
                         </Form.Select>
                     </div>
@@ -231,9 +137,9 @@ export const Logs = (props) => {
                             </svg>
                             <h5 className="hrnh5k-0 eeKdki sc-1wkjbe7-8 GoZzi">Guild</h5>
                         </div>
-                        <Form.Select defaultValue={data.logs?.guild} onChange={(e) => { setData({ ...data, logs: { ...data.logs, guild: e.target.value } }) }}>
+                        <Form.Select defaultValue={configuration.logs?.guild} value={configuration.logs?.guild} onChange={(e) => { updateConfiguration({ ...configuration, logs: { ...configuration.logs, guild: e.target.value } }) }}>
                             {(() => {
-                                return getChannelForSelector(channel, data.logs?.guild);
+                                return getChannelForSelector(configuration.logs?.guild);
                             })()}
                         </Form.Select>
                     </div>
@@ -249,9 +155,9 @@ export const Logs = (props) => {
                             </svg>
                             <h5 className="hrnh5k-0 eeKdki sc-1wkjbe7-8 GoZzi">Roles</h5>
                         </div>
-                        <Form.Select defaultValue={data.logs?.roles} onChange={(e) => { setData({ ...data, logs: { ...data.logs, roles: e.target.value } }) }}>
+                        <Form.Select defaultValue={configuration.logs?.roles} value={configuration.logs?.roles} onChange={(e) => { updateConfiguration({ ...configuration, logs: { ...configuration.logs, roles: e.target.value } }) }}>
                             {(() => {
-                                return getChannelForSelector(channel, data.logs?.roles);
+                                return getChannelForSelector(configuration.logs?.roles);
                             })()}
                         </Form.Select>
                     </div>
@@ -266,9 +172,9 @@ export const Logs = (props) => {
                             </svg>
                             <h5 className="hrnh5k-0 eeKdki sc-1wkjbe7-8 GoZzi">Channels</h5>
                         </div>
-                        <Form.Select defaultValue={data.logs?.channels} onChange={(e) => { setData({ ...data, logs: { ...data.logs, channels: e.target.value } }) }}>
+                        <Form.Select defaultValue={configuration.logs?.channels} value={configuration.logs?.channels} onChange={(e) => { updateConfiguration({ ...configuration, logs: { ...configuration.logs, channels: e.target.value } }) }}>
                             {(() => {
-                                return getChannelForSelector(channel, data.logs?.channels);
+                                return getChannelForSelector(configuration.logs?.channels);
                             })()}
                         </Form.Select>
                     </div>
@@ -283,9 +189,9 @@ export const Logs = (props) => {
                             </svg>
                             <h5 className="hrnh5k-0 eeKdki sc-1wkjbe7-8 GoZzi">Invites</h5>
                         </div>
-                        <Form.Select defaultValue={data.logs?.invites} onChange={(e) => { setData({ ...data, logs: { ...data.logs, invites: e.target.value } }) }}>
+                        <Form.Select defaultValue={configuration.logs?.invites} value={configuration.logs?.invites} onChange={(e) => { updateConfiguration({ ...configuration, logs: { ...configuration.logs, invites: e.target.value } }) }}>
                             {(() => {
-                                return getChannelForSelector(channel, data.logs?.invites);
+                                return getChannelForSelector(configuration.logs?.invites);
                             })()}
                         </Form.Select>
                     </div>
@@ -301,15 +207,14 @@ export const Logs = (props) => {
                             <h5 className="hrnh5k-0 eeKdki sc-1wkjbe7-8 GoZzi">Emotes / Stickers</h5>
                         </div>
                         {/* defaultValue={this.state.configuration.logs.message} onChange={(event) => { this.setState({ configuration: { ...this.state.configuration, logs: { ...this.state.configuration.logs, message: event.target.value } } }) }} */}
-                        <Form.Select defaultValue={data.logs?.emotes_stickers} onChange={(e) => { setData({ ...data, logs: { ...data.logs, emotes_stickers: e.target.value } }) }}>
+                        <Form.Select defaultValue={configuration.logs?.emotes_stickers} value={configuration.logs?.emotes_stickers} onChange={(e) => { updateConfiguration({ ...configuration, logs: { ...configuration.logs, emotes_stickers: e.target.value } }) }}>
                             {(() => {
-                                return getChannelForSelector(channel, data.logs?.emotes_stickers);
+                                return getChannelForSelector(configuration.logs?.emotes_stickers);
                             })()}
                         </Form.Select>
                     </div>
                     <div>Voir les differents changements opérés sur les Emotes et les stickers</div>
                 </div>
-                <div id="card" className={"cardSave" + (changeNotSave ? " hidden" : "")} ><div className="saveConfig"><div style={{ display: "flex", alignItems: "center", flexDirection: "row", gap: "0.3em" }}><Avatar classElement="logoChangement" width="30" height="28" /> Changements détectés ! Veuillez enregistrer ou annuler.</div><div className="buttonContainer"><button className="cancelButton" disabled={loadingChargement} type="button" onClick={resetChange}>Annuler</button><button className="saveButton" type="button" disabled={loadingChargement} onClick={updateConfig}>Enregistrer</button></div></div></div>
             </>}
 
     </>)
