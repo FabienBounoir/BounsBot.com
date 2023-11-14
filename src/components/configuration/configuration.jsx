@@ -45,11 +45,13 @@ export const Configuration = (props) => {
         headers.append("Content-Type", "application/json");
         headers.append("Authorization", `Bearer ${JSON.parse(window.localStorage.getItem('dataDiscord'))?.access_token}`);
 
+        const diff = lodash.omitBy(configGuildUpdateSelected, (value, key) => lodash.isEqual(value, configGuildSelected[key]))
+
         try {
             await fetch(`${process.env.REACT_APP_HOSTNAME_BACKEND}/guild/configuration/${activeGuild}`, {
                 method: "PATCH",
                 headers,
-                body: JSON.stringify(configGuildUpdateSelected),
+                body: JSON.stringify(diff),
                 redirect: 'follow'
             }).then(res => res.json())
         } catch (error) {
@@ -127,10 +129,16 @@ export const Configuration = (props) => {
     }
 
     useEffect(() => {
-        console.log("DIFF ? ", !lodash.isEqual(configGuildSelected, configGuildUpdateSelected))
+        const diff = !lodash.isEqual(configGuildSelected, configGuildUpdateSelected)
+
+        console.log("DIFF ? ", diff)
 
         console.log(configGuildSelected.welcome, configGuildUpdateSelected.welcome)
-        props.setChangeNotSave(!lodash.isEqual(configGuildSelected, configGuildUpdateSelected))
+        props.setChangeNotSave(diff)
+
+        if (diff) {
+            console.log("VOICI LES DIFFERENCES", lodash.omitBy(configGuildUpdateSelected, (value, key) => lodash.isEqual(value, configGuildSelected[key])))
+        }
     }, [configGuildUpdateSelected])
 
     const getElement = async () => {
@@ -249,7 +257,7 @@ export const Configuration = (props) => {
             case "guild_message":
                 return <Send guildId={id} channels={channels} />;
             case "levels":
-                return <LevelsConfig guildId={id} configuration={configGuildUpdateSelected} channelsGuild={channels} rolesGuild={roles} loading={loading} />;
+                return <LevelsConfig guildId={id} configuration={configGuildUpdateSelected} setConfiguration={setConfigGuildUpdateSelected} channels={channels} roles={roles} loading={loading} />;
             case "rename":
                 return <Rename guildId={id} configuration={configGuildUpdateSelected} setConfiguration={setConfigGuildUpdateSelected} loading={loading} />;
             case "musique":
