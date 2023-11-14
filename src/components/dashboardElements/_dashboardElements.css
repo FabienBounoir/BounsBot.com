@@ -1246,11 +1246,16 @@ input[type="radio"]:checked::before {
 
 }
 
-
 .block {
     background-color: #292B30;
     border-radius: 5px;
-    margin-bottom: auto;
+    margin-bottom: 1.5em;
+}
+
+.block.automargin {
+    background-color: #292B30;
+    border-radius: 5px;
+    margin-bottom: auto !important;
 }
 
 .form-check-input:checked {

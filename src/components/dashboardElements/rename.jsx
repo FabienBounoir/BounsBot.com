@@ -63,7 +63,7 @@ export const Rename = ({ guildId, loading, configuration, setConfiguration }) =>
     return (
         <>
             {["ERROR", "LOADING"].includes(loading) ? <LoadingComponent error={loading == "ERROR"} errorMessage="Une erreur est survenue lors du chargement des données." /> :
-                <div className={"block padding-1 heightMax" + (configuration?.rename ? " disabled" : "")}>
+                <div className={"block automargin padding-1 heightMax" + (!configuration?.rename ? " disabled" : "")}>
                     <div className="infoActive">
                         <h5>Renommer les pseudonymes non conformes des utilisateurs</h5>
                         <Form.Check className="picto" type="switch" id="custom-switch success" checked={configuration.rename} onChange={(e) => { setConfiguration({ ...configuration, rename: e.target.checked }) }} />
