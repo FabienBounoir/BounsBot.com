@@ -120,6 +120,10 @@
     position: sticky;
     margin-bottom: 41em;
     text-align: left;
+
+    background-image: url("/public/noise_bg.png");
+    background-position: 0 0;
+    background-size: 110px;
 }
 
 .feature h1, .feature h2, .feature h3, .feature h4, .feature h5, .feature h6 {
