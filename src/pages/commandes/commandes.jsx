@@ -10,9 +10,10 @@ import { useTranslation } from "react-i18next";
 export const Commandes = () => {
     const { t } = useTranslation();
 
-    const [commands, setCommands] = useState([])
-    const [displayedCommands, setDisplayedCommands] = useState([])
-    const [menu, setMenu] = useState([])
+    const [commands, setCommands] = useState(localStorage.getItem("commands") ? JSON.parse(localStorage.getItem("commands")) : [])
+    const [displayedCommands, setDisplayedCommands] = useState(localStorage.getItem("commands") ? JSON.parse(localStorage.getItem("commands")) : [])
+    const [menu, setMenu] = useState(localStorage.getItem("commandsMenu") ? JSON.parse(localStorage.getItem("commandsMenu")) : [])
+    const [error, setError] = useState(false)
     const [selectedMenu, setSelectedMenu] = useState("All")
     const [searchQuery, setSearchQuery] = useState("")
 
@@ -22,7 +23,7 @@ export const Commandes = () => {
 
     const getCommands = async () => {
         try {
-            const commandsObject = await commandsAPI.get() // await fetch(`${process.env.REACT_APP_HOSTNAME_BACKEND}/commands`).then(res => res.json())
+            const commandsObject = await commandsAPI.get()
 
             let commands = commandsObject.commands
             let commandLocaleLanguage = []
@@ -240,12 +241,31 @@ export const Commandes = () => {
 
             commandLocaleLanguage = commandLocaleLanguage.sort((a, b) => { return a.name.localeCompare(b.name) })
 
+            localStorage.setItem("commands", JSON.stringify(commandLocaleLanguage))
+            localStorage.setItem("commandsMenu", JSON.stringify(["All", ...commandsObject.menu.map(m => m.value)]))
+
             setDisplayedCommands(commandLocaleLanguage)
             setCommands(commandLocaleLanguage)
             setMenu(["All", ...commandsObject.menu.map(m => m.value)])
         }
         catch (e) {
             console.log("ERROR WHEN LOADING COMMANDS", e)
+
+            let commands = JSON.parse(localStorage.getItem("commands") || "[]")
+            let commandsMenu = JSON.parse(localStorage.getItem("commandsMenu") || "[]")
+
+
+            if (commands.length > 0 && commandsMenu.length > 0) {
+                setDisplayedCommands(commands)
+                setCommands(commands)
+                setMenu(commandsMenu)
+            }
+            else {
+                setDisplayedCommands([])
+                setCommands([])
+                setError(true)
+            }
+
         }
     }
 
@@ -323,6 +343,7 @@ export const Commandes = () => {
                         let commandListing = [];
 
                         if (displayedCommands.length === 0 && commands.length > 0) commandListing.push(<div className="no-result">Aucun résultat</div>)
+                        else if (commands.length === 0 && error) commandListing.push(<div className="no-result">Une erreur est survevenue lors du chargement des commandes. Veuillez réessayer plus tard.</div>)
                         else if (commands.length === 0) {
                             for (let i = 0; i < 10; i++) {
                                 commandListing.push(
@@ -341,6 +362,7 @@ export const Commandes = () => {
                                 );
                             }
                         }
+
                         return commandListing;
                     })()}
 
