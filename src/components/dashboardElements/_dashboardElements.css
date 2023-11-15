@@ -10,6 +10,11 @@ button.addRoleReward {
     transition: 0.3s;
 }
 
+svg.disableSVGButton {
+    filter: brightness(0.2);
+    cursor: not-allowed;
+}
+
 .categorie_config {
     text-align: left;
     color: white;
@@ -97,6 +102,11 @@ button.addRoleReward {
     border-radius: 10px;
     gap: 10px;
     padding: 5px;
+}
+
+.roleRewardElement.template {
+    border: 1px solid var(--color-principal);
+    margin-top: 10px;
 }
 
 .roleRewardElement p {
@@ -829,7 +839,7 @@ input[type="radio"]:checked::before {
 /* /////////////////////// WELCOME CONFIGURATION /////////////////////// */
 
 .welcomeDisable {
-    filter: brightness(0.5);
+    filter: opacity(0.5);
     cursor: not-allowed;
     pointer-events: none;
 }
@@ -916,13 +926,19 @@ input[type="radio"]:checked::before {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    transition: filter 0.2s ease-out 0s;
-
     gap: 1em;
-    transition: opacity 0.2s ease-out 0s;
+    transition: opacity 10s ease-out 2s;
+}
+
+.block .informationConfig.xpConfigType {
+    margin-bottom: 1em;
 }
 
 .block.disabled .informationConfig {
+    opacity: 0.5;
+}
+
+.block.disabled>*:not(.infoActive) {
     opacity: 0.5;
 }
 

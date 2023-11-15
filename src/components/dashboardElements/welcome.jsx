@@ -801,7 +801,7 @@ export const Welcome = ({ guildId, configuration, setConfiguration, channels, ro
                     </div>
                 </div>
 
-                <div className="block padding-1">
+                <div className={"block padding-1" + (configuration?.welcome?.guild?.active ? "" : " disabled")}>
                     <div className="infoActive">
                         <h5>Envoyer un message quand un membre rejoint votre serveur</h5>
                         <Form.Check className="picto" type="switch" id="custom-switch success" checked={configuration?.welcome?.guild?.active} onChange={(e) => { updateEtatGuild(e) }} />
@@ -876,7 +876,7 @@ export const Welcome = ({ guildId, configuration, setConfiguration, channels, ro
 
                 </div>
 
-                <div className="block padding-1">
+                <div className={"block padding-1" + (configuration?.welcomeRole?.active ? "" : " disabled")}>
                     <div className="infoActive">
                         <h5>Donner un rôle aux nouveaux membres</h5>
                         <Form.Check className="picto" type="switch" id="custom-switch success" checked={configuration?.welcomeRole?.active} onChange={(e) => { updateEtatROLE(e) }} />
