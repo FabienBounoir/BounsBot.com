@@ -10,7 +10,16 @@ export const Status = () => {
     const [guildInSearch, setGuildInSearch] = useState(null)
 
     useEffect(() => {
-        shardsAPI.getStatus().then((data) => { setShards(data) })
+        let autorefresh = setInterval(() => {
+            console.log("refresh")
+            shardsAPI.getStatus().then((data) => { setShards(data) }).catch((err) => {
+                toast.error("Une erreur est survenue lors de la récupération des statuts. Veuillez réessayer plus tard.")
+            })
+        }, 20000)
+
+        return () => {
+            clearInterval(autorefresh)
+        }
     }, [])
 
     const shardTooltip = (shard) => {
