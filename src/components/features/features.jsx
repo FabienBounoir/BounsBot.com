@@ -14,9 +14,16 @@ import support from "../../assets/picture/features/supportTemplate.webp";
 import ticket from "../../assets/picture/features/ticketTemplate.webp";
 import transcript from "../../assets/picture/features/transcriptTemplate.webp";
 import { useTranslation } from "react-i18next";
+import { useInView } from "react-intersection-observer";
+import { FeatureImage } from "./featuresImage";
 
 export const Features = () => {
     const { t } = useTranslation();
+    const [ref, inView] = useInView({
+        triggerOnce: true, // Pour déclencher l'animation une seule fois
+        threshold: 0.2, // Le pourcentage de l'élément visible pour déclencher l'animation
+    });
+
     return (<>
         <div className="features">
             <div className="header">
@@ -28,9 +35,9 @@ export const Features = () => {
             <div className="feature">
                 <div className="feature-container">
                     <div className="columns">
-                        <div className="picture">
-                            <img src={radio} alt="Reaction" />
-                            <img src={music} alt="Reaction" />
+                        <div className={`picture`}>
+                            <FeatureImage src={radio} alt="Reaction" />
+                            <FeatureImage src={music} alt="Reaction" />
                         </div>
 
                         <div className="articleContainer left">
@@ -54,9 +61,9 @@ export const Features = () => {
                         </div>
 
                         <div className="picture">
-                            <img src={gameDuo} alt="Reaction" />
-                            <img src={game} alt="Reaction" />
-                            <img src={quiz} alt="Reaction" />
+                            <FeatureImage src={gameDuo} alt="Reaction" />
+                            <FeatureImage src={game} alt="Reaction" />
+                            <FeatureImage src={quiz} alt="Reaction" />
                         </div>
 
                     </div>
@@ -67,9 +74,9 @@ export const Features = () => {
                 <div className="feature-container">
                     <div className="columns">
                         <div className="picture">
-                            <img src={logsMessage} alt="Reaction" />
-                            <img src={logsVocaux} alt="Reaction" />
-                            <img src={logsUser} alt="Reaction" />
+                            <FeatureImage src={logsMessage} alt="Reaction" />
+                            <FeatureImage src={logsVocaux} alt="Reaction" />
+                            <FeatureImage src={logsUser} alt="Reaction" />
                         </div>
 
                         <div className="articleContainer left">
@@ -94,9 +101,9 @@ export const Features = () => {
                         </div>
 
                         <div className="picture">
-                            <img src={support} alt="Reaction" />
-                            <img src={ticket} alt="Reaction" />
-                            <img src={transcript} alt="Reaction" />
+                            <FeatureImage src={support} alt="Reaction" />
+                            <FeatureImage src={ticket} alt="Reaction" />
+                            <FeatureImage src={transcript} alt="Reaction" />
                         </div>
 
                     </div>
@@ -107,8 +114,8 @@ export const Features = () => {
                 <div className="feature-container">
                     <div className="columns">
                         <div className="picture">
-                            <img src={engagement} alt="Reaction" />
-                            <img src={achievement} alt="Reaction" />
+                            <FeatureImage src={engagement} alt="Reaction" />
+                            <FeatureImage src={achievement} alt="Reaction" />
                         </div>
 
                         <div className="articleContainer left">

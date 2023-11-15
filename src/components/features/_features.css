@@ -97,6 +97,25 @@
     pointer-events: none;
     border-radius: 0.5rem;
     filter: drop-shadow(0 0 20px rgba(0, 0, 0, .3));
+
+    opacity: 0;
+    transform: translateX(-2%);
+    transition: opacity 0.3s ease-in-out, transform 0.7s ease-in-out;
+}
+
+.revertMobile .picture img {
+    transform: translateX(2%);
+}
+
+.picture img.active {
+    /* padding-top: 3.5em; */
+    margin-top: 3.5em;
+    width: inherit;
+    pointer-events: none;
+    border-radius: 0.5rem;
+    filter: drop-shadow(0 0 20px rgba(0, 0, 0, .3));
+    opacity: 1;
+    transform: translateX(0%);
 }
 
 .picture img:first-child {
