@@ -70,6 +70,27 @@ export const getConfiguration = (guildId) => {
     })
 }
 
+export const updateConfiguration = (guildId, changement) => {
+    return new Promise(async (resolve, reject) => {
+        try {
+            const response = await fetch(`${hostname}/configuration/${guildId}`, {
+                method: "PATCH",
+                headers: {
+                    'Content-Type': 'application/json',
+                    Authorization: `${localStorage.getItem("tokenType")} ${localStorage.getItem("token")}`
+                },
+                body: JSON.stringify(changement),
+                redirect: 'follow'
+            }).then(res => res.json())
+
+            resolve(response)
+        }
+        catch (e) {
+            reject(e)
+        }
+    })
+}
+
 export const getElement = (guildId, element) => {
     return new Promise(async (resolve, reject) => {
         try {

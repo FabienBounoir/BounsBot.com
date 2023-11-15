@@ -927,7 +927,7 @@ input[type="radio"]:checked::before {
     flex-direction: row;
     flex-wrap: wrap;
     gap: 1em;
-    transition: opacity 10s ease-out 2s;
+    transition: opacity 0.2s ease-out 0.2s;
 }
 
 .block .informationConfig.xpConfigType {

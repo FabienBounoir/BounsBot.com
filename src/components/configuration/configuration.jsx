@@ -15,6 +15,7 @@ import "./_configuration.css";
 import "../dashboardElements/_dashboardElements.css";
 
 import lodash from 'lodash';
+import { Toaster, toast } from 'sonner'
 
 export const Configuration = (props) => {
     const { id, typeconfig } = useParams();
@@ -41,20 +42,13 @@ export const Configuration = (props) => {
     let updateConfig = async () => {
         setLoadingChargement(true)
 
-        let headers = new Headers();
-        headers.append("Content-Type", "application/json");
-        headers.append("Authorization", `Bearer ${JSON.parse(window.localStorage.getItem('dataDiscord'))?.access_token}`);
-
         const diff = lodash.omitBy(configGuildUpdateSelected, (value, key) => lodash.isEqual(value, configGuildSelected[key]))
 
         try {
-            await fetch(`${process.env.REACT_APP_HOSTNAME_BACKEND}/guild/configuration/${activeGuild}`, {
-                method: "PATCH",
-                headers,
-                body: JSON.stringify(diff),
-                redirect: 'follow'
-            }).then(res => res.json())
+            await guildsAPI.updateConfiguration(activeGuild, diff)
         } catch (error) {
+            toast.error("Une erreur est survenue lors de la sauvegarde de la configuration. Veuillez réessayer ultérieurement.")
+            setLoadingChargement(false)
             return console.log("Save Configuration Error", error)
         }
 
@@ -121,11 +115,19 @@ export const Configuration = (props) => {
     }
 
     const getConfig = async () => {
-        let res = await guildsAPI.getConfiguration(activeGuild)
+        return new Promise(async (resolve, reject) => {
+            try {
+                let res = await guildsAPI.getConfiguration(activeGuild)
 
-        console.log(res)
-        setConfigGuildSelected(res)
-        setConfigGuildUpdateSelected(res)
+                console.log(res)
+                setConfigGuildSelected(res)
+                setConfigGuildUpdateSelected(res)
+                resolve(res)
+            }
+            catch (error) {
+                reject(error)
+            }
+        })
     }
 
     useEffect(() => {
@@ -157,17 +159,18 @@ export const Configuration = (props) => {
                 getElement(),
                 getConfig(),
             ])
+            setLoading("LOADED")
         }
         catch (error) {
             setLoading("ERROR")
         }
 
-        setLoading("LOADED")
     }
 
 
     useEffect(() => {
         getData()
+        setLoadingChargement(false)
 
         return () => { }
     }, [activeGuild])
@@ -303,6 +306,7 @@ export const Configuration = (props) => {
             {renderConfigComponent()}
             <div id="card" className={"cardSave" + (props.changeNotSave ? " hidden" : "")} ><div className="saveConfig"><div style={{ display: "flex", alignItems: "center", flexDirection: "row", gap: "0.3em" }}><Avatar classElement="logoChangement" width="30" height="28" /> Changements détectés ! Veuillez enregistrer ou annuler.</div><div className="buttonContainer"><button className="cancelButton" disabled={loadingChargement} type="button" onClick={resetChange}>Annuler</button><button className="saveButton" type="button" disabled={loadingChargement} onClick={updateConfig}>Enregistrer</button></div></div></div>
         </div>
+        <Toaster richColors expand={false} position="top-center" />
     </>
     )
 }
