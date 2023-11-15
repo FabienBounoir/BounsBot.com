@@ -27,6 +27,7 @@ import { useEffect } from "react";
 import Status from "../pages/status/status";
 import i18n from '../i18n';
 import Loader from "../components/loader/loader";
+import SEO from "../components/SEO/seo";
 
 export const App = () => {
   useEffect(() => {
@@ -119,49 +120,93 @@ export const App = () => {
           </Route>
 
           <Route exact path="/commands">
+            <SEO
+              title="Bouns'Botㆍcommandes"
+              description="Learn how to use Bouns'bot, the multifunction bot for your Discord server."
+              name="Bouns'Bot" />
             <Commandes />
             <BrandAddBot />
             <Footer />
           </Route>
 
           <Route exact path="/status">
+            <SEO
+              title="Bouns'Botㆍstatus"
+              description="See the status of Bouns'bot, the multifunction bot for your Discord server."
+              name="Bouns'Bot" />
             <Status />
             <BrandAddBot />
             <Footer />
           </Route>
 
           <Route exact path="/level">
+            <SEO
+              title="Bouns'Botㆍlevels"
+              description="Engage your community with the levels system of Bouns'bot, the multifunction bot for your Discord server."
+              name="Bouns'Bot" />
             <Levels />
           </Route>
           <Route exact path="/demo">
+            <SEO
+              title="Bouns'Botㆍdemo"
+              description="Cool demo of Bouns'bot, You can even chat with your friends directly here!"
+              name="Bouns'Bot" />
             <Demo />
           </Route>
 
           <Authenticate exact path="/dashboard">
+            <SEO
+              title="Bouns'Botㆍdashboard"
+              description="Manage your server with the dashboard of Bouns'bot !"
+              name="Bouns'Bot" />
+
             <Dashboard />
           </Authenticate>
 
           <Authenticate exact path="/dashboard/:id/:typeconfig">
+            <SEO
+              title="Bouns'Botㆍdashboard"
+              description="Manage your server with the dashboard of Bouns'bot !"
+              name="Bouns'Bot" />
             <Route exact path="/dashboard/:id/:typeconfig" component={() => { return Dashboard() }}>
             </Route>
           </Authenticate>
 
           <Route exact path="/login" >
+            <SEO
+              title="Bouns'Botㆍlogin"
+              description="Login with your Discord account to manage your server with the dashboard of Bouns'bot !"
+              name="Bouns'Bot" />
             <Login />
           </Route>
           <Route exact path="/bot/privacy" >
+            <SEO
+              title="Bouns'Botㆍprivacy"
+              description="Privacy policy of Bouns'bot"
+              name="Bouns'Bot" />
+
             <ScrollToTop>
               <PrivacyBot />
               <Footer />
             </ScrollToTop>
           </Route>
           <Route exact path="/a-propos" >
+            <SEO
+              title="Bouns'Botㆍabout"
+              description="Why Bouns'bot ? Who is Bouns'bot ? Find out more about Bouns'bot !"
+              name="Bouns'Bot" />
+
             <ScrollToTop>
               <Bio />
               <Footer />
             </ScrollToTop>
           </Route>
           <Route exact path="/bot/terms" >
+            <SEO
+              title="Bouns'Botㆍterms"
+              description="Terms of service of Bouns'bot"
+              name="Bouns'Bot" />
+
             <ScrollToTop>
               <TermsBot />
               <Footer />
@@ -171,6 +216,10 @@ export const App = () => {
             <Callback />
           </Route>
           <Route>
+            <SEO
+              title="Bouns'Botㆍ404"
+              description="You look lost, stranger. If you want to add bouns'bot, the button below might help you 👀"
+              name="Bouns'Bot" />
             <ErreurPage />
           </Route>
         </Switch>
