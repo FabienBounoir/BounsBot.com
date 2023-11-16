@@ -9,11 +9,19 @@ export const Status = () => {
     const [shards, setShards] = useState([])
     const [guildInSearch, setGuildInSearch] = useState(null)
 
-    useEffect(() => {
-        let autorefresh = setInterval(() => {
-            shardsAPI.getStatus().then((data) => { setShards(data) }).catch((err) => {
-                toast.error("Une erreur est survenue lors de la récupération des statuts. Veuillez réessayer plus tard.")
+    const fetchData = () =>{
+        shardsAPI.getStatus().then((data) => { setShards(data) }).catch((err) => {
+            toast.error("Une erreur est survenue lors de la récupération des statuts. Veuillez réessayer plus tard.",{
+                duration: 5000,
             })
+        })
+    }
+
+    useEffect(() => {
+        fetchData()
+        
+        let autorefresh = setInterval(() => {
+            fetchData()
         }, 20000)
 
         return () => {
