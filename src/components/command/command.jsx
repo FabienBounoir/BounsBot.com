@@ -48,6 +48,16 @@ export const Command = memo(({ command }) => {
         description = description.charAt(0).toUpperCase() + description.slice(1);
     }
 
+    const copyToClipboard = (e) => {
+        e.stopPropagation()
+        navigator.clipboard.writeText(`/${name.toLowerCase()}`)
+        const original = e.target.innerHTML
+        e.target.innerHTML = t("commands.copied")
+        setTimeout(() => {
+            e.target.innerHTML = original
+        }, 1000)
+    }
+
     const commandBody = useMemo(() => {
         let usages = []
         let examples = []
@@ -73,13 +83,17 @@ export const Command = memo(({ command }) => {
             <>
                 <div className="command-card__body__usage">
                     <h5>{t("commands.usage")}:</h5>
-                    <div className="elementBody">
+                    <div className="elementBody" onClick={(e) => {
+                        copyToClipboard(e)
+                    }}>
                         <pre>{usages.join("\n")}</pre>
                     </div>
                 </div>
                 <div className="command-card__body__examples">
                     <h5>{t("commands.example")}:</h5>
-                    <div className="elementBody">
+                    <div className="elementBody" onClick={(e) => {
+                        copyToClipboard(e)
+                    }}>
                         <pre>{examples.join("\n")}</pre>
                     </div>
                 </div>

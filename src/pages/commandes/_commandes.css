@@ -16,10 +16,11 @@
 
 .btnSearch {
     font-size: 14px;
-    /* box-shadow: none !important; */
     border-radius: 12px;
     text-transform: capitalize !important;
     color: #8f8f92;
+
+    user-select: none;
 }
 
 .commands-pills {
