@@ -45,7 +45,8 @@
     "commands": {
         "search_command": "Rechercher une commande",
         "usage": "Utilisation",
-        "example": "Exemples"
+        "example": "Exemples",
+        "copied": "Commande copiée !"
     },
     "footer": {
         "our_history": "Notre histoire",

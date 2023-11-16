@@ -11,7 +11,6 @@ export const Status = () => {
 
     useEffect(() => {
         let autorefresh = setInterval(() => {
-            console.log("refresh")
             shardsAPI.getStatus().then((data) => { setShards(data) }).catch((err) => {
                 toast.error("Une erreur est survenue lors de la récupération des statuts. Veuillez réessayer plus tard.")
             })

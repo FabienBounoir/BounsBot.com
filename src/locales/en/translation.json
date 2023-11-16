@@ -45,7 +45,8 @@
     "commands": {
         "search_command": "Search a command",
         "usage": "Usage",
-        "example": "Examples"
+        "example": "Examples",
+        "copied": "Command copied to clipboard"
     },
     "footer": {
         "our_history": "Our history",
