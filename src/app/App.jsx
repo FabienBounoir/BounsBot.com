@@ -112,6 +112,10 @@ export const App = () => {
         <Loader />
         <Switch>
           <Route exact path="/">
+            <SEO
+              title="Bouns'Bot"
+              description="Bouns'Bot a discord bot compatible with 20 languages developed by @BadbounsTV. The easiest Discord bot to use ! Game | Moderation | Leveling | Twitch Chat | Radio | Ticket | Temp Channel & more !."
+              name="Bouns'Bot" />
             <HomePage />
             <ApprovedBy />
             <Features />
