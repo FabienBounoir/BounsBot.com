@@ -5,6 +5,7 @@ import io from 'socket.io-client';
 
 class Demo extends Component {
     constructor(props) {
+        const userConnected = localStorage.getItem("user") ? JSON.parse(localStorage.getItem("user")) : null;
         super(props);
 
         //lien de la radio en cour de lecture (cookie ou celle par defaut)
@@ -29,12 +30,12 @@ class Demo extends Component {
         this.state = {
             messageData: [],
             vocalData: [],
-            user: this.getCookie("username") === null ? (this.setCookie("username", `Discord User ${Math.floor(Math.random() * 4000)}`), this.getCookie("username")) : (this.getCookie("username")),
+            user: this.getCookie("username") === null ? (this.setCookie("username", userConnected ? userConnected.global_name || userConnected.username : `Discord User ${Math.floor(Math.random() * 4000)}`), this.getCookie("username")) : (this.getCookie("username")),
             muet: true
         }
 
         //genere la PP du client
-        this.picture = `${Math.floor(Math.random() * 6)}`
+        this.picture = (userConnected && userConnected?.avatar) ? `https://cdn.discordapp.com/avatars/${userConnected.id}/${userConnected.avatar}.png` : `user-${Math.floor(Math.random() * 6)}`
 
         //socket.io client connection
         // this.socket = io('http://localhost:3001/');
@@ -109,48 +110,78 @@ class Demo extends Component {
     _handleKeyDown = (e) => {
         let message = document.getElementById('discord-inner-text-box-input').value;
         if (e.key === 'Enter' && message !== "") {
+            // const userConnected = localStorage.getItem("user") ? JSON.parse(localStorage.getItem("user")) : null;
+
             this.setState({
-                messageData: this.state.messageData.concat({ name: this.state.user, picture: `user-${this.picture}`, text: message })
+                messageData: this.state.messageData.concat({
+                    text: message, name: this.state.user, picture: `${this.picture}`
+                })
             });
 
-            if (message.indexOf(`-`) !== 0) {
-                this.socket.emit('tchat', { name: this.state.user, picture: `user-${this.picture}`, text: message })
+            if (!["-", "/", "!"].includes(message[0])) {
+                this.socket.emit('tchat', {
+                    text: message, name: this.state.user, picture: `${this.picture}`
+                })
             }
 
             setTimeout(() => {
                 this.checkCommande(document.getElementById('discord-inner-text-box-input').value)
                 document.getElementById('discord-inner-text-box-input').value = "";
-            }, 30);
+            }, 120);
         }
     };
 
     //check si message entré est une commande
     checkCommande = (commande) => {
-        if (commande.toLowerCase().indexOf(`-radio `) === 0) {
+        if (!["-", "/", "!"].includes(commande[0])) return
+
+        commande = commande.substring(1)
+
+        if (commande.toLowerCase().startsWith("radio")) {
             this.radioCommandes(commande.split(' ')[1])
         }
-        else if (commande.toLowerCase().indexOf(`-volume `) === 0) {
+        else if (commande.toLowerCase().startsWith("volume")) {
             let volume = commande.split(' ')[1]
             if (!volume) return;
             this.volumeCommandes(volume)
         }
-        else if (commande === "-resume") {
+        else if (commande === "resume") {
             this.playCommandes()
         }
-        else if (commande === "-pause") {
+        else if (commande === "pause") {
             this.pauseCommandes();
         }
-        else if (commande.toLowerCase().indexOf(`/nick `) === 0) {
-            let username = commande.split(" ")[1]
+        else if (commande.toLowerCase().startsWith("nick")) {
+            let username = commande.replace("nick ", "")
             if (!username) return;
             this.setNickname(username)
+        }
+        else {
+            this.setState({
+                messageData: this.state.messageData.concat({ name: "Bouns'Bot", picture: "user-6", text: "Commande inconnue" })
+            });
         }
     };
 
     setNickname(nickname) {
+        const oldNickname = this.state.user;
+
+        if (nickname.length > 20) {
+            return this.setState({
+                messageData: this.state.messageData.concat({ name: "Bouns'Bot", picture: "user-6", text: "Votre pseudo ne doit pas dépasser 20 caractères" })
+            });
+        }
+
         this.setState({
-            user: nickname
+            user: nickname,
+            messageData: [...this.state.messageData.map((message) => {
+                if (message.name === oldNickname) {
+                    message.name = nickname;
+                }
+                return message;
+            }), { name: "Bouns'Bot", picture: "user-6", text: `Votre pseudo a été changé de "${oldNickname}" à "${nickname}"` }]
         });
+
         this.setCookie("username", nickname)
 
         this.socket.emit('UpdateNickname', nickname)
@@ -261,14 +292,7 @@ class Demo extends Component {
         this.scrollToBottom();
     }
 
-    //appeler lorsque la page est chargé
     componentDidMount = () => {
-
-        //besoin du connexion securisé pour transmettre l'audio
-        // if (window.location.protocol !== "https:") {
-        //     window.location.protocol = "https:";
-        // }
-
         //reception lorsque qu'un nouveau message est ecrit dans le tchat
         this.socket.on("receive", message => {
             this.setState({
@@ -451,9 +475,20 @@ class Demo extends Component {
         return (
             <div className="BackgroundGreen" style={{ backgroundColor: "var(--color-principal);" }}>
                 <div className="mainscreen" id="discord-main">
-                    <div className="demo-env" id="discord-title">Discord bot</div>
-                    <div className="demo-env" id="discord-server-avatar"></div>
+                    <div className="demo-env" id="discord-title">DISCOUNS</div>
+                    <div className="demo-env" id="discord-server-avatar">
+                        <img src="/demo-icone/hub-icone.png" alt="hub-icone" width={58} />
+                        <div className="guildSeparator" >
+                            <span></span>
+                        </div>
+                        <img src="/demo-icone/bounsguild.png" alt="hub-icone" width={58} onClick={() => { window.location.href = "https://discord.gg/KxedRVTutX" }} />
+                        <img src="/demo-icone/github.png" alt="hub-icone" width={58} onClick={() => { window.location.href = "https://github.com/FabienBounoir" }} />
+                    </div>
                     <div className="demo-env" id="discord-channel-list">
+                        <div className="demo-banner">
+                            <p>Bouns'Bot Support</p>
+                        </div>
+
                         <div className="demo-env containerDefault">
                             <div className="demo-env iconVisibility wrapper modeSelected" tabIndex="0" aria-label="Commands (text channel)" aria-setsize="94">
                                 <div className="demo-env content"><svg width="24" height="24" viewBox="0 0 24 24" className="icon">
@@ -481,7 +516,7 @@ class Demo extends Component {
                             </div>
                             <div className="voiceUser hidden clickable userSmall" id="discord-user-voiceuser" tabIndex="-1" role="button">
                                 <div className="content">
-                                    <div className="avatarContainer avatar avatarSmall user-0-avatar" style={{ backgroundImage: `url(${this.state.user.toLowerCase() === 'badbounstv' ? ("https://cdn.discordapp.com/attachments/806282416364585062/886279506564907048/logo-cyan-rouge.png") : (`https://cdn.discordapp.com/embed/avatars/${this.picture}.png`)})` }}>
+                                    <div className="avatarContainer avatar avatarSmall user-0-avatar" style={{ backgroundImage: `url(${this.state.user.toLowerCase() === 'badbounstv' ? ("https://cdn.discordapp.com/attachments/806282416364585062/886279506564907048/logo-cyan-rouge.png") : (this.picture.startsWith("https://cdn.discordapp.com/avatars") ? this.picture : `https://cdn.discordapp.com/embed/avatars/${this.picture.split("-")[1]}.png`)})` }}>
                                     </div>
                                     <div className="usernameFont username">{this.state.user}</div>
                                     {this.state.muet ? (
@@ -500,7 +535,7 @@ class Demo extends Component {
                                         vocalRender.push(
                                             <div className="voiceUser clickable userSmall" id="discord-user-voiceuser" tabIndex="-1" role="button">
                                                 <div className="content">
-                                                    <div className="avatarContainer avatar avatarSmall user-0-avatar" style={{ backgroundImage: `url(${vocal.name.toLowerCase() === 'badbounstv' ? ("https://cdn.discordapp.com/attachments/806282416364585062/886279506564907048/logo-cyan-rouge.png") : (`https://cdn.discordapp.com/embed/avatars/${vocal.picture}.png`)})` }}>
+                                                    <div className="avatarContainer avatar avatarSmall user-0-avatar" style={{ backgroundImage: `url(${vocal.name.toLowerCase() === 'badbounstv' ? ("https://cdn.discordapp.com/attachments/806282416364585062/886279506564907048/logo-cyan-rouge.png") : (vocal.picture.startsWith("https://cdn.discordapp.com/avatars") ? vocal.picture : (`https://cdn.discordapp.com/embed/avatars/${vocal.picture.split("-")[1]}.png`))})` }}>
                                                     </div>
                                                     <div className="usernameFont username">{vocal.name}</div>
                                                     {vocal.muet ? (
@@ -570,10 +605,10 @@ class Demo extends Component {
 
                                     <p>Cette démo dispose d'un nombre limité de commandes :<br />
                                     </p><ul>
-                                        <li>-radio [number entre 1 et 41] --&gt; Choisir la radio</li>
-                                        <li>-pause --&gt; Mettre en pause la radio</li>
-                                        <li>-resume --&gt; Remettre la radio</li>
-                                        <li>-volume [Number entre 0 et 1] --&gt; Choisir le volume</li>
+                                        <li>/radio [nombre entre 1 et 41] --&gt; Choisir la radio</li>
+                                        <li>/pause --&gt; Mettre en pause la radio</li>
+                                        <li>/resume --&gt; Remettre la radio</li>
+                                        <li>/volume [Nombre entre 0 et 1] --&gt; Choisir le volume</li>
                                     </ul>
                                     <ul>
                                         <li>/nick [username] --&gt; Changer de Pseudo</li>
@@ -595,7 +630,7 @@ class Demo extends Component {
                                 for (let data of this.state.messageData) {
                                     dataRender.push(
                                         <div className="discord-inner-message">
-                                            <div className={`avatar ${data.name.toLowerCase() === 'badbounstv' ? ("user-7") : (data.picture)}`}></div>
+                                            <div className={`avatar ${data.name.toLowerCase() === 'badbounstv' ? ("user-7") : (data.picture.startsWith("https://cdn.discordapp.com/avatars") ? "" : data.picture)}`} style={{ backgroundImage: data.picture.startsWith("https://cdn.discordapp.com/avatars") ? `url(${data.picture})` : "" }}></div>
                                             <div className="message-content">
                                                 <p className="name"><b id={data.name.toLowerCase() === 'badbounstv' ? ('badbounstv') : (`role-${data.picture[data.picture.length - 1]}`)}>{data.name}</b></p>
                                                 {data.text}
