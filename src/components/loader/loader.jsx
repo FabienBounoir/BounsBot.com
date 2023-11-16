@@ -2,42 +2,6 @@ import { useEffect, useMemo, useState } from "react";
 import "./_loader.css"
 import { useTranslation } from "react-i18next";
 
-// const textLoading = [
-//     "Chargement en cours... 🚀",
-//     "Saviez-vous que les chatons sont de véritables boules de poils adorables ? 😻",
-//     "Un petit secret : les pingouins sont d'excellents danseurs ! 🐧💃",
-//     "La patience est une vertu, même lors du chargement de la page. 🧘‍♂️",
-//     "Besoin d'une pause ? Pourquoi ne pas faire une petite danse du robot ? 🤖💃",
-//     "L'astronomie est fascinante. Chaque étoile est un monde en soi. ✨🪐",
-//     "Amusez-vous à deviner combien de nuages passent pendant le chargement. ☁️☁️☁️",
-//     "Saviez-vous que les éléphants ont une excellente mémoire ? 🐘🧠",
-//     "Les coccinelles portent chance ! 🐞🍀",
-//     "La nature est pleine de beauté. Prenez un moment pour l'apprécier. 🌿🌻",
-//     "La curiosité est le meilleur carburant de la connaissance. 💡📚",
-//     "Un sourire est le langage universel de l'amitié. 😄🤝",
-//     "Les rêves sont comme des étoiles : vous ne pouvez pas toujours les toucher, mais vous pouvez les suivre. 🌟🌠",
-//     "En attendant, voici une blague : Pourquoi les plongeurs plongent-ils toujours en arrière et jamais en avant ? Parce que sinon ils tombent dans le bateau ! 🤣🚢",
-//     "Saviez-vous que les pingouins ont des réunions secrètes tous les jeudis soir ? Chuuut, c'est un secret ! 🐧🤫",
-//     "Le chargement peut prendre un peu de temps, mais rappelez-vous : les grandes choses prennent du temps. 🚀🌟",
-//     "Pourquoi le JavaScript a-t-il l'air si fatigué ? Parce qu'il a toujours besoin de caféine (addEventListener 'coffee') ! ☕😄",
-//     "La persévérance est la clé du succès. Continuez d'attendre, vous y êtes presque ! 🌈💪",
-//     "Votre patience est admirable. Profitez de cette pause pour prendre une grande inspiration et sourire. 😊🌬️",
-//     "Saviez-vous que les pandas sont les rois de la sieste ? 🐼💤",
-//     "Il y a des trésors cachés dans chaque moment d'attente. Continuez de chercher ! 💎🔍",
-//     "Rappelez-vous que même les plus grands bâtiments ont commencé par des fondations. Votre page est en train de devenir géniale ! 🏗️📈",
-//     "Le chargement est une occasion de faire une pause, de respirer profondément et de vous rappeler à quel point vous êtes incroyable. 🌟🌿",
-//     "Le succès commence par un simple pas. Votre chargement en est un ! 🚶‍♂️🌟",
-//     "Ne perdez jamais espoir, même en attendant. Chaque instant est une opportunité. 🌈💫",
-//     "Vous êtes plus fort que vous ne le pensez. Gardez la foi en attendant. 💪🌟",
-//     "La persévérance est la clé de la réussite. Continuez d'attendre, votre moment viendra. 🗝️🌟",
-//     "Saviez-vous que les arcs-en-ciel ne viennent qu'après la pluie ? Votre chargement est la pluie avant l'arc-en-ciel. 🌦️🌈",
-//     "Les rêves se réalisent un pas à la fois. Votre page est un pas de plus vers la réalisation de votre rêve. 🚀💭",
-//     "Chaque chargement est une opportunité de grandir. Continuez de grandir, même pendant l'attente. 🌱🌟",
-//     "La patience est une vertu. Vous êtes en train de devenir plus patient chaque seconde. ⏳😇",
-//     "N'oubliez pas que vous avez traversé des moments difficiles avant et vous en êtes sorti plus fort. 🦸‍♂️💪",
-//     "La vie est un voyage, et même le chargement fait partie du voyage. Profitez-en ! 🌍🌟",
-// ];
-
 const nb_TIPS = 33
 
 
@@ -49,13 +13,19 @@ export const Loader = () => {
         const time = new Date().getTime()
 
         window.addEventListener("load", () => {
-
             if (new Date().getTime() - time < 2000) {
                 setTimeout(() => {
                     setLoading(false)
                 }, 1500 - (new Date().getTime() - time))
             }
+            else {
+                setLoading(false)
+            }
         })
+
+        if (document.readyState === "complete") {
+            setLoading(false)
+        }
 
         return () => {
             window.removeEventListener("load", () => { })
@@ -64,7 +34,6 @@ export const Loader = () => {
 
     const textLoadingTemplate = useMemo(() => {
         return `loader.TIPS_${Math.floor(Math.random() * nb_TIPS) + 1}`
-        //textLoading[Math.floor(Math.random() * textLoading.length)]
     }, [])
 
 
