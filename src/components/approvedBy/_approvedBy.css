@@ -11,6 +11,8 @@
 .infoComponent {
     min-height: 500px;
     height: 100svh;
+
+    user-select: none;
 }
 
 

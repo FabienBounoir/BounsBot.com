@@ -1,15 +1,11 @@
 .brand-add-bot {
     background-color: var(--color-principal) !important;
 
-    /* z-index: 3; */
     background-image: url("/public/noise_bg.png");
     background-position: 0 0;
     background-size: 110px;
-    /* position: absolute;
-    top: 0%;
-    bottom: 0%;
-    left: 0%;
-    right: 0%; */
+
+    user-select: none;
 }
 
 .brand-add-bot .container {
