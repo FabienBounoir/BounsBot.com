@@ -1,8 +1,7 @@
 // import React from "react";
 import "./_navbar.css";
-import React, { Component, useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Navbar, Container, Nav } from 'react-bootstrap/'
-import Fetch from "../../utils/fetch.js";
 import { Link } from "react-router-dom"
 import Avatar from "../avatar/avatar";
 import { useTranslation } from "react-i18next";
@@ -31,17 +30,25 @@ export const Navigation = () => {
             setlogin(false)
         }
         else {
-            const user = await getUser()
+            try {
+                const user = await getUser()
 
-            if (!user) {
+                if (!user) {
+                    window.localStorage.removeItem('token');
+                    window.localStorage.removeItem('tokenType');
+                    window.localStorage.removeItem('user');
+                    return setlogin(false)
+                }
+
+                await window.localStorage.setItem('user', JSON.stringify(user))
+                setlogin(true)
+            }
+            catch (e) {
                 window.localStorage.removeItem('token');
                 window.localStorage.removeItem('tokenType');
                 window.localStorage.removeItem('user');
-                return setlogin(false)
+                setlogin(false)
             }
-
-            await window.localStorage.setItem('user', JSON.stringify(user))
-            setlogin(true)
         }
     }
 
@@ -105,10 +112,12 @@ export const Navigation = () => {
                                     EtatConnexion.push(
                                         <div key="45678" className="login-template"><Navbar.Text>
                                             <div className="login_button_container">
-                                                <div className="LogoNav" style={{ backgroundImage: `url("https://cdn.discordapp.com/avatars/${JSON.parse(window.localStorage.getItem('user')).id}/${JSON.parse(window.localStorage.getItem('user')).avatar}.png?size=512` }}>
+                                                <div className="goToDashboard">
+                                                    <div className="LogoNav" style={{ backgroundImage: `url("https://cdn.discordapp.com/avatars/${JSON.parse(window.localStorage.getItem('user')).id}/${JSON.parse(window.localStorage.getItem('user')).avatar}.png?size=512` }}>
+                                                    </div>
+                                                    <Link onClick={() => { eventClick() }} to="/dashboard/user/description" style={{ textDecoration: "none" }}><span className="hamgn6-5 dashboard_button">{JSON.parse(window.localStorage.getItem('user')).global_name || JSON.parse(window.localStorage.getItem('user')).username}</span></Link>
                                                 </div>
-                                                <Link onClick={() => { eventClick() }} to="/dashboard/user/description" style={{ textDecoration: "none" }}><span className="hamgn6-5 dashboard_button">{JSON.parse(window.localStorage.getItem('user')).global_name || JSON.parse(window.localStorage.getItem('user')).username}</span></Link>
-                                                <div onClick={() => { clickMe() }}>
+                                                <div className="logoutButton" onClick={() => { clickMe() }}>
                                                     <svg style={{ marginLeft: "10px", width: "27px", height: "27px", minHeight: "27px", minMidth: "27px" }} viewBox="0 0 512 512" fill="none" xmlns="http://www.w3.org/2000/svg">
                                                         <path
                                                             d="M192 256C192 220.715 220.715 192 256 192H341.333V21.333C341.333 9.557 331.797 0 320 0H21.333C9.536 0 0 9.557 0 21.333V490.666C0 502.442 9.536 511.999 21.333 511.999H320C331.797 511.999 341.333 502.442 341.333 490.666V341.333V320H256C220.715 320 192 291.285 192 256Z"
