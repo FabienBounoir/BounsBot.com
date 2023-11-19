@@ -104,10 +104,10 @@ export const Configuration = (props) => {
         else {
             setMenu([
                 {
-                    name: "Dashboard",
-                    elements: [{
-                        name: "Information",
-                        url: "description",
+                    "name": "Dashboard",
+                    "elements": [{
+                        "name": "Information",
+                        "url": "description",
                     }]
                 }
             ])
@@ -135,7 +135,7 @@ export const Configuration = (props) => {
 
         console.log("DIFF ? ", diff)
 
-        console.log(configGuildSelected.welcome, configGuildUpdateSelected.welcome)
+        console.log(configGuildSelected, configGuildUpdateSelected)
         props.setChangeNotSave(diff)
 
         if (diff) {
@@ -155,7 +155,6 @@ export const Configuration = (props) => {
 
         try {
             await Promise.all([
-                updateMenu(),
                 getElement(),
                 getConfig(),
             ])
@@ -169,6 +168,9 @@ export const Configuration = (props) => {
 
 
     useEffect(() => {
+        updateMenu()
+        if (activeGuild == "user") return
+
         getData()
         setLoadingChargement(false)
 
@@ -304,7 +306,7 @@ export const Configuration = (props) => {
         </span> </div>
         <div className="config">
             {renderConfigComponent()}
-            <div id="card" className={"cardSave" + (props.changeNotSave ? " hidden" : "")} ><div className="saveConfig"><div style={{ display: "flex", alignItems: "center", flexDirection: "row", gap: "0.3em" }}><Avatar classElement="logoChangement" width="30" height="28" /> Changements détectés ! Veuillez enregistrer ou annuler.</div><div className="buttonContainer"><button className="cancelButton" disabled={loadingChargement} type="button" onClick={resetChange}>Annuler</button><button className="saveButton" type="button" disabled={loadingChargement} onClick={updateConfig}>Enregistrer</button></div></div></div>
+            <div id="card" className={"cardSave" + (props.changeNotSave ? " hidden" : " closeCardSave")} ><div className="saveConfig"><div style={{ display: "flex", alignItems: "center", flexDirection: "row", gap: "0.3em" }}><Avatar classElement="logoChangement" width="30" height="28" /> Changements détectés ! Veuillez enregistrer ou annuler.</div><div className="buttonContainer"><button className="cancelButton" disabled={loadingChargement} type="button" onClick={() => { resetChange() }}>Annuler</button><button className="saveButton" type="button" disabled={loadingChargement} onClick={updateConfig}>Enregistrer</button></div></div></div>
         </div>
         <Toaster richColors expand={false} position="top-center" />
     </>
