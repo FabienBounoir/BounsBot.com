@@ -1,11 +1,16 @@
 const hostname = process.env.REACT_APP_HOSTNAME_BACKEND + "/guilds"
 
-export const sendMessage = (messageComponent) => {
+export const sendMessage = (guildId, messageComponent) => {
     return new Promise(async (resolve, reject) => {
         try {
             const response = await fetch(`${hostname}/send`, {
                 body: JSON.stringify(messageComponent),
-                method: "POST"
+                method: "POST",
+                headers: {
+                    'Content-Type': 'application/json',
+                    guildId,
+                    Authorization: `${localStorage.getItem("tokenType")} ${localStorage.getItem("token")}`
+                },
             })
                 .then(response => response.json())
 
@@ -54,9 +59,10 @@ export const best = () => {
 export const getConfiguration = (guildId) => {
     return new Promise(async (resolve, reject) => {
         try {
-            const response = await fetch(`${hostname}/configuration?guildId=${guildId}`, {
+            const response = await fetch(`${hostname}/configuration/${guildId}`, {
                 headers: {
                     'Content-Type': 'application/json',
+                    guildId,
                     Authorization: `${localStorage.getItem("tokenType")} ${localStorage.getItem("token")}`
                 },
             })
@@ -77,6 +83,7 @@ export const updateConfiguration = (guildId, changement) => {
                 method: "PATCH",
                 headers: {
                     'Content-Type': 'application/json',
+                    guildId,
                     Authorization: `${localStorage.getItem("tokenType")} ${localStorage.getItem("token")}`
                 },
                 body: JSON.stringify(changement),
@@ -97,6 +104,7 @@ export const getElement = (guildId, element) => {
             const response = await fetch(`${hostname}/${guildId}/${element}`, {
                 headers: {
                     'Content-Type': 'application/json',
+                    guildId,
                     Authorization: `${localStorage.getItem("tokenType")} ${localStorage.getItem("token")}`
                 },
             })
