@@ -1,23 +1,23 @@
 import "./_dashboard.css";
-import React, { Component, useEffect, useState } from 'react'
-import Fetch from "../../utils/fetch.js"
+import React, { useEffect, useState } from 'react'
 import { ListServer } from "../../components/listServer/listServer";
 import { Configuration } from "../../components/configuration/configuration";
 import * as guildsAPI from "../../utils/API/authAPI";
-import { hasThisGuild } from "../../utils/API/guildsAPI";
 
-// class Dashboard extends Component {
 export const Dashboard = () => {
     const [guilds, setGuilds] = useState([])
     const [loading, setLoading] = useState(true)
     const [changeNotSave, setChangeNotSave] = useState(false);
 
     const getGuilds = async () => {
-        const res = await guildsAPI.getGuilds()
-        if ((!res) || res.length == 0) return document.location.href = "/login";
-
-        setGuilds(res)
-        setLoading(false)
+        try {
+            const res = await guildsAPI.getGuilds()
+            if ((!res) || res.length == 0) throw new Error("No guilds")
+            setGuilds(res)
+            setLoading(false)
+        } catch (e) {
+            document.location.href = "/login";
+        }
     }
 
     const onResize = () => {
