@@ -23,6 +23,7 @@ export const Command = memo(({ command }) => {
 
     const [contentMaxHeight, setContentMaxHeight] = useState(0);
     const [open, setOpen] = useState(false);
+    const [edit, setEdit] = useState(false);
 
     useEffect(() => {
         function calContentMaxHeight() {
@@ -50,11 +51,17 @@ export const Command = memo(({ command }) => {
 
     const copyToClipboard = (e) => {
         e.stopPropagation()
+
+        if (category == "context") return
+        if (edit) return
+        setEdit(true)
+
         navigator.clipboard.writeText(`/${name.toLowerCase()}`)
         const original = e.target.innerHTML
         e.target.innerHTML = t("commands.copied")
         setTimeout(() => {
             e.target.innerHTML = original
+            setEdit(false)
         }, 1000)
     }
 
