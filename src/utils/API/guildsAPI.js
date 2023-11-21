@@ -12,9 +12,14 @@ export const sendMessage = (guildId, messageComponent) => {
                     Authorization: `${localStorage.getItem("tokenType")} ${localStorage.getItem("token")}`
                 },
             })
-                .then(response => response.json())
 
-            resolve(response)
+            if (response.status < 200 || response.status >= 300) {
+                return reject(response)
+            }
+
+            let json = await response.json()
+
+            resolve(json)
         }
         catch (e) {
             reject(e)
