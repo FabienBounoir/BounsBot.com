@@ -11,11 +11,14 @@ import { LevelsConfig } from "../dashboardElements/levels.jsx";
 import { Rename } from "../dashboardElements/rename";
 import * as guildsAPI from "../../utils/API/guildsAPI";
 
+import { useHistory } from 'react-router-dom';
+
 import "./_configuration.css";
 import "../dashboardElements/_dashboardElements.css";
 
 import lodash from 'lodash';
 import { Toaster, toast } from 'sonner'
+import { useStore } from "../../utils/store";
 
 export const Configuration = (props) => {
     const { id, typeconfig } = useParams();
@@ -29,8 +32,11 @@ export const Configuration = (props) => {
     const [channels, setChannels] = useState([])
     const [roles, setRoles] = useState([])
     const [loading, setLoading] = useState("LOADING")
+    const history = useHistory();
 
     const [open, setOpen] = useState(true)
+    // const [state, dispatch] = useStore();
+    const [state, dispatch] = useStore();
 
     // const [changeNotSave, setChangeNotSave] = useState(false);
     const [loadingChargement, setLoadingChargement] = useState(false);
@@ -119,7 +125,6 @@ export const Configuration = (props) => {
             try {
                 let res = await guildsAPI.getConfiguration(activeGuild)
 
-                console.log(res)
                 setConfigGuildSelected(res)
                 setConfigGuildUpdateSelected(res)
                 resolve(res)
@@ -133,14 +138,7 @@ export const Configuration = (props) => {
     useEffect(() => {
         const diff = !lodash.isEqual(configGuildSelected, configGuildUpdateSelected)
 
-        console.log("DIFF ? ", diff)
-
-        console.log(configGuildSelected, configGuildUpdateSelected)
         props.setChangeNotSave(diff)
-
-        if (diff) {
-            console.log("VOICI LES DIFFERENCES", lodash.omitBy(configGuildUpdateSelected, (value, key) => lodash.isEqual(value, configGuildSelected[key])))
-        }
     }, [configGuildUpdateSelected])
 
     const getElement = async () => {
@@ -162,6 +160,13 @@ export const Configuration = (props) => {
         }
         catch (error) {
             setLoading("ERROR")
+
+            dispatch({ logged: false, user: null })
+
+            localStorage.removeItem('user')
+            localStorage.removeItem('token')
+
+            history.push('/login');
         }
 
     }

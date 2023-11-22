@@ -37,7 +37,7 @@ export const Logs = ({ guildId, configuration, updateConfiguration, channels, lo
         {["ERROR", "LOADING"].includes(loading) ?
             <LoadingComponent error={loading == "ERROR"} errorMessage="Une erreur est survenue" />
             : <>
-                <div className="guildModule" style={{ marginBottom: "1em" }} >
+                <div className="guildModule logbackground" style={{ marginBottom: "1em" }} >
                     <div className="top">
                         <div className="type">
                             <svg className="pictoLog" width="35" height="35" viewBox="0 0 1024 1024">
@@ -54,7 +54,7 @@ export const Logs = ({ guildId, configuration, updateConfiguration, channels, lo
                     <div>Pouvoir modérer les différents messages sur le serveur</div>
                 </div>
 
-                <div className="guildModule" style={{ marginBottom: "1em" }} >
+                <div className="guildModule logbackground" style={{ marginBottom: "1em" }} >
                     <div className="top">
                         <div className="type">
                             <svg className="pictoLog" width="35" height="35" viewBox="0 0 16 16">
@@ -72,7 +72,7 @@ export const Logs = ({ guildId, configuration, updateConfiguration, channels, lo
                     <div>Pouvoir modérer les différents vocaux sur le serveur</div>
                 </div>
 
-                <div className="guildModule" style={{ marginBottom: "1em" }} >
+                <div className="guildModule logbackground" style={{ marginBottom: "1em" }} >
                     <div className="top">
                         <div className="type">
                             <svg className="pictoLog" width="35" height="35" viewBox="0 0 50 50">
@@ -89,7 +89,7 @@ export const Logs = ({ guildId, configuration, updateConfiguration, channels, lo
                     <div>Voir en temps réel les changements effectués sur un utilisateur</div>
                 </div>
 
-                <div className="guildModule" style={{ marginBottom: "1em" }} >
+                <div className="guildModule logbackground" style={{ marginBottom: "1em" }} >
                     <div className="top">
                         <div className="type">
                             <svg className="pictoLog" width="35" height="35" viewBox="0 0 297 297">
@@ -107,7 +107,7 @@ export const Logs = ({ guildId, configuration, updateConfiguration, channels, lo
                     <div>Voir en temps réel les differents ban / unban sur le serveur</div>
                 </div>
 
-                <div className="guildModule" style={{ marginBottom: "1em" }} >
+                <div className="guildModule logbackground" style={{ marginBottom: "1em" }} >
                     <div className="top">
                         <div className="type">
                             <svg className="pictoLog" width="35" height="35" viewBox="0 0 512 512" >
@@ -127,7 +127,7 @@ export const Logs = ({ guildId, configuration, updateConfiguration, channels, lo
                     <div>Voir les arrivés & départs des différents utilisateurs</div>
                 </div>
 
-                <div className="guildModule" style={{ marginBottom: "1em" }} >
+                <div className="guildModule logbackground" style={{ marginBottom: "1em" }} >
                     <div className="top">
                         <div className="type">
                             <svg className="pictoLog" width="35" height="35" viewBox="0 0 188 160" >
@@ -146,7 +146,7 @@ export const Logs = ({ guildId, configuration, updateConfiguration, channels, lo
                     <div>Voir les differents changements opérés sur la guild</div>
                 </div>
 
-                <div className="guildModule" style={{ marginBottom: "1em" }} >
+                <div className="guildModule logbackground" style={{ marginBottom: "1em" }} >
                     <div className="top">
                         <div className="type">
                             <svg className="pictoLog" width="35" height="35" viewBox="0 0 310 320" >
@@ -164,7 +164,7 @@ export const Logs = ({ guildId, configuration, updateConfiguration, channels, lo
                     <div>Voir lorsqu'un role est crée / modifié ou supprimé</div>
                 </div>
 
-                <div className="guildModule" style={{ marginBottom: "1em" }} >
+                <div className="guildModule logbackground" style={{ marginBottom: "1em" }} >
                     <div className="top">
                         <div className="type">
                             <svg className="pictoLog" width="35" height="35" viewBox="0 0 145 134">
@@ -181,7 +181,7 @@ export const Logs = ({ guildId, configuration, updateConfiguration, channels, lo
                     <div>Voir lorsqu'un channel est crée / modifié ou supprimé</div>
                 </div>
 
-                <div className="guildModule" style={{ marginBottom: "1em" }} >
+                <div className="guildModule logbackground" style={{ marginBottom: "1em" }} >
                     <div className="top">
                         <div className="type">
                             <svg className="pictoLog" width="35" height="35" viewBox="0 0 295 295" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -198,7 +198,7 @@ export const Logs = ({ guildId, configuration, updateConfiguration, channels, lo
                     <div>Pouvoir modérer les différents invites crée sur la guild</div>
                 </div>
 
-                <div className="guildModule" style={{ marginBottom: "0.5em" }}>
+                <div className="guildModule logbackground" style={{ marginBottom: "0.5em" }}>
                     <div className="top">
                         <div className="type">
                             <svg className="pictoLog" width="35" height="35" viewBox="0 0 130 130" fill="none" xmlns="http://www.w3.org/2000/svg">

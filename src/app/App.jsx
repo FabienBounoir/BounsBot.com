@@ -16,7 +16,7 @@ import { Login } from "../pages/login/login";
 import { Dashboard } from "../pages/dashboard/dashboard";
 
 import Demo from "../pages/demo/demo";
-import Callback from "../components/callback/callback";
+import { Callback } from "../components/callback/callback";
 import Authenticate from '../components/Authenticate';
 import { Bio } from "../pages/bio/bio";
 import { TermsBot } from "../pages/termsBot/terms";

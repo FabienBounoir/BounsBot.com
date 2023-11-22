@@ -1,83 +1,51 @@
 // import React from "react";
 import "./_navbar.css";
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useReducer, useState } from 'react'
 import { Navbar, Container, Nav } from 'react-bootstrap/'
 import { Link } from "react-router-dom"
 import Avatar from "../avatar/avatar";
 import { useTranslation } from "react-i18next";
 import { getUser } from "../../utils/API/authAPI";
+import * as authAPI from "../../utils/API/authAPI";
+import { useStore } from "../../utils/store";
+import { useHistory } from "react-router-dom/cjs/react-router-dom";
+
 
 export const Navigation = () => {
     const { t } = useTranslation();
+    const history = useHistory();
 
-    const [login, setlogin] = useState(false)
+    const [state, dispatch] = useStore()
 
     useEffect(() => {
         updateLogin();
     }, []);
 
     const clickMe = () => {
-        revokeToken()
-        window.localStorage.removeItem('dataDiscord');
-        window.localStorage.removeItem('user');
-
-        document.location.href = "/"
+        authAPI.logout();
+        dispatch({ logged: false, user: null })
+        localStorage.removeItem('user')
+        localStorage.removeItem('token')
     }
 
     const updateLogin = async () => {
-
-        if (window.localStorage.getItem('user') === null) {
-            setlogin(false)
-        }
-        else {
+        if (window.localStorage.getItem('user')) {
             try {
                 const user = await getUser()
 
                 if (!user) {
-                    window.localStorage.removeItem('token');
-                    window.localStorage.removeItem('tokenType');
-                    window.localStorage.removeItem('user');
-                    return setlogin(false)
+                    dispatch({ logged: false, user: null })
+                    localStorage.removeItem('user')
+                    localStorage.removeItem('token')
                 }
-
-                await window.localStorage.setItem('user', JSON.stringify(user))
-                setlogin(true)
+                else dispatch({ logged: true, user })
             }
             catch (e) {
-                window.localStorage.removeItem('token');
-                window.localStorage.removeItem('tokenType');
-                window.localStorage.removeItem('user');
-                setlogin(false)
+                dispatch({ logged: false, user: null })
+                localStorage.removeItem('user')
+                localStorage.removeItem('token')
             }
         }
-    }
-
-    const revokeToken = async () => {
-        let info = JSON.parse(window.localStorage.getItem('dataDiscord'));
-
-        let details = {
-            'client_id': process.env.REACT_APP_CLIENT_ID,
-            'client_secret': process.env.REACT_APP_CLIENT_SECRET,
-            'token': info.access_token
-        }
-
-        var formBody = [];
-        for (var property in details) {
-            var encodedKey = encodeURIComponent(property);
-            var encodedValue = encodeURIComponent(details[property]);
-            formBody.push(encodedKey + "=" + encodedValue);
-        }
-        formBody = formBody.join("&");
-
-        let headers = {
-            'Content-Type': 'application/x-www-form-urlencoded'
-        }
-
-        await fetch('https://discord.com/api/oauth2/token/revoke', {
-            method: "POST",
-            body: formBody,
-            headers: headers
-        });
     }
 
     const eventClick = () => {
@@ -108,7 +76,8 @@ export const Navigation = () => {
                         <Nav>
                             {(() => {
                                 var EtatConnexion = [];
-                                if (login) {
+                                console.log("state", state)
+                                if (state && state?.logged) {
                                     EtatConnexion.push(
                                         <div key="45678" className="login-template"><Navbar.Text>
                                             <div className="login_button_container">

@@ -1,16 +1,17 @@
 import "./_callback.css";
-import { Component } from 'react'
+import { Component, useEffect } from 'react'
 import Avatar from "../avatar/avatar";
-import { login } from "../../utils/API/authAPI";
+import { getUser, login } from "../../utils/API/authAPI";
+import { useHistory } from "react-router-dom/cjs/react-router-dom";
+import { useStore } from "../../utils/store";
 
-class Callback extends Component {
+// class Callback extends Component {
+export const Callback = () => {
+    const history = useHistory();
+    // const [state, dispatch] = useStore();
+    const [state, dispatch] = useStore();
 
-    state = {
-        type: null,
-        data: null
-    }
-
-    componentDidMount() {
+    useEffect(() => {
         const code = new URLSearchParams(window.location.search).get('code')
 
         if (!code) {
@@ -18,23 +19,34 @@ class Callback extends Component {
         }
 
         login(code).then(data => {
-            document.location.href = "/dashboard/user/description";
+            getUser().then(user => {
+                history.push("/dashboard/user/description")
+                dispatch({ logged: true, user })
+            }).catch(error => {
+                console.error("User error", error)
+                dispatch({ logged: false, user: null })
+                localStorage.removeItem('user')
+                localStorage.removeItem('token')
+                history.push("/login")
+            })
         }).catch(error => {
-            console.error(error)
-            document.location.href = "/login";
+            console.error("login send code error", error)
+            dispatch({ logged: false, user: null })
+            localStorage.removeItem('user')
+            localStorage.removeItem('token')
+            history.push("/login")
         })
-    }
+    }, [])
 
 
-    render() {
-        return (
-            <div className="container-logo">
-                <Avatar classElement="width-logo-svg" />
-                <p><strong>Authentification en cours</strong><br />Veuillez patienter...</p>
-                <span>Se connecter avec Discord</span>
-            </div>
-        )
-    }
+
+    return (
+        <div className="container-logo">
+            <Avatar classElement="width-logo-svg" />
+            <p><strong>Authentification en cours</strong><br />Veuillez patienter...</p>
+            <span>Se connecter avec Discord</span>
+        </div>
+    )
 }
 
-export default Callback;
+// export default Callback;

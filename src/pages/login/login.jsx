@@ -6,11 +6,7 @@ import { useEffect } from "react";
 export const Login = () => {
 
     useEffect(() => {
-        //cehck si il y a une queyr param appelé error
-        console.log(window.location.search)
-
         let status = new URLSearchParams(window.location.search).get('status')
-        console.log(status)
 
         if (status == "invalidToken") {
             toast.error("Votre session a expiré. Veuillez vous reconnecter.", {

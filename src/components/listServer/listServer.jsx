@@ -27,7 +27,7 @@ export const ListServer = (props) => {
                     </div>
                 </div >
                 <div className="userAvatar">
-                    <img src={`https://cdn.discordapp.com/avatars/${JSON.parse(window.localStorage.getItem('user')).id}/${JSON.parse(window.localStorage.getItem('user')).avatar}.webp?size=256`} alt="Avatar" onError={(e) => { e.target.outerHTML = `<img src='https://cdn.discordapp.com/embed/avatars/${random}.png'/>` }} />
+                    <img src={`https://cdn.discordapp.com/avatars/${JSON.parse(window.localStorage.getItem('user'))?.id}/${JSON.parse(window.localStorage.getItem('user'))?.avatar}.webp?size=256`} alt="Avatar" onError={(e) => { e.target.outerHTML = `<img src='https://cdn.discordapp.com/embed/avatars/${random}.png'/>` }} />
                 </div>
             </Link>
             <div className="guildSeparator">
