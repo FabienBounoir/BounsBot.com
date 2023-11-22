@@ -22,6 +22,7 @@ export const logout = () => {
     return new Promise(async (resolve, reject) => {
         try {
             const response = await fetch(`${hostname}/logout`, {
+                method: "POST",
                 headers: {
                     Authorization: `${localStorage.getItem("tokenType")} ${localStorage.getItem("token")}`
                 }
@@ -42,9 +43,15 @@ export const getGuilds = () => {
                 headers: {
                     Authorization: `${localStorage.getItem("tokenType")} ${localStorage.getItem("token")}`
                 }
-            }).then(response => response.json())
+            })
 
-            resolve(response)
+            if (response.status < 200 || response.status >= 300) {
+                return reject(response)
+            }
+
+            const json = await response.json()
+
+            resolve(json)
         }
         catch (e) {
             reject(e)

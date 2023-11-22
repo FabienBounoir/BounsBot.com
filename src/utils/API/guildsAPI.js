@@ -71,9 +71,15 @@ export const getConfiguration = (guildId) => {
                     Authorization: `${localStorage.getItem("tokenType")} ${localStorage.getItem("token")}`
                 },
             })
-                .then(response => response.json())
 
-            resolve(response)
+
+            if (response.status < 200 || response.status >= 300) {
+                return reject(response)
+            }
+
+            const json = await response.json()
+
+            resolve(json)
         }
         catch (e) {
             reject(e)
@@ -113,9 +119,14 @@ export const getElement = (guildId, element) => {
                     Authorization: `${localStorage.getItem("tokenType")} ${localStorage.getItem("token")}`
                 },
             })
-                .then(response => response.json())
 
-            resolve(response)
+            if (response.status < 200 || response.status >= 300) {
+                return reject(response)
+            }
+
+            const json = await response.json()
+
+            resolve(json)
         }
         catch (e) {
             reject(e)
