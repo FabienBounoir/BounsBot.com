@@ -1378,6 +1378,10 @@ input[type="radio"]:checked::before {
     animation: spawn 0.5s ease-in-out;
 }
 
+.guildModule.logbackground {
+    background-color: #292B30 !important;
+}
+
 .config>.guildModule .top {
     display: flex;
     -webkit-box-align: center;
