@@ -3,76 +3,31 @@ import { useState, useEffect, useRef } from "react"
 import Avatar from "../../components/avatar/avatar";
 import LoadingComponent from "../loading/LoadingComponent.jsx";
 import { Form } from 'react-bootstrap/'
+import * as guildsAPI from "../../utils/API/guildsAPI";
 
-export const Send = (props) => {
+export const Send = ({ guildId, channels, loading }) => {
     const textareaRef = useRef(null);
     const [loadingChargement, setLoadingChargement] = useState(false);
-    const [loading, setLoading] = useState(true)
-    const [channel, setChannel] = useState([])
+    const [channelAvailable, setChannelAvailable] = useState([])
     const [message, setMessage] = useState("")
-    const [loadingError, setLoadingError] = useState(false)
     const [messageConfig, setMessageConfig] = useState({
-        message: "",
-        guildId: props.guildId,
-        channel: "",
+        content: "",
+        channelId: "",
         replyTo: "",
+        guildId
     })
 
     useEffect(() => {
-        async function fetchData() {
-            setLoading(true)
-            try {
-                await Promise.all([
-                    getChannelGuild()
-                ])
-            } catch (e) {
-                return setLoadingError(true)
-            }
-            setLoading(false)
-        }
-        fetchData()
-    }, [props.guildId])
+        setChannelAvailable(channels.filter(channel => channel.type === 0 || channel.type === 2 || channel.type === 5))
+    }, [channels])
 
-    let getChannelGuild = async () => {
-        var myHeaders = new Headers();
-        myHeaders.append("Content-Type", "application/json");
-        myHeaders.append("Authorization", `Bearer ${JSON.parse(window.localStorage.getItem('dataDiscord'))?.access_token}`);
 
-        var requestOptions = {
-            method: 'GET',
-            headers: myHeaders,
-            redirect: 'follow'
-        };
-
-        await fetch(process.env.REACT_APP_HOSTNAME_BACKEND + "/bot/getchannels/" + props.guildId, requestOptions)
-            .then(response => response.json())
-            .then((result) => {
-                setChannel(result.channels.filter(channel => channel.type === 0)
-                );
-            })
-    };
-
-    // let selectChannel = (channel) => {
-    //     setMessageConfig({
-    //         ...messageConfig,
-    //         channel
-    //     })
-    // }
-
-    // let listChannel = () => {
-    //     if (channel.length > 0) {
-    //         return channel.map((channel, index) => {
-    //             if (messageConfig.channel === channel.id) {
-    //                 return <p value={channel.id} key={index} onClick={() => selectChannel(channel.id)} className="channelSelected">{channel.name}</p>
-    //             } else {
-    //                 return <p key={index} value={channel.id} onClick={() => selectChannel(channel.id)}>{channel.name}</p>
-    //             }
-    //         })
-    //     }
-    //     else {
-    //         return <p>Aucun channel</p>
-    //     }
-    // }
+    useEffect(() => {
+        setMessageConfig({
+            ...messageConfig,
+            guildId
+        })
+    }, [guildId])
 
     let resizeTextarea = () => {
         textareaRef.current.style.height = 'auto';
@@ -80,37 +35,22 @@ export const Send = (props) => {
     }
 
     let sendmessage = async () => {
-        if (messageConfig.message.length === 0 || messageConfig.channel === "" || loadingChargement) return;
+        if (messageConfig.content.length === 0 || messageConfig.channelId === "" || loadingChargement) return;
         setLoadingChargement(true)
-        var myHeaders = new Headers();
-        myHeaders.append("Content-Type", "application/json");
-        myHeaders.append("authorization", `Bearer ${JSON.parse(window.localStorage.getItem('dataDiscord'))?.access_token}`);
 
-        var raw = await JSON.stringify(messageConfig);
 
-        var requestOptions = {
-            method: 'POST',
-            headers: myHeaders,
-            body: raw,
-            redirect: 'follow'
-        };
-
-        let url = process.env.REACT_APP_HOSTNAME_BACKEND
-
-        const result = await fetch(url + "/bot/sendto/", requestOptions)
-
-        if (result.status === 200) {
+        try {
+            await guildsAPI.sendMessage(guildId, messageConfig)
             setMessageConfig({
                 ...messageConfig,
-                message: ""
+                content: ""
             })
             setMessage("✅ Message envoyé avec succès.")
             resizeTextarea()
-            setLoadingChargement(false)
+        } catch (error) {
+            setMessage("❌ une erreur est survenue...")
         }
-        else {
-            let msg = await result.json()
-            setMessage(msg.message || "❌ une erreur est survenue...")
+        finally {
             setLoadingChargement(false)
         }
     }
@@ -139,7 +79,7 @@ export const Send = (props) => {
 
     return (
         <>
-            {loading ? <LoadingComponent error={loadingError} errorMessage="Un message ou ça ?" /> :
+            {["ERROR", "LOADING"].includes(loading) ? <LoadingComponent error={loading == "ERROR"} errorMessage="Un message ou ça ?" /> :
                 <div className="block padding-1 heightMax">
                     <div className="infoActive">
                         <h5>Envoyer un message sur un channel du discord</h5>
@@ -164,16 +104,14 @@ export const Send = (props) => {
                                         </div>
                                         <div className="message_content">
                                             <pre>
-                                                <p>{messageConfig.channel === "" ? "Sélection un channel." : (message ? message : "Bonjour je suis Bouns'bot.")}</p>
+                                                <p>{messageConfig.channelId === "" ? "Sélection un channel." : (message ? message : "Bonjour je suis Bouns'bot.")}</p>
                                             </pre>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            <div className={"SendMessageInput" + (messageConfig.channel === "" || loadingChargement ? " disable" : "")}>
-                                {/* <input disabled={messageConfig.channel === "" || loadingChargement} type="text" placeholder="Envoyer un message" value={messageConfig.message} onChange={(e) => { setMessageConfig({ ...messageConfig, message: e.target.value }); setMessage(e.target.value) }} /> */}
-
-                                <textarea ref={textareaRef} rows={1} disabled={messageConfig.channel === "" || loadingChargement} placeholder="Envoyer un message" value={messageConfig.message} onChange={(e) => { setMessageConfig({ ...messageConfig, message: e.target.value }); setMessage(e.target.value); resizeTextarea() }} />
+                            <div className={"SendMessageInput" + (messageConfig.channelId === "" || messageConfig.channelId === "0" || loadingChargement ? " disable" : "")}>
+                                <textarea ref={textareaRef} rows={1} disabled={messageConfig.channelId === "" || messageConfig.channelId === "0" || loadingChargement} placeholder="Envoyer un message" value={messageConfig.content} onChange={(e) => { setMessageConfig({ ...messageConfig, content: e.target.value }); setMessage(e.target.value.trim()); resizeTextarea() }} />
 
                                 <svg width="28px" height="28px" viewBox="0 0 28 28" version="1.1" onClick={() => sendmessage()}>
                                     <g id="🔍-Product-Icons" stroke="none" stroke-width="1" fill="none" fillRule="evenodd">
@@ -185,16 +123,12 @@ export const Send = (props) => {
                             </div>
                         </div>
                         <div>
-                            {/* <div className="channelForSend">
-                                {listChannel()}
-                            </div> */}
-
                             <div className="configWelcomeCanvas">
                                 <div style={{ marginBottom: "10px", color: "white", textAlign: "left" }}>
                                     <span>Channel:</span>
-                                    <Form.Select defaultValue={messageConfig?.channel} onChange={(e) => { setMessageConfig({ ...messageConfig, channel: e.target.value }) }}>
+                                    <Form.Select defaultValue={messageConfig?.channel} onChange={(e) => { setMessageConfig({ ...messageConfig, channelId: e.target.value }) }}>
                                         {(() => {
-                                            return getChannelForSelector(channel, messageConfig?.channel);
+                                            return getChannelForSelector(channelAvailable, messageConfig?.channel);
                                         })()}
                                     </Form.Select>
                                 </div>
@@ -209,8 +143,6 @@ export const Send = (props) => {
 
                         </div>
                     </div>
-
-
                 </div>}
         </>
     )

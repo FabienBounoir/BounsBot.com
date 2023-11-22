@@ -1,0 +1,106 @@
+{
+    "homepage": {
+        "text_header": "Create the ultimate Discord server",
+        "invite_button": "Invite Bouns'bot",
+        "support": "Support",
+        "on_number_of_server": "Bounsbot, the Discord bot approved by over {{number}} servers"
+    },
+    "feature": {
+        "fonctionnality": "Features",
+        "multimedia": {
+            "name": "Multimedia",
+            "description1": "Play songs on demand or listen to a radio station all day without ever having to stop.",
+            "description2": "The party won't stop even when you leave, as Bouns'bot stays in your channel 24/7!"
+        },
+        "game": {
+            "name": "Games",
+            "description1": "Play a variety of mini-games! You can play over 15 mini-games alone or against your friends.",
+            "description2": "Distinguish yourself with the built-in Bouns'bot ranking and test your general knowledge with our quiz."
+        },
+        "logs": {
+            "name": "Logs",
+            "description1": "What's that? You didn't know Wumpus turned on his camera!",
+            "description2": "With Bouns'bot, you have access to all the logs available on Discord; simply activate what you need."
+        },
+        "ticket": {
+            "name": "Tickets",
+            "description": "Bouns’bot allows you to create private support channels, which we call tickets, between your team and those seeking assistance."
+        },
+        "engagement": {
+            "name": "Engagement",
+            "description": "Reward your members with XP points and keep track of the most active members on your custom leaderboard."
+        }
+    },
+    "brand": {
+        "slogan": "Create a Discord server that reflects your identity",
+        "add_bot": "Add Bouns'Bot"
+    },
+    "title": {
+        "commands": "Commands",
+        "levels": "Levels",
+        "status": "Status",
+        "login": "Log In",
+        "demo": "Demo"
+    },
+    "commands": {
+        "search_command": "Search a command",
+        "usage": "Usage",
+        "example": "Examples",
+        "copied": "Command copied to clipboard"
+    },
+    "footer": {
+        "our_history": "Our history",
+        "terms_of_service": "Terms of Service",
+        "privacy_policy": "Privacy Policy",
+        "support_server": "Support Server",
+        "source_code": "Source Code",
+        "all_rights_reserved": "All rights reserved"
+    },
+    "levels": {
+        "messages": "MESSAGES",
+        "experience": "Experience",
+        "no_guild_leaderboard": "I don't think there's any information for this guild...",
+        "role_rewards": "Role Rewards",
+        "level_number": "LEVEL {{level}}"
+    },
+    "404_page": {
+        "title": "WRONG TURN?",
+        "text": "You seem lost, stranger. If you want to add Bouns'Bot, the button below might help you.",
+        "button_text": "Add to Discord"
+    },
+    "loader": {
+        "TIPS_1": "Loading... 🚀",
+        "TIPS_2": "Did you know that kittens are adorable little furballs? 😻",
+        "TIPS_3": "A little secret: penguins are excellent dancers! 🐧💃",
+        "TIPS_4": "Patience is a virtue, even during page loading. 🧘‍♂️",
+        "TIPS_5": "Need a break? Why not do a little robot dance? 🤖💃",
+        "TIPS_6": "Astronomy is fascinating. Every star is a world of its own. ✨🪐",
+        "TIPS_7": "Try to guess how many clouds pass by during the loading. ☁️☁️☁️",
+        "TIPS_8": "Did you know that elephants have an excellent memory? 🐘🧠",
+        "TIPS_9": "Ladybugs bring good luck! 🐞🍀",
+        "TIPS_10": "Nature is full of beauty. Take a moment to appreciate it. 🌿🌻",
+        "TIPS_11": "Curiosity is the best fuel for knowledge. 💡📚",
+        "TIPS_12": "A smile is the universal language of friendship. 😄🤝",
+        "TIPS_13": "Dreams are like stars: you can't always touch them, but you can follow them. 🌟🌠",
+        "TIPS_14": "Here's a joke while you wait: Why do divers always dive backward and never forward? Because otherwise, they fall into the boat! 🤣🚢",
+        "TIPS_15": "Did you know that penguins have secret meetings every Thursday night? Shhh, it's a secret! 🐧🤫",
+        "TIPS_16": "Loading may take a little time, but remember: great things take time. 🚀🌟",
+        "TIPS_17": "Why does JavaScript always look tired? Because it always needs caffeine (addEventListener 'coffee')! ☕😄",
+        "TIPS_18": "Perseverance is the key to success. Keep waiting; you're almost there! 🌈💪",
+        "TIPS_19": "Your patience is admirable. Take this break to take a deep breath and smile. 😊🌬️",
+        "TIPS_20": "Did you know that pandas are the kings of napping? 🐼💤",
+        "TIPS_21": "There are hidden treasures in every moment of waiting. Keep searching! 💎🔍",
+        "TIPS_22": "Remember that even the tallest buildings started with foundations. Your page is becoming great! 🏗️📈",
+        "TIPS_23": "Loading is an opportunity to take a break, breathe deeply, and remember how amazing you are. 🌟🌿",
+        "TIPS_24": "Success begins with a single step. Your loading is one of them! 🚶‍♂️🌟",
+        "TIPS_25": "Never lose hope, even while waiting. Every moment is an opportunity. 🌈💫",
+        "TIPS_26": "You are stronger than you think. Keep the faith while waiting. 💪🌟",
+        "TIPS_27": "Perseverance is the key to success. Keep waiting; your moment will come. 🗝️🌟",
+        "TIPS_28": "Did you know that rainbows only come after the rain? Your loading is the rain before the rainbow. 🌦️🌈",
+        "TIPS_29": "Dreams come true one step at a time. Your page is one step closer to making your dream a reality. 🚀💭",
+        "TIPS_30": "Every loading is an opportunity to grow. Keep growing, even during the wait. 🌱🌟",
+        "TIPS_31": "Patience is a virtue. You're becoming more patient with every passing second. ⏳😇",
+        "TIPS_32": "Remember that you've gone through tough times before, and you've come out stronger. 🦸‍♂️💪",
+        "TIPS_33": "Life is a journey, and even the loading is part of the journey. Enjoy it! 🌍🌟"
+    }
+}

@@ -43,7 +43,7 @@
     flex: 1 1 auto;
     overflow-y: scroll;
 
-    padding: 3em 3em 3em 3em;
+    padding: 3em 3em 32px 3em;
 
     -ms-overflow-style: none;
     scrollbar-width: none;

@@ -10,6 +10,11 @@ button.addRoleReward {
     transition: 0.3s;
 }
 
+svg.disableSVGButton {
+    filter: brightness(0.2);
+    cursor: not-allowed;
+}
+
 .categorie_config {
     text-align: left;
     color: white;
@@ -97,6 +102,11 @@ button.addRoleReward {
     border-radius: 10px;
     gap: 10px;
     padding: 5px;
+}
+
+.roleRewardElement.template {
+    border: 1px solid var(--color-principal);
+    margin-top: 10px;
 }
 
 .roleRewardElement p {
@@ -829,7 +839,7 @@ input[type="radio"]:checked::before {
 /* /////////////////////// WELCOME CONFIGURATION /////////////////////// */
 
 .welcomeDisable {
-    filter: brightness(0.5);
+    filter: opacity(0.5);
     cursor: not-allowed;
     pointer-events: none;
 }
@@ -911,14 +921,25 @@ input[type="radio"]:checked::before {
 
 }
 
-.informationConfig {
+.block .informationConfig {
     color: white;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    transition: filter 0.2s ease-out 0s;
-
     gap: 1em;
+    transition: opacity 0.2s ease-out 0.2s;
+}
+
+.block .informationConfig.xpConfigType {
+    margin-bottom: 1em;
+}
+
+.block.disabled .informationConfig {
+    opacity: 0.5;
+}
+
+.block.disabled>*:not(.infoActive) {
+    opacity: 0.5;
 }
 
 .informationWelcomeCanvas {
@@ -1097,22 +1118,50 @@ input[type="radio"]:checked::before {
     justify-content: center;
     -webkit-box-align: center;
     align-items: center;
-    animation: bottom 600ms cubic-bezier(0.68, -0.55, 0.265, 1.55) 0s, background-color 400ms ease-in-out 0s;
-    opacity: 0;
-    display: none;
     position: sticky;
-
-    /* transition: all 5s; */
-    /* bottom: 1000px; */
+    margin-top: 1em;
+    margin-left: -10px;
+    margin-right: -10px;
 }
 
 .hidden {
     display: initial;
     opacity: 100%;
     bottom: 0;
-    margin-left: -10px;
-    margin-right: -10px;
+
+    animation: bottomUp 0.3s ease-out;
 }
+
+.closeCardSave {
+    animation: bottomDown 0.3s ease-in;
+    pointer-events: none;
+    animation-fill-mode: forwards;
+}
+
+@keyframes bottomUp {
+    0% {
+        display: initial;
+        bottom: -200px;
+    }
+
+    100% {
+        display: none;
+        bottom: 0px;
+    }
+}
+
+@keyframes bottomDown {
+    0% {
+        bottom: 0px;
+    }
+
+    100% {
+        bottom: -200px;
+        display: none;
+
+    }
+}
+
 
 .cardSave .buttonContainer {
     display: flex;
@@ -1122,7 +1171,7 @@ input[type="radio"]:checked::before {
 
 .saveConfig {
     background-color: rgb(23, 24, 30);
-    padding: 16px;
+    padding: 12px 16px;
     display: flex;
     flex-flow: row wrap;
     -webkit-box-flex: 1;
@@ -1139,7 +1188,7 @@ input[type="radio"]:checked::before {
 }
 
 .saveButton {
-    padding: 14px 18px 14px 18px;
+    padding: 5px 15px 5px 15px;
     color: #fff;
     background-color: var(--color-principal);
     border-radius: 4px;
@@ -1169,9 +1218,9 @@ input[type="radio"]:checked::before {
 }
 
 .cancelButton {
-    padding: 14px 18px 14px 18px;
+    padding: 5px 15px 5px 15px;
     color: #fff;
-    background-color: rgba(255, 255, 255, 0.1);
+    background-color: rgba(255, 255, 255, 0.05);
     ;
     border-radius: 4px;
     text-decoration: none;
@@ -1213,16 +1262,6 @@ input[type="radio"]:checked::before {
     }
 }
 
-@keyframes bottom {
-    0% {
-        bottom: -500px;
-    }
-
-    100% {
-        bottom: 0px;
-    }
-}
-
 @media (max-width: 1000px) {
     .logoChangement {
         display: none;
@@ -1236,11 +1275,29 @@ input[type="radio"]:checked::before {
 
 }
 
-
 .block {
     background-color: #292B30;
     border-radius: 5px;
     margin-bottom: 1.5em;
+    animation: spawn 0.5s ease-in-out;
+}
+
+@keyframes spawn {
+    0% {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.block.automargin {
+    background-color: #292B30;
+    border-radius: 5px;
+    margin-bottom: auto !important;
 }
 
 .form-check-input:checked {
@@ -1286,6 +1343,10 @@ input[type="radio"]:checked::before {
     .block .modules {
         grid-template-columns: repeat(1, 1fr);
     }
+
+    .saveConfig {
+        justify-content: center;
+    }
 }
 
 
@@ -1314,6 +1375,11 @@ input[type="radio"]:checked::before {
     color: white;
     text-align: left;
     border-radius: 8px;
+    animation: spawn 0.5s ease-in-out;
+}
+
+.guildModule.logbackground {
+    background-color: #292B30 !important;
 }
 
 .config>.guildModule .top {

@@ -1,76 +1,52 @@
 import "./_callback.css";
-import { Component } from 'react'
-import Fetch from "../../utils/fetch.js";
+import { Component, useEffect } from 'react'
 import Avatar from "../avatar/avatar";
+import { getUser, login } from "../../utils/API/authAPI";
+import { useHistory } from "react-router-dom/cjs/react-router-dom";
+import { useStore } from "../../utils/store";
 
-class Callback extends Component {
+// class Callback extends Component {
+export const Callback = () => {
+    const history = useHistory();
+    // const [state, dispatch] = useStore();
+    const [state, dispatch] = useStore();
 
-    async exchange_code(code) {
-        let details = {
-            'client_id': process.env.REACT_APP_CLIENT_ID,
-            'client_secret': process.env.REACT_APP_CLIENT_SECRET,
-            'grant_type': 'authorization_code',
-            'code': code,
-            'redirect_uri': process.env.REACT_APP_HOSTNAME + "/oauth/callback"
-        }
-
-        var formBody = [];
-        for (var property in details) {
-            var encodedKey = encodeURIComponent(property);
-            var encodedValue = encodeURIComponent(details[property]);
-            formBody.push(encodedKey + "=" + encodedValue);
-        }
-        formBody = formBody.join("&");
-
-        let headers = {
-            'Content-Type': 'application/x-www-form-urlencoded'
-        }
-
-        const body = await fetch('https://discord.com/api/oauth2/token', {
-            headers: headers,
-            method: "POST",
-            body: formBody
-        }).catch(error => { console.error(error); });//document.location.href = "/"; });
-
-
-        if (body.status === 200) {
-            const result = await body.json();
-
-            await window.localStorage.setItem('dataDiscord', JSON.stringify(result));
-
-            const user = await Fetch.getInfoUser(result.access_token)
-
-            if (!user) document.location.href = "/login"
-            await window.localStorage.setItem('dataUser', JSON.stringify(user))
-
-            document.location.href = "/dashboard/user/description";
-        }
-        else {
-            document.location.href = "/login";
-        }
-    }
-
-    componentDidMount() {
+    useEffect(() => {
         const code = new URLSearchParams(window.location.search).get('code')
 
-        if (code) {
-            this.exchange_code(code);
+        if (!code) {
+            return history.push("/login")
         }
-        else {
-            // document.location.href = "/login";
-        }
-    }
+
+        login(code).then(data => {
+            getUser().then(user => {
+                history.push("/dashboard/user/description")
+                dispatch({ logged: true, user })
+            }).catch(error => {
+                console.error("User error", error)
+                dispatch({ logged: false, user: null })
+                localStorage.removeItem('user')
+                localStorage.removeItem('token')
+                history.push("/login?status=error")
+            })
+        }).catch(error => {
+            console.error("login send code error", error)
+            dispatch({ logged: false, user: null })
+            localStorage.removeItem('user')
+            localStorage.removeItem('token')
+            history.push("/login?status=error")
+        })
+    }, [])
 
 
-    render() {
-        return (
-            <div className="container-logo">
-                <Avatar classElement="width-logo-svg" />
-                <p><strong>Authentification en cours</strong><br />Veuillez patienter...</p>
-                <span>Se connecter avec Discord</span>
-            </div>
-        )
-    }
+
+    return (
+        <div className="container-logo">
+            <Avatar classElement="width-logo-svg" />
+            <p><strong>Authentification en cours</strong><br />Veuillez patienter...</p>
+            <span>Se connecter avec Discord</span>
+        </div>
+    )
 }
 
-export default Callback;
+// export default Callback;

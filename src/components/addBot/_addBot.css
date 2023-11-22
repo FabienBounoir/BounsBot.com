@@ -1,5 +1,11 @@
 .brand-add-bot {
     background-color: var(--color-principal) !important;
+
+    background-image: url("/public/noise_bg.png");
+    background-position: 0 0;
+    background-size: 110px;
+
+    user-select: none;
 }
 
 .brand-add-bot .container {
@@ -29,12 +35,11 @@
     padding-bottom: 0.75rem !important;
 
     border-radius: 0.5rem !important;
-    transition: opacity 0.5s ease-in-out !important;
-    /* cubic-bezier(0.1, 1.35, 0.25, 1) */
+    transition: filter 0.5s ease-in-out, scale 0.5s ease-in-out !important;
 }
 
 .brand-add-bot .container button:hover {
-    opacity: 0.8;
+    scale: 1.05;
 }
 
 .brand-add-bot .container button svg path {

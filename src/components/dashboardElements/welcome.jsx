@@ -6,30 +6,34 @@ import Avatar from "../../components/avatar/avatar";
 import LoadingComponent from "../loading/LoadingComponent.jsx";
 
 
-export const Welcome = (props) => {
-    const [configuration, setConfiguration] = useState({})
-    const [initialConfig, setInitialConfig] = useState({})
+export const Welcome = ({ guildId, configuration, setConfiguration, channels, rolesGuild, loading, iconLink, name, user }) => {
+
+    // const [initialConfig, setInitialConfig] = useState({})
     const [embedNumber] = useState(0) //setEmbedNumber
-    const [loading, setLoading] = useState(true)
-    const [changeNotSave, setChangeNotSave] = useState(false);
-    const [loadingChargement, setLoadingChargement] = useState(false);
     const [timer, setTimer] = useState(null);
-    const [loadingError, setLoadingError] = useState(false);
     const [roles, setRoles] = useState([])
 
     const [channel, setChannel] = useState([])
     const canvasRef = useRef(null)
     const [roleXp, setRoleXp] = useState("0")
 
+    useEffect(() => {
+        setChannel(channels?.filter(channel => channel.type === 0) || [])
+    }, [channels])
 
-    const getConfiguration = async () => {
-        let res = await fetch(`${process.env.REACT_APP_HOSTNAME_BACKEND}/guild/${props.guildId}/welcome`).then(res => res.json()) || {}
+    useEffect(() => {
+        setRoles(rolesGuild?.filter(role => !role.tags?.botId && role.name !== "@everyone") || [])
+    }, [rolesGuild])
 
-        await setChannel(res?.channels?.filter(channel => channel.type === 0) || [])
-        await setRoles(res?.roles?.filter(role => !role.tags?.botId && role.name !== "@everyone") || [])
-        await setInitialConfig(JSON.parse(JSON.stringify(res.config)));
-        await setConfiguration(JSON.parse(JSON.stringify(res.config)))
-    }
+
+    // const getConfiguration = async () => {
+    //     let res = await fetch(`${process.env.REACT_APP_HOSTNAME_BACKEND}/guild/${guildId}/welcome`).then(res => res.json()) || {}
+
+    //     await setChannel(res?.channels?.filter(channel => channel.type === 0) || [])
+    //     await setRoles(res?.roles?.filter(role => !role.tags?.botId && role.name !== "@everyone") || [])
+    //     await setInitialConfig(JSON.parse(JSON.stringify(res.config)));
+    //     // await setConfiguration(JSON.parse(JSON.stringify(res.config)))
+    // }
 
     const renderCanvas = (guild) => {
         if (canvasRef.current === null) return
@@ -135,7 +139,7 @@ export const Welcome = (props) => {
             // ctx.fillText("BadbounsTV#2000", 520, 270); //480
 
             const maxWidth = 630;
-            let text = `${props?.user?.username}#${props?.user?.discriminator}`;
+            let text = `${user?.username}#${user?.discriminator}`;
             let fontSize = 70;
 
             ctx.font = `bold ${fontSize}px Arial`;
@@ -160,7 +164,7 @@ export const Welcome = (props) => {
             ctx.clip();
 
             let avatar = new Image();
-            avatar.src = (props?.user?.avatar ? `https://cdn.discordapp.com/avatars/${props?.user?.id}/${props?.user?.avatar}.webp?size=1024` : `https://cdn.discordapp.com/embed/avatars/${Math.floor(Math.random() * 6)}.png`)
+            avatar.src = (user?.avatar ? `https://cdn.discordapp.com/avatars/${user?.id}/${user?.avatar}.webp?size=1024` : `https://cdn.discordapp.com/embed/avatars/${Math.floor(Math.random() * 6)}.png`)
             avatar.onload = function () {
                 ctx.drawImage(avatar, 0, 0, 500, 500);
                 ctx.restore();
@@ -203,7 +207,7 @@ export const Welcome = (props) => {
 
             //resize text
             const maxWidth = 800;
-            let text = `Bienvenue ${props?.user?.username || "Wumpus"} sur le serveur !`
+            let text = `Bienvenue ${user?.username || "Wumpus"} sur le serveur !`
             let fontSize = 57;
 
             ctx.font = `${fontSize}px Arial`;
@@ -241,7 +245,7 @@ export const Welcome = (props) => {
             ctx.clip();
 
             let avatar = new Image();
-            avatar.src = props?.user?.avatar ? `https://cdn.discordapp.com/avatars/${props?.user?.id}/${props?.user?.avatar}.webp?size=1024` : `https://cdn.discordapp.com/embed/avatars/${Math.floor(Math.random() * 6)}.png`
+            avatar.src = user?.avatar ? `https://cdn.discordapp.com/avatars/${user?.id}/${user?.avatar}.webp?size=1024` : `https://cdn.discordapp.com/embed/avatars/${Math.floor(Math.random() * 6)}.png`
             avatar.onload = function () {
                 ctx.strokeStyle = colorText;
                 ctx.drawImage(avatar, 450, 50, 300, 300);
@@ -302,7 +306,7 @@ export const Welcome = (props) => {
             ctx.fillStyle = darkenColor(colorText, 20);
             //resize text
             const maxWidth2 = 700;
-            let text2 = (props?.user?.username + "#" + props?.user?.discriminator || "Wumpus#1234");
+            let text2 = (user?.username + "#" + user?.discriminator || "Wumpus#1234");
             let fontSize2 = 45;
 
             ctx.font = `${fontSize2}px Arial`;
@@ -397,7 +401,7 @@ export const Welcome = (props) => {
 
 
             let avatar = new Image();
-            avatar.src = props?.user?.avatar ? `https://cdn.discordapp.com/avatars/${props?.user?.id}/${props?.user?.avatar}.webp?size=1024` : `https://cdn.discordapp.com/embed/avatars/${Math.floor(Math.random() * 6)}.png`
+            avatar.src = user?.avatar ? `https://cdn.discordapp.com/avatars/${user?.id}/${user?.avatar}.webp?size=1024` : `https://cdn.discordapp.com/embed/avatars/${Math.floor(Math.random() * 6)}.png`
             avatar.onload = function () {
                 ctx.drawImage(avatar, 455, 30, 290, 290);
 
@@ -446,7 +450,7 @@ export const Welcome = (props) => {
 
             //resize text
             const maxWidth = 900;
-            let text = `Welcome ${props?.user?.username}`;
+            let text = `Welcome ${user?.username}`;
             let fontSize = 80;
 
             ctx.font = `bold ${fontSize}px Arial`;
@@ -464,7 +468,7 @@ export const Welcome = (props) => {
 
             //resize text
             const maxWidth2 = 600;
-            let text2 = `To ${props?.name}`;
+            let text2 = `To ${name}`;
             let fontSize2 = 85;
 
             ctx.font = `bold ${fontSize2}px Arial`;
@@ -515,7 +519,7 @@ export const Welcome = (props) => {
 
 
             let avatar = new Image();
-            avatar.src = props?.user?.avatar ? `https://cdn.discordapp.com/avatars/${props?.user?.id}/${props?.user?.avatar}.webp?size=1024` : `https://cdn.discordapp.com/embed/avatars/${Math.floor(Math.random() * 6)}.png`
+            avatar.src = user?.avatar ? `https://cdn.discordapp.com/avatars/${user?.id}/${user?.avatar}.webp?size=1024` : `https://cdn.discordapp.com/embed/avatars/${Math.floor(Math.random() * 6)}.png`
             avatar.onload = function () {
                 ctx.drawImage(avatar, 20, 160, 600, 600);
 
@@ -544,41 +548,6 @@ export const Welcome = (props) => {
         return newColor;
     }
 
-    const updateConfig = async () => {
-        setLoadingChargement(true)
-
-        let headers = new Headers();
-        headers.append("Content-Type", "application/json");
-        headers.append("Authorization", `Bearer ${JSON.parse(window.localStorage.getItem('dataDiscord'))?.access_token}`);
-
-        let info = null
-
-        try {
-            info = await fetch(`${process.env.REACT_APP_HOSTNAME_BACKEND}/guild/${props.guildId}/welcome`, {
-                method: "PUT",
-                headers,
-                body: JSON.stringify(configuration),
-                redirect: 'follow'
-            })
-        } catch (error) {
-            return console.log("Save Configuration Error", error)
-        }
-
-        if (info.status === 200) {
-            setInitialConfig(JSON.parse(JSON.stringify(configuration)))
-            setChangeNotSave(false)
-            setLoadingChargement(false)
-        }
-        else {
-            alert("Une erreur est survenue lors de la sauvegarde de la configuration")
-            console.log("Update Welcome Error")
-        }
-    }
-
-    const resetChange = () => {
-        setConfiguration(JSON.parse(JSON.stringify(initialConfig)))
-    }
-
     useEffect(() => {
         if (roleXp !== "0") {
             updateRoleConfig(roleXp)
@@ -587,155 +556,68 @@ export const Welcome = (props) => {
     }, [roleXp])
 
     let updateRoleConfig = async (newRole) => {
-        let config = { ...configuration }
+        // let config = { ...configuration }
 
-        config.ROLE.roles = [...config.ROLE.roles, newRole]
+        // config.welcome.roles = [...config.ROLE.roles, newRole]
 
-        setConfiguration(config)
+        setConfiguration({ ...configuration, welcomeRole: { ...configuration.welcomeRole, roles: [...configuration.welcomeRole.roles, newRole] } })
     }
 
     useEffect(() => {
-        async function fetchData() {
-            setLoading(true)
-            try {
-                await getConfiguration()
-            }
-            catch (error) {
-                console.log("Error", error)
-                return setLoadingError(true)
-            }
-
-            setLoading(false)
-        }
-        fetchData();
-    }, [props.guildId])
-
-    useEffect(() => {
-        if (!loading) {
-            renderCanvas(configuration.GUILD)
+        if (loading == "LOADED") {
+            renderCanvas(configuration?.welcome?.guild)
         }
     }, [loading])
 
     useEffect(() => {
-        let DM = configuration?.DM
-        let DMInitial = initialConfig?.DM
-
-        if (DM?.active !== DMInitial?.active) return setChangeNotSave(true)
-        if (DM?.embeds?.length !== DMInitial?.embeds?.length) return setChangeNotSave(true)
-
-        for (let i = 0; i < (DM?.embeds?.length || 0); i++) {
-            const keys1 = Object.keys(DM.embeds[i]);
-            const keys2 = Object.keys(DMInitial.embeds[i]);
-
-            if (keys1.length !== keys2.length) return setChangeNotSave(true)
-
-            for (let j = 0; j < keys1.length; j++) {
-                if (DM.embeds[i][keys1[j]] !== DMInitial.embeds[i][keys2[j]]) return setChangeNotSave(true)
-            }
-
-        }
-
-        let Guild = Object.keys(configuration?.GUILD || {})
-        let GuildInitial = Object.keys(initialConfig?.GUILD || {})
-
-        if (Guild.length !== GuildInitial.length) return setChangeNotSave(true)
-
-        for (let i = 0; i < Guild.length; i++) {
-            if (configuration.GUILD[Guild[i]] !== initialConfig.GUILD[GuildInitial[i]]) return setChangeNotSave(true)
-        }
-
-        if (configuration?.ROLE?.active !== initialConfig?.ROLE?.active) return setChangeNotSave(true)
-
-        if (configuration?.ROLE?.roles?.length !== initialConfig?.ROLE?.roles?.length) return setChangeNotSave(true)
-
-        console.log(configuration)
-
-        for (let i = 0; i < configuration?.ROLE?.roles?.length; i++) {
-            if (configuration?.ROLE?.roles[i] !== initialConfig?.ROLE?.roles[i]) return setChangeNotSave(true)
-        }
-
-        setChangeNotSave(false)
-    }, [configuration])
-
-    useEffect(() => {
-        if (loading === false) {
+        if (loading == "LOADED") {
             setTimer(clearTimeout(timer))
             setTimer(setTimeout(() => {
-                renderCanvas(configuration.GUILD)
+                renderCanvas(configuration?.welcome?.guild)
             }, 100))
         }
     }, [configuration])
 
     const updateEtatDm = (e) => {
-        let config = { ...configuration }
-
-        config.DM.active = e.target.checked
-
-        setConfiguration(config)
+        setConfiguration({ ...configuration, welcome: { ...configuration.welcome, DM: { ...configuration.welcome.DM, active: e.target.checked } } })
     }
 
     const updateEtatROLE = (e) => {
-        let config = { ...configuration }
-
-        config.ROLE.active = e.target.checked
-
-        setConfiguration(config)
+        setConfiguration({ ...configuration, welcomeRole: { ...configuration.welcomeRole, active: e.target.checked } })
     }
 
     const updateEtatGuild = (e) => {
-        let config = { ...configuration }
-
-        config.GUILD.active = e.target.checked
-
-        setConfiguration(config)
+        setConfiguration({ ...configuration, welcome: { ...configuration.welcome, guild: { ...configuration.welcome.guild, active: e.target.checked } } })
     }
 
     const updateEmbedDm = (embedNumber, configElement) => {
-        let config = { ...configuration }
+        let embeds = JSON.parse(JSON.stringify(configuration.welcome.DM.embeds))
 
-        config.DM.embeds[embedNumber] = { ...config.DM.embeds[embedNumber], ...configElement }
+        embeds[embedNumber] = { ...embeds[embedNumber], ...configElement }
 
-        setConfiguration(config)
+        setConfiguration({ ...configuration, welcome: { ...configuration.welcome, DM: { ...configuration.welcome.DM, embeds: embeds } } })
     }
 
     const updateColorGuild = (color) => {
-        let config = { ...configuration }
-
-        config.GUILD = { ...config.GUILD, ...color }
-
-        setConfiguration(config)
+        setConfiguration({ ...configuration, welcome: { ...configuration.welcome, guild: { ...configuration.welcome.guild, ...color } } })
     }
 
     const updateSelectMenu = (value) => {
-        let config = { ...configuration }
-
-        config.GUILD.channel = value
-
-        setConfiguration(config)
+        setConfiguration({ ...configuration, welcome: { ...configuration.welcome, guild: { ...configuration.welcome.guild, channel: value } } })
     }
 
     const updateTheme = (value) => {
-        let config = { ...configuration }
-
-        config.GUILD.design = value
-
-        setConfiguration(config)
+        setConfiguration({ ...configuration, welcome: { ...configuration.welcome, guild: { ...configuration.welcome.guild, design: value } } })
     }
 
     let updateContent = (e) => {
-        let config = { ...configuration }
-
-        config.GUILD.content = e.target.value
-
-        setConfiguration(config)
+        setConfiguration({ ...configuration, welcome: { ...configuration.welcome, guild: { ...configuration.welcome.guild, content: (e.target.value || null) } } })
     }
 
-    let updateDefaultPseudo = (e) => {
-        let config = { ...configuration }
+    let updateDefaultPseudo = (value) => {
+        if (value == "") value = null
 
-        config.GUILD.defaultPseudo = e.target.value
-
-        setConfiguration(config)
+        setConfiguration({ ...configuration, welcome: { ...configuration.welcome, guild: { ...configuration.welcome.guild, defaultPseudo: value } } })
     }
 
     let getChannelForSelector = (allChannel, selectedchannel) => {
@@ -778,20 +660,20 @@ export const Welcome = (props) => {
         return option;
     }
 
-    let fixInitialRoleConfig = (roles) => {
-        let newConfig = { ...initialConfig }
+    // let fixInitialRoleConfig = (roles) => {
+    //     let newConfig = { ...initialConfig }
 
-        newConfig.ROLE.roles = roles
+    //     newConfig.ROLE.roles = roles
 
-        setInitialConfig(newConfig)
-    }
+    //     setInitialConfig(newConfig)
+    // }
 
     let fixRoleConfig = (roles) => {
-        let newConfig = { ...configuration }
+        // let newConfig = { ...configuration }
 
-        newConfig.ROLE.roles = roles
+        // newConfig.welcomeRole.roles = roles
 
-        setConfiguration(newConfig)
+        setConfiguration({ ...configuration, welcomeRole: { ...configuration.welcomeRole, roles: roles } })
     }
 
     function decimalToHex(decimal) {
@@ -812,22 +694,20 @@ export const Welcome = (props) => {
 
     let moduleRole = () => {
         let rolesModule = []
-        for (let role of configuration.ROLE.roles) {
+        for (let role of (configuration?.welcomeRole?.roles || [])) {
             let roleElement = roles.find(r => r.id == role)
 
-            console.log(roleElement)
-
-            if (roleElement == undefined) {
-                fixInitialRoleConfig(initialConfig.ROLE.roles.filter(r => r != role))
-                fixRoleConfig(configuration.ROLE.roles.filter(r => r != role))
-            }
-            else {
+            if (roleElement != undefined) {
+                //     fixInitialRoleConfig(initialConfig.ROLE.roles.filter(r => r != role))
+                //     fixRoleConfig(configuration?.welcomeRole.roles.filter(r => r != role))
+                // }
+                // else {
                 rolesModule.push(
                     <div className="roleRenderXP">
                         <span style={{ background: `${decimalToHex(roleElement?.color)}` }}></span>
                         <div>{roleElement?.name}</div>
                         <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" viewBox="0 0 24 24" fill="none" onClick={() => {
-                            let newRoles = configuration.ROLE.roles
+                            let newRoles = configuration?.welcomeRole.roles
                             newRoles = newRoles.filter(r => r != role)
                             fixRoleConfig(newRoles)
                         }
@@ -841,14 +721,14 @@ export const Welcome = (props) => {
 
         rolesModule.push(
             <Form.Select defaultValue={roleXp} onChange={(e) => { setRoleXp(e.target.value) }}>
-                {getRolesForSelector(roles, roleXp, configuration.ROLE.roles)}
+                {getRolesForSelector(roles, roleXp, configuration?.welcomeRole?.roles)}
             </Form.Select>
         )
 
         return rolesModule
     }
 
-    let getRolesForSelector = (roles, id, filterRole) => {
+    let getRolesForSelector = (roles, id, filterRole = []) => {
         let rolesForSelector = []
 
         if (filterRole) {
@@ -879,32 +759,32 @@ export const Welcome = (props) => {
     }
 
     return (<>
-        {loading ? <LoadingComponent error={loadingError} errorMessage="Une erreur est survenue" /> :
+        {["ERROR", "LOADING"].includes(loading) ? <LoadingComponent error={loading == "ERROR"} errorMessage="Une erreur est survenue" /> :
             <>
                 <div className="block padding-1">
                     <div className="infoActive">
                         <h5>Envoyer un message privé aux nouveaux membres</h5>
-                        <Form.Check className="picto" type="switch" id="custom-switch success" checked={configuration?.DM?.active} onChange={(e) => { updateEtatDm(e) }} />
+                        <Form.Check className="picto" type="switch" id="custom-switch success" checked={configuration?.welcome?.DM?.active} onChange={(e) => { updateEtatDm(e) }} />
                     </div>
 
                     <div className="separator"></div>
 
-                    <div className={"informationConfig" + (configuration?.DM?.active ? "" : " welcomeDisable")}>
+                    <div className={"informationConfig" + (configuration?.welcome?.DM?.active ? "" : " welcomeDisable")}>
                         <div className="WelcomeComponente" >
                             <div className="embed">
                                 <div>
                                     <div className="embedAuthor">
-                                        {props.iconLink ?
+                                        {iconLink ?
                                             //on error replace .gif to .webp
-                                            <img className="iconEmbed" src={props.iconLink} alt="icon" onError={(e) => { e.target.src = props.iconLink.replace(".gif", ".webp") }} />
+                                            <img className="iconEmbed" src={iconLink} alt="icon" onError={(e) => { e.target.src = iconLink.replace(".gif", ".webp") }} />
                                             : <span className="iconEmbed color"></span>}
-                                        {props.name}
+                                        {name}
                                     </div>
-                                    <textarea id="messageWelcome" disabled={!configuration?.DM?.active} style={{ Background: "#313442", maxHeight: '300px', minHeight: "100px", resize: configuration?.DM?.active ? "vertical" : "none" }} className="embedDescripton" rows="6" placeholder="Message to send" value={configuration?.DM.embeds[embedNumber]?.description} onChange={event => { updateEmbedDm(embedNumber, { description: event.target.value }) }} />
+                                    <textarea id="messageWelcome" disabled={!configuration?.welcome?.DM?.active} style={{ Background: "#313442", maxHeight: '300px', minHeight: "100px", resize: configuration?.welcome?.DM?.active ? "vertical" : "none" }} className="embedDescripton" rows="6" placeholder="Message to send" value={configuration?.welcome?.DM.embeds[embedNumber]?.description} onChange={event => { updateEmbedDm(embedNumber, { description: event.target.value }) }} />
                                 </div>
                                 <div>
-                                    {props.iconLink ?
-                                        <img className="thumbnailEmbed" src={props.iconLink} alt="icon" onError={(e) => { e.target.src = props.iconLink.replace(".gif", ".webp") }} />
+                                    {iconLink ?
+                                        <img className="thumbnailEmbed" src={iconLink} alt="icon" onError={(e) => { e.target.src = iconLink.replace(".gif", ".webp") }} />
                                         : <span className="thumbnailEmbed color"></span>}
                                 </div>
                             </div>
@@ -921,19 +801,19 @@ export const Welcome = (props) => {
                     </div>
                 </div>
 
-                <div className="block padding-1">
+                <div className={"block padding-1" + (configuration?.welcome?.guild?.active ? "" : " disabled")}>
                     <div className="infoActive">
                         <h5>Envoyer un message quand un membre rejoint votre serveur</h5>
-                        <Form.Check className="picto" type="switch" id="custom-switch success" checked={configuration?.GUILD?.active} onChange={(e) => { updateEtatGuild(e) }} />
+                        <Form.Check className="picto" type="switch" id="custom-switch success" checked={configuration?.welcome?.guild?.active} onChange={(e) => { updateEtatGuild(e) }} />
                     </div>
 
                     <div className="separator"></div>
 
                     <p className="categorie_config" >Salon pour les Messages de Bienvenue</p>
 
-                    <Form.Select style={{ "max-width": "530px" }} defaultValue={configuration?.GUILD?.channel} disabled={!configuration?.GUILD?.active} onChange={(event) => { updateSelectMenu(event.target.value) }}>
+                    <Form.Select style={{ "max-width": "530px" }} defaultValue={configuration?.welcome.guild?.channel} value={configuration?.welcome.guild?.channel} disabled={!configuration?.welcome?.guild?.active} onChange={(event) => { updateSelectMenu(event.target.value) }}>
                         {(() => {
-                            return getChannelForSelector(channel, configuration?.GUILD?.channel);
+                            return getChannelForSelector(channel, configuration?.welcome?.guild?.channel);
                         })()}
                     </Form.Select>
 
@@ -946,15 +826,15 @@ export const Welcome = (props) => {
                         as="textarea"
                         rows={3}
                         placeholder="Entrer le message de bienvenue"
-                        disabled={!configuration?.GUILD?.active}
-                        value={configuration?.GUILD?.content}
+                        disabled={!configuration?.welcome?.guild?.active}
+                        value={configuration?.welcome?.guild?.content}
                         onChange={(event) => { updateContent(event) }}
                     />
 
 
                     <div className="separator" style={{ "marginTop": "15px" }} ></div>
 
-                    <div className={"informationWelcomeCanvas" + (configuration?.GUILD?.active ? "" : " welcomeDisable")}>
+                    <div className={"informationWelcomeCanvas" + (configuration?.welcome?.guild?.active ? "" : " welcomeDisable")}>
                         <div className="WelcomeComponente" >
                             <canvas width="1200" height="500" ref={canvasRef} style={{ borderRadius: "10px" }} ></canvas>
 
@@ -969,9 +849,9 @@ export const Welcome = (props) => {
 
                             <div style={{ marginBottom: "10px" }}>
                                 <p>Theme de la carte:</p>
-                                <Form.Select defaultValue={configuration?.GUILD?.design} onChange={(event) => { updateTheme(event.target.value) }}>
+                                <Form.Select defaultValue={configuration?.welcome?.guild?.design} onChange={(event) => { updateTheme(event.target.value) }}>
                                     {(() => {
-                                        return optionsTheme(configuration?.GUILD?.design);
+                                        return optionsTheme(configuration?.welcome?.guild?.design);
                                     })()}
                                 </Form.Select>
                             </div>
@@ -983,11 +863,11 @@ export const Welcome = (props) => {
                                 <div style={{ display: "flex", flexDirection: "row" }}>
                                     <div className="colorModule">
                                         <span>Ambiance</span>
-                                        <input type="color" defaultValue={"#000000"} value={configuration?.GUILD?.colorAmbiance} onChange={(e) => { updateColorGuild({ colorAmbiance: e.target.value }) }} />
+                                        <input type="color" defaultValue={"#000000"} value={configuration?.welcome?.guild?.colorAmbiance} onChange={(e) => { updateColorGuild({ colorAmbiance: e.target.value }) }} />
                                     </div>
                                     <div className="colorModule">
                                         <span>Texte</span>
-                                        <input type="color" defaultValue={"#FFFFFF"} value={configuration?.GUILD?.colorText} onChange={(e) => { updateColorGuild({ colorText: e.target.value }) }} />
+                                        <input type="color" defaultValue={"#FFFFFF"} value={configuration?.welcome?.guild?.colorText} onChange={(e) => { updateColorGuild({ colorText: e.target.value }) }} />
                                     </div>
                                 </div>
                             </div>
@@ -996,10 +876,10 @@ export const Welcome = (props) => {
 
                 </div>
 
-                <div className="block padding-1">
+                <div className={"block padding-1" + (configuration?.welcomeRole?.active ? "" : " disabled")}>
                     <div className="infoActive">
                         <h5>Donner un rôle aux nouveaux membres</h5>
-                        <Form.Check className="picto" type="switch" id="custom-switch success" checked={configuration?.ROLE?.active} onChange={(e) => { updateEtatROLE(e) }} />
+                        <Form.Check className="picto" type="switch" id="custom-switch success" checked={configuration?.welcomeRole?.active} onChange={(e) => { updateEtatROLE(e) }} />
                     </div>
 
                     <div className="separator"></div>
@@ -1012,15 +892,15 @@ export const Welcome = (props) => {
                 <div className="block padding-1">
                     <div className="infoActive">
                         <h5>Renommer les membres lorsqu'ils rejoignent le serveur</h5>
-                        {/* <Form.Check className="picto" type="switch" id="custom-switch success" checked={configuration?.ROLE?.active} onChange={(e) => { updateEtatROLE(e) }} /> */}
+                        <Form.Check className="picto" type="switch" id="custom-switch success" checked={configuration?.welcome?.guild?.defaultPseudo} onChange={(e) => { updateDefaultPseudo(null) }} />
                     </div>
 
                     <div className="separator"></div>
                     <Form.Control
                         style={{ "max-width": "530px" }}
                         placeholder="Entrer le pseudo"
-                        value={configuration?.GUILD?.defaultPseudo}
-                        onChange={(event) => { updateDefaultPseudo(event) }}
+                        value={configuration?.welcome?.guild?.defaultPseudo || ""}
+                        onChange={(event) => { updateDefaultPseudo(event.target.value) }}
                     />
 
                 </div>
@@ -1029,7 +909,7 @@ export const Welcome = (props) => {
             </>
         }
 
-        <div id="card" className={"cardSave" + (changeNotSave ? " hidden" : "")} ><div className="saveConfig"><div style={{ display: "flex", alignItems: "center", flexDirection: "row", gap: "0.3em" }}><Avatar classElement="logoChangement" width="30" height="28" /> Changements détectés ! Veuillez enregistrer ou annuler.</div><div className="buttonContainer"><button className="cancelButton" disabled={loadingChargement} type="button" onClick={resetChange}>Annuler</button><button className="saveButton" type="button" disabled={loadingChargement} onClick={updateConfig}>Enregistrer</button></div></div></div>
+        {/* <div id="card" className={"cardSave" + (changeNotSave ? " hidden" : "")} ><div className="saveConfig"><div style={{ display: "flex", alignItems: "center", flexDirection: "row", gap: "0.3em" }}><Avatar classElement="logoChangement" width="30" height="28" /> Changements détectés ! Veuillez enregistrer ou annuler.</div><div className="buttonContainer"><button className="cancelButton" disabled={loadingChargement} type="button" onClick={resetChange}>Annuler</button><button className="saveButton" type="button" disabled={loadingChargement} onClick={updateConfig}>Enregistrer</button></div></div></div> */}
     </>)
 }
 

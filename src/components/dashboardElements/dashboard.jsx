@@ -2,51 +2,15 @@ import { useState, useEffect } from "react"
 import { Form } from 'react-bootstrap/'
 import Avatar from "../../components/avatar/avatar";
 import LoadingComponent from "../../components/loading/LoadingComponent.jsx";
+import * as guildsAPI from "../../utils/API/guildsAPI";
 
-export const Dashboard = (props) => {
-
-    const [data, setData] = useState({})
-    const [initialConfig, setInitialConfig] = useState({})
-    const [changeNotSave, setChangeNotSave] = useState(false);
-    const [loadingChargement, setLoadingChargement] = useState(false);
-
-    const [loading, setLoading] = useState(true)
+export const Dashboard = ({ guildId, configuration, updateConfiguration, channels, setChannels, loading }) => {
     const [channel, setChannel] = useState([])
-    const [loadingError, setLoadingError] = useState(false)
 
     useEffect(() => {
-        async function fetchData() {
-            setLoading(true)
-            try {
-                await Promise.all([
-                    getChannelGuild(),
-                    getConfigurationDashboard()
-                ])
-            } catch (error) {
-                return setLoadingError(true)
-            }
+        setChannel(channels?.filter(channel => channel.type === 0) || [])
+    }, [channels])
 
-            setLoading(false)
-        }
-        fetchData();
-    }, [props.guildId])
-
-    useEffect(() => {
-        const keys1 = Object.keys(data);
-        const keys2 = Object.keys(initialConfig);
-
-        if (keys1.length !== keys2.length) {
-            return setChangeNotSave(true)
-        }
-
-        for (let key of keys1) {
-            if (data[key] !== initialConfig[key]) {
-                return setChangeNotSave(true)
-            }
-        }
-
-        return setChangeNotSave(false)
-    }, [data])
 
     let getChannelForSelector = (allChannel, selectedchannel) => {
         var option = [];
@@ -70,84 +34,15 @@ export const Dashboard = (props) => {
         return option;
     }
 
-    let resetChange = () => {
-        setData(initialConfig)
-    }
-
-    let updateConfig = async () => {
-        setLoadingChargement(true)
-
-        let headers = new Headers();
-        headers.append("Content-Type", "application/json");
-        headers.append("Authorization", `Bearer ${JSON.parse(window.localStorage.getItem('dataDiscord'))?.access_token}`);
-
-
-        try {
-            await fetch(`${process.env.REACT_APP_HOSTNAME_BACKEND}/guild/${props.guildId}/commandtype`, {
-                method: "PUT",
-                headers,
-                body: JSON.stringify(data),
-                redirect: 'follow'
-            }).then(res => res.json())
-        } catch (error) {
-            setLoadingChargement(false)
-            return console.log("Save Configuration Error", error)
-        }
-
-        setInitialConfig(data)
-        setLoadingChargement(false)
-        setChangeNotSave(false)
-    }
-
-    let getChannelGuild = async () => {
-        var myHeaders = new Headers();
-        myHeaders.append("Content-Type", "application/json");
-        myHeaders.append("Authorization", `Bearer ${JSON.parse(window.localStorage.getItem('dataDiscord'))?.access_token}`);
-
-        var requestOptions = {
-            method: 'GET',
-            headers: myHeaders,
-            redirect: 'follow'
-        };
-
-        await fetch(process.env.REACT_APP_HOSTNAME_BACKEND + "/bot/getchannels/" + props.guildId, requestOptions)
-            .then(response => response.json())
-            .then((result) => {
-                setChannel(result?.channels?.filter(channel => channel.type === 0) || []);
-            })
-            .catch(console.log)
-    };
-
-    let getConfigurationDashboard = async () => {
-        let config = await fetch(`${process.env.REACT_APP_HOSTNAME_BACKEND}/guild/${props.guildId}/commandtype`).then(res => res.json()) || {
-            guild: props.guildId,
-            sheesh: false,
-            heyreaction: false,
-            rename: true,
-            musique: true,
-            radio: true,
-            playlist: true,
-            fun: true,
-            game: true,
-            chaineTwitch: "0",
-            idChannelTwitchTchat: "0",
-        }
-
-        await Promise.all([
-            setInitialConfig(config),
-            setData(config)
-        ])
-    }
-
     return (<>
-        {loading ?
-            <LoadingComponent error={loadingError} errorMessage="Une erreur est survenue" />
+        {["ERROR", "LOADING"].includes(loading) ?
+            <LoadingComponent error={loading == "ERROR"} errorMessage="Une erreur est survenue" />
             : <>
 
                 <div className="block">
                     <h3>Textuel</h3>
                     <div className="modules">
-                        {typeof data.heyreaction === 'boolean' ? <div className="guildModule">
+                        {typeof configuration.heyreaction === 'boolean' ? <div className="guildModule">
                             <div className="top">
                                 {/* <img className="picto" alt='logo' width="48" height="48" src={reactionPicto} ></img> */}
                                 <svg className="pictoLog" width="45" height="45" viewBox="0 0 384 384" >
@@ -168,15 +63,13 @@ export const Dashboard = (props) => {
                                     </defs>
                                 </svg>
 
-
-
-                                <Form.Check className="picto" type="switch" id="custom-switch success" onChange={() => { setData({ ...data, heyreaction: !data?.heyreaction }) }} checked={data?.heyreaction} />
+                                <Form.Check className="picto" type="switch" id="custom-switch success" onChange={() => { updateConfiguration({ ...configuration, heyreaction: !configuration?.heyreaction }) }} checked={configuration?.heyreaction} />
                             </div>
                             <h5 className="hrnh5k-0 eeKdki sc-1wkjbe7-8 GoZzi">Réactions</h5>
                             <div>Laissez le bot réagir avec 👋 / 💤 suivant le message</div>
                         </div> : ""}
 
-                        {typeof data?.rename === "boolean" ?
+                        {typeof configuration?.rename === "boolean" ?
                             <div className="guildModule">
                                 <div className="top">
                                     <svg className="pictoLog" width="45" height="45" viewBox="0 0 24 24">
@@ -184,14 +77,14 @@ export const Dashboard = (props) => {
                                         <path d="M17.0049 17.995V4H19.9999V2H11.9999V4H15.0049V5.995H4.00488C2.90188 5.995 2.00488 6.892 2.00488 7.995V15.995C2.00488 17.098 2.90188 17.995 4.00488 17.995H15.0049V20H11.9999V22H19.9999V20H17.0049V17.995ZM4.00488 15.995V7.995H15.0049V15.995H4.00488Z" />
                                     </svg>
 
-                                    <Form.Check type="switch" id="custom-switch success" onChange={() => { setData({ ...data, rename: !data?.rename }) }} checked={data?.rename} />
+                                    <Form.Check type="switch" id="custom-switch success" onChange={() => { updateConfiguration({ ...configuration, rename: !configuration?.rename }) }} checked={configuration?.rename} />
                                 </div>
                                 <h5 className="hrnh5k-0 eeKdki sc-1wkjbe7-8 GoZzi">Rename</h5>
                                 <div>Laissez le bot rename les membres lorsque leurs pseudos ne sont pas identifiables par la modération</div>
                             </div>
                             : ""}
 
-                        {typeof data.sheesh === 'boolean' ?
+                        {typeof configuration.sheesh === 'boolean' ?
                             <div className="guildModule">
                                 <div className="top">
                                     <svg className="pictoLog" width="55" height="55" viewBox="0 0 400 400" >
@@ -203,7 +96,7 @@ export const Dashboard = (props) => {
                                         <path d="M377.868 305.14C379.261 276.19 379.957 253.244 379.957 236.303C379.957 202.635 377.022 185.801 371.153 185.801C366.775 185.801 362.199 193.628 357.424 209.283C352.748 224.937 348.868 247.025 345.784 275.546H345.635C345.137 280.908 344.192 290.236 342.799 303.532C342.202 305.033 341.208 306.319 339.815 307.392C338.521 308.464 337.427 309 336.532 309C335.736 309 335.338 308.464 335.338 307.392C339.815 262.572 342.053 219.79 342.053 179.046C342.053 138.087 340.113 103.454 336.233 75.1467L339.964 70L351.902 82.2234C352.897 96.5913 353.395 113.747 353.395 133.69C353.395 153.419 352.599 176.794 351.007 203.814C355.185 186.659 359.762 172.934 364.736 162.641C369.81 152.347 374.585 147.201 379.062 147.201C387.021 147.201 391 159.317 391 183.549C391 203.493 390.154 226.653 388.463 253.03C386.772 279.192 385.777 295.383 385.479 301.602C384.086 304.604 381.897 306.105 378.913 306.105C378.216 306.105 377.868 305.783 377.868 305.14Z" />
                                     </svg>
 
-                                    <Form.Check type="switch" id="custom-switch success" onChange={() => { setData({ ...data, sheesh: !data.sheesh }) }} checked={data.sheesh} />
+                                    <Form.Check type="switch" id="custom-switch success" onChange={() => { updateConfiguration({ ...configuration, sheesh: !configuration.sheesh }) }} checked={configuration.sheesh} />
                                 </div>
                                 <h5 className="hrnh5k-0 eeKdki sc-1wkjbe7-8 GoZzi">Sheesh</h5>
                                 <div>Laissez le bot réagir avec son meilleur "SHEEEESHHHH" si un membre dit "sheesh"</div>
@@ -215,35 +108,35 @@ export const Dashboard = (props) => {
                 <div className="block">
                     <h3>Multimedia</h3>
                     <div className="modules">
-                        {typeof data.radio === 'boolean' ?
+                        {typeof configuration.radio === 'boolean' ?
                             <div className="guildModule">
                                 <div className="top">
                                     <svg className="pictoLog" width="45" height="45" viewBox="0 0 60 60">
                                         <path d="M31.938 36.8369C31.938 42.8609 27.038 47.7609 21.013 47.7609C14.988 47.7609 10.088 42.8609 10.088 36.8369C10.088 30.8129 14.988 25.9119 21.013 25.9119C27.038 25.9119 31.938 30.8129 31.938 36.8369ZM59.5 21.8339V51.8389C59.5 55.8429 56.254 59.0889 52.25 59.0889H7.25C3.246 59.0889 0 55.8429 0 51.8389V21.8339C0 17.8299 3.246 14.5839 7.25 14.5839H42.873L6.186 3.34589C5.394 3.10289 4.948 2.26389 5.19 1.47189C5.434 0.679885 6.271 0.233885 7.064 0.477885L53.48 14.6959C56.897 15.2819 59.5 18.2509 59.5 21.8339ZM34.938 36.8369C34.938 29.1589 28.691 22.9119 21.013 22.9119C13.335 22.9119 7.089 29.1579 7.089 36.8369C7.089 44.5149 13.336 50.7609 21.014 50.7609C28.692 50.7609 34.938 44.5139 34.938 36.8369ZM50.625 37.6849C50.625 36.8559 49.953 36.1849 49.125 36.1849C48.297 36.1849 47.625 36.8559 47.625 37.6849V49.2609C47.625 50.0899 48.297 50.7609 49.125 50.7609C49.953 50.7609 50.625 50.0899 50.625 49.2609V37.6849ZM52.352 27.5499C52.352 25.7679 50.907 24.3229 49.125 24.3229C47.343 24.3229 45.898 25.7679 45.898 27.5499C45.898 29.3319 47.343 30.7769 49.125 30.7769C50.907 30.7769 52.352 29.3319 52.352 27.5499Z" />
                                     </svg>
 
-                                    <Form.Check type="switch" id="custom-switch success" onChange={() => { setData({ ...data, radio: !data.radio }) }} checked={data.radio} />
+                                    <Form.Check type="switch" id="custom-switch success" onChange={() => { updateConfiguration({ ...configuration, radio: !configuration.radio }) }} checked={configuration.radio} />
                                 </div>
                                 <h5 className="hrnh5k-0 eeKdki sc-1wkjbe7-8 GoZzi">Radio</h5>
                                 <div>Laissez vos membres écouter une des 41 radios disponibles sur le Bot</div>
                             </div>
                             : ""}
 
-                        {typeof data.musique === 'boolean' ?
+                        {typeof configuration.musique === 'boolean' ?
                             <div className="guildModule">
                                 <div className="top">
                                     <svg className="pictoLog" width="45" height="45" viewBox="0 0 514 514" >
                                         <path d="M331.895 421.526V237.344L440.37 219.756C423.093 128.184 342.73 58.9062 246.136 58.9062C136.935 58.9062 48.415 147.426 48.415 256.627C48.415 365.829 136.935 454.349 246.136 454.349C256.728 454.349 267.114 453.492 277.251 451.89C285.189 438.714 299.428 428.14 317.509 423.619C322.285 422.437 327.108 421.727 331.895 421.526ZM282.463 75.0432L261.279 167.854H240.094L224.962 75.0432C247.159 63.9422 282.463 75.0432 282.463 75.0432ZM246.136 330.033C205.594 330.033 172.73 297.169 172.73 256.627C172.73 216.085 205.594 183.222 246.136 183.222C286.678 183.222 319.542 216.086 319.542 256.627C319.542 297.169 286.678 330.033 246.136 330.033ZM246.136 200.658C215.267 200.658 190.167 225.758 190.167 256.627C190.167 287.493 215.267 312.597 246.136 312.597C277.003 312.597 302.105 287.493 302.105 256.627C302.105 225.758 277.002 200.658 246.136 200.658ZM246.136 296.607C224.092 296.607 206.159 278.674 206.159 256.627C206.159 234.583 224.098 216.65 246.136 216.65C268.183 216.65 286.104 234.583 286.104 256.627C286.104 278.675 268.183 296.607 246.136 296.607ZM271.458 486.001C272.416 491.309 274.52 496.25 277.558 500.689C267.262 502.007 256.788 502.764 246.143 502.764C110.419 502.764 0 392.345 0 256.627C0 120.91 110.419 10.4912 246.136 10.4912C366.609 10.4912 467.081 97.5272 488.146 212.007L464.25 215.887C445.057 112.913 354.586 34.7022 246.136 34.7022C123.765 34.7022 24.211 134.257 24.211 256.627C24.211 378.998 123.766 478.553 246.136 478.553C254.331 478.553 262.415 478.074 270.382 477.205C270.453 480.125 270.772 483.062 271.458 486.001ZM513.255 225.279V438.684C513.255 456.358 500.08 470.455 479.528 475.644C456.966 481.236 435.185 471.79 430.858 454.496C426.532 437.172 441.308 418.594 463.864 412.949C474.06 410.431 484.091 410.945 492.49 413.901V285.336L377.119 306.42L376.587 466.364H376.564C376.463 481.514 362.803 496.38 343.156 501.244C320.873 506.853 297.513 496.243 295.008 480.367C290.723 463.238 305.328 444.849 327.671 439.252C337.725 436.752 347.549 437.255 355.806 440.145V250.817L513.255 225.279Z" />
                                     </svg>
 
-                                    <Form.Check type="switch" id="custom-switch success" onChange={() => { setData({ ...data, musique: !data.musique }) }} checked={data.musique} />
+                                    <Form.Check type="switch" id="custom-switch success" onChange={() => { updateConfiguration({ ...configuration, musique: !configuration.musique }) }} checked={configuration.musique} />
                                 </div>
                                 <h5 className="hrnh5k-0 eeKdki sc-1wkjbe7-8 GoZzi">Musique</h5>
                                 <div>Laissez vos membres écouter leurs meilleures musiques</div>
                             </div>
                             : ""}
 
-                        {typeof data.playlist === 'boolean' ?
+                        {typeof configuration.playlist === 'boolean' ?
                             <div className="guildModule">
                                 <div className="top">
                                     <svg className="pictoLog" width="45" height="45" viewBox="0 0 512 512" >
@@ -253,7 +146,7 @@ export const Dashboard = (props) => {
                                         <path d="M411.328 75.914C393.043 61.805 368 42.477 368 32C368 14.328 353.672 0 336 0C318.328 0 304 14.328 304 32V325.58C293.977 322.031 283.238 320 272 320C218.98 320 176 362.98 176 416C176 469.02 218.98 512 272 512C325.02 512 368 469.02 368 416V123.293C369.414 124.387 370.82 125.496 372.23 126.586C408.335 154.438 432 174.664 432 200.891C432 241.657 410.316 264.407 409.695 265.055C397.023 277.375 396.734 297.633 409.054 310.305C415.327 316.758 423.659 320 432.003 320C440.038 320 448.085 316.992 454.304 310.945C458.574 306.797 495.999 268.461 495.999 200.89C496 141.25 449.051 105.023 411.328 75.914Z" />
                                     </svg>
 
-                                    <Form.Check type="switch" id="custom-switch success" onChange={() => { setData({ ...data, playlist: !data.playlist }) }} checked={data.playlist} />
+                                    <Form.Check type="switch" id="custom-switch success" onChange={() => { updateConfiguration({ ...configuration, playlist: !configuration.playlist }) }} checked={configuration.playlist} />
                                 </div>
                                 <h5 className="hrnh5k-0 eeKdki sc-1wkjbe7-8 GoZzi">Playlist</h5>
                                 <div>Laissez vos membres réaliser / modifier / écouter leurs playlists</div>
@@ -266,27 +159,27 @@ export const Dashboard = (props) => {
                     <h3>Activité</h3>
                     <div className="modules">
 
-                        {typeof data.game === 'boolean' ?
+                        {typeof configuration.game === 'boolean' ?
                             <div className="guildModule">
                                 <div className="top">
                                     <svg className="pictoLog" width="48" height="48" viewBox="0 0 577 577" >
                                         <path d="M464.695 0H112.161C97.8711 0 86.2671 11.595 86.2671 25.896V550.963C86.2671 565.264 97.8721 576.859 112.161 576.859H370.678C436.907 576.859 490.593 523.171 490.593 456.953V25.896C490.593 11.595 478.987 0 464.695 0ZM135.085 80.745C135.085 69.001 144.608 59.49 156.344 59.49H420.512C432.248 59.49 441.769 69.001 441.769 80.745V230.126C441.769 241.871 432.248 251.381 420.512 251.381H156.345C144.609 251.381 135.086 241.871 135.086 230.126V80.745H135.085ZM264.431 430.222C264.431 434.879 260.655 438.655 256 438.655H224.77V469.883C224.77 474.541 220.996 478.316 216.338 478.316H175.518C170.861 478.316 167.085 474.542 167.085 469.883V438.655H135.861C131.203 438.655 127.427 434.879 127.427 430.222V389.4C127.427 384.743 131.203 380.967 135.861 380.967H167.087V349.738C167.087 345.081 170.863 341.306 175.52 341.306H216.343C221 341.306 224.774 345.079 224.774 349.738V380.967H256.004C260.659 380.967 264.435 384.741 264.435 389.4V430.221H264.431V430.222ZM353.756 490.33C336.499 490.33 322.511 476.342 322.511 459.084C322.511 441.827 336.499 427.837 353.756 427.837C371.014 427.837 385.002 441.825 385.002 459.084C385.004 476.342 371.014 490.33 353.756 490.33ZM411.442 394.188C394.184 394.188 380.198 380.201 380.198 362.942C380.198 345.684 394.184 331.695 411.442 331.695C428.701 331.695 442.689 345.682 442.689 362.942C442.689 380.2 428.701 394.188 411.442 394.188Z" />
                                     </svg>
 
-                                    <Form.Check type="switch" id="custom-switch success" onChange={() => { setData({ ...data, game: !data.game }) }} checked={data.game} />
+                                    <Form.Check type="switch" id="custom-switch success" onChange={() => { updateConfiguration({ ...configuration, game: !configuration.game }) }} checked={configuration.game} />
                                 </div>
                                 <h5 className="hrnh5k-0 eeKdki sc-1wkjbe7-8 GoZzi">Game</h5>
                                 <div>Plusieurs jeux sont disponibles pour vous amuser</div>
                             </div> : ""}
 
-                        {typeof data.fun === 'boolean' ?
+                        {typeof configuration.fun === 'boolean' ?
                             <div className="guildModule">
 
                                 <div className="top">
                                     <svg className="pictoLog" width="45" height="45" viewBox="0 0 490 490">
                                         <path d="M69.086 490H420.915C459.001 490 490 459.001 490 420.914V69.086C490 30.991 459.001 0 420.914 0H69.086C30.999 0 0 30.991 0 69.086V420.915C0 459.001 30.999 490 69.086 490ZM332.349 132.647C355.9 132.647 374.991 151.738 374.991 175.288C374.991 198.839 355.9 217.93 332.349 217.93C308.799 217.93 289.708 198.839 289.708 175.288C289.708 151.738 308.799 132.647 332.349 132.647ZM352.292 300.927L370.595 325.481C328.919 356.57 287.109 366.933 249.904 366.933C176.018 366.933 120.211 326.08 119.374 325.467L137.707 300.928C142.104 304.186 246.436 379.882 352.292 300.927ZM157.651 132.647C181.201 132.647 200.292 151.738 200.292 175.288C200.292 198.839 181.201 217.93 157.651 217.93C134.1 217.93 115.009 198.839 115.009 175.288C115.009 151.738 134.1 132.647 157.651 132.647Z" />
                                     </svg>
-                                    <Form.Check type="switch" id="custom-switch success" onChange={() => { setData({ ...data, fun: !data.fun }) }} checked={data.fun} />
+                                    <Form.Check type="switch" id="custom-switch success" onChange={() => { updateConfiguration({ ...configuration, fun: !configuration.fun }) }} checked={configuration.fun} />
                                 </div>
 
                                 <h5 className="hrnh5k-0 eeKdki sc-1wkjbe7-8 GoZzi">Fun</h5>
@@ -297,22 +190,18 @@ export const Dashboard = (props) => {
                 </div>
 
 
-                {(data.idChannelTwitchTchat) ? <div className="block">
+                {(configuration.idChannelTwitchTchat) ? <div className="block">
                     <h3>Twitch</h3>
                     <div className="modules">
 
                         <div className="guildModule">
                             <div className="top">
-                                {/* <img className="pictoLog" alt='logo' width="48" height="48" src={twitch} ></img> */}
                                 <svg className="pictoLog" width="50" height="50" viewBox="0 0 256 268">
                                     <path d="M17.4579 0L0 46.5559V232.757H63.9826V267.691H98.9145L133.812 232.757H186.172L256 162.954V0H17.4579ZM40.7167 23.2632H232.731V151.292L191.992 192.033H128L93.1127 226.919V192.033H40.7167V23.2632ZM104.725 139.668H128V69.8439H104.725V139.668ZM168.722 139.668H191.992V69.8439H168.722V139.668Z" />
                                 </svg>
-
-                                {/* <Form.Check type="switch" id="custom-switch success" onChange={() => { this.setState({ logChannel: !this.state.logChannel }) }} checked={this.state.fun} /> */}
-                                {/* <Form.Control type="text" placeholder="Chaine" value={this.state.configuration.chaineTwitch} onChange={(event) => { this.setState({ configuration: { ...this.state.configuration, chaineTwitch: event.target.value } }) }} /> */}
-                                <Form.Select defaultValue={data.idChannelTwitchTchat} onChange={(event) => { setData({ ...data, idChannelTwitchTchat: event.target.value }) }}>
+                                <Form.Select value={configuration.idChannelTwitchTchat} defaultValue={configuration.idChannelTwitchTchat} onChange={(event) => { updateConfiguration({ ...configuration, idChannelTwitchTchat: event.target.value }) }}>
                                     {(() => {
-                                        return getChannelForSelector(channel, data.idChannelTwitchTchat);
+                                        return getChannelForSelector(channel, configuration.idChannelTwitchTchat);
                                     })()}
                                 </Form.Select>
                                 {/* </div> */}
@@ -327,7 +216,7 @@ export const Dashboard = (props) => {
                                 <svg className="pictoLog" width="50" height="50" viewBox="0 0 256 268">
                                     <path d="M17.4579 0L0 46.5559V232.757H63.9826V267.691H98.9145L133.812 232.757H186.172L256 162.954V0H17.4579ZM40.7167 23.2632H232.731V151.292L191.992 192.033H128L93.1127 226.919V192.033H40.7167V23.2632ZM104.725 139.668H128V69.8439H104.725V139.668ZM168.722 139.668H191.992V69.8439H168.722V139.668Z" />
                                 </svg>
-                                <Form.Control type="text" placeholder="Chaine" value={data.chaineTwitch} onChange={(event) => { setData({ ...data, chaineTwitch: event.target.value }) }} />
+                                <Form.Control type="text" placeholder="Chaine" value={configuration.chaineTwitch} onChange={(event) => { updateConfiguration({ ...configuration, chaineTwitch: event.target.value }) }} />
                             </div>
 
                             <h5 className="hrnh5k-0 eeKdki sc-1wkjbe7-8 GoZzi">Twitch</h5>
@@ -336,7 +225,6 @@ export const Dashboard = (props) => {
                     </div>
 
                 </div> : ""}
-                <div id="card" className={"cardSave" + (changeNotSave ? " hidden" : "")} ><div className="saveConfig"><div style={{ display: "flex", alignItems: "center", flexDirection: "row", gap: "0.3em" }}><Avatar classElement="logoChangement" width="30" height="28" /> Changements détectés ! Veuillez enregistrer ou annuler.</div><div className="buttonContainer"><button className="cancelButton" disabled={loadingChargement} type="button" onClick={resetChange}>Annuler</button><button className="saveButton" type="button" disabled={loadingChargement} onClick={updateConfig}>Enregistrer</button></div></div></div>
             </>}
 
     </>)

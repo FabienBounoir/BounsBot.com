@@ -5,18 +5,26 @@
     justify-content: center;
 }
 
-/* #error {
-    width: max-content;
-} */
-
-/* #error svg {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    width: 30em;
-
-transform: translate(-50%, -50%);
-}*/
+.invite_bot_button {
+    padding: 14px 18px 14px 18px;
+    color: #fff;
+    background-color: var(--color-principal);
+    border-radius: 4px;
+    text-decoration: none;
+    position: relative;
+    font-size: 18px;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    z-index: 3;
+    line-height: normal;
+    transition: transform 330ms ease-in-out;
+    display: flex;
+    gap: 0.3em;
+    width: fit-content;
+}
 
 #error svg {
     margin-left: auto;
@@ -32,8 +40,9 @@ transform: translate(-50%, -50%);
     align-items: center;
     justify-content: center;
     gap: 5em;
-    height: 80vh;
+    height: calc(100svh - 85px);
     padding: 0 1em;
+    overflow: hidden;
 }
 
 .ErreurPage__container__error {
@@ -62,7 +71,7 @@ transform: translate(-50%, -50%);
 }
 
 .ErreurPage {
-    overflow: scroll;
+    overflow: hidden;
 }
 
 .pError {

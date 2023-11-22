@@ -1,7 +1,30 @@
 import "./_login.css";
 import Avatar from "../../components/avatar/avatar";
+import { Toaster, toast } from 'sonner'
+import { useEffect } from "react";
 
 export const Login = () => {
+
+    useEffect(() => {
+        let status = new URLSearchParams(window.location.search).get('status')
+
+        if (status == "invalidToken") {
+            toast.error("Votre session a expiré. Veuillez vous reconnecter.", {
+                duration: 5000,
+            })
+        }
+        else if (status == "error") {
+            toast.error("Une erreur est survenue. Veuillez réessayer", {
+                duration: 5000,
+            })
+        }
+
+        return () => {
+            toast.dismiss()
+        }
+
+    }, [])
+
     return (
         <div className="container-logo">
 
@@ -15,6 +38,9 @@ export const Login = () => {
                 </svg>
                 <span>Se connecter avec Discord</span>
             </a>
+
+
+            <Toaster richColors expand={false} position="bottom-right" />
         </div>
     )
 }

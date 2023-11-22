@@ -1,0 +1,64 @@
+.command-card__header__title_squeleton .name {
+    background-color: var(--color-principal);
+    font-weight: 600 !important;
+    color: transparent !important;
+    border-radius: 5px;
+    margin-right: 10px;
+
+    animation: opacityChange 2s infinite;
+    user-select: none;
+}
+
+.command-card__header__title_squeleton .description {
+    background-color: #8f8f92;
+    font-size: 0.9rem;
+    color: transparent !important;
+    border-radius: 5px;
+
+    animation: opacityChange 5s infinite;
+    user-select: none;
+}
+
+.btn-commands-category_squeleton {
+    /* color: #686873; */
+    background-color: #1f1f25;
+    color: transparent;
+    padding: 13px 28px;
+    font-weight: 600;
+    cursor: pointer;
+    scroll-snap-align: start;
+    min-width: fit-content;
+
+    animation: opacityChange 2s infinite;
+}
+
+.btn-commands-category_squeleton:hover {
+    box-shadow: var(--color-principal) 0px 0px 0px 1px inset;
+    /* transi: test 2s ease-in-out; */
+    transition: box-shadow 0.3s ease-in-out;
+    user-select: none;
+}
+
+.btn-commands-category_squeleton.active {
+    background-color: var(--color-principal);
+    color: transparent;
+    cursor: not-allowed;
+
+    transition-property: background-color, color;
+    transition-duration: 0.4s;
+    user-select: none;
+}
+
+@keyframes opacityChange {
+    0% {
+        opacity: 0.5;
+    }
+
+    50% {
+        opacity: 0.3;
+    }
+
+    100% {
+        opacity: 0.5;
+    }
+}

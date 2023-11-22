@@ -1,7 +1,7 @@
 var CACHE_NAME = 'pwa-bounsbot';
 var urlsToCache = [
   '/',
-  '/commandes',
+  '/commands',
   '/playlist',
   '/level',
   '/demo',

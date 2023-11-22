@@ -2,8 +2,11 @@ import "./_homepage.css";
 import Avatar from "../../components/avatar/avatar";
 import TypeIt from "typeit";
 import { useEffect } from "react";
+import { useTranslation } from 'react-i18next'
 
 export const HomePage = () => {
+    const { t } = useTranslation();
+
     const scrollToFeatures = () => {
         document.getElementsByClassName("features")[0].scrollIntoView({ behavior: "smooth" });
     }
@@ -65,21 +68,20 @@ export const HomePage = () => {
             })()}
 
             <div className="homepage__text">
-                {/* <h1><span>Bouns'Bot</span> </h1> le meilleur bot pour Discord */}
-                <h1>Créez le serveur Discord ultime</h1>
+                <h1> {t("homepage.text_header")}</h1>
                 <p id="typeit">Votre acolyte pour <b>la radio</b> sur votre serveur.</p>
 
 
                 <div className="buttonContainer">
                     <span>
                         <a className="invite_bot_button" href={"https://discord.com/api/oauth2/authorize?client_id=" + process.env.REACT_APP_CLIENT_ID + "&permissions=1945627743&scope=bot%20applications.commands"} >
-                            <span>Inviter Bouns'bot</span>
+                            <span>{t("homepage.invite_button")}</span>
                         </a>
                     </span>
 
                     <span>
                         <a className="support_button" href={"https://discord.gg/KxedRVTutX"} >
-                            <span>Support</span>
+                            <span>{t("homepage.support")}</span>
                         </a>
                     </span>
                 </div>

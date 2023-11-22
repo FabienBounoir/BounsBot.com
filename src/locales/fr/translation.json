@@ -1,0 +1,106 @@
+{
+    "homepage": {
+        "text_header": "Créez le serveur Discord ultime",
+        "invite_button": "Inviter Bouns'bot",
+        "support": "Support",
+        "on_number_of_server": "Bounsbot, le bot Discord approuvé par plus de {{number}} serveurs"
+    },
+    "feature": {
+        "fonctionnality": "Fonctionnalités",
+        "multimedia": {
+            "name": "Multimedia",
+            "description1": "Jouez des chansons à la demande ou écoutez une station de radio toute la journée sans jamais devoir vous arrêter.",
+            "description2": "La fête ne s'arrêtera pas non plus quand vous partirez, car Bouns'bot reste dans votre channel 24h/24, 7j/7 !"
+        },
+        "game": {
+            "name": "Les Jeux",
+            "description1": "Jouez à un grand nombre de mini-jeux ! Vous pouvez jouer à plus de 15 mini-jeux seuls ou contre vos amis.",
+            "description2": "Démarqué vous grâce au classement intégré à Bouns'bot , et venez tester votre culture générale grâce à notre quiz."
+        },
+        "logs": {
+            "name": "Les Logs",
+            "description1": "Comment ça, vous ne savez pas que Wumpus a allumé sa caméra !",
+            "description2": "Avec Bouns'bot vous avez accès à tous les logs disponibles sur Discord, il vous suffit d'activer ce dont vous avez besoin."
+        },
+        "ticket": {
+            "name": "Les Tickets",
+            "description": "Bouns’bot permet de créer des channels de supports privés, que nous appelons des tickets, entre votre équipe et les personnes qui cherchent de l'aide."
+        },
+        "engagement": {
+            "name": "L'engagement",
+            "description": "Récompensez vos membres avec des points d'XP et gardez la trace des membres les plus actifs sur votre tableau de classement personnalisé."
+        }
+    },
+    "brand": {
+        "slogan": "Créer un serveur Discord à votre image",
+        "add_bot": "Ajouter Bouns'Bot"
+    },
+    "title": {
+        "commands": "Commandes",
+        "levels": "Levels",
+        "status": "Statuts",
+        "login": "Se connecter",
+        "demo": "Démo"
+    },
+    "commands": {
+        "search_command": "Rechercher une commande",
+        "usage": "Utilisation",
+        "example": "Exemples",
+        "copied": "Commande copiée !"
+    },
+    "footer": {
+        "our_history": "Notre histoire",
+        "terms_of_service": "Conditions d'utilisation",
+        "privacy_policy": "Politique de confidentialité",
+        "support_server": "Serveur support",
+        "source_code": "Code source",
+        "all_rights_reserved": "Tous droits réservés"
+    },
+    "levels": {
+        "messages": "MESSAGES",
+        "experience": "EXPÉRIENCE",
+        "no_guild_leaderboard": "Je crois qu'il n'y a pas d'information pour ce serveur...",
+        "role_rewards": "Récompenses de rôle",
+        "level_number": "LEVEL {{level}}"
+    },
+    "404_page": {
+        "title": "MAUVAIS VIRAGE ?",
+        "text": "Tu as l'air perdu, étranger. si tu souhaites ajouter Bouns'Bot, le bouton ci-dessous pourrait t’aider",
+        "button_text": "Ajouter à Discord"
+    },
+    "loader": {
+        "TIPS_1": "Chargement en cours... 🚀",
+        "TIPS_2": "Saviez-vous que les chatons sont de véritables boules de poils adorables ? 😻",
+        "TIPS_3": "Un petit secret : les pingouins sont d'excellents danseurs ! 🐧💃",
+        "TIPS_4": "La patience est une vertu, même lors du chargement de la page. 🧘‍♂️",
+        "TIPS_5": "Besoin d'une pause ? Pourquoi ne pas faire une petite danse du robot ? 🤖💃",
+        "TIPS_6": "L'astronomie est fascinante. Chaque étoile est un monde en soi. ✨🪐",
+        "TIPS_7": "Amusez-vous à deviner combien de nuages passent pendant le chargement. ☁️☁️☁️",
+        "TIPS_8": "Saviez-vous que les éléphants ont une excellente mémoire ? 🐘🧠",
+        "TIPS_9": "Les coccinelles portent chance ! 🐞🍀",
+        "TIPS_10": "La nature est pleine de beauté. Prenez un moment pour l'apprécier. 🌿🌻",
+        "TIPS_11": "La curiosité est le meilleur carburant de la connaissance. 💡📚",
+        "TIPS_12": "Un sourire est le langage universel de l'amitié. 😄🤝",
+        "TIPS_13": "Les rêves sont comme des étoiles : vous ne pouvez pas toujours les toucher, mais vous pouvez les suivre. 🌟🌠",
+        "TIPS_14": "En attendant, voici une blague : Pourquoi les plongeurs plongent-ils toujours en arrière et jamais en avant ? Parce que sinon ils tombent dans le bateau ! 🤣🚢",
+        "TIPS_15": "Saviez-vous que les pingouins ont des réunions secrètes tous les jeudis soir ? Chuuut, c'est un secret ! 🐧🤫",
+        "TIPS_16": "Le chargement peut prendre un peu de temps, mais rappelez-vous : les grandes choses prennent du temps. 🚀🌟",
+        "TIPS_17": "Pourquoi le JavaScript a-t-il l'air si fatigué ? Parce qu'il a toujours besoin de caféine (addEventListener 'coffee') ! ☕😄",
+        "TIPS_18": "La persévérance est la clé du succès. Continuez d'attendre, vous y êtes presque ! 🌈💪",
+        "TIPS_19": "Votre patience est admirable. Profitez de cette pause pour prendre une grande inspiration et sourire. 😊🌬️",
+        "TIPS_20": "Saviez-vous que les pandas sont les rois de la sieste ? 🐼💤",
+        "TIPS_21": "Il y a des trésors cachés dans chaque moment d'attente. Continuez de chercher ! 💎🔍",
+        "TIPS_22": "Rappelez-vous que même les plus grands bâtiments ont commencé par des fondations. Votre page est en train de devenir géniale ! 🏗️📈",
+        "TIPS_23": "Le chargement est une occasion de faire une pause, de respirer profondément et de vous rappeler à quel point vous êtes incroyable. 🌟🌿",
+        "TIPS_24": "Le succès commence par un simple pas. Votre chargement en est un ! 🚶‍♂️🌟",
+        "TIPS_25": "Ne perdez jamais espoir, même en attendant. Chaque instant est une opportunité. 🌈💫",
+        "TIPS_26": "Vous êtes plus fort que vous ne le pensez. Gardez la foi en attendant. 💪🌟",
+        "TIPS_27": "La persévérance est la clé de la réussite. Continuez d'attendre, votre moment viendra. 🗝️🌟",
+        "TIPS_28": "Saviez-vous que les arcs-en-ciel ne viennent qu'après la pluie ? Votre chargement est la pluie avant l'arc-en-ciel. 🌦️🌈",
+        "TIPS_29": "Les rêves se réalisent un pas à la fois. Votre page est un pas de plus vers la réalisation de votre rêve. 🚀💭",
+        "TIPS_30": "Chaque chargement est une opportunité de grandir. Continuez de grandir, même pendant l'attente. 🌱🌟",
+        "TIPS_31": "La patience est une vertu. Vous êtes en train de devenir plus patient chaque seconde. ⏳😇",
+        "TIPS_32": "N'oubliez pas que vous avez traversé des moments difficiles avant et vous en êtes sorti plus fort. 🦸‍♂️💪",
+        "TIPS_33": "La vie est un voyage, et même le chargement fait partie du voyage. Profitez-en ! 🌍🌟"
+    }
+}

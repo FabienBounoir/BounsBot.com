@@ -1,0 +1,152 @@
+.statusContainer {
+    min-height: calc(100vh - 40vh);
+    background-color: var(--back-first-color);
+    /* padding: 50px; */
+    padding: 2.5em 15em;
+}
+
+.statusShard {
+    background-color: var(--color-principal);
+    color: white;
+    padding: 1rem 1.5rem;
+    border-radius: 12px;
+    font-size: 1rem;
+    font-weight: 700;
+}
+
+.shardTooltips p {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.statusContainer p {
+    color: white;
+    font-size: 1rem;
+    font-weight: 500;
+    margin: 0;
+    padding-bottom: 0.5rem !important;
+}
+
+.statusContainer .top {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    height: 56px;
+    margin-bottom: 46px;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+}
+
+.statusContainer .top h1 {
+    margin: -2px 0 -12px;
+    font-size: 55px;
+    color: var(--color-principal);
+    /* font-family: "Uni Sans", "Arial", sans-serif; */
+    font-weight: bold;
+}
+
+.shardGrid {
+    display: flex;
+    flex-wrap: wrap;
+    max-width: 100%;
+    justify-content: center;
+    color: var(--color-principal);
+}
+
+.shardGrid .shard {
+    width: 45px;
+    height: 45px;
+    background-color: #1f1f25;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 4px;
+    font-weight: 500;
+    border-radius: 3px;
+    cursor: pointer;
+    transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+}
+
+.shardGrid .shard:hover {
+    background-color: var(--color-principal);
+    color: #1f1f25;
+}
+
+.shardGrid .shard.error {
+    border: 2px solid red;
+    animation: errorAnim 2s infinite
+}
+
+.shardGrid .shard.guild-in-shard {
+    /* animation: name duration timing-function delay iteration-count direction fill-mode; */
+
+    background: var(--color-principal);
+    color: #1f1f25;
+    animation: breathing 2s infinite;
+}
+
+@keyframes breathing {
+    0% {
+        background-color: var(--color-principal);
+        color: #1f1f25;
+    }
+
+    50% {
+        background-color: #1f1f25;
+        color: var(--color-principal);
+    }
+
+    100% {
+        background-color: var(--color-principal);
+        color: #1f1f25;
+    }
+}
+
+
+@keyframes errorAnim {
+    0% {
+        border: 0px solid rgba(255, 0, 0, 70%);
+    }
+
+    100% {
+        border: 15px solid rgba(0, 0, 0, 0);
+    }
+
+    /* 100% {
+        border: 0px solid rgba(255, 0, 0, 100%);
+    } */
+}
+
+
+@media screen and (max-width: 1300px) {
+    .statusContainer {
+        padding: 2.5em 7em;
+    }
+
+    .statusShard {
+        background-color: var(--color-principal);
+        color: white;
+        padding: 0.5rem 1rem;
+        border-radius: 0.5rem;
+        font-size: 1rem;
+        font-weight: 700;
+    }
+}
+
+@media screen and (max-width: 1000px) {
+    .statusContainer {
+        padding: 2.5em;
+    }
+}
+
+@media only screen and (max-width: 720px) {
+    .statusContainer {
+        padding: 10px;
+    }
+}

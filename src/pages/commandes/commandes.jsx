@@ -1,81 +1,315 @@
 import "./_commandes.css";
 import commandList from "./../../components/command.json"
 import React, { useEffect, useState, useRef } from "react";
+import Command from "../../components/command/command";
+import CommandSqueleton from "../../components/command/commandSqueleton";
+import MenuSqueleton from "../../components/command/MenuSqueleton";
+import * as commandsAPI from "../../utils/API/commandsAPI"
+import { useTranslation } from "react-i18next";
 
 export const Commandes = () => {
-    const [configuration, setConfiguration] = useState({
-        commands: [],
-        types: [],
-        activeType: "Tout",
-        query: ""
-    })
+    const { t } = useTranslation();
+
+    const [commands, setCommands] = useState(localStorage.getItem("commands") ? JSON.parse(localStorage.getItem("commands")) : [])
+    const [displayedCommands, setDisplayedCommands] = useState(localStorage.getItem("commands") ? JSON.parse(localStorage.getItem("commands")) : [])
+    const [menu, setMenu] = useState(localStorage.getItem("commandsMenu") ? JSON.parse(localStorage.getItem("commandsMenu")) : [])
+    const [error, setError] = useState(false)
+    const [selectedMenu, setSelectedMenu] = useState("All")
+    const [searchQuery, setSearchQuery] = useState("")
 
     useEffect(() => {
-        let types = ["Tout"];
-        for (let command of commandList.commands) {
-            command.open = false
-            if (!types.includes(command.type)) {
-                types.push(command.type)
-            }
-        }
-        setConfiguration({ ...configuration, commands: commandList.commands, types })
-
+        getCommands()
     }, [])
 
-    const filteredCommands = () => {
-        let commands = configuration.commands.sort((a, b) => {
-            if (a.name < b.name) return -1;
-            if (a.name > b.name) return 1;
-            return 0;
-        });
-        if (configuration.activeType !== "Tout") {
-            commands = commands.filter(command => command.type === configuration.activeType)
-        }
-        if (configuration.query) {
-            commands = commands.filter(command =>
-                command.name.toLowerCase().includes(configuration.query.toLowerCase()) ||
-                command.description.toLowerCase().includes(configuration.query.toLowerCase())
-            )
-        }
-        return commands;
-    };
+    const getCommands = async () => {
+        try {
+            const commandsObject = await commandsAPI.get()
 
-    function openCommand(index) {
-        console.log(index)
-        let commands = configuration.commands
-        commands[index].open = !commands[index].open
+            let commands = commandsObject.commands
+            let commandLocaleLanguage = []
 
-        setConfiguration({ ...configuration, commands })
+            let index = 0
+
+            for (let command of commands) {
+                let name = ""
+                let description = ""
+                let elements = []
+
+                if (command.options && command.options.length > 0 && (command.options.find(o => o.type == 1 || o.type == 2))) {
+                    let argsElement = []
+
+                    for (let options of command.options) {
+                        if (options.type == 1) {
+                            argsElement = []
+                            let name = ""
+                            let description = ""
+
+                            if (command.name_localizations) {
+                                let languageName = command.name_localizations[navigator.language] || command.name_localizations[navigator.language.split("-")[0]] || command.name_localizations[navigator.language?.toLowerCase()] || command.name_localizations[navigator.language.split("-")[0].toLowerCase()]
+
+                                name = (languageName || command.name)
+                            }
+                            else {
+                                name = command.name
+                            }
+
+                            if (options.name_localizations) {
+                                let languageOptionsName = options.name_localizations[navigator.language] || options.name_localizations[navigator.language.split("-")[0]] || options.name_localizations[navigator.language?.toLowerCase()] || options.name_localizations[navigator.language.split("-")[0].toLowerCase()]
+
+                                name += " " + (languageOptionsName || options.name)
+                            }
+                            else {
+                                name += " " + options.name
+                            }
+
+                            if (options.description_localizations) {
+                                let languageOptionsDescription = options.description_localizations[navigator.language] || options.description_localizations[navigator.language.split("-")[0]] || options.description_localizations[navigator.language?.toLowerCase()] || options.description_localizations[navigator.language.split("-")[0].toLowerCase()]
+
+                                if (languageOptionsDescription) {
+                                    description = languageOptionsDescription
+                                }
+                                else {
+                                    description = options.description
+                                }
+                            }
+                            else {
+                                description = options.description
+                            }
+
+                            for (let option of options.options) {
+                                let optionName = option.name
+                                let optionDescription = option.description
+
+                                if (option.name_localizations && navigator.language) {
+                                    let languageName = option.name_localizations[navigator.language] || option.name_localizations[navigator.language.split("-")[0]] || option.name_localizations[navigator.language?.toLowerCase()] || option.name_localizations[navigator.language.split("-")[0].toLowerCase()]
+
+                                    if (languageName) {
+                                        optionName = languageName
+                                    }
+                                }
+
+
+                                if (option.description_localizations && navigator.language) {
+                                    let languageDescription = option.description_localizations[navigator.language] || option.description_localizations[navigator.language.split("-")[0]] || option.description_localizations[navigator.language?.toLowerCase()] || option.description_localizations[navigator.language.split("-")[0].toLowerCase()]
+
+                                    if (languageDescription) {
+                                        optionDescription = languageDescription
+                                    }
+                                }
+
+                                argsElement.push({ name: optionName, description: optionDescription, type: option.type, required: option.required })
+                            }
+
+                            commandLocaleLanguage.push({ name, description, type: options.type, required: options.required, elements: argsElement, category: command.category, index })
+                            index++
+                        }
+                        else if (options.type == 2) {
+                            argsElement = []
+                            let name = ""
+                            let description = ""
+
+                            if (command.name_localizations) {
+                                let languageName = command.name_localizations[navigator.language] || command.name_localizations[navigator.language.split("-")[0]] || command.name_localizations[navigator.language?.toLowerCase()] || command.name_localizations[navigator.language.split("-")[0].toLowerCase()]
+
+                                name = (languageName || command.name)
+                            }
+                            else {
+                                name = command.name
+                            }
+
+                            if (options.name_localizations) {
+                                let languageOptionsName = options.name_localizations[navigator.language] || options.name_localizations[navigator.language.split("-")[0]] || options.name_localizations[navigator.language?.toLowerCase()] || options.name_localizations[navigator.language.split("-")[0].toLowerCase()]
+
+                                name += " " + (languageOptionsName || options.name)
+                            }
+                            else {
+                                name += " " + options.name
+                            }
+
+                            let commandSubGroupName = name
+
+                            for (let optionSub of options.options) {
+
+                                if (optionSub.name_localizations) {
+                                    let languageOptionsSubName = optionSub.name_localizations[navigator.language] || optionSub.name_localizations[navigator.language.split("-")[0]] || optionSub.name_localizations[navigator.language?.toLowerCase()] || optionSub.name_localizations[navigator.language.split("-")[0].toLowerCase()]
+
+                                    name = commandSubGroupName + " " + (languageOptionsSubName || optionSub.name)
+                                }
+                                else {
+                                    name = commandSubGroupName + " " + optionSub.name
+                                }
+
+                                if (optionSub.description_localizations) {
+                                    let languageOptionsDescription = optionSub.description_localizations[navigator.language] || optionSub.description_localizations[navigator.language.split("-")[0]] || optionSub.description_localizations[navigator.language?.toLowerCase()] || optionSub.description_localizations[navigator.language.split("-")[0].toLowerCase()]
+
+                                    if (languageOptionsDescription) {
+                                        description = languageOptionsDescription
+                                    }
+                                    else {
+                                        description = optionSub.description
+                                    }
+                                }
+                                else {
+                                    description = optionSub.description
+                                }
+
+                                if (optionSub) {
+                                    for (let option of optionSub.options) {
+                                        let optionName = option.name
+                                        let optionDescription = option.description
+
+                                        if (option.name_localizations && navigator.language) {
+                                            let languageName = option.name_localizations[navigator.language] || option.name_localizations[navigator.language.split("-")[0]] || option.name_localizations[navigator.language?.toLowerCase()] || option.name_localizations[navigator.language.split("-")[0].toLowerCase()]
+
+                                            if (languageName) {
+                                                optionName = languageName
+                                            }
+                                        }
+
+
+                                        if (option.description_localizations && navigator.language) {
+                                            let languageDescription = option.description_localizations[navigator.language] || option.description_localizations[navigator.language.split("-")[0]] || option.description_localizations[navigator.language?.toLowerCase()] || option.description_localizations[navigator.language.split("-")[0].toLowerCase()]
+
+                                            if (languageDescription) {
+                                                optionDescription = languageDescription
+                                            }
+                                        }
+
+                                        argsElement.push({ name: optionName, description: optionDescription, type: option.type, required: option.required })
+                                    }
+                                }
+                                commandLocaleLanguage.push({
+                                    name, description, type: options.type, required: options.required, elements: argsElement, category: command.category, index
+                                })
+                                index++
+                            }
+                        }
+                    }
+                }
+                else {
+                    name = command.name
+                    description = command.description
+
+                    if (command.name_localizations && navigator.language) {
+                        let languageName = command.name_localizations[navigator.language] || command.name_localizations[navigator.language.split("-")[0]] || command.name_localizations[navigator.language?.toLowerCase()] || command.name_localizations[navigator.language.split("-")[0].toLowerCase()]
+
+                        if (languageName) {
+                            name = languageName
+                        }
+                    }
+
+                    if (command.description_localizations && navigator.language) {
+                        let languageDescription = command.description_localizations[navigator.language] || command.description_localizations[navigator.language.split("-")[0]] || command.description_localizations[navigator.language?.toLowerCase()] || command.description_localizations[navigator.language.split("-")[0].toLowerCase()]
+
+                        if (languageDescription) {
+                            description = languageDescription
+                        }
+                    }
+
+                    if (command.options) {
+                        for (let option of command.options) {
+                            let optionName = option.name
+                            let optionDescription = option.description
+
+                            if (option.name_localizations && navigator.language) {
+                                let languageName = option.name_localizations[navigator.language] || option.name_localizations[navigator.language.split("-")[0]] || option.name_localizations[navigator.language?.toLowerCase()] || option.name_localizations[navigator.language.split("-")[0].toLowerCase()]
+
+                                if (languageName) {
+                                    optionName = languageName
+                                }
+                            }
+
+
+                            if (option.description_localizations && navigator.language) {
+                                let languageDescription = option.description_localizations[navigator.language] || option.description_localizations[navigator.language.split("-")[0]] || option.description_localizations[navigator.language?.toLowerCase()] || option.description_localizations[navigator.language.split("-")[0].toLowerCase()]
+
+                                if (languageDescription) {
+                                    optionDescription = languageDescription
+                                }
+                            }
+
+                            elements.push({ name: optionName, description: optionDescription, type: option.type, required: option.required })
+                        }
+                    }
+
+                    commandLocaleLanguage.push({
+                        name, description, elements, category: command.category, index
+                    })
+                    index++
+                }
+            }
+
+            commandLocaleLanguage = commandLocaleLanguage.sort((a, b) => { return a.name.localeCompare(b.name) })
+
+            localStorage.setItem("commands", JSON.stringify(commandLocaleLanguage))
+            localStorage.setItem("commandsMenu", JSON.stringify(["All", ...commandsObject.menu.map(m => m.value)]))
+
+            setDisplayedCommands(commandLocaleLanguage)
+            setCommands(commandLocaleLanguage)
+            setMenu(["All", ...commandsObject.menu.map(m => m.value)])
+        }
+        catch (e) {
+            console.log("ERROR WHEN LOADING COMMANDS", e)
+
+            let commands = JSON.parse(localStorage.getItem("commands") || "[]")
+            let commandsMenu = JSON.parse(localStorage.getItem("commandsMenu") || "[]")
+
+
+            if (commands.length > 0 && commandsMenu.length > 0) {
+                setDisplayedCommands(commands)
+                setCommands(commands)
+                setMenu(commandsMenu)
+            }
+            else {
+                setDisplayedCommands([])
+                setCommands([])
+                setError(true)
+            }
+
+        }
     }
 
     function selectType(type) {
-        let commands = configuration.commands
-        for (let command of commands) {
-            command.open = false
-        }
+        setSelectedMenu(type)
 
-        setConfiguration({ ...configuration, activeType: type, commands })
+        setSearchQuery("")
+
+        if (type === "All") return setDisplayedCommands(commands)
+        else setDisplayedCommands(commands.filter(command => command.category === type))
     }
 
     function search(e) {
         let query = e.target.value
-        let commands = configuration.commands
-        for (let command of commands) {
-            command.open = false
+        setSearchQuery(query)
+
+        let commandsSearch = []
+
+        if (selectedMenu !== "All") {
+            commandsSearch = commands.filter(command => command.category === selectedMenu)
+        }
+        else {
+            commandsSearch = commands
         }
 
-        setConfiguration({ ...configuration, query, commands, activeType: "Tout" })
+        if (e.target.value !== "") {
+            commandsSearch = commandsSearch.filter(command =>
+                command.name.toLowerCase().includes(e.target.value.toLowerCase()) ||
+                command?.description?.toLowerCase()?.includes(e.target.value.toLowerCase())
+            )
+        }
+
+        setDisplayedCommands(commandsSearch)
     }
 
     return (
         <div transition="page" className="commands-list" >
             <div className="top">
-                <h1>COMMANDES</h1>
+                <h1>{t("title.commands")}</h1>
                 <div className="search search-bar" data-v-7085cbe2=""></div>
             </div>
             <>
                 <div className="command__input">
-                    <input type="text" placeholder="Rechercher une commande" onChange={(e) => search(e)} />
+                    <input type="text" placeholder={t("commands.search_command")} onChange={(e) => search(e)} value={searchQuery} />
                     <p className="fa-solid fa-magnifying-glass">
                         <svg width="25" height="25" viewBox="0 0 298 298" xmlns="http://www.w3.org/2000/svg">
                             <path d="M230.942 199.589C239.601 208.247 239.601 222.284 230.942 230.943C222.285 239.601 208.248 239.6 199.59 230.943L149.494 180.847C140.837 172.189 140.835 158.152 149.493 149.494C158.152 140.835 172.189 140.836 180.848 149.494L230.942 199.589Z" fill="var(--color-principal-hover)" />
@@ -89,8 +323,15 @@ export const Commandes = () => {
                     <ul role="tablist" className="nav-pills commands-pills mb-20" id="myTabs_6">
                         {(() => {
                             let typesList = [];
-                            for (let type of configuration.types) {
-                                typesList.push(<li key={type} className={"btnSearch btn-commands-category " + (configuration.activeType === type ? "active" : "")} onClick={() => { selectType(type) }} >{type}</li>)
+
+                            if (menu.length === 0) {
+                                for (let i = 0; i < 15; i++) {
+                                    typesList.push(<MenuSqueleton key={i} />)
+                                }
+                            }
+
+                            for (let type of menu) {
+                                typesList.push(<li key={type} className={"btnSearch btn-commands-category " + (selectedMenu === type ? "active" : "")} onClick={() => { selectType(type) }} >{type}</li>)
                             }
                             return typesList;
                         })()}
@@ -100,19 +341,28 @@ export const Commandes = () => {
                 <div className="commands-listing">
                     {(() => {
                         let commandListing = [];
-                        let commands = filteredCommands();
 
-                        if (commands.length === 0) commandListing.push(<div className="no-result">Aucun résultat</div>)
-
-                        for (let [index, command] of commands.entries()) {
-                            commandListing.push(
-                                <Command
-                                    key={index}
-                                    command={command}
-                                    onClick={() => openCommand(index)}
-                                />
-                            );
+                        if (displayedCommands.length === 0 && commands.length > 0) commandListing.push(<div className="no-result">Aucun résultat</div>)
+                        else if (commands.length === 0 && error) commandListing.push(<div className="no-result">Une erreur est survevenue lors du chargement des commandes. Veuillez réessayer plus tard.</div>)
+                        else if (commands.length === 0) {
+                            for (let i = 0; i < 10; i++) {
+                                commandListing.push(
+                                    <CommandSqueleton
+                                        key={i}
+                                    />)
+                            }
                         }
+                        else {
+                            for (let command of displayedCommands) {
+                                commandListing.push(
+                                    <Command
+                                        key={command.index}
+                                        command={command}
+                                    />
+                                );
+                            }
+                        }
+
                         return commandListing;
                     })()}
 
@@ -120,61 +370,4 @@ export const Commandes = () => {
             </>
         </div >
     )
-}
-
-const Command = ({ command, onClick }) => {
-    let ref = useRef(null);
-
-    const [contentMaxHeight, setContentMaxHeight] = useState(0);
-    const [open, setOpen] = useState(false);
-
-    // useEffect(() => {
-    //     if (command.open) {
-    //         ref.current.scrollIntoView({ behavior: 'smooth', block: 'center' });
-    //     }
-    // }, [command.open]);
-
-    useEffect(() => {
-        function calContentMaxHeight() {
-            ref.current != null && setContentMaxHeight(ref.current.scrollHeight);
-
-        }
-        calContentMaxHeight();
-        window.addEventListener('resize', calContentMaxHeight);
-
-        return () => {
-            window.removeEventListener('resize', calContentMaxHeight);
-        }
-    }, [contentMaxHeight, ref]);
-
-
-    return (
-        <div className={'command-card__container ' + (open ? 'active' : '')} onClick={() => { setOpen(!open) }}>
-            <div className="command-card__header">
-                <div>
-                    <h5 className="command-card__header__title">{`${(command.name + "").charAt().toUpperCase()}${(command.name + "").substring(1)}`} <span>- {`${(command.description + "").charAt().toUpperCase()}${(command.description + "").substring(1)}`}</span></h5>
-                </div>
-                <svg className="arrow" version="1.1" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="15px" height="15px" viewBox="0 0 30.021 30.021"><path d="M29.069,22.276c-0.791,0.932-1.917,1.409-3.052,1.409c-0.913,0-1.834-0.312-2.587-0.949l-8.42-7.152l-8.42,7.151 c-1.683,1.43-4.208,1.225-5.639-0.459c-1.43-1.686-1.224-4.208,0.46-5.64l11.01-9.351c1.493-1.269,3.686-1.269,5.178,0 l11.011,9.351C30.294,18.068,30.499,20.591,29.069,22.276z" fill="var(--color-principal)" /></svg>
-            </div>
-
-            <div className="command-card__body" ref={ref} style={{ maxHeight: open ? contentMaxHeight : 0 }}>
-                <div className="command-card__body__usage">
-                    <h5>Utilisation:</h5>
-                    <div className="elementBody">
-                        {(() => {
-                            return <pre >{command.usages.join("\n")}</pre>
-                        })()}
-                    </div>
-                </div>
-                <div className="command-card__body__examples">
-                    <h5>Exemples:</h5>
-                    <div className="elementBody">
-                        {(() => {
-                            return <pre>{command.examples.join("\n")}</pre>
-                        })()}
-                    </div>
-                </div>
-            </div>
-        </div>
-    );
 }

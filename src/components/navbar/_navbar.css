@@ -85,19 +85,63 @@ ul {
 .LogoNav {
     border-radius: 50%;
     background-size: 30px;
-    width: 30px;
-    height: 30px;
+    width: 35px;
+    height: 35px;
     min-height: 30px;
     min-width: 30px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
 .login_button_container {
     display: flex;
     -webkit-box-align: center;
     align-items: center;
+    /* cursor: pointer; */
+    gap: 0.5rem;
+}
+
+.login_button_container .goToDashboard {
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+    cursor: pointer;
+    font-size: 20px !important;
+    transition: transform 0.3s ease-in-out;
+}
+
+.login_button_container .goToDashboard:hover {
+    transform: scale(0.95);
+}
+
+.login_button_container .goToDashboard span {
+    font-size: 20px;
+    /* letter-spacing: 1px; */
+    font-weight: 700;
+}
+
+.login_button_container .logoutButton {
     cursor: pointer;
 }
 
+.login_button_container .logoutButton:hover {
+    animation: logoutButton 1s ease-in-out infinite;
+}
+
+@keyframes logoutButton {
+    0% {
+        transform: translateX(0px);
+    }
+
+    50% {
+        transform: translateX(3px);
+    }
+
+    100% {
+        transform: translateX(0px);
+    }
+}
 
 @media (max-width: 767px) {
     .login-template {

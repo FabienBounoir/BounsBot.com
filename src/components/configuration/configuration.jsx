@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react"
+import Avatar from "../avatar/avatar";
 import { useParams, Link } from 'react-router-dom';
 import { Dashboard } from "../dashboardElements/dashboard.jsx";
 import { Logs } from "../dashboardElements/logs.jsx";
@@ -8,9 +9,16 @@ import { Musique } from "../dashboardElements/musique.jsx";
 import { InfoDashboard } from "../dashboardElements/infoDashboard.jsx";
 import { LevelsConfig } from "../dashboardElements/levels.jsx";
 import { Rename } from "../dashboardElements/rename";
+import * as guildsAPI from "../../utils/API/guildsAPI";
+
+import { useHistory } from 'react-router-dom';
 
 import "./_configuration.css";
 import "../dashboardElements/_dashboardElements.css";
+
+import lodash from 'lodash';
+import { Toaster, toast } from 'sonner'
+import { useStore } from "../../utils/store";
 
 export const Configuration = (props) => {
     const { id, typeconfig } = useParams();
@@ -18,29 +26,159 @@ export const Configuration = (props) => {
     const [activeGuild, setActiveGuild] = useState(id || "user")
     const [user, setUser] = useState({})
     const [type, setType] = useState(typeconfig.toLowerCase() || "description")
-    const [config, setConfig] = useState([])
+    const [menu, setMenu] = useState([])
+    const [configGuildSelected, setConfigGuildSelected] = useState({})
+    const [configGuildUpdateSelected, setConfigGuildUpdateSelected] = useState({})
+    const [channels, setChannels] = useState([])
+    const [roles, setRoles] = useState([])
+    const [loading, setLoading] = useState("LOADING")
+    const history = useHistory();
+
     const [open, setOpen] = useState(true)
+    // const [state, dispatch] = useStore();
+    const [state, dispatch] = useStore();
+
+    // const [changeNotSave, setChangeNotSave] = useState(false);
+    const [loadingChargement, setLoadingChargement] = useState(false);
+
+    let resetChange = () => {
+        setConfigGuildUpdateSelected(configGuildSelected)
+    }
+
+    let updateConfig = async () => {
+        setLoadingChargement(true)
+
+        const diff = lodash.omitBy(configGuildUpdateSelected, (value, key) => lodash.isEqual(value, configGuildSelected[key]))
+
+        try {
+            await guildsAPI.updateConfiguration(activeGuild, diff)
+        } catch (error) {
+            toast.error("Une erreur est survenue lors de la sauvegarde de la configuration. Veuillez réessayer ultérieurement.")
+            setLoadingChargement(false)
+            return console.log("Save Configuration Error", error)
+        }
+
+        setConfigGuildSelected(configGuildUpdateSelected)
+        setLoadingChargement(false)
+        props.setChangeNotSave(false)
+    }
+
+    const updateMenu = () => {
+        if (activeGuild !== "user") {
+            setMenu([
+                {
+                    "name": "Global",
+                    "elements": [
+                        {
+                            "name": "Tableau de bord",
+                            "url": "dashboard"
+                        }
+                    ]
+                },
+                {
+                    "name": "Gestion du serveur",
+                    "elements": [
+                        {
+                            "name": "Bienvenue",
+                            "url": "welcome"
+                        },
+                        {
+                            "name": "Rename",
+                            "url": "rename"
+                        },
+                        {
+                            "name": "Niveaux",
+                            "url": "levels"
+                        },
+                        {
+                            "name": "Logs",
+                            "url": "logs"
+                        }
+                    ]
+                },
+                {
+                    "name": "Utilitaires",
+                    "elements": [
+                        {
+                            "name": "Envoyer un message",
+                            "url": "guild_message"
+                        }
+                    ]
+                }
+            ])
+        }
+        else {
+            setMenu([
+                {
+                    "name": "Dashboard",
+                    "elements": [{
+                        "name": "Information",
+                        "url": "description",
+                    }]
+                }
+            ])
+        }
+    }
+
+    const getConfig = async () => {
+        return new Promise(async (resolve, reject) => {
+            try {
+                let res = await guildsAPI.getConfiguration(activeGuild)
+
+                setConfigGuildSelected(res)
+                setConfigGuildUpdateSelected(res)
+                resolve(res)
+            }
+            catch (error) {
+                reject(error)
+            }
+        })
+    }
 
     useEffect(() => {
-        async function fetchData() {
-            if (activeGuild !== "user") {
-                setConfig(await fetch(`${process.env.REACT_APP_HOSTNAME_BACKEND}/guild/${activeGuild}/features`).then(res => res.json()).then(res => {
-                    return res.configurationFeatures
-                }))
-            }
-            else {
-                setConfig([
-                    {
-                        name: "Dashboard",
-                        elements: [{
-                            name: "Information",
-                            url: "description",
-                        }]
-                    }
-                ])
-            }
+        const diff = !lodash.isEqual(configGuildSelected, configGuildUpdateSelected)
+
+        props.setChangeNotSave(diff)
+    }, [configGuildUpdateSelected])
+
+    const getElement = async () => {
+        let res = await guildsAPI.getElement(activeGuild, 'all')
+
+        setChannels(res.channels)
+        setRoles(res.roles)
+    }
+
+    const getData = async () => {
+        setLoading("LOADING")
+
+        try {
+            await Promise.all([
+                getElement(),
+                getConfig(),
+            ])
+            setLoading("LOADED")
         }
-        fetchData();
+        catch (error) {
+            setLoading("ERROR")
+
+            dispatch({ logged: false, user: null })
+
+            localStorage.removeItem('user')
+            localStorage.removeItem('token')
+
+            history.push('/login?status=invalidToken');
+        }
+    }
+
+
+    useEffect(() => {
+        updateMenu()
+        if (activeGuild == "user") return
+
+        getData()
+        setLoadingChargement(false)
+
+        return () => { }
     }, [activeGuild])
 
 
@@ -55,12 +193,16 @@ export const Configuration = (props) => {
             setUser(props.user)
         }
 
+        return () => { }
+
     }, [id, typeconfig, props.guilds])
 
     useEffect(() => {
         if (props.user) {
             setUser(props.user)
         }
+
+        return () => { }
     }, [props.user])
 
     const getHeaderType = () => {
@@ -79,24 +221,24 @@ export const Configuration = (props) => {
 
     const renderListingUserConfiguration = () => {
         return (<header className={getHeaderType()} style={{ backgroundImage: `url("https://cdn.discordapp.com/avatars/${user?.id}/${user?.avatar}.webp?size=1024")` }}>
-            <p>{user?.username}</p>
+            <p>{user?.global_name || user?.username}</p>
         </header>
         )
     }
 
     const renderListingConfig = () => {
         let list = []
-        for (let i = 0; i < config.length; i++) {
+        for (let i = 0; i < menu.length; i++) {
             list.push(<li key={i} className="title">
                 <div>
-                    <p>{config[i].name}</p>
+                    <p>{menu[i].name}</p>
                 </div>
             </li>);
 
-            for (let j = 0; j < config[i].elements.length; j++) {
-                list.push(<Link key={i + "-" + j} onClick={() => triggerListServer(false)} to={`/dashboard/${activeGuild}/` + config[i].elements[j].url}><li className={"element " + (type === config[i].elements[j].url ? "active" : "")}>
+            for (let j = 0; j < menu[i].elements.length; j++) {
+                list.push(<Link key={i + "-" + j} onClick={() => triggerListServer(false)} to={`/dashboard/${activeGuild}/` + menu[i].elements[j].url}><li className={"element " + (type === menu[i].elements[j].url ? "active" : "")}>
                     <div>
-                        <p>{config[i].elements[j].name}</p>
+                        <p>{menu[i].elements[j].name}</p>
                     </div>
                 </li></Link>)
             }
@@ -107,26 +249,26 @@ export const Configuration = (props) => {
 
     const renderConfigComponent = () => {
         //check if element url in config is equal to type
-        let element = config.find(element => element.elements.find(element => element.url === type))
+        let element = menu.find(element => element.elements.find(element => element.url === type))
         if (!element && activeGuild !== "user") {
-            return <Dashboard guildId={id} />
+            return <Dashboard guildId={id} configuration={configGuildUpdateSelected} updateConfiguration={setConfigGuildUpdateSelected} />
         }
 
         switch (type) {
             case "description":
                 return <InfoDashboard />;
             case "dashboard":
-                return <Dashboard guildId={id} />;
+                return <Dashboard guildId={id} configuration={configGuildUpdateSelected} updateConfiguration={setConfigGuildUpdateSelected} channels={channels} loading={loading} />;
             case "logs":
-                return <Logs guildId={id} />;
+                return <Logs guildId={id} configuration={configGuildUpdateSelected} updateConfiguration={setConfigGuildUpdateSelected} channels={channels} loading={loading} />;
             case "welcome":
-                return <Welcome guildId={id} user={props.user} name={guild?.name} iconLink={guild?.icon ? `https://cdn.discordapp.com/icons/${guild?.id}/${guild?.icon}.gif?size=256` : null} />;
+                return <Welcome guildId={id} configuration={configGuildUpdateSelected} setConfiguration={setConfigGuildUpdateSelected} channels={channels} rolesGuild={roles} loading={loading} user={props.user} name={guild?.name} iconLink={guild?.icon ? `https://cdn.discordapp.com/icons/${guild?.id}/${guild?.icon}.gif?size=256` : null} />;
             case "guild_message":
-                return <Send guildId={id} />;
+                return <Send guildId={id} channels={channels} loading={loading} />;
             case "levels":
-                return <LevelsConfig guildId={id} />;
+                return <LevelsConfig guildId={id} configuration={configGuildUpdateSelected} setConfiguration={setConfigGuildUpdateSelected} channels={channels} roles={roles} loading={loading} />;
             case "rename":
-                return <Rename guildId={id} />;
+                return <Rename guildId={id} configuration={configGuildUpdateSelected} setConfiguration={setConfigGuildUpdateSelected} loading={loading} />;
             case "musique":
                 return <Musique guildId={id} />;
             default:
@@ -168,8 +310,9 @@ export const Configuration = (props) => {
         </span> </div>
         <div className="config">
             {renderConfigComponent()}
+            <div id="card" className={"cardSave" + (props.changeNotSave ? " hidden" : " closeCardSave")} ><div className="saveConfig"><div style={{ display: "flex", alignItems: "center", flexDirection: "row", gap: "0.3em" }}><Avatar classElement="logoChangement" width="30" height="28" /> Changements détectés ! Veuillez enregistrer ou annuler.</div><div className="buttonContainer"><button className="cancelButton" disabled={loadingChargement} type="button" onClick={() => { resetChange() }}>Annuler</button><button className="saveButton" type="button" disabled={loadingChargement} onClick={updateConfig}>Enregistrer</button></div></div></div>
         </div>
-        {/* </div> */}
+        <Toaster richColors expand={false} position="top-center" />
     </>
     )
 }

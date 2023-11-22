@@ -30,19 +30,24 @@ h1, h2, h3 {
   color: #fff;
 }
 
-/* @keyframes test {
+@keyframes spin {
   0% {
-    --color-principal: #ffffff;
+    transform: rotate(0deg);
   }
 
-  50% {
-    --color-principal: #f60000;
+  80% {
+    transform: rotate(380deg);
+  }
+
+  90% {
+    transform: rotate(350deg);
   }
 
   100% {
-    --color-principal: #1c31e5;
+    transform: rotate(360deg);
   }
-} */
+
+}
 
 .App {
   text-align: center;

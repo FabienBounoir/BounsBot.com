@@ -17,9 +17,7 @@
     animation-duration: 3s;
     animation-iteration-count: infinite;
     animation-timing-function: ease-in-out;
-    /* animation-timing-function: cubic-bezier(0.25, 0.5, 0.75, 0.5); */
     position: relative;
-    /* Ajoutez cette propriété pour utiliser le positionnement relatif */
 }
 
 /* --------- */
@@ -29,7 +27,6 @@
 .particulesNano {
     position: absolute;
     z-index: 0;
-    /* animation: nanoParticuleAnimation 5s linear infinite; */
     filter: brightness(0.5);
 }
 
@@ -42,7 +39,7 @@
     grid-template-columns: 1fr 1fr;
     grid-template-rows: 1fr;
     grid-template-areas: "text avatar";
-    height: calc(100vh - 85px);
+    height: calc(100svh - 85px);
     width: 100%;
     background-color: #1e1e1e;
     color: white;
@@ -54,10 +51,13 @@
     overflow: hidden;
     z-index: 3;
 
-    /* //linear gradient bottom to top */
+    min-height: 500px;
+
     background: linear-gradient(180deg, #1e1e1e 0%, var(--color-principal) 350%);
-    border-bottom: 5px solid var(--color-principal);
+
     gap: 32px;
+
+    user-select: none;
 }
 
 .home_halloween {
@@ -67,7 +67,6 @@
 
 .home_noel {
     background: url("https://media.discordapp.net/attachments/927300810390515712/1044410881989169256/image.png") bottom left no-repeat, url("https://media.discordapp.net/attachments/927300810390515712/1044412151059726466/image.png") bottom right no-repeat, linear-gradient(180deg, #1e1e1e 0%, var(--color-principal) 350%);
-    /* url(./noel.webp) no-repeat, */
     background-size: contain;
     background-size: 20%;
 }
@@ -85,39 +84,6 @@
         opacity: 1;
     }
 }
-
-/* .homepage__scrollAnimation {
-    position: absolute;
-    bottom: 1em;
-    left: 50%;
-    transform: translateX(-50%);
-
-
-    width: 40px;
-    height: 70px;
-    margin-left: -20px;
-    margin-top: -35px;
-    box-shadow: inset 0 0 0 2px #fff;
-    border-radius: 25px;
-    cursor: pointer;
-    z-index: 20;
-}
-
-.homepage__scrollAnimation::before {
-    position: absolute;
-    left: 50%;
-    content: '';
-
-    width: 8px;
-    height: 8px;
-    background: #fff;
-    margin-left: -4px;
-    top: 8px;
-    border-radius: 4px;
-    animation-duration: 1.5s;
-    animation-iteration-count: infinite;
-    animation-name: scroll;
-} */
 
 .homepage__scrollAnimation {
     position: absolute;
@@ -230,16 +196,11 @@
 .homepage__text .buttonContainer {
     display: flex;
     flex-direction: row;
-    /* justify-content: flex-end; */
     margin-top: 32px;
-    /* align-items: center; */
-    /* align-self: center; */
     gap: 32px;
-    /* margin-left: 32px; */
 }
 
 .homepage__text .buttonContainer>span {
-    /* overflow: hidden; */
     display: block;
 }
 
@@ -275,7 +236,6 @@
     height: 100%;
     max-width: 400px;
     max-height: 400px;
-    /* animation: avatarAnimation 5s linear infinite; */
 }
 
 .invite_bot_button:first-of-type:hover {
@@ -389,7 +349,7 @@
         flex-direction: column-reverse;
         justify-content: center;
         align-items: center;
-        height: calc(100vh - 56px);
+        height: calc(100svh - 56px);
         background-color: #1e1e1e;
         color: white;
         font-family: 'Roboto', sans-serif;
@@ -437,13 +397,11 @@
         height: 100%;
         max-width: 300px;
         max-height: 300px;
-        /* animation: avatarAnimation 5s linear infinite; */
     }
 
     .homepage__text .buttonContainer {
         display: flex;
         flex-direction: row;
-        /* justify-content: flex-end; */
         margin-top: 32px;
         align-items: center;
         align-self: center;
@@ -457,18 +415,6 @@
         display: none;
     }
 }
-
-/* @media screen and (max-height: 800px) {
-    .homepage__text h1 {
-        font-size: 30px;
-        line-height: 52px;
-    }
-
-    p#typeit {
-        display: none;
-    }
-} */
-
 
 @media screen and (max-height: 800px) and (max-width: 900px) {
     .homepage__text h1 {

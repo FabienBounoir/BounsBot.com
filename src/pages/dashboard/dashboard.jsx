@@ -1,59 +1,48 @@
 import "./_dashboard.css";
-import React, { Component } from 'react'
-import Fetch from "../../utils/fetch.js"
+import React, { useEffect, useState } from 'react'
 import { ListServer } from "../../components/listServer/listServer";
 import { Configuration } from "../../components/configuration/configuration";
+import * as guildsAPI from "../../utils/API/authAPI";
+import { useStore } from "../../utils/store";
+import { useHistory } from "react-router-dom/cjs/react-router-dom";
 
-class Dashboard extends Component {
-    state = {
-        guilds: [],
-        loading: true,
-        close: true
-    }
+export const Dashboard = () => {
+    const history = useHistory();
+    const [guilds, setGuilds] = useState([])
+    const [loading, setLoading] = useState(true)
+    const [changeNotSave, setChangeNotSave] = useState(false);
+    const [state, dispatch] = useStore();
 
-
-    getGuilds = async () => {
-        const info = JSON.parse(window.localStorage.getItem("dataDiscord"))
-        const guild = await Fetch.getGuilds(info.access_token)
-
-        if (!guild) return document.location.href = "/login";
-        const hasguild = await Fetch.getBounsBotHasGuild(guild) || []
-
-        for (let i = 0; i < guild.length; i++) {
-            guild[i].hasguild = hasguild.find(g => g === guild[i].id) ? true : false
+    useEffect(() => {
+        if (!state?.logged) {
+            history.push("/login?status=invalidToken")
         }
+    }, [])
 
-        guild.sort((a, b) => {
-            if (a.hasguild && !b.hasguild) return -1;
-            if (!a.hasguild && b.hasguild) return 1;
-            return 0;
-        })
+    useEffect(() => {
+        if (!state?.logged) {
+            history.push("/login?status=invalidToken")
+        }
+    }, [state])
 
-        this.setState({ guilds: guild, loading: false })
+
+    const getGuilds = async () => {
+        try {
+            const res = await guildsAPI.getGuilds()
+            console.log("get guilds", res)
+            if ((!res) || res.length == 0) throw new Error("No guilds")
+            setGuilds(res)
+            setLoading(false)
+        } catch (e) {
+            console.log("get user guilds error", e)
+            dispatch({ logged: false, user: null })
+            history.push("/login")
+            localStorage.removeItem('user')
+            localStorage.removeItem('token')
+        }
     }
 
-    componentDidMount() {
-        this.onResize()
-        document.getElementsByTagName("body")[0].style.overflow = "hidden";
-        this.getGuilds();
-        window.addEventListener("resize", () => {
-            this.onResize()
-        })
-
-        //when rotate the phone
-        window.addEventListener("orientationchange", () => {
-            this.onResize()
-        })
-
-        //when nav element change size
-        const nav = document.querySelector("nav")
-        nav.addEventListener("transitionend", () => {
-            this.onResize()
-        })
-    }
-
-    //when width or height change we update the height of the dashboard
-    onResize = () => {
+    const onResize = () => {
         const doc = document.documentElement
         doc.style.setProperty('--doc-height', `${window.innerHeight}px`)
 
@@ -64,16 +53,36 @@ class Dashboard extends Component {
         doc.style.setProperty('--dashboard-height', `calc(var(--doc-height) - ${navHeight}px)`)
     }
 
-    componentWillUnmount() {
-        document.getElementsByTagName("body")[0].style.overflow = "auto";
-    }
+    useEffect(() => {
+        onResize()
+        document.getElementsByTagName("body")[0].style.overflow = "hidden";
+        getGuilds();
+        window.addEventListener("resize", () => {
+            onResize()
+        })
 
-    render() {
-        return (<div className="dashboard" >
-            <ListServer guilds={this.state.guilds} loading={this.state.loading} />
-            <Configuration guilds={this.state.guilds} user={JSON.parse(window.localStorage.getItem("dataUser") || {})} loading={this.state.loading} />
-        </div>)
-    }
+        //when rotate the phone
+        window.addEventListener("orientationchange", () => {
+            onResize()
+        })
+
+        //when nav element change size
+        const nav = document.querySelector("nav")
+        nav.addEventListener("transitionend", () => {
+            onResize()
+        })
+
+        return () => {
+            document.getElementsByTagName("body")[0].style.overflow = "auto";
+            window.removeEventListener("resize", onResize)
+            window.removeEventListener("orientationchange", onResize)
+            nav.removeEventListener("transitionend", onResize)
+        }
+    }, [])
+
+    return (<div className="dashboard" >
+        <ListServer guilds={guilds} loading={loading} changeNotSave={changeNotSave} />
+        <Configuration guilds={guilds} setChangeNotSave={setChangeNotSave} changeNotSave={changeNotSave} user={JSON.parse(window.localStorage.getItem("user") || `{"id":"0","username":"wumpus","avatar":"656908def8d35773ccabf8feacb23e02","discriminator":"0","accent_color":1579292,"verified":true}`)} loading={loading} />
+    </div>)
 }
 
-export default Dashboard;
