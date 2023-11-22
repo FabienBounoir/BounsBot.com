@@ -5,7 +5,7 @@ function Authenticate({ children }) {
 
     const info = window.localStorage.getItem('token');
 
-    return info ? children : <Redirect to="/login" />;
+    return info ? children : <Redirect to="/login?status=invalidToken" />;
 }
 
 export default Authenticate

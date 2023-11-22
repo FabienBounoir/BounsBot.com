@@ -166,9 +166,8 @@ export const Configuration = (props) => {
             localStorage.removeItem('user')
             localStorage.removeItem('token')
 
-            history.push('/login');
+            history.push('/login?status=invalidToken');
         }
-
     }
 
 

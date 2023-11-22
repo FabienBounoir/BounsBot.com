@@ -15,13 +15,13 @@ export const Dashboard = () => {
 
     useEffect(() => {
         if (!state?.logged) {
-            history.push("/login")
+            history.push("/login?status=invalidToken")
         }
     }, [])
 
     useEffect(() => {
         if (!state?.logged) {
-            history.push("/login")
+            history.push("/login?status=invalidToken")
         }
     }, [state])
 

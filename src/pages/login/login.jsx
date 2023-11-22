@@ -10,12 +10,12 @@ export const Login = () => {
 
         if (status == "invalidToken") {
             toast.error("Votre session a expiré. Veuillez vous reconnecter.", {
-                duration: 10000,
+                duration: 5000,
             })
         }
         else if (status == "error") {
             toast.error("Une erreur est survenue. Veuillez réessayer", {
-                duration: 10000,
+                duration: 5000,
             })
         }
 

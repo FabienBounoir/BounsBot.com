@@ -15,7 +15,7 @@ export const Callback = () => {
         const code = new URLSearchParams(window.location.search).get('code')
 
         if (!code) {
-            return document.location.href = "/login";
+            return history.push("/login")
         }
 
         login(code).then(data => {
@@ -27,14 +27,14 @@ export const Callback = () => {
                 dispatch({ logged: false, user: null })
                 localStorage.removeItem('user')
                 localStorage.removeItem('token')
-                history.push("/login")
+                history.push("/login?status=error")
             })
         }).catch(error => {
             console.error("login send code error", error)
             dispatch({ logged: false, user: null })
             localStorage.removeItem('user')
             localStorage.removeItem('token')
-            history.push("/login")
+            history.push("/login?status=error")
         })
     }, [])
 
