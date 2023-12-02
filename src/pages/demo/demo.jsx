@@ -344,6 +344,15 @@ class Demo extends Component {
         this.socket.emit('init')
     }
 
+    componentWillUnmount() {
+        try {
+            this.socket.disconnect();
+            this.radio.pause();
+        } catch (error) {
+
+        }
+    }
+
     //Gestion du micro
     voix() {
         navigator?.mediaDevices?.getUserMedia({ audio: true }).then((stream) => {
