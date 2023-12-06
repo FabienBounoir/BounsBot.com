@@ -622,7 +622,7 @@ class Demo extends Component {
                                     <ul>
                                         <li>/nick [username] --&gt; Changer de Pseudo</li>
                                     </ul>
-                                    <span>Pour la liste complète des commandes, consultez <a target="_Blank" href="/commandes">notre page de commandes</a>.</span>
+                                    <span>Pour la liste complète des commandes, consultez <a target="_Blank" href="/commands">notre page de commandes</a>.</span>
                                 </div>
                             </div>
                             <div className="discord-inner-message">
