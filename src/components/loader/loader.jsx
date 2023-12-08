@@ -27,6 +27,10 @@ export const Loader = () => {
             setLoading(false)
         }
 
+        setTimeout(() => {
+            setLoading(false)
+        }, 13000)
+
         return () => {
             window.removeEventListener("load", () => { })
         }
