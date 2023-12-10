@@ -1,5 +1,4 @@
 import "./_commandes.css";
-import commandList from "./../../components/command.json"
 import React, { useEffect, useState, useRef } from "react";
 import Command from "../../components/command/command";
 import CommandSqueleton from "../../components/command/commandSqueleton";
