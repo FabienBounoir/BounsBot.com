@@ -12,7 +12,6 @@ export const ApprovedBy = (props) => {
     useEffect(() => {
         async function fetchData() {
             try {
-                throw "";
                 await getInfo()
             }
             catch (e) {

@@ -233,6 +233,9 @@
     background-color: #1f1f25;
 }
 
+.leaderboardPlayersListContainer.loading {
+    background-color: rgba(31, 31, 38, 70%);
+}
 
 .leaderboardPlayer .leaderboardPlayerLeft {
     display: flex;
