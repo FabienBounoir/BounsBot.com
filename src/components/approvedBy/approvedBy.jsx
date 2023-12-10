@@ -7,13 +7,16 @@ import BestGuild from "./bestGuild";
 export const ApprovedBy = (props) => {
     const { t } = useTranslation();
     const [bestGuilds, setBestGuilds] = useState(null)
+    const [error, setError] = useState(false)
 
     useEffect(() => {
         async function fetchData() {
             try {
+                throw "";
                 await getInfo()
             }
             catch (e) {
+                setError(true)
             }
         }
         fetchData()
@@ -45,7 +48,7 @@ export const ApprovedBy = (props) => {
 
 
 
-    return (
+    return ((error) ? (<div className="infoComponentDisable"></div>) : (
         <div className="infoComponent">
             <svg className="cloud" width="247" height="63" viewBox="0 0 247 63" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <g clip-path="url(#clip0_621_4)">
@@ -120,7 +123,7 @@ export const ApprovedBy = (props) => {
 
 
 
-        </div >)
+        </div >))
 }
 
 

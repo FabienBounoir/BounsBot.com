@@ -73,6 +73,11 @@
     }
 }
 
+.infoComponentDisable {
+    background: linear-gradient(180deg, var(--color-principal) 0%, var(--color-principal-hover) 350%);
+    height: 7px;
+}
+
 .infoComponent {
     overflow: hidden;
     margin: 0;
