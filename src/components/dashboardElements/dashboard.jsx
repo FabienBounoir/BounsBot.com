@@ -207,7 +207,7 @@ export const Dashboard = ({ guildId, configuration, updateConfiguration, channel
                                 {/* </div> */}
                             </div>
                             <h5 className="hrnh5k-0 eeKdki sc-1wkjbe7-8 GoZzi">Twitch</h5>
-                            <div>Choisir la chaine Twitch et le channel pour afficher le tchat.</div>
+                            <div>Selectionnez le channel ou sera retranscrit le Chat Twitch</div>
                         </div>
 
                         <div className="guildModule">
@@ -216,11 +216,11 @@ export const Dashboard = ({ guildId, configuration, updateConfiguration, channel
                                 <svg className="pictoLog" width="50" height="50" viewBox="0 0 256 268">
                                     <path d="M17.4579 0L0 46.5559V232.757H63.9826V267.691H98.9145L133.812 232.757H186.172L256 162.954V0H17.4579ZM40.7167 23.2632H232.731V151.292L191.992 192.033H128L93.1127 226.919V192.033H40.7167V23.2632ZM104.725 139.668H128V69.8439H104.725V139.668ZM168.722 139.668H191.992V69.8439H168.722V139.668Z" />
                                 </svg>
-                                <Form.Control type="text" placeholder="Chaine" value={configuration.chaineTwitch} onChange={(event) => { updateConfiguration({ ...configuration, chaineTwitch: event.target.value }) }} />
+                                <Form.Control type="text" placeholder="Chaine" value={configuration.chaineTwitch} onChange={(event) => { updateConfiguration({ ...configuration, chaineTwitch: event?.target?.value?.toLocaleLowerCase() }) }} />
                             </div>
 
                             <h5 className="hrnh5k-0 eeKdki sc-1wkjbe7-8 GoZzi">Twitch</h5>
-                            <div>Choisir la chaine Twitch et le channel pour afficher le tchat.</div>
+                            <div>Choisissez la chaine Twitch que vous souhaitez retranscrit sur discord</div>
                         </div>
                     </div>
 

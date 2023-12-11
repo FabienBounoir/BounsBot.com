@@ -67,13 +67,28 @@ export const ListServer = (props) => {
     }
 
     const popUpCreate = (guildId) => {
-        let modal = window.open("https://discord.com/oauth2/authorize?client_id=" + process.env.REACT_APP_CLIENT_ID + "&permissions=1945627743&redirect_uri=" + process.env.REACT_APP_REDIRECT_URI + "callback&scope=bot%20applications.commands&guild_id=" + guildId, 'popup', 'width=1040px,height=555px,toolbar=no,scrollbars=no,resizable=yes')
+        try {
+            let modal = window.open("https://discord.com/oauth2/authorize?client_id=" + process.env.REACT_APP_CLIENT_ID + "&permissions=1945627743&redirect_uri=" + process.env.REACT_APP_REDIRECT_URI + "&scope=bot%20applications.commands&guild_id=" + guildId, 'popup', 'height=700px,width=480px,toolbar=no,scrollbars=no,resizable=yes')
 
-        modal.addEventListener('popstate', function (event) {
+            console.log("modal", modal)
 
-        });
+            if (modal) {
+                modal.addEventListener('load', function (event) {
+                    console.log("Pop up closed", event)
+                });
+            }
+            else {
+                window.location.href = "https://discord.com/oauth2/authorize?client_id=" + process.env.REACT_APP_CLIENT_ID + "&permissions=1945627743&redirect_uri=" + process.env.REACT_APP_REDIRECT_URI + "&scope=bot%20applications.commands&guild_id=" + guildId
+            }
 
-        //https://discord.com/oauth2/authorize?scope=bot+applications.commands&response_type=code&redirect_uri=https%3A%2F%2Fmee6.xyz%2Fguild-oauth&permissions=296150887519&client_id=159985415099514880&guild_id=757024209447813130
+        }
+        catch (e) {
+            console.log("Pop up error", e)
+
+            //ouvrir dans un nouvel onglet
+            window.location.href = "https://discord.com/oauth2/authorize?client_id=" + process.env.REACT_APP_CLIENT_ID + "&permissions=1945627743&redirect_uri=" + process.env.REACT_APP_REDIRECT_URI + "callback&scope=bot%20applications.commands&guild_id=" + guildId
+        }
+
     }
 
     const renderGuilds = () => {
