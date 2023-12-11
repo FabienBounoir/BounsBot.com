@@ -9,9 +9,9 @@ export const Status = () => {
     const [shards, setShards] = useState([])
     const [guildInSearch, setGuildInSearch] = useState(null)
 
-    const fetchData = () =>{
+    const fetchData = () => {
         shardsAPI.getStatus().then((data) => { setShards(data) }).catch((err) => {
-            toast.error("Une erreur est survenue lors de la récupération des statuts. Veuillez réessayer plus tard.",{
+            toast.error("Une erreur est survenue lors de la récupération des statuts. Veuillez réessayer plus tard.", {
                 duration: 5000,
             })
         })
@@ -19,7 +19,7 @@ export const Status = () => {
 
     useEffect(() => {
         fetchData()
-        
+
         let autorefresh = setInterval(() => {
             fetchData()
         }, 20000)
@@ -73,7 +73,7 @@ export const Status = () => {
         return (
             `
             <div style="display: flex; flex-direction: column;place-items:start; justify-content: start; z-index: 9999;">
-                <h5>Shard n°${shard.cluster_id + 1}</h4>
+                <h5>Shard n°${shard.cluster_id}</h4>
                 <span>Status: ${status.get(shard.status)}</span>
                 ${shard?.ping ? `<span>Latence: ${shard?.ping}ms</span>` : ""}
                 ${uptimeString ? `<span>Uptime: ${uptimeString}</span>` : ""}
@@ -130,7 +130,7 @@ export const Status = () => {
                 {(() => {
                     let shardsComponent = []
                     for (let shard of shards) {
-                        shardsComponent.push(<><div className={("shard" + ([-1, 1, 3, 5].includes(shard.status) ? " error" : "")) + (guildInSearch == shard.cluster_id ? " guild-in-shard" : "")} data-tooltip-id={"ShardStatus-" + shard.cluster_id} data-tooltip-html={shardTooltip(shard)} >{shard.cluster_id + 1}</div><Tooltip className="shardTooltips" opacity={0.99} id={"ShardStatus-" + shard.cluster_id} ></Tooltip> </>)
+                        shardsComponent.push(<><div className={("shard" + ([-1, 1, 3, 5].includes(shard.status) ? " error" : "")) + (guildInSearch == shard.cluster_id ? " guild-in-shard" : "")} data-tooltip-id={"ShardStatus-" + shard.cluster_id} data-tooltip-html={shardTooltip(shard)} >{shard.cluster_id}</div><Tooltip className="shardTooltips" opacity={0.99} id={"ShardStatus-" + shard.cluster_id} ></Tooltip> </>)
                     }
                     return shardsComponent
                 })()}
