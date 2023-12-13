@@ -1,6 +1,8 @@
+import { useTranslation } from 'react-i18next';
 import { useInView } from 'react-intersection-observer';
 
 export const BestGuild = ({ guild, display, index }) => {
+    const { t } = useTranslation();
     const [ref, inView] = useInView({
         triggerOnce: true, // Pour déclencher l'animation une seule fois
         threshold: 0.5, // Le pourcentage de l'élément visible pour déclencher l'animation
@@ -33,7 +35,7 @@ export const BestGuild = ({ guild, display, index }) => {
                     <path d="M37.2084 30.252C41.6642 29.2437 45.0002 25.252 45.0002 20.4977C45.0002 15.4056 41.1732 11.1882 36.2427 10.5745C38.5804 13.2205 40.0002 16.6958 40.0002 20.4977C40.0002 24.1049 38.7222 27.4182 36.5944 30.0082C36.8007 30.0872 37.0054 30.1685 37.2084 30.252Z" fill="#4F5056" />
                 </svg>
 
-                <p>{formatNumber(guild.memberCount)} {display ? "membres" : ""}</p>
+                <p>{formatNumber(guild.memberCount)} {display ? t("homepage.members") : ""}</p>
             </div>
         </div>
     </div>)

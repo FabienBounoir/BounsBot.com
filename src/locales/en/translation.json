@@ -3,7 +3,8 @@
         "text_header": "Create the ultimate Discord server",
         "invite_button": "Invite Bouns'bot",
         "support": "Support",
-        "on_number_of_server": "Bounsbot, the Discord bot approved by over {{number}} servers"
+        "on_number_of_server": "Bounsbot, the Discord bot approved by over {{number}} servers",
+        "members": "Members"
     },
     "feature": {
         "fonctionnality": "Features",
