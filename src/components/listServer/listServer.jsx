@@ -86,7 +86,6 @@ export const ListServer = (props) => {
 
     const renderGuilds = () => {
         let render = []
-        // let i = 0
         for (let guild of guilds) {
             let random = Math.floor(Math.random() * 6)
 
@@ -111,8 +110,8 @@ export const ListServer = (props) => {
                 </>)
             }
             else {
-                render.push(
-                    <div key={guild.id} className={`list_item${activeGuild === guild.id ? " active" : ""}${(props.changeNotSave && activeGuild !== guild.id) ? " cantChange" : ""}`} onClick={() => { popUpCreate(guild.id) }}>
+                render.push(<>
+                    <div data-tooltip-id={"guild-" + guild.id} data-tooltip-html={"<span style='font-weight: bold;'>" + guild.name + "</span>"} key={guild.id} className={`list_item${activeGuild === guild.id ? " active" : ""}${(props.changeNotSave && activeGuild !== guild.id) ? " cantChange" : ""}`} onClick={() => { popUpCreate(guild.id) }}>
                         < div className="list_balise" >
                             <div className="balise active">
                                 <span></span>
@@ -126,10 +125,10 @@ export const ListServer = (props) => {
                                 {guild.name}
                             </div>
                         </span>
-                    </div>)
+                    </div>
+                    <Tooltip delayHide={10} className="guildNameListing" effect="solid" place="right" closeOnScroll={true} opacity={1} id={"guild-" + guild.id} ></Tooltip>
+                </>)
             }
-            // i++
-
         }
 
         return render
@@ -139,8 +138,6 @@ export const ListServer = (props) => {
         <div className="servers">
             {renderProfil()}
             {loading ? LoaderGuildEffect() : renderGuilds()}
-
-            {/* {loaderEffect()} */}
         </div>
     )
 }
