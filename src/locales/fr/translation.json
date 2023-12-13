@@ -102,5 +102,197 @@
         "TIPS_31": "La patience est une vertu. Vous êtes en train de devenir plus patient chaque seconde. ⏳😇",
         "TIPS_32": "N'oubliez pas que vous avez traversé des moments difficiles avant et vous en êtes sorti plus fort. 🦸‍♂️💪",
         "TIPS_33": "La vie est un voyage, et même le chargement fait partie du voyage. Profitez-en ! 🌍🌟"
+    },
+    "login": {
+        "toast": {
+            "sessionExpired": "Votre session a expiré. Veuillez vous reconnecter.",
+            "error": "Une erreur est survenue. Veuillez réessayer"
+        },
+        "welcome": "Bienvenue sur le site de Bouns'Bot !",
+        "logyou": "Connecte-toi pour continuer...",
+        "loginwithdiscord": "Se connecter avec Discord"
+    },
+    "dashboard": {
+        "changeDetected": "Changements détectés ! Veuillez enregistrer ou annuler.",
+        "save": "Enregistrer",
+        "cancel": "Annuler",
+        "disable": "Désactiver",
+        "menu": {
+            "dashboard": "Tableau de bord",
+            "information": "Informations",
+            "global": "Global",
+            "manageGuild": "Gestion du serveur",
+            "welcome": "Bienvenue",
+            "rename": "Pseudo",
+            "level": "Niveaux",
+            "logs": "Logs",
+            "utility": "Utilitaires",
+            "sendMessage": "Envoyer un message"
+        },
+        "info": {
+            "text1": "Salut toi, utilisateur de Bouns'bot !",
+            "text2": "Je suis ravi de vous annoncer que notre Dashboard a été entièrement réinventé pour vous offrir une expérience de gestion de serveur encore plus facile et plus amusante !",
+            "text3": "Plus besoin de vous tracasser pour la gestion de votre serveur, notre Dashboard est conçu pour être aussi simple que possible, afin que vous puissiez gérer votre serveur sans aucun souci.",
+            "text4": "Nous avons travaillé dur pour que cette version soit la meilleure, et nous sommes heureux de vous la présenter, sans bêta !",
+            "text5": "Alors, qu'attendez-vous ? Profitez de la meilleure expérience de gestion de serveur jamais vue !",
+            "text6": "Et si vous avez des commentaires ou des suggestions, n'hésitez pas à nous en faire part sur notre serveur Discord. Nous sommes toujours à l'écoute de nos utilisateurs et sommes impatients de vous entendre !",
+            "text7": "À bientôt sur Bouns'bot !"
+        },
+        "global": {
+            "category": {
+                "textual": "Textuel",
+                "multimedia": "Multimédia",
+                "activity": "Activité"
+            },
+            "title": {
+                "reaction": "Réactions",
+                "rename": "Renommer",
+                "radio": "Radio",
+                "music": "Musique",
+                "playlist": "Playlist",
+                "game": "Jeux",
+                "fun": "Fun"
+            },
+            "description": {
+                "reaction": "Laissez le bot réagir avec 👋 / 💤 suivant le message",
+                "rename": "Laissez le bot rename les membres lorsque leurs pseudos ne sont pas identifiables par la modération",
+                "sheesh": "Laissez le bot réagir avec son meilleur \"SHEEEESHHHH\" si un membre dit \"sheesh\"",
+                "radio": "Laissez vos membres écouter une des 41 radios disponibles sur le Bot",
+                "music": "Laissez vos membres écouter leurs meilleures musiques",
+                "playlist": "Laissez vos membres réaliser / modifier / écouter leurs playlists",
+                "game": "Plusieurs jeux sont disponibles pour vous amuser",
+                "fun": "Laissez vos membres s'amuser avec des commandes funs et ludiques",
+                "discordChannel": "Selectionnez le channel ou sera retranscrit le Chat Twitch",
+                "twitchChannel": "Choisissez la chaine Twitch que vous souhaitez retranscrit sur discord"
+            }
+        },
+        "welcome": {
+            "category": {
+                "sendInDm": "Envoyer un message privé aux nouveaux membres",
+                "sendInGuild": "Envoyer un message quand un membre rejoint votre serveur",
+                "giveRole": "Donner un rôle aux nouveaux membres",
+                "renameOnJoin": "Renommer les membres lorsqu'ils rejoignent le serveur"
+            },
+            "variable": {
+                "guildName": "Nom du serveur",
+                "userId": "ID de l'utilisateur",
+                "userMention": "Mention de l'utilisateur",
+                "memberCount": "Nombre de membres",
+                "bot": "Mention du bot"
+            },
+            "guild": {
+                "channel": "Salon pour les Messages de Bienvenue",
+                "message": "Message de bienvenue",
+                "messageplaceholder": "Entrer le message de bienvenue",
+                "themecard": "Thème de la carte de bienvenue",
+                "color": "Couleur",
+                "ambient": "Ambiance",
+                "text": "Texte",
+                "theme": "Thème",
+                "dontsendcard": "Ne pas envoyer de carte",
+                "giveRole": "Ajouter un rôle",
+                "none": "Aucun",
+                "enterNickname": "Entrer le pseudo"
+            },
+            "render": {
+                "cardDisable": "Carte de bienvenue désactivée",
+                "welcome": "Bienvenue",
+                "welcomeUser": "Bienvenue {{username}}",
+                "ontheguild": "Sur le serveur",
+                "onGuild": "Sur {{guild}}",
+                "welcomeontheguild": "Bienvenue {{username}} sur le serveur !",
+                "youarethe": "Tu es le {{number}}ème membres",
+                "readRules": "Assure toi de lire les règles !"
+            }
+        },
+        "logs": {
+            "title": {
+                "messages": "Messages",
+                "vocals": "Vocaux",
+                "users": "Utilisateurs",
+                "ban_unban": "Bans / Unbans",
+                "join_leave": "Arrivées / Départs",
+                "guild": "Serveur",
+                "roles": "Rôles",
+                "channels": "Salons",
+                "invites": "Invitations",
+                "emotes_stickers": "Emotes / Stickers"
+            },
+            "description": {
+                "messages": "Pouvoir modérer les différents messages sur le serveur",
+                "vocals": "Pouvoir modérer les différents vocaux sur le serveur",
+                "users": "Voir en temps réel les changements effectués sur un utilisateur",
+                "ban_unban": "Voir en temps réel les differents ban / unban sur le serveur",
+                "join_leave": "Voir les arrivés & départs des différents utilisateurs",
+                "guild": "Voir les differents changements opérés sur la guild",
+                "roles": "Voir lorsqu'un role est crée / modifié ou supprimé",
+                "channels": "Voir lorsqu'un channel est crée / modifié ou supprimé",
+                "invites": "Pouvoir modérer les différents invites crée sur la guild",
+                "emotes_stickers": "Voir les differents changements opérés sur les Emotes et les stickers"
+            }
+        },
+        "send": {
+            "sendMessage": "Envoyer un message sur un channel du discord",
+            "selectChannel": "Sélection un channel.",
+            "helloword": "Bonjour je suis Bouns'bot.",
+            "sendMsg": "Envoyer un message",
+            "channel": "Channel",
+            "replyToMsg": "Répondre à un message",
+            "messageId": "ID du message"
+        },
+        "nickname": {
+            "category": "Renommer les pseudonymes non conformes des utilisateurs",
+            "acceptNickname": "Accepter les pseudonymes non conformes",
+            "authorizedUpperOtherMember": "Autoriser le passage au dessus des autres membres",
+            "notAuthorizedUpperOtherMember": "Ne pas autoriser le passage au dessus des autres membres",
+            "verificationNickname": "Système de vérification des pseudos",
+            "lightChecking": "Vérification légère",
+            "heavyChecking": "Vérification lourde",
+            "wordUnauthorized": "Mots non autorisés dans les pseudos"
+        },
+        "levels": {
+            "category": {
+                "roleRewards": "Rôles récompenses configuration",
+                "xpRate": "Configuration du taux d'XP",
+                "channelWithoutXP": "Salons sans XP",
+                "roleWithoutXP": "Rôles sans XP"
+            },
+            "typeRewardRole": "Type de recompense de role",
+            "cumulateRewards": "Cumuler les récompenses",
+            "removeOldRewars": "Enlever les récompenses précédentes",
+            "rewardsMessage": "Message de récompense",
+            "sendOnGuild": "Envoyer le message sur la guild",
+            "sendInPrivateMessage": "Envoyer le message en privé",
+            "dontSendMsg": "Ne pas envoyer de message",
+            "roleRewards": "Rôle Récompense",
+            "multiplier": "Multiplicateur",
+            "channelAllWithout": "Xp dans tous les channels sauf celui-ci",
+            "channelWithoutExcept": "Xp que dans ces channels",
+            "roleAllWithout": "Xp pour tous les rôles sauf celui-ci",
+            "roleWithoutExcept": "Xp que pour ces rôles",
+            "addRole": "Ajouter un rôle",
+            "addChannel": "Ajouter un channel",
+            "level": "Niveau"
+        }
+    },
+    "status": {
+        "status": "Statuts",
+        "description": "Bienvenue sur la page \"Statuts de Bouns'bot\". Ici, vous trouverez des informations sur les différents shards et leur état actuel. Cela vous permettra de rester informé en cas de problèmes éventuels et de savoir si cela a une incidence sur votre serveur.",
+        "idServer": "ID du serveur",
+        "latency": "Latence",
+        "uptime": "Uptime",
+        "guildCount": "{{count}} serveusr",
+        "channelCount": "{{count}} salons",
+        "userCount": "{{count}} utilisateurs",
+        "offline": "Hors ligne",
+        "online": "En ligne",
+        "connection": "Connexion",
+        "reconnection": "Reconnexion",
+        "idle": "Inactif",
+        "disconnect": "Déconnecté",
+        "waitingForServers": "En attente des serveurs",
+        "identification": "Identification",
+        "resumption": "Reprise",
+        "error": "Une erreur est survenue lors de la récupération des statuts. Veuillez réessayer plus tard."
     }
 }

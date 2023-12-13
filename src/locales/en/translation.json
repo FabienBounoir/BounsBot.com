@@ -58,7 +58,7 @@
     },
     "levels": {
         "messages": "MESSAGES",
-        "experience": "Experience",
+        "experience": "EXPERIENCE",
         "no_guild_leaderboard": "I don't think there's any information for this guild...",
         "role_rewards": "Role Rewards",
         "level_number": "LEVEL {{level}}"
@@ -102,5 +102,197 @@
         "TIPS_31": "Patience is a virtue. You're becoming more patient with every passing second. ⏳😇",
         "TIPS_32": "Remember that you've gone through tough times before, and you've come out stronger. 🦸‍♂️💪",
         "TIPS_33": "Life is a journey, and even the loading is part of the journey. Enjoy it! 🌍🌟"
+    },
+    "login": {
+        "toast": {
+            "sessionExpired": "Your session has expired. Please log in again.",
+            "error": "An error occurred. Please try again."
+        },
+        "welcome": "Welcome to Bouns'Bot website!",
+        "logyou": "Log in to continue...",
+        "loginwithdiscord": "Log in with Discord"
+    },
+    "dashboard": {
+        "changeDetected": "Changes detected! Please save or cancel.",
+        "save": "Save",
+        "cancel": "Cancel",
+        "disable": "Disable",
+        "menu": {
+            "dashboard": "Dashboard",
+            "information": "Information",
+            "global": "Global",
+            "manageGuild": "Manage Server",
+            "welcome": "Welcome",
+            "rename": "Nickname",
+            "level": "Levels",
+            "logs": "Logs",
+            "utility": "Utilities",
+            "sendMessage": "Send Message"
+        },
+        "info": {
+            "text1": "Hello, Bouns'bot user!",
+            "text2": "I'm excited to announce that our Dashboard has been completely reinvented to provide you with an even easier and more enjoyable server management experience!",
+            "text3": "No need to worry about managing your server anymore. Our Dashboard is designed to be as straightforward as possible, allowing you to manage your server effortlessly.",
+            "text4": "We've worked hard to make this version the best, and we're thrilled to present it to you without any beta!",
+            "text5": "So, what are you waiting for? Enjoy the best server management experience ever!",
+            "text6": "And if you have any feedback or suggestions, feel free to share them with us on our Discord server. We always listen to our users and look forward to hearing from you!",
+            "text7": "See you soon on Bouns'bot!"
+        },
+        "global": {
+            "category": {
+                "textual": "Textual",
+                "multimedia": "Multimedia",
+                "activity": "Activity"
+            },
+            "title": {
+                "reaction": "Reactions",
+                "rename": "Rename",
+                "radio": "Radio",
+                "music": "Music",
+                "playlist": "Playlist",
+                "game": "Games",
+                "fun": "Fun"
+            },
+            "description": {
+                "reaction": "Let the bot react with 👋 / 💤 based on the message",
+                "rename": "Allow the bot to rename members when their nicknames are not identifiable by moderation",
+                "sheesh": "Let the bot react with its best \"SHEEEESHHHH\" if a member says \"sheesh\"",
+                "radio": "Let your members listen to one of the 41 radios available on the bot",
+                "music": "Let your members listen to their favorite music",
+                "playlist": "Let your members create / edit / listen to their playlists",
+                "game": "Several games are available for your entertainment",
+                "fun": "Let your members have fun with fun and playful commands",
+                "discordChannel": "Select the channel where Twitch Chat will be transcribed",
+                "twitchChannel": "Choose the Twitch channel you want to transcribe on Discord"
+            }
+        },
+        "welcome": {
+            "category": {
+                "sendInDm": "Send a private message to new members",
+                "sendInGuild": "Send a message when a member joins your server",
+                "giveRole": "Give a role to new members",
+                "renameOnJoin": "Rename members when they join the server"
+            },
+            "variable": {
+                "guildName": "Server Name",
+                "userId": "User ID",
+                "userMention": "User Mention",
+                "memberCount": "Member Count",
+                "bot": "Bot Mention"
+            },
+            "guild": {
+                "channel": "Welcome Messages Channel",
+                "message": "Welcome Message",
+                "messageplaceholder": "Enter the welcome message",
+                "themecard": "Welcome Card Theme",
+                "color": "Color",
+                "ambient": "Ambience",
+                "text": "Text",
+                "theme": "Theme",
+                "dontsendcard": "Do not send a card",
+                "giveRole": "Add a role",
+                "none": "None",
+                "enterNickname": "Enter the nickname"
+            },
+            "render": {
+                "cardDisable": "Welcome card disabled",
+                "welcome": "Welcome",
+                "welcomeUser": "Welcome {{username}}",
+                "ontheguild": "On the server",
+                "onGuild": "On {{guild}}",
+                "welcomeontheguild": "Welcome {{username}} to the server!",
+                "youarethe": "You are the {{number}}th member",
+                "readRules": "Make sure to read the rules!"
+            }
+        },
+        "logs": {
+            "title": {
+                "messages": "Messages",
+                "vocals": "Voice",
+                "users": "Users",
+                "ban_unban": "Bans / Unbans",
+                "join_leave": "Joins / Leaves",
+                "guild": "Server",
+                "roles": "Roles",
+                "channels": "Channels",
+                "invites": "Invitations",
+                "emotes_stickers": "Emotes / Stickers"
+            },
+            "description": {
+                "messages": "Ability to moderate different messages on the server",
+                "vocals": "Ability to moderate different voice activities on the server",
+                "users": "See real-time changes made to a user",
+                "ban_unban": "See real-time bans / unbans on the server",
+                "join_leave": "See arrivals & departures of different users",
+                "guild": "See different changes made to the guild",
+                "roles": "See when a role is created / modified or deleted",
+                "channels": "See when a channel is created / modified or deleted",
+                "invites": "Ability to moderate different invites created on the guild",
+                "emotes_stickers": "See different changes made to Emotes and Stickers"
+            }
+        },
+        "send": {
+            "sendMessage": "Send a message to a Discord channel",
+            "selectChannel": "Select a channel.",
+            "helloword": "Hello, I am Bouns'bot.",
+            "sendMsg": "Send a message",
+            "channel": "Channel",
+            "replyToMsg": "Reply to a message",
+            "messageId": "Message ID"
+        },
+        "nickname": {
+            "category": "Rename non-compliant user nicknames",
+            "acceptNickname": "Accept non-compliant nicknames",
+            "authorizedUpperOtherMember": "Allow passing above other members",
+            "notAuthorizedUpperOtherMember": "Do not allow passing above other members",
+            "verificationNickname": "Nickname verification system",
+            "lightChecking": "Light verification",
+            "heavyChecking": "Heavy verification",
+            "wordUnauthorized": "Unauthorized words in nicknames"
+        },
+        "levels": {
+            "category": {
+                "roleRewards": "Role Rewards Configuration",
+                "xpRate": "XP Rate Configuration",
+                "channelWithoutXP": "Channels Without XP",
+                "roleWithoutXP": "Roles Without XP"
+            },
+            "typeRewardRole": "Type of Role Reward",
+            "cumulateRewards": "Cumulate Rewards",
+            "removeOldRewars": "Remove Previous Rewards",
+            "rewardsMessage": "Reward Message",
+            "sendOnGuild": "Send the message on the guild",
+            "sendInPrivateMessage": "Send the message in private",
+            "dontSendMsg": "Do not send a message",
+            "roleRewards": "Role Reward",
+            "multiplier": "Multiplier",
+            "channelAllWithout": "XP in all channels except this one",
+            "channelWithoutExcept": "XP only in these channels",
+            "roleAllWithout": "XP for all roles except this one",
+            "roleWithoutExcept": "XP only for these roles",
+            "addRole": "Add a role",
+            "addChannel": "Add a channel",
+            "level": "Level"
+        }
+    },
+    "status": {
+        "status": "Status",
+        "description": "Welcome to the 'Bouns'bot Status' page. Here, you will find information about the different shards and their current state. This will keep you informed in case of any potential issues and let you know if it affects your server.",
+        "idServer": "Server ID",
+        "latency": "Latency",
+        "uptime": "Uptime",
+        "guildCount": "{{count}} servers",
+        "channelCount": "{{count}} channels",
+        "userCount": "{{count}} users",
+        "offline": "Offline",
+        "online": "Online",
+        "connection": "Connection",
+        "reconnection": "Reconnection",
+        "idle": "Idle",
+        "disconnect": "Disconnect",
+        "waitingForServers": "Waiting for servers",
+        "identification": "Identification",
+        "resumption": "Resumption",
+        "error": "An error occurred while fetching the statuses. Please try again later."
     }
 }

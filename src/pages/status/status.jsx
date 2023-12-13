@@ -3,18 +3,23 @@ import "./_status.css";
 import { Tooltip } from 'react-tooltip'
 import * as shardsAPI from "../../utils/API/shardsAPI"
 import { Toaster, toast } from 'sonner'
+import { useTranslation } from "react-i18next";
 
 
 export const Status = () => {
+    const { t } = useTranslation();
+
     const [shards, setShards] = useState([])
     const [guildInSearch, setGuildInSearch] = useState(null)
+    const [loading, setLoading] = useState(false)
 
     const fetchData = () => {
         shardsAPI.getStatus().then((data) => { setShards(data) }).catch((err) => {
-            toast.error("Une erreur est survenue lors de la récupération des statuts. Veuillez réessayer plus tard.", {
+            toast.error(t("status.error"), {
                 duration: 5000,
             })
         })
+        setLoading(true)
     }
 
     useEffect(() => {
@@ -58,28 +63,28 @@ export const Status = () => {
         if (seconds > 0) uptimeString += seconds + "s "
 
         let status = new Map([
-            [-1, "Hors ligne"],
-            [0, "En ligne"],
-            [1, "Connexion"],
-            [2, "Reconnexion"],
-            [3, "Inactif"],
+            [-1, t("status.offline")],
+            [0, t("status.online")],
+            [1, t("status.connection")],
+            [2, t("status.reconnection")],
+            [3, t("status.idle")],
             [4, "Presque"],
-            [5, "Déconnecté"],
-            [6, "En attente de serveurs"],
-            [7, "Identification"],
-            [8, "Reprise"],
+            [5, t("status.disconnect")],
+            [6, t("status.waitingForServers")],
+            [7, t("status.identification")],
+            [8, t("status.resumption")],
         ])
 
         return (
             `
             <div style="display: flex; flex-direction: column;place-items:start; justify-content: start; z-index: 9999;">
                 <h5>Shard n°${shard.cluster_id}</h4>
-                <span>Status: ${status.get(shard.status)}</span>
-                ${shard?.ping ? `<span>Latence: ${shard?.ping}ms</span>` : ""}
-                ${uptimeString ? `<span>Uptime: ${uptimeString}</span>` : ""}
-                ${shard.guilds ? `<span>${shard.guilds} serveurs</span>` : ""}
-                ${shard.channels ? `<span>${shard.channels} salons</span>` : ""}
-                ${shard.members ? `<span>${shard.members} utilisateurs</span>` : ""}
+                <span>${t("status.status")}: ${status.get(shard.status)}</span>
+                ${shard?.ping ? `<span>${t("status.latency")}: ${shard?.ping}ms</span>` : ""}
+                ${uptimeString ? `<span>${t("status.uptime")}: ${uptimeString}</span>` : ""}
+                ${shard.guilds ? `<span>${t("status.guildCount", { count: shard.guilds })}</span>` : ""}
+                ${shard.channels ? `<span>${t("status.channelCount", { count: shard.channels })}</span>` : ""}
+                ${shard.members ? `<span>${t("status.userCount", { count: shard.members })}</span>` : ""}
             </div>`
         )
     }
@@ -113,16 +118,15 @@ export const Status = () => {
     return (
         <div transition="page" className="statusContainer" >
             <div className="top">
-                <h1>Statuts</h1>
+                <h1>{t("status.status")}</h1>
                 <div className="statusShard" data-v-7085cbe2="" style={shards.length > 0 ? { display: "initial" } : { display: "none" }}>
                     {shards?.filter((s) => { return ![-1, 1, 3, 5].includes(s.status) })?.length || 0} / {shards.length} Shards
                 </div>
             </div>
 
-            <p>
-                Bienvenue sur la page "Statuts de Bouns'bot". Ici, vous trouverez des informations sur les différents shards et leur état actuel. Cela vous permettra de rester informé en cas de problèmes éventuels et de savoir si cela a une incidence sur votre serveur.</p>
+            <p>{t("status.description")}</p>
 
-            <input type="text" placeholder="Rechercher un serveur" onChange={(e) => {
+            <input type="text" placeholder={t("status.idServer")} onChange={(e) => {
                 searchGuild(e)
             }} />
             <div className="shardGrid">
@@ -137,7 +141,7 @@ export const Status = () => {
 
             </div>
 
-            <Toaster richColors expand={false} position="top-center" />
+            <Toaster richColors expand={false} position="bottom-right" />
         </div>
     )
 

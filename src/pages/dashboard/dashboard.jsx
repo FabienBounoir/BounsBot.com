@@ -29,12 +29,11 @@ export const Dashboard = () => {
     const getGuilds = async () => {
         try {
             const res = await guildsAPI.getGuilds()
-            console.log("get guilds", res)
             if ((!res) || res.length == 0) throw new Error("No guilds")
             setGuilds(res)
             setLoading(false)
         } catch (e) {
-            console.log("get user guilds error", e)
+            console.error("get user guilds error", e)
             dispatch({ logged: false, user: null })
             history.push("/login")
             localStorage.removeItem('user')

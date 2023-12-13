@@ -4,8 +4,10 @@ import Avatar from "../../components/avatar/avatar";
 import LoadingComponent from "../loading/LoadingComponent.jsx";
 import { Form } from 'react-bootstrap/'
 import * as guildsAPI from "../../utils/API/guildsAPI";
+import { useTranslation } from "react-i18next";
 
 export const Send = ({ guildId, channels, loading }) => {
+    const { t } = useTranslation();
     const textareaRef = useRef(null);
     const [loadingChargement, setLoadingChargement] = useState(false);
     const [channelAvailable, setChannelAvailable] = useState([])
@@ -59,10 +61,10 @@ export const Send = ({ guildId, channels, loading }) => {
         let option = [];
 
         if (selectedchannel === "0") {
-            option.push(<option value="0" selected>❌ Désactivé</option>)
+            option.push(<option value="0" selected>❌ {t("dashboard.send.selectChannel")}</option>)
         }
         else {
-            option.push(<option value="0">❌ Désactivé</option>)
+            option.push(<option value="0">❌ {t("dashboard.send.selectChannel")}</option>)
         }
 
         for (let value of allChannel) {
@@ -82,7 +84,7 @@ export const Send = ({ guildId, channels, loading }) => {
             {["ERROR", "LOADING"].includes(loading) ? <LoadingComponent error={loading == "ERROR"} errorMessage="Un message ou ça ?" /> :
                 <div className="block padding-1 heightMax">
                     <div className="infoActive">
-                        <h5>Envoyer un message sur un channel du discord</h5>
+                        <h5>{t("dashboard.send.sendMessage")}</h5>
                     </div>
 
                     <div className="separator"></div>
@@ -104,14 +106,14 @@ export const Send = ({ guildId, channels, loading }) => {
                                         </div>
                                         <div className="message_content">
                                             <pre>
-                                                <p>{messageConfig.channelId === "" ? "Sélection un channel." : (message ? message : "Bonjour je suis Bouns'bot.")}</p>
+                                                <p>{messageConfig.channelId === "" ? t("dashboard.send.selectChannel") : (message ? message : t("dashboard.send.helloword"))}</p>
                                             </pre>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                             <div className={"SendMessageInput" + (messageConfig.channelId === "" || messageConfig.channelId === "0" || loadingChargement ? " disable" : "")}>
-                                <textarea ref={textareaRef} rows={1} disabled={messageConfig.channelId === "" || messageConfig.channelId === "0" || loadingChargement} placeholder="Envoyer un message" value={messageConfig.content} onChange={(e) => { setMessageConfig({ ...messageConfig, content: e.target.value }); setMessage(e.target.value.trim()); resizeTextarea() }} />
+                                <textarea ref={textareaRef} rows={1} disabled={messageConfig.channelId === "" || messageConfig.channelId === "0" || loadingChargement} placeholder={t("dashboard.send.sendMsg")} value={messageConfig.content} onChange={(e) => { setMessageConfig({ ...messageConfig, content: e.target.value }); setMessage(e.target.value.trim()); resizeTextarea() }} />
 
                                 <svg width="28px" height="28px" viewBox="0 0 28 28" version="1.1" onClick={() => sendmessage()}>
                                     <g id="🔍-Product-Icons" stroke="none" stroke-width="1" fill="none" fillRule="evenodd">
@@ -125,7 +127,7 @@ export const Send = ({ guildId, channels, loading }) => {
                         <div>
                             <div className="configWelcomeCanvas">
                                 <div style={{ marginBottom: "10px", color: "white", textAlign: "left" }}>
-                                    <span>Channel:</span>
+                                    <span>{t("dashboard.send.channel")}</span>
                                     <Form.Select defaultValue={messageConfig?.channel} onChange={(e) => { setMessageConfig({ ...messageConfig, channelId: e.target.value }) }}>
                                         {(() => {
                                             return getChannelForSelector(channelAvailable, messageConfig?.channel);
@@ -136,8 +138,8 @@ export const Send = ({ guildId, channels, loading }) => {
                                 <div className="separator"></div>
 
                                 <div style={{ marginBottom: "10px", color: "white", textAlign: "left" }}>
-                                    <span>Répondre à un message:</span>
-                                    <Form.Control type="text" placeholder="Message Id" value={messageConfig.replyTo} onChange={(e) => { setMessageConfig({ ...messageConfig, replyTo: e.target.value }) }} />
+                                    <span>{t("dashboard.send.replyToMsg")}</span>
+                                    <Form.Control type="text" placeholder={t("dashboard.send.messageId")} value={messageConfig.replyTo} onChange={(e) => { setMessageConfig({ ...messageConfig, replyTo: e.target.value }) }} />
                                 </div>
                             </div>
 

@@ -4,11 +4,11 @@ import { Form } from 'react-bootstrap/'
 import Avatar from "../../components/avatar/avatar";
 
 import LoadingComponent from "../loading/LoadingComponent.jsx";
+import { useTranslation } from "react-i18next";
 
 
 export const Welcome = ({ guildId, configuration, setConfiguration, channels, rolesGuild, loading, iconLink, name, user }) => {
-
-    // const [initialConfig, setInitialConfig] = useState({})
+    const { t } = useTranslation();
     const [embedNumber] = useState(0) //setEmbedNumber
     const [timer, setTimer] = useState(null);
     const [roles, setRoles] = useState([])
@@ -24,16 +24,6 @@ export const Welcome = ({ guildId, configuration, setConfiguration, channels, ro
     useEffect(() => {
         setRoles(rolesGuild?.filter(role => !role.tags?.botId && role.name !== "@everyone") || [])
     }, [rolesGuild])
-
-
-    // const getConfiguration = async () => {
-    //     let res = await fetch(`${process.env.REACT_APP_HOSTNAME_BACKEND}/guild/${guildId}/welcome`).then(res => res.json()) || {}
-
-    //     await setChannel(res?.channels?.filter(channel => channel.type === 0) || [])
-    //     await setRoles(res?.roles?.filter(role => !role.tags?.botId && role.name !== "@everyone") || [])
-    //     await setInitialConfig(JSON.parse(JSON.stringify(res.config)));
-    //     // await setConfiguration(JSON.parse(JSON.stringify(res.config)))
-    // }
 
     const renderCanvas = (guild) => {
         if (canvasRef.current === null) return
@@ -86,7 +76,7 @@ export const Welcome = ({ guildId, configuration, setConfiguration, channels, ro
         ctx.font = "bold 70px Arial";
         ctx.textAlign = "center";
         ctx.fillStyle = "#FFFFFF"
-        ctx.fillText("Carte de bienvenue désactivée", 600, 250); //450
+        ctx.fillText(t("dashboard.welcome.render.cardDisable"), 600, 250); //450
 
 
     }
@@ -133,7 +123,7 @@ export const Welcome = ({ guildId, configuration, setConfiguration, channels, ro
             ctx.font = "bold 70px Arial";
             ctx.fillStyle = colorText
             ctx.textAlign = "left";
-            ctx.fillText("Welcome", 490, 120); //450
+            ctx.fillText(t("dashboard.welcome.render.welcome"), 490, 120); //450
 
             ctx.font = "bold 70px Arial";
             // ctx.fillText("BadbounsTV#2000", 520, 270); //480
@@ -151,7 +141,7 @@ export const Welcome = ({ guildId, configuration, setConfiguration, channels, ro
 
             ctx.fillText(text, 520, 250);
 
-            ctx.fillText("Sur le serveur", 540, 380); //500
+            ctx.fillText(t("dashboard.welcome.render.ontheguild"), 540, 380); //500
 
             ctx.beginPath();
             ctx.moveTo(0, 0);
@@ -207,7 +197,7 @@ export const Welcome = ({ guildId, configuration, setConfiguration, channels, ro
 
             //resize text
             const maxWidth = 800;
-            let text = `Bienvenue ${user?.username || "Wumpus"} sur le serveur !`
+            let text = t("dashboard.welcome.render.welcomeontheguild", { username: user?.username || "Wumpus" })  // `Bienvenue ${user?.username || "Wumpus"} sur le serveur !`
             let fontSize = 57;
 
             ctx.font = `${fontSize}px Arial`;
@@ -223,7 +213,7 @@ export const Welcome = ({ guildId, configuration, setConfiguration, channels, ro
             ctx.fillStyle = darkenColor(colorText, 20);
             //resize text
             const maxWidth2 = 900;
-            let text2 = `Tu es le ${Math.floor(Math.random() * 1000)}ème membres, Assure toi de lire les règles !` || 'You’re 83848434 member, Make sure to read rules !';
+            let text2 = t("dashboard.welcome.render.youarethe", { number: Math.floor(Math.random() * 1000) }) + ", " + t("dashboard.welcome.render.readRules") //`Tu es le ${Math.floor(Math.random() * 1000)}ème membres, Assure toi de lire les règles !` || 'You’re 83848434 member, Make sure to read rules !';
             let fontSize2 = 45;
 
             ctx.font = `${fontSize2}px Arial`;
@@ -289,7 +279,7 @@ export const Welcome = ({ guildId, configuration, setConfiguration, channels, ro
 
             //resize text
             const maxWidth = 450;
-            let text = 'BIENVENUE';
+            let text = t("dashboard.welcome.render.welcome").toUpperCase();
             let fontSize = 80;
 
             ctx.font = `bold ${fontSize}px Arial`;
@@ -450,7 +440,7 @@ export const Welcome = ({ guildId, configuration, setConfiguration, channels, ro
 
             //resize text
             const maxWidth = 900;
-            let text = `Welcome ${user?.username}`;
+            let text = t("dashboard.welcome.render.welcomeUser", { username: user?.username });
             let fontSize = 80;
 
             ctx.font = `bold ${fontSize}px Arial`;
@@ -468,7 +458,7 @@ export const Welcome = ({ guildId, configuration, setConfiguration, channels, ro
 
             //resize text
             const maxWidth2 = 600;
-            let text2 = `To ${name}`;
+            let text2 = t("dashboard.welcome.render.onGuild", { guild: name });
             let fontSize2 = 85;
 
             ctx.font = `bold ${fontSize2}px Arial`;
@@ -483,7 +473,7 @@ export const Welcome = ({ guildId, configuration, setConfiguration, channels, ro
             ctx.fillStyle = colorAmbient //darkenColor(colorAmbient, 20);
 
             const maxWidth3 = 500;
-            let text3 = `Tu es le ${Math.floor(Math.random() * 1000) + 1}ème membre !`;
+            let text3 = t("dashboard.welcome.render.youarethe", { number: Math.floor(Math.random() * 1000) }) + ` !`;
             let fontSize3 = 85;
 
             ctx.font = `bold ${fontSize3}px Arial`;
@@ -496,7 +486,7 @@ export const Welcome = ({ guildId, configuration, setConfiguration, channels, ro
             ctx.fillText(text3, 900, 320);
 
             const maxWidth4 = 500;
-            let text4 = 'Assure toi de lire les règles !';
+            let text4 = t("dashboard.welcome.render.readRules") + ' !';
             let fontSize4 = 85;
 
             ctx.font = `bold ${fontSize4}px Arial`;
@@ -623,7 +613,7 @@ export const Welcome = ({ guildId, configuration, setConfiguration, channels, ro
     let getChannelForSelector = (allChannel, selectedchannel) => {
         let option = [];
 
-        option.push(<option value={"0"}>⛔️ Aucun</option>)
+        option.push(<option value={"0"}>⛔️ {t("dashboard.welcome.guild.none")}</option>)
 
         for (let value of allChannel) {
             if (value.id === selectedchannel) {
@@ -643,10 +633,10 @@ export const Welcome = ({ guildId, configuration, setConfiguration, channels, ro
         for (let i = -1; i < 4; i++) {
             let theme = ""
             if (i === -1) {
-                theme = "⛔️ Ne pas envoyer de carte"
+                theme = "⛔️ " + t("dashboard.welcome.guild.dontsendcard")
             }
             else {
-                theme = `🃏 Theme ${i + 1}`
+                theme = `🃏 ${t("dashboard.welcome.guild.theme")} ${i + 1}`
             }
 
             if (design === i) {
@@ -660,19 +650,7 @@ export const Welcome = ({ guildId, configuration, setConfiguration, channels, ro
         return option;
     }
 
-    // let fixInitialRoleConfig = (roles) => {
-    //     let newConfig = { ...initialConfig }
-
-    //     newConfig.ROLE.roles = roles
-
-    //     setInitialConfig(newConfig)
-    // }
-
     let fixRoleConfig = (roles) => {
-        // let newConfig = { ...configuration }
-
-        // newConfig.welcomeRole.roles = roles
-
         setConfiguration({ ...configuration, welcomeRole: { ...configuration.welcomeRole, roles: roles } })
     }
 
@@ -698,10 +676,6 @@ export const Welcome = ({ guildId, configuration, setConfiguration, channels, ro
             let roleElement = roles.find(r => r.id == role)
 
             if (roleElement != undefined) {
-                //     fixInitialRoleConfig(initialConfig.ROLE.roles.filter(r => r != role))
-                //     fixRoleConfig(configuration?.welcomeRole.roles.filter(r => r != role))
-                // }
-                // else {
                 rolesModule.push(
                     <div className="roleRenderXP">
                         <span style={{ background: `${decimalToHex(roleElement?.color)}` }}></span>
@@ -733,7 +707,7 @@ export const Welcome = ({ guildId, configuration, setConfiguration, channels, ro
 
         if (filterRole) {
             rolesForSelector.push(
-                <option value={"0"} selected>Ajouter un rôle</option>
+                <option value={"0"} selected>{t("dashboard.welcome.guild.giveRole")}</option>
             )
         }
 
@@ -763,7 +737,7 @@ export const Welcome = ({ guildId, configuration, setConfiguration, channels, ro
             <>
                 <div className="block padding-1">
                     <div className="infoActive">
-                        <h5>Envoyer un message privé aux nouveaux membres</h5>
+                        <h5>{t("dashboard.welcome.category.sendInDm")}</h5>
                         <Form.Check className="picto" type="switch" id="custom-switch success" checked={configuration?.welcome?.DM?.active} onChange={(e) => { updateEtatDm(e) }} />
                     </div>
 
@@ -791,11 +765,11 @@ export const Welcome = ({ guildId, configuration, setConfiguration, channels, ro
                         </div>
                         <div className="info">
                             <ul>
-                                <li><span className="tag">{`{server}`}</span>Nom du serveur</li>
-                                <li><span className="tag">{`{id}`}</span>Id du membre</li>
-                                <li><span className="tag">{`{user}`}</span>Mention du membre</li>
-                                <li><span className="tag">{`{membercount}`}</span>Nombre de membres</li>
-                                <li><span className="tag">{`{bot}`}</span>Mention du bot</li>
+                                <li><span className="tag">{`{server}`}</span>{t("dashboard.welcome.variable.guildName")}</li>
+                                <li><span className="tag">{`{id}`}</span>{t("dashboard.welcome.variable.userId")}</li>
+                                <li><span className="tag">{`{user}`}</span>{t("dashboard.welcome.variable.userMention")}</li>
+                                <li><span className="tag">{`{membercount}`}</span>{t("dashboard.welcome.variable.memberCount")}</li>
+                                <li><span className="tag">{`{bot}`}</span>{t("dashboard.welcome.variable.bot")}</li>
                             </ul>
                         </div>
                     </div>
@@ -803,13 +777,13 @@ export const Welcome = ({ guildId, configuration, setConfiguration, channels, ro
 
                 <div className={"block padding-1" + (configuration?.welcome?.guild?.active ? "" : " disabled")}>
                     <div className="infoActive">
-                        <h5>Envoyer un message quand un membre rejoint votre serveur</h5>
+                        <h5>{t("dashboard.welcome.category.sendInGuild")}</h5>
                         <Form.Check className="picto" type="switch" id="custom-switch success" checked={configuration?.welcome?.guild?.active} onChange={(e) => { updateEtatGuild(e) }} />
                     </div>
 
                     <div className="separator"></div>
 
-                    <p className="categorie_config" >Salon pour les Messages de Bienvenue</p>
+                    <p className="categorie_config" >{t("dashboard.welcome.guild.channel")}</p>
 
                     <Form.Select style={{ "max-width": "530px" }} defaultValue={configuration?.welcome.guild?.channel} value={configuration?.welcome.guild?.channel} disabled={!configuration?.welcome?.guild?.active} onChange={(event) => { updateSelectMenu(event.target.value) }}>
                         {(() => {
@@ -819,13 +793,13 @@ export const Welcome = ({ guildId, configuration, setConfiguration, channels, ro
 
                     <div className="separator" style={{ "marginTop": "15px" }} ></div>
 
-                    <p className="categorie_config" >Message de bienvenue</p>
+                    <p className="categorie_config" >{t("dashboard.welcome.guild.message")}</p>
 
                     <Form.Control
                         style={{ "max-width": "530px" }}
                         as="textarea"
                         rows={3}
-                        placeholder="Entrer le message de bienvenue"
+                        placeholder={t("dashboard.welcome.guild.messageplaceholder")}
                         disabled={!configuration?.welcome?.guild?.active}
                         value={configuration?.welcome?.guild?.content}
                         onChange={(event) => { updateContent(event) }}
@@ -848,7 +822,7 @@ export const Welcome = ({ guildId, configuration, setConfiguration, channels, ro
                             <div className="separator"></div> */}
 
                             <div style={{ marginBottom: "10px" }}>
-                                <p>Theme de la carte:</p>
+                                <p>{t("dashboard.welcome.guild.themecard")}</p>
                                 <Form.Select defaultValue={configuration?.welcome?.guild?.design} onChange={(event) => { updateTheme(event.target.value) }}>
                                     {(() => {
                                         return optionsTheme(configuration?.welcome?.guild?.design);
@@ -859,14 +833,14 @@ export const Welcome = ({ guildId, configuration, setConfiguration, channels, ro
                             <div className="separator"></div>
 
                             <div >
-                                <p>Couleur:</p>
+                                <p>{t("dashboard.welcome.guild.color")}</p>
                                 <div style={{ display: "flex", flexDirection: "row" }}>
                                     <div className="colorModule">
-                                        <span>Ambiance</span>
+                                        <span>{t("dashboard.welcome.guild.ambient")}</span>
                                         <input type="color" defaultValue={"#000000"} value={configuration?.welcome?.guild?.colorAmbiance} onChange={(e) => { updateColorGuild({ colorAmbiance: e.target.value }) }} />
                                     </div>
                                     <div className="colorModule">
-                                        <span>Texte</span>
+                                        <span>{t("dashboard.welcome.guild.text")}</span>
                                         <input type="color" defaultValue={"#FFFFFF"} value={configuration?.welcome?.guild?.colorText} onChange={(e) => { updateColorGuild({ colorText: e.target.value }) }} />
                                     </div>
                                 </div>
@@ -878,7 +852,7 @@ export const Welcome = ({ guildId, configuration, setConfiguration, channels, ro
 
                 <div className={"block padding-1" + (configuration?.welcomeRole?.active ? "" : " disabled")}>
                     <div className="infoActive">
-                        <h5>Donner un rôle aux nouveaux membres</h5>
+                        <h5>{t("dashboard.welcome.category.giveRole")}</h5>
                         <Form.Check className="picto" type="switch" id="custom-switch success" checked={configuration?.welcomeRole?.active} onChange={(e) => { updateEtatROLE(e) }} />
                     </div>
 
@@ -891,14 +865,14 @@ export const Welcome = ({ guildId, configuration, setConfiguration, channels, ro
 
                 <div className="block padding-1">
                     <div className="infoActive">
-                        <h5>Renommer les membres lorsqu'ils rejoignent le serveur</h5>
+                        <h5>{t("dashboard.welcome.category.renameOnJoin")}</h5>
                         <Form.Check className="picto" type="switch" id="custom-switch success" checked={configuration?.welcome?.guild?.defaultPseudo} onChange={(e) => { updateDefaultPseudo(null) }} />
                     </div>
 
                     <div className="separator"></div>
                     <Form.Control
                         style={{ "max-width": "530px" }}
-                        placeholder="Entrer le pseudo"
+                        placeholder={t("dashboard.welcome.guild.enterNickname")}
                         value={configuration?.welcome?.guild?.defaultPseudo || ""}
                         onChange={(event) => { updateDefaultPseudo(event.target.value) }}
                     />

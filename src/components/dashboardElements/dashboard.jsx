@@ -3,8 +3,10 @@ import { Form } from 'react-bootstrap/'
 import Avatar from "../../components/avatar/avatar";
 import LoadingComponent from "../../components/loading/LoadingComponent.jsx";
 import * as guildsAPI from "../../utils/API/guildsAPI";
+import { useTranslation } from "react-i18next";
 
 export const Dashboard = ({ guildId, configuration, updateConfiguration, channels, setChannels, loading }) => {
+    const { t } = useTranslation();
     const [channel, setChannel] = useState([])
 
     useEffect(() => {
@@ -16,10 +18,10 @@ export const Dashboard = ({ guildId, configuration, updateConfiguration, channel
         var option = [];
 
         if (selectedchannel === "0") {
-            option.push(<option value="0" selected>❌ Désactivé</option>)
+            option.push(<option value="0" selected>❌ {t("dashboard.disable")}</option>)
         }
         else {
-            option.push(<option value="0">❌ Désactivé</option>)
+            option.push(<option value="0">❌ {t("dashboard.disable")}</option>)
         }
 
         for (let value of allChannel) {
@@ -40,7 +42,7 @@ export const Dashboard = ({ guildId, configuration, updateConfiguration, channel
             : <>
 
                 <div className="block">
-                    <h3>Textuel</h3>
+                    <h3>{t("dashboard.global.category.textual")}</h3>
                     <div className="modules">
                         {typeof configuration.heyreaction === 'boolean' ? <div className="guildModule">
                             <div className="top">
@@ -65,8 +67,8 @@ export const Dashboard = ({ guildId, configuration, updateConfiguration, channel
 
                                 <Form.Check className="picto" type="switch" id="custom-switch success" onChange={() => { updateConfiguration({ ...configuration, heyreaction: !configuration?.heyreaction }) }} checked={configuration?.heyreaction} />
                             </div>
-                            <h5 className="hrnh5k-0 eeKdki sc-1wkjbe7-8 GoZzi">Réactions</h5>
-                            <div>Laissez le bot réagir avec 👋 / 💤 suivant le message</div>
+                            <h5 className="hrnh5k-0 eeKdki sc-1wkjbe7-8 GoZzi">{t("dashboard.global.title.reaction")}</h5>
+                            <div>{t("dashboard.global.description.reaction")}</div>
                         </div> : ""}
 
                         {typeof configuration?.rename === "boolean" ?
@@ -79,8 +81,8 @@ export const Dashboard = ({ guildId, configuration, updateConfiguration, channel
 
                                     <Form.Check type="switch" id="custom-switch success" onChange={() => { updateConfiguration({ ...configuration, rename: !configuration?.rename }) }} checked={configuration?.rename} />
                                 </div>
-                                <h5 className="hrnh5k-0 eeKdki sc-1wkjbe7-8 GoZzi">Rename</h5>
-                                <div>Laissez le bot rename les membres lorsque leurs pseudos ne sont pas identifiables par la modération</div>
+                                <h5 className="hrnh5k-0 eeKdki sc-1wkjbe7-8 GoZzi">{t("dashboard.global.title.rename")}</h5>
+                                <div>{t("dashboard.global.description.rename")}</div>
                             </div>
                             : ""}
 
@@ -99,14 +101,14 @@ export const Dashboard = ({ guildId, configuration, updateConfiguration, channel
                                     <Form.Check type="switch" id="custom-switch success" onChange={() => { updateConfiguration({ ...configuration, sheesh: !configuration.sheesh }) }} checked={configuration.sheesh} />
                                 </div>
                                 <h5 className="hrnh5k-0 eeKdki sc-1wkjbe7-8 GoZzi">Sheesh</h5>
-                                <div>Laissez le bot réagir avec son meilleur "SHEEEESHHHH" si un membre dit "sheesh"</div>
+                                <div>{t("dashboard.global.description.sheesh")}</div>
                             </div> : ""}
 
                     </div>
                 </div>
 
                 <div className="block">
-                    <h3>Multimedia</h3>
+                    <h3>{t("dashboard.global.category.multimedia")}</h3>
                     <div className="modules">
                         {typeof configuration.radio === 'boolean' ?
                             <div className="guildModule">
@@ -117,8 +119,8 @@ export const Dashboard = ({ guildId, configuration, updateConfiguration, channel
 
                                     <Form.Check type="switch" id="custom-switch success" onChange={() => { updateConfiguration({ ...configuration, radio: !configuration.radio }) }} checked={configuration.radio} />
                                 </div>
-                                <h5 className="hrnh5k-0 eeKdki sc-1wkjbe7-8 GoZzi">Radio</h5>
-                                <div>Laissez vos membres écouter une des 41 radios disponibles sur le Bot</div>
+                                <h5 className="hrnh5k-0 eeKdki sc-1wkjbe7-8 GoZzi">{t("dashboard.global.title.radio")}</h5>
+                                <div>{t("dashboard.global.description.radio")}</div>
                             </div>
                             : ""}
 
@@ -131,8 +133,8 @@ export const Dashboard = ({ guildId, configuration, updateConfiguration, channel
 
                                     <Form.Check type="switch" id="custom-switch success" onChange={() => { updateConfiguration({ ...configuration, musique: !configuration.musique }) }} checked={configuration.musique} />
                                 </div>
-                                <h5 className="hrnh5k-0 eeKdki sc-1wkjbe7-8 GoZzi">Musique</h5>
-                                <div>Laissez vos membres écouter leurs meilleures musiques</div>
+                                <h5 className="hrnh5k-0 eeKdki sc-1wkjbe7-8 GoZzi">{t("dashboard.global.title.music")}</h5>
+                                <div>{t("dashboard.global.description.music")}</div>
                             </div>
                             : ""}
 
@@ -148,15 +150,15 @@ export const Dashboard = ({ guildId, configuration, updateConfiguration, channel
 
                                     <Form.Check type="switch" id="custom-switch success" onChange={() => { updateConfiguration({ ...configuration, playlist: !configuration.playlist }) }} checked={configuration.playlist} />
                                 </div>
-                                <h5 className="hrnh5k-0 eeKdki sc-1wkjbe7-8 GoZzi">Playlist</h5>
-                                <div>Laissez vos membres réaliser / modifier / écouter leurs playlists</div>
+                                <h5 className="hrnh5k-0 eeKdki sc-1wkjbe7-8 GoZzi">{t("dashboard.global.title.playlist")}</h5>
+                                <div>{t("dashboard.global.description.playlist")}</div>
                             </div> : ""}
 
                     </div>
                 </div>
 
                 <div className="block">
-                    <h3>Activité</h3>
+                    <h3>{t("dashboard.global.category.activity")}</h3>
                     <div className="modules">
 
                         {typeof configuration.game === 'boolean' ?
@@ -168,8 +170,8 @@ export const Dashboard = ({ guildId, configuration, updateConfiguration, channel
 
                                     <Form.Check type="switch" id="custom-switch success" onChange={() => { updateConfiguration({ ...configuration, game: !configuration.game }) }} checked={configuration.game} />
                                 </div>
-                                <h5 className="hrnh5k-0 eeKdki sc-1wkjbe7-8 GoZzi">Game</h5>
-                                <div>Plusieurs jeux sont disponibles pour vous amuser</div>
+                                <h5 className="hrnh5k-0 eeKdki sc-1wkjbe7-8 GoZzi">{t("dashboard.global.title.game")}</h5>
+                                <div>{t("dashboard.global.description.game")}</div>
                             </div> : ""}
 
                         {typeof configuration.fun === 'boolean' ?
@@ -182,8 +184,8 @@ export const Dashboard = ({ guildId, configuration, updateConfiguration, channel
                                     <Form.Check type="switch" id="custom-switch success" onChange={() => { updateConfiguration({ ...configuration, fun: !configuration.fun }) }} checked={configuration.fun} />
                                 </div>
 
-                                <h5 className="hrnh5k-0 eeKdki sc-1wkjbe7-8 GoZzi">Fun</h5>
-                                <div>Laissez vos membres s'amuser avec des commandes funs et ludiques</div>
+                                <h5 className="hrnh5k-0 eeKdki sc-1wkjbe7-8 GoZzi">{t("dashboard.global.title.fun")}</h5>
+                                <div>{t("dashboard.global.description.fun")}</div>
                             </div> : ""}
 
                     </div>
@@ -207,7 +209,7 @@ export const Dashboard = ({ guildId, configuration, updateConfiguration, channel
                                 {/* </div> */}
                             </div>
                             <h5 className="hrnh5k-0 eeKdki sc-1wkjbe7-8 GoZzi">Twitch</h5>
-                            <div>Selectionnez le channel ou sera retranscrit le Chat Twitch</div>
+                            <div>{t("dashboard.global.description.discordChannel")}</div>
                         </div>
 
                         <div className="guildModule">
@@ -220,7 +222,7 @@ export const Dashboard = ({ guildId, configuration, updateConfiguration, channel
                             </div>
 
                             <h5 className="hrnh5k-0 eeKdki sc-1wkjbe7-8 GoZzi">Twitch</h5>
-                            <div>Choisissez la chaine Twitch que vous souhaitez retranscrit sur discord</div>
+                            <div>{t("dashboard.global.description.twitchChannel")}</div>
                         </div>
                     </div>
 

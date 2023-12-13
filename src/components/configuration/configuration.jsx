@@ -19,8 +19,11 @@ import "../dashboardElements/_dashboardElements.css";
 import lodash from 'lodash';
 import { Toaster, toast } from 'sonner'
 import { useStore } from "../../utils/store";
+import { useTranslation } from "react-i18next";
 
 export const Configuration = (props) => {
+    const { t } = useTranslation();
+
     const { id, typeconfig } = useParams();
     const [guild, setGuild] = useState({})
     const [activeGuild, setActiveGuild] = useState(id || "user")
@@ -67,40 +70,40 @@ export const Configuration = (props) => {
         if (activeGuild !== "user") {
             setMenu([
                 {
-                    "name": "Global",
+                    "name": "dashboard.menu.global",
                     "elements": [
                         {
-                            "name": "Tableau de bord",
+                            "name": "dashboard.menu.dashboard",
                             "url": "dashboard"
                         }
                     ]
                 },
                 {
-                    "name": "Gestion du serveur",
+                    "name": "dashboard.menu.manageGuild",
                     "elements": [
                         {
-                            "name": "Bienvenue",
+                            "name": "dashboard.menu.welcome",
                             "url": "welcome"
                         },
                         {
-                            "name": "Rename",
+                            "name": "dashboard.menu.rename",
                             "url": "rename"
                         },
                         {
-                            "name": "Niveaux",
+                            "name": "dashboard.menu.level",
                             "url": "levels"
                         },
                         {
-                            "name": "Logs",
+                            "name": "dashboard.menu.logs",
                             "url": "logs"
                         }
                     ]
                 },
                 {
-                    "name": "Utilitaires",
+                    "name": "dashboard.menu.utility",
                     "elements": [
                         {
-                            "name": "Envoyer un message",
+                            "name": "dashboard.menu.sendMessage",
                             "url": "guild_message"
                         }
                     ]
@@ -110,9 +113,9 @@ export const Configuration = (props) => {
         else {
             setMenu([
                 {
-                    "name": "Dashboard",
+                    "name": "dashboard.menu.dashboard",
                     "elements": [{
-                        "name": "Information",
+                        "name": "dashboard.menu.information",
                         "url": "description",
                     }]
                 }
@@ -231,14 +234,14 @@ export const Configuration = (props) => {
         for (let i = 0; i < menu.length; i++) {
             list.push(<li key={i} className="title">
                 <div>
-                    <p>{menu[i].name}</p>
+                    <p>{t(menu[i].name)}</p>
                 </div>
             </li>);
 
             for (let j = 0; j < menu[i].elements.length; j++) {
                 list.push(<Link key={i + "-" + j} onClick={() => triggerListServer(false)} to={`/dashboard/${activeGuild}/` + menu[i].elements[j].url}><li className={"element " + (type === menu[i].elements[j].url ? "active" : "")}>
                     <div>
-                        <p>{menu[i].elements[j].name}</p>
+                        <p>{t(menu[i].elements[j].name)}</p>
                     </div>
                 </li></Link>)
             }
@@ -310,7 +313,7 @@ export const Configuration = (props) => {
         </span> </div>
         <div className="config">
             {renderConfigComponent()}
-            <div id="card" className={"cardSave" + (props.changeNotSave ? " hidden" : " closeCardSave")} ><div className="saveConfig"><div style={{ display: "flex", alignItems: "center", flexDirection: "row", gap: "0.3em" }}><Avatar classElement="logoChangement" width="30" height="28" /> Changements détectés ! Veuillez enregistrer ou annuler.</div><div className="buttonContainer"><button className="cancelButton" disabled={loadingChargement} type="button" onClick={() => { resetChange() }}>Annuler</button><button className="saveButton" type="button" disabled={loadingChargement} onClick={updateConfig}>Enregistrer</button></div></div></div>
+            <div id="card" className={"cardSave" + (props.changeNotSave ? " hidden" : " closeCardSave")} ><div className="saveConfig"><div style={{ display: "flex", alignItems: "center", flexDirection: "row", gap: "0.3em" }}><Avatar classElement="logoChangement" width="30" height="28" /> {t("dashboard.changeDetected")}</div><div className="buttonContainer"><button className="cancelButton" disabled={loadingChargement} type="button" onClick={() => { resetChange() }}>{t("dashboard.cancel")}</button><button className="saveButton" type="button" disabled={loadingChargement} onClick={updateConfig}>{t("dashboard.save")}</button></div></div></div>
         </div>
         <Toaster richColors expand={false} position="top-center" />
     </>

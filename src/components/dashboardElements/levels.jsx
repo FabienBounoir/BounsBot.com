@@ -3,9 +3,10 @@ import { useState, useEffect } from "react"
 import Avatar from "../avatar/avatar";
 import LoadingComponent from "../loading/LoadingComponent.jsx";
 import { Form } from 'react-bootstrap/'
+import { useTranslation } from "react-i18next";
 
 export const LevelsConfig = ({ guildId, configuration, setConfiguration, channels, roles, loading }) => {
-    // const [actualRoleRewards, setActualRoleRewards] = useState([])
+    const { t } = useTranslation();
     const [newElement, setNewElement] = useState({ level: "", role: { id: "" } })
     const [rolesFiltered, setRolesFiltered] = useState([])
     const [channelsFiltered, setChannelsFiltered] = useState([])
@@ -34,58 +35,14 @@ export const LevelsConfig = ({ guildId, configuration, setConfiguration, channel
         setRoleXp("0")
     }, [roleXp])
 
-    // useEffect(() => {
-    //     setActualRoleRewards(configuration?.gainRolesLevels || [])
-    // }, [configuration])
-
-
-    // const checkBeforeUpdate = () => {
-    //     return new Promise((resolve, reject) => {
-    //         let gainRolesLevels = []
-    //         for (let i = 0; i < configuration.gainRolesLevels.length; i++) {
-    //             //remove element if level is empty
-    //             if (configuration.gainRolesLevels[i].level === "") {
-    //                 continue
-    //             }
-
-    //             //remove element if role is empty
-    //             if (configuration.gainRolesLevels[i].role.id === "") {
-    //                 continue
-    //             }
-
-    //             for (let j = 0; j < configuration.gainRolesLevels.length; j++) {
-    //                 if (i === j) {
-    //                     continue
-    //                 }
-
-    //                 if (configuration.gainRolesLevels[i].level === configuration.gainRolesLevels[j].level) {
-    //                     return reject(alert("❌ Vous avez deux fois le même niveau de gain de rôle"))
-    //                 }
-
-    //                 if (configuration.gainRolesLevels[i].role.id === configuration.gainRolesLevels[j].role.id) {
-    //                     return reject(alert("❌ Vous avez deux fois le même rôle de gain de rôle"))
-    //                 }
-    //             }
-
-    //             gainRolesLevels.push(configuration.gainRolesLevels[i])
-    //         }
-
-    //         gainRolesLevels.sort((a, b) => a.level - b.level)
-
-    //         setConfiguration({ ...configuration, gainRolesLevels })
-    //         resolve()
-    //     })
-    // }
-
     let recompenseRole = () => {
         let rolesRewards = []
-
 
         if (configuration?.gainRolesLevels?.length !== 0) {
             for (let i = 0; i < configuration?.gainRolesLevels?.length; i++) {
                 rolesRewards.push(
                     <div className="roleRewardElement">
-                        <Form.Control min={"1"} max type="number" value={configuration?.gainRolesLevels[i]?.level} placeholder="Level"
+                        <Form.Control min={"1"} max type="number" value={configuration?.gainRolesLevels[i]?.level} placeholder={t("dashboard.levels.level")}
                             onChange={(e) => {
                                 let newRoles = JSON.parse(JSON.stringify(configuration.gainRolesLevels))
                                 newRoles[i].level = parseInt(e.target.value)
@@ -117,13 +74,6 @@ export const LevelsConfig = ({ guildId, configuration, setConfiguration, channel
                 )
             }
         }
-        // else {
-        //     rolesRewards.push(
-        //         <div className="roleRewardElement noElement">
-        //             <p>Aucune récompense de rôle</p>
-        //         </div>
-        //     )
-        // }
 
         rolesRewards.push(<div className="roleRewardElement template">
             <Form.Control min={"1"} max type="number" value={newElement.level} placeholder="Level"
@@ -163,7 +113,7 @@ export const LevelsConfig = ({ guildId, configuration, setConfiguration, channel
 
         if (filterRole) {
             rolesForSelector.push(
-                <option value={"0"} selected>Ajouter un rôle</option>
+                <option value={"0"} selected>{t("dashboard.levels.addRole")}</option>
             )
         }
 
@@ -193,7 +143,7 @@ export const LevelsConfig = ({ guildId, configuration, setConfiguration, channel
 
         if (filterChannel) {
             channelsForSelector.push(
-                <option value={"0"} selected>Ajouter un channel</option>
+                <option value={"0"} selected>{t("dashboard.levels.addChannel")}</option>
             )
         }
 
@@ -300,14 +250,13 @@ export const LevelsConfig = ({ guildId, configuration, setConfiguration, channel
                 <>
                     <div className="block padding-1">
                         <div className="infoActive">
-                            <h5>Rôles récompenses configuration</h5>
-                            {/* <Form.Check className="picto" type="switch" id="custom-switch success" checked={configuration?.DM?.active} onChange={(e) => { updateEtatDm(e) }} /> */}
+                            <h5>{t("dashboard.levels.category.roleRewards")}</h5>
                         </div>
 
                         <div className="separator"></div>
 
                         <div className={"informationConfig xpConfigType radioComponent"}>
-                            <h6>Type de recompense de role</h6>
+                            <h6>{t("dashboard.levels.typeRewardRole")}</h6>
                             <div>
                                 <div className="radioButton">
 
@@ -318,7 +267,7 @@ export const LevelsConfig = ({ guildId, configuration, setConfiguration, channel
                                         checked={configuration.gainRolesLevelsOnlyActualRole == false}
                                         onChange={(e) => { setConfiguration({ ...configuration, gainRolesLevelsOnlyActualRole: false }) }}
                                     />
-                                    <label>Cumuler les récompenses</label>
+                                    <label>{t("dashboard.levels.cumulateRewards")}</label>
                                 </div>
                                 <div className="radioButton">
 
@@ -331,13 +280,13 @@ export const LevelsConfig = ({ guildId, configuration, setConfiguration, channel
                                             setConfiguration({ ...configuration, gainRolesLevelsOnlyActualRole: true })
                                         }}
                                     />
-                                    <label>Enlever les récompenses précédentes</label>
+                                    <label>{t("dashboard.levels.removeOldRewars")}</label>
                                 </div>
                             </div>
                         </div>
 
                         <div className={"informationConfig xpConfigType radioComponent"}>
-                            <h6>Message de récompense</h6>
+                            <h6>{t("dashboard.levels.rewardsMessage")}</h6>
                             <div>
                                 <div className="radioButton">
                                     <input
@@ -347,7 +296,7 @@ export const LevelsConfig = ({ guildId, configuration, setConfiguration, channel
                                         checked={configuration.gainRolesLevelsSend == "GUILD"}
                                         onChange={(e) => { setConfiguration({ ...configuration, gainRolesLevelsSend: "GUILD" }) }}
                                     />
-                                    <label>Envoyer le message sur la guild</label>
+                                    <label>{t("dashboard.levels.sendOnGuild")}</label>
                                 </div>
                                 <div className="radioButton">
                                     <input
@@ -357,7 +306,7 @@ export const LevelsConfig = ({ guildId, configuration, setConfiguration, channel
                                         checked={configuration.gainRolesLevelsSend == "DM"}
                                         onChange={(e) => { setConfiguration({ ...configuration, gainRolesLevelsSend: "DM" }) }}
                                     />
-                                    <label>Envoyer le message en privé</label>
+                                    <label>{t("dashboard.levels.sendInPrivateMessage")}</label>
                                 </div>
                                 <div className="radioButton">
                                     <input
@@ -367,32 +316,28 @@ export const LevelsConfig = ({ guildId, configuration, setConfiguration, channel
                                         checked={configuration.gainRolesLevelsSend == "none"}
                                         onChange={(e) => { setConfiguration({ ...configuration, gainRolesLevelsSend: "none" }) }}
                                     />
-                                    <label>Ne pas envoyer de message</label>
+                                    <label>{t("dashboard.levels.dontSendMsg")}</label>
                                 </div>
                             </div>
                         </div>
 
                         <div className={"informationConfig xpConfigType radioComponent"}>
-                            <h6>Rôle Récompense</h6>
+                            <h6>{t("dashboard.levels.roleRewards")}</h6>
                             <div className="roleRewardContainer">
                                 {recompenseRole()}
-
-
-
-                                {/* <button className="addRoleReward" onClick={() => { setConfiguration({ ...configuration, gainRolesLevels: [...configuration.gainRolesLevels, { level: "", role: { id: "roles[0].id" } }] }) }}>Ajouter une récompense</button> */}
                             </div>
                         </div>
                     </div>
 
                     <div className="block padding-1">
                         <div className="infoActive">
-                            <h5>Taux d'Xp</h5>
+                            <h5>{t("dashboard.levels.category.xpRate")}</h5>
                         </div>
 
                         <div className="separator"></div>
 
                         <div className={"informationConfig xpConfigType"}>
-                            <label>Multiplicateur: x{configuration.xpConfig.multiplicator}</label>
+                            <label>{t("dashboard.levels.multiplier")}: x{configuration.xpConfig.multiplicator}</label>
                             <div className="slidecontainer">
                                 <input type="range" min={0.25} max={3} step={0.25} value={configuration.xpConfig.multiplicator} className="slider" onChange={(e) => { setConfiguration({ ...configuration, xpConfig: { ...configuration.xpConfig, multiplicator: e.target.value } }) }} />
                             </div>
@@ -402,7 +347,7 @@ export const LevelsConfig = ({ guildId, configuration, setConfiguration, channel
 
                     <div className="block padding-1">
                         <div className="infoActive">
-                            <h5>Salon sans Xp</h5>
+                            <h5>{t("dashboard.levels.category.channelWithoutXP")}</h5>
                         </div>
 
                         <div className="separator"></div>
@@ -417,7 +362,7 @@ export const LevelsConfig = ({ guildId, configuration, setConfiguration, channel
                                         checked={configuration.xpConfig.channelType == "ALL_WITHOUT"}
                                         onChange={(e) => { setConfiguration({ ...configuration, xpConfig: { ...configuration.xpConfig, channelType: "ALL_WITHOUT" } }) }}
                                     />
-                                    <label>Xp dans tous les channels sauf celui-ci</label>
+                                    <label>{t("dashboard.levels.channelAllWithout")}</label>
                                 </div>
                                 <div className="channelElements" style={{ display: configuration.xpConfig.channelType == "ALL_WITHOUT" ? "flex" : "none" }}>
 
@@ -433,7 +378,7 @@ export const LevelsConfig = ({ guildId, configuration, setConfiguration, channel
                                         checked={configuration.xpConfig.channelType == "WITHOUT_EXCEPT"}
                                         onChange={(e) => { setConfiguration({ ...configuration, xpConfig: { ...configuration.xpConfig, channelType: "WITHOUT_EXCEPT" } }) }}
                                     />
-                                    <label>Xp que dans ces channels</label>
+                                    <label>{t("dashboard.levels.channelWithoutExcept")}</label>
                                 </div>
 
                                 <div className="channelElements" style={{ display: configuration.xpConfig.channelType == "WITHOUT_EXCEPT" ? "flex" : "none" }}>
@@ -445,7 +390,7 @@ export const LevelsConfig = ({ guildId, configuration, setConfiguration, channel
 
                     <div className="block padding-1">
                         <div className="infoActive">
-                            <h5>Rôles sans Xp</h5>
+                            <h5>{t("dashboard.levels.category.roleWithoutXP")}</h5>
                         </div>
 
                         <div className="separator"></div>
@@ -460,7 +405,7 @@ export const LevelsConfig = ({ guildId, configuration, setConfiguration, channel
                                         checked={configuration.xpConfig.rolesType == "ALL_WITHOUT"}
                                         onChange={(e) => { setConfiguration({ ...configuration, xpConfig: { ...configuration.xpConfig, rolesType: "ALL_WITHOUT" } }) }}
                                     />
-                                    <label>Autorisé tout les rôles sauf</label>
+                                    <label>{t("dashboard.levels.roleAllWithout")}</label>
                                 </div>
                                 <div className="roleElements" style={{ display: configuration.xpConfig.rolesType == "ALL_WITHOUT" ? "flex" : "none" }}>
                                     {moduleRole()}
@@ -474,7 +419,7 @@ export const LevelsConfig = ({ guildId, configuration, setConfiguration, channel
                                         checked={configuration.xpConfig.rolesType == "WITHOUT_EXCEPT"}
                                         onChange={(e) => { setConfiguration({ ...configuration, xpConfig: { ...configuration.xpConfig, rolesType: "WITHOUT_EXCEPT" } }) }}
                                     />
-                                    <label>Empecher tout les rôles sauf</label>
+                                    <label>{t("dashboard.levels.roleWithoutExcept")}</label>
                                 </div>
                                 <div className="roleElements" style={{ display: configuration.xpConfig.rolesType == "WITHOUT_EXCEPT" ? "flex" : "none" }}>
                                     {moduleRole()}

@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react"
 import { useParams, Link } from 'react-router-dom';
+import { Tooltip } from 'react-tooltip'
 import "./_listServer.css";
 
 export const ListServer = (props) => {
@@ -70,17 +71,9 @@ export const ListServer = (props) => {
         try {
             let modal = window.open("https://discord.com/oauth2/authorize?client_id=" + process.env.REACT_APP_CLIENT_ID + "&permissions=1945627743&redirect_uri=" + process.env.REACT_APP_REDIRECT_URI + "&scope=bot%20applications.commands&guild_id=" + guildId, 'popup', 'height=700px,width=480px,toolbar=no,scrollbars=no,resizable=yes')
 
-            console.log("modal", modal)
-
-            if (modal) {
-                modal.addEventListener('load', function (event) {
-                    console.log("Pop up closed", event)
-                });
-            }
-            else {
+            if (!modal) {
                 window.location.href = "https://discord.com/oauth2/authorize?client_id=" + process.env.REACT_APP_CLIENT_ID + "&permissions=1945627743&redirect_uri=" + process.env.REACT_APP_REDIRECT_URI + "&scope=bot%20applications.commands&guild_id=" + guildId
             }
-
         }
         catch (e) {
             console.log("Pop up error", e)
@@ -98,8 +91,8 @@ export const ListServer = (props) => {
             let random = Math.floor(Math.random() * 6)
 
             if (guild.bot) {
-                render.push(
-                    <Link key={guild.id} className={`list_item${activeGuild === guild.id ? " active" : ""}${(props.changeNotSave && activeGuild !== guild.id) ? " cantChange" : ""}`} to={`/dashboard/${guild.id}/dashboard`}>
+                render.push(<>
+                    <Link data-tooltip-id={"guild-" + guild.id} data-tooltip-html={"<span style='font-weight: bold;'>" + guild.name + "</span>"} key={guild.id} className={`list_item${activeGuild === guild.id ? " active" : ""}${(props.changeNotSave && activeGuild !== guild.id) ? " cantChange" : ""}`} to={`/dashboard/${guild.id}/dashboard`}>
                         < div className="list_balise" >
                             <div className="balise active">
                                 <span></span>
@@ -113,7 +106,9 @@ export const ListServer = (props) => {
                                 {guild.name}
                             </div>
                         </span>
-                    </Link>)
+                    </Link>
+                    <Tooltip delayHide={10} className="guildNameListing" effect="solid" place="right" closeOnScroll={true} opacity={1} id={"guild-" + guild.id} ></Tooltip>
+                </>)
             }
             else {
                 render.push(

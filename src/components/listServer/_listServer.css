@@ -76,6 +76,10 @@
     opacity: 0;
 }
 
+.guildNameListing {
+    z-index: 999999;
+}
+
 @keyframes leftToRight {
     0% {
         transform: translateX(0);
@@ -110,5 +114,10 @@
 @media screen and (max-width: 900px) {
     .servers {
         padding-top: 10px;
+    }
+
+    .guildNameListing {
+        z-index: 999999;
+        display: none;
     }
 }
