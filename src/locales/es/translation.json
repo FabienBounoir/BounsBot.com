@@ -1,0 +1,298 @@
+{
+    "homepage": {
+        "text_header": "Crea el mejor servidor de Discord",
+        "invite_button": "Invitar a Bouns'bot",
+        "support": "Soporte",
+        "on_number_of_server": "Bounsbot, el bot de Discord aprobado por más de {{number}} servidores"
+    },
+    "feature": {
+        "fonctionnality": "Funcionalidades",
+        "multimedia": {
+            "name": "Multimedia",
+            "description1": "Reproduce canciones a pedido o escucha una estación de radio todo el día sin tener que detenerte nunca.",
+            "description2": "La fiesta no se detendrá ni siquiera cuando te vayas, ¡ya que Bouns'bot permanece en tu canal las 24/7!"
+        },
+        "game": {
+            "name": "Juegos",
+            "description1": "¡Juega a una variedad de minijuegos! Puedes jugar más de 15 minijuegos solo o contra tus amigos.",
+            "description2": "Distingúete con la clasificación integrada de Bouns'bot y pon a prueba tus conocimientos generales con nuestro cuestionario."
+        },
+        "logs": {
+            "name": "Registros",
+            "description1": "¿Qué es eso? ¿No sabías que Wumpus encendió su cámara?",
+            "description2": "Con Bouns'bot, tienes acceso a todos los registros disponibles en Discord; simplemente activa lo que necesitas."
+        },
+        "ticket": {
+            "name": "Tickets",
+            "description": "Bouns'bot te permite crear canales de soporte privados, que llamamos tickets, entre tu equipo y aquellos que buscan ayuda."
+        },
+        "engagement": {
+            "name": "Compromiso",
+            "description": "Recompensa a tus miembros con puntos de experiencia y lleva un seguimiento de los miembros más activos en tu clasificación personalizada."
+        }
+    },
+    "brand": {
+        "slogan": "Crea un servidor de Discord que refleje tu identidad",
+        "add_bot": "Agregar Bouns'Bot"
+    },
+    "title": {
+        "commands": "Comandos",
+        "levels": "Niveles",
+        "status": "Estado",
+        "login": "Iniciar sesión",
+        "demo": "Demostración"
+    },
+    "commands": {
+        "search_command": "Buscar un comando",
+        "usage": "Uso",
+        "example": "Ejemplos",
+        "copied": "Comando copiado al portapapeles"
+    },
+    "footer": {
+        "our_history": "Nuestra historia",
+        "terms_of_service": "Términos de servicio",
+        "privacy_policy": "Política de privacidad",
+        "support_server": "Servidor de soporte",
+        "source_code": "Código fuente",
+        "all_rights_reserved": "Todos los derechos reservados"
+    },
+    "levels": {
+        "messages": "MENSAJES",
+        "experience": "EXPERIENCIA",
+        "no_guild_leaderboard": "No creo que haya información para este gremio...",
+        "role_rewards": "Recompensas de rol",
+        "level_number": "NIVEL {{level}}"
+    },
+    "404_page": {
+        "title": "¿CAMINO EQUIVOCADO?",
+        "text": "Pareces perdido, desconocido. Si quieres agregar Bouns'Bot, el botón a continuación podría ayudarte.",
+        "button_text": "Agregar a Discord"
+    },
+    "loader": {
+        "TIPS_1": "Cargando... 🚀",
+        "TIPS_2": "¿Sabías que los gatitos son adorables bolitas de pelusa? 😻",
+        "TIPS_3": "Un pequeño secreto: ¡los pingüinos son excelentes bailarines! 🐧💃",
+        "TIPS_4": "La paciencia es una virtud, incluso durante la carga de la página. 🧘‍♂️",
+        "TIPS_5": "¿Necesitas un descanso? ¿Por qué no hacer un pequeño baile de robot? 🤖💃",
+        "TIPS_6": "La astronomía es fascinante. Cada estrella es un mundo propio. ✨🪐",
+        "TIPS_7": "Intenta adivinar cuántas nubes pasan durante la carga. ☁️☁️☁️",
+        "TIPS_8": "¿Sabías que los elefantes tienen una excelente memoria? 🐘🧠",
+        "TIPS_9": "¡Las mariquitas traen buena suerte! 🐞🍀",
+        "TIPS_10": "La naturaleza está llena de belleza. Tómate un momento para apreciarla. 🌿🌻",
+        "TIPS_11": "La curiosidad es el mejor combustible para el conocimiento. 💡📚",
+        "TIPS_12": "Una sonrisa es el lenguaje universal de la amistad. 😄🤝",
+        "TIPS_13": "Los sueños son como estrellas: no siempre puedes tocarlos, pero puedes seguirlos. 🌟🌠",
+        "TIPS_14": "Aquí tienes un chiste mientras esperas: ¿Por qué los buzos siempre se zambullen hacia atrás y nunca hacia adelante? ¡Porque de lo contrario, caen al barco! 🤣🚢",
+        "TIPS_15": "¿Sabías que los pingüinos tienen reuniones secretas todos los jueves por la noche? Shhh, ¡es un secreto! 🐧🤫",
+        "TIPS_16": "La carga puede llevar un poco de tiempo, pero recuerda: las cosas grandiosas llevan tiempo. 🚀🌟",
+        "TIPS_17": "¿Por qué JavaScript siempre parece cansado? Porque siempre necesita cafeína (addEventListener 'café')! ☕😄",
+        "TIPS_18": "La perseverancia es la clave del éxito. Sigue esperando; casi estás allí! 🌈💪",
+        "TIPS_19": "Tu paciencia es admirable. Aprovecha este descanso para respirar profundamente y sonreír. 😊🌬️",
+        "TIPS_20": "¿Sabías que los pandas son los reyes de la siesta? 🐼💤",
+        "TIPS_21": "Hay tesoros escondidos en cada momento de espera. ¡Sigue buscando! 💎🔍",
+        "TIPS_22": "Recuerda que incluso los edificios más altos comenzaron con cimientos. ¡Tu página se está volviendo genial! 🏗️📈",
+        "TIPS_23": "La carga es una oportunidad para tomar un descanso, respirar profundamente y recordar lo increíble que eres. 🌟🌿",
+        "TIPS_24": "El éxito comienza con un solo paso. ¡Tu carga es uno de ellos! 🚶‍♂️🌟",
+        "TIPS_25": "Nunca pierdas la esperanza, incluso mientras esperas. Cada momento es una oportunidad. 🌈💫",
+        "TIPS_26": "Eres más fuerte de lo que piensas. Mantén la fe mientras esperas. 💪🌟",
+        "TIPS_27": "La perseverancia es la clave del éxito. Sigue esperando; tu momento llegará. 🗝️🌟",
+        "TIPS_28": "¿Sabías que los arcoíris solo vienen después de la lluvia? Tu carga es la lluvia antes del arcoíris. 🌦️🌈",
+        "TIPS_29": "Los sueños se hacen realidad paso a paso. Tu página está un paso más cerca de hacer realidad tu sueño. 🚀💭",
+        "TIPS_30": "Cada carga es una oportunidad para crecer. Sigue creciendo, incluso durante la espera. 🌱🌟",
+        "TIPS_31": "La paciencia es una virtud. Te estás volviendo más paciente con cada segundo que pasa. ⏳😇",
+        "TIPS_32": "Recuerda que has pasado por momentos difíciles antes, y has salido más fuerte. 🦸‍♂️💪",
+        "TIPS_33": "La vida es un viaje, y incluso la carga es parte del viaje. ¡Disfrútalo! 🌍🌟"
+    },
+    "login": {
+        "toast": {
+            "sessionExpired": "Tu sesión ha caducado. Por favor, vuelve a iniciar sesión.",
+            "error": "Ocurrió un error. Por favor, inténtalo de nuevo."
+        },
+        "welcome": "¡Bienvenido al sitio web de Bouns'Bot!",
+        "logyou": "Inicia sesión para continuar...",
+        "loginwithdiscord": "Iniciar sesión con Discord"
+    },
+    "dashboard": {
+        "changeDetected": "¡Cambios detectados! Por favor, guarda o cancela.",
+        "save": "Guardar",
+        "cancel": "Cancelar",
+        "disable": "Desactivar",
+        "menu": {
+            "dashboard": "Panel",
+            "information": "Información",
+            "global": "Global",
+            "manageGuild": "Gestionar Servidor",
+            "welcome": "Bienvenida",
+            "rename": "Apodo",
+            "level": "Niveles",
+            "logs": "Registros",
+            "utility": "Utilidades",
+            "sendMessage": "Enviar Mensaje"
+        },
+        "info": {
+            "text1": "¡Hola, usuario de Bouns'bot!",
+            "text2": "¡Me complace anunciar que nuestro Panel ha sido completamente reinventado para brindarte una experiencia de gestión de servidor aún más fácil y placentera!",
+            "text3": "No tienes que preocuparte por gestionar tu servidor. Nuestro Panel está diseñado para ser lo más sencillo posible, permitiéndote gestionar tu servidor sin esfuerzo.",
+            "text4": "Hemos trabajado duro para hacer de esta versión la mejor, ¡y estamos emocionados de presentártela sin ninguna beta!",
+            "text5": "Entonces, ¿a qué esperas? ¡Disfruta de la mejor experiencia de gestión de servidor de todos los tiempos!",
+            "text6": "Y si tienes algún comentario o sugerencia, no dudes en compartirlo con nosotros en nuestro servidor de Discord. Siempre escuchamos a nuestros usuarios y esperamos saber de ti!",
+            "text7": "¡Nos vemos pronto en Bouns'bot!"
+        },
+        "global": {
+            "category": {
+                "textual": "Textual",
+                "multimedia": "Multimedia",
+                "activity": "Actividad"
+            },
+            "title": {
+                "reaction": "Reacciones",
+                "rename": "Renombrar",
+                "radio": "Radio",
+                "music": "Música",
+                "playlist": "Lista de Reproducción",
+                "game": "Juegos",
+                "fun": "Diversión"
+            },
+            "description": {
+                "reaction": "Permite que el bot reaccione con 👋 / 💤 basado en el mensaje",
+                "rename": "Permite que el bot cambie el nombre de los miembros cuando sus apodos no son identificables por moderación",
+                "sheesh": "Permite que el bot reaccione con su mejor \"¡SHEEEESHHHH!\" si un miembro dice \"sheesh\"",
+                "radio": "Permite que tus miembros escuchen una de las 41 radios disponibles en el bot",
+                "music": "Permite que tus miembros escuchen su música favorita",
+                "playlist": "Permite que tus miembros creen / editen / escuchen sus listas de reproducción",
+                "game": "Varios juegos están disponibles para tu entretenimiento",
+                "fun": "Permite que tus miembros se diviertan con comandos divertidos y juguetones",
+                "discordChannel": "Selecciona el canal donde se transcribirá el chat de Twitch",
+                "twitchChannel": "Elige el canal de Twitch que quieres transcribir en Discord"
+            }
+        },
+        "welcome": {
+            "category": {
+                "sendInDm": "Enviar un mensaje privado a los nuevos miembros",
+                "sendInGuild": "Enviar un mensaje cuando un miembro se une a tu servidor",
+                "giveRole": "Dar un rol a los nuevos miembros",
+                "renameOnJoin": "Cambiar el nombre de los miembros cuando se unan al servidor"
+            },
+            "variable": {
+                "guildName": "Nombre del servidor",
+                "userId": "ID de usuario",
+                "userMention": "Mención de usuario",
+                "memberCount": "Recuento de miembros",
+                "bot": "Mención de bot"
+            },
+            "guild": {
+                "channel": "Canal de mensajes de bienvenida",
+                "message": "Mensaje de bienvenida",
+                "messageplaceholder": "Ingresa el mensaje de bienvenida",
+                "themecard": "Tema de la tarjeta de bienvenida",
+                "color": "Color",
+                "ambient": "Ambiente",
+                "text": "Texto",
+                "theme": "Tema",
+                "dontsendcard": "No enviar tarjeta",
+                "giveRole": "Agregar un rol",
+                "none": "Ninguno",
+                "enterNickname": "Ingrese el apodo"
+            },
+            "render": {
+                "cardDisable": "Tarjeta de bienvenida desactivada",
+                "welcome": "Bienvenido",
+                "welcomeUser": "Bienvenido {{username}}",
+                "ontheguild": "En el servidor",
+                "onGuild": "En {{guild}}",
+                "welcomeontheguild": "¡Bienvenido {{username}} al servidor!",
+                "youarethe": "Eres el miembro número {{number}}",
+                "readRules": "¡Asegúrate de leer las reglas!"
+            },
+            "logs": {
+                "title": {
+                    "messages": "Mensajes",
+                    "vocals": "Vocales",
+                    "users": "Usuarios",
+                    "ban_unban": "Baneos / Desbaneos",
+                    "join_leave": "Entradas / Salidas",
+                    "guild": "Servidor",
+                    "roles": "Roles",
+                    "channels": "Canales",
+                    "invites": "Invitaciones",
+                    "emotes_stickers": "Emojis / Pegatinas"
+                },
+                "description": {
+                    "messages": "Poder moderar los diferentes mensajes en el servidor",
+                    "vocals": "Poder moderar las diferentes voces en el servidor",
+                    "users": "Ver en tiempo real los cambios realizados en un usuario",
+                    "ban_unban": "Ver en tiempo real los diferentes baneos / desbaneos en el servidor",
+                    "join_leave": "Ver las entradas y salidas de los diferentes usuarios",
+                    "guild": "Ver los diferentes cambios realizados en el servidor",
+                    "roles": "Ver cuando se crea, modifica o elimina un rol",
+                    "channels": "Ver cuando se crea, modifica o elimina un canal",
+                    "invites": "Poder moderar las diferentes invitaciones creadas en el servidor",
+                    "emotes_stickers": "Ver los diferentes cambios realizados en los Emojis y Pegatinas"
+                }
+            },
+            "send": {
+                "sendMessage": "Enviar un mensaje en un canal de Discord",
+                "selectChannel": "Seleccionar un canal.",
+                "helloword": "Hola, soy Bouns'bot.",
+                "sendMsg": "Enviar mensaje",
+                "channel": "Canal",
+                "replyToMsg": "Responder a un mensaje",
+                "messageId": "ID del mensaje"
+            },
+            "nickname": {
+                "category": "Cambiar los apodos no conformes de los usuarios",
+                "acceptNickname": "Aceptar apodos no conformes",
+                "authorizedUpperOtherMember": "Permitir pasar por encima de otros miembros",
+                "notAuthorizedUpperOtherMember": "No permitir pasar por encima de otros miembros",
+                "verificationNickname": "Sistema de verificación de apodos",
+                "lightChecking": "Verificación ligera",
+                "heavyChecking": "Verificación intensa",
+                "wordUnauthorized": "Palabras no autorizadas en los apodos"
+            },
+            "levels": {
+                "category": {
+                    "roleRewards": "Configuración de roles de recompensa",
+                    "xpRate": "Configuración de la tasa de XP",
+                    "channelWithoutXP": "Canales sin XP",
+                    "roleWithoutXP": "Roles sin XP"
+                },
+                "typeRewardRole": "Tipo de recompensa de rol",
+                "cumulateRewards": "Acumular recompensas",
+                "removeOldRewars": "Eliminar recompensas antiguas",
+                "rewardsMessage": "Mensaje de recompensa",
+                "sendOnGuild": "Enviar el mensaje en el servidor",
+                "sendInPrivateMessage": "Enviar el mensaje en privado",
+                "dontSendMsg": "No enviar mensaje",
+                "roleRewards": "Rol de recompensa",
+                "multiplier": "Multiplicador",
+                "channelAllWithout": "XP en todos los canales excepto este",
+                "channelWithoutExcept": "XP solo en estos canales",
+                "roleAllWithout": "XP para todos los roles excepto este",
+                "roleWithoutExcept": "XP solo para estos roles",
+                "addRole": "Agregar un rol",
+                "addChannel": "Agregar un canal",
+                "level": "Nivel"
+            },
+            "status": {
+                "status": "Estados",
+                "description": "Bienvenido a la página 'Estados de Bouns'bot'. Aquí encontrarás información sobre los diferentes fragmentos y su estado actual. Esto te permitirá estar informado en caso de problemas y saber si afecta a tu servidor.",
+                "idServer": "ID del servidor",
+                "latency": "Latencia",
+                "uptime": "Tiempo de actividad",
+                "guildCount": "{{count}} servidores",
+                "channelCount": "{{count}} canales",
+                "userCount": "{{count}} usuarios",
+                "offline": "Desconectado",
+                "online": "En línea",
+                "connection": "Conexión",
+                "reconnection": "Reconexión",
+                "idle": "Inactivo",
+                "disconnect": "Desconectado",
+                "waitingForServers": "Esperando servidores",
+                "identification": "Identificación",
+                "resumption": "Reanudación",
+                "error": "Se produjo un error al recuperar los estados. Por favor, inténtalo de nuevo más tarde."
+            }
+        }
+    }
+}

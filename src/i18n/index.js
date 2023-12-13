@@ -4,6 +4,7 @@ import LanguageDetector from 'i18next-browser-languagedetector';
 
 import translationsInEng from '../locales/en/translation.json';
 import translationsInFrench from '../locales/fr/translation.json';
+import translationsInEspanol from '../locales/es/translation.json';
 
 // the translations
 const resources = {
@@ -13,6 +14,9 @@ const resources = {
   fr: {
     translation: translationsInFrench
   },
+  es: {
+    translation: translationsInEspanol
+  }
 };
 
 console.log("i18n", navigator.language);
