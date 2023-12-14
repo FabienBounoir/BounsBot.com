@@ -5,6 +5,10 @@ import LanguageDetector from 'i18next-browser-languagedetector';
 import translationsInEng from '../locales/en/translation.json';
 import translationsInFrench from '../locales/fr/translation.json';
 import translationsInEspanol from '../locales/es/translation.json';
+import translationsInItalian from '../locales/it/translation.json';
+import translationsInArabian from '../locales/ar/translation.json';
+import translationsInRussian from '../locales/ru/translation.json';
+import translationsInChinese from '../locales/zh/translation.json';
 
 // the translations
 const resources = {
@@ -16,6 +20,18 @@ const resources = {
   },
   es: {
     translation: translationsInEspanol
+  },
+  it: {
+    translation: translationsInItalian
+  },
+  ar: {
+    translation: translationsInArabian
+  },
+  ru: {
+    translation: translationsInRussian
+  },
+  zh: {
+    translation: translationsInChinese
   }
 };
 

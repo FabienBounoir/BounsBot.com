@@ -1,0 +1,299 @@
+{
+    "homepage": {
+        "text_header": "打造最终 Discord 服务器",
+        "invite_button": "邀请 Bouns'bot",
+        "support": "支持",
+        "on_number_of_server": "Bounsbot，被{{number}}个服务器认可的 Discord 机器人",
+        "members": "成员"
+    },
+    "feature": {
+        "fonctionnality": "功能",
+        "multimedia": {
+            "name": "多媒体",
+            "description1": "按需播放歌曲或全天候收听无需停歇的广播电台。",
+            "description2": "当您离开时，派对也不会停止，因为 Bouns'bot 会在您的频道中 24 小时/7 天不间断地运行！"
+        },
+        "game": {
+            "name": "游戏",
+            "description1": "玩各种迷你游戏！您可以独自或与朋友一起玩超过 15 个迷你游戏。",
+            "description2": "通过 Bouns'bot 内置的排名表脱颖而出，并通过我们的测验测试您的常识水平。"
+        },
+        "logs": {
+            "name": "日志",
+            "description1": "怎么回事，您不知道 Wumpus 打开了摄像头！",
+            "description2": "使用 Bouns'bot，您可以访问 Discord 上的所有日志，只需启用您需要的内容即可。"
+        },
+        "ticket": {
+            "name": "支持票",
+            "description": "Bouns’bot 可以创建私人支持频道，我们称之为票，用于团队和寻求帮助的人之间的沟通。"
+        },
+        "engagement": {
+            "name": "互动",
+            "description": "使用经验点奖励您的成员，并在您的自定义排名表上跟踪最活跃的成员。"
+        }
+    },
+    "brand": {
+        "slogan": "以您的形象创建 Discord 服务器",
+        "add_bot": "添加 Bouns'Bot"
+    },
+    "title": {
+        "commands": "指令",
+        "levels": "等级",
+        "status": "状态",
+        "login": "登录",
+        "demo": "演示"
+    },
+    "commands": {
+        "search_command": "搜索指令",
+        "usage": "用法",
+        "example": "示例",
+        "copied": "指令已复制！"
+    },
+    "footer": {
+        "our_history": "我们的故事",
+        "terms_of_service": "使用条款",
+        "privacy_policy": "隐私政策",
+        "support_server": "支持服务器",
+        "source_code": "源代码",
+        "all_rights_reserved": "保留所有权利"
+    },
+    "levels": {
+        "messages": "消息",
+        "experience": "经验",
+        "no_guild_leaderboard": "我想这个服务器没有相关信息...",
+        "role_rewards": "角色奖励",
+        "level_number": "等级 {{level}}"
+    },
+    "404_page": {
+        "title": "错的转弯？",
+        "text": "你看起来迷茫，陌生人。如果你想添加Bouns'Bot，下面的按钮可能会有所帮助。",
+        "button_text": "添加到Discord"
+    },
+    "loader": {
+        "TIPS_1": "加载中... 🚀",
+        "TIPS_2": "你知道小猫咪是真正可爱的毛茸茸的小球吗？ 😻",
+        "TIPS_3": "小秘密：企鹅是优秀的舞者！ 🐧💃",
+        "TIPS_4": "耐心是一种美德，即使在页面加载时也是如此。 🧘‍♂️",
+        "TIPS_5": "需要休息吗？为什么不跳一支小机器人之舞呢？ 🤖💃",
+        "TIPS_6": "天文学令人着迷。每颗星星都是一个独立的世界。 ✨🪐",
+        "TIPS_7": "猜猜在加载时有多少云朵经过。 ☁️☁️☁️",
+        "TIPS_8": "你知道大象有着出色的记忆力吗？ 🐘🧠",
+        "TIPS_9": "瓢虫带来好运！ 🐞🍀",
+        "TIPS_10": "大自然充满了美丽。花点时间欣赏一下吧。 🌿🌻",
+        "TIPS_11": "好奇心是知识最好的动力。 💡📚",
+        "TIPS_12": "微笑是友谊的普遍语言。 😄🤝",
+        "TIPS_13": "梦想就像星星：你不能总是触摸到它们，但你可以追随它们。 🌟🌠",
+        "TIPS_14": "在此期间，这里有一个笑话：为什么潜水员总是向后潜水而不是向前潜水？因为否则他们会掉进船里！ 🤣🚢",
+        "TIPS_15": "你知道企鹅每周四晚上都有秘密会议吗？嘘，这是个秘密！ 🐧🤫",
+        "TIPS_16": "加载可能需要一些时间，但请记住：伟大的事情需要时间。 🚀🌟",
+        "TIPS_17": "为什么JavaScript看起来这么累？因为它总是需要咖啡因（addEventListener 'coffee'）！ ☕😄",
+        "TIPS_18": "坚持是成功的关键。继续等待，你就快到了！ 🌈💪",
+        "TIPS_19": "你的耐心是令人钦佩的。趁着这个休息时间深呼吸并微笑吧。 😊🌬️",
+        "TIPS_20": "你知道熊猫是午睡之王吗？ 🐼💤",
+        "TIPS_21": "在每一刻的等待中都藏着宝藏。继续寻找吧！ 💎🔍",
+        "TIPS_22": "记住，即使是最高的建筑也是从基础开始的。你的页面正在变得很棒！ 🏗️📈",
+        "TIPS_23": "加载是一个休息的机会，深呼吸并提醒自己你有多了不起。 🌟🌿",
+        "TIPS_24": "成功始于迈出的一小步。你的加载就是其中之一！ 🚶‍♂️🌟",
+        "TIPS_25": "永远不要失去希望，即使在等待中。每一刻都是一个机会。 🌈💫",
+        "TIPS_26": "你比想象中更坚强。在等待中保持信念。 💪🌟",
+        "TIPS_27": "坚持是成功的关键。继续等待，你的时刻将会到来。 🗝️🌟",
+        "TIPS_28": "你知道彩虹只在雨后出现吗？你的加载就是彩虹前的雨水。 🌦️🌈",
+        "TIPS_29": "梦想是一步一步实现的。你的页面是实现梦想的又一步。 🚀💭",
+        "TIPS_30": "每次加载都是成长的机会。即使在等待中也要继续成长。 🌱🌟",
+        "TIPS_31": "耐心是一种美德。你正在变得越来越耐心。 ⏳😇",
+        "TIPS_32": "不要忘记你以前经历过困难时期，但你总是变得更强大。 🦸‍♂️💪",
+        "TIPS_33": "生活是一场旅程，即使加载也是旅程的一部分。好好享受吧！ 🌍🌟"
+    },
+    "login": {
+        "toast": {
+            "sessionExpired": "您的会话已过期。请重新登录。",
+            "error": "发生错误。请重试。"
+        },
+        "welcome": "欢迎来到Bouns'Bot网站！",
+        "logyou": "登录以继续...",
+        "loginwithdiscord": "使用Discord登录"
+    },
+    "dashboard": {
+        "changeDetected": "检测到更改！请保存或取消。",
+        "save": "保存",
+        "cancel": "取消",
+        "disable": "停用",
+        "menu": {
+            "dashboard": "仪表板",
+            "information": "信息",
+            "global": "全局",
+            "manageGuild": "服务器管理",
+            "welcome": "欢迎",
+            "rename": "重命名",
+            "level": "级别",
+            "logs": "日志",
+            "utility": "工具",
+            "sendMessage": "发送消息"
+        },
+        "info": {
+            "text1": "嗨，Bouns'bot用户！",
+            "text2": "我很高兴地宣布，我们的仪表板已经完全重新设计，为您提供更轻松、更有趣的服务器管理体验！",
+            "text3": "不再为服务器管理而烦恼，我们的仪表板设计得尽可能简单，让您能够轻松管理服务器，无需担心。",
+            "text4": "我们为使这个版本成为最好版本而努力工作，很高兴向您展示，没有测试版！",
+            "text5": "那么，您还在等什么？享受前所未有的服务器管理体验吧！",
+            "text6": "如果您有任何意见或建议，请随时在我们的Discord服务器上告诉我们。我们始终倾听用户的意见，迫不及待地想听到您的声音！",
+            "text7": "期待在Bouns'bot上与您相见！"
+        },
+        "global": {
+            "category": {
+                "textual": "文字",
+                "multimedia": "多媒体",
+                "activity": "活动"
+            },
+            "title": {
+                "reaction": "反应",
+                "rename": "重命名",
+                "radio": "广播",
+                "music": "音乐",
+                "playlist": "播放列表",
+                "game": "游戏",
+                "fun": "娱乐"
+            },
+            "description": {
+                "reaction": "让机器人根据消息以 👋 / 💤 进行反应",
+                "rename": "让机器人在成员的用户名无法被审查识别时更改它们的名字",
+                "sheesh": "如果成员说 \"sheesh\"，让机器人用最好的 \"SHEEEESHHHH\" 进行反应",
+                "radio": "让您的成员在机器人上听取其中的41个可用电台之一",
+                "music": "让您的成员听他们最喜欢的音乐",
+                "playlist": "让您的成员创建/编辑/收听他们的播放列表",
+                "game": "有多种游戏可供您娱乐",
+                "fun": "让您的成员使用有趣而富有娱乐性的命令玩得开心",
+                "discordChannel": "选择将Twitch聊天重传到的频道",
+                "twitchChannel": "选择要在discord上重新传输的Twitch频道"
+            }
+        },
+        "welcome": {
+            "category": {
+                "sendInDm": "向新成员发送私信",
+                "sendInGuild": "在成员加入服务器时发送消息",
+                "giveRole": "为新成员分配角色",
+                "renameOnJoin": "成员加入时重命名"
+            },
+            "variable": {
+                "guildName": "服务器名称",
+                "userId": "用户ID",
+                "userMention": "用户提及",
+                "memberCount": "成员数量",
+                "bot": "机器人提及"
+            },
+            "guild": {
+                "channel": "欢迎消息通道",
+                "message": "欢迎消息",
+                "messageplaceholder": "输入欢迎消息",
+                "themecard": "欢迎卡主题",
+                "color": "颜色",
+                "ambient": "环境",
+                "text": "文本",
+                "theme": "主题",
+                "dontsendcard": "不发送卡片",
+                "giveRole": "添加角色",
+                "none": "无",
+                "enterNickname": "输入昵称"
+            },
+            "render": {
+                "cardDisable": "禁用欢迎卡",
+                "welcome": "欢迎",
+                "welcomeUser": "欢迎 {{username}}",
+                "ontheguild": "在服务器上",
+                "onGuild": "在 {{guild}} 上",
+                "welcomeontheguild": "欢迎 {{username}} 加入服务器！",
+                "youarethe": "你是第 {{number}} 位成员",
+                "readRules": "确保阅读规则！"
+            }
+        },
+        "logs": {
+            "title": {
+                "messages": "消息",
+                "vocals": "语音",
+                "users": "用户",
+                "ban_unban": "封禁/解封",
+                "join_leave": "加入/离开",
+                "guild": "服务器",
+                "roles": "角色",
+                "channels": "频道",
+                "invites": "邀请",
+                "emotes_stickers": "表情符号/贴纸"
+            },
+            "description": {
+                "messages": "能够在服务器上管理不同的消息",
+                "vocals": "能够在服务器上管理不同的语音频道",
+                "users": "实时查看用户所做的更改",
+                "ban_unban": "实时查看服务器上的封禁/解封",
+                "join_leave": "查看不同用户的加入和离开情况",
+                "guild": "查看对服务器进行的不同更改",
+                "roles": "查看角色的创建/修改或删除",
+                "channels": "查看频道的创建/修改或删除",
+                "invites": "能够在服务器上管理不同的邀请",
+                "emotes_stickers": "查看对表情符号和贴纸进行的不同更改"
+            }
+        },
+        "send": {
+            "sendMessage": "在Discord频道上发送消息",
+            "selectChannel": "选择一个频道。",
+            "helloword": "你好，我是Bouns'bot。",
+            "sendMsg": "发送消息",
+            "channel": "频道",
+            "replyToMsg": "回复消息",
+            "messageId": "消息ID"
+        },
+        "nickname": {
+            "category": "重命名用户的非规范化昵称",
+            "acceptNickname": "接受非规范化昵称",
+            "authorizedUpperOtherMember": "允许超越其他成员",
+            "notAuthorizedUpperOtherMember": "不允许超越其他成员",
+            "verificationNickname": "昵称验证系统",
+            "lightChecking": "轻量级验证",
+            "heavyChecking": "重量级验证",
+            "wordUnauthorized": "昵称中不允许的词汇"
+        },
+        "levels": {
+            "category": {
+                "roleRewards": "角色奖励配置",
+                "xpRate": "经验值倍率配置",
+                "channelWithoutXP": "不计入经验值的频道",
+                "roleWithoutXP": "不计入经验值的角色"
+            },
+            "typeRewardRole": "奖励角色类型",
+            "cumulateRewards": "累积奖励",
+            "removeOldRewars": "移除旧奖励",
+            "rewardsMessage": "奖励消息",
+            "sendOnGuild": "在服务器上发送消息",
+            "sendInPrivateMessage": "发送私人消息",
+            "dontSendMsg": "不发送消息",
+            "roleRewards": "角色奖励",
+            "multiplier": "倍增器",
+            "channelAllWithout": "在除此之外的所有频道中获得经验值",
+            "channelWithoutExcept": "仅在这些频道中获得经验值",
+            "roleAllWithout": "在除此之外的所有角色中获得经验值",
+            "roleWithoutExcept": "仅为这些角色获得经验值",
+            "addRole": "添加角色",
+            "addChannel": "添加频道",
+            "level": "级别"
+        }
+    },
+    "status": {
+        "status": "状态",
+        "description": "欢迎来到“Bouns'bot状态”页面。在这里，您将找到有关不同分片及其当前状态的信息。这将使您能够及时了解可能出现的问题以及是否会影响您的服务器。",
+        "idServer": "服务器ID",
+        "latency": "延迟",
+        "uptime": "正常运行时间",
+        "guildCount": "{{count}} 服务器",
+        "channelCount": "{{count}} 频道",
+        "userCount": "{{count}} 用户",
+        "offline": "离线",
+        "online": "在线",
+        "connection": "连接",
+        "reconnection": "重新连接",
+        "idle": "空闲",
+        "disconnect": "断开连接",
+        "waitingForServers": "等待服务器",
+        "identification": "身份验证",
+        "resumption": "恢复",
+        "error": "获取状态时出现错误。请稍后重试。"
+    }
+}
