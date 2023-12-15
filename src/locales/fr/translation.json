@@ -282,7 +282,7 @@
         "idServer": "ID du serveur",
         "latency": "Latence",
         "uptime": "Uptime",
-        "guildCount": "{{count}} serveusr",
+        "guildCount": "{{count}} serveurs",
         "channelCount": "{{count}} salons",
         "userCount": "{{count}} utilisateurs",
         "offline": "Hors ligne",
