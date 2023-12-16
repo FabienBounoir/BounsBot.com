@@ -94,6 +94,25 @@ export const Logs = ({ guildId, configuration, updateConfiguration, channels, lo
                 <div className="guildModule logbackground" style={{ marginBottom: "1em" }} >
                     <div className="top">
                         <div className="type">
+
+                            <svg className="pictoLog" width="35" height="35" viewBox="0 0 35 35">
+                                <path d="M33.4194 27.5833L19.7268 4.13766C18.5849 2.99578 16.7321 2.99578 15.5902 4.13766L1.89645 27.5833C0.75457 28.7241 0.75457 30.5758 1.89645 31.7188H33.4183C34.5624 30.5758 34.5624 28.7241 33.4194 27.5833ZM16.3974 12.5541C16.3974 11.6473 17.1324 10.9134 18.038 10.9134C18.9436 10.9134 19.6786 11.6473 19.6786 12.5541V20.2103C19.6786 21.1159 18.9436 21.8509 18.038 21.8509C17.1324 21.8509 16.3974 21.1159 16.3974 20.2103V12.5541ZM18.0479 27.3284C17.1422 27.3284 16.4072 26.5956 16.4072 25.6878C16.4072 24.7822 17.1422 24.0472 18.0479 24.0472C18.9535 24.0472 19.6885 24.7822 19.6885 25.6878C19.6885 26.5956 18.9535 27.3284 18.0479 27.3284Z" fill="var(--color-principal)" />
+                            </svg>
+
+                            <h5 className="hrnh5k-0 eeKdki sc-1wkjbe7-8 GoZzi">{t("dashboard.logs.title.infractions")}</h5>
+                        </div>
+                        <Form.Select defaultValue={configuration.logs?.infractions} value={configuration.logs?.infractions} onChange={(event) => { updateConfiguration({ ...configuration, logs: { ...configuration.logs, infractions: event.target.value } }) }} >
+                            {(() => {
+                                return getChannelForSelector(configuration.logs?.infractions);
+                            })()}
+                        </Form.Select>
+                    </div>
+                    <div>{t("dashboard.logs.description.infractions")}</div>
+                </div>
+
+                <div className="guildModule logbackground" style={{ marginBottom: "1em" }} >
+                    <div className="top">
+                        <div className="type">
                             <svg className="pictoLog" width="35" height="35" viewBox="0 0 297 297">
                                 <path d="M43.5041 293.985L183.892 153.597C186.225 151.264 186.224 147.446 183.889 145.115L153.775 115.04C151.44 112.708 147.62 112.709 145.287 115.043L4.92406 255.406C2.99406 257.337 1.90906 259.955 1.90906 262.685C1.90906 265.415 2.99406 268.034 4.92406 269.964L28.9451 293.984C30.9561 295.994 33.5891 296.999 36.2241 296.999C38.8591 297 41.4931 295.995 43.5041 293.985Z" />
                                 <path d="M210.546 150.962C216.944 157.36 225.475 160.883 234.567 160.883C243.659 160.883 252.191 157.359 258.588 150.962L285.157 124.394C298.402 111.148 298.402 89.597 285.157 76.351L223.831 15.024C222.701 13.894 221.323 13.043 219.807 12.537L183.775 0.526989C180.079 -0.703011 175.999 0.257989 173.241 3.01399L137.21 39.046C134.453 41.804 133.49 45.882 134.724 49.58L146.735 85.612C147.24 87.128 148.091 88.506 149.221 89.636L210.546 150.962Z" />
