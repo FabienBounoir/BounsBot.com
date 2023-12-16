@@ -217,7 +217,8 @@
                 "roles": "角色",
                 "channels": "频道",
                 "invites": "邀请",
-                "emotes_stickers": "表情符号/贴纸"
+                "emotes_stickers": "表情符号/贴纸",
+                "infractions": "违规"
             },
             "description": {
                 "messages": "能够在服务器上管理不同的消息",
@@ -229,7 +230,8 @@
                 "roles": "查看角色的创建/修改或删除",
                 "channels": "查看频道的创建/修改或删除",
                 "invites": "能够在服务器上管理不同的邀请",
-                "emotes_stickers": "查看对表情符号和贴纸进行的不同更改"
+                "emotes_stickers": "查看对表情符号和贴纸进行的不同更改",
+                "infractions": "查看对用户的不同违规"
             }
         },
         "send": {

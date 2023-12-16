@@ -216,7 +216,8 @@
                     "roles": "Roles",
                     "channels": "Canales",
                     "invites": "Invitaciones",
-                    "emotes_stickers": "Emojis / Pegatinas"
+                    "emotes_stickers": "Emojis / Pegatinas",
+                    "infractions": "Infracciones"
                 },
                 "description": {
                     "messages": "Poder moderar los diferentes mensajes en el servidor",
@@ -228,7 +229,8 @@
                     "roles": "Ver cuando se crea, modifica o elimina un rol",
                     "channels": "Ver cuando se crea, modifica o elimina un canal",
                     "invites": "Poder moderar las diferentes invitaciones creadas en el servidor",
-                    "emotes_stickers": "Ver los diferentes cambios realizados en los Emojis y Pegatinas"
+                    "emotes_stickers": "Ver los diferentes cambios realizados en los Emojis y Pegatinas",
+                    "infractions": "Ver las diferentes infracciones creadas en el servidor"
                 }
             },
             "send": {

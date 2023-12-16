@@ -89,7 +89,6 @@ class WelcomeConfig extends Component {
             <div style={{ marginBottom: "60px" }} >
                 <div style={{ justifyContent: "center", marginBottom: "30px" }} className="top">
                     <h1>Welcome Message</h1>
-                    {/* <p className="newModule">Nouveau</p> */}
                 </div>
                 <div className={this.state.welcomeActive ? "WelcomeComponente" : 'WelcomeComponente flou'} >
                     <div className="embed">

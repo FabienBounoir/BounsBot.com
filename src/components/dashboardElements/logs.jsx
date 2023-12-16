@@ -100,6 +100,7 @@ export const Logs = ({ guildId, configuration, updateConfiguration, channels, lo
                             </svg>
 
                             <h5 className="hrnh5k-0 eeKdki sc-1wkjbe7-8 GoZzi">{t("dashboard.logs.title.infractions")}</h5>
+                            <div className="newModule" >NEW</div>
                         </div>
                         <Form.Select defaultValue={configuration.logs?.infractions} value={configuration.logs?.infractions} onChange={(event) => { updateConfiguration({ ...configuration, logs: { ...configuration.logs, infractions: event.target.value } }) }} >
                             {(() => {

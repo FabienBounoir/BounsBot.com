@@ -217,7 +217,8 @@
                 "roles": "Ruoli",
                 "channels": "Canali",
                 "invites": "Inviti",
-                "emotes_stickers": "Emote / Adesivi"
+                "emotes_stickers": "Emote / Adesivi",
+                "infractions": "Infrazioni"
             },
             "description": {
                 "messages": "Possibilità di moderare i diversi messaggi sul server",
@@ -229,7 +230,8 @@
                 "roles": "Visualizzare quando un ruolo viene creato / modificato o eliminato",
                 "channels": "Visualizzare quando un canale viene creato / modificato o eliminato",
                 "invites": "Possibilità di moderare gli inviti creati sulla gilda",
-                "emotes_stickers": "Visualizzare le diverse modifiche apportate alle Emote e agli adesivi"
+                "emotes_stickers": "Visualizzare le diverse modifiche apportate alle Emote e agli adesivi",
+                "infractions": "Visualizzare le diverse infrazioni commesse dagli utenti"
             }
         },
         "send": {

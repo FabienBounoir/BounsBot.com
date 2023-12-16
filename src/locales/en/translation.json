@@ -217,7 +217,8 @@
                 "roles": "Roles",
                 "channels": "Channels",
                 "invites": "Invitations",
-                "emotes_stickers": "Emotes / Stickers"
+                "emotes_stickers": "Emotes / Stickers",
+                "infractions": "Infractions"
             },
             "description": {
                 "messages": "Ability to moderate different messages on the server",
@@ -229,7 +230,8 @@
                 "roles": "See when a role is created / modified or deleted",
                 "channels": "See when a channel is created / modified or deleted",
                 "invites": "Ability to moderate different invites created on the guild",
-                "emotes_stickers": "See different changes made to Emotes and Stickers"
+                "emotes_stickers": "See different changes made to Emotes and Stickers",
+                "infractions": "See different infractions made on the server"
             }
         },
         "send": {
