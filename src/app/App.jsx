@@ -87,7 +87,7 @@ export const App = () => {
       var embCSS = '.embedim-snow{position: absolute;width: 10px;height: 10px;background: white;border-radius: 50%;margin-top:-10px;}';
       var embHTML = '';
 
-      let nbSnow = 100;
+      let nbSnow = 70;
 
       if (window.innerWidth < 900) nbSnow = 30;
 
