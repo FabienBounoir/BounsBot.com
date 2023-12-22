@@ -47,7 +47,23 @@
         "search_command": "搜索指令",
         "usage": "用法",
         "example": "示例",
-        "copied": "指令已复制！"
+        "copied": "指令已复制！",
+        "right_click_on_message_or_user": "右键单击信息或用户",
+        "menu": {
+            "All": "全部",
+            "Bot": "机器人",
+            "Admin": "管理员",
+            "Moderation": "管理",
+            "Game": "游戏",
+            "Config": "配置",
+            "Channel Temporaire": "临时频道",
+            "Engagement": "参与",
+            "Musique": "音乐",
+            "Radio": "广播",
+            "ticket": "票务",
+            "Fun": "娱乐",
+            "context": "上下文"
+        }
     },
     "footer": {
         "our_history": "我们的故事",

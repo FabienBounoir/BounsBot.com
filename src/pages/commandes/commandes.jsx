@@ -241,11 +241,12 @@ export const Commandes = () => {
             commandLocaleLanguage = commandLocaleLanguage.sort((a, b) => { return a.name.localeCompare(b.name) })
 
             localStorage.setItem("commands", JSON.stringify(commandLocaleLanguage))
-            localStorage.setItem("commandsMenu", JSON.stringify(["All", ...commandsObject.menu.map(m => m.value)]))
+            localStorage.setItem("commandsMenu", JSON.stringify([{ name: t(`commands.menu.All`), value: "All" }, ...commandsObject.menu.map(m => { return { name: (t(`commands.menu.${m.value}`).includes("menu") ? m.value : t(`commands.menu.${m.value}`)), value: m.value } })]))
 
             setDisplayedCommands(commandLocaleLanguage)
             setCommands(commandLocaleLanguage)
-            setMenu(["All", ...commandsObject.menu.map(m => m.value)])
+            console.log("commandsObject.menu", commandsObject.menu.map(m => m.value))
+            setMenu([{ name: t(`commands.menu.All`), value: "All" }, ...commandsObject.menu.map(m => { return { name: (t(`commands.menu.${m.value}`).includes("menu") ? m.value : t(`commands.menu.${m.value}`)), value: m.value } })])
         }
         catch (e) {
             console.log("ERROR WHEN LOADING COMMANDS", e)
@@ -330,7 +331,7 @@ export const Commandes = () => {
                             }
 
                             for (let type of menu) {
-                                typesList.push(<li key={type} className={"btnSearch btn-commands-category " + (selectedMenu === type ? "active" : "")} onClick={() => { selectType(type) }} >{type}</li>)
+                                typesList.push(<li key={type.value || type} className={"btnSearch btn-commands-category " + (selectedMenu === (type.value || type) ? "active" : "")} onClick={() => { selectType(type.value || type) }} >{type.name || type}</li>)
                             }
                             return typesList;
                         })()}

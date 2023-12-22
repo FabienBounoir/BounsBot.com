@@ -48,6 +48,9 @@ export const Command = memo(({ command }) => {
 
         description = description.charAt(0).toUpperCase() + description.slice(1);
     }
+    else {
+        description = t("commands.right_click_on_message_or_user")
+    }
 
     const copyToClipboard = (e) => {
         e.stopPropagation()

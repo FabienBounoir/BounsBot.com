@@ -47,7 +47,23 @@
         "search_command": "Cerca un comando",
         "usage": "Utilizzo",
         "example": "Esempi",
-        "copied": "Comando copiato!"
+        "copied": "Comando copiato!",
+        "right_click_on_message_or_user": "Fai clic con il pulsante destro del mouse su un messaggio o un utente",
+        "menu": {
+            "All": "Tutti",
+            "Bot": "Bot",
+            "Admin": "Amministratore",
+            "Moderation": "Moderazione",
+            "Game": "Giochi",
+            "Config": "Configurazione",
+            "Channel Temporaire": "Canale Temporaneo",
+            "Engagement": "Coinvolgimento",
+            "Musique": "Musica",
+            "Radio": "Radio",
+            "ticket": "Ticket",
+            "Fun": "Divertimento",
+            "context": "Contestuale"
+        }
     },
     "footer": {
         "our_history": "La nostra storia",

@@ -47,7 +47,23 @@
         "search_command": "البحث عن أمر",
         "usage": "الاستخدام",
         "example": "أمثلة",
-        "copied": "تم نسخ الأمر!"
+        "copied": "تم نسخ الأمر!",
+        "right_click_on_message_or_user": "انقر بزر الماوس الأيمن على رسالة أو مستخدم لعرض المزيد من الخيارات.",
+        "menu": {
+            "All": "الكل",
+            "Bot": "بوت",
+            "Admin": "مدير",
+            "Moderation": "الإشراف",
+            "Game": "ألعاب",
+            "Config": "التكوين",
+            "Channel Temporaire": "قناة مؤقتة",
+            "Engagement": "التفاعل",
+            "Musique": "موسيقى",
+            "Radio": "راديو",
+            "ticket": "تذكرة",
+            "Fun": "تسلية",
+            "context": "سياقي"
+        }
     },
     "footer": {
         "our_history": "تاريخنا",
