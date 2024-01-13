@@ -59,12 +59,21 @@ export const App = () => {
       let r = document.getElementsByTagName("html")[0];
       r.style.setProperty('--color-principal', '#ff5e00');
       r.style.setProperty('--color-principal-hover', '#702a00');
+
+      r.style.setProperty('--color-red', '255');
+      r.style.setProperty('--color-green', '94');
+      r.style.setProperty('--color-blue', '0');
     }
     else if (date.getMonth() === 11 && (date.getDate() <= 26 && date.getDate() >= 10)) {
       let r = document.getElementsByTagName("html")[0];
       //frozen color
       r.style.setProperty('--color-principal', '#00bfff');
       r.style.setProperty('--color-principal-hover', '#00688b');
+
+      r.style.setProperty('--color-red', '0');
+      r.style.setProperty('--color-green', '191');
+      r.style.setProperty('--color-blue', '255');
+
       setSnow();
     }
     else if (Math.random() < 0.1) {
@@ -73,8 +82,13 @@ export const App = () => {
   }
 
   let colorUpdate = (r) => {
-    r.style.setProperty('--color-principal', "#" + randomColor());
+    const color = randomColor();
+    r.style.setProperty('--color-principal', "#" + color);
     r.style.setProperty('--color-principal-hover', "#" + randomColor());
+
+    r.style.setProperty('--color-red', parseInt(color.slice(0, 2), 16));
+    r.style.setProperty('--color-green', parseInt(color.slice(2, 4), 16));
+    r.style.setProperty('--color-blue', parseInt(color.slice(4, 6), 16));
   }
 
   let setSnow = () => {

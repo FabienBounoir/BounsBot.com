@@ -42,9 +42,8 @@
 
 
 .loader .loader-container .loader-logo svg {
-    /* width: em; */
-    /* height: 100%; */
     object-fit: cover;
+    animation-delay: 0.1s;
     animation: spin 2s infinite ease-out;
     max-width: calc(100vw / 3)
 }

@@ -144,7 +144,9 @@
             "level": "المستويات",
             "logs": "سجلات",
             "utility": "أدوات",
-            "sendMessage": "إرسال رسالة"
+            "sendMessage": "إرسال رسالة",
+            "moderation": "الاعتدال",
+            "infractions": "انتهاكات"
         },
         "info": {
             "text1": "مرحبًا بك، مستخدم Bouns'bot!",
@@ -313,5 +315,42 @@
         "identification": "التحقق",
         "resumption": "استئناف",
         "error": "حدث خطأ أثناء استرداد الحالة. يرجى المحاولة مرة أخرى لاحقًا."
+    },
+    "moderation": {
+        "linkSendWhenMemberBan": "الرابط المرسل عند حظر شخص من خادمك",
+        "invalidUrl": "الرابط غير صالح",
+        "AutomatedSanctions": "عقوبات تلقائية",
+        "numberInfractions": "عدد الانتهاكات",
+        "infractions": "انتهاكات",
+        "infraction": "انتهاك",
+        "intervalle": "فاصل زمني",
+        "sanction": "عقوبة",
+        "duration": "المدة",
+        "days": "أيام",
+        "day": "يوم",
+        "hours": "ساعات",
+        "hour": "ساعة",
+        "minutes": "دقائق",
+        "minute": "دقيقة",
+        "seconds": "ثواني",
+        "second": "ثانية",
+        "infractionDetails": "لـ {{{{INFRACTION}} {{INFRACTION_TEXT}}}} في {{{{TIME}}}}، قم بتطبيق {{{{ACTION}}}} لمدة {{{{ACTION_TIME}}}}",
+        "linkUnbanInformation": "سيتم تضمين هذا الرابط في الإدراج الخاص بالحظر عند استخدام أوامر /ban أو /tempban من Bouns'bot على خادمك. سيتيح للأشخاص المحظورين تقديم طلب إلغاء الحظر، مما يعزز تجربة المستخدم."
+    },
+    "infractions": {
+        "infractionsStats": "إحصائيات الانتهاكات",
+        "moderatorStats": "إحصائيات المشرفين",
+        "listInfraction": "قائمة الانتهاكات",
+        "noInfractions": "لم يتم تطبيق أي انتهاك على خادمك، يمكنك استخدام الأوامر التالية",
+        "name": "الاسم",
+        "type": "النوع",
+        "time": "الوقت",
+        "status": "الحالة",
+        "moderator": "المشرف",
+        "totals": "المجموع",
+        "actives": "نشطة",
+        "ban": "حظر",
+        "mute": "كتم",
+        "warn": "تحذير"
     }
 }

@@ -13,7 +13,7 @@ export const Loader = () => {
         const time = new Date().getTime()
 
         window.addEventListener("load", () => {
-            if (new Date().getTime() - time < 2000) {
+            if (new Date().getTime() - time < 2100) {
                 setTimeout(() => {
                     setLoading(false)
                 }, 1500 - (new Date().getTime() - time))

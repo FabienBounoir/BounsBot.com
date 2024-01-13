@@ -144,7 +144,9 @@
             "level": "Niveles",
             "logs": "Registros",
             "utility": "Utilidades",
-            "sendMessage": "Enviar Mensaje"
+            "sendMessage": "Enviar Mensaje",
+            "moderation": "Moderación",
+            "infractions": "Infracciones"
         },
         "info": {
             "text1": "¡Hola, usuario de Bouns'bot!",
@@ -313,5 +315,42 @@
                 "error": "Se produjo un error al recuperar los estados. Por favor, inténtalo de nuevo más tarde."
             }
         }
+    },
+    "moderation": {
+        "linkSendWhenMemberBan": "Enlace enviado cuando se prohíbe a una persona en tu servidor",
+        "invalidUrl": "La URL no es válida",
+        "AutomatedSanctions": "Sanciones Automáticas",
+        "numberInfractions": "Número de Infracciones",
+        "infractions": "Infracciones",
+        "infraction": "Infracción",
+        "intervalle": "Intervalo",
+        "sanction": "Sanción",
+        "duration": "Duración",
+        "days": "Días",
+        "day": "Día",
+        "hours": "Horas",
+        "hour": "Hora",
+        "minutes": "Minutos",
+        "minute": "Minuto",
+        "seconds": "Segundos",
+        "second": "Segundo",
+        "infractionDetails": "Para {{{{INFRACTION}} {{INFRACTION_TEXT}}}} en {{{{TIME}}}}, aplicar una {{{{ACTION}}}} de {{{{ACTION_TIME}}}}",
+        "linkUnbanInformation": "Este enlace se incluirá en el embed de prohibición al usar los comandos /ban o /tempban de Bouns'bot en tu servidor. Permitirá a las personas prohibidas enviar una solicitud de desbloqueo, mejorando así la experiencia del usuario."
+    },
+    "infractions": {
+        "infractionsStats": "Estadísticas de Infracciones",
+        "moderatorStats": "Estadísticas del Moderador",
+        "listInfraction": "Lista de Infracciones",
+        "noInfractions": "No se ha aplicado ninguna infracción en tu servidor, puedes usar los siguientes comandos",
+        "name": "Nombre",
+        "type": "Tipo",
+        "time": "Tiempo",
+        "status": "Estado",
+        "moderator": "Moderador",
+        "totals": "Totales",
+        "actives": "activas",
+        "ban": "Ban",
+        "mute": "Mute",
+        "warn": "Advertencia"
     }
 }

@@ -1808,6 +1808,17 @@ input[type="radio"]:checked::before {
     }
 }
 
+@media (max-width: 700px) {
+    tr td:last-child .avatar_moderator p {
+        display: none;
+    }
+
+    tr td:last-child .avatar_moderator {
+        justify-content: center;
+    }
+}
+
+
 @media (max-width: 580px) {
     .componentGuild {
         display: grid;
@@ -1817,7 +1828,27 @@ input[type="radio"]:checked::before {
         /* width: 95%; */
     }
 
+    .mod_cellule {
+        display: none;
+    }
+
     .infoDashboard img {
         display: none;
     }
+
+    .stats_moderator_info {
+        display: none !important;
+    }
+
+    .stats_moderator_info_short {
+        display: initial !important;
+        text-align: right;
+    }
+}
+
+@media (max-width: 450px) {
+    .duration_cellule {
+        display: none;
+    }
+
 }
