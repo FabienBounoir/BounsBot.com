@@ -170,19 +170,29 @@
                 "music": "Musica",
                 "playlist": "Playlist",
                 "game": "Giochi",
-                "fun": "Divertimento"
+                "fun": "Divertimento",
+                "phonetic-pun": "Giochi di giochi fonetici",
+                "bitrate": "Qualità audio",
+                "achievement": "Achievement",
+                "prefix-command": "Comando di prefisso",
+                "volume": "Volume"
             },
             "description": {
-                "reaction": "Permetti al bot di reagire con 👋 / 💤 in base al messaggio",
-                "rename": "Permetti al bot di rinominare i membri quando i loro pseudonimi non sono identificabili dalla moderazione",
-                "sheesh": "Permetti al bot di reagire con il suo miglior \"SHEEEESHHHH\" se un membro dice \"sheesh\"",
-                "radio": "Permetti ai tuoi membri di ascoltare una delle 41 radio disponibili sul Bot",
-                "music": "Permetti ai tuoi membri di ascoltare le loro migliori canzoni",
-                "playlist": "Permetti ai tuoi membri di creare/modificare/ascoltare le loro playlist",
-                "game": "Sono disponibili vari giochi per divertirsi",
-                "fun": "Permetti ai tuoi membri di divertirsi con comandi divertenti e ludici",
-                "discordChannel": "Seleziona il canale in cui verrà trascritta la chat di Twitch",
-                "twitchChannel": "Scegli il canale Twitch che vuoi trascrivere su Discord"
+                "reaction": "Lascia che il bot reagisca con 👋 / 💤 in base al messaggio",
+                "rename": "Lascia che il bot rinomini i membri quando i loro pseudonimi non sono identificabili dalla moderazione",
+                "sheesh": "Lascia che il bot reagisca con il suo miglior \"SHEEEESHHHH\" se un membro dice \"sheesh\"",
+                "radio": "Lascia che i tuoi membri ascoltino una delle 41 radio disponibili su Bot",
+                "music": "Lascia che i tuoi membri ascoltino la loro migliore musica",
+                "playlist": "Lascia che i tuoi membri creino / modificano / ascoltino le loro playlist",
+                "game": "Ci sono diversi giochi disponibili per divertirsi",
+                "fun": "Lascia che i tuoi membri si divertano con comandi divertenti e giocosi",
+                "discordChannel": "Seleziona il canale dove verrà trascritta la chat di Twitch",
+                "twitchChannel": "Scegli il canale Twitch che desideri trascrivere su Discord",
+                "phonetic-pun": "Lasciate che Bouns'bot offra i suoi migliori giochi di giochi fonetici che vi faranno ridere o piangere...",
+                "bitrate": "Bouns'Bot regola automaticamente il bitrate dei canali vocali in base al numero di boost.",
+                "achievement": "Lascia che Bouns'bot invii gli achievement come messaggi privati ai tuoi membri.",
+                "prefix-command": "Accetta i comandi con il prefisso del tuo server.",
+                "volume": "Scegli il volume predefinito per la sezione multimediale."
             }
         },
         "welcome": {

@@ -170,19 +170,29 @@
                 "music": "音乐",
                 "playlist": "播放列表",
                 "game": "游戏",
-                "fun": "娱乐"
+                "fun": "娱乐",
+                "phonetic-pun": "语音游戏",
+                "bitrate": "音频质量",
+                "achievement": "成就",
+                "prefix-command": "前缀命令",
+                "volume": "音量"
             },
             "description": {
-                "reaction": "让机器人根据消息以 👋 / 💤 进行反应",
-                "rename": "让机器人在成员的用户名无法被审查识别时更改它们的名字",
-                "sheesh": "如果成员说 \"sheesh\"，让机器人用最好的 \"SHEEEESHHHH\" 进行反应",
-                "radio": "让您的成员在机器人上听取其中的41个可用电台之一",
+                "reaction": "让机器人根据消息做出👋 / 💤反应",
+                "rename": "允许机器人在成员的昵称无法被审查时重新命名它们",
+                "sheesh": "让机器人在成员说\"sheesh\"时做出最好的\"SHEEEESHHHH\"反应",
+                "radio": "让您的成员收听机器人上的41个可用广播之一",
                 "music": "让您的成员听他们最喜欢的音乐",
-                "playlist": "让您的成员创建/编辑/收听他们的播放列表",
-                "game": "有多种游戏可供您娱乐",
-                "fun": "让您的成员使用有趣而富有娱乐性的命令玩得开心",
-                "discordChannel": "选择将Twitch聊天重传到的频道",
-                "twitchChannel": "选择要在discord上重新传输的Twitch频道"
+                "playlist": "让您的成员创建/修改/收听他们的播放列表",
+                "game": "有多种游戏可供娱乐",
+                "fun": "让您的成员使用有趣而俏皮的命令娱乐自己",
+                "discordChannel": "选择在其中传输Twitch聊天的频道",
+                "twitchChannel": "选择要在Discord上传输的Twitch频道",
+                "phonetic-pun": "让Bouns'bot提供他最好的语音游戏，让您笑或哭...",
+                "bitrate": "Bouns'Bot根据提升数量自动调整语音频道的比特率。",
+                "achievement": "让Bouns'bot将成就作为私人消息发送给您的成员。",
+                "prefix-command": "接受带有您服务器前缀的命令。",
+                "volume": "选择多媒体部分的默认音量。"
             }
         },
         "welcome": {

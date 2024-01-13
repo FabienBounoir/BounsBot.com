@@ -170,7 +170,12 @@
                 "music": "Musique",
                 "playlist": "Playlist",
                 "game": "Jeux",
-                "fun": "Fun"
+                "fun": "Fun",
+                "phonetic-pun": "jeu de mot phonétique",
+                "bitrate": "Qualité audio",
+                "achievement": "Achievement",
+                "prefix-command": "Commande prefix",
+                "volume": "Volume"
             },
             "description": {
                 "reaction": "Laissez le bot réagir avec 👋 / 💤 suivant le message",
@@ -182,7 +187,12 @@
                 "game": "Plusieurs jeux sont disponibles pour vous amuser",
                 "fun": "Laissez vos membres s'amuser avec des commandes funs et ludiques",
                 "discordChannel": "Selectionnez le channel ou sera retranscrit le Chat Twitch",
-                "twitchChannel": "Choisissez la chaine Twitch que vous souhaitez retranscrit sur discord"
+                "twitchChannel": "Choisissez la chaine Twitch que vous souhaitez retranscrit sur discord",
+                "phonetic-pun": "Laissez Bouns'bot faire ces meilleurs jeux de mots, qui vous feront rire ou pleurer...",
+                "bitrate": "Bouns'Bot ajuste automatiquement le bitrate des salons vocaux en fonction du nombre de boosts.",
+                "achievement": "Laisser Bouns'bot envoyer les achievement en message privé a vos membres.",
+                "prefix-command": "Accepter les commandes avec le prefixe de votre serveur.",
+                "volume": "Choisir le volume par défaut de la partie multimedia."
             }
         },
         "welcome": {

@@ -1701,7 +1701,7 @@ input[type="radio"]:checked::before {
 .block .modules {
     /* background-color: red; */
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(4, 1fr);
     gap: 1rem;
     padding: 0 1rem 1rem 1rem;
 }
@@ -1791,7 +1791,7 @@ input[type="radio"]:checked::before {
     width: "48";
     height: "48";
 
-    fill: var(--color-principal)
+    fill: var(--color-principal) !important;
 }
 
 .top .pictoLog {
