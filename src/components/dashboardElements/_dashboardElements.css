@@ -1,3 +1,376 @@
+.elementContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: center;
+}
+
+.elementContainer>p {
+    all: unset;
+    /* font-size: 0.7rem; */
+    /* font-weight: 500; */
+    /* color: white; */
+    /* text-transform: uppercase; */
+
+    text-align: left;
+    font-size: 12px;
+    line-height: 16px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: .02em;
+
+    padding: 5px 5px 5px 0;
+    /* padding-bottom: 16px; */
+    text-align: left;
+    vertical-align: middle;
+}
+
+
+.inputContainer {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 5px;
+    background-color: #383a40;
+    border-radius: 4px;
+    border: 1px solid #4d4b4b;
+    padding: 0 0 0 10px;
+}
+
+.inputContainer * {
+    all: unset;
+    padding: 10px 10px 10px 0;
+}
+
+.inputContainer input {
+    all: unset;
+    /* background-color: red; */
+    background-color: #202225;
+    border: 0;
+    border-radius: 4px;
+    color: #fff;
+    font-weight: 600;
+    height: 30px;
+    outline: 0;
+    text-align: center;
+    transition: background-color .3s ease-in-out;
+    width: 50px;
+}
+
+.inputContainer select {
+    all: unset;
+    padding: 10px 10px 10px 0;
+    appearance: initial;
+    /* background-color: green; */
+}
+
+.spacerInfraction {
+    margin: 15px 0;
+    padding: 0;
+    height: 10px;
+    width: 100%;
+    /* background-color: #4d4b4b; */
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    place-content: center;
+}
+
+.spacerInfraction>div {
+    width: 80%;
+    height: 100%;
+    background-color: #595959;
+    border-radius: 10px;
+
+}
+
+.infractionContainer {
+    display: grid;
+    gap: 10px;
+    grid-template-columns: 1fr auto;
+}
+
+.orderSelecter {
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+    gap: 5px;
+}
+
+
+.orderSelecter button {
+    background-color: #33353b;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: 0.3s;
+    border: 1px solid #4d4b4b;
+    box-sizing: border-box;
+}
+
+.orderSelecter button:hover {
+    background-color: #4d4b4b;
+}
+
+.orderSelecter button:disabled {
+    filter: brightness(0.8);
+    cursor: not-allowed;
+}
+
+.orderSelecter button:disabled:hover {
+    background-color: #33353b;
+}
+
+.automatedInfraction {
+    color: white;
+    background-color: #33353b;
+    border-radius: 10px;
+    padding: 16px;
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    align-items: center;
+    place-content: space-between;
+    border: 1px solid #4d4b4b;
+    flex-wrap: wrap;
+}
+
+.automatedInfraction b {
+    color: white;
+    font-weight: 700;
+}
+
+
+.groupInfractionElement {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 10px;
+
+}
+
+.automatedInfraction.configInf {
+    place-items: flex-end;
+}
+
+.automatedInfraction button {
+    background-color: rgba(var(--color-red), var(--color-green), var(--color-blue), 0.2);
+    /* color: white; */
+    border: none;
+    border-radius: 10px;
+    padding: 6px 8px;
+    /* margin: 10px; */
+    font-size: 1rem;
+    cursor: pointer;
+    transition: 0.3s;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    transition: background-color 0.3s ease-in-out;
+}
+
+.automatedInfraction button:hover {
+    background-color: rgba(var(--color-red), var(--color-green), var(--color-blue), 0.4);
+}
+
+.automatedInfraction.configInf button {
+    padding: 10px 10px 10px 10px;
+    border-radius: 4px;
+}
+
+.block .load_more_data {
+    align-items: center;
+    background-color: #33353b;
+    border-radius: 10px;
+    margin-top: 10px;
+
+    cursor: pointer;
+    transition: transform 0.3s ease-in-out;
+}
+
+.block .load_more_data:hover svg {
+    animation: moveDown 1s ease-out infinite;
+}
+
+
+.block .load_more_data:hover {
+    transform: scale(1.01);
+}
+
+@keyframes moveDown {
+    0% {
+        transform: translateY(0px);
+    }
+
+    40% {
+        transform: translateY(5px);
+    }
+
+    80% {
+        transform: translateY(-5px);
+    }
+
+}
+
+.block table {
+    color: white;
+    width: 100%;
+    text-indent: initial;
+}
+
+.block table th {
+    text-align: left;
+    font-size: 12px;
+    line-height: 16px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: .02em;
+
+    padding: 8px;
+    padding-bottom: 16px;
+    text-align: left;
+    vertical-align: middle;
+}
+
+.block table td {
+    font-size: 14px;
+    line-height: 18px;
+    font-weight: 500;
+}
+
+.block table tbody tr td {
+    /* padding-top: 5px;
+    padding-bottom: 5px; */
+    padding: 5px 0;
+}
+
+.block table tbody tr:hover {
+    background-color: #2f3136;
+}
+
+.block table .user {
+    margin-right: auto;
+}
+
+.stats_sanction p {
+    margin: 0;
+    padding: 0;
+}
+
+.stats_sanction h4 {
+    margin: 0;
+    padding: 0;
+}
+
+.stats_separator {
+    width: 4px;
+    background-color: var(--color-principal);
+    border-radius: 4px;
+}
+
+.stats_moderator {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1em;
+    margin: 0 15px;
+}
+
+.stats_moderator div {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 0.5em;
+    color: white;
+    font-weight: bold;
+    width: -webkit-fill-available;
+    /* justify-content: space-between; */
+}
+
+.stats_moderator div svg {
+    /* width: 3em; */
+}
+
+.stats_moderator div p {
+    margin: auto 0;
+    padding: 0;
+}
+
+.stats_moderator div img {
+    width: 2.5em;
+    height: 2.5em;
+    border-radius: 50%;
+    /* border: 1.5px solid var(--color-principal); */
+}
+
+.avatar_moderator {
+    margin-right: auto;
+    display: flex;
+    flex-direction: row;
+    gap: 0.5em;
+}
+
+.avatar_moderator img {
+    width: 2.5em;
+    height: 2.5em;
+    border-radius: 50%;
+    /* border: 1.5px solid var(--color-principal); */
+}
+
+.avatar_moderator>div {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+}
+
+.avatar_moderator>div>p {
+    margin-right: auto;
+    margin-bottom: 0;
+    padding: 0;
+    text-overflow: ellipsis;
+}
+
+.avatar_moderator>div>p:last-child {
+    margin-right: auto;
+    font-size: 12px;
+    line-height: 16px;
+    font-weight: 400;
+}
+
+.no_infraction {
+    color: white;
+    font-weight: bold;
+    align-items: center;
+    margin: 0 15px;
+    text-align: left;
+}
+
+.no_infraction p {
+    margin: 0;
+}
+
+.stats_moderator div .stats_moderator_info {
+    gap: 2em;
+    justify-content: end;
+}
+
+.stats_moderator div .stats_moderator_info_short {
+    display: none;
+}
+
+.stats_moderator div .stats_moderator_info_short>div {
+    justify-content: right;
+}
+
+.stats_moderator div .stats_moderator_info p {
+    display: flex;
+    flex-direction: row;
+    gap: 0.5em;
+    align-items: center;
+}
+
+
 button.addRoleReward {
     background-color: var(--color-principal);
     color: white;

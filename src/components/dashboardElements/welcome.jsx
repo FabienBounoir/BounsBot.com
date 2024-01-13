@@ -31,8 +31,9 @@ export const Welcome = ({ guildId, configuration, setConfiguration, channels, ro
         let canvas = canvasRef.current
         /**
          * @type {CanvasRenderingContext2D}
-         */
+        */
         let ctx = canvas.getContext("2d");
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
         ctx.globalCompositeOperation = 'source-over';
         ctx.resetTransform();
         ctx.clearRect(0, 0, canvas.width, canvas.height);
