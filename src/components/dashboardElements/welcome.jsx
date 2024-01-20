@@ -91,7 +91,7 @@ export const Welcome = ({ guildId, configuration, setConfiguration, channels, ro
         let colorAmbient = guild?.colorAmbiance || '#fb0f32';
 
         let background = new Image();
-        background.src = (guild.background || "https://media.discordapp.net/attachments/1014101467126304798/1055788116486660166/image.png")
+        background.src = (guild.background || "https://i.imgur.com/0QIj93P.png")
         background.onload = function () {
             ctx.drawImage(background, -10, -10, 1240, 540);
 
@@ -172,7 +172,7 @@ export const Welcome = ({ guildId, configuration, setConfiguration, channels, ro
         let colorAmbient = guild?.colorAmbiance || '#fb0f32';
 
         let background = new Image();
-        background.src = (guild.background || "https://media.discordapp.net/attachments/1014101467126304798/1055788116486660166/image.png")
+        background.src = (guild.background || "https://i.imgur.com/0QIj93P.png")
         background.onload = function () {
             ctx.drawImage(background, 0, 0, 1200, 500);
 
@@ -256,7 +256,7 @@ export const Welcome = ({ guildId, configuration, setConfiguration, channels, ro
         let colorAmbient = guild?.colorAmbiance || '#fb0f32';
 
         let background = new Image();
-        background.src = (guild.background || "https://media.discordapp.net/attachments/1014101467126304798/1055788116486660166/image.png")
+        background.src = (guild.background || "https://i.imgur.com/0QIj93P.png")
         background.onload = function () {
             ctx.drawImage(background, 0, 0, 1200, 500);
 
@@ -399,8 +399,6 @@ export const Welcome = ({ guildId, configuration, setConfiguration, channels, ro
                 ctx.stroke();
                 ctx.restore();
 
-
-
                 ctx.save();
             }
 
@@ -414,7 +412,7 @@ export const Welcome = ({ guildId, configuration, setConfiguration, channels, ro
         let colorAmbient = guild?.colorAmbiance || '#fb0f32';
 
         let background = new Image();
-        background.src = (guild.background || "https://media.discordapp.net/attachments/1014101467126304798/1055788116486660166/image.png")
+        background.src = (guild.background || "https://i.imgur.com/0QIj93P.png")
         background.onload = function () {
             ctx.drawImage(background, 0, 0, 1200, 500);
 
