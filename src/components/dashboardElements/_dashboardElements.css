@@ -1245,6 +1245,8 @@ input[type="radio"]:checked::before {
 }
 
 .block h5 {
+    display: flex;
+    align-items: center;
     color: white;
     text-align: left;
     /* padding: 0 1rem; */
