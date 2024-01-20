@@ -101,11 +101,13 @@ export const Configuration = (props) => {
                         },
                         {
                             "name": "dashboard.menu.moderation",
-                            "url": "moderation"
+                            "url": "moderation",
+                            "new": true
                         },
                         {
                             "name": "dashboard.menu.infractions",
-                            "url": "infractions"
+                            "url": "infractions",
+                            "new": true
                         }
                     ]
                 },
@@ -252,6 +254,7 @@ export const Configuration = (props) => {
                 list.push(<Link key={i + "-" + j} onClick={() => triggerListServer(false)} to={`/dashboard/${activeGuild}/` + menu[i].elements[j].url}><li className={"element " + (type === menu[i].elements[j].url ? "active" : "")}>
                     <div>
                         <p>{t(menu[i].elements[j].name)}</p>
+                        {menu[i].elements[j].new && <p className="newModule" >NEW</p>}
                     </div>
                 </li></Link>)
             }

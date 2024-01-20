@@ -74,16 +74,16 @@ h1, h2, h3 {
 }
 
 .newModule {
-  background-color: rgba(99, 245, 140, 0.16);
+  background-color: rgba(99, 245, 140, 0.16) !important;
   color: rgb(99, 245, 140);
-  padding: 0px 8px;
-  border-radius: 30px;
-  height: 24px;
-  line-height: 24px;
-  font-size: 12px;
-  letter-spacing: 0.5px;
-  margin: 0 0 0 10px;
-  cursor: pointer;
+  padding: 0px 8px !important;
+  border-radius: 30px !important;
+  height: 18px !important;
+  line-height: 18px !important;
+  font-size: 12px !important;
+  letter-spacing: 0.5px !important;
+  margin: 0 0 0 10px !important;
+  cursor: help !important;
 }
 
 @keyframes App-logo-spin {

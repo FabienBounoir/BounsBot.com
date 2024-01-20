@@ -56,7 +56,7 @@ export const Dashboard = ({ guildId, configuration, updateConfiguration, channel
                                     <Form.Check type="switch" id="custom-switch success" onChange={() => { updateConfiguration({ ...configuration, bitrateUpdate: !configuration.bitrateUpdate }) }} checked={configuration.bitrateUpdate} />
                                 </div>
 
-                                <h5 className="hrnh5k-0 eeKdki sc-1wkjbe7-8 GoZzi">{t("dashboard.global.title.bitrate")}</h5>
+                                <h5 className="hrnh5k-0 eeKdki sc-1wkjbe7-8 GoZzi">{t("dashboard.global.title.bitrate")} <p className="newModule" >NEW</p></h5>
                                 <div>{t("dashboard.global.description.bitrate")}</div>
                             </div> : ""}
 
@@ -79,7 +79,7 @@ export const Dashboard = ({ guildId, configuration, updateConfiguration, channel
                                     <Form.Check type="switch" id="custom-switch success" onChange={() => { updateConfiguration({ ...configuration, sendAchievement: !configuration.sendAchievement }) }} checked={configuration.sendAchievement} />
                                 </div>
 
-                                <h5 className="hrnh5k-0 eeKdki sc-1wkjbe7-8 GoZzi">{t("dashboard.global.title.achievement")}</h5>
+                                <h5 className="hrnh5k-0 eeKdki sc-1wkjbe7-8 GoZzi">{t("dashboard.global.title.achievement")}<p className="newModule" >NEW</p></h5>
                                 <div>{t("dashboard.global.description.achievement")}</div>
                             </div> : ""}
 
@@ -101,7 +101,7 @@ export const Dashboard = ({ guildId, configuration, updateConfiguration, channel
                                     <Form.Check type="switch" id="custom-switch success" onChange={() => { updateConfiguration({ ...configuration, oldCommand: !configuration.oldCommand }) }} checked={configuration.oldCommand} />
                                 </div>
 
-                                <h5 className="hrnh5k-0 eeKdki sc-1wkjbe7-8 GoZzi">{t("dashboard.global.title.prefix-command")}</h5>
+                                <h5 className="hrnh5k-0 eeKdki sc-1wkjbe7-8 GoZzi">{t("dashboard.global.title.prefix-command")}<p className="newModule" >NEW</p></h5>
                                 <div>{t("dashboard.global.description.prefix-command")}</div>
                                 <p>Prefix: "<b>{configuration.prefix ? configuration.prefix : "-"}</b>" | "<b>{configuration.prefix ? configuration.prefix : "-"}help</b>"</p>
                             </div> : ""}
@@ -142,7 +142,7 @@ export const Dashboard = ({ guildId, configuration, updateConfiguration, channel
                                     }} />
                                 </div>
 
-                                <h5 className="hrnh5k-0 eeKdki sc-1wkjbe7-8 GoZzi">{t("dashboard.global.title.volume")}</h5>
+                                <h5 className="hrnh5k-0 eeKdki sc-1wkjbe7-8 GoZzi">{t("dashboard.global.title.volume")} <p className="newModule" >NEW</p></h5>
                                 <div>{t("dashboard.global.description.volume")}</div>
                             </div> : ""}
                     </div>
@@ -221,7 +221,7 @@ export const Dashboard = ({ guildId, configuration, updateConfiguration, channel
 
                                     <Form.Check type="switch" id="custom-switch success" onChange={() => { updateConfiguration({ ...configuration, phoneticPun: !configuration.phoneticPun }) }} checked={configuration.phoneticPun} />
                                 </div>
-                                <h5 className="hrnh5k-0 eeKdki sc-1wkjbe7-8 GoZzi">{t("dashboard.global.title.phonetic-pun")}</h5>
+                                <h5 className="hrnh5k-0 eeKdki sc-1wkjbe7-8 GoZzi">{t("dashboard.global.title.phonetic-pun")}<p className="newModule" >NEW</p></h5>
                                 <div>{t("dashboard.global.description.phonetic-pun")}</div>
                             </div> : ""}
                     </div>
