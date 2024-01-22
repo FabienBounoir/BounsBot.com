@@ -144,7 +144,9 @@
             "level": "Niveaux",
             "logs": "Logs",
             "utility": "Utilitaires",
-            "sendMessage": "Envoyer un message"
+            "sendMessage": "Envoyer un message",
+            "moderation": "Modération",
+            "infractions": "Infractions"
         },
         "info": {
             "text1": "Salut toi, utilisateur de Bouns'bot !",
@@ -168,7 +170,12 @@
                 "music": "Musique",
                 "playlist": "Playlist",
                 "game": "Jeux",
-                "fun": "Fun"
+                "fun": "Fun",
+                "phonetic-pun": "jeu de mot phonétique",
+                "bitrate": "Qualité audio",
+                "achievement": "Achievement",
+                "prefix-command": "Commande prefix",
+                "volume": "Volume"
             },
             "description": {
                 "reaction": "Laissez le bot réagir avec 👋 / 💤 suivant le message",
@@ -180,7 +187,12 @@
                 "game": "Plusieurs jeux sont disponibles pour vous amuser",
                 "fun": "Laissez vos membres s'amuser avec des commandes funs et ludiques",
                 "discordChannel": "Selectionnez le channel ou sera retranscrit le Chat Twitch",
-                "twitchChannel": "Choisissez la chaine Twitch que vous souhaitez retranscrit sur discord"
+                "twitchChannel": "Choisissez la chaine Twitch que vous souhaitez retranscrit sur discord",
+                "phonetic-pun": "Laissez Bouns'bot faire ces meilleurs jeux de mots, qui vous feront rire ou pleurer...",
+                "bitrate": "Bouns'Bot ajuste automatiquement le bitrate des salons vocaux en fonction du nombre de boosts.",
+                "achievement": "Laisser Bouns'bot envoyer les achievement en message privé a vos membres.",
+                "prefix-command": "Accepter les commandes avec le prefixe de votre serveur.",
+                "volume": "Choisir le volume par défaut de la partie multimedia."
             }
         },
         "welcome": {
@@ -313,5 +325,42 @@
         "identification": "Identification",
         "resumption": "Reprise",
         "error": "Une erreur est survenue lors de la récupération des statuts. Veuillez réessayer plus tard."
+    },
+    "moderation": {
+        "linkSendWhenMemberBan": "Lien envoyer lorsqu'une personne est banni de votre serveur",
+        "invalidUrl": "L'url n'est pas valide",
+        "AutomatedSanctions": "Sanctions Automatiques",
+        "numberInfractions": "Nombre d'infractions",
+        "infractions": "Infractions",
+        "infraction": "Infraction",
+        "intervalle": "Intervalle",
+        "sanction": "Sanction",
+        "duration": "Durée",
+        "days": "Jours",
+        "day": "Jour",
+        "hours": "Heures",
+        "hour": "Heure",
+        "minutes": "Minutes",
+        "minute": "Minute",
+        "seconds": "Secondes",
+        "second": "Seconde",
+        "infractionDetails": "Pour {{{{INFRACTION}} {{INFRACTION_TEXT}}}} en {{{{TIME}}}}, appliquer un {{{{ACTION}}}} de {{{{ACTION_TIME}}}}",
+        "linkUnbanInformation": "Ce lien sera inclus dans l'embed de bannissement lorsque vous utilisez les commandes /ban ou /tempban de Bouns'bot sur votre serveur. Il permettra aux personnes bannies de soumettre une demande de débannissement, améliorant ainsi l'expérience utilisateur."
+    },
+    "infractions": {
+        "infractionsStats": "Statistiques des infractions",
+        "moderatorStats": "Statistiques des modérateurs",
+        "listInfraction": "Liste des infractions",
+        "noInfractions": "Aucune infraction n'a été appliqué sur votre serveur, vous pouvez utiliser les commandes suivantes",
+        "name": "Nom",
+        "type": "Type",
+        "time:": "Temps",
+        "status": "Statut",
+        "moderator": "Modérateur",
+        "totals": "Totals",
+        "actives": "actives",
+        "ban": "Ban",
+        "mute": "Mute",
+        "warn": "Warn"
     }
 }

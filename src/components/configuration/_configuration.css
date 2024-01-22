@@ -136,7 +136,7 @@
     /* padding-left: 1em;
     fill: aliceblue; */
 
-    padding: 0.5em 0 0.5em 1em;
+    padding: 0.5em 0.5em 0.5em 1em;
     margin: 3px 0;
     flex: 1 1 0%;
     /* margin-inline-start: 16px; */
@@ -169,6 +169,7 @@
     flex-direction: row;
     align-items: center;
     gap: 0.5em;
+    justify-content: space-between;
 }
 
 .configList a {

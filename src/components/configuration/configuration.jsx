@@ -20,6 +20,8 @@ import lodash from 'lodash';
 import { Toaster, toast } from 'sonner'
 import { useStore } from "../../utils/store";
 import { useTranslation } from "react-i18next";
+import { Moderation } from "../dashboardElements/moderation";
+import { Infractions } from "../dashboardElements/infractions";
 
 export const Configuration = (props) => {
     const { t } = useTranslation();
@@ -96,6 +98,16 @@ export const Configuration = (props) => {
                         {
                             "name": "dashboard.menu.logs",
                             "url": "logs"
+                        },
+                        {
+                            "name": "dashboard.menu.moderation",
+                            "url": "moderation",
+                            "new": true
+                        },
+                        {
+                            "name": "dashboard.menu.infractions",
+                            "url": "infractions",
+                            "new": true
                         }
                     ]
                 },
@@ -242,6 +254,7 @@ export const Configuration = (props) => {
                 list.push(<Link key={i + "-" + j} onClick={() => triggerListServer(false)} to={`/dashboard/${activeGuild}/` + menu[i].elements[j].url}><li className={"element " + (type === menu[i].elements[j].url ? "active" : "")}>
                     <div>
                         <p>{t(menu[i].elements[j].name)}</p>
+                        {menu[i].elements[j].new && <p className="newModule" >NEW</p>}
                     </div>
                 </li></Link>)
             }
@@ -274,6 +287,10 @@ export const Configuration = (props) => {
                 return <Rename guildId={id} configuration={configGuildUpdateSelected} setConfiguration={setConfigGuildUpdateSelected} loading={loading} />;
             case "musique":
                 return <Musique guildId={id} />;
+            case "moderation":
+                return <Moderation guildId={id} configuration={configGuildUpdateSelected} loading={loading} updateConfiguration={setConfigGuildUpdateSelected} />;
+            case "infractions":
+                return <Infractions guildId={id} loading={loading} updateConfiguration={setConfigGuildUpdateSelected} />;
             default:
                 return <h1 style={{ color: "red" }} >{type}</h1>;
         }

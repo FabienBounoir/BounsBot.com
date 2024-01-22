@@ -144,7 +144,9 @@
             "level": "级别",
             "logs": "日志",
             "utility": "工具",
-            "sendMessage": "发送消息"
+            "sendMessage": "发送消息",
+            "moderation": "调解",
+            "infractions": "违规行为"
         },
         "info": {
             "text1": "嗨，Bouns'bot用户！",
@@ -168,19 +170,29 @@
                 "music": "音乐",
                 "playlist": "播放列表",
                 "game": "游戏",
-                "fun": "娱乐"
+                "fun": "娱乐",
+                "phonetic-pun": "语音游戏",
+                "bitrate": "音频质量",
+                "achievement": "成就",
+                "prefix-command": "前缀命令",
+                "volume": "音量"
             },
             "description": {
-                "reaction": "让机器人根据消息以 👋 / 💤 进行反应",
-                "rename": "让机器人在成员的用户名无法被审查识别时更改它们的名字",
-                "sheesh": "如果成员说 \"sheesh\"，让机器人用最好的 \"SHEEEESHHHH\" 进行反应",
-                "radio": "让您的成员在机器人上听取其中的41个可用电台之一",
+                "reaction": "让机器人根据消息做出👋 / 💤反应",
+                "rename": "允许机器人在成员的昵称无法被审查时重新命名它们",
+                "sheesh": "让机器人在成员说\"sheesh\"时做出最好的\"SHEEEESHHHH\"反应",
+                "radio": "让您的成员收听机器人上的41个可用广播之一",
                 "music": "让您的成员听他们最喜欢的音乐",
-                "playlist": "让您的成员创建/编辑/收听他们的播放列表",
-                "game": "有多种游戏可供您娱乐",
-                "fun": "让您的成员使用有趣而富有娱乐性的命令玩得开心",
-                "discordChannel": "选择将Twitch聊天重传到的频道",
-                "twitchChannel": "选择要在discord上重新传输的Twitch频道"
+                "playlist": "让您的成员创建/修改/收听他们的播放列表",
+                "game": "有多种游戏可供娱乐",
+                "fun": "让您的成员使用有趣而俏皮的命令娱乐自己",
+                "discordChannel": "选择在其中传输Twitch聊天的频道",
+                "twitchChannel": "选择要在Discord上传输的Twitch频道",
+                "phonetic-pun": "让Bouns'bot提供他最好的语音游戏，让您笑或哭...",
+                "bitrate": "Bouns'Bot根据提升数量自动调整语音频道的比特率。",
+                "achievement": "让Bouns'bot将成就作为私人消息发送给您的成员。",
+                "prefix-command": "接受带有您服务器前缀的命令。",
+                "volume": "选择多媒体部分的默认音量。"
             }
         },
         "welcome": {
@@ -313,5 +325,42 @@
         "identification": "身份验证",
         "resumption": "恢复",
         "error": "获取状态时出现错误。请稍后重试。"
+    },
+    "moderation": {
+        "linkSendWhenMemberBan": "成员被禁止时发送的链接",
+        "invalidUrl": "URL 无效",
+        "AutomatedSanctions": "自动制裁",
+        "numberInfractions": "违规数量",
+        "infractions": "违规",
+        "infraction": "违规",
+        "intervalle": "间隔",
+        "sanction": "制裁",
+        "duration": "时长",
+        "days": "天",
+        "day": "天",
+        "hours": "小时",
+        "hour": "小时",
+        "minutes": "分钟",
+        "minute": "分钟",
+        "seconds": "秒",
+        "second": "秒",
+        "infractionDetails": "对于在 {{{{TIME}}}} 进行的 {{{{INFRACTION}} {{INFRACTION_TEXT}}}}，执行 {{{{ACTION}}}} 时长 {{{{ACTION_TIME}}}}",
+        "linkUnbanInformation": "此链接将包含在使用 Bouns'bot 在您的服务器上的 /ban 或 /tempban 命令时的禁令嵌入中。它将允许被禁止的人提交解禁请求，从而改善用户体验。"
+    },
+    "infractions": {
+        "infractionsStats": "违规统计",
+        "moderatorStats": "管理员统计",
+        "listInfraction": "违规列表",
+        "noInfractions": "您的服务器上尚未应用任何违规，您可以使用以下命令",
+        "name": "名称",
+        "type": "类型",
+        "time": "时间",
+        "status": "状态",
+        "moderator": "管理员",
+        "totals": "总数",
+        "actives": "活跃的",
+        "ban": "封禁",
+        "mute": "禁言",
+        "warn": "警告"
     }
 }

@@ -144,7 +144,9 @@
             "level": "Niveles",
             "logs": "Registros",
             "utility": "Utilidades",
-            "sendMessage": "Enviar Mensaje"
+            "sendMessage": "Enviar Mensaje",
+            "moderation": "Moderación",
+            "infractions": "Infracciones"
         },
         "info": {
             "text1": "¡Hola, usuario de Bouns'bot!",
@@ -166,21 +168,31 @@
                 "rename": "Renombrar",
                 "radio": "Radio",
                 "music": "Música",
-                "playlist": "Lista de Reproducción",
+                "playlist": "Lista de reproducción",
                 "game": "Juegos",
-                "fun": "Diversión"
+                "fun": "Diversión",
+                "phonetic-pun": "Juego de palabras fonéticas",
+                "bitrate": "Calidad de audio",
+                "achievement": "Logro",
+                "prefix-command": "Comando de prefijo",
+                "volume": "Volumen"
             },
             "description": {
-                "reaction": "Permite que el bot reaccione con 👋 / 💤 basado en el mensaje",
-                "rename": "Permite que el bot cambie el nombre de los miembros cuando sus apodos no son identificables por moderación",
-                "sheesh": "Permite que el bot reaccione con su mejor \"¡SHEEEESHHHH!\" si un miembro dice \"sheesh\"",
-                "radio": "Permite que tus miembros escuchen una de las 41 radios disponibles en el bot",
-                "music": "Permite que tus miembros escuchen su música favorita",
-                "playlist": "Permite que tus miembros creen / editen / escuchen sus listas de reproducción",
-                "game": "Varios juegos están disponibles para tu entretenimiento",
-                "fun": "Permite que tus miembros se diviertan con comandos divertidos y juguetones",
-                "discordChannel": "Selecciona el canal donde se transcribirá el chat de Twitch",
-                "twitchChannel": "Elige el canal de Twitch que quieres transcribir en Discord"
+                "reaction": "Deja que el bot reaccione con 👋 / 💤 según el mensaje",
+                "rename": "Deja que el bot cambie el nombre de los miembros cuando sus nombres de usuario no sean identificables por la moderación",
+                "sheesh": "Deja que el bot reaccione con su mejor \"SHEEEESHHHH\" si un miembro dice \"sheesh\"",
+                "radio": "Deja que tus miembros escuchen una de las 41 radios disponibles en el Bot",
+                "music": "Deja que tus miembros escuchen su mejor música",
+                "playlist": "Deja que tus miembros creen / editen / escuchen sus listas de reproducción",
+                "game": "Hay varios juegos disponibles para que te diviertas",
+                "fun": "Deja que tus miembros se diviertan con comandos divertidos y lúdicos",
+                "discordChannel": "Selecciona el canal donde se retransmitirá el chat de Twitch",
+                "twitchChannel": "Elige el canal de Twitch que deseas retransmitir en Discord",
+                "phonetic-pun": "Deja que Bouns'bot ofrezca sus mejores juegos de palabras fonéticas que te harán reír o llorar...",
+                "bitrate": "Bouns'Bot ajusta automáticamente la velocidad de bits de los canales de voz según el número de mejoras.",
+                "achievement": "Deja que Bouns'bot envíe logros como mensajes privados a tus miembros.",
+                "prefix-command": "Acepta comandos con el prefijo de tu servidor.",
+                "volume": "Elige el volumen predeterminado para la sección multimedia."
             }
         },
         "welcome": {
@@ -313,5 +325,42 @@
                 "error": "Se produjo un error al recuperar los estados. Por favor, inténtalo de nuevo más tarde."
             }
         }
+    },
+    "moderation": {
+        "linkSendWhenMemberBan": "Enlace enviado cuando se prohíbe a una persona en tu servidor",
+        "invalidUrl": "La URL no es válida",
+        "AutomatedSanctions": "Sanciones Automáticas",
+        "numberInfractions": "Número de Infracciones",
+        "infractions": "Infracciones",
+        "infraction": "Infracción",
+        "intervalle": "Intervalo",
+        "sanction": "Sanción",
+        "duration": "Duración",
+        "days": "Días",
+        "day": "Día",
+        "hours": "Horas",
+        "hour": "Hora",
+        "minutes": "Minutos",
+        "minute": "Minuto",
+        "seconds": "Segundos",
+        "second": "Segundo",
+        "infractionDetails": "Para {{{{INFRACTION}} {{INFRACTION_TEXT}}}} en {{{{TIME}}}}, aplicar una {{{{ACTION}}}} de {{{{ACTION_TIME}}}}",
+        "linkUnbanInformation": "Este enlace se incluirá en el embed de prohibición al usar los comandos /ban o /tempban de Bouns'bot en tu servidor. Permitirá a las personas prohibidas enviar una solicitud de desbloqueo, mejorando así la experiencia del usuario."
+    },
+    "infractions": {
+        "infractionsStats": "Estadísticas de Infracciones",
+        "moderatorStats": "Estadísticas del Moderador",
+        "listInfraction": "Lista de Infracciones",
+        "noInfractions": "No se ha aplicado ninguna infracción en tu servidor, puedes usar los siguientes comandos",
+        "name": "Nombre",
+        "type": "Tipo",
+        "time": "Tiempo",
+        "status": "Estado",
+        "moderator": "Moderador",
+        "totals": "Totales",
+        "actives": "activas",
+        "ban": "Ban",
+        "mute": "Mute",
+        "warn": "Advertencia"
     }
 }
