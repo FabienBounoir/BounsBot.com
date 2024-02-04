@@ -7,7 +7,7 @@ import { Navigation } from "../components/navbar/navbar";
 import { HomePage } from "../components/homepage/homepage";
 import Footer from '../components/footer/footer';
 
-import { Features } from "../components/features/features";
+import { Features } from "../components/features/features_new";
 import { Levels } from "../pages/levels/levels";
 import { Commandes } from "../pages/commandes/commandes";
 import { ErreurPage } from "../pages/ErreurPage/ErreurPage";
@@ -28,6 +28,7 @@ import Status from "../pages/status/status";
 import i18n from '../i18n';
 import Loader from "../components/loader/loader";
 import SEO from "../components/SEO/seo";
+import { Ticket } from "../pages/ticket/ticket";
 
 export const App = () => {
   useEffect(() => {
@@ -187,6 +188,15 @@ export const App = () => {
               description="Manage your server with the dashboard of Bouns'bot !"
               name="Bouns'Bot" />
             <Route exact path="/dashboard/:id/:typeconfig" component={() => { return Dashboard() }}>
+            </Route>
+          </Authenticate>
+
+          <Authenticate exact path="/ticket">
+            <SEO
+              title="Bouns'Botㆍticket"
+              description="view your tickets directly on bouns'bot website !"
+              name="Bouns'Bot" />
+            <Route exact path="/ticket" component={() => { return Ticket() }}>
             </Route>
           </Authenticate>
 

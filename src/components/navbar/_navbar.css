@@ -149,3 +149,11 @@ ul {
         align-self: center;
     }
 }
+
+.bg-navbar {
+    background: #0f0f10 !important;
+}
+
+.bg-dark {
+    background: rgb(33, 37, 41) !important
+}

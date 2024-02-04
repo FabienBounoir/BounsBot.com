@@ -41,7 +41,7 @@
     grid-template-areas: "text avatar";
     height: calc(100svh - 85px);
     width: 100%;
-    background-color: #1e1e1e;
+    background-color: #0f0f10;
     color: white;
     font-family: 'Roboto', sans-serif;
     font-size: 1.5em;
@@ -53,7 +53,10 @@
 
     min-height: 500px;
 
-    background: linear-gradient(180deg, #1e1e1e 0%, var(--color-principal) 350%);
+    /* background-image: url("https://mee6.xyz/assets/shine-83dc716d.webp");
+    background-size: cover;
+    background-position: left; */
+    /* background: linear-gradient(180deg, #1e1e1e 0%, var(--color-principal) 350%); */
 
     gap: 32px;
 
