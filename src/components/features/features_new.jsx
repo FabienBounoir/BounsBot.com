@@ -80,7 +80,7 @@ export const Features = () => {
                     <h2>Ambiancez votre serveur</h2>
                 </div>
                 <p>Créer une ambiance unique sur votre serveur avec Bouns'Bot, vous avez accès à une multitude de commandes pour animer votre serveur [AJOUTER DES TRUCS ICI]</p>
-                <Feature featureElement={multimedia} />
+                <Feature featureElement={multimedia} revert={true} />
             </div>
         </div>
 

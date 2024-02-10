@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import "./_featurenew.css";
 import { useTranslation } from "react-i18next";
 
-export const Feature = ({ featureElement }) => {
+export const Feature = ({ featureElement, revert }) => {
     const { t } = useTranslation();
 
     const [actualFeature, setActualFeature] = useState(0);
@@ -15,7 +15,9 @@ export const Feature = ({ featureElement }) => {
     }, []);
 
     return (
-        <div className="features__container__card">
+        <div className={"features__container__card" + (revert ? " reverted" : "")}>
+            {revert && <div className="features__container__card__image" style={{ backgroundImage: `url(${featureElement[actualFeature].img})` }} />}
+
             <div className="features__container__card__description">
                 <div className="features__container__card__item">
                     <h2>{featureElement[actualFeature].title}</h2>
@@ -26,7 +28,8 @@ export const Feature = ({ featureElement }) => {
                     </div>
                 </div>
             </div>
-            <div className="features__container__card__image" style={{ backgroundImage: `url(${featureElement[actualFeature].img})` }} />
+
+            {!revert && <div className="features__container__card__image" style={{ backgroundImage: `url(${featureElement[actualFeature].img})` }} />}
             <div className="features__container__background" ></div>
         </div>
     )
