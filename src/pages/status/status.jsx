@@ -14,7 +14,7 @@ export const Status = () => {
     const [loading, setLoading] = useState(false)
 
     const fetchData = () => {
-        shardsAPI.getStatus().then((data) => { setShards([...data, ...data, data[0]]) }).catch((err) => {
+        shardsAPI.getStatus().then((data) => { setShards(data) }).catch((err) => {
             toast.error(t("status.error"), {
                 duration: 5000,
             })
