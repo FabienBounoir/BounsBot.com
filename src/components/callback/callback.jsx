@@ -5,10 +5,8 @@ import { getUser, login } from "../../utils/API/authAPI";
 import { useHistory } from "react-router-dom/cjs/react-router-dom";
 import { useStore } from "../../utils/store";
 
-// class Callback extends Component {
 export const Callback = () => {
     const history = useHistory();
-    // const [state, dispatch] = useStore();
     const [state, dispatch] = useStore();
 
     useEffect(() => {
@@ -38,8 +36,6 @@ export const Callback = () => {
         })
     }, [])
 
-
-
     return (
         <div className="container-logo">
             <Avatar classElement="width-logo-svg" />
@@ -48,5 +44,3 @@ export const Callback = () => {
         </div>
     )
 }
-
-// export default Callback;

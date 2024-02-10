@@ -55,7 +55,7 @@ export const App = () => {
     let r = document.getElementsByTagName("html")[0];
 
     let date = new Date();
-    if (date.getMonth() === 9) { //&& date.getDate() === 31
+    if (date.getMonth() === 9 && (date.getDate() <= 31 && date.getDate() >= 15)) {
       let r = document.getElementsByTagName("html")[0];
       r.style.setProperty('--color-principal', '#ff5e00');
       r.style.setProperty('--color-principal-hover', '#702a00');
@@ -64,7 +64,7 @@ export const App = () => {
       r.style.setProperty('--color-green', '94');
       r.style.setProperty('--color-blue', '0');
     }
-    else if (date.getMonth() === 11 && (date.getDate() <= 26 && date.getDate() >= 10)) {
+    else if (date.getMonth() === 11 && (date.getDate() <= 27 && date.getDate() >= 10)) {
       let r = document.getElementsByTagName("html")[0];
       //frozen color
       r.style.setProperty('--color-principal', '#00bfff');
@@ -79,10 +79,6 @@ export const App = () => {
     else if (Math.random() < 0.1) {
       colorUpdate(r);
     }
-
-    // setInterval(() => {
-    //   colorUpdate(r);
-    // }, 500)
   }
 
   let colorUpdate = (r) => {
@@ -125,9 +121,6 @@ export const App = () => {
 
   return (
     <div className="App">
-      <button onClick={() => colorUpdate(document.getElementsByTagName("html")[0])}
-        style={{ position: "fixed", top: "0", right: "0", zIndex: "9999" }}
-      >update</button>
       <BrowserRouter>
         <Navigation />
         <Loader />

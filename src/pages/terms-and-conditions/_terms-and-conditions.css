@@ -1,29 +1,26 @@
-.centerDIV{
-    /* position: absolute; */
-    /* top: 50%;
-    left: 50%; */
+.centerDIV {
     padding-top: 5em;
     padding-bottom: 5em;
     background-color: #3e4246;
 }
 
-.para{
+.para {
     font-size: 20px;
     color: #fff;
     font-weight: bold;
     text-align: center;
 }
 
-.title1Terms{
+.title1Terms {
     font-size: 50px;
     color: var(--color-principal);
     font-weight: 700;
     text-align: center;
 }
 
-.title2Terms{
+.title2Terms {
     font-size: 30px;
     color: var(--color-principal);
-    font-weight:300;
+    font-weight: 300;
     text-align: center;
 }

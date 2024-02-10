@@ -1,7 +1,6 @@
 .privacy {
     padding: 0 20px;
     margin: 0 auto;
-    /* max-width: 800px; */
     font-size: 16px;
     line-height: 1.5;
     color: white;
@@ -51,7 +50,6 @@
     display: block;
     margin-left: 2em;
     background: transparent;
-    /* text-indent: -2em; */
 }
 
 .privacy-section .linkButton {

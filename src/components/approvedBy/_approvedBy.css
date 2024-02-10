@@ -232,8 +232,6 @@
 }
 
 .infoComponent .guilds-container .guilds p {
-    /* color: #fff; */
-    /* font-size: 16px; */
     padding: 0;
     margin: 0;
 }
@@ -280,16 +278,12 @@
         margin: 0;
         padding: 0;
         display: flex;
-        /* gap:  */
         flex-direction: column;
         justify-content: center;
         align-items: center;
         height: calc(100vh - 25px);
-        /* min-height: 60vh; */
-        /* max-height: 50vh; */
         padding: 40px 10px 40px 10px;
         gap: 1.5em;
-        /* background: #1f2129; */
     }
 
     .infoComponent h2 {
@@ -311,16 +305,12 @@
         margin: 0;
         padding: 0;
         display: flex;
-        /* gap:  */
         flex-direction: column;
         justify-content: center;
         align-items: center;
         height: calc(100vh - 25px);
-        /* min-height: 60vh; */
-        /* max-height: 50vh; */
         padding: 40px 10px 40px 10px;
         gap: 1.5em;
-        /* background: #1f2129; */
     }
 
     .infoComponent h2 {

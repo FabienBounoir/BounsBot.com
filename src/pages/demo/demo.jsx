@@ -2,6 +2,7 @@
 import "./_demo.css";
 import React, { Component } from 'react'
 import io from 'socket.io-client';
+import Avatar from "../../components/avatar/avatar";
 
 class Demo extends Component {
     constructor(props) {
@@ -179,7 +180,7 @@ class Demo extends Component {
                     message.name = nickname;
                 }
                 return message;
-            }), { name: "Bouns'Bot", picture: "user-6", text: `Votre pseudo a été changé de "${oldNickname}" à "${nickname}"` }]
+            }), { name: "Bouns'Bot", picture: "user-6", text: `✅ | Votre pseudo a été changé de "${oldNickname}" à "${nickname}"` }]
         });
 
         this.setCookie("username", nickname)
@@ -201,7 +202,7 @@ class Demo extends Component {
         }
         else {
             this.setState({
-                messageData: this.state.messageData.concat({ name: "Bouns'Bot", picture: "user-6", text: "Vous n'êtes pas dans le vocal" })
+                messageData: this.state.messageData.concat({ name: "Bouns'Bot", picture: "user-6", text: "❌ | Vous n'êtes pas dans le vocal" })
             });
         }
     }
@@ -215,7 +216,7 @@ class Demo extends Component {
                 this.radio = new Audio(this.selectRadio(number))
 
                 this.setState({
-                    messageData: this.state.messageData.concat({ name: "Bouns'Bot", picture: "user-6", text: `Radio N°${number} en cours de streaming` })
+                    messageData: this.state.messageData.concat({ name: "Bouns'Bot", picture: "user-6", text: `✅ | Radio N°${number} en cours de streaming` })
                 });
 
                 if (this.inVocal) {
@@ -226,13 +227,13 @@ class Demo extends Component {
             }
             else {
                 this.setState({
-                    messageData: this.state.messageData.concat({ name: "Bouns'Bot", picture: "user-6", text: "La radio n'existe pas !!" })
+                    messageData: this.state.messageData.concat({ name: "Bouns'Bot", picture: "user-6", text: "❌ | Cette radio n'existe pas." })
                 });
             }
         }
         else {
             this.setState({
-                messageData: this.state.messageData.concat({ name: "Bouns'Bot", picture: "user-6", text: "Ce n'est pas un chiffre" })
+                messageData: this.state.messageData.concat({ name: "Bouns'Bot", picture: "user-6", text: "❌ | L'argument utilisé n'est pas valide." })
             });
         }
     }
@@ -241,22 +242,22 @@ class Demo extends Component {
     volumeCommandes(volume) {
         if (!(isNaN(volume))) {
             let number = volume;
-            if (number >= 0 && number <= 1) {
-                this.radio.volume = volume;
+            if (number >= 0 && number <= 100) {
+                this.radio.volume = volume / 100;
                 this.setState({
-                    messageData: this.state.messageData.concat({ name: "Bouns'Bot", picture: "user-6", text: `Volume réglé sur ${volume * 10}` })
+                    messageData: this.state.messageData.concat({ name: "Bouns'Bot", picture: "user-6", text: `✅ | Volume réglé sur ${volume}%` })
                 });
-                this.setCookie("volume", volume)
+                this.setCookie("volume", volume / 100)
             }
             else {
                 this.setState({
-                    messageData: this.state.messageData.concat({ name: "Bouns'Bot", picture: "user-6", text: "Volume non compris entre 0 et 10" })
+                    messageData: this.state.messageData.concat({ name: "Bouns'Bot", picture: "user-6", text: "❌ | Volume non compris entre 0 et 100" })
                 });
             }
         }
         else {
             this.setState({
-                messageData: this.state.messageData.concat({ name: "Bouns'Bot", picture: "user-6", text: "Ce n'est pas un chiffre" })
+                messageData: this.state.messageData.concat({ name: "Bouns'Bot", picture: "user-6", text: "❌ | L'argument utilisé n'est pas valide." })
             });
         }
     }
@@ -275,7 +276,7 @@ class Demo extends Component {
         }
         else {
             this.setState({
-                messageData: this.state.messageData.concat({ name: "Bouns'Bot", picture: "user-6", text: "Vous n'êtes pas dans le vocal" })
+                messageData: this.state.messageData.concat({ name: "Bouns'Bot", picture: "user-6", text: "❌ | Vous n'êtes pas dans le vocal." })
             });
         }
     }
@@ -518,8 +519,7 @@ class Demo extends Component {
                         <div className="demo-env member-list" role="group">
                             <div className="voiceUser clickable userSmall" id="discord-bot-voiceuser" tabIndex="-1" role="button">
                                 <div className="content">
-                                    <div className="avatarContainer avatar avatarSmall avatarSpeaking" style={{ backgroundImage: "url('https://cdn.discordapp.com/attachments/806282416364585062/1010652379332497408/Bounsbot.svg')" }}>
-                                    </div>
+                                    <Avatar classElement="avatarContainer avatar avatarSmall avatarSpeaking" width="50" height="50" />
                                     <div className="usernameFont username usernameSpeaking" style={{ textAlign: "left;" }}>Bouns'Bot</div>
                                 </div>
                             </div>
@@ -600,7 +600,7 @@ class Demo extends Component {
                     </div>
                     <div className="demo-env" id="discord-inner">
                         <div className="demo-env" id="discord-inner-messages"><div className="discord-inner-message" >
-                            <div className="avatar user-6"></div>
+                            <Avatar classElement="avatar" width="50" height="50" />
                             <div className="message-content">
                                 <p className="name"><b>Bouns'Bot</b></p>
                                 Bienvenue sur cette démo de la fonctionnalité radio du Bouns'Bot <br />Toutes les radios sont disponibles sur cette démo <br />Rejoindre / Quitter un channel vocal fonctionne comme sur Discord, <br />le bot fait une pause lorsque vous quittez le vocal et reprend lorsque vous y êtes.
@@ -608,7 +608,7 @@ class Demo extends Component {
                         </div>
 
                             <div className="discord-inner-message">
-                                <div className="avatar user-6"></div>
+                                <Avatar classElement="avatar" width="50" height="50" />
                                 <div className="message-content">
                                     <p className="name"><b>Bouns'Bot</b></p>
 
@@ -617,7 +617,7 @@ class Demo extends Component {
                                         <li>/radio [nombre entre 1 et 41] --&gt; Choisir la radio</li>
                                         <li>/pause --&gt; Mettre en pause la radio</li>
                                         <li>/resume --&gt; Remettre la radio</li>
-                                        <li>/volume [Nombre entre 0 et 1] --&gt; Choisir le volume</li>
+                                        <li>/volume [Nombre entre 0 et 10] --&gt; Choisir le volume</li>
                                     </ul>
                                     <ul>
                                         <li>/nick [username] --&gt; Changer de Pseudo</li>
@@ -626,7 +626,7 @@ class Demo extends Component {
                                 </div>
                             </div>
                             <div className="discord-inner-message">
-                                <div className="avatar user-6"></div>
+                                <Avatar classElement="avatar" width="50" height="50" />
                                 <div className="message-content">
                                     <p className="name"><b>Bouns'Bot</b></p>
                                     Je joue déjà dans le canal vocal #Salon vocal, cliquez dessus à droite pour commencer à écouter.
@@ -639,7 +639,9 @@ class Demo extends Component {
                                 for (let data of this.state.messageData) {
                                     dataRender.push(
                                         <div className="discord-inner-message">
-                                            <div className={`avatar ${data.name.toLowerCase() === 'badbounstv' ? ("user-7") : (data.picture.startsWith("https://cdn.discordapp.com/avatars") ? "" : data.picture)}`} style={{ backgroundImage: data.picture.startsWith("https://cdn.discordapp.com/avatars") ? `url(${data.picture})` : "" }}></div>
+                                            {data.picture != "user-6" && <div className={`avatar ${data.name.toLowerCase() === 'badbounstv' ? ("user-7") : (data.picture.startsWith("https://cdn.discordapp.com/avatars") ? "" : data.picture)}`} style={{ backgroundImage: data.picture.startsWith("https://cdn.discordapp.com/avatars") ? `url(${data.picture})` : "" }}></div>}
+                                            {data.picture == "user-6" && <Avatar classElement="avatarContainer avatar avatarSmall avatarSpeaking" width="50" height="50" />}
+
                                             <div className="message-content">
                                                 <p className="name"><b id={data.name.toLowerCase() === 'badbounstv' ? ('badbounstv') : (`role-${data.picture[data.picture.length - 1]}`)}>{data.name}</b></p>
                                                 {data.text}

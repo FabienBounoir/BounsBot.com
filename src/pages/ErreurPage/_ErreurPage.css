@@ -86,9 +86,6 @@
 
 @media (max-width: 1024px) {
     .ErreurPage__container {
-        /* align-items: flex-end; */
-        /* grid-template-columns: 1fr; */
-        /* height: 90vh; */
         gap: 0;
     }
 

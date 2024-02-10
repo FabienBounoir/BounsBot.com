@@ -17,7 +17,7 @@
     -webkit-box-pack: center;
     justify-content: center;
     flex-direction: row;
-    color: var(--color-principal) ;
+    color: var(--color-principal);
 }
 
 .playerMusic svg {
@@ -26,9 +26,9 @@
     height: 40px;
 }
 
-.ClearQueue{
+.ClearQueue {
     text-align: right;
-    color:  var(--color-principal);
+    color: var(--color-principal);
     margin-bottom: 0;
     padding-right: 0.7em;
     cursor: pointer;
@@ -36,10 +36,10 @@
 }
 
 .ClearQueue:hover {
-    color:  var(--color-principal-hover);
+    color: var(--color-principal-hover);
 }
 
-.musiqueRender{
+.musiqueRender {
     margin-top: 30px;
     background-color: rgb(49, 52, 66);
     border-radius: 4px;
@@ -51,16 +51,16 @@
     width: calc(100vh - 100px);
 }
 
-.playerMusic svg{
+.playerMusic svg {
     transition: transform 330ms ease-in-out;
-    
+
 }
 
 .playerMusic svg:hover {
     transform: scale(1.10);
 }
 
-.zoneInterationPlaylist{
+.zoneInterationPlaylist {
     width: 100%;
     padding: 15px;
     border-radius: 0px 0px 8px 8px;
@@ -74,7 +74,6 @@
     user-select: none;
     line-height: 1;
     font-weight: 400;
-    /* display: flex; */
     border-radius: 8px;
     font-size: 13px;
     -webkit-box-pack: center;
@@ -93,7 +92,7 @@
     transition: transform 330ms ease-in-out;
 }
 
-.BoutonConfirm:hover{
+.BoutonConfirm:hover {
     transform: scale(1.10);
 }
 
@@ -102,7 +101,6 @@
     user-select: none;
     line-height: 1;
     font-weight: 400;
-    /* display: flex; */
     margin-left: 10px;
     border-radius: 8px;
     font-size: 13px;
@@ -122,13 +120,13 @@
     transition: transform 330ms ease-in-out;
 }
 
-.BoutonDecline:hover{
+.BoutonDecline:hover {
     transform: scale(1.10);
 }
 
 
 @media (max-width: 900px) {
-    .musiqueRender{
+    .musiqueRender {
         margin-top: 30px;
         background-color: rgb(49, 52, 66);
         border-radius: 4px;
@@ -142,7 +140,7 @@
 }
 
 @media (max-width: 765px) {
-    .musiqueRender{
+    .musiqueRender {
         margin-top: 30px;
         background-color: rgb(49, 52, 66);
         border-radius: 4px;
@@ -156,7 +154,7 @@
 }
 
 @media (max-width: 550px) {
-    .musiqueRender{
+    .musiqueRender {
         margin-top: 30px;
         background-color: rgb(49, 52, 66);
         border-radius: 4px;

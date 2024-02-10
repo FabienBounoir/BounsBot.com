@@ -37,23 +37,6 @@ export const Musique = (props) => {
             .then(response => response.json())
             .then(result => {
                 setMusic(result?.playlist || [])
-                // if (JSON.parse(result).playlist.length === 0) {
-                //     this.setState({
-                //         file: [],
-                //         loadMusique: true,
-                //         preview: "",
-                //         actualMusique: "",
-                //     });
-                // }
-                // else //if(this.state.preview !== JSON.parse(result).playlist.image[0])
-                // {
-                //     this.setState({
-                //         file: JSON.parse(result).playlist,
-                //         loadMusique: true,
-                //         preview: JSON.parse(result).playlist[0].image,
-                //         actualMusique: JSON.parse(result).playlist[0].title
-                //     });
-                // }
             })
             .catch(error => console.log('error', error));
     }
@@ -103,10 +86,7 @@ export const Musique = (props) => {
                 <div className="containerPlayer">
                     <h1>File d'attente</h1>
                     <div className="file-attente">
-                        {/* <div> */}
                         {renderListingMusique()}
-                        {/* </div> */}
-
                     </div>
 
                     <div className="playing-bar">

@@ -1,19 +1,13 @@
 .dashboard {
     display: flex;
     background-color: #383c41;
-
-    /* min-height: calc(100vh - 80px); */
     height: var(--dashboard-height, calc(100dvh - 60px));
     overflow-x: hidden;
-    /* calc(var(--doc-height) - 55px); */
-    /* max-height: calc(100vh - 55px); */
-    /* min-height: -webkit-fill-available; */
 }
 
 .servers {
     min-width: 72px;
     background-color: #202225;
-    /* overflow-y: scroll; */
     scrollbar-width: none;
     -ms-overflow-style: none;
     -webkit-overflow-scrolling: touch;
@@ -27,9 +21,6 @@
 }
 
 .servers .list_item .guildAvatar, .userAvatar {
-    /* display: -webkit-box; */
-    /* display: -ms-flexbox; */
-    /* display: flex; */
     width: 48px;
     height: 48px;
     -webkit-box-align: center;
@@ -39,17 +30,6 @@
     -ms-flex-pack: center;
     justify-content: center;
 }
-
-/* .userAvatar {
-    width: 48px;
-    height: 48px;
-    -webkit-box-align: center;
-    -ms-flex-align: center;
-    align-items: center;
-    -webkit-box-pack: center;
-    -ms-flex-pack: center;
-    justify-content: center;
-} */
 
 .servers .list_item {
     position: relative;
@@ -117,10 +97,6 @@
 }
 
 .balise {
-    /* position: absolute;
-    left: 0;
-    top: 0; */
-
     position: relative;
     overflow: hidden;
     width: 8px;
@@ -144,7 +120,6 @@
 }
 
 .list_item {
-    /* background-color: #f31010; */
     -webkit-user-select: none;
     -moz-user-select: none;
     user-select: none;
@@ -190,11 +165,9 @@
 }
 
 .configuration_list {
-    /* transition: width 0.3s ease-out 0s; */
     transition: width 0.3s ease-in-out, min-width 0.3s ease-in-out, max-width 0.3s ease-in-out;
 }
 
 .servers {
-    /* transition: width 0.3s ease-out 0s; */
     transition: width 0.4s ease-in-out, min-width 0.4s ease-in-out, max-width 0.4s ease-in-out;
 }

@@ -54,11 +54,10 @@ export const ListServer = (props) => {
                     </div >
                     <div className="guildAvatar loading">
                         <div></div>
-                        {/* <img src={`https://cdn.discordapp.com/icons/${guild.id}/${guild.icon}.webp`} alt={guild.name} onError={(e) => { e.target.outerHTML = `<img src='https://cdn.discordapp.com/embed/avatars/${random}.png'/>` }} /> */}
                     </div>
                     <span>
                         <div className="name">
-                            {/* {guild.name} */}
+
                         </div>
                     </span>
                 </div>)

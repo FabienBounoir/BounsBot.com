@@ -1,4 +1,3 @@
-// import React from "react";
 import "./_navbar.css";
 import React, { useEffect, useReducer, useState } from 'react'
 import { Navbar, Container, Nav } from 'react-bootstrap/'

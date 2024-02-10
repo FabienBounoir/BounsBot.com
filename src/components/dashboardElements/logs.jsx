@@ -228,7 +228,6 @@ export const Logs = ({ guildId, configuration, updateConfiguration, channels, lo
                             </svg>
                             <h5 className="hrnh5k-0 eeKdki sc-1wkjbe7-8 GoZzi">{t("dashboard.logs.title.emotes_stickers")}</h5>
                         </div>
-                        {/* defaultValue={this.state.configuration.logs.message} onChange={(event) => { this.setState({ configuration: { ...this.state.configuration, logs: { ...this.state.configuration.logs, message: event.target.value } } }) }} */}
                         <Form.Select defaultValue={configuration.logs?.emotes_stickers} value={configuration.logs?.emotes_stickers} onChange={(e) => { updateConfiguration({ ...configuration, logs: { ...configuration.logs, emotes_stickers: e.target.value } }) }}>
                             {(() => {
                                 return getChannelForSelector(configuration.logs?.emotes_stickers);

@@ -230,7 +230,7 @@
                 "ontheguild": "Sur le serveur",
                 "onGuild": "Sur {{guild}}",
                 "welcomeontheguild": "Bienvenue {{username}} sur le serveur !",
-                "youarethe": "Tu es le {{number}}ème membres",
+                "youarethe": "Tu es le {{number}}ème membre",
                 "readRules": "Assure toi de lire les règles !"
             }
         },

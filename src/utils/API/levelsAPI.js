@@ -28,8 +28,3 @@ export const guild = (guildId, page = 0) => {
         }
     })
 }
-
-// module.exports = {
-//     global,
-//     guild
-// }

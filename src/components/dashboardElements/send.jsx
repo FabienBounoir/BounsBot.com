@@ -91,7 +91,6 @@ export const Send = ({ guildId, channels, loading }) => {
 
                     <div className="sendMessageContainer">
                         <div className="sendMessageComponent">
-                            {/* //Create message component like discord style */}
                             <div className="demo">
                                 <div className="message">
                                     <div className="content">

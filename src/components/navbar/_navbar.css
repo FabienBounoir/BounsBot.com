@@ -4,13 +4,6 @@ header, nav, footer, section, article, aside {
     box-sizing: border-box;
 }
 
-/* nav{
-	display: grid;
-	grid-template-areas: 
-	"text bouton";
-	grid-template-columns: 3fr 0.3fr;
-} */
-
 header {
     text-align: left;
     border: 3px solid #343a40;
@@ -28,7 +21,6 @@ ul#menu li {
     align-items: center;
     height: 50px;
     align-items: initial;
-    /* line-height: 50px; */
 }
 
 ul#menu li a {
@@ -38,7 +30,6 @@ ul#menu li a {
 
 ul {
     display: inline;
-    /* grid-area: text; */
     margin: 0px;
 }
 
@@ -98,7 +89,6 @@ ul {
     display: flex;
     -webkit-box-align: center;
     align-items: center;
-    /* cursor: pointer; */
     gap: 0.5rem;
 }
 
@@ -117,7 +107,6 @@ ul {
 
 .login_button_container .goToDashboard span {
     font-size: 20px;
-    /* letter-spacing: 1px; */
     font-weight: 700;
 }
 
@@ -145,7 +134,6 @@ ul {
 
 @media (max-width: 767px) {
     .login-template {
-        /* display: none; */
         align-self: center;
     }
 }

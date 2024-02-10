@@ -7,11 +7,6 @@
 
 .elementContainer>p {
     all: unset;
-    /* font-size: 0.7rem; */
-    /* font-weight: 500; */
-    /* color: white; */
-    /* text-transform: uppercase; */
-
     text-align: left;
     font-size: 12px;
     line-height: 16px;
@@ -20,7 +15,6 @@
     letter-spacing: .02em;
 
     padding: 5px 5px 5px 0;
-    /* padding-bottom: 16px; */
     text-align: left;
     vertical-align: middle;
 }
@@ -44,7 +38,6 @@
 
 .inputContainer input {
     all: unset;
-    /* background-color: red; */
     background-color: #202225;
     border: 0;
     border-radius: 4px;
@@ -61,7 +54,6 @@
     all: unset;
     padding: 10px 10px 10px 0;
     appearance: initial;
-    /* background-color: green; */
 }
 
 .spacerInfraction {
@@ -69,7 +61,6 @@
     padding: 0;
     height: 10px;
     width: 100%;
-    /* background-color: #4d4b4b; */
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -156,11 +147,9 @@
 
 .automatedInfraction button {
     background-color: rgba(var(--color-red), var(--color-green), var(--color-blue), 0.2);
-    /* color: white; */
     border: none;
     border-radius: 10px;
     padding: 6px 8px;
-    /* margin: 10px; */
     font-size: 1rem;
     cursor: pointer;
     transition: 0.3s;
@@ -244,8 +233,6 @@
 }
 
 .block table tbody tr td {
-    /* padding-top: 5px;
-    padding-bottom: 5px; */
     padding: 5px 0;
 }
 
@@ -289,11 +276,6 @@
     color: white;
     font-weight: bold;
     width: -webkit-fill-available;
-    /* justify-content: space-between; */
-}
-
-.stats_moderator div svg {
-    /* width: 3em; */
 }
 
 .stats_moderator div p {
@@ -305,7 +287,6 @@
     width: 2.5em;
     height: 2.5em;
     border-radius: 50%;
-    /* border: 1.5px solid var(--color-principal); */
 }
 
 .avatar_moderator {
@@ -319,7 +300,6 @@
     width: 2.5em;
     height: 2.5em;
     border-radius: 50%;
-    /* border: 1.5px solid var(--color-principal); */
 }
 
 .avatar_moderator>div {
@@ -468,7 +448,6 @@ svg.disableSVGButton {
     width: 12px;
     height: 12px;
     margin: 4px 2px 4px 4px;
-    /* background-color: green; */
 }
 
 .roleRewardElement {
@@ -504,56 +483,36 @@ svg.disableSVGButton {
     font-size: 1.2rem;
 }
 
-/* The slider itself */
+
 .slider {
     -webkit-appearance: none;
-    /* Override default CSS styles */
     appearance: none;
     width: 100%;
-    /* Full-width */
     height: 8px;
-    /* Specified height */
     background: white;
-    /* Grey background */
     outline: none;
-    /* Remove outline */
-    /* opacity: 0.7; */
-    /* Set transparency (for mouse-over effects on hover) */
     -webkit-transition: .2s;
-    /* 0.2 seconds transition on hover */
     transition: opacity .2s;
 }
 
-/* Mouse-over effects */
 .slider:hover {
     opacity: 1;
-    /* Fully shown on mouse-over */
 }
 
-/* The slider handle (use -webkit- (Chrome, Opera, Safari, Edge) and -moz- (Firefox) to override default look) */
 .slider::-webkit-slider-thumb {
     -webkit-appearance: none;
-    /* Override default look */
     appearance: none;
     width: 25px;
-    /* Set a specific slider handle width */
     height: 25px;
-    /* Slider handle height */
     background: var(--color-principal);
-    /* Green background */
     cursor: pointer;
-    /* Cursor on hover */
 }
 
 .slider::-moz-range-thumb {
     width: 25px;
-    /* Set a specific slider handle width */
     height: 25px;
-    /* Slider handle height */
     background: var(--color-principal);
-    /* Green background */
     cursor: pointer;
-    /* Cursor on hover */
 }
 
 .slider {
@@ -563,7 +522,6 @@ svg.disableSVGButton {
     border-radius: 5px;
     background: white;
     outline: none;
-    /* opacity: 0.7; */
     -webkit-transition: .2s;
     transition: opacity .2s;
 }
@@ -603,12 +561,9 @@ svg.disableSVGButton {
 }
 
 input[type="radio"] {
-    /* Add if not using autoprefixer */
     -webkit-appearance: none;
     appearance: none;
-    /* For iOS < 15 to remove gradient background */
     background-color: #fff;
-    /* Not removed via appearance */
     margin: 0;
 
     font: inherit;
@@ -676,22 +631,13 @@ input[type="radio"]:checked::before {
 
 
 
-
-
-
-
 /* /////////////// Dashboard Info ////////////////// */
 
 .infoDashboard {
     display: flex;
     flex-direction: column;
-    /* justify-content: center; */
-    /* align-items: center; */
     width: 100%;
     height: 100%;
-    /* border-radius: 10px; */
-    /* padding: 20px; */
-    /* margin: 10px; */
 }
 
 .infoDashboard h1 {
@@ -705,8 +651,6 @@ input[type="radio"]:checked::before {
 .infoDashboard__content {
     display: flex;
     flex-direction: column;
-    /* justify-content: center; */
-    /* align-items: */
     text-align: justify;
     width: 100%;
     height: 100%;
@@ -756,14 +700,12 @@ input[type="radio"]:checked::before {
     display: grid;
     grid-template-areas: "pochette name interaction";
     grid-template-columns: 60px auto 60px;
-    /* text-align: left; */
 }
 
 .file-attente .list .pochette {
     grid-area: pochette;
     width: 100%;
     height: 100%;
-    /* background-color: #000; */
 }
 
 .file-attente .list .pochette .interaction {
@@ -945,7 +887,6 @@ input[type="radio"]:checked::before {
 .demo .message .content .header_info .botCertified {
     margin-left: 5px;
     margin-right: 5px;
-    /* color: #00b0f4; */
     color: white;
     background-color: hsl(235, calc(0.95 * 85.6%), 64.7%);
     padding: 0 5px 0 2px;
@@ -1009,14 +950,6 @@ input[type="radio"]:checked::before {
 }
 
 .sendMessageContainer {
-    /* display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
-    flex-wrap: wrap;
-    gap: 10px; */
-
     border-radius: 5px;
     padding: 10px;
     background-color: #14171d;
@@ -1228,16 +1161,6 @@ input[type="radio"]:checked::before {
     flex-direction: row;
 }
 
-/* .infoActive::after {
-    content: "";
-    display: block;
-    width: 100%;
-    height: 1px;
-    background-color: #4d4b4b;
-    margin: 0;
-    margin-top: 0.3em;
-} */
-
 .separator {
     display: flex;
     align-items: center;
@@ -1253,24 +1176,12 @@ input[type="radio"]:checked::before {
     align-items: center;
     color: white;
     text-align: left;
-    /* padding: 0 1rem; */
     margin: 1rem 0;
 }
 
 .padding-1 {
     padding: 0.5em 1em 1em 1em;
 }
-
-/* .block .top::after {
-    content: "";
-    display: block;
-    width: 100%;
-    height: 1px;
-    background-color: #4d4b4b;
-    margin: 0;
-    margin-top: 0.3em;
-} */
-
 
 .tag {
     background-color: #14171d;
@@ -1286,8 +1197,6 @@ input[type="radio"]:checked::before {
 .colorModule {
     background-color: #14171d;
     color: #ffffff;
-    /* font-size: 12px; */
-    /* font-weight: 600; */
     padding: 5px 10px;
     border-radius: 5px;
     margin: 0 15px 0 0;
@@ -1296,8 +1205,6 @@ input[type="radio"]:checked::before {
     justify-content: center;
     flex-direction: row;
     gap: 0.5em;
-
-
 }
 
 .block .informationConfig {
@@ -1353,7 +1260,6 @@ input[type="radio"]:checked::before {
     align-items: left;
     justify-content: center;
     gap: 1em;
-    /* width: 42%; */
 }
 
 .informationConfig ul li {
@@ -1373,7 +1279,6 @@ input[type="radio"]:checked::before {
 .WelcomeComponente canvas {
     aspect-ratio: 1200/500;
     width: 100%;
-    /* height: 100%; */
 }
 
 .embed::before {
@@ -1705,7 +1610,6 @@ input[type="radio"]:checked::before {
 }
 
 .block .modules {
-    /* background-color: red; */
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 1rem;
@@ -1734,12 +1638,7 @@ input[type="radio"]:checked::before {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     gap: 40px;
-    /* padding-top: 24px;
-    padding-bottom: 24px; */
-    /* width: 90%; */
     gap: 40px;
-    /* width: 70%; */
-    /* margin-top: 57px; */
     margin-bottom: 60px;
     margin-top: 2em;
 }
@@ -1809,8 +1708,6 @@ input[type="radio"]:checked::before {
         display: grid;
         grid-template-columns: 1fr 1fr;
         gap: 24px;
-        /* padding-top: 100px; */
-        /* width: 90%; */
     }
 }
 
@@ -1830,8 +1727,6 @@ input[type="radio"]:checked::before {
         display: grid;
         grid-template-columns: 1fr;
         gap: 14px;
-        /* padding-top: 100px; */
-        /* width: 95%; */
     }
 
     .mod_cellule {

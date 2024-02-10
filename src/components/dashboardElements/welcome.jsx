@@ -33,6 +33,7 @@ export const Welcome = ({ guildId, configuration, setConfiguration, channels, ro
          * @type {CanvasRenderingContext2D}
         */
         let ctx = canvas.getContext("2d");
+        ctx.reset()
         ctx.clearRect(0, 0, canvas.width, canvas.height);
         ctx.globalCompositeOperation = 'source-over';
         ctx.resetTransform();
@@ -130,7 +131,7 @@ export const Welcome = ({ guildId, configuration, setConfiguration, channels, ro
             // ctx.fillText("BadbounsTV#2000", 520, 270); //480
 
             const maxWidth = 630;
-            let text = `${user?.username}#${user?.discriminator}`;
+            let text = `${user?.username}${user?.discriminator && user?.discriminator != 0 ? `#${user?.discriminator}` : ""}`;
             let fontSize = 70;
 
             ctx.font = `bold ${fontSize}px Arial`;
@@ -297,7 +298,7 @@ export const Welcome = ({ guildId, configuration, setConfiguration, channels, ro
             ctx.fillStyle = darkenColor(colorText, 20);
             //resize text
             const maxWidth2 = 700;
-            let text2 = (user?.username + "#" + user?.discriminator || "Wumpus#1234");
+            let text2 = (user?.username + (user?.discriminator && user?.discriminator != 0 ? `#${user?.discriminator}` : "") || "Wumpus#1234");
             let fontSize2 = 45;
 
             ctx.font = `${fontSize2}px Arial`;
@@ -813,13 +814,6 @@ export const Welcome = ({ guildId, configuration, setConfiguration, channels, ro
 
                         </div>
                         <div className="configWelcomeCanvas">
-                            {/* <div style={{ marginBottom: "10px" }}>
-                                <span>Salon de messages de bienvenue:</span>
-                            
-                            </div>
-
-                            <div className="separator"></div> */}
-
                             <div style={{ marginBottom: "10px" }}>
                                 <p>{t("dashboard.welcome.guild.themecard")}</p>
                                 <Form.Select defaultValue={configuration?.welcome?.guild?.design} onChange={(event) => { updateTheme(event.target.value) }}>
@@ -857,7 +851,7 @@ export const Welcome = ({ guildId, configuration, setConfiguration, channels, ro
 
                     <div className="separator"></div>
 
-                    <div className="roleElements" style={{ display: "flex" }}>
+                    <div className="roleElements" style={{ display: "flex", pointerEvents: (configuration?.welcomeRole?.active ? "auto" : "none") }}>
                         {moduleRole()}
                     </div>
                 </div>
@@ -875,14 +869,9 @@ export const Welcome = ({ guildId, configuration, setConfiguration, channels, ro
                         value={configuration?.welcome?.guild?.defaultPseudo || ""}
                         onChange={(event) => { updateDefaultPseudo(event.target.value) }}
                     />
-
                 </div>
-
-
             </>
         }
-
-        {/* <div id="card" className={"cardSave" + (changeNotSave ? " hidden" : "")} ><div className="saveConfig"><div style={{ display: "flex", alignItems: "center", flexDirection: "row", gap: "0.3em" }}><Avatar classElement="logoChangement" width="30" height="28" /> Changements détectés ! Veuillez enregistrer ou annuler.</div><div className="buttonContainer"><button className="cancelButton" disabled={loadingChargement} type="button" onClick={resetChange}>Annuler</button><button className="saveButton" type="button" disabled={loadingChargement} onClick={updateConfig}>Enregistrer</button></div></div></div> */}
     </>)
 }
 

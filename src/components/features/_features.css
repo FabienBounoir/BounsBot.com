@@ -12,7 +12,6 @@
 
 .features__container {
     display: grid;
-    /* grid-template-rows: repeat(3, 1fr); */
     gap: 1rem;
     justify-items: center;
     justify-content: center;
@@ -74,10 +73,7 @@
     position: relative;
     backdrop-filter: blur(4px);
     width: 100vw;
-    /* max-width: 1024px; */
     max-width: 90%;
-    /* padding-left: 1rem !important;
-    padding-right: 1rem !important; */
 }
 
 .features__container__card.reverted {
@@ -128,7 +124,6 @@
     display: flex;
     justify-content: center;
     align-items: left;
-    /* padding: 1rem 2rem; */
     border-radius: 0.5rem;
     background-color: var(--back-button-color);
     color: #fff;
@@ -141,9 +136,7 @@
 }
 
 .features__container__card__button>a:first-child {
-    /* background-clip: text; */
     font-weight: 500;
-    /* color: transparent; */
     background-image: linear-gradient(to right, var(--color-principal), var(--color-principal-hover));
     padding: 14px 18px 14px 18px;
     border-radius: 10px;
@@ -152,9 +145,7 @@
 }
 
 .features__container__card__button>a {
-    /* background-clip: text; */
     font-weight: 500;
-    /* color: transparent; */
     background-image: rgb(255 255 255/0.1);
     padding: 14px 18px 14px 18px;
     border-radius: 10px;
@@ -174,9 +165,6 @@
 
     background-repeat: no-repeat !important;
     background-position: center !important;
-    /* 
-    object-fit: cover;
-    object-position: center; */
 }
 
 @media screen and (min-width: 500px) {
@@ -228,17 +216,6 @@
         display: grid !important;
         grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
         max-width: 900px !important;
-        /* padding: 2rem;
-        row-gap: 2rem;
-        z-index: 1;
-        position: relative;
-        height: 100%;
-        background: radial-gradient(63.94% 63.94% at 50% 0%, rgba(255, 255, 255, 0.04) 0%, rgba(255, 255, 255, 0) 100%), rgba(255, 255, 255, 0.04);
-
-        backdrop-filter: blur(4px);
-        border-radius: 0.5rem;
-        border: 1px solid;
-        border-color: rgb(255 255 255/0.04); */
     }
 
     .features__container__card__image {

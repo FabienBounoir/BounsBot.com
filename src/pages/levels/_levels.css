@@ -7,9 +7,7 @@
 .infinite-scroll-component {
     display: flex;
     flex-direction: column;
-    /* grid-gap: 15px; */
     gap: 15px;
-    /* padding-bottom: 15px; */
     color: white;
 }
 
@@ -28,12 +26,10 @@
 
 .leaderboard {
     display: flex;
-    /* flex-wrap: wrap-reverse; */
     gap: 2em;
 }
 
 .rolesInfo {
-    /* background-color: #3e4246; */
     background-color: #1f1f25;
     padding: 1rem 1.5rem;
     border-radius: 3px;
@@ -68,7 +64,6 @@
     width: 12px;
     height: 12px;
     margin: 4px 2px 4px 4px;
-    /* background-color: green; */
 }
 
 .roleInfo div {
@@ -121,7 +116,6 @@
     margin: -2px 0 -12px;
     font-size: 55px;
     color: var(--color-principal);
-    /* font-family: "Uni Sans", "Arial", sans-serif; */
     font-weight: bold;
 }
 
@@ -148,8 +142,6 @@
 
     background: linear-gradient(90deg, #50555a 0%, #3e4246 50%, #50555a 100%);
     animation: cssSkeletonAnimation 1.5s infinite;
-    /* background-color: #50555a; */
-    /* width: 1000Px; */
     width: 4em;
 
     display: flex;
@@ -191,11 +183,6 @@
 }
 
 .leaderboardPlayer {
-    /* display: -webkit-box;
-    display: -moz-box;
-    display: -webkit-flex;
-    display: -ms-flexbox;
-    display: box; */
     display: flex;
     -webkit-box-orient: horizontal;
     -moz-box-orient: horizontal;
@@ -216,7 +203,6 @@
 }
 
 .leaderboardPlayersListContainer {
-    /* margin: auto; */
     max-width: 100%;
     -webkit-flex-shrink: 2;
     flex-shrink: 2;
@@ -466,9 +452,6 @@
     font-weight: 700;
 }
 
-.leaderboardPlayerStat {
-    /* display: none; */
-}
 
 .niveau {
     position: absolute;
@@ -478,7 +461,6 @@
     font-size: 20px;
     font-weight: 600;
     color: #fff;
-    /* color: var(--color-principal); */
 }
 
 .text-success {
@@ -521,7 +503,6 @@
 
 @media screen and (max-width: 440px) {
     .leaderboardPlayerIcon {
-        /* display: none; */
         grid: 0%;
     }
 
