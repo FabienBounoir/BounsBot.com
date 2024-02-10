@@ -13,6 +13,7 @@
     height: 100svh;
 
     user-select: none;
+    scroll-padding-top: 1em;
 }
 
 
@@ -92,6 +93,7 @@
     background: linear-gradient(180deg, var(--color-principal) 0%, var(--color-principal-hover) 350%);
     position: relative;
     color: #1f2129;
+    scroll-padding-top: 1em;
 }
 
 .infoComponent .info-content {

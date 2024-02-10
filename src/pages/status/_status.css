@@ -21,12 +21,31 @@
     align-items: center;
 }
 
+.shardManager {
+    display: flex;
+    justify-content: space-between;
+}
+
+.shardManager input {
+    outline: none;
+    border: none;
+    width: 100%;
+    padding: 17px 22px;
+    padding-inline-end: 3.5rem;
+    border-radius: 12px;
+    background-color: rgba(255, 255, 255, 0.08);
+    color: #FFFFFF;
+    border: 1px solid;
+    border-color: rgb(255 255 255/0.04);
+}
+
 .statusContainer p {
     color: white;
     font-size: 1rem;
     font-weight: 500;
     margin: 0;
     padding-bottom: 0.5rem !important;
+    text-wrap: balance;
 }
 
 .statusContainer .top {
@@ -52,25 +71,29 @@
 }
 
 .shardGrid {
-    display: flex;
-    flex-wrap: wrap;
+    display: grid;
     max-width: 100%;
     justify-content: center;
     color: var(--color-principal);
+    grid-template-columns: repeat(auto-fit, minmax(60px, 1fr));
+    margin: 16px auto 0;
+    gap: 0.5rem;
 }
 
 .shardGrid .shard {
-    width: 45px;
+    /* width: 45px; */
     height: 45px;
-    background-color: #1f1f25;
+    background-color: rgba(255, 255, 255, 0.08);
     display: flex;
     justify-content: center;
     align-items: center;
-    margin: 4px;
+    /* margin: 4px; */
     font-weight: 500;
     border-radius: 3px;
     cursor: pointer;
     transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+    border: 1px solid;
+    border-color: rgb(255 255 255/0.04);
 }
 
 .shardGrid .shard:hover {

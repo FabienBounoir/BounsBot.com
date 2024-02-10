@@ -309,7 +309,7 @@
     "status": {
         "status": "Status",
         "description": "Welcome to the 'Bouns'bot Status' page. Here, you will find information about the different shards and their current state. This will keep you informed in case of any potential issues and let you know if it affects your server.",
-        "idServer": "Server ID",
+        "idServer": "Enter your Server ID",
         "latency": "Latency",
         "uptime": "Uptime",
         "guildCount": "{{count}} servers",

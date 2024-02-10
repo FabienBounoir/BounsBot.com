@@ -307,7 +307,7 @@
             "status": {
                 "status": "Estados",
                 "description": "Bienvenido a la página 'Estados de Bouns'bot'. Aquí encontrarás información sobre los diferentes fragmentos y su estado actual. Esto te permitirá estar informado en caso de problemas y saber si afecta a tu servidor.",
-                "idServer": "ID del servidor",
+                "idServer": "Introduce tu ID de servidor",
                 "latency": "Latencia",
                 "uptime": "Tiempo de actividad",
                 "guildCount": "{{count}} servidores",

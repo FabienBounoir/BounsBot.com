@@ -309,7 +309,7 @@
     "status": {
         "status": "Stati",
         "description": "Benvenuto nella pagina 'Stati di Bouns'bot'. Qui troverai informazioni sui diversi shard e il loro stato attuale. Questo ti aiuterà a rimanere informato in caso di eventuali problemi e sapere se influisce sul tuo server.",
-        "idServer": "ID del server",
+        "idServer": "Inserisci il tuo ID server",
         "latency": "Latenza",
         "uptime": "Tempo di attività",
         "guildCount": "{{count}} server",

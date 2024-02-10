@@ -309,7 +309,7 @@
     "status": {
         "status": "状态",
         "description": "欢迎来到“Bouns'bot状态”页面。在这里，您将找到有关不同分片及其当前状态的信息。这将使您能够及时了解可能出现的问题以及是否会影响您的服务器。",
-        "idServer": "服务器ID",
+        "idServer": "输入您的服务器ID",
         "latency": "延迟",
         "uptime": "正常运行时间",
         "guildCount": "{{count}} 服务器",

@@ -486,12 +486,6 @@ export const Levels = () => {
         })()}
 
       </div>
-
-      {(() => {
-        if (errorLoading) {
-          return <LoadingFullPage error={errorLoading} />
-        }
-      })()}
     </div>
   )
 }

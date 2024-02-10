@@ -5,7 +5,7 @@ export const BestGuild = ({ guild, display, index }) => {
     const { t } = useTranslation();
     const [ref, inView] = useInView({
         triggerOnce: true, // Pour déclencher l'animation une seule fois
-        threshold: 0.5, // Le pourcentage de l'élément visible pour déclencher l'animation
+        threshold: 0.1, // Le pourcentage de l'élément visible pour déclencher l'animation
     });
 
 
@@ -21,7 +21,7 @@ export const BestGuild = ({ guild, display, index }) => {
         }
     }
 
-    return (<div className={`guilds ${inView ? 'active' : ''}`} ref={ref} style={{ transitionDelay: `${index * 0.1}s` }}>
+    return (<div className={`guilds ${inView ? 'active' : ''}`} ref={ref} style={{ transitionDelay: `${index * 0.05}s` }}>
         <img src={guild.iconURL || "https://media.discordapp.net/attachments/1014101467126304798/1056241554764869673/image.png?width=1290&height=1290"} alt="logo" onError={(e) => { e.target.outerHTML = `<img loading="lazy" src='https://media.discordapp.net/attachments/1014101467126304798/1056241554764869673/image.png?width=1290&height=1290'/>` }} />
         <div>
             <h3>{guild.name}</h3>

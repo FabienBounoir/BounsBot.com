@@ -63,8 +63,11 @@
 }
 
 .column a:hover {
-    color: var(--color-principal);
-    animation: color-change 1s infinite alternate;
+    color: transparent;
+    background-clip: text;
+    background-image: linear-gradient(to right, var(--color-principal), var(--color-principal-hover));
+    background-size: 300% 100%;
+    animation: gradientAnimation 3s linear infinite alternate-reverse;
 }
 
 .column Link {

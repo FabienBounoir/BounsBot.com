@@ -41,7 +41,7 @@
     grid-template-areas: "text avatar";
     height: calc(100svh - 85px);
     width: 100%;
-    background-color: #0f0f10;
+    /* background-color: #0f0f10; */
     color: white;
     font-family: 'Roboto', sans-serif;
     font-size: 1.5em;
@@ -53,18 +53,14 @@
 
     min-height: 500px;
 
-    /* background-image: url("https://mee6.xyz/assets/shine-83dc716d.webp");
-    background-size: cover;
-    background-position: left; */
-    /* background: linear-gradient(180deg, #1e1e1e 0%, var(--color-principal) 350%); */
+    background: radial-gradient(63.94% 63.94% at 50% -20%, var(--color-principal-hover) 0%, #0f0f10 100%), #0f0f10;
 
     gap: 32px;
-
     user-select: none;
 }
 
 .home_halloween {
-    background: url(./spider_top.webp) no-repeat, url(./spider_bottom.webp) no-repeat right bottom, linear-gradient(180deg, #1e1e1e 0%, var(--color-principal) 350%);
+    background: url(./spider_top.webp) no-repeat, url(./spider_bottom.webp) no-repeat right bottom, radial-gradient(63.94% 63.94% at 50% 50%, var(--color-principal-hover) 0%, #0f0f10 100%), #0f0f10;
     background-size: contain;
 }
 

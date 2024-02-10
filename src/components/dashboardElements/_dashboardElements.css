@@ -189,6 +189,10 @@
     transition: transform 0.3s ease-in-out;
 }
 
+.block .load_more_data.noMoreData {
+    display: none;
+}
+
 .block .load_more_data:hover svg {
     animation: moveDown 1s ease-out infinite;
 }
