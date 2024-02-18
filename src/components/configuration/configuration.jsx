@@ -36,6 +36,7 @@ export const Configuration = (props) => {
     const [configGuildUpdateSelected, setConfigGuildUpdateSelected] = useState({})
     const [channels, setChannels] = useState([])
     const [roles, setRoles] = useState([])
+    const [guildInfo, setGuildInfo] = useState({})
     const [loading, setLoading] = useState("LOADING")
     const history = useHistory();
 
@@ -155,10 +156,11 @@ export const Configuration = (props) => {
     }, [configGuildUpdateSelected])
 
     const getElement = async () => {
-        let res = await guildsAPI.getElement(activeGuild, 'all')
+        const { channels, roles, ...info } = await guildsAPI.getElement(activeGuild, 'all')
 
-        setChannels(res.channels)
-        setRoles(res.roles)
+        setChannels(channels)
+        setRoles(roles)
+        setGuildInfo(info)
     }
 
     const getData = async () => {
@@ -227,7 +229,7 @@ export const Configuration = (props) => {
     }
 
     const renderListingGuildConfiguration = () => {
-        return (<header className={getHeaderType()} style={{ backgroundImage: `url("https://cdn.discordapp.com/icons/${guild?.id}/${guild?.icon}.webp?size=1024")` }}>
+        return (<header className={getHeaderType()} style={{ backgroundImage: `url(${guildInfo && guildInfo?.banner ? guildInfo?.banner : `"https://cdn.discordapp.com/icons/${guild?.id}/${guild?.icon}.webp?size=1024"`})` }}>
             <p>{guild?.name}</p>
         </header>)
     }
