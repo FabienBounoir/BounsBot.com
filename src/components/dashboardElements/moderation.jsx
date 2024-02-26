@@ -243,7 +243,7 @@ export const Moderation = ({ guildId, configuration, updateConfiguration, confAc
                                         <option value="WARN">Warn</option>
                                         <option value="MUTE">Mute</option>
                                         <option value="TEMPMUTE">TempMute</option>
-                                        <option value="ban">Ban</option>
+                                        <option value="BAN">Ban</option>
                                         <option value="TEMPBAN">TempBan</option>
                                     </select>
                                 </div>
