@@ -12,13 +12,13 @@
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Bouns'bot">
   <meta property="og:description"
-    content="Bouns'Bot a discord bot compatible with 20 languages developed by @Badbouns. The easiest Discord bot to use ! Game | Moderation | Leveling | Twitch Chat | Radio | Ticket | Temp Channel & more !">
+    content="Enhance your server with our all-in-one bot. The easiest Discord bot to use ! Game, Moderation, Leveling, Twitch, Radio, Ticket, Temporary voice Channel & more ! 👀">
   <meta name="language" content="French">
   <meta name="author" content="BadbounsTV">
   <meta property="og:url" content="https://bounsbot.com/">
   <meta property="og:image" content="%PUBLIC_URL%/banner.png">
-  <meta property="og:image:width" content="1616">
-  <meta property="og:image:height" content="1010">
+  <meta property="og:image:width" content="5088">
+  <meta property="og:image:height" content="3042">
   <meta property="og:image:type" content="image/png">
 
   <meta property="twitter:card" content="summary_large_image">
@@ -66,6 +66,7 @@
     media="(device-width: 1024px) and (device-height: 1366px) and (-webkit-device-pixel-ratio: 2)"
     rel="apple-touch-startup-image" />
   <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="version" content="2.7.0">
 
   <title>Bouns'Bot</title>
   <meta name="google-site-verification" content="84Ofysxu1K3gydBGwK2SFJpXGPJ9b4ashL8cXGCnW-A" />
@@ -95,14 +96,16 @@
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', function () {
         navigator.serviceWorker.register('worker.js').then(function (registration) {
+          console.log("navigator.onLine", navigator.onLine)
           if (navigator.onLine) {
+            console.log('Update worker', registration.scope);
             registration.update();
           }
-          // console.log('Worker registration successful', registration.scope);
+          console.log('Worker registration successful', registration.scope);
         }, function (err) {
-          // console.log('Worker registration failed', err);
+          console.log('Worker registration failed', err);
         }).catch(function (err) {
-          // console.log(err);
+          console.log(err);
         });
       });
     } else {
