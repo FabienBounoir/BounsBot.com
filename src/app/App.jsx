@@ -142,9 +142,11 @@ export const App = () => {
               title="Bouns'Botㆍcommandes"
               description="Learn how to use Bouns'bot, the multifunction bot for your Discord server."
               name="Bouns'Bot" />
-            <Commandes />
-            <BrandAddBot />
-            <Footer />
+            <ScrollToTop>
+              <Commandes />
+              <BrandAddBot />
+              <Footer />
+            </ScrollToTop>
           </Route>
 
           <Route exact path="/status">

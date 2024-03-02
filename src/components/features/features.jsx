@@ -32,17 +32,20 @@ export const Features = () => {
         {
             title: "Commande /infractions",
             img: infractions,
-            description: "Garder l'historique complet des infractions de vos membres, rien n'est laissé de coté, ban, kick, mute, warn, tout est enregistré pour votre plus grand plaisir."
+            description: "Garder l'historique complet des infractions de vos membres, rien n'est laissé de coté, ban, kick, mute, warn, tout est enregistré pour votre plus grand plaisir.",
+            module: "Moderation"
         },
         {
             title: "Message privé d'infractions",
             img: dmMessage,
-            description: "Pour chaque infraction, un message privé est envoyé au membre pour l'informer de son infraction, et lui donner le détail de celle-ci, il sera donc impossible pour lui de dire qu'il ne savait pas."
+            description: "Pour chaque infraction, un message privé est envoyé au membre pour l'informer de son infraction, et lui donner le détail de celle-ci, il sera donc impossible pour lui de dire qu'il ne savait pas.",
+            module: "Moderation"
         },
         {
             title: "Logs d'infractions",
             img: logsinfractions,
-            description: "Toutes les infractions sont enregistré dans un channel spécifique, pour que vous puissiez suivre l'activité de votre serveur."
+            description: "Toutes les infractions sont enregistré dans un channel spécifique, pour que vous puissiez suivre l'activité de votre serveur.",
+            module: "Moderation"
         }
     ]
 
@@ -50,17 +53,20 @@ export const Features = () => {
         {
             title: "Commande /play",
             img: music,
-            description: "Jouer de la musique sur votre serveur n'a jamais été aussi simple, avec Bouns'Bot."
+            description: "Jouer de la musique sur votre serveur n'a jamais été aussi simple, avec Bouns'Bot.",
+            module: "Musique"
         },
         {
             title: "Commande /radio",
             img: radio,
-            description: "Vous n'avez pas de musique à jouer ? Pas de problème, Bouns'Bot vous propose plus de 60000 radios pour animer votre serveur."
+            description: "Vous n'avez pas de musique à jouer ? Pas de problème, Bouns'Bot vous propose plus de 60000 radios pour animer votre serveur.",
+            module: "Radio"
         },
         {
             title: "Blindtest",
             img: blindtest,
-            description: "Vous pouvez vous tester sur votre culture musicale avec le blindtest, sois de façon aléatoire, sois en choisissant votre playlist."
+            description: "Vous pouvez vous tester sur votre culture musicale avec le blindtest, sois de façon aléatoire, sois en choisissant votre playlist.",
+            module: "Fun"
         },
     ]
 
@@ -68,17 +74,21 @@ export const Features = () => {
         {
             title: "Ticketing",
             img: ticket,
-            description: "Créer un système de ticketing sur votre serveur, pour que vos membres puissent vous contacter facilement."
+            description: "Créer un système de ticketing sur votre serveur, pour que vos membres puissent vous contacter facilement.",
+            module: "ticket"
+
         },
         {
             title: "Transcript",
             img: transcript,
-            description: "Garder une trace de chaque ticket, pour ne rien oublier, chaque ticket est enregistré dans un channel spécifique avec toutes les informations nécessaires."
+            description: "Garder une trace de chaque ticket, pour ne rien oublier, chaque ticket est enregistré dans un channel spécifique avec toutes les informations nécessaires.",
+            module: "ticket"
         },
         {
             title: "Ouvrir un ticket",
             img: openTicket,
-            description: "Ouvrir un ticket n'a jamais été aussi simple, avec Bouns'Bot, vos membres peuvent ouvrir un ticket en un clic. Entièrement personnalisable pour s'adapter à votre serveur."
+            description: "Ouvrir un ticket n'a jamais été aussi simple, avec Bouns'Bot, vos membres peuvent ouvrir un ticket en un clic. Entièrement personnalisable pour s'adapter à votre serveur.",
+            module: "ticket"
         }
     ]
 
@@ -86,17 +96,20 @@ export const Features = () => {
         {
             title: "Join / Leave",
             img: logsjoin,
-            description: "Vous serrez informé chaque fois qu'un membre rejoins ou quitte votre serveur."
+            description: "Vous serrez informé chaque fois qu'un membre rejoins ou quitte votre serveur.",
+            module: "Config"
         },
         {
             title: "Vocal",
             img: logsvocal,
-            description: "Chaque action realisé dans un salon vocal est enregistré que ce sois un join, leave, l'activation de la caméra, ou encore le partage d'écran."
+            description: "Chaque action realisé dans un salon vocal est enregistré que ce sois un join, leave, l'activation de la caméra, ou encore le partage d'écran.",
+            module: "Config"
         },
         {
             title: "Utilisateur",
             img: logsuser,
-            description: "Vous serrez informé chaque fois qu'un membre change de pseudo, de rôle, ou encore de photo de profil."
+            description: "Vous serrez informé chaque fois qu'un membre change de pseudo, de rôle, ou encore de photo de profil.",
+            module: "Config"
         }
     ]
 
@@ -104,17 +117,20 @@ export const Features = () => {
         {
             title: "Chifumi",
             img: chifumi,
-            description: "Defiez vos amis au Chifumi et prouvez que vous êtes le meilleur. Vous pouvez meme defier Bouns'Bot."
+            description: "Defiez vos amis au Chifumi et prouvez que vous êtes le meilleur. Vous pouvez meme defier Bouns'Bot.",
+            module: "Game"
         },
         {
             title: "Demineur",
             img: minesweeper,
-            description: "Le but du jeu est de localiser toutes les mines présentes dans un champ de mines le plus rapidement possible. A chaque case cliqué vous aurez une indication sur le nombre de mines présentes autour de cette case."
+            description: "Le but du jeu est de localiser toutes les mines présentes dans un champ de mines le plus rapidement possible. A chaque case cliqué vous aurez une indication sur le nombre de mines présentes autour de cette case.",
+            module: "Game"
         },
         {
             title: "Who that Pokemon",
             img: whothatpokemon,
-            description: "Seras tu capable de reconnaitre tout les pokemons ? Avec ce jeu tu ne pourras plus dire que tu ne les connais pas."
+            description: "Seras tu capable de reconnaitre tout les pokemons ? Avec ce jeu tu ne pourras plus dire que tu ne les connais pas.",
+            module: "Game"
         }
     ]
 
