@@ -221,7 +221,7 @@ export const Configuration = (props) => {
     }, [props.user])
 
     const getHeaderType = () => {
-        if ((guild && guild?.icon !== null) || (user && user?.avatar !== null)) {
+        if ((guild && guild?.icon !== null) || (user && user?.avatar !== null) || (guildInfo && guildInfo?.banner)) {
             return 'withBanner'
         }
 
