@@ -8,28 +8,90 @@
     },
     "feature": {
         "fonctionnality": "Funzionalità",
+        "moderation": {
+            "name": "Moderazione",
+            "title": "Gestisci il tuo server",
+            "description": "Far rispettare le regole sul tuo server non è mai stato così facile con Bouns'Bot",
+            "example1": {
+                "title": "Comando /infrazioni",
+                "description": "Mantieni un completo storico delle infrazioni dei tuoi membri; niente viene trascurato, ban, kick, mute, warn, tutto viene registrato per il tuo divertimento."
+            },
+            "example2": {
+                "title": "Messaggio privato di infrazioni",
+                "description": "Per ogni infrazione, viene inviato un messaggio privato al membro per informarlo della sua infrazione e fornire dettagli. Sarà impossibile per lui dire di non saperlo."
+            },
+            "example3": {
+                "title": "Registri delle infrazioni",
+                "description": "Tutte le infrazioni vengono registrate in un canale specifico, permettendoti di seguire l'attività del tuo server."
+            }
+        },
         "multimedia": {
-            "name": "Multimedia",
-            "description1": "Riproduci brani su richiesta o ascolta una stazione radio per tutta la giornata senza mai fermarti.",
-            "description2": "La festa non si interromperà nemmeno quando te ne vai, perché Bouns'bot rimane nel tuo canale 24/7!"
-        },
-        "game": {
-            "name": "Giochi",
-            "description1": "Gioca a una grande varietà di mini-giochi! Puoi giocare a oltre 15 mini-giochi da solo o contro i tuoi amici.",
-            "description2": "Distinguiti con la classifica integrata in Bouns'bot e metti alla prova la tua cultura generale con il nostro quiz."
-        },
-        "logs": {
-            "name": "Log",
-            "description1": "Come, non sapevi che Wumpus ha acceso la sua telecamera!",
-            "description2": "Con Bouns'bot hai accesso a tutti i log disponibili su Discord, basta attivare quello di cui hai bisogno."
+            "name": "Multimediale",
+            "title": "Dai atmosfera al tuo server",
+            "description": "Crea un'atmosfera unica sul tuo server con Bouns'Bot. Hai accesso a una moltitudine di comandi per animare il tuo server.",
+            "example1": {
+                "title": "Comando /play",
+                "description": "Riprodurre musica sul tuo server non è mai stato così facile, con Bouns'Bot."
+            },
+            "example2": {
+                "title": "Comando /radio",
+                "description": "Nessuna musica da riprodurre? Nessun problema, Bouns'Bot offre oltre 60.000 radio per animare il tuo server."
+            },
+            "example3": {
+                "title": "Blindtest",
+                "description": "Puoi mettere alla prova la tua conoscenza musicale con il blindtest, sia in modo casuale che scegliendo la tua playlist."
+            }
         },
         "ticket": {
             "name": "Ticket",
-            "description": "Bouns'bot consente di creare canali di supporto privati, chiamati ticket, tra il tuo team e le persone che cercano aiuto."
+            "title": "Supporto di qualità",
+            "description": "Bouns’bot consente di creare canali di supporto privati, chiamati ticket, tra il tuo team e le persone che cercano aiuto.",
+            "example1": {
+                "title": "Ticketing",
+                "description": "Crea un sistema di ticket sul tuo server in modo che i tuoi membri possano contattarti facilmente."
+            },
+            "example2": {
+                "title": "Trascrizione",
+                "description": "Tieni traccia di ogni ticket, assicurandoti che nulla venga dimenticato. Ogni ticket viene salvato in un canale specifico con tutte le informazioni necessarie."
+            },
+            "example3": {
+                "title": "Aprire un ticket",
+                "description": "Aprire un ticket non è mai stato così facile con Bouns'Bot. I tuoi membri possono aprire un ticket con un solo clic, completamente personalizzabile per adattarsi al tuo server."
+            }
         },
-        "engagement": {
-            "name": "Coinvolgimento",
-            "description": "Premia i tuoi membri con punti esperienza e tieni traccia dei membri più attivi sulla tua classifica personalizzata."
+        "logs": {
+            "name": "Registri",
+            "title": "Monitoraggio",
+            "description": "Monitora il tuo server con Bouns'Bot. Hai accesso a una moltitudine di registri per seguire l'attività del tuo server.",
+            "example1": {
+                "title": "Join / Leave",
+                "description": "Sarai informato ogni volta che un membro si unisce o lascia il tuo server."
+            },
+            "example2": {
+                "title": "Vocale",
+                "description": "Ogni azione compiuta in un canale vocale viene registrata, che si tratti di un join, leave, attivazione della fotocamera o condivisione dello schermo."
+            },
+            "example3": {
+                "title": "Utente",
+                "description": "Sarai informato ogni volta che un membro cambia il suo nickname, ruolo o addirittura la foto del profilo."
+            }
+        },
+        "game": {
+            "name": "Giochi",
+            "title": "Divertiti",
+            "description": "Divertiti con Bouns'Bot. Coinvolgere la tua comunità non è mai stato così facile con Bouns'Bot. Hai accesso a oltre 20 giochi diversi per animare il tuo server.",
+            "example1": {
+                "title": "Carta forbice sasso",
+                "description": "Sfida i tuoi amici a Carta forbice sasso e dimostra di essere il migliore. Puoi persino sfidare Bouns'Bot."
+            },
+            "example2": {
+                "title": "Campo minato",
+                "description": "L'obiettivo del gioco è individuare tutte le mine presenti in un campo minato nel minor tempo possibile. Ad ogni casella cliccata avrai un'indicazione sul numero di mine presenti intorno a quella casella."
+            },
+            "example3": {
+                "title": "Chi è quel Pokémon",
+                "description": "Riuscirai a riconoscere tutti i Pokémon? Con questo gioco, non potrai più dire che non li conosci."
+            }
         }
     },
     "brand": {
