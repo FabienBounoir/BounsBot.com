@@ -28,7 +28,8 @@
         "multimedia": {
             "name": "多媒体",
             "title": "为您的服务器设置氛围",
-            "description": "使用Bouns'Bot在您的服务器上创建独特的氛围。您可以访问各种命令为您的服务器增添活力。""example1": {
+            "description": "使用Bouns'Bot在您的服务器上创建独特的氛围。您可以访问各种命令为您的服务器增添活力。",
+            "example1": {
                 "title": "/播放命令",
                 "description": "使用Bouns'Bot在您的服务器上播放音乐从未如此简单。"
             },
@@ -44,7 +45,8 @@
         "ticket": {
             "name": "支持",
             "title": "高质量支持",
-            "description": "Bouns’bot允许创建私人支持频道，我们称之为“票务”，在您的团队和寻求帮助的人之间。""example1": {
+            "description": "Bouns’bot允许创建私人支持频道，我们称之为“票务”，在您的团队和寻求帮助的人之间。",
+            "example1": {
                 "title": "票务系统",
                 "description": "在您的服务器上创建一个票务系统，让您的成员可以轻松联系您。"
             },
@@ -60,7 +62,8 @@
         "logs": {
             "name": "日志",
             "title": "监控",
-            "description": "使用Bouns'Bot监控您的服务器，您可以访问各种日志以追踪服务器的活动。""example1": {
+            "description": "使用Bouns'Bot监控您的服务器，您可以访问各种日志以追踪服务器的活动。",
+            "example1": {
                 "title": "加入/离开",
                 "description": "每当成员加入或离开您的服务器时，您都会收到通知。"
             },
@@ -76,7 +79,8 @@
         "game": {
             "name": "游戏",
             "title": "尽情娱乐",
-            "description": "使用Bouns'Bot娱乐您的社区从未如此简单。您可以访问20多种不同的游戏，为您的服务器增添活力。""example1": {
+            "description": "使用Bouns'Bot娱乐您的社区从未如此简单。您可以访问20多种不同的游戏，为您的服务器增添活力。",
+            "example1": {
                 "title": "剪刀石头布",
                 "description": "向您的朋友发起剪刀石头布的挑战，并证明您是最棒的。您甚至可以挑战Bouns'Bot。"
             },
