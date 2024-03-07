@@ -92,7 +92,7 @@ export const Moderation = ({ guildId, configuration, updateConfiguration, confAc
             formattedInfractions.push(
                 <div className="infractionContainer">
                     <div className="automatedInfraction">
-                        <span>{transformToHtml(t("moderation.infractionDetails").replace("{{INFRACTION}}", automatedInfractions[i].target_count).replace("{{INFRACTION_TEXT}}", automatedInfractions[i].target_count > 1 ? t("moderation.infractions") : t("moderation.infraction")).replace("{{TIME}}", formatTime(automatedInfractions[i].target_time)).replace("{{ACTION}}", automatedInfractions[i].action).replace("{{ACTION_TIME}}", formatTime(automatedInfractions[i].action_time)))}</span>
+                        <span>{transformToHtml(t("moderation." + (["WARN", "MUTE", "BAN"].include(automatedInfractions[i].action) ? "infractionDetailsWithoutActionTime" : "infractionDetails")).replace("{{INFRACTION}}", automatedInfractions[i].target_count).replace("{{INFRACTION_TEXT}}", automatedInfractions[i].target_count > 1 ? t("moderation.infractions") : t("moderation.infraction")).replace("{{TIME}}", formatTime(automatedInfractions[i].target_time)).replace("{{ACTION}}", automatedInfractions[i].action).replace("{{ACTION_TIME}}", formatTime(automatedInfractions[i].action_time)))}</span>
                         <button
                             onClick={() => {
                                 let newConfig = JSON.parse(JSON.stringify(configuration.autoInfractions))

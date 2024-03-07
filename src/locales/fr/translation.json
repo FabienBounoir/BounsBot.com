@@ -408,6 +408,7 @@
         "seconds": "Secondes",
         "second": "Seconde",
         "infractionDetails": "Pour {{{{INFRACTION}} {{INFRACTION_TEXT}}}} en {{{{TIME}}}}, appliquer un {{{{ACTION}}}} de {{{{ACTION_TIME}}}}",
+        "infractionDetailsWithoutActionTime": "Pour {{{{INFRACTION}} {{INFRACTION_TEXT}}}} en {{{{TIME}}}}, appliquer un {{{{ACTION}}}}",
         "linkUnbanInformation": "Ce lien sera inclus dans l'embed de bannissement lorsque vous utilisez les commandes /ban ou /tempban de Bouns'bot sur votre serveur. Il permettra aux personnes bannies de soumettre une demande de débannissement, améliorant ainsi l'expérience utilisateur."
     },
     "infractions": {

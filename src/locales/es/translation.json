@@ -408,6 +408,7 @@
         "seconds": "Segundos",
         "second": "Segundo",
         "infractionDetails": "Para {{{{INFRACTION}} {{INFRACTION_TEXT}}}} en {{{{TIME}}}}, aplicar una {{{{ACTION}}}} de {{{{ACTION_TIME}}}}",
+        "infractionDetailsWithoutActionTime": "Para {{{{INFRACTION}} {{INFRACTION_TEXT}}}} en {{{{TIME}}}}, aplicar una {{{{ACTION}}}}",
         "linkUnbanInformation": "Este enlace se incluirá en el embed de prohibición al usar los comandos /ban o /tempban de Bouns'bot en tu servidor. Permitirá a las personas prohibidas enviar una solicitud de desbloqueo, mejorando así la experiencia del usuario."
     },
     "infractions": {

@@ -410,6 +410,7 @@
         "seconds": "Секунды",
         "second": "Секунда",
         "infractionDetails": "Для {{{{INFRACTION}} {{INFRACTION_TEXT}}}} в {{{{TIME}}}}, применить {{{{ACTION}}}} сроком на {{{{ACTION_TIME}}}}",
+        "infractionDetailsWithoutActionTime": "Для {{{{INFRACTION}} {{INFRACTION_TEXT}}}} в {{{{TIME}}}}, применить {{{{ACTION}}}}",
         "linkUnbanInformation": "Эта ссылка будет включена во вставку бана при использовании команд /ban или /tempban от Bouns'bot на вашем сервере. Она позволит забаненным лицам подать запрос на разблокировку, улучшая тем самым опыт пользователя."
     },
     "infractions": {
