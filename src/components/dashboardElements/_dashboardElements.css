@@ -56,6 +56,17 @@
     appearance: initial;
 }
 
+.inputContainer select option {
+    background-color: #202225;
+    color: #fff;
+}
+
+.inputContainer select option:checked {
+    background-color: #202225;
+    color: #fff;
+    font-weight: 500;
+}
+
 .spacerInfraction {
     margin: 15px 0;
     padding: 0;
