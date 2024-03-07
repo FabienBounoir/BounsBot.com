@@ -30,106 +30,106 @@ export const Features = () => {
 
     const moderation = [
         {
-            title: "Commande /infractions",
+            title: "feature.moderation.example1.title",
             img: infractions,
-            description: "Garder l'historique complet des infractions de vos membres, rien n'est laissé de coté, ban, kick, mute, warn, tout est enregistré pour votre plus grand plaisir.",
+            description: "feature.moderation.example1.description",
             module: "Moderation"
         },
         {
-            title: "Message privé d'infractions",
+            title: "feature.moderation.example2.title",
             img: dmMessage,
-            description: "Pour chaque infraction, un message privé est envoyé au membre pour l'informer de son infraction, et lui donner le détail de celle-ci, il sera donc impossible pour lui de dire qu'il ne savait pas.",
+            description: "feature.moderation.example2.description",
             module: "Moderation"
         },
         {
-            title: "Logs d'infractions",
+            title: "feature.moderation.example3.title",
             img: logsinfractions,
-            description: "Toutes les infractions sont enregistré dans un channel spécifique, pour que vous puissiez suivre l'activité de votre serveur.",
+            description: "feature.moderation.example3.description",
             module: "Moderation"
         }
     ]
 
     const multimedia = [
         {
-            title: "Commande /play",
+            title: "feature.multimedia.example1.title",
             img: music,
-            description: "Jouer de la musique sur votre serveur n'a jamais été aussi simple, avec Bouns'Bot.",
+            description: "feature.multimedia.example1.description",
             module: "Musique"
         },
         {
-            title: "Commande /radio",
+            title: "feature.multimedia.example2.title",
             img: radio,
-            description: "Vous n'avez pas de musique à jouer ? Pas de problème, Bouns'Bot vous propose plus de 60000 radios pour animer votre serveur.",
+            description: "feature.multimedia.example2.description",
             module: "Radio"
         },
         {
-            title: "Blindtest",
+            title: "feature.multimedia.example3.title",
             img: blindtest,
-            description: "Vous pouvez vous tester sur votre culture musicale avec le blindtest, sois de façon aléatoire, sois en choisissant votre playlist.",
+            description: "feature.multimedia.example3.description",
             module: "Fun"
         },
     ]
 
     const ticketing = [
         {
-            title: "Ticketing",
+            title: "feature.ticket.example1.title",
             img: ticket,
-            description: "Créer un système de ticketing sur votre serveur, pour que vos membres puissent vous contacter facilement.",
+            description: "feature.ticket.example1.description",
             module: "ticket"
 
         },
         {
-            title: "Transcript",
+            title: "feature.ticket.example2.title",
             img: transcript,
-            description: "Garder une trace de chaque ticket, pour ne rien oublier, chaque ticket est enregistré dans un channel spécifique avec toutes les informations nécessaires.",
+            description: "feature.ticket.example2.description",
             module: "ticket"
         },
         {
-            title: "Ouvrir un ticket",
+            title: "feature.ticket.example3.title",
             img: openTicket,
-            description: "Ouvrir un ticket n'a jamais été aussi simple, avec Bouns'Bot, vos membres peuvent ouvrir un ticket en un clic. Entièrement personnalisable pour s'adapter à votre serveur.",
+            description: "feature.ticket.example3.description",
             module: "ticket"
         }
     ]
 
     const logs = [
         {
-            title: "Join / Leave",
+            title: "feature.logs.example1.title",
             img: logsjoin,
-            description: "Vous serrez informé chaque fois qu'un membre rejoins ou quitte votre serveur.",
+            description: "feature.logs.example1.description",
             module: "Config"
         },
         {
-            title: "Vocal",
+            title: "feature.logs.example2.title",
             img: logsvocal,
-            description: "Chaque action realisé dans un salon vocal est enregistré que ce sois un join, leave, l'activation de la caméra, ou encore le partage d'écran.",
+            description: "feature.logs.example2.description",
             module: "Config"
         },
         {
-            title: "Utilisateur",
+            title: "feature.logs.example3.title",
             img: logsuser,
-            description: "Vous serrez informé chaque fois qu'un membre change de pseudo, de rôle, ou encore de photo de profil.",
+            description: "feature.logs.example3.description",
             module: "Config"
         }
     ]
 
     const games = [
         {
-            title: "Chifumi",
+            title: "feature.game.example1.title",
             img: chifumi,
-            description: "Defiez vos amis au Chifumi et prouvez que vous êtes le meilleur. Vous pouvez meme defier Bouns'Bot.",
+            description: "feature.game.example1.description",
             module: "Game"
         },
         {
-            title: "Demineur",
+            title: "feature.game.example2.title",
             img: minesweeper,
-            description: "Le but du jeu est de localiser toutes les mines présentes dans un champ de mines le plus rapidement possible. A chaque case cliqué vous aurez une indication sur le nombre de mines présentes autour de cette case.",
+            description: "feature.game.example2.description",
             module: "Game"
         },
         {
-            title: "Who that Pokemon",
+            title: "feature.game.example3.title",
             img: whothatpokemon,
-            description: "Seras tu capable de reconnaitre tout les pokemons ? Avec ce jeu tu ne pourras plus dire que tu ne les connais pas.",
+            description: "feature.game.example3.description",
             module: "Game"
         }
     ]
@@ -138,10 +138,10 @@ export const Features = () => {
         <div className="features">
             <div className="features__container">
                 <div className="features__container__title">
-                    <p class="">Modération</p>
-                    <h2>Gérez votre serveur</h2>
+                    <p class="">{t("feature.moderation.name")}</p>
+                    <h2>{t("feature.moderation.title")}</h2>
                 </div>
-                <p>Faire respecter la lois sur votre serveur n'a jamais été aussi simple avec Bouns'Bot</p>
+                <p>{t("feature.moderation.description")}</p>
                 <Feature featureElement={moderation} />
             </div>
         </div>
@@ -149,10 +149,10 @@ export const Features = () => {
         <div className="features">
             <div className="features__container">
                 <div className="features__container__title">
-                    <p class="">Multimédia</p>
-                    <h2>Ambiancez votre serveur</h2>
+                    <p class="">{t("feature.multimedia.name")}</p>
+                    <h2>{t("feature.multimedia.title")}</h2>
                 </div>
-                <p>Créer une ambiance unique sur votre serveur avec Bouns'Bot, vous avez accès à une multitude de commandes pour animer votre serveur.</p>
+                <p>{t("feature.multimedia.description")}</p>
                 <Feature featureElement={multimedia} revert={true} />
             </div>
         </div>
@@ -160,10 +160,10 @@ export const Features = () => {
         <div className="features">
             <div className="features__container">
                 <div className="features__container__title">
-                    <p class="">Ticket</p>
-                    <h2>Un support de qualité</h2>
+                    <p class="">{t("feature.ticket.name")}</p>
+                    <h2>{t("feature.ticket.title")}</h2>
                 </div>
-                <p>Bouns’bot permet de créer des channels de supports privés, que nous appelons des tickets, entre votre équipe et les personnes qui cherchent de l'aide.</p>
+                <p>{t("feature.ticket.description")}</p>
                 <Feature featureElement={ticketing} />
             </div>
         </div>
@@ -171,10 +171,10 @@ export const Features = () => {
         <div className="features">
             <div className="features__container">
                 <div className="features__container__title">
-                    <p class="">Logs</p>
-                    <h2>Surveillance</h2>
+                    <p class="">{t("feature.logs.name")}</p>
+                    <h2>{t("feature.logs.title")}</h2>
                 </div>
-                <p>Surveillez votre serveur avec Bouns'Bot, vous avez accès à une multitude de logs pour suivre l'activité de votre serveur.</p>
+                <p>{t("feature.logs.description")}</p>
                 <Feature featureElement={logs} revert={true} />
             </div>
         </div>
@@ -182,10 +182,10 @@ export const Features = () => {
         <div className="features">
             <div className="features__container">
                 <div className="features__container__title">
-                    <p class="">Jeux</p>
-                    <h2>Amusez-vous</h2>
+                    <p class="">{t("feature.game.name")}</p>
+                    <h2>{t("feature.game.title")}</h2>
                 </div>
-                <p>Amusez-vous avec Bouns'Bot, Engagez votre communauté n'a jamais été aussi simple avec Bouns'Bot. Vous avez accès à plus de 20 jeux différents pour animer votre serveur.</p>
+                <p>{t("feature.game.description")}</p>
                 <Feature featureElement={games} />
             </div>
         </div>

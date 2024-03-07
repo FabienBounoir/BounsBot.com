@@ -4,7 +4,8 @@
         "invite_button": "邀请 Bouns'bot",
         "support": "支持",
         "on_number_of_server": "Bounsbot，被{{number}}个服务器认可的 Discord 机器人",
-        "members": "成员"
+        "members": "成员",
+        "learn_more": "了解更多"
     },
     "feature": {
         "fonctionnality": "功能",

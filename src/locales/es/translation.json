@@ -4,7 +4,8 @@
         "invite_button": "Invitar a Bouns'bot",
         "support": "Soporte",
         "on_number_of_server": "Bounsbot, el bot de Discord aprobado por más de {{number}} servidores",
-        "members": "Miembros"
+        "members": "Miembros",
+        "learn_more": "Más información"
     },
     "feature": {
         "fonctionnality": "Funcionalidades",

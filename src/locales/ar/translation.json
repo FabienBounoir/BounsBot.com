@@ -4,7 +4,8 @@
         "invite_button": "ادعو Bouns'bot",
         "support": "الدعم",
         "on_number_of_server": "Bounsbot، البوت المعتمد على أكثر من {{number}} خادم",
-        "members": "أعضاء"
+        "members": "أعضاء",
+        "learn_more": "معرفة المزيد"
     },
     "feature": {
         "fonctionnality": "الوظائف",
