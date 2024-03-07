@@ -153,7 +153,6 @@ export const Dashboard = ({ guildId, configuration, updateConfiguration, channel
                     <div className="modules">
                         {typeof configuration.heyreaction === 'boolean' ? <div className="guildModule">
                             <div className="top">
-                                {/* <img className="picto" alt='logo' width="48" height="48" src={reactionPicto} ></img> */}
                                 <svg className="pictoLog" width="45" height="45" viewBox="0 0 384 384" >
                                     <path fillRule="evenodd" clipRule="evenodd" d="M191.996 2.69141C295.816 2.69141 379.976 86.8513 379.976 190.667C379.976 294.482 295.816 378.642 191.996 378.642C88.1806 378.642 4.021 294.482 4.021 190.667C4.021 86.8513 88.1806 2.69141 191.996 2.69141Z" />
                                     <path fillRule="evenodd" clipRule="evenodd" d="M196.217 272.51C110.936 274.869 82.197 203.44 97.3483 167.982C104.077 152.226 129.93 151.933 159.033 150.192C182.308 148.796 257.106 141.993 276.119 154.241C308.795 175.288 286.286 270.02 196.217 272.51Z" fill="#656565" />
@@ -325,7 +324,6 @@ export const Dashboard = ({ guildId, configuration, updateConfiguration, channel
                                         return getChannelForSelector(channel, configuration.idChannelTwitchTchat);
                                     })()}
                                 </Form.Select>
-                                {/* </div> */}
                             </div>
                             <h5 className="hrnh5k-0 eeKdki sc-1wkjbe7-8 GoZzi">Twitch</h5>
                             <div>{t("dashboard.global.description.discordChannel")}</div>
@@ -333,7 +331,6 @@ export const Dashboard = ({ guildId, configuration, updateConfiguration, channel
 
                         <div className="guildModule">
                             <div className="top">
-                                {/* <img className="pictoLog" alt='logo' width="48" height="48" src={twitch} ></img> */}
                                 <svg className="pictoLog" width="50" height="50" viewBox="0 0 256 268">
                                     <path d="M17.4579 0L0 46.5559V232.757H63.9826V267.691H98.9145L133.812 232.757H186.172L256 162.954V0H17.4579ZM40.7167 23.2632H232.731V151.292L191.992 192.033H128L93.1127 226.919V192.033H40.7167V23.2632ZM104.725 139.668H128V69.8439H104.725V139.668ZM168.722 139.668H191.992V69.8439H168.722V139.668Z" />
                                 </svg>

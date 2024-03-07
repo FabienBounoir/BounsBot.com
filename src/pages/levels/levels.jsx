@@ -1,8 +1,6 @@
-// import React from "react";
 import "./_levels.css";
 import React, { useEffect, useState } from 'react'
 import InfiniteScroll from 'react-infinite-scroll-component';
-import LoadingFullPage from "../../components/loading/LoadingFullPage.jsx";
 import GainRolesLevels from "../../components/gainRolesLevels/gainRolesLevels.jsx";
 import * as levelApi from "../../utils/API/levelsAPI"
 import LevelSqueleton from "../../components/levels/levelsSqueleton";
@@ -486,12 +484,6 @@ export const Levels = () => {
         })()}
 
       </div>
-
-      {(() => {
-        if (errorLoading) {
-          return <LoadingFullPage error={errorLoading} />
-        }
-      })()}
     </div>
   )
 }

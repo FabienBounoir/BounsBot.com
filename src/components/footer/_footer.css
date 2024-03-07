@@ -37,8 +37,6 @@
 
 .column {
     display: block;
-    /* -webkit-flex-basis: 0; */
-    /* flex-basis: 0; */
     -webkit-flex-grow: 1;
     flex-grow: 1;
     -webkit-flex-shrink: 1;
@@ -63,8 +61,11 @@
 }
 
 .column a:hover {
-    color: var(--color-principal);
-    animation: color-change 1s infinite alternate;
+    color: transparent;
+    background-clip: text;
+    background-image: linear-gradient(to right, var(--color-principal), var(--color-principal-hover));
+    background-size: 300% 100%;
+    animation: gradientAnimation 3s linear infinite alternate-reverse;
 }
 
 .column Link {
@@ -132,9 +133,7 @@
         justify-content: left;
         align-items: center;
         width: 20%;
-        /* padding-left: 7em; */
     }
-
 }
 
 @media screen and (max-width: 768px) {

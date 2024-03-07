@@ -210,7 +210,7 @@ export const Infractions = ({ guildId, configuration, updateConfiguration, chann
                                 <Tooltip className="shardTooltips" opacity={0.99} id={"inf-type"}></Tooltip>
                             </tbody>
                         </table>
-                        <div className="load_more_data" onClick={() => {
+                        <div className={"load_more_data" + (!hasMoreData ? " noMoreData" : "")} onClick={() => {
                             getInfractions()
                         }
                         }>

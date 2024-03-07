@@ -21,11 +21,6 @@
     cursor: pointer;
 }
 
-/* .list_item:hover span .name {
-    color: var(--color-principal);
-    display: block;
-} */
-
 .list_item span {
     display: none;
     background: green;
@@ -36,7 +31,6 @@
     position: absolute;
     top: 25%;
     left: 100%;
-    /* white-space: nowrap; */
 }
 
 .guildAvatar.inviteBot {
@@ -46,12 +40,6 @@
 .guildAvatar.loading {
     border-radius: 50%;
     background-color: var(--color-principal);
-    /* background-color: red; */
-
-    /* background: radial-gradient(circle,
-            rgba(255, 255, 255, 0) 0%,
-            rgba(255, 255, 255, 0.2) 50%,
-            rgba(255, 255, 255, 0) 100%); */
 
     animation: loaderGuild 1s infinite alternate;
     opacity: 0.5;

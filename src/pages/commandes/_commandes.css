@@ -6,8 +6,10 @@
     -webkit-padding-end: 4rem;
     padding-inline-end: 3.5rem;
     border-radius: 12px;
-    background-color: #1f1f25;
+    background-color: rgba(255, 255, 255, 0.08);
     color: #FFFFFF;
+    border: 2px solid;
+    border-color: rgb(255 255 255/0.04);
 }
 
 .command__input {
@@ -31,18 +33,18 @@
 }
 
 .btn-commands-category {
-    /* color: #686873; */
-    background-color: #1f1f25;
+    background-color: rgba(255, 255, 255, 0.08);
     padding: 13px 28px;
     font-weight: 600;
     cursor: pointer;
     scroll-snap-align: start;
     min-width: fit-content;
+    border: 2px solid;
+    border-color: rgb(255 255 255/0.04);
 }
 
 .btn-commands-category:hover {
-    box-shadow: var(--color-principal) 0px 0px 0px 1px inset;
-    /* transi: test 2s ease-in-out; */
+    box-shadow: var(--color-principal) 0px 0px 0px 2px inset;
     transition: box-shadow 0.3s ease-in-out;
 }
 
@@ -85,7 +87,7 @@
     cursor: pointer;
     padding: 29px;
     border-radius: 12px;
-    background-color: #1f1f25;
+    background-color: rgba(255, 255, 255, 0.08);
 
     transition-property: display, height;
     transition-duration: 0.4s;
@@ -96,11 +98,6 @@
     margin-bottom: 0rem;
 }
 
-/* .command-card__body {
-    overflow: hidden;
-    transition: all 0.4s ease;
-} */
-
 .command-card__body {
     flex-wrap: wrap;
     grid-gap: 15px;
@@ -109,15 +106,12 @@
 
     overflow: hidden;
     transition: all 0.4s ease;
-    /* margin-top: 30px; */
 }
 
 .command-card__container.active .command-card__body {
     margin-top: 30px;
     overflow: hidden;
-    /* max-height: max-content; */
     transition: max-height 0.4s ease;
-    /* box-sizing: border-box; */
 }
 
 
@@ -127,43 +121,7 @@
     flex: 1 1 45%;
 }
 
-
-
-
-/* .command-card__body {
-    flex-wrap: wrap;
-    grid-gap: 15px;
-    gap: 15px;
-    display: flex;
-
-    overflow: hidden;
-    height: 0;
-}
-
-
-.command-card__container.active .command-card__body {
-    margin-top: 30px;
-    height: fit-content;
-
-} */
-
-
-
-
-
-
-
-
-
-
 .command-card__container {
-    /* content: "";
-    position: relative;
-    width: 30px;
-    height: 30px;
-    background: blue;
-    z-index: 10;
-    margin-left: -29px; */
     border-left: 5px solid var(--color-principal);
 }
 
@@ -171,13 +129,11 @@
     0% {
         display: none;
         height: 0%;
-        /* transform: scale(0); */
     }
 
     100% {
         display: flex;
         height: 100%;
-        /* transform: scale(1); */
     }
 
 }
@@ -226,7 +182,6 @@
     color: initial;
 }
 
-/* pour Safari et Chrome */
 .command-card__header::selection {
     background-color: none;
     color: initial;
@@ -301,14 +256,12 @@
     margin: -2px 0 -12px;
     font-size: 55px;
     color: var(--color-principal);
-    /* font-family: "Uni Sans", "Arial", sans-serif; */
     font-weight: bold;
 }
 
 .commands-list {
     min-height: calc(100vh - 56px);
     background-color: var(--back-first-color);
-    /* padding: 50px; */
     padding: 2.5em 15em;
 }
 

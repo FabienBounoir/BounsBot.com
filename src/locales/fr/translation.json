@@ -4,32 +4,95 @@
         "invite_button": "Inviter Bouns'bot",
         "support": "Support",
         "on_number_of_server": "Bounsbot, le bot Discord approuvé par plus de {{number}} serveurs",
-        "members": "Membres"
+        "members": "Membres",
+        "learn_more": "En savoir plus"
     },
     "feature": {
         "fonctionnality": "Fonctionnalités",
+        "moderation": {
+            "name": "Modération",
+            "title": "Gérez votre serveur",
+            "description:": "Faire respecter la lois sur votre serveur n'a jamais été aussi simple avec Bouns'Bot",
+            "example1": {
+                "title": "Commande /infractions",
+                "description": "Garder l'historique complet des infractions de vos membres, rien n'est laissé de coté, ban, kick, mute, warn, tout est enregistré pour votre plus grand plaisir."
+            },
+            "example2": {
+                "title": "Message privé d'infractions",
+                "description": "Pour chaque infraction, un message privé est envoyé au membre pour l'informer de son infraction, et lui donner le détail de celle-ci, il sera donc impossible pour lui de dire qu'il ne savait pas."
+            },
+            "example3": {
+                "title": "Logs d'infractions",
+                "description": "Toutes les infractions sont enregistré dans un channel spécifique, pour que vous puissiez suivre l'activité de votre serveur."
+            }
+        },
         "multimedia": {
-            "name": "Multimedia",
-            "description1": "Jouez des chansons à la demande ou écoutez une station de radio toute la journée sans jamais devoir vous arrêter.",
-            "description2": "La fête ne s'arrêtera pas non plus quand vous partirez, car Bouns'bot reste dans votre channel 24h/24, 7j/7 !"
-        },
-        "game": {
-            "name": "Les Jeux",
-            "description1": "Jouez à un grand nombre de mini-jeux ! Vous pouvez jouer à plus de 15 mini-jeux seuls ou contre vos amis.",
-            "description2": "Démarqué vous grâce au classement intégré à Bouns'bot , et venez tester votre culture générale grâce à notre quiz."
-        },
-        "logs": {
-            "name": "Les Logs",
-            "description1": "Comment ça, vous ne savez pas que Wumpus a allumé sa caméra !",
-            "description2": "Avec Bouns'bot vous avez accès à tous les logs disponibles sur Discord, il vous suffit d'activer ce dont vous avez besoin."
+            "name": "Multimédia",
+            "title": "Ambiancez votre serveur",
+            "description:": "Créer une ambiance unique sur votre serveur avec Bouns'Bot, vous avez accès à une multitude de commandes pour animer votre serveur.",
+            "example1": {
+                "title": "Commande /play",
+                "description": "Jouer de la musique sur votre serveur n'a jamais été aussi simple, avec Bouns'Bot."
+            },
+            "example2": {
+                "title": "Commande /radio",
+                "description": "Vous n'avez pas de musique à jouer ? Pas de problème, Bouns'Bot vous propose plus de 60000 radios pour animer votre serveur."
+            },
+            "example3": {
+                "title": "Blindtest",
+                "description": "Vous pouvez vous tester sur votre culture musicale avec le blindtest, sois de façon aléatoire, sois en choisissant votre playlist."
+            }
         },
         "ticket": {
-            "name": "Les Tickets",
-            "description": "Bouns’bot permet de créer des channels de supports privés, que nous appelons des tickets, entre votre équipe et les personnes qui cherchent de l'aide."
+            "name": "Ticket",
+            "title": "Un support de qualité",
+            "description:": "Bouns’bot permet de créer des channels de supports privés, que nous appelons des tickets, entre votre équipe et les personnes qui cherchent de l'aide.",
+            "example1": {
+                "title": "Ticketing",
+                "description": "Créer un système de ticketing sur votre serveur, pour que vos membres puissent vous contacter facilement."
+            },
+            "example2": {
+                "title": "Transcript",
+                "description": "Garder une trace de chaque ticket, pour ne rien oublier, chaque ticket est enregistré dans un channel spécifique avec toutes les informations nécessaires."
+            },
+            "example3": {
+                "title": "Ouvrir un ticket",
+                "description": "Ouvrir un ticket n'a jamais été aussi simple, avec Bouns'Bot, vos membres peuvent ouvrir un ticket en un clic. Entièrement personnalisable pour s'adapter à votre serveur."
+            }
         },
-        "engagement": {
-            "name": "L'engagement",
-            "description": "Récompensez vos membres avec des points d'XP et gardez la trace des membres les plus actifs sur votre tableau de classement personnalisé."
+        "logs": {
+            "name": "Logs",
+            "title": "Surveillance",
+            "description:": "Surveillez votre serveur avec Bouns'Bot, vous avez accès à une multitude de logs pour suivre l'activité de votre serveur.",
+            "example1": {
+                "title": "Join / Leave",
+                "description": "Vous serrez informé chaque fois qu'un membre rejoins ou quitte votre serveur."
+            },
+            "example2": {
+                "title": "Vocal",
+                "description": "Chaque action realisé dans un salon vocal est enregistré que ce sois un join, leave, l'activation de la caméra, ou encore le partage d'écran."
+            },
+            "example3": {
+                "title": "Utilisateur",
+                "description": "Vous serrez informé chaque fois qu'un membre change de pseudo, de rôle, ou encore de photo de profil."
+            }
+        },
+        "game": {
+            "name": "Jeux",
+            "title": "Amusez-vous",
+            "description:": "Amusez-vous avec Bouns'Bot, Engagez votre communauté n'a jamais été aussi simple avec Bouns'Bot. Vous avez accès à plus de 20 jeux différents pour animer votre serveur.",
+            "example1": {
+                "title": "Chifumi",
+                "description": "Defiez vos amis au Chifumi et prouvez que vous êtes le meilleur. Vous pouvez meme defier Bouns'Bot."
+            },
+            "example2": {
+                "title": "Demineur",
+                "description": "Le but du jeu est de localiser toutes les mines présentes dans un champ de mines le plus rapidement possible. A chaque case cliqué vous aurez une indication sur le nombre de mines présentes autour de cette case."
+            },
+            "example3": {
+                "title": "Who that Pokemon",
+                "description": "Seras tu capable de reconnaitre tout les pokemons ? Avec ce jeu tu ne pourras plus dire que tu ne les connais pas."
+            }
         }
     },
     "brand": {
@@ -230,7 +293,7 @@
                 "ontheguild": "Sur le serveur",
                 "onGuild": "Sur {{guild}}",
                 "welcomeontheguild": "Bienvenue {{username}} sur le serveur !",
-                "youarethe": "Tu es le {{number}}ème membres",
+                "youarethe": "Tu es le {{number}}ème membre",
                 "readRules": "Assure toi de lire les règles !"
             }
         },
@@ -309,7 +372,7 @@
     "status": {
         "status": "Statuts",
         "description": "Bienvenue sur la page \"Statuts de Bouns'bot\". Ici, vous trouverez des informations sur les différents shards et leur état actuel. Cela vous permettra de rester informé en cas de problèmes éventuels et de savoir si cela a une incidence sur votre serveur.",
-        "idServer": "ID du serveur",
+        "idServer": "Entrez votre identifiant de serveur",
         "latency": "Latence",
         "uptime": "Uptime",
         "guildCount": "{{count}} serveurs",
@@ -345,6 +408,7 @@
         "seconds": "Secondes",
         "second": "Seconde",
         "infractionDetails": "Pour {{{{INFRACTION}} {{INFRACTION_TEXT}}}} en {{{{TIME}}}}, appliquer un {{{{ACTION}}}} de {{{{ACTION_TIME}}}}",
+        "infractionDetailsWithoutActionTime": "Pour {{{{INFRACTION}} {{INFRACTION_TEXT}}}} en {{{{TIME}}}}, appliquer un {{{{ACTION}}}}",
         "linkUnbanInformation": "Ce lien sera inclus dans l'embed de bannissement lorsque vous utilisez les commandes /ban ou /tempban de Bouns'bot sur votre serveur. Il permettra aux personnes bannies de soumettre une demande de débannissement, améliorant ainsi l'expérience utilisateur."
     },
     "infractions": {

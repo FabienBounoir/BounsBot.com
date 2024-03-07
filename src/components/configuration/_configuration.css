@@ -36,7 +36,6 @@
     flex-direction: column;
     position: relative;
     overflow: hidden;
-    /* background: green; */
 
     -webkit-box-flex: 1;
     -ms-flex: 1 1 auto;
@@ -59,21 +58,6 @@
     border: 0;
     padding: 0;
     border-bottom: 2px solid #22252a;
-
-
-    /* inset: 0px; */
-    /* z-index: 1; */
-    /* transform: scale(1.4); */
-    /* filter: blur(10px); */
-    /* opacity: 0.3; */
-}
-
-.configuration_list header.withBanner {
-    /* height: 135px; */
-    /* filter: blur(3px); */
-    /* backdrop-filter: blur(3px); */
-    /* background-color: rgba(0, 0, 0, 0.3);` */
-
 }
 
 .configuration_list header.withBanner p {
@@ -81,28 +65,17 @@
     height: 135px;
 }
 
-/* .configuration_list header.withoutBanner {
-    height: max-content;
-} */
-
 .configuration_list header p {
     padding: 0.5em 0.5em 0.5em;
     margin: 0;
-    /* padding: 0; */
     white-space: nowrap;
     text-overflow: ellipsis;
     overflow: hidden;
 
     font-size: 1.2em;
     font-weight: 700;
-    /* //text shadow for lisibility */
     text-shadow: 0 0 2px rgba(0, 0, 0, 0.5);
     text-rendering: optimizeLegibility;
-
-
-    /* 
-    font-family: var(--bs-font-sans-serif);
-    color: #212529; */
 }
 
 .configList .title {
@@ -133,13 +106,9 @@
 }
 
 .configList .element {
-    /* padding-left: 1em;
-    fill: aliceblue; */
-
     padding: 0.5em 0.5em 0.5em 1em;
     margin: 3px 0;
     flex: 1 1 0%;
-    /* margin-inline-start: 16px; */
     transition: color 0.15s ease-out 0s;
     white-space: nowrap;
     text-overflow: ellipsis;
@@ -217,7 +186,6 @@
 }
 
 .buttonMenu {
-    /* background-color: red; */
     display: none;
     background: transparent;
 }
@@ -236,7 +204,6 @@
         filter: brightness(0.5);
         transition: filter 0.5s;
         min-width: 97%;
-        /* min-width: min-content; */
         pointer-events: none;
     }
 

@@ -9,7 +9,6 @@
 
 .demo-banner {
     background-image: url("/public/demobanner.png");
-    /* height: 135px; */
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
@@ -21,7 +20,6 @@
 
     padding: 0.5em 0.5em 0.5em;
     margin: 0;
-    /* padding: 0; */
     white-space: nowrap;
     text-overflow: ellipsis;
     overflow: hidden;
@@ -91,37 +89,30 @@ b {
 }
 
 #role-0 {
-    /* background: url("https://cdn.discordapp.com/embed/avatars/0.png"); */
     color: #5865f2
 }
 
 #role-1 {
-    /* background: url('https://cdn.discordapp.com/embed/avatars/1.png'); */
     color: #757e8a
 }
 
 #role-2 {
-    /* backgund: url(ro"https://cdn.discordapp.com/embed/avatars/2.png"); */
     color: #3ba55c
 }
 
 #role-3 {
-    /* background: url("https://cdn.discordapp.com/embed/avatars/3.png"); */
     color: #faa61a
 }
 
 #role-4 {
-    /* background: url("https://cdn.discordapp.com/embed/avatars/4.png"); */
     color: #ed4245
 }
 
 #role-5 {
-    /* background: url("https://cdn.discordapp.com/embed/avatars/5.png"); */
     color: #eb459f;
 }
 
 #role-6 {
-    /* background: url("https://cdn.discordapp.com/attachments/806282416364585062/1010652379332497408/Bounsbot.svg"); */
     color: var(--color-principal);
 }
 
@@ -385,7 +376,6 @@ b {
     -moz-user-select: none;
     -ms-user-select: none;
     -webkit-user-select: none;
-    /* background: url('https://cdn.discordapp.com/attachments/806282416364585062/1010652067490177064/guildLogo.svg'); */
     background-size: contain;
     background-repeat: no-repeat;
     background-color: #202225;
@@ -817,13 +807,6 @@ body {
 }
 
 @media only screen and (max-width:1250px) {
-
-    /* #discord-main {
-        width: 50vw
-    } */
-    /* #discord-server-avatar {
-        display: none
-    } */
     #discord-channel-list, #discord-voice-panel {
         width: 200px
     }

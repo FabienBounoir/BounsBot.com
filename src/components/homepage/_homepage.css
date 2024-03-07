@@ -41,7 +41,6 @@
     grid-template-areas: "text avatar";
     height: calc(100svh - 85px);
     width: 100%;
-    background-color: #1e1e1e;
     color: white;
     font-family: 'Roboto', sans-serif;
     font-size: 1.5em;
@@ -53,15 +52,14 @@
 
     min-height: 500px;
 
-    background: linear-gradient(180deg, #1e1e1e 0%, var(--color-principal) 350%);
+    background: radial-gradient(63.94% 63.94% at 50% -20%, var(--color-principal-hover) 0%, #0f0f10 100%), #0f0f10;
 
     gap: 32px;
-
     user-select: none;
 }
 
 .home_halloween {
-    background: url(./spider_top.webp) no-repeat, url(./spider_bottom.webp) no-repeat right bottom, linear-gradient(180deg, #1e1e1e 0%, var(--color-principal) 350%);
+    background: url(./spider_top.webp) no-repeat, url(./spider_bottom.webp) no-repeat right bottom, radial-gradient(63.94% 63.94% at 50% 50%, var(--color-principal-hover) 0%, #0f0f10 100%), #0f0f10;
     background-size: contain;
 }
 
@@ -173,7 +171,6 @@
     align-items: flex-start;
 
     box-sizing: border-box;
-    /* overflow: hidden; */
     align-items: flex-start;
     text-align: left;
     z-index: 3;
@@ -190,6 +187,7 @@
     line-height: 72px;
     font-weight: 700;
     letter-spacing: -0.03em;
+    text-wrap: pretty;
 }
 
 
@@ -225,7 +223,6 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    /* padding: 0 5vw; */
     box-sizing: border-box;
     overflow: hidden;
     z-index: 3;
@@ -367,7 +364,6 @@
         justify-content: center;
         align-items: center;
         box-sizing: border-box;
-        /* overflow: hidden; */
         align-items: center;
         text-align: center;
         z-index: 3;
@@ -386,7 +382,6 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        /* padding: 0 5vw; */
         box-sizing: border-box;
         overflow: hidden;
         z-index: 3;
@@ -438,9 +433,7 @@
         height: 100%;
         max-width: 200px;
         max-height: 200px;
-        /* animation: avatarAnimation 5s linear infinite; */
     }
-
 }
 
 @media screen and (max-height: 452px) {
@@ -454,7 +447,6 @@
         height: 100%;
         max-width: 200px;
         max-height: 200px;
-        /* animation: avatarAnimation 5s linear infinite; */
     }
 
     .buttonContainer {
@@ -473,7 +465,6 @@
         height: 100%;
         max-width: 200px;
         max-height: 200px;
-        /* animation: avatarAnimation 5s linear infinite; */
     }
 
     .buttonContainer {
@@ -492,7 +483,6 @@
         height: 100%;
         max-width: 200px;
         max-height: 200px;
-        /* animation: avatarAnimation 5s linear infinite; */
     }
 
     .homepage__text .buttonContainer {

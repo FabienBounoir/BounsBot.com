@@ -247,6 +247,12 @@ export const Commandes = () => {
             setCommands(commandLocaleLanguage)
             console.log("commandsObject.menu", commandsObject.menu.map(m => m.value))
             setMenu([{ name: t(`commands.menu.All`), value: "All" }, ...commandsObject.menu.map(m => { return { name: (t(`commands.menu.${m.value}`).includes("menu") ? m.value : t(`commands.menu.${m.value}`)), value: m.value } })])
+
+            let module = new URLSearchParams(window.location.search).get('module')
+
+            if (module) {
+                selectType(module)
+            }
         }
         catch (e) {
             console.log("ERROR WHEN LOADING COMMANDS", e)

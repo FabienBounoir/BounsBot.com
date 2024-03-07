@@ -55,7 +55,7 @@ export const App = () => {
     let r = document.getElementsByTagName("html")[0];
 
     let date = new Date();
-    if (date.getMonth() === 9) { //&& date.getDate() === 31
+    if (date.getMonth() === 9 && (date.getDate() <= 31 && date.getDate() >= 15)) {
       let r = document.getElementsByTagName("html")[0];
       r.style.setProperty('--color-principal', '#ff5e00');
       r.style.setProperty('--color-principal-hover', '#702a00');
@@ -64,7 +64,7 @@ export const App = () => {
       r.style.setProperty('--color-green', '94');
       r.style.setProperty('--color-blue', '0');
     }
-    else if (date.getMonth() === 11 && (date.getDate() <= 26 && date.getDate() >= 10)) {
+    else if (date.getMonth() === 11 && (date.getDate() <= 27 && date.getDate() >= 10)) {
       let r = document.getElementsByTagName("html")[0];
       //frozen color
       r.style.setProperty('--color-principal', '#00bfff');
@@ -142,9 +142,11 @@ export const App = () => {
               title="Bouns'Botㆍcommandes"
               description="Learn how to use Bouns'bot, the multifunction bot for your Discord server."
               name="Bouns'Bot" />
-            <Commandes />
-            <BrandAddBot />
-            <Footer />
+            <ScrollToTop>
+              <Commandes />
+              <BrandAddBot />
+              <Footer />
+            </ScrollToTop>
           </Route>
 
           <Route exact path="/status">

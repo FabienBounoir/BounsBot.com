@@ -4,32 +4,95 @@
         "invite_button": "邀请 Bouns'bot",
         "support": "支持",
         "on_number_of_server": "Bounsbot，被{{number}}个服务器认可的 Discord 机器人",
-        "members": "成员"
+        "members": "成员",
+        "learn_more": "了解更多"
     },
     "feature": {
         "fonctionnality": "功能",
+        "moderation": {
+            "name": "管理",
+            "title": "管理您的服务器",
+            "description": "通过Bouns'Bot，执行在您的服务器上的规则从未如此简单",
+            "example1": {
+                "title": "/违规命令",
+                "description": "保留您成员违规的完整历史记录；没有遗漏，封禁、踢出、禁言、警告等一切都为您记录，让您尽情使用。"
+            },
+            "example2": {
+                "title": "私人违规消息",
+                "description": "针对每一个违规，都会向成员发送一条私人消息，通知其有关违规的情况，并提供详细信息。这样他们将无法声称不知情。"
+            },
+            "example3": {
+                "title": "违规日志",
+                "description": "所有违规都记录在特定频道，让您可以追踪您服务器的活动。"
+            }
+        },
         "multimedia": {
             "name": "多媒体",
-            "description1": "按需播放歌曲或全天候收听无需停歇的广播电台。",
-            "description2": "当您离开时，派对也不会停止，因为 Bouns'bot 会在您的频道中 24 小时/7 天不间断地运行！"
+            "title": "为您的服务器设置氛围",
+            "description": "使用Bouns'Bot在您的服务器上创建独特的氛围。您可以访问各种命令为您的服务器增添活力。",
+            "example1": {
+                "title": "/播放命令",
+                "description": "使用Bouns'Bot在您的服务器上播放音乐从未如此简单。"
+            },
+            "example2": {
+                "title": "/广播命令",
+                "description": "没有音乐可播放？没问题，Bouns'Bot为您提供超过60000个广播电台，为您的服务器增色添彩。"
+            },
+            "example3": {
+                "title": "音乐盲测",
+                "description": "您可以使用盲测测试您的音乐知识，随机或选择播放列表。"
+            }
         },
-        "game": {
-            "name": "游戏",
-            "description1": "玩各种迷你游戏！您可以独自或与朋友一起玩超过 15 个迷你游戏。",
-            "description2": "通过 Bouns'bot 内置的排名表脱颖而出，并通过我们的测验测试您的常识水平。"
+        "ticket": {
+            "name": "支持",
+            "title": "高质量支持",
+            "description": "Bouns’bot允许创建私人支持频道，我们称之为“票务”，在您的团队和寻求帮助的人之间。",
+            "example1": {
+                "title": "票务系统",
+                "description": "在您的服务器上创建一个票务系统，让您的成员可以轻松联系您。"
+            },
+            "example2": {
+                "title": "转录",
+                "description": "保留每个支持请求的记录，以确保没有遗漏。每个支持请求都保存在特定的频道中，包含所有必要的信息。"
+            },
+            "example3": {
+                "title": "开启支持请求",
+                "description": "使用Bouns'Bot，开启支持请求从未如此简单。您的成员可以通过单击按钮轻松开启一个支持请求。完全可定制以适应您的服务器。"
+            }
         },
         "logs": {
             "name": "日志",
-            "description1": "怎么回事，您不知道 Wumpus 打开了摄像头！",
-            "description2": "使用 Bouns'bot，您可以访问 Discord 上的所有日志，只需启用您需要的内容即可。"
+            "title": "监控",
+            "description": "使用Bouns'Bot监控您的服务器，您可以访问各种日志以追踪服务器的活动。",
+            "example1": {
+                "title": "加入/离开",
+                "description": "每当成员加入或离开您的服务器时，您都会收到通知。"
+            },
+            "example2": {
+                "title": "语音",
+                "description": "记录在语音频道中执行的每个操作，无论是加入、离开、启用摄像头还是屏幕共享。"
+            },
+            "example3": {
+                "title": "用户",
+                "description": "每当成员更改昵称、角色或甚至头像时，您都会收到通知。"
+            }
         },
-        "ticket": {
-            "name": "支持票",
-            "description": "Bouns’bot 可以创建私人支持频道，我们称之为票，用于团队和寻求帮助的人之间的沟通。"
-        },
-        "engagement": {
-            "name": "互动",
-            "description": "使用经验点奖励您的成员，并在您的自定义排名表上跟踪最活跃的成员。"
+        "game": {
+            "name": "游戏",
+            "title": "尽情娱乐",
+            "description": "使用Bouns'Bot娱乐您的社区从未如此简单。您可以访问20多种不同的游戏，为您的服务器增添活力。",
+            "example1": {
+                "title": "剪刀石头布",
+                "description": "向您的朋友发起剪刀石头布的挑战，并证明您是最棒的。您甚至可以挑战Bouns'Bot。"
+            },
+            "example2": {
+                "title": "扫雷",
+                "description": "游戏目标是在尽可能短的时间内找到矿井。每次点击方格都会告诉您该方格周围的矿井数量。"
+            },
+            "example3": {
+                "title": "猜猜是哪个宝可梦",
+                "description": "您能认出所有的宝可梦吗？通过这款游戏，您将不再能说您不认识它们了。"
+            }
         }
     },
     "brand": {
@@ -309,7 +372,7 @@
     "status": {
         "status": "状态",
         "description": "欢迎来到“Bouns'bot状态”页面。在这里，您将找到有关不同分片及其当前状态的信息。这将使您能够及时了解可能出现的问题以及是否会影响您的服务器。",
-        "idServer": "服务器ID",
+        "idServer": "输入您的服务器ID",
         "latency": "延迟",
         "uptime": "正常运行时间",
         "guildCount": "{{count}} 服务器",
@@ -345,6 +408,7 @@
         "seconds": "秒",
         "second": "秒",
         "infractionDetails": "对于在 {{{{TIME}}}} 进行的 {{{{INFRACTION}} {{INFRACTION_TEXT}}}}，执行 {{{{ACTION}}}} 时长 {{{{ACTION_TIME}}}}",
+        "infractionDetailsWithoutActionTime": "对于在 {{{{TIME}}}} 进行的 {{{{INFRACTION}} {{INFRACTION_TEXT}}}}，执行 {{{{ACTION}}}}",
         "linkUnbanInformation": "此链接将包含在使用 Bouns'bot 在您的服务器上的 /ban 或 /tempban 命令时的禁令嵌入中。它将允许被禁止的人提交解禁请求，从而改善用户体验。"
     },
     "infractions": {

@@ -37,9 +37,7 @@ function useStore() {
         })
 
         return () => {
-            // setImmediate(() => {
             dispatcher.off('data', fn)
-            // })
         }
     })
 

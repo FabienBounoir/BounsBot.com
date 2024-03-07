@@ -79,10 +79,6 @@
     gap: 1em;
 }
 
-/* .alignImage.error button {
-    margin-top: 1em;
-} */
-
 .alignImage.error button, .alignImageComponent.error button {
     text-align: center;
     padding: 14px 18px 14px 18px;
@@ -114,17 +110,14 @@
 }
 
 .animUp1 {
-    /* position: relative; */
     animation: loadingCircle1 3s ease-in-out infinite;
 }
 
 .animUp2 {
-    /* position: relative; */
     animation: loadingCircle2 3s ease-in-out infinite;
 }
 
 .animUp3 {
-    /* position: relative; */
     animation: loadingCircle3 3s ease-in-out infinite;
 }
 
@@ -166,15 +159,11 @@
 
 @keyframes loadingCircle1 {
     0% {
-        /* transform: translate(371.106766px, 527.095917px); */
         transform: translate(0px, 0px);
-        /* transform: rotate(0deg) scale(1); */
     }
 
     23% {
-        /* transform: translate(527.095917px, 371.106766px); */
         transform: translate(0px, -102px);
-        /* transform: rotate(1080deg) scale(1); */
     }
 
     46% {
@@ -184,29 +173,27 @@
 
 @keyframes loadingCircle2 {
     16.6% {
-        /* transform: translate(371.106766px, 527.095917px); */
         transform: translate(0px, 0px);
-        /* transform: rotate(0deg) scale(1); */
+
     }
 
     39.95% {
-        /* transform: translate(527.095917px, 371.106766px); */
+
         transform: translate(0px, -102px);
-        /* transform: rotate(1080deg) scale(1); */
+
     }
 
     63.3% {
-        /* transform: translate(527.095917px, 371.106766px); */
+
         transform: translate(0px, 0px);
-        /* transform: rotate(1080deg) scale(1); */
+
     }
 }
 
 @keyframes loadingCircle3 {
     40% {
-        /* transform: translate(371.106766px, 527.095917px); */
         transform: translate(0px, 0px);
-        /* transform: rotate(0deg) scale(1); */
+
     }
 
     66.65% {
@@ -214,8 +201,8 @@
     }
 
     93.3% {
-        /* transform: translate(527.095917px, 371.106766px); */
+
         transform: translate(0px, 0px);
-        /* transform: rotate(1080deg) scale(1); */
+
     }
 }

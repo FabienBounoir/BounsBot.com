@@ -1,4 +1,3 @@
-// import React from "react";
 import "./_navbar.css";
 import React, { useEffect, useReducer, useState } from 'react'
 import { Navbar, Container, Nav } from 'react-bootstrap/'
@@ -11,7 +10,7 @@ import { useStore } from "../../utils/store";
 import { useHistory } from "react-router-dom/cjs/react-router-dom";
 
 
-export const Navigation = () => {
+export const Navigation = ({ props }) => {
     const { t } = useTranslation();
     const history = useHistory();
 

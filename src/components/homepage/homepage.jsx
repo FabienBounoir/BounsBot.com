@@ -8,7 +8,7 @@ export const HomePage = () => {
     const { t } = useTranslation();
 
     const scrollToFeatures = () => {
-        document.getElementsByClassName("features")[0].scrollIntoView({ behavior: "smooth" });
+        document.getElementsByClassName("infoComponent")[0].scrollIntoView({ behavior: "smooth" });
     }
 
     useEffect(() => {

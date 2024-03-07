@@ -92,7 +92,7 @@ export const Moderation = ({ guildId, configuration, updateConfiguration, confAc
             formattedInfractions.push(
                 <div className="infractionContainer">
                     <div className="automatedInfraction">
-                        <span>{transformToHtml(t("moderation.infractionDetails").replace("{{INFRACTION}}", automatedInfractions[i].target_count).replace("{{INFRACTION_TEXT}}", automatedInfractions[i].target_count > 1 ? t("moderation.infractions") : t("moderation.infraction")).replace("{{TIME}}", formatTime(automatedInfractions[i].target_time)).replace("{{ACTION}}", automatedInfractions[i].action).replace("{{ACTION_TIME}}", formatTime(automatedInfractions[i].action_time)))}</span>
+                        <span>{transformToHtml(t("moderation." + (["WARN", "MUTE", "BAN"].include(automatedInfractions[i].action) ? "infractionDetailsWithoutActionTime" : "infractionDetails")).replace("{{INFRACTION}}", automatedInfractions[i].target_count).replace("{{INFRACTION_TEXT}}", automatedInfractions[i].target_count > 1 ? t("moderation.infractions") : t("moderation.infraction")).replace("{{TIME}}", formatTime(automatedInfractions[i].target_time)).replace("{{ACTION}}", automatedInfractions[i].action).replace("{{ACTION_TIME}}", formatTime(automatedInfractions[i].action_time)))}</span>
                         <button
                             onClick={() => {
                                 let newConfig = JSON.parse(JSON.stringify(configuration.autoInfractions))
@@ -292,19 +292,11 @@ export const Moderation = ({ guildId, configuration, updateConfiguration, confAc
 
                             newConfig.push(formatNewAutoInfraction)
 
-                            newConfig.sort((a, b) => {
-                                if (a.target_time < b.target_time) return -1;
-                                if (a.target_time > b.target_time) return 1;
-                                if (a.target_count > b.target_count) return -1;
-                                if (a.target_count < b.target_count) return 1;
-                                return 0;
-                            })
-
                             updateConfiguration({ ...configuration, autoInfractions: newConfig })
 
                             setNewAutoInfraction({
                                 target: "infraction",
-                                target_count: 3,
+                                target_count: newConfig.length + 1,
 
                                 infInType: "MINUTE",
                                 infInTime: 30,
@@ -313,8 +305,6 @@ export const Moderation = ({ guildId, configuration, updateConfiguration, confAc
                                 applyType: "HOUR",
                                 applytime: 1
                             })
-
-
                         }}>
                             <svg width="25" height="25" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="sc-eldPxv kIKVos inline-block mr-1.5" main="#9B9D9F"><path d="M6 12h12m-6-6v12" stroke="var(--color-principal)" data-stroke="main" stroke-width="1.5" stroke-linecap="round"></path></svg>
                         </button>

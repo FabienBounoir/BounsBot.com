@@ -36,14 +36,13 @@ export const Configuration = (props) => {
     const [configGuildUpdateSelected, setConfigGuildUpdateSelected] = useState({})
     const [channels, setChannels] = useState([])
     const [roles, setRoles] = useState([])
+    const [guildInfo, setGuildInfo] = useState({})
     const [loading, setLoading] = useState("LOADING")
     const history = useHistory();
 
     const [open, setOpen] = useState(true)
-    // const [state, dispatch] = useStore();
     const [state, dispatch] = useStore();
 
-    // const [changeNotSave, setChangeNotSave] = useState(false);
     const [loadingChargement, setLoadingChargement] = useState(false);
 
     let resetChange = () => {
@@ -157,10 +156,11 @@ export const Configuration = (props) => {
     }, [configGuildUpdateSelected])
 
     const getElement = async () => {
-        let res = await guildsAPI.getElement(activeGuild, 'all')
+        const { channels, roles, ...info } = await guildsAPI.getElement(activeGuild, 'all')
 
-        setChannels(res.channels)
-        setRoles(res.roles)
+        setChannels(channels)
+        setRoles(roles)
+        setGuildInfo(info)
     }
 
     const getData = async () => {
@@ -221,7 +221,7 @@ export const Configuration = (props) => {
     }, [props.user])
 
     const getHeaderType = () => {
-        if ((guild && guild?.icon !== null) || (user && user?.avatar !== null)) {
+        if ((guild && guild?.icon !== null) || (user && user?.avatar !== null) || (guildInfo && guildInfo?.banner)) {
             return 'withBanner'
         }
 
@@ -229,7 +229,7 @@ export const Configuration = (props) => {
     }
 
     const renderListingGuildConfiguration = () => {
-        return (<header className={getHeaderType()} style={{ backgroundImage: `url("https://cdn.discordapp.com/icons/${guild?.id}/${guild?.icon}.webp?size=1024")` }}>
+        return (<header className={getHeaderType()} style={{ backgroundImage: `url(${guildInfo && guildInfo?.banner ? guildInfo?.banner : `"https://cdn.discordapp.com/icons/${guild?.id}/${guild?.icon}.webp?size=1024"`})` }}>
             <p>{guild?.name}</p>
         </header>)
     }
@@ -324,7 +324,7 @@ export const Configuration = (props) => {
             </ul>
 
         </div>
-        {/* <div> */}
+
         <div onClick={() => { triggerListServer() }} className="buttonMenu"><span>
             <svg className="arrow" version="1.1" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="15px" height="15px" viewBox="0 0 30.021 30.021"><path d="M29.069,22.276c-0.791,0.932-1.917,1.409-3.052,1.409c-0.913,0-1.834-0.312-2.587-0.949l-8.42-7.152l-8.42,7.151 c-1.683,1.43-4.208,1.225-5.639-0.459c-1.43-1.686-1.224-4.208,0.46-5.64l11.01-9.351c1.493-1.269,3.686-1.269,5.178,0 l11.011,9.351C30.294,18.068,30.499,20.591,29.069,22.276z" fill="var(--color-principal)" /></svg>
         </span> </div>

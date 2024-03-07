@@ -126,15 +126,21 @@ export const Status = () => {
 
             <p>{t("status.description")}</p>
 
-            <input type="text" placeholder={t("status.idServer")} onChange={(e) => {
-                searchGuild(e)
-            }} />
+
+            <div className="shardManager">
+                <input type="text" placeholder={t("status.idServer")} onChange={(e) => {
+                    searchGuild(e)
+                }} />
+            </div>
+
             <div className="shardGrid">
 
                 {(() => {
                     let shardsComponent = []
+                    let i = 0
                     for (let shard of shards) {
-                        shardsComponent.push(<><div className={("shard" + ([-1, 1, 3, 5].includes(shard.status) ? " error" : "")) + (guildInSearch == shard.cluster_id ? " guild-in-shard" : "")} data-tooltip-id={"ShardStatus-" + shard.cluster_id} data-tooltip-html={shardTooltip(shard)} >{shard.cluster_id}</div><Tooltip className="shardTooltips" opacity={0.99} id={"ShardStatus-" + shard.cluster_id} ></Tooltip> </>)
+                        shardsComponent.push(<><div className={("shard" + ([-1, 1, 3, 5].includes(shard.status) ? " error" : "")) + (guildInSearch == shard.cluster_id ? " guild-in-shard" : "")} data-tooltip-id={"ShardStatus-" + shard.cluster_id} data-tooltip-html={shardTooltip(shard)} >{i || shard.cluster_id}</div><Tooltip className="shardTooltips" opacity={0.99} id={"ShardStatus-" + shard.cluster_id} ></Tooltip> </>)
+                        i++
                     }
                     return shardsComponent
                 })()}
@@ -142,7 +148,7 @@ export const Status = () => {
             </div>
 
             <Toaster richColors expand={false} position="bottom-right" />
-        </div>
+        </div >
     )
 
 }

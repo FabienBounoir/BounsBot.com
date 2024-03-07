@@ -2,8 +2,6 @@
 
 html {
   --logo-bouns-bot: "var(--color-principal)";
-  /* --color-principal: #0cab34; */
-  /* --color-principal-hover: #058f28; */
   --color-principal: #EF3F3F;
   --color-principal-hover: #A80C00;
 
@@ -11,12 +9,11 @@ html {
   --color-green: 63;
   --color-blue: 63;
 
-  --back-first-color: #383c41;
+  --back-first-color: #0f0f10;
   --back-second-color: #202225;
-  --back-html-color: #212529;
+  --back-html-color: #0f0f10;
 
   background-color: var(--back-html-color);
-  animation: test 0.3s infinite;
 }
 
 h1, h2, h3 {

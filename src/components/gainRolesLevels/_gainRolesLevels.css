@@ -1,8 +1,6 @@
 .rolesInfo {
-    /* background-color: #3e4246; */
     background-color: #1f1f25;
     padding: 1rem 1.5rem;
-    /* border-radius: 3px; */
     height: min-content;
     max-height: min-content;
     min-height: min-content;
@@ -35,7 +33,6 @@
     width: 12px;
     height: 12px;
     margin: 4px 2px 4px 4px;
-    /* background-color: green; */
 }
 
 .roleInfo div {

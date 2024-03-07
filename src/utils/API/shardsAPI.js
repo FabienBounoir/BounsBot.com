@@ -27,8 +27,3 @@ export const getStatus = () => {
         }
     })
 }
-
-// module.exports = {
-//     searchGuild,
-//     getStatus
-// }

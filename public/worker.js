@@ -1,3 +1,5 @@
+const version = '2.7.1'
+
 var CACHE_NAME = 'pwa-bounsbot';
 var urlsToCache = [
   '/',
@@ -15,6 +17,7 @@ self.addEventListener('install', event => {
   event.waitUntil(
     caches.open(CACHE_NAME)
       .then(function (cache) {
+        console.log('Opened cache', cache);
         return cache.addAll(urlsToCache);
       })
   );
@@ -25,6 +28,7 @@ self.addEventListener('fetch', event => {
   event.respondWith(
     caches.match(event.request)
       .then(function (response) {
+        console.log("response", response)
         // Cache hit - return response
         if (response) {
           return response;
