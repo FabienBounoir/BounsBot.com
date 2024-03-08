@@ -12,7 +12,7 @@
         "moderation": {
             "name": "Modération",
             "title": "Gérez votre serveur",
-            "description:": "Faire respecter la lois sur votre serveur n'a jamais été aussi simple avec Bouns'Bot",
+            "description": "Faire respecter la lois sur votre serveur n'a jamais été aussi simple avec Bouns'Bot",
             "example1": {
                 "title": "Commande /infractions",
                 "description": "Garder l'historique complet des infractions de vos membres, rien n'est laissé de coté, ban, kick, mute, warn, tout est enregistré pour votre plus grand plaisir."
