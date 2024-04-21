@@ -29,7 +29,7 @@
         "multimedia": {
             "name": "Multimédia",
             "title": "Ambiancez votre serveur",
-            "description:": "Créer une ambiance unique sur votre serveur avec Bouns'Bot, vous avez accès à une multitude de commandes pour animer votre serveur.",
+            "description": "Créer une ambiance unique sur votre serveur avec Bouns'Bot, vous avez accès à une multitude de commandes pour animer votre serveur.",
             "example1": {
                 "title": "Commande /play",
                 "description": "Jouer de la musique sur votre serveur n'a jamais été aussi simple, avec Bouns'Bot."
@@ -46,7 +46,7 @@
         "ticket": {
             "name": "Ticket",
             "title": "Un support de qualité",
-            "description:": "Bouns’bot permet de créer des channels de supports privés, que nous appelons des tickets, entre votre équipe et les personnes qui cherchent de l'aide.",
+            "description": "Bouns’bot permet de créer des channels de supports privés, que nous appelons des tickets, entre votre équipe et les personnes qui cherchent de l'aide.",
             "example1": {
                 "title": "Ticketing",
                 "description": "Créer un système de ticketing sur votre serveur, pour que vos membres puissent vous contacter facilement."
@@ -63,7 +63,7 @@
         "logs": {
             "name": "Logs",
             "title": "Surveillance",
-            "description:": "Surveillez votre serveur avec Bouns'Bot, vous avez accès à une multitude de logs pour suivre l'activité de votre serveur.",
+            "description": "Surveillez votre serveur avec Bouns'Bot, vous avez accès à une multitude de logs pour suivre l'activité de votre serveur.",
             "example1": {
                 "title": "Join / Leave",
                 "description": "Vous serrez informé chaque fois qu'un membre rejoins ou quitte votre serveur."
@@ -80,7 +80,7 @@
         "game": {
             "name": "Jeux",
             "title": "Amusez-vous",
-            "description:": "Amusez-vous avec Bouns'Bot, Engagez votre communauté n'a jamais été aussi simple avec Bouns'Bot. Vous avez accès à plus de 20 jeux différents pour animer votre serveur.",
+            "description": "Amusez-vous avec Bouns'Bot, Engagez votre communauté n'a jamais été aussi simple avec Bouns'Bot. Vous avez accès à plus de 20 jeux différents pour animer votre serveur.",
             "example1": {
                 "title": "Chifumi",
                 "description": "Defiez vos amis au Chifumi et prouvez que vous êtes le meilleur. Vous pouvez meme defier Bouns'Bot."
