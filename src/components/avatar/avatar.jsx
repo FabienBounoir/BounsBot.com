@@ -1,5 +1,5 @@
 let random = Math.random()
-const audio = new Audio("https://cdn.discordapp.com/attachments/1014101467126304798/1062388394610675773/tetris-99-main-theme.mp3");
+const audio = new Audio("./tetris.mp3");
 
 function setAvatar(props) {
     const { classElement, width, height, styleElement, easterEgg } = props;

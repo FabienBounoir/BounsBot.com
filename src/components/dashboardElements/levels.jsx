@@ -14,11 +14,15 @@ export const LevelsConfig = ({ guildId, configuration, setConfiguration, channel
     const [roleXp, setRoleXp] = useState("0")
 
     useEffect(() => {
-        setChannelsFiltered(channels?.filter(channel => channel.type === 0 || channel.type === 2));
+        if (channels) {
+            setChannelsFiltered(channels?.filter(channel => channel.type === 0 || channel.type === 2));
+        }
     }, [channels])
 
     useEffect(() => {
-        setRolesFiltered(roles.filter(role => !role.tags?.botId && role.name !== "@everyone"))
+        if (roles) {
+            setRolesFiltered(roles.filter(role => !role.tags?.botId && role.name !== "@everyone"))
+        }
     }, [roles])
 
     useEffect(() => {

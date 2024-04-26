@@ -525,7 +525,7 @@ class Demo extends Component {
                             </div>
                             <div className="voiceUser hidden clickable userSmall" id="discord-user-voiceuser" tabIndex="-1" role="button">
                                 <div className="content">
-                                    <div className="avatarContainer avatar avatarSmall user-0-avatar" style={{ backgroundImage: `url(${this.state.user.toLowerCase() === 'badbounstv' ? ("https://cdn.discordapp.com/attachments/806282416364585062/886279506564907048/logo-cyan-rouge.png") : (this.picture.startsWith("https://cdn.discordapp.com/avatars") ? this.picture : `https://cdn.discordapp.com/embed/avatars/${this.picture.split("-")[1]}.png`)})` }}>
+                                    <div className="avatarContainer avatar avatarSmall user-0-avatar" style={{ backgroundImage: `url(${this.state.user.toLowerCase() === 'badbounstv' ? ("./bouns.webp") : (this.picture.startsWith("https://cdn.discordapp.com/avatars") ? this.picture : `https://cdn.discordapp.com/embed/avatars/${this.picture.split("-")[1]}.png`)})` }}>
                                     </div>
                                     <div className="usernameFont username">{this.state.user}</div>
                                     {this.state.muet ? (
