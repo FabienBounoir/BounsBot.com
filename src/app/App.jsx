@@ -137,6 +137,15 @@ export const App = () => {
             <Footer />
           </Route>
 
+          <Route exact path="/features">
+            <SEO
+              title="Bouns'Bot Features"
+              description="Discover the features of Bouns'bot, the multifunction bot for your Discord server."
+              name="Bouns'Bot" />
+            <Features />
+            <BrandAddBot />
+          </Route>
+
           <Route exact path="/commands">
             <SEO
               title="Bouns'Botㆍcommandes"
