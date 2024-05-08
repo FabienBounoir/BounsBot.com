@@ -40,8 +40,7 @@ export const ListServer = (props) => {
 
     const LoaderGuildEffect = () => {
         let renderLoading = []
-        //random entre 4 et 10
-        let random = Math.floor(Math.random() * (12 - 4 + 1) + 7)
+        let random = Math.floor((Math.random() * 8) + 10)
 
         for (let i = 0; i < random; i++) {
 

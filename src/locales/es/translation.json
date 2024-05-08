@@ -104,7 +104,9 @@
         "levels": "Niveles",
         "status": "Estado",
         "login": "Iniciar sesión",
-        "demo": "Demostración"
+        "demo": "Demostración",
+        "dashboard": "Panel",
+        "disconnect": "Desconectar"
     },
     "commands": {
         "search_command": "Buscar un comando",

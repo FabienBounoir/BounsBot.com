@@ -14,8 +14,6 @@ export const InfoDashboard = (props) => {
                 <p>{t("dashboard.info.text6")}</p>
                 <p>{t("dashboard.info.text7")}</p>
             </div>
-
-            <img src="https://cdn.discordapp.com/attachments/1014101467126304798/1103447646355603550/dashboard.svg" alt="Dashboard" />
         </div>
     )
 }

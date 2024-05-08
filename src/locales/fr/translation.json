@@ -104,7 +104,9 @@
         "levels": "Levels",
         "status": "Statuts",
         "login": "Se connecter",
-        "demo": "Démo"
+        "demo": "Démo",
+        "dashboard": "Tableau de bord",
+        "disconnect": "Déconnexion"
     },
     "commands": {
         "search_command": "Rechercher une commande",

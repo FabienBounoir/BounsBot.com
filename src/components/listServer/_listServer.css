@@ -39,7 +39,7 @@
 
 .guildAvatar.loading {
     border-radius: 50%;
-    background-color: var(--color-principal);
+    background-color: rgba(var(--color-red), var(--color-green), var(--color-blue), 0.3);
 
     animation: loaderGuild 1s infinite alternate;
     opacity: 0.5;
@@ -91,11 +91,11 @@
 
 @keyframes loaderGuild {
     0% {
-        background-color: hsla(200, 20%, 70%);
+        opacity: 0.5;
     }
 
     100% {
-        background-color: hsl(200, 20%, 95%);
+        opacity: 1;
     }
 }
 

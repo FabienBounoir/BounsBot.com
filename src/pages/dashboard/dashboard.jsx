@@ -47,7 +47,7 @@ export const Dashboard = () => {
 
         //get the height of nav
         const nav = document.querySelector("nav")
-        const navHeight = nav.offsetHeight
+        const navHeight = nav?.offsetHeight || 75
         //create a variable for the height of the dashboard
         doc.style.setProperty('--dashboard-height', `calc(var(--doc-height) - ${navHeight}px)`)
     }
@@ -67,15 +67,17 @@ export const Dashboard = () => {
 
         //when nav element change size
         const nav = document.querySelector("nav")
-        nav.addEventListener("transitionend", () => {
-            onResize()
-        })
+        if (nav) {
+            nav.addEventListener("transitionend", () => {
+                onResize()
+            })
+        }
 
         return () => {
             document.getElementsByTagName("body")[0].style.overflow = "auto";
-            window.removeEventListener("resize", onResize)
-            window.removeEventListener("orientationchange", onResize)
-            nav.removeEventListener("transitionend", onResize)
+            window?.removeEventListener?.("resize", onResize)
+            window?.removeEventListener?.("orientationchange", onResize)
+            nav?.removeEventListener?.("transitionend", onResize)
         }
     }, [])
 

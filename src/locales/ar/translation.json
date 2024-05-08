@@ -104,7 +104,9 @@
         "levels": "المستويات",
         "status": "الحالة",
         "login": "تسجيل الدخول",
-        "demo": "عرض توضيحي"
+        "demo": "عرض توضيحي",
+        "dashboard": "لوحة القيادة",
+        "disconnect": "قطع الاتصال"
     },
     "commands": {
         "search_command": "البحث عن أمر",

@@ -45,6 +45,7 @@ export const App = () => {
         color += letters[Math.floor(Math.random() * 16)];
       }
     }
+
     //tant que la couleur est trop claire ou trop foncée
     while (parseInt(color, 16) > 0x999999 || parseInt(color, 16) < 0x333333)
 
@@ -76,7 +77,7 @@ export const App = () => {
 
       setSnow();
     }
-    else if (Math.random() < 0.1) {
+    else if (Math.random() < 0.2) {
       colorUpdate(r);
     }
   }
@@ -122,7 +123,6 @@ export const App = () => {
   return (
     <div className="App">
       <BrowserRouter>
-        <Navigation />
         <Loader />
         <Switch>
           <Route exact path="/">
@@ -138,6 +138,7 @@ export const App = () => {
           </Route>
 
           <Route exact path="/features">
+            <Navigation />
             <SEO
               title="Bouns'Bot Features"
               description="Discover the features of Bouns'bot, the multifunction bot for your Discord server."
@@ -147,6 +148,7 @@ export const App = () => {
           </Route>
 
           <Route exact path="/commands">
+            <Navigation />
             <SEO
               title="Bouns'Botㆍcommandes"
               description="Learn how to use Bouns'bot, the multifunction bot for your Discord server."
@@ -159,6 +161,7 @@ export const App = () => {
           </Route>
 
           <Route exact path="/status">
+            <Navigation />
             <SEO
               title="Bouns'Botㆍstatus"
               description="See the status of Bouns'bot, the multifunction bot for your Discord server."
@@ -169,6 +172,7 @@ export const App = () => {
           </Route>
 
           <Route exact path="/level">
+            <Navigation />
             <SEO
               title="Bouns'Botㆍlevels"
               description="Engage your community with the levels system of Bouns'bot, the multifunction bot for your Discord server."
@@ -176,6 +180,7 @@ export const App = () => {
             <Levels />
           </Route>
           <Route exact path="/demo">
+            <Navigation />
             <SEO
               title="Bouns'Botㆍdemo"
               description="Cool demo of Bouns'bot, You can even chat with your friends directly here!"
@@ -184,6 +189,7 @@ export const App = () => {
           </Route>
 
           <Authenticate exact path="/dashboard">
+            <Navigation />
             <SEO
               title="Bouns'Botㆍdashboard"
               description="Manage your server with the dashboard of Bouns'bot !"
@@ -193,6 +199,7 @@ export const App = () => {
           </Authenticate>
 
           <Authenticate exact path="/dashboard/:id/:typeconfig">
+            <Navigation background={"#202225"} />
             <SEO
               title="Bouns'Botㆍdashboard"
               description="Manage your server with the dashboard of Bouns'bot !"
@@ -202,6 +209,7 @@ export const App = () => {
           </Authenticate>
 
           <Route exact path="/login" >
+            <Navigation />
             <SEO
               title="Bouns'Botㆍlogin"
               description="Login with your Discord account to manage your server with the dashboard of Bouns'bot !"
@@ -209,6 +217,7 @@ export const App = () => {
             <Login />
           </Route>
           <Route exact path="/bot/privacy" >
+            <Navigation />
             <SEO
               title="Bouns'Botㆍprivacy"
               description="Privacy policy of Bouns'bot"
@@ -220,6 +229,7 @@ export const App = () => {
             </ScrollToTop>
           </Route>
           <Route exact path="/a-propos" >
+            <Navigation />
             <SEO
               title="Bouns'Botㆍabout"
               description="Why Bouns'bot ? Who is Bouns'bot ? Find out more about Bouns'bot !"
@@ -231,6 +241,7 @@ export const App = () => {
             </ScrollToTop>
           </Route>
           <Route exact path="/bot/terms" >
+            <Navigation />
             <SEO
               title="Bouns'Botㆍterms"
               description="Terms of service of Bouns'bot"
@@ -242,9 +253,11 @@ export const App = () => {
             </ScrollToTop>
           </Route>
           <Route exact path="/oauth/callback" >
+            <Navigation />
             <Callback />
           </Route>
           <Route>
+            <Navigation />
             <SEO
               title="Bouns'Botㆍ404"
               description="You look lost, stranger. If you want to add bouns'bot, the button below might help you 👀"

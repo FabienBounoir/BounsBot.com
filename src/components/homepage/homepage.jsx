@@ -3,6 +3,7 @@ import Avatar from "../../components/avatar/avatar";
 import TypeIt from "typeit";
 import { useEffect } from "react";
 import { useTranslation } from 'react-i18next'
+import Navigation from "../navbar/navbar";
 
 export const HomePage = () => {
     const { t } = useTranslation();
@@ -43,19 +44,22 @@ export const HomePage = () => {
     }
 
     return (
+
+
         <div className={"homepage" + setClassEvent()}>
+            <Navigation sticky={true} />
             {(() => {
                 if (window.innerWidth > 768) {
 
                     let particulesNano = [];
-                    let nbParticule = 20 || Math.floor(Math.random() * 35) + 20;
+                    let nbParticule = 15;
 
                     for (let i = 0; i < nbParticule; i++) {
                         let size = Math.floor(Math.random() * 30) + 20;
                         let size2 = Math.floor(249 * size / 267);
 
                         //position random sur la div
-                        let top = Math.floor(Math.random() * 85) + 5 + "%";
+                        let top = Math.floor(Math.random() * 40) + 50 + "%";
                         let left = Math.floor(Math.random() * 90) + 5 + "%";
 
                         //rotation random -180° à 180°
@@ -99,5 +103,6 @@ export const HomePage = () => {
 
 
         </div >
+
     )
 }

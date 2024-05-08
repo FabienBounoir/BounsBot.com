@@ -34,17 +34,15 @@
     font-weight: 600;
 }
 
-.homepage {
+/* .homepage {
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-template-rows: 1fr;
     grid-template-areas: "text avatar";
-    height: calc(100svh - 85px);
+    height: calc(100svh - 25px);
     width: 100%;
     color: white;
-    font-family: 'Roboto', sans-serif;
     font-size: 1.5em;
-    font-weight: 300;
     padding: 0 5vw;
     box-sizing: border-box;
     overflow: hidden;
@@ -56,6 +54,28 @@
 
     gap: 32px;
     user-select: none;
+} */
+
+.homepage {
+    height: calc(100svh - 25px);
+    width: 100%;
+    z-index: 3;
+    min-height: 500px;
+    user-select: none;
+
+    display: flex;
+    flex-direction: column-reverse;
+    justify-content: center;
+    align-items: center;
+    background: radial-gradient(63.94% 63.94% at 50% -20%, var(--color-principal-hover) 0%, #0f0f10 100%), #0f0f10;
+    color: white;
+    font-family: 'Roboto', sans-serif;
+    font-size: 1.5em;
+    font-weight: 300;
+    padding: 0 5vw;
+    box-sizing: border-box;
+    overflow: hidden;
+    gap: 8vw;
 }
 
 .home_halloween {
@@ -64,7 +84,7 @@
 }
 
 .home_noel {
-    background: url("https://media.discordapp.net/attachments/927300810390515712/1044410881989169256/image.png") bottom left no-repeat, url("https://media.discordapp.net/attachments/927300810390515712/1044412151059726466/image.png") bottom right no-repeat, linear-gradient(180deg, #1e1e1e 0%, var(--color-principal) 350%);
+    background: url(./gift_left.png) bottom left no-repeat, url(./gift_right.png) bottom right no-repeat, linear-gradient(180deg, #1e1e1e 0%, var(--color-principal) 350%);
     background-size: contain;
     background-size: 20%;
 }
@@ -168,10 +188,9 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: flex-start;
+    align-items: center;
 
     box-sizing: border-box;
-    align-items: flex-start;
     text-align: left;
     z-index: 3;
 }
@@ -182,7 +201,7 @@
 
 .homepage__text h1 {
     margin-top: 0px;
-    margin-bottom: 32px;
+    /* margin-bottom: 32px; */
     font-size: 60px;
     line-height: 72px;
     font-weight: 700;
@@ -194,7 +213,7 @@
 .homepage__text .buttonContainer {
     display: flex;
     flex-direction: row;
-    margin-top: 32px;
+    margin-top: 12px;
     gap: 32px;
 }
 

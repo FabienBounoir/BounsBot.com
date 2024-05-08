@@ -104,7 +104,9 @@
         "levels": "Levels",
         "status": "Status",
         "login": "Log In",
-        "demo": "Demo"
+        "demo": "Demo",
+        "dashboard": "Dashboard",
+        "disconnect": "Disconnect"
     },
     "commands": {
         "search_command": "Search a command",

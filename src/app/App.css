@@ -14,6 +14,8 @@ html {
   --back-html-color: #0f0f10;
 
   background-color: var(--back-html-color);
+
+  font-family: Roboto, system-ui, -apple-system, "Segoe UI", "Helvetica Neue", "Noto Sans", "Liberation Sans", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 }
 
 h1, h2, h3 {
@@ -51,9 +53,9 @@ h1, h2, h3 {
 
 }
 
-.App {
+/* .App {
   text-align: center;
-}
+} */
 
 .App-header {
   background-color: #282c34;

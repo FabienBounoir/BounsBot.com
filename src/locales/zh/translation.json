@@ -104,7 +104,9 @@
         "levels": "等级",
         "status": "状态",
         "login": "登录",
-        "demo": "演示"
+        "demo": "演示",
+        "dashboard": "仪表板",
+        "disconnect": "断开连接"
     },
     "commands": {
         "search_command": "搜索指令",

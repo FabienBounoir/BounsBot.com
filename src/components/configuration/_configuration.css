@@ -1,5 +1,6 @@
 .configuration_list {
     background: #2e3137;
+    color: #fff;
 
     flex-direction: column;
     min-height: 0;
@@ -195,7 +196,6 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        min-width: 24px;
         max-width: 24px;
     }
 
@@ -229,11 +229,29 @@
         font-size: 1.5em;
         cursor: pointer;
         border-radius: 0 0.3em 0.3em 0;
+        min-width: 24px;;
+        max-width: 24px;
+    }
+
+    .buttonMenu span.rotate svg {
+        rotate: -90deg;
     }
 
     .buttonMenu span svg {
         rotate: 90deg;
+        animation: moveLeftRight 1.5s infinite alternate;
+    }
 
+    @keyframes moveLeftRight {
+        0% {
+            transform: translateY(0px);
+        }
+
+
+        100% {
+            transform: translateY(-3px);
+        }
+        
     }
 }
 

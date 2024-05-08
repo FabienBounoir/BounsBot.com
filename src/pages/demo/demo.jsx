@@ -483,7 +483,7 @@ class Demo extends Component {
 
     render() {
         return (
-            <div className="BackgroundGreen" style={{ backgroundColor: "var(--color-principal);" }}>
+            <div className="containerDemo" style={{ backgroundColor: "var(--color-principal);" }}>
                 <div className="mainscreen" id="discord-main">
                     <div className="demo-env" id="discord-title">DISCOUNS</div>
                     <div className="demo-env" id="discord-server-avatar">

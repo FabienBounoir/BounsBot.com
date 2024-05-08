@@ -10,8 +10,6 @@ export const Loader = () => {
     const [loading, setLoading] = useState(true)
 
     useEffect(() => {
-        const time = new Date().getTime()
-
         window.addEventListener("load", () => {
             setLoading(false)
         })

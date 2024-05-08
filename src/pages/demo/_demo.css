@@ -155,8 +155,10 @@ b {
     }
 }
 
-.BackgroundGreen {
-    background-color: var(--color-principal);
+.containerDemo {
+    padding: 1rem;
+    background-color: #0f0f10;
+    height: calc(100svh - 90px);
 }
 
 #discord-main {
@@ -168,16 +170,11 @@ b {
     display: flex;
     flex-direction: row;
     padding-top: 20px;
-    border-radius: 0;
     border-radius: 8px;
-    margin-right: 0fr;
     color: white;
 
-    position: absolute;
-    bottom: 0;
-    margin: 3px;
-
-    top: 6.3%;
+    position: relative;
+    z-index: 10;
 }
 
 #discord-main p {
@@ -836,11 +833,6 @@ body {
 }
 
 @media only screen and (max-width:400px) {
-    #discord-main {
-        top: 10%;
-        max-height: auto;
-    }
-
     #discord-inner {
         display: none
     }

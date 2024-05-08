@@ -137,7 +137,7 @@
 
 .features__container__card__button>a:first-child {
     font-weight: 500;
-    background-image: linear-gradient(to right, var(--color-principal), var(--color-principal-hover));
+    background: rgba(var(--color-red), var(--color-green), var(--color-blue), 1);
     padding: 14px 18px 14px 18px;
     border-radius: 10px;
     color: black;
@@ -146,8 +146,7 @@
 }
 
 .features__container__card__button>a:first-child:hover {
-    background-image: linear-gradient(to left, var(--color-principal), var(--color-principal-hover));
-    color: #fff;
+    background: rgba(var(--color-red), var(--color-green), var(--color-blue), 0.7);
     text-decoration: none;
 }
 

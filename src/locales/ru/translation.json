@@ -104,7 +104,9 @@
         "levels": "Уровни",
         "status": "Статусы",
         "login": "Войти",
-        "demo": "Демо"
+        "demo": "Демо",
+        "dashboard": "Панель управления",
+        "disconnect": "Отключиться"
     },
     "commands": {
         "search_command": "Искать команду",
