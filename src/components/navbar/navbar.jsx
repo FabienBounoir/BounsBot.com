@@ -62,7 +62,7 @@ export const Navigation = ({ props, sticky, background }) => {
                     <Link to="/" onClick={() => { eventClick() }}>
                         <Avatar classElement="d-inline-block align-top" width="32" height="30" />
                         {' '}
-                        <span style={{ color: "white", fontFamily: "Bebas Neue, sans-serif", letterSpacing: "3px", fontWeight: "900", fontSize: "1.3rem" }}>Bouns'Bot</span>
+                        <span className="logoNavbar">Bouns'Bot</span>
                     </Link>
                     <div className="links">
                         <Link className="link" to="/commands" onClick={() => { eventClick() }}>{t("title.commands")}</Link>
@@ -81,7 +81,7 @@ export const Navigation = ({ props, sticky, background }) => {
                                 <div className="login-template"><div>
                                     <div className="login_button_container">
                                         <div className={"goToDashboard " + (open ? "open" : "")} onClick={() => { setOpen(!open) }}>
-                                            <div className="LogoNav" style={{ backgroundImage: `url("https://cdn.discordapp.com/avatars/${JSON.parse(window.localStorage.getItem('user')).id}/${JSON.parse(window.localStorage.getItem('user')).avatar}.png?size=256` }}>
+                                            <div className="LogoNav" style={{ backgroundImage: `url("https://cdn.discordapp.com/avatars/${JSON.parse(window?.localStorage?.getItem?.('user') || {})?.id}/${JSON.parse(window?.localStorage?.getItem?.('user'))?.avatar}.png?size=256` }}>
                                             </div>
                                             <span className="hamgn6-5 dashboard_button">{JSON.parse(window.localStorage.getItem('user')).global_name || JSON.parse(window.localStorage.getItem('user')).username}</span>
                                             <svg className={open ? "rotate" : ""} width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="ltr:ml-1 rtl:mr-1 text-dark-200 transition-all scale-100"><path d="M7 14.5l5-5 5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg>
