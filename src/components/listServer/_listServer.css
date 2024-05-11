@@ -66,6 +66,7 @@
 
 .guildNameListing {
     z-index: 999999;
+    color: white !important;
 }
 
 @keyframes leftToRight {

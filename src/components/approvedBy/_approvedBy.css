@@ -196,13 +196,14 @@
     -webkit-box-pack: center;
     justify-content: center;
     z-index: 4;
+    text-align: center;
+    text-wrap: balance;
 }
 
 
 .infoComponent .guilds-container .guilds {
     background-color: #FFFFFF;
     color: #17181e;
-    border: 2px solid #BABABB;
     filter: drop-shadow(1px 3px 9px var(--color-principal-hover));
 
     display: flex;

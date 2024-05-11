@@ -140,7 +140,7 @@
     background: rgba(var(--color-red), var(--color-green), var(--color-blue), 1);
     padding: 14px 18px 14px 18px;
     border-radius: 10px;
-    color: black;
+    color: #fff;
     text-decoration: none;
     transition: all 0.5s ease;
 }

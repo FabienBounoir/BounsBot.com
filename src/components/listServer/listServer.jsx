@@ -88,8 +88,8 @@ export const ListServer = (props) => {
             let random = Math.floor(Math.random() * 6)
 
             if (guild.bot) {
-                render.push(<>
-                    <Link data-tooltip-id={"guild-" + guild.id} data-tooltip-html={"<span style='font-weight: bold;'>" + guild.name + "</span>"} key={guild.id} className={`list_item${activeGuild === guild.id ? " active" : ""}${(props.changeNotSave && activeGuild !== guild.id) ? " cantChange" : ""}`} to={`/dashboard/${guild.id}/dashboard`}>
+                render.push(
+                    <Link data-tooltip-id={"guild-list"} data-tooltip-html={"<span style='font-weight: bold; color: white;'>" + guild.name + "</span>"} key={guild.id} className={`list_item${activeGuild === guild.id ? " active" : ""}${(props.changeNotSave && activeGuild !== guild.id) ? " cantChange" : ""}`} to={`/dashboard/${guild.id}/dashboard`}>
                         < div className="list_balise" >
                             <div className="balise active">
                                 <span></span>
@@ -103,13 +103,11 @@ export const ListServer = (props) => {
                                 {guild.name}
                             </div>
                         </span>
-                    </Link>
-                    <Tooltip delayHide={10} className="guildNameListing" effect="solid" place="right" closeOnScroll={true} opacity={1} id={"guild-" + guild.id} ></Tooltip>
-                </>)
+                    </Link>)
             }
             else {
-                render.push(<>
-                    <div data-tooltip-id={"guild-" + guild.id} data-tooltip-html={"<span style='font-weight: bold;'>" + guild.name + "</span>"} key={guild.id} className={`list_item${activeGuild === guild.id ? " active" : ""}${(props.changeNotSave && activeGuild !== guild.id) ? " cantChange" : ""}`} onClick={() => { popUpCreate(guild.id) }}>
+                render.push(
+                    <div data-tooltip-id={"guild-list"} data-tooltip-html={"<span style='font-weight: bold; color: white;'>" + guild.name + "</span>"} key={guild.id} className={`list_item${(props.changeNotSave && activeGuild !== guild.id) ? " cantChange" : ""}`} onClick={() => { popUpCreate(guild.id) }}>
                         < div className="list_balise" >
                             <div className="balise active">
                                 <span></span>
@@ -124,10 +122,11 @@ export const ListServer = (props) => {
                             </div>
                         </span>
                     </div>
-                    <Tooltip delayHide={10} className="guildNameListing" effect="solid" place="right" closeOnScroll={true} opacity={1} id={"guild-" + guild.id} ></Tooltip>
-                </>)
+                )
             }
         }
+
+        render.push(<Tooltip style={{ background: "rgba(var(--color-red), var(--color-green), var(--color-blue), 1)" }} delayHide={10} className="guildNameListing" effect="solid" place="right" closeOnScroll={true} opacity={1} id={"guild-list"} ></Tooltip>)
 
         return render
     }

@@ -271,6 +271,10 @@ a{
     color: rgba(var(--color-red), var(--color-green), var(--color-blue), 0.95);
 }
 
+.navigationMenu .button-login-discord{
+    display: none; 
+}
+
 @media screen and (max-width: 900px){
     .navbar-toggler{
         display: initial;
@@ -306,6 +310,17 @@ a{
     }
 }
     
+
+@media screen and (max-width: 500px){
+    .navigationMenu .button-login-discord{
+        margin-top: 1rem;
+        display: initial;
+    }
+
+    .compte > .button-login-discord{
+        display: none;
+    }
+}
 
 
 @media (min-width: 576px) {

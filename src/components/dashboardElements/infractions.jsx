@@ -23,6 +23,8 @@ export const Infractions = ({ guildId, configuration, updateConfiguration, chann
         "warn": 0
     })
 
+    const [getInfractionsInProgress, setGetInfractionsInProgress] = useState(false)
+
     const [infractions, setInfractions] = useState([])
 
     const getStats = async () => {
@@ -40,6 +42,8 @@ export const Infractions = ({ guildId, configuration, updateConfiguration, chann
 
     const getInfractions = async () => {
         try {
+            if (getInfractionsInProgress) return
+            setGetInfractionsInProgress(true)
             const result = await infractionsAPI.list(guildId, page, 10)
 
             setHasMoreData(result.length !== 0 && result.length === 10)
@@ -48,6 +52,7 @@ export const Infractions = ({ guildId, configuration, updateConfiguration, chann
         } catch (error) {
             console.log(error)
         }
+        setGetInfractionsInProgress(false)
     }
 
     useEffect(() => {
@@ -129,7 +134,7 @@ export const Infractions = ({ guildId, configuration, updateConfiguration, chann
                     </div>
                     <div className="separator"></div>
 
-                    <div style={{ "display": "flex", "flexDirection": "row", flexWrap: "wrap", justifyContent: "space-evenly", color: "white", gap: "20px" }}>
+                    <div style={{ "display": "flex", "flexDirection": "row", flexWrap: "wrap", justifyContent: "space-evenly", color: "white", gap: "20px", textAlign: 'center' }}>
                         <div className="stats_sanction">
                             <h4>{infractionsStats.total}</h4>
                             <p>{t("infractions.totals")}</p>

@@ -325,6 +325,9 @@
                 "invites": "Pouvoir modérer les différents invites crée sur la guild",
                 "emotes_stickers": "Voir les differents changements opérés sur les Emotes et les stickers",
                 "infractions": "Voir les differents infractions effectués sur le serveur"
+            },
+            "other": {
+                "excludeChannel": "Exclure les salons"
             }
         },
         "send": {
@@ -409,6 +412,8 @@
         "minute": "Minute",
         "seconds": "Secondes",
         "second": "Seconde",
+        "noAutomatedSanctions": "Aucune sanction automatique n'est configurée pour le moment.",
+        "sortBySmallest": "Trie les infractions de la moins sévère à la plus sévère",
         "infractionDetails": "Pour {{{{INFRACTION}} {{INFRACTION_TEXT}}}} en {{{{TIME}}}}, appliquer un {{{{ACTION}}}} de {{{{ACTION_TIME}}}}",
         "infractionDetailsWithoutActionTime": "Pour {{{{INFRACTION}} {{INFRACTION_TEXT}}}} en {{{{TIME}}}}, appliquer un {{{{ACTION}}}}",
         "linkUnbanInformation": "Ce lien sera inclus dans l'embed de bannissement lorsque vous utilisez les commandes /ban ou /tempban de Bouns'bot sur votre serveur. Il permettra aux personnes bannies de soumettre une demande de débannissement, améliorant ainsi l'expérience utilisateur."

@@ -33,7 +33,7 @@
 
 .servers .list_item {
     position: relative;
-    margin: 0 0 8px;
+    margin: 8px 0 8px;
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;

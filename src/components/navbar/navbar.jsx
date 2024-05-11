@@ -109,7 +109,6 @@ export const Navigation = ({ props, sticky, background }) => {
                                 <Link className="link" to="/commands" onClick={() => { eventClick() }}>{t("title.commands")}</Link>
                                 <Link className="link" to="/level" onClick={() => { eventClick() }}>{t("title.levels")}</Link>
                                 <Link className="link" to="/status" onClick={() => { eventClick() }}>{t("title.status")}</Link>
-                                <Link className="link" to="/demo" onClick={() => { eventClick() }}>{t("title.demo")}</Link>
 
                                 {(() => {
                                     let EtatConnexion = [];
@@ -122,6 +121,9 @@ export const Navigation = ({ props, sticky, background }) => {
                                             <span className="link disconnect" onClick={() => { clickMe() }}>{t("title.disconnect")}</span>
                                         </>
                                         )
+                                    }
+                                    else {
+                                        EtatConnexion.push(<a className="button-login-discord" href={process.env.REACT_APP_OAUTH2_LINK} onClick={() => { eventClick() }}>{t("title.login")}</a>)
                                     }
 
 

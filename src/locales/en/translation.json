@@ -409,6 +409,8 @@
         "minute": "Minute",
         "seconds": "Seconds",
         "second": "Second",
+        "noAutomatedSanctions": "No automated sanction is currently configured.",
+        "sortBySmallest": "Sorts infractions from smallest to largest severity",
         "infractionDetails": "For {{{{INFRACTION}} {{INFRACTION_TEXT}}}} in {{{{TIME}}}}, apply a {{{{ACTION}}}} for {{{{ACTION_TIME}}}}",
         "infractionDetailsWithoutActionTime": "For {{{{INFRACTION}} {{INFRACTION_TEXT}}}} in {{{{TIME}}}}, apply a {{{{ACTION}}}}",
         "linkUnbanInformation": "This link will be included in the ban embed when using Bouns'bot's /ban or /tempban commands on your server. It will allow banned individuals to submit an unban request, improving the user experience."

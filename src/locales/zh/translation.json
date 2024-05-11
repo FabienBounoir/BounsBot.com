@@ -409,6 +409,8 @@
         "minute": "分钟",
         "seconds": "秒",
         "second": "秒",
+        "noAutomatedSanctions": "当前未配置任何自动制裁。",
+        "sortBySmallest": "将违规行为按照严重程度从小到大排序",
         "infractionDetails": "对于在 {{{{TIME}}}} 进行的 {{{{INFRACTION}} {{INFRACTION_TEXT}}}}，执行 {{{{ACTION}}}} 时长 {{{{ACTION_TIME}}}}",
         "infractionDetailsWithoutActionTime": "对于在 {{{{TIME}}}} 进行的 {{{{INFRACTION}} {{INFRACTION_TEXT}}}}，执行 {{{{ACTION}}}}",
         "linkUnbanInformation": "此链接将包含在使用 Bouns'bot 在您的服务器上的 /ban 或 /tempban 命令时的禁令嵌入中。它将允许被禁止的人提交解禁请求，从而改善用户体验。"

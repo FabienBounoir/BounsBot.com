@@ -47,7 +47,6 @@
     align-items: center;
     background: radial-gradient(63.94% 63.94% at 50% -20%, var(--color-principal-hover) 0%, #0f0f10 100%), #0f0f10;
     color: white;
-    /* font-family: 'Roboto', sans-serif; */
     font-size: 1.5em;
     font-weight: 300;
     padding: 0 5vw;
@@ -345,7 +344,6 @@
         align-items: center;
         background-color: #1e1e1e;
         color: white;
-        font-family: 'Roboto', sans-serif;
         font-size: 1.5em;
         font-weight: 300;
         padding: 0 5vw;

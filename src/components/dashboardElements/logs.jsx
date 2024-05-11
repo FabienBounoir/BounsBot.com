@@ -14,7 +14,7 @@ export const Logs = ({ guildId, configuration, updateConfiguration, channels, lo
 
 
     let getChannelForSelector = (selectedchannel) => {
-        var option = [];
+        let option = [];
 
         if (selectedchannel === "0" || selectedchannel === null) {
             option.push(<option value="0" selected>❌ {t("dashboard.disable")}</option>)
@@ -35,6 +35,75 @@ export const Logs = ({ guildId, configuration, updateConfiguration, channels, lo
         return option;
     }
 
+    const getChannelsNotUsed = (filteredChannel, onlyType) => {
+        let option = [];
+
+        let channelfiltered = channels?.filter?.(channel => !filteredChannel.includes(channel.id)) || []
+        if (onlyType) channelfiltered = channelfiltered.filter(channel => onlyType.includes(channel.type))
+
+        option.push(<option value={null} selected>{t("Choose channel")}</option>)
+
+        for (const value of channelfiltered) {
+            option.push(<option value={value.id}>{value.name}</option>)
+        }
+
+        return option;
+    }
+
+    const moduleMessageChannel = () => {
+        let channelsModule = []
+        for (let channel of configuration.logs?.excludeMessageChannels) {
+            let channelElement = channels.find(c => c.id === channel)
+
+            if (channelElement !== undefined) {
+                channelsModule.push(
+                    <div key={channel} className="channelExcludedElement" onClick={() => {
+                        let newChannels = configuration.logs?.excludeMessageChannels || []
+                        newChannels = newChannels.filter(c => c != channel)
+                        updateConfiguration({ ...configuration, logs: { ...configuration.logs, excludeMessageChannels: newChannels } })
+                    }}>
+                        <div>{channelElement?.name}</div>
+                    </div>
+                )
+            }
+        }
+
+        channelsModule.push(
+            <Form.Select defaultValue={null} onChange={(e) => { updateConfiguration({ ...configuration, logs: { ...configuration.logs, excludeMessageChannels: [...configuration.logs?.excludeMessageChannels, e.target.value] } }) }}>
+                {getChannelsNotUsed(configuration?.logs?.excludeMessageChannels)}
+            </Form.Select>
+        )
+
+        return channelsModule
+    }
+
+    const moduleVoiceChannel = () => {
+        let channelsModule = []
+        for (let channel of configuration.logs?.excludeVocalChannels) {
+            let channelElement = channels.find(c => c.id === channel)
+
+            if (channelElement !== undefined) {
+                channelsModule.push(
+                    <div key={channel} className="channelExcludedElement" onClick={() => {
+                        let newChannels = configuration.logs?.excludeVocalChannels || []
+                        newChannels = newChannels.filter(c => c != channel)
+                        updateConfiguration({ ...configuration, logs: { ...configuration.logs, excludeVocalChannels: newChannels } })
+                    }}>
+                        <div>{channelElement?.name}</div>
+                    </div>
+                )
+            }
+        }
+
+        channelsModule.push(
+            <Form.Select defaultValue={null} onChange={(e) => { updateConfiguration({ ...configuration, logs: { ...configuration.logs, excludeVocalChannels: [...configuration.logs?.excludeVocalChannels, e.target.value] } }) }}>
+                {getChannelsNotUsed(configuration?.logs?.excludeVocalChannels, [13, 2, 4])}
+            </Form.Select>
+        )
+
+        return channelsModule
+    }
+
     return (<>
         {["ERROR", "LOADING"].includes(loading) ?
             <LoadingComponent error={loading == "ERROR"} errorMessage="Une erreur est survenue" />
@@ -53,7 +122,20 @@ export const Logs = ({ guildId, configuration, updateConfiguration, channels, lo
                             })()}
                         </Form.Select>
                     </div>
-                    <div>{t("dashboard.logs.description.emotes_stickers")}</div>
+                    <div>{t("dashboard.logs.description.messages")}</div>
+
+                    {(() => {
+                        if (configuration?.logs?.excludeMessageChannels && configuration.logs?.message && configuration.logs?.message != "0") {
+                            return (
+                                <div className="channelExcluded">
+                                    <p>{t("dashboard.logs.other.excludeChannel")}</p>
+                                    <div className="channelExcludedList">
+                                        {moduleMessageChannel()}
+                                    </div>
+                                </div>
+                            )
+                        }
+                    })()}
                 </div>
 
                 <div className="guildModule logbackground" style={{ marginBottom: "1em" }} >
@@ -72,6 +154,19 @@ export const Logs = ({ guildId, configuration, updateConfiguration, channels, lo
                         </Form.Select>
                     </div>
                     <div>{t("dashboard.logs.description.vocals")}</div>
+
+                    {(() => {
+                        if (configuration?.logs?.excludeVocalChannels && configuration.logs?.vocal && configuration.logs?.vocal != "0") {
+                            return (
+                                <div className="channelExcluded">
+                                    <p>{t("dashboard.logs.other.excludeChannel")}</p>
+                                    <div className="channelExcludedList">
+                                        {moduleVoiceChannel()}
+                                    </div>
+                                </div>
+                            )
+                        }
+                    })()}
                 </div>
 
                 <div className="guildModule logbackground" style={{ marginBottom: "1em" }} >
