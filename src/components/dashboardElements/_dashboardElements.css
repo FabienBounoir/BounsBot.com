@@ -74,7 +74,6 @@
     -moz-appearance: none;
     background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14" /></svg>') no-repeat right center;
     padding-right: 20px; 
-    color: transparent; 
     border: 1px solid rgba(var(--color-red), var(--color-green), var(--color-blue), 0.4);
     border-radius: 0.3em;
     background-color: rgba(var(--color-red), var(--color-green), var(--color-blue), 0.2);
@@ -556,7 +555,6 @@ svg.disableSVGButton {
     -moz-appearance: none;
     background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14" /></svg>') no-repeat right center;
     padding-right: 20px; 
-    color: transparent; 
     border: 1px solid rgba(var(--color-red), var(--color-green), var(--color-blue), 0.4);
     border-radius: 0.3em;
     background-color: rgba(var(--color-red), var(--color-green), var(--color-blue), 0.2);
@@ -621,7 +619,6 @@ svg.disableSVGButton {
     -moz-appearance: none;
     background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14" /></svg>') no-repeat right center;
     padding-right: 20px; 
-    color: transparent; 
     border: 1px solid rgba(var(--color-red), var(--color-green), var(--color-blue), 0.4);
     border-radius: 0.3em;
     background-color: rgba(var(--color-red), var(--color-green), var(--color-blue), 0.2);

@@ -327,6 +327,9 @@
                 "invites": "Ability to moderate different invites created on the guild",
                 "emotes_stickers": "See different changes made to Emotes and Stickers",
                 "infractions": "See different infractions made on the server"
+            },
+            "other": {
+                "excludeChannel": "Exclude channels"
             }
         },
         "send": {

@@ -326,6 +326,9 @@
                     "invites": "Poder moderar las diferentes invitaciones creadas en el servidor",
                     "emotes_stickers": "Ver los diferentes cambios realizados en los Emojis y Pegatinas",
                     "infractions": "Ver las diferentes infracciones creadas en el servidor"
+                },
+                "other": {
+                    "excludeChannel": "Excluir canales"
                 }
             },
             "send": {
