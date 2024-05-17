@@ -327,6 +327,9 @@
                 "invites": "能够在服务器上管理不同的邀请",
                 "emotes_stickers": "查看对表情符号和贴纸进行的不同更改",
                 "infractions": "查看对用户的不同违规"
+            },
+            "other": {
+                "excludeChannel": "排除频道"
             }
         },
         "send": {

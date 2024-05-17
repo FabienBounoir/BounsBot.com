@@ -327,6 +327,9 @@
                 "invites": "Possibilità di moderare gli inviti creati sulla gilda",
                 "emotes_stickers": "Visualizzare le diverse modifiche apportate alle Emote e agli adesivi",
                 "infractions": "Visualizzare le diverse infrazioni commesse dagli utenti"
+            },
+            "other": {
+                "excludeChannel": "Escludi canali"
             }
         },
         "send": {
