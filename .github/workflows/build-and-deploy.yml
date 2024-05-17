@@ -14,5 +14,5 @@ jobs:
           USERNAME: ${{ secrets.USERNAME }}
           PORT: ${{ secrets.PORT }}
           KEY: ${{ secrets.SSHKEY }}
-          script: cd /opt/bouns-bot && git stash && git pull && npm run build
+          script: cd /opt/bouns-bot/frontend && git stash && git pull && npm run build
   
