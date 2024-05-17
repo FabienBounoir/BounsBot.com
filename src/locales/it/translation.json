@@ -5,7 +5,9 @@
         "support": "Supporto",
         "on_number_of_server": "Bounsbot, il bot Discord approvato da più di {{number}} server",
         "members": "Membri",
-        "learn_more": "Ulteriori informazioni"
+        "learn_more": "Ulteriori informazioni",
+        "random_features": "Il tuo compagno per {{type}} sul tuo server.",
+        "radio": "la radio"
     },
     "feature": {
         "fonctionnality": "Funzionalità",

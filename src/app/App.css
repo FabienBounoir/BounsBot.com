@@ -24,13 +24,13 @@ h1, h2, h3 {
 }
 
 *::-moz-selection {
-  background-color: var(--color-principal);
+  background-color: rgba(var(--color-red), var(--color-green), var(--color-blue), 0.3);
   color: #fff;
 }
 
 /* pour Safari et Chrome */
 *::selection {
-  background-color: var(--color-principal);
+  background-color: rgba(var(--color-red), var(--color-green), var(--color-blue), 0.3);
   color: #fff;
 }
 
@@ -52,10 +52,6 @@ h1, h2, h3 {
   }
 
 }
-
-/* .App {
-  text-align: center;
-} */
 
 .App-header {
   background-color: #282c34;

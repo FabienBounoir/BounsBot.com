@@ -5,7 +5,9 @@
         "support": "Поддержка",
         "on_number_of_server": "Bounsbot, Discord-бот, утвержденный более чем {{number}} серверами",
         "members": "Участники",
-        "learn_more": "Узнать больше"
+        "learn_more": "Узнать больше",
+        "random_features": "Ваш спутник для {{type}} на вашем сервере.",
+        "radio": "радио"
     },
     "feature": {
         "fonctionnality": "Функциональность",

@@ -2,7 +2,7 @@ import "./_homepage.css";
 import Avatar from "../../components/avatar/avatar";
 import TypeIt from "typeit";
 import { useEffect } from "react";
-import { useTranslation } from 'react-i18next'
+import { Trans, useTranslation } from 'react-i18next'
 import Navigation from "../navbar/navbar";
 
 export const HomePage = () => {
@@ -13,20 +13,22 @@ export const HomePage = () => {
     }
 
     useEffect(() => {
-        new TypeIt("#typeit", {
-            speed: 70,
-            startDelay: 0,
-            loop: true,
-            lifeLike: true,
-            cursorSpeed: 1000,
-        }).move(-19).delete(8)
-            .type("<b>la modération</b>", { delay: 1200, speed: 100 }).delete(13)
-            .type("<b>les levels</b>", { delay: 1200, speed: 100 }).delete(10)
-            .type("<b>l'animation</b>", { delay: 1200, speed: 100 }).delete(11)
-            .type("<b>la musique</b>", { delay: 1200, speed: 100 }).delete(10)
-            .type("<b>les tickets</b>", { delay: 1200, speed: 100 }).delete(11)
-            .type("<b>les logs</b>", { delay: 1200, speed: 100 })
-            .move(null, { to: "END" }).delete(27).type("<b>vous !!!</b>", { delay: 5000 }).go() //.delete(null, { to: "END" }).go() //.move(null, { to: "END" }).go();
+        if (["fr", "fr-FR"].includes(navigator?.language)) {
+            new TypeIt("#typeit", {
+                speed: 70,
+                startDelay: 0,
+                loop: true,
+                lifeLike: true,
+                cursorSpeed: 1000,
+            }).move(-19).delete(8)
+                .type("<b>la modération</b>", { delay: 1200, speed: 100 }).delete(13)
+                .type("<b>les levels</b>", { delay: 1200, speed: 100 }).delete(10)
+                .type("<b>l'animation</b>", { delay: 1200, speed: 100 }).delete(11)
+                .type("<b>la musique</b>", { delay: 1200, speed: 100 }).delete(10)
+                .type("<b>les tickets</b>", { delay: 1200, speed: 100 }).delete(11)
+                .type("<b>les logs</b>", { delay: 1200, speed: 100 })
+                .move(null, { to: "END" }).delete(27).type("<b>vous !!!</b>", { delay: 5000 }).go() //.delete(null, { to: "END" }).go() //.move(null, { to: "END" }).go();
+        }
     })
 
     const setClassEvent = () => {
@@ -73,8 +75,7 @@ export const HomePage = () => {
 
             <div className="homepage__text">
                 <h1> {t("homepage.text_header")}</h1>
-                <p id="typeit">Votre acolyte pour <b>la radio</b> sur votre serveur.</p>
-
+                <p id="typeit"><Trans i18nKey="homepage.random_features" components={{ bold: <b /> }} values={{ type: t("homepage.radio") || "the radio" }} /></p>
 
                 <div className="buttonContainer">
                     <span>
