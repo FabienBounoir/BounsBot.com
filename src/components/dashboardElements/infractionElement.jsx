@@ -4,7 +4,12 @@ import { useTranslation } from "react-i18next";
 import * as infractionsAPI from "../../utils/API/infractionsAPI.js";
 import InfiniteScroll from "react-infinite-scroll-component";
 
-export const InfractionElement = ({ inf, index }) => {
+export const InfractionElement = ({ inf, index, users }) => {
+    const getUser = (id, type) => {
+        if (type == "AUTOMOD") return { globalName: "Automod", tag: "automod", displayAvatarURL: "/automod.png" }
+        return users.find(user => user.id === id)
+    }
+
 
     const statusSvg = (status) => {
         switch (status) {
@@ -59,11 +64,30 @@ export const InfractionElement = ({ inf, index }) => {
         <tr>
             <td colspan="4" className="user">
                 <div className="avatar_moderator">
-                    <img src={inf.user ? `${inf.user.avatarURL}` : ""} />
-                    <div>
-                        <p>{inf.user ? `${inf.user.displayName}` : inf.userId}</p>
-                        <p>{inf.user ? `${inf.user.tag}` : ""}</p>
-                    </div>
+                    {(() => {
+                        const user = getUser(inf.userId)
+
+                        if (user) {
+                            return (<>
+                                <img src={user ? `${user?.displayAvatarURL}` : ""} />
+                                <div>
+                                    <p>{user ? `${user?.globalName || user?.username}` : inf?.userId}</p>
+                                    <p>{user ? `${user?.tag || user?.username}` : ""}</p>
+                                </div>
+                            </>)
+                        }
+                        else {
+                            return (<>
+                                <div className="skeleton">
+                                    <div className="skeleton-avatar"></div>
+                                    <div className="skeleton-text">
+                                        <div className="skeleton-text-line">{inf.userId}</div>
+                                        <div className="skeleton-text-line"></div>
+                                    </div>
+                                </div>
+                            </>)
+                        }
+                    })()}
                 </div>
             </td>
             <td></td>
@@ -72,11 +96,30 @@ export const InfractionElement = ({ inf, index }) => {
             <td colspan="1" style={{ textAlign: "center" }} data-tooltip-id={`inf-type`} data-tooltip-html={`${inf.status}`}>{statusSvg(inf.status)}</td>
             <td className="mod_cellule">
                 <div className="avatar_moderator">
-                    <img src={inf.moderator ? `${inf.moderator.avatarURL}` : ""} />
-                    <div>
-                        <p>{inf.moderator ? `${inf.moderator.displayName}` : inf.moderatorId}</p>
-                        <p>{inf.moderator ? `${inf.moderator.tag}` : ""}</p>
-                    </div>
+                    {(() => {
+                        const moderator = getUser(inf.moderatorId, inf.type)
+
+                        if (moderator) {
+                            return (<>
+                                <img src={moderator ? `${moderator?.displayAvatarURL}` : ""} />
+                                <div>
+                                    <p>{moderator ? `${moderator?.globalName || moderator?.username}` : inf.moderatorId}</p>
+                                    <p>{moderator ? `${moderator?.tag || moderator?.username}` : ""}</p>
+                                </div>
+                            </>)
+                        }
+                        else {
+                            return (<>
+                                <div className="skeleton">
+                                    <div className="skeleton-avatar"></div>
+                                    <div className="skeleton-text">
+                                        <div className="skeleton-text-line">{inf.moderatorId}</div>
+                                        <div className="skeleton-text-line"></div>
+                                    </div>
+                                </div>
+                            </>)
+                        }
+                    })()}
                 </div>
             </td>
         </tr>

@@ -2,6 +2,7 @@
     min-height: calc(100vh - 40vh);
     background-color: var(--back-first-color);
     padding: 2.5em 15em;
+    text-align: center;
 }
 
 .statusShard {
@@ -13,11 +14,16 @@
     font-weight: 700;
 }
 
+.statusShard *{
+    color: white !important;
+}
+
 .shardTooltips p {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    color: white !important;
 }
 
 .shardManager {
@@ -45,6 +51,10 @@
     margin: 0;
     padding-bottom: 0.5rem !important;
     text-wrap: balance;
+}
+
+.tooltipsElement *{
+    color: white !important;
 }
 
 .statusContainer .top {

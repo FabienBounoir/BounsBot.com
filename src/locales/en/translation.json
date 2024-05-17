@@ -5,7 +5,9 @@
         "support": "Support",
         "on_number_of_server": "Bounsbot, the Discord bot approved by over {{number}} servers",
         "members": "Members",
-        "learn_more": "Learn More"
+        "learn_more": "Learn More",
+        "random_features": "Your sidekick for <bold>{{type}}</bold> on your server.",
+        "radio": "the radio"
     },
     "feature": {
         "fonctionnality": "Functionality",
@@ -409,6 +411,8 @@
         "minute": "Minute",
         "seconds": "Seconds",
         "second": "Second",
+        "noAutomatedSanctions": "No automated sanction is currently configured.",
+        "sortBySmallest": "Sorts infractions from smallest to largest severity",
         "infractionDetails": "For {{{{INFRACTION}} {{INFRACTION_TEXT}}}} in {{{{TIME}}}}, apply a {{{{ACTION}}}} for {{{{ACTION_TIME}}}}",
         "infractionDetailsWithoutActionTime": "For {{{{INFRACTION}} {{INFRACTION_TEXT}}}} in {{{{TIME}}}}, apply a {{{{ACTION}}}}",
         "linkUnbanInformation": "This link will be included in the ban embed when using Bouns'bot's /ban or /tempban commands on your server. It will allow banned individuals to submit an unban request, improving the user experience."

@@ -77,7 +77,7 @@ export const Status = () => {
 
         return (
             `
-            <div style="display: flex; flex-direction: column;place-items:start; justify-content: start; z-index: 9999;">
+            <div class="tooltipsElement" style="display: flex; flex-direction: column;place-items:start; justify-content: start; z-index: 9999;">
                 <h5>Shard n°${shard.cluster_id}</h4>
                 <span>${t("status.status")}: ${status.get(shard.status)}</span>
                 ${shard?.ping ? `<span>${t("status.latency")}: ${shard?.ping}ms</span>` : ""}
@@ -93,7 +93,6 @@ export const Status = () => {
         const value = e.target.value
 
         if (value.match(/^\d{17,19}/)) {
-            //if yes, search for the shard
             try {
                 let response = await shardsAPI.searchGuild(value)
                 if (response.shard) {
@@ -113,7 +112,6 @@ export const Status = () => {
             setGuildInSearch(null)
         }
     }
-
 
     return (
         <div transition="page" className="statusContainer" >
@@ -139,7 +137,7 @@ export const Status = () => {
                     let shardsComponent = []
                     let i = 0
                     for (let shard of shards) {
-                        shardsComponent.push(<><div className={("shard" + ([-1, 1, 3, 5].includes(shard.status) ? " error" : "")) + (guildInSearch == shard.cluster_id ? " guild-in-shard" : "")} data-tooltip-id={"ShardStatus-" + shard.cluster_id} data-tooltip-html={shardTooltip(shard)} >{i || shard.cluster_id}</div><Tooltip className="shardTooltips" opacity={0.99} id={"ShardStatus-" + shard.cluster_id} ></Tooltip> </>)
+                        shardsComponent.push(<><div className={("shard" + ([-1, 1, 3, 5].includes(shard.status) ? " error" : "")) + (guildInSearch == shard.cluster_id ? " guild-in-shard" : "")} data-tooltip-id={"ShardStatus-" + shard.cluster_id} data-tooltip-html={shardTooltip(shard)} >{i || shard.cluster_id}</div><Tooltip style={{ background: "rgba(var(--color-red), var(--color-green), var(--color-blue), 1)", color: "green !important" }} className="shardTooltips" opacity={1} id={"ShardStatus-" + shard.cluster_id} ></Tooltip> </>)
                         i++
                     }
                     return shardsComponent

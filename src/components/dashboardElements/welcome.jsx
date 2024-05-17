@@ -605,7 +605,7 @@ export const Welcome = ({ guildId, configuration, setConfiguration, channels, ro
     }
 
     let updateDefaultPseudo = (value) => {
-        if (value == "") value = null
+        // if (value == "") value = null
 
         setConfiguration({ ...configuration, welcome: { ...configuration.welcome, guild: { ...configuration.welcome.guild, defaultPseudo: value } } })
     }
@@ -680,14 +680,6 @@ export const Welcome = ({ guildId, configuration, setConfiguration, channels, ro
                     <div className="roleRenderXP">
                         <span style={{ background: `${decimalToHex(roleElement?.color)}` }}></span>
                         <div>{roleElement?.name}</div>
-                        <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" viewBox="0 0 24 24" fill="none" onClick={() => {
-                            let newRoles = configuration?.welcomeRole.roles
-                            newRoles = newRoles.filter(r => r != role)
-                            fixRoleConfig(newRoles)
-                        }
-                        }>
-                            <path fill-rule="evenodd" clip-rule="evenodd" d="M16.9498 8.46447C17.3404 8.07394 17.3404 7.44078 16.9498 7.05025C16.5593 6.65973 15.9261 6.65973 15.5356 7.05025L12.0001 10.5858L8.46455 7.05025C8.07402 6.65973 7.44086 6.65973 7.05033 7.05025C6.65981 7.44078 6.65981 8.07394 7.05033 8.46447L10.5859 12L7.05033 15.5355C6.65981 15.9261 6.65981 16.5592 7.05033 16.9497C7.44086 17.3403 8.07402 17.3403 8.46455 16.9497L12.0001 13.4142L15.5356 16.9497C15.9261 17.3403 16.5593 17.3403 16.9498 16.9497C17.3404 16.5592 17.3404 15.9261 16.9498 15.5355L13.4143 12L16.9498 8.46447Z" fill="#FFFFFF" />
-                        </svg>
                     </div>
                 )
             }
@@ -741,38 +733,38 @@ export const Welcome = ({ guildId, configuration, setConfiguration, channels, ro
                         <Form.Check className="picto" type="switch" id="custom-switch success" checked={configuration?.welcome?.DM?.active} onChange={(e) => { updateEtatDm(e) }} />
                     </div>
 
-                    <div className="separator"></div>
+                    {configuration?.welcome?.DM?.active && <><div className="separator"></div>
 
-                    <div className={"informationConfig" + (configuration?.welcome?.DM?.active ? "" : " welcomeDisable")}>
-                        <div className="WelcomeComponente" >
-                            <div className="embed">
-                                <div>
-                                    <div className="embedAuthor">
-                                        {iconLink ?
-                                            //on error replace .gif to .webp
-                                            <img className="iconEmbed" src={iconLink} alt="icon" onError={(e) => { e.target.src = iconLink.replace(".gif", ".webp") }} />
-                                            : <span className="iconEmbed color"></span>}
-                                        {name}
+                        <div className={"informationConfig" + (configuration?.welcome?.DM?.active ? "" : " welcomeDisable")}>
+                            <div className="WelcomeComponente" >
+                                <div className="embed">
+                                    <div>
+                                        <div className="embedAuthor">
+                                            {iconLink ?
+                                                //on error replace .gif to .webp
+                                                <img className="iconEmbed" src={iconLink} alt="icon" onError={(e) => { e.target.src = iconLink.replace(".gif", ".webp") }} />
+                                                : <span className="iconEmbed color"></span>}
+                                            {name}
+                                        </div>
+                                        <textarea id="messageWelcome" disabled={!configuration?.welcome?.DM?.active} style={{ Background: "#313442", maxHeight: '300px', minHeight: "100px", resize: configuration?.welcome?.DM?.active ? "vertical" : "none" }} className="embedDescripton" rows="6" placeholder="Message to send" value={configuration?.welcome?.DM.embeds[embedNumber]?.description} onChange={event => { updateEmbedDm(embedNumber, { description: event.target.value }) }} />
                                     </div>
-                                    <textarea id="messageWelcome" disabled={!configuration?.welcome?.DM?.active} style={{ Background: "#313442", maxHeight: '300px', minHeight: "100px", resize: configuration?.welcome?.DM?.active ? "vertical" : "none" }} className="embedDescripton" rows="6" placeholder="Message to send" value={configuration?.welcome?.DM.embeds[embedNumber]?.description} onChange={event => { updateEmbedDm(embedNumber, { description: event.target.value }) }} />
-                                </div>
-                                <div>
-                                    {iconLink ?
-                                        <img className="thumbnailEmbed" src={iconLink} alt="icon" onError={(e) => { e.target.src = iconLink.replace(".gif", ".webp") }} />
-                                        : <span className="thumbnailEmbed color"></span>}
+                                    <div>
+                                        {iconLink ?
+                                            <img className="thumbnailEmbed" src={iconLink} alt="icon" onError={(e) => { e.target.src = iconLink.replace(".gif", ".webp") }} />
+                                            : <span className="thumbnailEmbed color"></span>}
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <div className="info">
-                            <ul>
-                                <li><span className="tag">{`{server}`}</span>{t("dashboard.welcome.variable.guildName")}</li>
-                                <li><span className="tag">{`{id}`}</span>{t("dashboard.welcome.variable.userId")}</li>
-                                <li><span className="tag">{`{user}`}</span>{t("dashboard.welcome.variable.userMention")}</li>
-                                <li><span className="tag">{`{membercount}`}</span>{t("dashboard.welcome.variable.memberCount")}</li>
-                                <li><span className="tag">{`{bot}`}</span>{t("dashboard.welcome.variable.bot")}</li>
-                            </ul>
-                        </div>
-                    </div>
+                            <div className="info">
+                                <ul>
+                                    <li><span className="tag">{`{server}`}</span>{t("dashboard.welcome.variable.guildName")}</li>
+                                    <li><span className="tag">{`{id}`}</span>{t("dashboard.welcome.variable.userId")}</li>
+                                    <li><span className="tag">{`{user}`}</span>{t("dashboard.welcome.variable.userMention")}</li>
+                                    <li><span className="tag">{`{membercount}`}</span>{t("dashboard.welcome.variable.memberCount")}</li>
+                                    <li><span className="tag">{`{bot}`}</span>{t("dashboard.welcome.variable.bot")}</li>
+                                </ul>
+                            </div>
+                        </div></>}
                 </div>
 
                 <div className={"block padding-1" + (configuration?.welcome?.guild?.active ? "" : " disabled")}>
@@ -781,65 +773,65 @@ export const Welcome = ({ guildId, configuration, setConfiguration, channels, ro
                         <Form.Check className="picto" type="switch" id="custom-switch success" checked={configuration?.welcome?.guild?.active} onChange={(e) => { updateEtatGuild(e) }} />
                     </div>
 
-                    <div className="separator"></div>
+                    {configuration?.welcome?.guild?.active && <><div className="separator"></div>
 
-                    <p className="categorie_config" >{t("dashboard.welcome.guild.channel")}</p>
+                        <p className="categorie_config" >{t("dashboard.welcome.guild.channel")}</p>
 
-                    <Form.Select style={{ "max-width": "530px" }} defaultValue={configuration?.welcome.guild?.channel} value={configuration?.welcome.guild?.channel} disabled={!configuration?.welcome?.guild?.active} onChange={(event) => { updateSelectMenu(event.target.value) }}>
-                        {(() => {
-                            return getChannelForSelector(channel, configuration?.welcome?.guild?.channel);
-                        })()}
-                    </Form.Select>
+                        <Form.Select style={{ "max-width": "530px" }} defaultValue={configuration?.welcome.guild?.channel} value={configuration?.welcome.guild?.channel} disabled={!configuration?.welcome?.guild?.active} onChange={(event) => { updateSelectMenu(event.target.value) }}>
+                            {(() => {
+                                return getChannelForSelector(channel, configuration?.welcome?.guild?.channel);
+                            })()}
+                        </Form.Select>
 
-                    <div className="separator" style={{ "marginTop": "15px" }} ></div>
+                        <div className="separator" style={{ "marginTop": "15px" }} ></div>
 
-                    <p className="categorie_config" >{t("dashboard.welcome.guild.message")}</p>
+                        <p className="categorie_config" >{t("dashboard.welcome.guild.message")}</p>
 
-                    <Form.Control
-                        style={{ "max-width": "530px" }}
-                        as="textarea"
-                        rows={3}
-                        placeholder={t("dashboard.welcome.guild.messageplaceholder")}
-                        disabled={!configuration?.welcome?.guild?.active}
-                        value={configuration?.welcome?.guild?.content}
-                        onChange={(event) => { updateContent(event) }}
-                    />
+                        <Form.Control
+                            style={{ "max-width": "530px" }}
+                            as="textarea"
+                            rows={3}
+                            placeholder={t("dashboard.welcome.guild.messageplaceholder")}
+                            disabled={!configuration?.welcome?.guild?.active}
+                            value={configuration?.welcome?.guild?.content}
+                            onChange={(event) => { updateContent(event) }}
+                        />
 
 
-                    <div className="separator" style={{ "marginTop": "15px" }} ></div>
+                        <div className="separator" style={{ "marginTop": "15px" }} ></div>
 
-                    <div className={"informationWelcomeCanvas" + (configuration?.welcome?.guild?.active ? "" : " welcomeDisable")}>
-                        <div className="WelcomeComponente" >
-                            <canvas width="1200" height="500" ref={canvasRef} style={{ borderRadius: "10px" }} ></canvas>
+                        <div className={"informationWelcomeCanvas" + (configuration?.welcome?.guild?.active ? "" : " welcomeDisable")}>
+                            <div className="WelcomeComponente" >
+                                <canvas width="1200" height="500" ref={canvasRef} style={{ borderRadius: "10px" }} ></canvas>
 
-                        </div>
-                        <div className="configWelcomeCanvas">
-                            <div style={{ marginBottom: "10px" }}>
-                                <p>{t("dashboard.welcome.guild.themecard")}</p>
-                                <Form.Select defaultValue={configuration?.welcome?.guild?.design} onChange={(event) => { updateTheme(event.target.value) }}>
-                                    {(() => {
-                                        return optionsTheme(configuration?.welcome?.guild?.design);
-                                    })()}
-                                </Form.Select>
                             </div>
+                            <div className="configWelcomeCanvas">
+                                <div style={{ marginBottom: "10px" }}>
+                                    <p>{t("dashboard.welcome.guild.themecard")}</p>
+                                    <Form.Select defaultValue={configuration?.welcome?.guild?.design} onChange={(event) => { updateTheme(event.target.value) }}>
+                                        {(() => {
+                                            return optionsTheme(configuration?.welcome?.guild?.design);
+                                        })()}
+                                    </Form.Select>
+                                </div>
 
-                            <div className="separator"></div>
+                                <div className="separator"></div>
 
-                            <div >
-                                <p>{t("dashboard.welcome.guild.color")}</p>
-                                <div style={{ display: "flex", flexDirection: "row" }}>
-                                    <div className="colorModule">
-                                        <span>{t("dashboard.welcome.guild.ambient")}</span>
-                                        <input type="color" defaultValue={"#000000"} value={configuration?.welcome?.guild?.colorAmbiance} onChange={(e) => { updateColorGuild({ colorAmbiance: e.target.value }) }} />
-                                    </div>
-                                    <div className="colorModule">
-                                        <span>{t("dashboard.welcome.guild.text")}</span>
-                                        <input type="color" defaultValue={"#FFFFFF"} value={configuration?.welcome?.guild?.colorText} onChange={(e) => { updateColorGuild({ colorText: e.target.value }) }} />
+                                <div >
+                                    <p>{t("dashboard.welcome.guild.color")}</p>
+                                    <div style={{ display: "flex", flexDirection: "row" }}>
+                                        <div className="colorModule">
+                                            <span>{t("dashboard.welcome.guild.ambient")}</span>
+                                            <input type="color" defaultValue={"#000000"} value={configuration?.welcome?.guild?.colorAmbiance} onChange={(e) => { updateColorGuild({ colorAmbiance: e.target.value }) }} />
+                                        </div>
+                                        <div className="colorModule">
+                                            <span>{t("dashboard.welcome.guild.text")}</span>
+                                            <input type="color" defaultValue={"#FFFFFF"} value={configuration?.welcome?.guild?.colorText} onChange={(e) => { updateColorGuild({ colorText: e.target.value }) }} />
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                    </div>
+                        </div></>}
 
                 </div>
 
@@ -848,27 +840,26 @@ export const Welcome = ({ guildId, configuration, setConfiguration, channels, ro
                         <h5>{t("dashboard.welcome.category.giveRole")}</h5>
                         <Form.Check className="picto" type="switch" id="custom-switch success" checked={configuration?.welcomeRole?.active} onChange={(e) => { updateEtatROLE(e) }} />
                     </div>
+                    {configuration?.welcomeRole?.active && <div className="separator"></div>}
 
-                    <div className="separator"></div>
-
-                    <div className="roleElements" style={{ display: "flex", pointerEvents: (configuration?.welcomeRole?.active ? "auto" : "none") }}>
+                    {configuration?.welcomeRole?.active && <div className="roleElements" style={{ display: "flex", pointerEvents: (configuration?.welcomeRole?.active ? "auto" : "none") }}>
                         {moduleRole()}
-                    </div>
+                    </div>}
                 </div>
 
                 <div className="block padding-1">
                     <div className="infoActive">
                         <h5>{t("dashboard.welcome.category.renameOnJoin")}</h5>
-                        <Form.Check className="picto" type="switch" id="custom-switch success" checked={configuration?.welcome?.guild?.defaultPseudo} onChange={(e) => { updateDefaultPseudo(null) }} />
+                        <Form.Check className="picto" type="switch" id="custom-switch success" checked={configuration?.welcome?.guild?.defaultPseudo || configuration?.welcome?.guild?.defaultPseudo == ""} onChange={(e) => { updateDefaultPseudo((configuration?.welcome?.guild?.defaultPseudo || configuration?.welcome?.guild?.defaultPseudo == "") ? null : "") }} />
                     </div>
 
-                    <div className="separator"></div>
-                    <Form.Control
+                    {(configuration?.welcome?.guild?.defaultPseudo || configuration?.welcome?.guild?.defaultPseudo == "") && <div className="separator"></div>}
+                    {(configuration?.welcome?.guild?.defaultPseudo || configuration?.welcome?.guild?.defaultPseudo == "") && <Form.Control
                         style={{ "max-width": "530px" }}
                         placeholder={t("dashboard.welcome.guild.enterNickname")}
                         value={configuration?.welcome?.guild?.defaultPseudo || ""}
                         onChange={(event) => { updateDefaultPseudo(event.target.value) }}
-                    />
+                    />}
                 </div>
             </>
         }

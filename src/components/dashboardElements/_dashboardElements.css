@@ -1,3 +1,91 @@
+.roleRewardsContainer{
+    display: flex;
+    flex-wrap: wrap;
+    text-overflow: ellipsis;
+    text-wrap: nowrap;
+    gap: 10px;
+}
+
+.channelExcluded{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    background-color: #202225;
+    margin: 10px 0 0 0;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.channelExcluded > p{
+    margin: 0 0 5px 0;
+}
+
+.channelExcluded .channelExcludedList {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    align-items: center;
+    color: white;
+    flex-wrap: wrap;
+    overflow: hidden;
+    width: 100%;
+}
+
+.channelExcluded .channelExcludedList .channelExcludedElement{
+    display: flex;
+    flex-direction: row;
+    text-wrap: nowrap;
+    text-overflow: ellipsis;
+    align-items: center;
+    background-color: rgba(var(--color-red), var(--color-green), var(--color-blue), 0.4);
+    border-radius: 0.3em;
+    cursor: pointer;
+    gap: 0.5em;
+    padding: 0 5px 0 5px;
+    transition: filter 0.3s ease-in-out, text-decoration 0.3s ease-in-out;
+}
+
+.channelExcluded .channelExcludedList .channelExcludedElement:hover{
+    filter: grayscale(1);
+    text-decoration: line-through;
+    animation: shake 1s infinite;
+}
+
+@keyframes shake {
+    0% { transform: translate(1px, 1px) rotate(0deg); }
+    10% { transform: translate(-1px, -2px) rotate(-1deg); }
+    20% { transform: translate(-3px, 0px) rotate(1deg); }
+    30% { transform: translate(3px, 2px) rotate(0deg); }
+    40% { transform: translate(1px, -1px) rotate(1deg); }
+    50% { transform: translate(-1px, 2px) rotate(-1deg); }
+    60% { transform: translate(-3px, 1px) rotate(0deg); }
+    70% { transform: translate(3px, 1px) rotate(-1deg); }
+    80% { transform: translate(-1px, -1px) rotate(1deg); }
+    90% { transform: translate(1px, 2px) rotate(0deg); }
+    100% { transform: translate(1px, -2px) rotate(-1deg); }
+}
+
+.channelExcluded .channelExcludedList select{
+    all:unset;
+    width: 24px;
+    aspect-ratio: 1;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14" /></svg>') no-repeat right center;
+    padding-right: 20px; 
+    color: transparent; 
+    border: 1px solid rgba(var(--color-red), var(--color-green), var(--color-blue), 0.4);
+    border-radius: 0.3em;
+    background-color: rgba(var(--color-red), var(--color-green), var(--color-blue), 0.2);
+    padding: 0;
+    cursor: pointer;
+}
+
+.channelExcluded .channelExcludedList select::-ms-expand {
+    display: none;
+}
+
 .elementContainer {
     display: flex;
     flex-direction: column;
@@ -29,6 +117,7 @@
     border-radius: 4px;
     border: 1px solid #4d4b4b;
     padding: 0 0 0 10px;
+    width: 100%;
 }
 
 .inputContainer * {
@@ -48,13 +137,21 @@
     text-align: center;
     transition: background-color .3s ease-in-out;
     width: 50px;
+    cursor: pointer;
 }
 
 .inputContainer select {
     all: unset;
     padding: 10px 10px 10px 0;
     appearance: initial;
+    cursor: pointer;
+    transition: color .3s ease-in-out;
 }
+
+.inputContainer select:hover {
+    color: rgba(var(--color-red), var(--color-green), var(--color-blue), 1);
+}
+
 
 .inputContainer select option {
     background-color: #202225;
@@ -149,7 +246,9 @@
     flex-direction: row;
     flex-wrap: wrap;
     gap: 10px;
-
+    align-items: center;
+    text-wrap: nowrap;
+    text-overflow: ellipsis;
 }
 
 .automatedInfraction.configInf {
@@ -187,6 +286,12 @@
 
     cursor: pointer;
     transition: transform 0.3s ease-in-out;
+    display: flex;
+    justify-content: center;
+}
+
+.block .load_more_data p {
+    margin: 0.5em 0;
 }
 
 .block .load_more_data.noMoreData {
@@ -307,10 +412,52 @@
     gap: 0.5em;
 }
 
+.avatar_moderator .skeleton{
+    display: flex;
+    flex-direction: row;
+    gap: 0.5em;
+        align-items: center;
+}
+
+.avatar_moderator .skeleton .skeleton-avatar{
+    width: 2.5em;
+    height: 2.5em;
+    border-radius: 50%;
+    background-color: #33353b;
+    animation: skeleton 1s infinite alternate;
+}
+
+.avatar_moderator .skeleton .skeleton-text{
+    border-radius: 4px;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5em;
+}
+
+.avatar_moderator .skeleton .skeleton-text .skeleton-text-line{
+    min-width: 80px;
+    min-height: 1em;
+    background-color: #33353b;
+    border-radius: 4px;
+    animation: skeleton 1s infinite alternate;
+    font-size: 7px;
+    text-align: start;
+}
+
+@keyframes skeleton {
+    0% {
+        background-color: #33353b;
+    }
+    100% {
+        background-color: rgb(90, 89, 89)
+    }
+}
+
 .avatar_moderator img {
     width: 2.5em;
     height: 2.5em;
     border-radius: 50%;
+    background-color: #33353b;
 }
 
 .avatar_moderator>div {
@@ -324,6 +471,8 @@
     margin-bottom: 0;
     padding: 0;
     text-overflow: ellipsis;
+    overflow: hidden;
+    max-width: 170px;
 }
 
 .avatar_moderator>div>p:last-child {
@@ -365,19 +514,6 @@
     align-items: center;
 }
 
-
-button.addRoleReward {
-    background-color: var(--color-principal);
-    color: white;
-    border: none;
-    border-radius: 10px;
-    padding: 10px;
-    margin: 10px;
-    font-size: 1.2rem;
-    cursor: pointer;
-    transition: 0.3s;
-}
-
 svg.disableSVGButton {
     filter: brightness(0.2);
     cursor: not-allowed;
@@ -394,14 +530,56 @@ svg.disableSVGButton {
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    border-radius: 10px;
-    background-color: #3e4246;
+    border-radius: 5px;
+    background-color: rgba(var(--color-red), var(--color-green), var(--color-blue), 0.4);
     color: white;
     font-size: 1rem;
     cursor: pointer;
     transition: 0.3s;
     max-width: fit-content;
     padding: 0 10px;
+    width: 100%;
+}
+
+.channelRenderDesign:hover{
+    filter: grayscale(1);
+    text-decoration: line-through;
+    animation: shake 1s infinite;
+}
+
+.channelElements select{
+    all:unset;
+    width: 24px;
+    aspect-ratio: 1;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14" /></svg>') no-repeat right center;
+    padding-right: 20px; 
+    color: transparent; 
+    border: 1px solid rgba(var(--color-red), var(--color-green), var(--color-blue), 0.4);
+    border-radius: 0.3em;
+    background-color: rgba(var(--color-red), var(--color-green), var(--color-blue), 0.2);
+    padding: 0;
+    cursor: pointer;
+}
+
+.channelElements select::-ms-expand {
+    display: none;
+}
+
+@keyframes shake {
+    0% { transform: translate(1px, 1px) rotate(0deg); }
+    10% { transform: translate(-1px, -2px) rotate(-1deg); }
+    20% { transform: translate(-3px, 0px) rotate(1deg); }
+    30% { transform: translate(3px, 2px) rotate(0deg); }
+    40% { transform: translate(1px, -1px) rotate(1deg); }
+    50% { transform: translate(-1px, 2px) rotate(-1deg); }
+    60% { transform: translate(-3px, 1px) rotate(0deg); }
+    70% { transform: translate(3px, 1px) rotate(-1deg); }
+    80% { transform: translate(-1px, -1px) rotate(1deg); }
+    90% { transform: translate(1px, 2px) rotate(0deg); }
+    100% { transform: translate(1px, -2px) rotate(-1deg); }
 }
 
 .channelRenderDesign svg {
@@ -410,7 +588,7 @@ svg.disableSVGButton {
 }
 
 .channelElements {
-    /* border: 1px solid var(--color-principal); */
+    width: 100%;
     border-radius: 10px;
     padding: 10px;
     margin-top: 7px;
@@ -434,17 +612,37 @@ svg.disableSVGButton {
     background: #212125;
 }
 
+.roleElements select{
+    all:unset;
+    width: 24px;
+    aspect-ratio: 1;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14" /></svg>') no-repeat right center;
+    padding-right: 20px; 
+    color: transparent; 
+    border: 1px solid rgba(var(--color-red), var(--color-green), var(--color-blue), 0.4);
+    border-radius: 0.3em;
+    background-color: rgba(var(--color-red), var(--color-green), var(--color-blue), 0.2);
+    padding: 0;
+    cursor: pointer;
+}
+
+.roleElements select::-ms-expand {
+    display: none;
+}
+
 .roleRenderXP {
     color: white;
     font-size: 12px;
     font-weight: 500;
-    background: #292b2f;
+    background: rgba(var(--color-red), var(--color-green), var(--color-blue), 0.4);
     border-radius: 4px;
     -webkit-box-sizing: border-box;
     box-sizing: border-box;
-    height: 22px;
-    margin: 0 4px 4px 0;
-    padding: 4px;
+    /* height: 22px; */
+    padding: 4px 8px;
     display: flex;
     flex-wrap: nowrap;
     max-width: fit-content;
@@ -452,34 +650,77 @@ svg.disableSVGButton {
     -o-box-align: center;
     align-items: center;
     gap: 5px;
+    cursor: pointer;
+}
+
+.roleRenderXP:hover{
+    filter: grayscale(1);
+    text-decoration: line-through;
+    animation: shake 1s infinite;
+
 }
 
 .roleRenderXP span {
     border-radius: 50%;
     width: 12px;
     height: 12px;
-    margin: 4px 2px 4px 4px;
+    /* margin: 4px 2px 4px 4px; */
 }
 
 .roleRewardElement {
     display: flex;
     flex-direction: row;
-    width: 100%;
-    height: 100%;
-    border-radius: 10px;
-    gap: 10px;
-    padding: 5px;
+    border-radius: 5px;
+    gap: 7px;
+    padding: 5px 10px;
+    text-wrap: nowrap;
+    text-overflow: ellipsis;
+    background-color: #212125;
+    cursor: pointer;
+    user-select: none;
+}
+
+.roleRewardElement .roleRenderXP{
+    padding: 0 5px;
+    background: rgba(var(--color-red), var(--color-green), var(--color-blue), 0.4);
+}
+
+.roleRewardElement .addRoleReward {
+    background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14" /></svg>');
+    background-position: center;
+    background-repeat: no-repeat;
+    color: transparent; 
+    border: 1px solid rgba(var(--color-red), var(--color-green), var(--color-blue), 0.4);
+    border-radius: 0.3em;
+    background-color: rgba(var(--color-red), var(--color-green), var(--color-blue), 0.2);
+    padding: 10px 15px;
+    margin-left: auto;
+    color: white;
+    cursor: pointer;
+}
+
+.roleRewardElement:hover{
+    filter: grayscale(1);
+    text-decoration: line-through;
+    animation: shake 1s infinite;
 }
 
 .roleRewardElement.template {
-    border: 1px solid var(--color-principal);
-    margin-top: 10px;
+    width: 100%;
+    user-select: none;
+    padding: 5px ;
+}
+
+.roleRewardElement.template:hover{
+    animation: none;
+    text-decoration: none;
+    filter: none;
 }
 
 .roleRewardElement p {
     margin: 0;
     padding: 0;
-    font-size: 1.2rem;
+    /* font-size: 1.2rem; */
 }
 
 .slidecontainer {
@@ -561,6 +802,11 @@ svg.disableSVGButton {
     gap: 0 !important;
     align-items: flex-start;
     text-align: left;
+    width: 100%;
+}
+
+.xpConfigType > div{
+    width: 100%;
 }
 
 .radioButton {
@@ -903,7 +1149,7 @@ input[type="radio"]:checked::before {
     padding: 0 5px 0 2px;
     border-radius: 5px;
     font-weight: 500;
-    font-size: 11px;
+    font-size: 11px !important;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -954,12 +1200,6 @@ input[type="radio"]:checked::before {
 }
 
 /* /////////////////// SEND MESSAGE ////////////////////// */
-
-.heightMax {
-    max-height: 85vh;
-    overflow-y: hidden
-}
-
 .sendMessageContainer {
     border-radius: 5px;
     padding: 10px;
@@ -1123,6 +1363,30 @@ input[type="radio"]:checked::before {
     }
 }
 
+@media screen and (max-width: 900px) {
+    .groupInfractionElement{
+        width: 100%;
+    }
+
+    .elementContainer {
+        width: 100%;
+    }
+
+    .configInf button{
+        width: 100%;
+        justify-content: center;
+    }
+
+    .configInf > div{
+        width: 100%;
+    }
+
+    .groupInfractionElement{
+        width: 100%;
+    
+    }
+}
+
 @media screen and (max-width: 450px) {
     .demo .message .content .header_info .timestamp {
         display: none;
@@ -1170,14 +1434,20 @@ input[type="radio"]:checked::before {
     align-items: center;
     justify-content: space-between;
     flex-direction: row;
+
 }
+
+.block .infoActive  h5{
+    margin: 0;
+}
+
 
 .separator {
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: row;
-    margin-bottom: 1em;
+    margin: 1em 0;
 
     border-top: 1px #4d4b4b solid;
 }
@@ -1191,7 +1461,7 @@ input[type="radio"]:checked::before {
 }
 
 .padding-1 {
-    padding: 0.5em 1em 1em 1em;
+    padding: 1em;
 }
 
 .tag {
@@ -1227,9 +1497,18 @@ input[type="radio"]:checked::before {
     transition: opacity 0.2s ease-out 0.2s;
 }
 
+.block .informationConfig:last-child {
+    margin-bottom: 0 !important;
+}
+
 .block .informationConfig.xpConfigType {
     margin-bottom: 1em;
 }
+
+.block .informationConfig.xpConfigType textarea{
+    width: 100%;
+}
+
 
 .block.disabled .informationConfig {
     opacity: 0.5;
@@ -1408,15 +1687,12 @@ input[type="radio"]:checked::before {
 
 .cardSave {
     z-index: 2000;
-
-    -webkit-box-pack: center;
     justify-content: center;
-    -webkit-box-align: center;
     align-items: center;
     position: sticky;
-    margin-top: 1em;
-    margin-left: -10px;
-    margin-right: -10px;
+    left: 0;
+    right: 0;
+    margin-top: auto;
 }
 
 .hidden {
@@ -1431,6 +1707,7 @@ input[type="radio"]:checked::before {
     animation: bottomDown 0.3s ease-in;
     pointer-events: none;
     animation-fill-mode: forwards;
+    display: none;
 }
 
 @keyframes bottomUp {
@@ -1622,7 +1899,7 @@ input[type="radio"]:checked::before {
 
 .block .modules {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(2, 1fr);
     gap: 1rem;
     padding: 0 1rem 1rem 1rem;
 }

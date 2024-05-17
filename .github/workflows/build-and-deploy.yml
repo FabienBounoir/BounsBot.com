@@ -3,39 +3,16 @@ on:
   release:
     types: [ created ]
 jobs:
-  build-and-deploy:
+  build:
     runs-on: ubuntu-latest
 
-    env:
-      CI: false
-      REACT_APP_OAUTH2_LINK: ${{ secrets.REACT_APP_OAUTH2_LINK }}
-      REACT_APP_CLIENT_ID: ${{ secrets.REACT_APP_CLIENT_ID }}
-      REACT_APP_CLIENT_SECRET: ${{ secrets.REACT_APP_CLIENT_SECRET}}
-      REACT_APP_HOSTNAME: ${{ secrets.REACT_APP_HOSTNAME }}
-      REACT_APP_HOSTNAME_BACKEND: ${{ secrets.REACT_APP_HOSTNAME_BACKEND }}
-      REACT_APP_REDIRECT_URI: ${{ secrets.REACT_APP_REDIRECT_URI }}
-
     steps:
-    - uses: actions/checkout@v2
-    - name: Use Node.js 16
-      uses: actions/setup-node@v1
-      with:
-        node-version: 16
-    - name: Install dependencies
-      run: npm install
-      
-    - name: Build
-      run: npm run build
-
-    - name: Remove old build + copy new build to vps
-      uses: appleboy/scp-action@master
-      with:
-        host: ${{ secrets.HOST }}
-        username: ${{ secrets.USERNAME }}
-        password: ${{ secrets.PASSWORD }}
-        port: ${{ secrets.PORT }}
-        source: "./build/*"
-        target: "/root/front/build"
-        strip_components: 1
-        rm: true
+      - name: Execute build commande
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.HOST }}
+          USERNAME: ${{ secrets.USERNAME }}
+          PORT: ${{ secrets.PORT }}
+          KEY: ${{ secrets.SSHKEY }}
+          script: cd /opt/bouns-bot && git stash && git pull && npm run build
   

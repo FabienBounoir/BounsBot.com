@@ -2,6 +2,7 @@ import { useState, useEffect } from "react"
 import LoadingComponent from "../loading/LoadingComponent.jsx";
 import { useTranslation } from "react-i18next";
 import * as infractionsAPI from "../../utils/API/infractionsAPI";
+import * as userAPI from "../../utils/API/userAPI";
 import { Tooltip } from 'react-tooltip'
 import { InfractionElement } from "./infractionElement";
 
@@ -23,28 +24,73 @@ export const Infractions = ({ guildId, configuration, updateConfiguration, chann
         "warn": 0
     })
 
+    const [getInfractionsInProgress, setGetInfractionsInProgress] = useState(false)
+
     const [infractions, setInfractions] = useState([])
+    const [usersInformation, setUsersInformation] = useState([])
+
+    const [expandModStats, setExpandModStats] = useState(false)
 
     const getStats = async () => {
+        getInfractions()
         try {
             const infractionStats = await infractionsAPI.stats(guildId)
-            const moderatorStats = await infractionsAPI.moderatorStats(guildId)
-            getInfractions()
-            console.log("infractionStats", moderatorStats)
             if (infractionStats) setInfractionsStats(infractionStats)
+        }
+        catch (error) {
+            console.log("GET INFRACTIONS GLOBAL STATS", error)
+        }
+
+        try {
+            const moderatorStats = await infractionsAPI.moderatorStats(guildId)
             if (moderatorStats) setModeratorStats(moderatorStats)
         } catch (error) {
-            console.log(error)
+            console.log("GET MODERATOR STATS", error)
         }
     }
 
     const getInfractions = async () => {
         try {
+            if (getInfractionsInProgress) return
+            setGetInfractionsInProgress(true)
             const result = await infractionsAPI.list(guildId, page, 10)
 
-            setHasMoreData(result.length !== 0 && result.length === 10)
+            setHasMoreData(result?.length !== 0 && result?.length === 10)
+            if (result && !result?.length) return;
+
+            let userNotInCache = []
+
+            for (let i = 0; i < result.length; i++) {
+                if (!usersInformation.find(user => user.id === result[i].userId)) {
+                    userNotInCache.push(result[i].userId)
+                }
+
+                if (!usersInformation.find(user => user.id === result[i].moderatorId)) {
+                    userNotInCache.push(result[i].moderatorId)
+                }
+            }
+
+            if (userNotInCache.length > 0) {
+                getUsers([...new Set(userNotInCache)], guildId)
+            }
+
+
             setPage(page + 1)
             setInfractions(infractions.concat(result))
+            console.log("infractions", infractions)
+        } catch (error) {
+            console.log(error)
+        }
+        setGetInfractionsInProgress(false)
+    }
+
+    const getUsers = async (ids, guildId) => {
+        try {
+            const users = await userAPI.getUserInformations(ids, guildId)
+            console.log("users", users)
+            if (users) {
+                setUsersInformation(usersInformation.concat(users))
+            }
         } catch (error) {
             console.log(error)
         }
@@ -116,6 +162,15 @@ export const Infractions = ({ guildId, configuration, updateConfiguration, chann
 
         }
 
+        if (!expandModStats && moderatorStats.length > 5) {
+            format = format.slice(0, 5)
+            format.push(<div className="load_more_data" onClick={() => setExpandModStats(true)}>
+                <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M19.9997 11.6665V28.3332M19.9997 28.3332L26.6663 21.6665M19.9997 28.3332L13.333 21.6665" stroke="rgba(var(--color-red), var(--color-green), var(--color-blue), 0.7)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+            </div>)
+        }
+
         return format
     }
 
@@ -129,7 +184,7 @@ export const Infractions = ({ guildId, configuration, updateConfiguration, chann
                     </div>
                     <div className="separator"></div>
 
-                    <div style={{ "display": "flex", "flexDirection": "row", flexWrap: "wrap", justifyContent: "space-evenly", color: "white", gap: "20px" }}>
+                    <div style={{ "display": "flex", "flexDirection": "row", flexWrap: "wrap", justifyContent: "space-evenly", color: "white", gap: "20px", textAlign: 'center' }}>
                         <div className="stats_sanction">
                             <h4>{infractionsStats.total}</h4>
                             <p>{t("infractions.totals")}</p>
@@ -183,7 +238,7 @@ export const Infractions = ({ guildId, configuration, updateConfiguration, chann
                     </div>
                     <div className="separator"></div>
                     {infractions.length === 0 ? <div className="no_infraction">
-                        <p>{t("infractions.noInfraction")}</p>
+                        <p>{t("infractions.noInfractions")}</p>
                         <p><b>/ban</b> <i>[@user] [reason]</i></p>
                         <p><b>/tempban</b> <i>[@user] [time] [reason]</i></p>
                         <p><b>/mute</b> <i>[@user] [reason]</i></p>
@@ -204,7 +259,7 @@ export const Infractions = ({ guildId, configuration, updateConfiguration, chann
                             </thead>
                             <tbody>
                                 {infractions.map((infraction, index) => {
-                                    return <InfractionElement inf={infraction} index={index} />
+                                    return <InfractionElement inf={infraction} index={index} users={usersInformation} />
                                 })}
 
                                 <Tooltip className="shardTooltips" opacity={0.99} id={"inf-type"}></Tooltip>
@@ -215,7 +270,7 @@ export const Infractions = ({ guildId, configuration, updateConfiguration, chann
                         }
                         }>
                             <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M19.9997 11.6665V28.3332M19.9997 28.3332L26.6663 21.6665M19.9997 28.3332L13.333 21.6665" stroke="#191a1d" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" />
+                                <path d="M19.9997 11.6665V28.3332M19.9997 28.3332L26.6663 21.6665M19.9997 28.3332L13.333 21.6665" stroke="rgba(var(--color-red), var(--color-green), var(--color-blue), 0.7)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" />
                             </svg>
                         </div>
                     </>

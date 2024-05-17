@@ -13,10 +13,17 @@
     padding-bottom: 4rem !important;
     padding-left: 2.5rem !important;
     padding-right: 2.5rem !important;
+
+    display: flex;
+    flex-direction: column;
+
+    text-align: center;
+    text-wrap: balance;
 }
 
 .brand-add-bot .container h2 {
-    color: #fff !important
+    color: #fff !important;
+
 }
 
 .brand-add-bot .container button {

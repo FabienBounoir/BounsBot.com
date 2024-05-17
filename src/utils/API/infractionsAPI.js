@@ -11,9 +11,13 @@ export const stats = (guildId) => {
                     Authorization: `${localStorage.getItem("tokenType")} ${localStorage.getItem("token")}`
                 },
                 redirect: 'follow'
-            }).then(res => res.json())
+            })
 
-            resolve(response)
+            if (response.status === 200) {
+                resolve(response.json())
+            }
+
+            reject(response)
         }
         catch (e) {
             reject(e)
@@ -32,9 +36,14 @@ export const moderatorStats = (guildId) => {
                     Authorization: `${localStorage.getItem("tokenType")} ${localStorage.getItem("token")}`
                 },
                 redirect: 'follow'
-            }).then(res => res.json())
+            })
 
-            resolve(response)
+            if (response.status === 200) {
+                resolve(response.json())
+            }
+
+            reject(response)
+
         }
         catch (e) {
             reject(e)
@@ -54,9 +63,13 @@ export const list = (guildId, page, limit) => {
                     Authorization: `${localStorage.getItem("tokenType")} ${localStorage.getItem("token")}`
                 },
                 redirect: 'follow'
-            }).then(res => res.json())
+            })
 
-            resolve(response)
+            if (response.status === 200) {
+                resolve(response.json())
+            }
+
+            reject(response)
         }
         catch (e) {
             reject(e)

@@ -100,13 +100,11 @@ export const Configuration = (props) => {
                         },
                         {
                             "name": "dashboard.menu.moderation",
-                            "url": "moderation",
-                            "new": true
+                            "url": "moderation"
                         },
                         {
                             "name": "dashboard.menu.infractions",
-                            "url": "infractions",
-                            "new": true
+                            "url": "infractions"
                         }
                     ]
                 },

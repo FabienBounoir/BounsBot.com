@@ -77,16 +77,20 @@ export const Moderation = ({ guildId, configuration, updateConfiguration, confAc
     const formatAutomatedInfractions = (automatedInfractions) => {
         let formattedInfractions = []
 
+        formattedInfractions.push(
+            <p style={{ color: "white", margin: "0 auto 0 0", display: "flex", gap: "5px", alignItems: "center" }} ><svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" viewBox="0 0 24 24" fill="none">
+                <path d="M12 17V11" stroke="var(--color-principal)" stroke-width="1.5" stroke-linecap="round" />
+                <circle cx="1" cy="1" r="1" transform="matrix(1 0 0 -1 11 9)" fill="var(--color-principal)" />
+                <path d="M2 12C2 7.28595 2 4.92893 3.46447 3.46447C4.92893 2 7.28595 2 12 2C16.714 2 19.0711 2 20.5355 3.46447C22 4.92893 22 7.28595 22 12C22 16.714 22 19.0711 20.5355 20.5355C19.0711 22 16.714 22 12 22C7.28595 22 4.92893 22 3.46447 20.5355C2 19.0711 2 16.714 2 12Z" stroke="var(--color-principal)" stroke-width="1.5" />
+            </svg>{t("moderation.sortBySmallest")}</p>
+        )
+
         if (automatedInfractions.length == 0) {
             formattedInfractions.push(
-                <p style={{ color: "white", margin: 0 }} >{"Aucune sanction automatique n'est encore activée..."}</p>
+                <p className="automatedInfraction" style={{ color: "white", margin: 0 }} >{t("moderation.noAutomatedSanctions")}</p>
 
             )
         }
-
-        formattedInfractions.push(
-            <p style={{ color: "white", margin: "0 auto 0 0" }} >{"ℹ️ Trie les infractions de la moins sévère à la plus sévère"}</p>
-        )
 
         for (let i = 0; i < automatedInfractions.length; i++) {
             formattedInfractions.push(
@@ -191,90 +195,92 @@ export const Moderation = ({ guildId, configuration, updateConfiguration, confAc
                     </div>
 
                     <div className="automatedInfraction configInf" style={{ display: "flex", "gap": "10px", marginTop: "10px" }}>
-                        <div className="groupInfractionElement">
-                            <div className="elementContainer">
-                                <p>{t("moderation.numberInfractions")}:</p>
-                                <div className="inputContainer">
-                                    <input type="text" list="actions" value={newAutoInfraction.target_count} onChange={(event) => {
-                                        if (event.target.value.match(/^[0-9]+$/) && event.target.value.length <= 3) {
-                                            setNewAutoInfraction({ ...newAutoInfraction, target_count: event.target.value })
-                                        }
-                                        else if (event.target.value == "") {
-                                            setNewAutoInfraction({ ...newAutoInfraction, target_count: null })
-                                        }
-                                    }} />
-
-                                    <p>{t(newAutoInfraction.target_count > 1 ? "moderation.infractions" : "moderation.infraction")}</p>
-                                </div>
-                            </div>
-                            <div className="elementContainer">
-                                <p>{t("moderation.intervalle")}:</p>
-                                <div className="inputContainer">
-                                    <input type="text" list="actions" value={newAutoInfraction.infInTime} onChange={(event) => {
-                                        if (event.target.value.match(/^[0-9]+$/) && event.target.value.length <= 4) {
-                                            setNewAutoInfraction({ ...newAutoInfraction, infInTime: event.target.value })
-                                        }
-                                        else if (event.target.value == "") {
-                                            setNewAutoInfraction({ ...newAutoInfraction, infInTime: null })
-                                        }
-                                    }} />
-
-                                    <select value={newAutoInfraction.infInType} onChange={(event) => {
-                                        setNewAutoInfraction({ ...newAutoInfraction, infInType: event.target.value })
-                                    }}
-                                    >
-                                        <option value="DAY">{t("moderation." + (newAutoInfraction.infInTime > 1 ? "days" : "day"))}</option>
-                                        <option value="HOUR">{t("moderation." + (newAutoInfraction.infInTime > 1 ? "hours" : "hour"))}</option>
-                                        <option value="MINUTE">{t("moderation." + (newAutoInfraction.infInTime > 1 ? "minutes" : "minute"))}</option>
-                                        <option value="SECOND">{t("moderation." + (newAutoInfraction.infInTime > 1 ? "seconds" : "second"))}</option>
-                                    </select>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="groupInfractionElement">
-                            <div className="elementContainer">
-                                <p>{t("moderation.sanction")}:</p>
-                                <div className="inputContainer">
-
-                                    <select value={newAutoInfraction.action} onChange={(event) => {
-                                        setNewAutoInfraction({ ...newAutoInfraction, action: event.target.value })
-                                    }}
-                                    >
-                                        <option value="WARN">Warn</option>
-                                        <option value="MUTE">Mute</option>
-                                        <option value="TEMPMUTE">TempMute</option>
-                                        <option value="BAN">Ban</option>
-                                        <option value="TEMPBAN">TempBan</option>
-                                    </select>
-                                </div>
-                            </div>
-
-                            {["TEMPMUTE", "TEMPBAN"].includes(newAutoInfraction.action) ?
+                        <div style={{ display: "flex", flexDirection: "row", gap: "10px", flexWrap: "wrap" }}>
+                            <div className="groupInfractionElement">
                                 <div className="elementContainer">
-                                    <p>{t("moderation.duration")}:</p>
+                                    <p>{t("moderation.numberInfractions")}:</p>
                                     <div className="inputContainer">
-                                        <input type="text" list="actions" value={newAutoInfraction.applytime} onChange={(event) => {
-                                            if (event.target.value.match(/^[0-9]+$/) && event.target.value.length <= 4) {
-                                                setNewAutoInfraction({ ...newAutoInfraction, applytime: event.target.value })
+                                        <input type="text" list="actions" value={newAutoInfraction.target_count} onChange={(event) => {
+                                            if (event.target.value.match(/^[0-9]+$/) && event.target.value.length <= 3) {
+                                                setNewAutoInfraction({ ...newAutoInfraction, target_count: event.target.value })
                                             }
                                             else if (event.target.value == "") {
-                                                setNewAutoInfraction({ ...newAutoInfraction, applytime: null })
+                                                setNewAutoInfraction({ ...newAutoInfraction, target_count: null })
                                             }
                                         }} />
 
-                                        <select value={newAutoInfraction.applyType} onChange={(event) => {
-                                            setNewAutoInfraction({ ...newAutoInfraction, applyType: event.target.value })
+                                        <p>{t(newAutoInfraction.target_count > 1 ? "moderation.infractions" : "moderation.infraction")}</p>
+                                    </div>
+                                </div>
+                                <div className="elementContainer">
+                                    <p>{t("moderation.intervalle")}:</p>
+                                    <div className="inputContainer">
+                                        <input type="text" list="actions" value={newAutoInfraction.infInTime} onChange={(event) => {
+                                            if (event.target.value.match(/^[0-9]+$/) && event.target.value.length <= 4) {
+                                                setNewAutoInfraction({ ...newAutoInfraction, infInTime: event.target.value })
+                                            }
+                                            else if (event.target.value == "") {
+                                                setNewAutoInfraction({ ...newAutoInfraction, infInTime: null })
+                                            }
+                                        }} />
+
+                                        <select value={newAutoInfraction.infInType} onChange={(event) => {
+                                            setNewAutoInfraction({ ...newAutoInfraction, infInType: event.target.value })
                                         }}
                                         >
-                                            <option value="DAY">{t("moderation." + (newAutoInfraction.applytime > 1 ? "days" : "day"))}</option>
-                                            <option value="HOUR">{t("moderation." + (newAutoInfraction.applytime > 1 ? "hours" : "hour"))}</option>
-                                            <option value="MINUTE">{t("moderation." + (newAutoInfraction.applytime > 1 ? "minutes" : "minute"))}</option>
-                                            <option value="SECOND">{t("moderation." + (newAutoInfraction.applytime > 1 ? "seconds" : "second"))}</option>
+                                            <option value="DAY">{t("moderation." + (newAutoInfraction.infInTime > 1 ? "days" : "day"))}</option>
+                                            <option value="HOUR">{t("moderation." + (newAutoInfraction.infInTime > 1 ? "hours" : "hour"))}</option>
+                                            <option value="MINUTE">{t("moderation." + (newAutoInfraction.infInTime > 1 ? "minutes" : "minute"))}</option>
+                                            <option value="SECOND">{t("moderation." + (newAutoInfraction.infInTime > 1 ? "seconds" : "second"))}</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div className="groupInfractionElement">
+                                <div className="elementContainer">
+                                    <p>{t("moderation.sanction")}:</p>
+                                    <div className="inputContainer">
+
+                                        <select value={newAutoInfraction.action} onChange={(event) => {
+                                            setNewAutoInfraction({ ...newAutoInfraction, action: event.target.value })
+                                        }}
+                                        >
+                                            <option value="WARN">Warn</option>
+                                            <option value="MUTE">Mute</option>
+                                            <option value="TEMPMUTE">TempMute</option>
+                                            <option value="BAN">Ban</option>
+                                            <option value="TEMPBAN">TempBan</option>
                                         </select>
                                     </div>
                                 </div>
 
-                                : ""}
+                                {["TEMPMUTE", "TEMPBAN"].includes(newAutoInfraction.action) ?
+                                    <div className="elementContainer">
+                                        <p>{t("moderation.duration")}:</p>
+                                        <div className="inputContainer">
+                                            <input type="text" list="actions" value={newAutoInfraction.applytime} onChange={(event) => {
+                                                if (event.target.value.match(/^[0-9]+$/) && event.target.value.length <= 4) {
+                                                    setNewAutoInfraction({ ...newAutoInfraction, applytime: event.target.value })
+                                                }
+                                                else if (event.target.value == "") {
+                                                    setNewAutoInfraction({ ...newAutoInfraction, applytime: null })
+                                                }
+                                            }} />
+
+                                            <select value={newAutoInfraction.applyType} onChange={(event) => {
+                                                setNewAutoInfraction({ ...newAutoInfraction, applyType: event.target.value })
+                                            }}
+                                            >
+                                                <option value="DAY">{t("moderation." + (newAutoInfraction.applytime > 1 ? "days" : "day"))}</option>
+                                                <option value="HOUR">{t("moderation." + (newAutoInfraction.applytime > 1 ? "hours" : "hour"))}</option>
+                                                <option value="MINUTE">{t("moderation." + (newAutoInfraction.applytime > 1 ? "minutes" : "minute"))}</option>
+                                                <option value="SECOND">{t("moderation." + (newAutoInfraction.applytime > 1 ? "seconds" : "second"))}</option>
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                    : ""}
+                            </div>
                         </div>
 
                         <button onClick={() => {

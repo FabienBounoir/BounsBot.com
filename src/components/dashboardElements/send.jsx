@@ -99,7 +99,7 @@ export const Send = ({ guildId, channels, loading }) => {
                                             <span className="username">Bouns'bot</span>
                                             <span className="botCertified">
                                                 <svg aria-label="Bot certifié" className="botTagVerified-2KCPMa" aria-hidden="false" role="img" width="16" height="16" viewBox="0 0 16 15.2"><path d="M7.4,11.17,4,8.62,5,7.26l2,1.53L10.64,4l1.36,1Z" fill="currentColor"></path></svg>
-                                                BOT
+                                                APP
                                             </span>
                                             <span className="timestamp">{new Date().toLocaleDateString()}</span>
                                         </div>

@@ -43,13 +43,14 @@ export const Dashboard = () => {
 
     const onResize = () => {
         const doc = document.documentElement
-        doc.style.setProperty('--doc-height', `${window.innerHeight}px`)
+        // doc.style.setProperty('--doc-height', `${window.innerHeight}px`)
 
         //get the height of nav
-        const nav = document.querySelector("nav")
-        const navHeight = nav?.offsetHeight || 75
+        const nav = document.querySelector(".nav")
+        console.log("nav", nav)
+        const navHeight = nav?.offsetHeight || 80
         //create a variable for the height of the dashboard
-        doc.style.setProperty('--dashboard-height', `calc(var(--doc-height) - ${navHeight}px)`)
+        doc.style.setProperty('--dashboard-height', `calc(100dvh - ${navHeight}px)`)
     }
 
     useEffect(() => {

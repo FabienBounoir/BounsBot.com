@@ -5,7 +5,9 @@
         "support": "الدعم",
         "on_number_of_server": "Bounsbot، البوت المعتمد على أكثر من {{number}} خادم",
         "members": "أعضاء",
-        "learn_more": "معرفة المزيد"
+        "learn_more": "معرفة المزيد",
+        "random_features": "زميلك ل <bold>{{type}}</bold> على خادمك.",
+        "radio": "الراديو"
     },
     "feature": {
         "fonctionnality": "الوظائف",
@@ -409,6 +411,8 @@
         "minute": "دقيقة",
         "seconds": "ثواني",
         "second": "ثانية",
+        "noAutomatedSanctions": "لا توجد عقوبات آلية مكونة حاليًا.",
+        "sortBySmallest": "فرز المخالفات من الأقل شدة إلى الأكبر شدة",
         "infractionDetails": "لـ {{{{INFRACTION}} {{INFRACTION_TEXT}}}} في {{{{TIME}}}}، قم بتطبيق {{{{ACTION}}}} لمدة {{{{ACTION_TIME}}}}",
         "infractionDetailsWithoutActionTime": "لـ {{{{INFRACTION}} {{INFRACTION_TEXT}}}} في {{{{TIME}}}}، قم بتطبيق {{{{ACTION}}}}",
         "linkUnbanInformation": "سيتم تضمين هذا الرابط في الإدراج الخاص بالحظر عند استخدام أوامر /ban أو /tempban من Bouns'bot على خادمك. سيتيح للأشخاص المحظورين تقديم طلب إلغاء الحظر، مما يعزز تجربة المستخدم."
