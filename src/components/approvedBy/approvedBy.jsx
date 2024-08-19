@@ -34,7 +34,7 @@ export const ApprovedBy = (props) => {
 
 
     const formatNumber = (number) => {
-        if (number > 1000) {
+        if (number > 10000) {
             return Math.ceil(number / 100) * 100
         }
         else if (number > 100) {
