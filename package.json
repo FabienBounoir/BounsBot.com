@@ -4,10 +4,7 @@
   "private": true,
   "description": "BounsBot is a Discord bot",
   "dependencies": {
-    "@testing-library/jest-dom": "^5.11.4",
-    "@testing-library/react": "^11.1.0",
-    "@testing-library/user-event": "^12.1.10",
-    "axios": "^0.24.0",
+    "axios": "^1.7.9",
     "i18next": "^23.5.1",
     "i18next-browser-languagedetector": "^7.1.0",
     "lottie-web": "^5.9.6",
@@ -19,36 +16,20 @@
     "react-infinite-scroll-component": "^6.1.0",
     "react-intersection-observer": "^9.5.2",
     "react-router-dom": "^5.2.0",
-    "react-scripts": "^5.0.1",
     "react-tooltip": "^5.21.5",
-    "socket.io-client": "^4.4.1",
+    "socket.io-client": "^4.8.3",
     "sonner": "^1.0.3",
     "typeit": "^8.7.0",
-    "web-vitals": "^1.0.1"
+    "web-vitals": "^3.5.2"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-react": "^4.3.4",
+    "vite": "^6.0.6"
   },
   "scripts": {
     "predeploy": "npm run build",
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
-  },
-  "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
-    ]
-  },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
+    "start": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
   }
 }

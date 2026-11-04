@@ -1,4 +1,4 @@
-const hostname = process.env.REACT_APP_HOSTNAME_BACKEND + "/commands"
+const hostname = import.meta.env.VITE_HOSTNAME_BACKEND + "/commands"
 
 export const get = () => {
     return new Promise(async (resolve, reject) => {

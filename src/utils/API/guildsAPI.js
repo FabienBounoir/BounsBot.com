@@ -1,4 +1,4 @@
-const hostname = process.env.REACT_APP_HOSTNAME_BACKEND + "/guilds"
+const hostname = import.meta.env.VITE_HOSTNAME_BACKEND + "/guilds"
 
 export const sendMessage = (guildId, messageComponent) => {
     return new Promise(async (resolve, reject) => {

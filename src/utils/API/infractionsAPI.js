@@ -1,4 +1,4 @@
-const hostname = process.env.REACT_APP_HOSTNAME_BACKEND + "/infractions"
+const hostname = import.meta.env.VITE_HOSTNAME_BACKEND + "/infractions"
 
 export const stats = (guildId) => {
     return new Promise(async (resolve, reject) => {

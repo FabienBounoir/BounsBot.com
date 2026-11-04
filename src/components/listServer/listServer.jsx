@@ -67,17 +67,17 @@ export const ListServer = (props) => {
 
     const popUpCreate = (guildId) => {
         try {
-            let modal = window.open("https://discord.com/oauth2/authorize?client_id=" + process.env.REACT_APP_CLIENT_ID + "&permissions=1945627743&redirect_uri=" + process.env.REACT_APP_REDIRECT_URI + "&scope=bot%20applications.commands&guild_id=" + guildId, 'popup', 'height=700px,width=480px,toolbar=no,scrollbars=no,resizable=yes')
+            let modal = window.open("https://discord.com/oauth2/authorize?client_id=" + import.meta.env.VITE_CLIENT_ID + "&permissions=1945627743&redirect_uri=" + import.meta.env.VITE_REDIRECT_URI + "&scope=bot%20applications.commands&guild_id=" + guildId, 'popup', 'height=700px,width=480px,toolbar=no,scrollbars=no,resizable=yes')
 
             if (!modal) {
-                window.location.href = "https://discord.com/oauth2/authorize?client_id=" + process.env.REACT_APP_CLIENT_ID + "&permissions=1945627743&redirect_uri=" + process.env.REACT_APP_REDIRECT_URI + "&scope=bot%20applications.commands&guild_id=" + guildId
+                window.location.href = "https://discord.com/oauth2/authorize?client_id=" + import.meta.env.VITE_CLIENT_ID + "&permissions=1945627743&redirect_uri=" + import.meta.env.VITE_REDIRECT_URI + "&scope=bot%20applications.commands&guild_id=" + guildId
             }
         }
         catch (e) {
             console.log("Pop up error", e)
 
             //ouvrir dans un nouvel onglet
-            window.location.href = "https://discord.com/oauth2/authorize?client_id=" + process.env.REACT_APP_CLIENT_ID + "&permissions=1945627743&redirect_uri=" + process.env.REACT_APP_REDIRECT_URI + "callback&scope=bot%20applications.commands&guild_id=" + guildId
+            window.location.href = "https://discord.com/oauth2/authorize?client_id=" + import.meta.env.VITE_CLIENT_ID + "&permissions=1945627743&redirect_uri=" + import.meta.env.VITE_REDIRECT_URI + "callback&scope=bot%20applications.commands&guild_id=" + guildId
         }
 
     }

@@ -1,4 +1,4 @@
-const hostname = process.env.REACT_APP_HOSTNAME_BACKEND + "/user"
+const hostname = import.meta.env.VITE_HOSTNAME_BACKEND + "/user"
 
 export const getUserInformations = (ids, guildId) => {
     return new Promise(async (resolve, reject) => {

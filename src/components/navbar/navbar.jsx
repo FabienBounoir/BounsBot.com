@@ -97,7 +97,7 @@ export const Navigation = ({ props, sticky, background }) => {
                         }
                         else {
                             EtatConnexion.push(<>
-                                <a className="button-login-discord" href={process.env.REACT_APP_OAUTH2_LINK} onClick={() => { eventClick() }}>{t("title.login")}</a>
+                                <a className="button-login-discord" href={import.meta.env.VITE_OAUTH2_LINK} onClick={() => { eventClick() }}>{t("title.login")}</a>
                                 <button className=" navbar-toggler collapsed" onClick={() => { setOpen(!open) }}>
                                     <span className="navbar-toggler-icon"></span>
                                 </button>
@@ -123,7 +123,7 @@ export const Navigation = ({ props, sticky, background }) => {
                                         )
                                     }
                                     else {
-                                        EtatConnexion.push(<a className="button-login-discord" href={process.env.REACT_APP_OAUTH2_LINK} onClick={() => { eventClick() }}>{t("title.login")}</a>)
+                                        EtatConnexion.push(<a className="button-login-discord" href={import.meta.env.VITE_OAUTH2_LINK} onClick={() => { eventClick() }}>{t("title.login")}</a>)
                                     }
 
 

@@ -1,4 +1,4 @@
-const hostname = process.env.REACT_APP_HOSTNAME_BACKEND + "/shards"
+const hostname = import.meta.env.VITE_HOSTNAME_BACKEND + "/shards"
 
 export const searchGuild = (guildId) => {
     return new Promise(async (resolve, reject) => {

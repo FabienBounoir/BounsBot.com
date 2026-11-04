@@ -1,4 +1,4 @@
-const hostname = process.env.REACT_APP_HOSTNAME_BACKEND + "/levels"
+const hostname = import.meta.env.VITE_HOSTNAME_BACKEND + "/levels"
 
 export const global = (page = 0) => {
     return new Promise(async (resolve, reject) => {

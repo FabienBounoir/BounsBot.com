@@ -2,7 +2,7 @@ import "./_musique.css";
 import React, { Component } from 'react'
 
 var timeout = ""
-let url = process.env.REACT_APP_HOSTNAME_BACKEND
+let url = import.meta.env.VITE_HOSTNAME_BACKEND
 
 class Musique extends Component {
 

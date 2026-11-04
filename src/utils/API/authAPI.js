@@ -1,4 +1,4 @@
-const hostname = process.env.REACT_APP_HOSTNAME_BACKEND + "/auth"
+const hostname = import.meta.env.VITE_HOSTNAME_BACKEND + "/auth"
 
 export const login = (code) => {
     return new Promise(async (resolve, reject) => {

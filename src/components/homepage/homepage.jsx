@@ -79,7 +79,7 @@ export const HomePage = () => {
 
                 <div className="buttonContainer">
                     <span>
-                        <a className="invite_bot_button" href={"https://discord.com/api/oauth2/authorize?client_id=" + process.env.REACT_APP_CLIENT_ID + "&permissions=1945627743&scope=bot%20applications.commands"} >
+                        <a className="invite_bot_button" href={"https://discord.com/api/oauth2/authorize?client_id=" + import.meta.env.VITE_CLIENT_ID + "&permissions=1945627743&scope=bot%20applications.commands"} >
                             <span>{t("homepage.invite_button")}</span>
                         </a>
                     </span>
