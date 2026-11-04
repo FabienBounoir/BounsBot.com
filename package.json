@@ -27,6 +27,9 @@
     "@vitejs/plugin-react": "^4.3.4",
     "vite": "^6.0.6"
   },
+  "overrides": {
+    "socket.io-parser": "^4.2.7"
+  },
   "scripts": {
     "predeploy": "npm run build",
     "start": "vite",
