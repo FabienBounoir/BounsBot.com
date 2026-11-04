@@ -11,7 +11,7 @@ import { LevelsConfig } from "../dashboardElements/levels.jsx";
 import { Rename } from "../dashboardElements/rename";
 import * as guildsAPI from "../../utils/API/guildsAPI";
 
-import { useHistory } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 import "./_configuration.css";
 import "../dashboardElements/_dashboardElements.css";
@@ -38,7 +38,7 @@ export const Configuration = (props) => {
     const [roles, setRoles] = useState([])
     const [guildInfo, setGuildInfo] = useState({})
     const [loading, setLoading] = useState("LOADING")
-    const history = useHistory();
+    const navigate = useNavigate();
 
     const [open, setOpen] = useState(true)
     const [state, dispatch] = useStore();
@@ -179,7 +179,7 @@ export const Configuration = (props) => {
             localStorage.removeItem('user')
             localStorage.removeItem('token')
 
-            history.push('/login?status=invalidToken');
+            navigate('/login?status=invalidToken');
         }
     }
 

@@ -1,8 +1,6 @@
-// import logo from '../components/picture/logo.svg';
-import { BrowserRouter, Route, Switch } from "react-router-dom";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 import './App.css';
 import { Navigation } from "../components/navbar/navbar";
-
 
 import { HomePage } from "../components/homepage/homepage";
 import Footer from '../components/footer/footer';
@@ -34,7 +32,6 @@ export const App = () => {
     setEnvColor()
   }, [])
 
-  //create randomColor but not dark or light
   let randomColor = () => {
     let color = "";
     let letters = "0123456789ABCDEF";
@@ -45,8 +42,6 @@ export const App = () => {
         color += letters[Math.floor(Math.random() * 16)];
       }
     }
-
-    //tant que la couleur est trop claire ou trop foncée
     while (parseInt(color, 16) > 0x999999 || parseInt(color, 16) < 0x333333)
 
     return color;
@@ -67,7 +62,6 @@ export const App = () => {
     }
     else if (date.getMonth() === 11 && (date.getDate() <= 27 && date.getDate() >= 10)) {
       let r = document.getElementsByTagName("html")[0];
-      //frozen color
       r.style.setProperty('--color-principal', '#00bfff');
       r.style.setProperty('--color-principal-hover', '#00688b');
 
@@ -124,147 +118,137 @@ export const App = () => {
     <div className="App">
       <BrowserRouter>
         <Loader />
-        <Switch>
-          <Route exact path="/">
-            <SEO
-              title="Bouns'Bot"
-              description="Bouns'Bot a discord bot compatible with 20 languages developed by @BadbounsTV. The easiest Discord bot to use ! Game | Moderation | Leveling | Twitch Chat | Radio | Ticket | Temp Channel & more !."
-              name="Bouns'Bot" />
-            <HomePage />
-            <ApprovedBy />
-            <Features />
-            <BrandAddBot />
-            <Footer />
-          </Route>
-
-          <Route exact path="/features">
-            <Navigation />
-            <SEO
-              title="Bouns'Bot Features"
-              description="Discover the features of Bouns'bot, the multifunction bot for your Discord server."
-              name="Bouns'Bot" />
-            <Features />
-            <BrandAddBot />
-          </Route>
-
-          <Route exact path="/commands">
-            <Navigation />
-            <SEO
-              title="Bouns'Botㆍcommandes"
-              description="Learn how to use Bouns'bot, the multifunction bot for your Discord server."
-              name="Bouns'Bot" />
-            <ScrollToTop>
-              <Commandes />
+        <Routes>
+          <Route path="/" element={
+            <>
+              <SEO title="Bouns'Bot" description="Bouns'Bot a discord bot compatible with 20 languages developed by @BadbounsTV. The easiest Discord bot to use ! Game | Moderation | Leveling | Twitch Chat | Radio | Ticket | Temp Channel & more !." name="Bouns'Bot" />
+              <HomePage />
+              <ApprovedBy />
+              <Features />
               <BrandAddBot />
               <Footer />
-            </ScrollToTop>
-          </Route>
+            </>
+          } />
 
-          <Route exact path="/status">
-            <Navigation />
-            <SEO
-              title="Bouns'Botㆍstatus"
-              description="See the status of Bouns'bot, the multifunction bot for your Discord server."
-              name="Bouns'Bot" />
-            <Status />
-            <BrandAddBot />
-            <Footer />
-          </Route>
+          <Route path="/features" element={
+            <>
+              <Navigation />
+              <SEO title="Bouns'Bot Features" description="Discover the features of Bouns'bot, the multifunction bot for your Discord server." name="Bouns'Bot" />
+              <Features />
+              <BrandAddBot />
+            </>
+          } />
 
-          <Route exact path="/level">
-            <Navigation />
-            <SEO
-              title="Bouns'Botㆍlevels"
-              description="Engage your community with the levels system of Bouns'bot, the multifunction bot for your Discord server."
-              name="Bouns'Bot" />
-            <Levels />
-          </Route>
-          <Route exact path="/demo">
-            <Navigation />
-            <SEO
-              title="Bouns'Botㆍdemo"
-              description="Cool demo of Bouns'bot, You can even chat with your friends directly here!"
-              name="Bouns'Bot" />
-            <Demo />
-          </Route>
+          <Route path="/commands" element={
+            <>
+              <Navigation />
+              <SEO title="Bouns'Botㆍcommandes" description="Learn how to use Bouns'bot, the multifunction bot for your Discord server." name="Bouns'Bot" />
+              <ScrollToTop>
+                <Commandes />
+                <BrandAddBot />
+                <Footer />
+              </ScrollToTop>
+            </>
+          } />
 
-          <Authenticate exact path="/dashboard">
-            <Navigation />
-            <SEO
-              title="Bouns'Botㆍdashboard"
-              description="Manage your server with the dashboard of Bouns'bot !"
-              name="Bouns'Bot" />
-
-            <Dashboard />
-          </Authenticate>
-
-          <Authenticate exact path="/dashboard/:id/:typeconfig">
-            <Navigation background={"#202225"} />
-            <SEO
-              title="Bouns'Botㆍdashboard"
-              description="Manage your server with the dashboard of Bouns'bot !"
-              name="Bouns'Bot" />
-            <Route exact path="/dashboard/:id/:typeconfig" component={() => { return Dashboard() }}>
-            </Route>
-          </Authenticate>
-
-          <Route exact path="/login" >
-            <Navigation />
-            <SEO
-              title="Bouns'Botㆍlogin"
-              description="Login with your Discord account to manage your server with the dashboard of Bouns'bot !"
-              name="Bouns'Bot" />
-            <Login />
-          </Route>
-          <Route exact path="/bot/privacy" >
-            <Navigation />
-            <SEO
-              title="Bouns'Botㆍprivacy"
-              description="Privacy policy of Bouns'bot"
-              name="Bouns'Bot" />
-
-            <ScrollToTop>
-              <PrivacyBot />
+          <Route path="/status" element={
+            <>
+              <Navigation />
+              <SEO title="Bouns'Botㆍstatus" description="See the status of Bouns'bot, the multifunction bot for your Discord server." name="Bouns'Bot" />
+              <Status />
+              <BrandAddBot />
               <Footer />
-            </ScrollToTop>
-          </Route>
-          <Route exact path="/a-propos" >
-            <Navigation />
-            <SEO
-              title="Bouns'Botㆍabout"
-              description="Why Bouns'bot ? Who is Bouns'bot ? Find out more about Bouns'bot !"
-              name="Bouns'Bot" />
+            </>
+          } />
 
-            <ScrollToTop>
-              <Bio />
-              <Footer />
-            </ScrollToTop>
-          </Route>
-          <Route exact path="/bot/terms" >
-            <Navigation />
-            <SEO
-              title="Bouns'Botㆍterms"
-              description="Terms of service of Bouns'bot"
-              name="Bouns'Bot" />
+          <Route path="/level" element={
+            <>
+              <Navigation />
+              <SEO title="Bouns'Botㆍlevels" description="Engage your community with the levels system of Bouns'bot, the multifunction bot for your Discord server." name="Bouns'Bot" />
+              <Levels />
+            </>
+          } />
 
-            <ScrollToTop>
-              <TermsBot />
-              <Footer />
-            </ScrollToTop>
-          </Route>
-          <Route exact path="/oauth/callback" >
-            <Navigation />
-            <Callback />
-          </Route>
-          <Route>
-            <Navigation />
-            <SEO
-              title="Bouns'Botㆍ404"
-              description="You look lost, stranger. If you want to add bouns'bot, the button below might help you 👀"
-              name="Bouns'Bot" />
-            <ErreurPage />
-          </Route>
-        </Switch>
+          <Route path="/demo" element={
+            <>
+              <Navigation />
+              <SEO title="Bouns'Botㆍdemo" description="Cool demo of Bouns'bot, You can even chat with your friends directly here!" name="Bouns'Bot" />
+              <Demo />
+            </>
+          } />
+
+          <Route path="/dashboard" element={
+            <Authenticate>
+              <Navigation />
+              <SEO title="Bouns'Botㆍdashboard" description="Manage your server with the dashboard of Bouns'bot !" name="Bouns'Bot" />
+              <Dashboard />
+            </Authenticate>
+          } />
+
+          <Route path="/dashboard/:id/:typeconfig" element={
+            <Authenticate>
+              <Navigation background={"#202225"} />
+              <SEO title="Bouns'Botㆍdashboard" description="Manage your server with the dashboard of Bouns'bot !" name="Bouns'Bot" />
+              <Dashboard />
+            </Authenticate>
+          } />
+
+          <Route path="/login" element={
+            <>
+              <Navigation />
+              <SEO title="Bouns'Botㆍlogin" description="Login with your Discord account to manage your server with the dashboard of Bouns'bot !" name="Bouns'Bot" />
+              <Login />
+            </>
+          } />
+
+          <Route path="/bot/privacy" element={
+            <>
+              <Navigation />
+              <SEO title="Bouns'Botㆍprivacy" description="Privacy policy of Bouns'bot" name="Bouns'Bot" />
+              <ScrollToTop>
+                <PrivacyBot />
+                <Footer />
+              </ScrollToTop>
+            </>
+          } />
+
+          <Route path="/a-propos" element={
+            <>
+              <Navigation />
+              <SEO title="Bouns'Botㆍabout" description="Why Bouns'bot ? Who is Bouns'bot ? Find out more about Bouns'bot !" name="Bouns'Bot" />
+              <ScrollToTop>
+                <Bio />
+                <Footer />
+              </ScrollToTop>
+            </>
+          } />
+
+          <Route path="/bot/terms" element={
+            <>
+              <Navigation />
+              <SEO title="Bouns'Botㆍterms" description="Terms of service of Bouns'bot" name="Bouns'Bot" />
+              <ScrollToTop>
+                <TermsBot />
+                <Footer />
+              </ScrollToTop>
+            </>
+          } />
+
+          <Route path="/oauth/callback" element={
+            <>
+              <Navigation />
+              <Callback />
+            </>
+          } />
+
+          <Route path="*" element={
+            <>
+              <Navigation />
+              <SEO title="Bouns'Botㆍ404" description="You look lost, stranger. If you want to add bouns'bot, the button below might help you 👀" name="Bouns'Bot" />
+              <ErreurPage />
+            </>
+          } />
+        </Routes>
       </BrowserRouter>
     </div>
   );

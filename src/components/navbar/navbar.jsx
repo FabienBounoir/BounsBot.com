@@ -1,17 +1,17 @@
 import "./_navbar.css";
 import React, { useEffect, useState } from 'react'
-import { Link, Router } from "react-router-dom"
+import { Link } from "react-router-dom"
 import Avatar from "../avatar/avatar";
 import { useTranslation } from "react-i18next";
 import { getUser } from "../../utils/API/authAPI";
 import * as authAPI from "../../utils/API/authAPI";
 import { useStore } from "../../utils/store";
-import { useHistory } from "react-router-dom/cjs/react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 
 export const Navigation = ({ props, sticky, background }) => {
     const { t } = useTranslation();
-    const history = useHistory();
+    const navigate = useNavigate();
 
     const [state, dispatch] = useStore()
     const [open, setOpen] = useState(false)
@@ -22,7 +22,7 @@ export const Navigation = ({ props, sticky, background }) => {
 
     const clickMe = () => {
         authAPI.logout();
-        history.push("/")
+        navigate("/")
 
         dispatch({ logged: false, user: null })
         localStorage.removeItem('user')

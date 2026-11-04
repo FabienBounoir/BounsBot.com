@@ -1,11 +1,8 @@
-import { Redirect } from "react-router-dom";
+import { Navigate } from "react-router-dom";
 
 function Authenticate({ children }) {
-    let auth = false;
-
     const info = window.localStorage.getItem('token');
-
-    return info ? children : <Redirect to="/login?status=invalidToken" />;
+    return info ? children : <Navigate to="/login?status=invalidToken" replace />;
 }
 
 export default Authenticate

@@ -2,37 +2,37 @@ import "./_callback.css";
 import { Component, useEffect } from 'react'
 import Avatar from "../avatar/avatar";
 import { getUser, login } from "../../utils/API/authAPI";
-import { useHistory } from "react-router-dom/cjs/react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useStore } from "../../utils/store";
 
 export const Callback = () => {
-    const history = useHistory();
+    const navigate = useNavigate();
     const [state, dispatch] = useStore();
 
     useEffect(() => {
         const code = new URLSearchParams(window.location.search).get('code')
 
         if (!code) {
-            return history.push("/login")
+            return navigate("/login")
         }
 
         login(code).then(data => {
             getUser().then(user => {
-                history.push("/dashboard/user/description")
+                navigate("/dashboard/user/description")
                 dispatch({ logged: true, user })
             }).catch(error => {
                 console.error("User error", error)
                 dispatch({ logged: false, user: null })
                 localStorage.removeItem('user')
                 localStorage.removeItem('token')
-                history.push("/login?status=error")
+                navigate("/login?status=error")
             })
         }).catch(error => {
             console.error("login send code error", error)
             dispatch({ logged: false, user: null })
             localStorage.removeItem('user')
             localStorage.removeItem('token')
-            history.push("/login?status=error")
+            navigate("/login?status=error")
         })
     }, [])
 

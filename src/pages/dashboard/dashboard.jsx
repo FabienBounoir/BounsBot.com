@@ -4,10 +4,10 @@ import { ListServer } from "../../components/listServer/listServer";
 import { Configuration } from "../../components/configuration/configuration";
 import * as guildsAPI from "../../utils/API/authAPI";
 import { useStore } from "../../utils/store";
-import { useHistory } from "react-router-dom/cjs/react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 export const Dashboard = () => {
-    const history = useHistory();
+    const navigate = useNavigate();
     const [guilds, setGuilds] = useState([])
     const [loading, setLoading] = useState(true)
     const [changeNotSave, setChangeNotSave] = useState(false);
@@ -15,13 +15,13 @@ export const Dashboard = () => {
 
     useEffect(() => {
         if (!state?.logged) {
-            history.push("/login?status=invalidToken")
+            navigate("/login?status=invalidToken")
         }
     }, [])
 
     useEffect(() => {
         if (!state?.logged) {
-            history.push("/login?status=invalidToken")
+            navigate("/login?status=invalidToken")
         }
     }, [state])
 
@@ -35,7 +35,7 @@ export const Dashboard = () => {
         } catch (e) {
             console.error("get user guilds error", e)
             dispatch({ logged: false, user: null })
-            history.push("/login")
+            navigate("/login")
             localStorage.removeItem('user')
             localStorage.removeItem('token')
         }
